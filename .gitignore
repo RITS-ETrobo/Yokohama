@@ -1,0 +1,23 @@
+# for emacs:
+*~
+\#*
+.\#*
+
+# for vi:
+*.swp
+
+# for svn
+.svn
+
+# for ETrobo
+bin
+x86
+obj
+Debug
+
+# for Xamarin Studio
+*.userprefs
+
+# for Visual Studio
+*.suo
+UpgradeLog*.htm
