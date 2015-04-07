@@ -1,6 +1,0 @@
-C:\Users\z00s000770\Documents\Yokohama\src\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole\bin\Debug\EV3Way_MonoBrick_RemoteConsole.exe
-C:\Users\z00s000770\Documents\Yokohama\src\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole\bin\Debug\EV3Way_MonoBrick_RemoteConsole.pdb
-C:\Users\z00s000770\Documents\Yokohama\src\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole\obj\x86\Debug\EV3Way_MonoBrick_RemoteConsole.exe
-C:\Users\z00s000770\Documents\Yokohama\src\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole\obj\x86\Debug\EV3Way_MonoBrick_RemoteConsole.pdb
-C:\Users\z00s000770\Documents\Yokohama\src\bin\EV3Way_MonoBrick_RemoteConsole.exe
-C:\Users\z00s000770\Documents\Yokohama\src\bin\EV3Way_MonoBrick_RemoteConsole.pdb
