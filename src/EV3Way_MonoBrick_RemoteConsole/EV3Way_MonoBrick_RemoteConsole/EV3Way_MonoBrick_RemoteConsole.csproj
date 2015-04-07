@@ -20,7 +20,7 @@
     <Externalconsole>true</Externalconsole>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp &quot;${TargetFile}&quot; &quot;..\..\bin\${TargetName}&quot;" workingdir="" />
+        <Command type="AfterBuild" command="" workingdir="" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -34,7 +34,7 @@
     <Externalconsole>true</Externalconsole>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp &quot;${TargetFile}&quot; &quot;..\..\bin\${TargetName}&quot;" />
+        <Command type="AfterBuild" command="cp ${TargetFile} ../../bin/${ProjectConfigName}/${TargetName}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
