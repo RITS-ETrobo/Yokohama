@@ -30,8 +30,8 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${TargetFile} ../../bin/${ProjectConfigName}/${TargetName}" />
-        <Command type="AfterBuild" command="cp ${TargetDir}/MonoBrickFirmware.dll ../../bin/${ProjectConfigName}/MonoBrickFirmware.dll" />
+        <Command type="AfterBuild" command="cp ${TargetFile} ../../../obj/${ProjectConfigName}/${TargetName}" />
+        <Command type="AfterBuild" command="cp ${TargetDir}/MonoBrickFirmware.dll ../../../obj/${ProjectConfigName}/MonoBrickFirmware.dll" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>

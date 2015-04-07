@@ -31,7 +31,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${TargetFile} ../../bin/${ProjectConfigName}/${TargetName}" />
+        <Command type="AfterBuild" command="cp ${TargetFile} ../../../obj/${ProjectConfigName}/${TargetName}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
