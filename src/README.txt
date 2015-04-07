@@ -1,26 +1,26 @@
-Žg‚¢•û
+ï»¿ä½¿ã„æ–¹
 
-‚PDEV3–{‘Ì‚Æƒpƒ\ƒRƒ“‚ÌÚ‘±
+ï¼‘ï¼ŽEV3æœ¬ä½“ã¨ãƒ‘ã‚½ã‚³ãƒ³ã®æŽ¥ç¶š
 
-EV3‚Æƒpƒ\ƒRƒ“‚ðBluetooth‚ÅÚ‘±‚µ‚Ü‚·B
-
-
-‚QDEV3–{‘Ì‘¤ƒvƒƒOƒ‰ƒ€‚ÌŽÀs
-
-MonoDevelop‚ÅEV3way_MonoBrick_sample\EV3way_MonoBrick_Remote\EV3way_MonoBrick_sample.sln
-‚ðŠJ‚«Aƒƒjƒ…[uŽÀsv-uStart Without Debuggingv‚ðŽÀs‚µ‚Ü‚·B
-
-ƒvƒƒOƒ‰ƒ€‚ªƒrƒ‹ƒh‚³‚êEV3‚É“]‘—‚³‚êŽÀs‚³‚ê‚Ü‚·B
-‰t»‰æ–Ê‚É‚ÍuPlease connect...v‚ª•\Ž¦‚³‚êÚ‘±‘Ò‚¿‚É‚È‚è‚Ü‚·B
+EV3ã¨ãƒ‘ã‚½ã‚³ãƒ³ã‚’Bluetoothã§æŽ¥ç¶šã—ã¾ã™ã€‚
 
 
-‚RDWindowsƒpƒ\ƒRƒ“‘¤ƒvƒƒOƒ‰ƒ€‚ÌŽÀs
+ï¼’ï¼ŽEV3æœ¬ä½“å´ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å®Ÿè¡Œ
 
-‚à‚¤‚P‚ÂMonoDevelop‚ð‹N“®‚µAEV3way_MonoBrick_sample\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole.sln‚ðŠJ‚«Aƒƒjƒ…[uŽÀsv-uStart Without Debuggingv‚ðŽÀs‚µ‚Ü‚·B
+MonoDevelopã§EV3way_MonoBrick\EV3way_MonoBrick_Remote\EV3way_MonoBrick.sln
+ã‚’é–‹ãã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã€Œå®Ÿè¡Œã€-ã€ŒStart Without Debuggingã€ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
 
-ƒpƒ\ƒRƒ“ã‚ÅƒvƒƒOƒ‰ƒ€‚ªŠJŽn‚³‚êAƒRƒ“ƒ\[ƒ‹‰æ–Ê‚ª•\Ž¦‚³‚ê‚Ü‚·B
-EV3‚Ì‰t»‰æ–Ê‚É‚ÍuTouch to STARTv‚ª•\Ž¦‚³‚ê‚Ü‚·B
-EV3‚ð—§‚½‚¹‚Äƒ^ƒbƒ`ƒZƒ“ƒT[‚ð‰Ÿ‰º‚·‚é‚©AƒRƒ“ƒ\[ƒ‹‰æ–Ê‚ÌgƒL[‚Å“|—§‚ðŠJŽn‚µ‚Ü‚·B
-‚à‚¤ˆê“xƒ^ƒbƒ`ƒZƒ“ƒT[‚ð‰Ÿ‰º‚·‚é‚©AƒRƒ“ƒ\[ƒ‹‰æ–Ê‚ÌsƒL[‚ð‰Ÿ‚·‚Æ’âŽ~‚µ‚Ü‚·B
+ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒ“ãƒ«ãƒ‰ã•ã‚ŒEV3ã«è»¢é€ã•ã‚Œå®Ÿè¡Œã•ã‚Œã¾ã™ã€‚
+æ¶²æ™¶ç”»é¢ã«ã¯ã€ŒPlease connect...ã€ãŒè¡¨ç¤ºã•ã‚ŒæŽ¥ç¶šå¾…ã¡ã«ãªã‚Šã¾ã™ã€‚
+
+
+ï¼“ï¼ŽWindowsãƒ‘ã‚½ã‚³ãƒ³å´ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å®Ÿè¡Œ
+
+ã‚‚ã†ï¼‘ã¤MonoDevelopã‚’èµ·å‹•ã—ã€EV3way_MonoBrick\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole.slnã‚’é–‹ãã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã€Œå®Ÿè¡Œã€-ã€ŒStart Without Debuggingã€ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
+
+ãƒ‘ã‚½ã‚³ãƒ³ä¸Šã§ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒé–‹å§‹ã•ã‚Œã€ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ç”»é¢ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+EV3ã®æ¶²æ™¶ç”»é¢ã«ã¯ã€ŒTouch to STARTã€ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+EV3ã‚’ç«‹ãŸã›ã¦ã‚¿ãƒƒãƒã‚»ãƒ³ã‚µãƒ¼ã‚’æŠ¼ä¸‹ã™ã‚‹ã‹ã€ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ç”»é¢ã®gã‚­ãƒ¼ã§å€’ç«‹ã‚’é–‹å§‹ã—ã¾ã™ã€‚
+ã‚‚ã†ä¸€åº¦ã‚¿ãƒƒãƒã‚»ãƒ³ã‚µãƒ¼ã‚’æŠ¼ä¸‹ã™ã‚‹ã‹ã€ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ç”»é¢ã®sã‚­ãƒ¼ã‚’æŠ¼ã™ã¨åœæ­¢ã—ã¾ã™ã€‚
 
 
