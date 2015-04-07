@@ -28,6 +28,12 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp ${TargetFile} ../../../obj/${ProjectConfigName}/${TargetName}" />
+        <Command type="AfterBuild" command="cp ${TargetDir}/MonoBrickFirmware.dll ../../../obj/${ProjectConfigName}/MonoBrickFirmware.dll" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
