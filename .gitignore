@@ -10,10 +10,10 @@
 .svn
 
 # for ETrobo
-bin
 x86
 obj
 Debug
+*.pdb
 
 # for Xamarin Studio
 *.userprefs
@@ -21,3 +21,6 @@ Debug
 # for Visual Studio
 *.suo
 UpgradeLog*.htm
+
+# for common
+*.bak
