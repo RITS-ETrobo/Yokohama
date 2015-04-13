@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using MonoBrickFirmware.Movement;
 using MonoBrickFirmware.Sensors;
 
-namespace ETTobocon.EV3.Sample
+namespace ETTobocon.EV3
 {
 	struct EV3body{
 		//モータオブジェクト
