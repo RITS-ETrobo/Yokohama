@@ -233,6 +233,15 @@ namespace ETTobocon.EV3
 			return false;
 		}
 
+		/// <summary>
+		/// 'hoge'をBluetooth通信で送る.
+		/// </summary>
+		/// <param name="connection">Connection.</param>
+		static void RemoteLogTest(NetworkStream connection)
+		{
+
+			return;
+		}
 	}
 }
 
