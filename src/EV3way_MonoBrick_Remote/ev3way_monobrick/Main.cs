@@ -239,6 +239,14 @@ namespace ETTobocon.EV3
 		/// <param name="connection">Connection.</param>
 		static void RemoteLogTest(NetworkStream connection)
 		{
+			/*
+			// LeJOS 版に合わせてネットワークバイトオーダーで送信
+			byte[] keyBytes = BitConverter.GetBytes((int)key.KeyChar); // 4ByteArray (littele Endian)
+			if (BitConverter.IsLittleEndian) {
+				Array.Reverse(keyBytes); // little Endian -> big endian
+			}
+			connection.Write(keyBytes, 0, keyBytes.Length);
+			*/
 
 			return;
 		}
