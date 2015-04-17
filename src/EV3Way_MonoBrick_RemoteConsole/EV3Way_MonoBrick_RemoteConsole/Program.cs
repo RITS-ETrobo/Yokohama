@@ -58,6 +58,24 @@ namespace EV3Way_MonoBrick_RemoteConsole
 		private static void RemoteReceiveTest(NetworkStream connection)
 		{
 
+			// 受信
+			/*
+			try{
+				if (connection.DataAvailable) {
+					var buff = new byte[4];
+					connection.Read(buff, 0, buff.Length);
+					// ネットワークバイトオーダー(big endian)で受信したため little endian に変換
+					Array.Reverse(buff); // big endian -> little endian
+
+					if (BitConverter.ToInt32(buff,0) == command) {
+						return true;
+					}
+				}
+			}catch(Exception){
+				return false;
+			}
+			return false;
+			*/
 		}
 	}
 }
