@@ -59,7 +59,6 @@ namespace EV3Way_MonoBrick_RemoteConsole
 		{
 
 			// 受信
-			/*
 			try{
 				if (connection.DataAvailable) {
 					var buff = new byte[4];
@@ -67,15 +66,12 @@ namespace EV3Way_MonoBrick_RemoteConsole
 					// ネットワークバイトオーダー(big endian)で受信したため little endian に変換
 					Array.Reverse(buff); // big endian -> little endian
 
-					if (BitConverter.ToInt32(buff,0) == command) {
-						return true;
-					}
+					Console.Out.WriteLine(BitConverter.ToInt32(buff, 0));
 				}
 			}catch(Exception){
-				return false;
+				return;
 			}
-			return false;
-			*/
+			return;
 		}
 	}
 }
