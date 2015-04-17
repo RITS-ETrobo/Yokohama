@@ -133,6 +133,8 @@ namespace ETTobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
+			RemoteLogTest (connection);
+
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御

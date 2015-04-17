@@ -48,6 +48,8 @@ namespace EV3Way_MonoBrick_RemoteConsole
 					done = true;
 					break;
 				}
+
+				RemoteReceiveTest (connection);
 			}
 		}
 
