@@ -50,5 +50,14 @@ namespace EV3Way_MonoBrick_RemoteConsole
 				}
 			}
 		}
+
+		/// <summary>
+		/// Receive 4byte string from EV3.
+		/// </summary>
+		/// <param name="connection">Connection.</param>
+		private static void RemoteReceiveTest(NetworkStream connection)
+		{
+
+		}
 	}
 }
