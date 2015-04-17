@@ -66,7 +66,7 @@ namespace EV3Way_MonoBrick_RemoteConsole
 					// ネットワークバイトオーダー(big endian)で受信したため little endian に変換
 					Array.Reverse(buff); // big endian -> little endian
 
-					Console.Out.WriteLine(BitConverter.ToInt32(buff, 0));
+					Console.Out.WriteLine(System.Text.Encoding.ASCII.GetString(buff));
 				}
 			}catch(Exception){
 				return;
