@@ -133,7 +133,7 @@ namespace ETTobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			RemoteLogTest (connection);
+			RemoteLogTest ("hoge", connection);
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -236,13 +236,12 @@ namespace ETTobocon.EV3
 		}
 
 		/// <summary>
-		/// 'hoge'をBluetooth通信で送る.
+		/// 文字列をBluetooth通信で送る.
 		/// </summary>
+		/// <param name="str">String you want to send. (max : 255 bytes)</param>
 		/// <param name="connection">Connection.</param>
-		static void RemoteLogTest(NetworkStream connection)
+		static void RemoteLogTest(string str, NetworkStream connection)
 		{
-			string str = "hoge";
-
 			// LeJOS 版に合わせてネットワークバイトオーダーで送信
 
 			// サイズ情報を送るため, 1byte余分に取る
