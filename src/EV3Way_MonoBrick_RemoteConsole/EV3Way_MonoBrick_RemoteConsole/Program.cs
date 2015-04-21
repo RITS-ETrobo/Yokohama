@@ -59,7 +59,7 @@ namespace EV3Way_MonoBrick_RemoteConsole
 		}
 
 		/// <summary>
-		/// Receive 4byte string from EV3.
+		/// Receive a string from EV3.
 		/// </summary>
 		/// <param name="connection">Connection.</param>
 		private static void RemoteReceiveTest(NetworkStream connection)
@@ -68,12 +68,14 @@ namespace EV3Way_MonoBrick_RemoteConsole
 			// 受信
 			try{
 				if (connection.DataAvailable) {
-					var buff = new byte[4];
-					connection.Read(buff, 0, buff.Length);
+					var buff = new byte[256];
+					connection.Read(buff, 0, 1);
+					int receiveBytes = buff[0];
+					connection.Read(buff, 0, receiveBytes);
 					// ネットワークバイトオーダー(big endian)で受信したため little endian に変換
-					Array.Reverse(buff); // big endian -> little endian
+					Array.Reverse(buff, 0, receiveBytes); // big endian -> little endian
 
-					Console.Out.WriteLine(System.Text.Encoding.ASCII.GetString(buff));
+					Console.Out.WriteLine(System.Text.Encoding.ASCII.GetString(buff, 0, receiveBytes));
 				}
 			}catch(Exception){
 				return;

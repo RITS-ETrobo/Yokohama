@@ -244,10 +244,13 @@ namespace ETTobocon.EV3
 			string str = "hoge";
 
 			// LeJOS 版に合わせてネットワークバイトオーダーで送信
-			byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes (str);
+
+			// サイズ情報を送るため, 1byte余分に取る
+			byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes (str + ' ');
 			if (BitConverter.IsLittleEndian) {
 				Array.Reverse(keyBytes); // little Endian -> big endian
 			}
+			keyBytes[0] = (byte)(keyBytes.Length - 1);
 			connection.Write(keyBytes, 0, keyBytes.Length);
 
 			return;
