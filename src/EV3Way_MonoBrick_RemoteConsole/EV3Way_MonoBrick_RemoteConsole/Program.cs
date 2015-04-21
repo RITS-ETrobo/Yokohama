@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace EV3Way_MonoBrick_RemoteConsole
 {
@@ -31,25 +32,29 @@ namespace EV3Way_MonoBrick_RemoteConsole
 
 			bool	done = false;
 			while (!done) {
-				Console.Out.Write(">");
-				ConsoleKeyInfo key = Console.ReadKey();
-				switch (key.KeyChar) {
-				case 'g':
-				case 's':
-					// LeJOS 版に合わせてネットワークバイトオーダーで送信
-					byte[] keyBytes = BitConverter.GetBytes((int)key.KeyChar); // 4ByteArray (littele Endian)
-					if (BitConverter.IsLittleEndian) {
-						Array.Reverse(keyBytes); // little Endian -> big endian
+				if (Console.KeyAvailable) {
+					Console.Out.Write (">");
+					ConsoleKeyInfo key = Console.ReadKey ();
+					switch (key.KeyChar) {
+					case 'g':
+					case 's':
+						// LeJOS 版に合わせてネットワークバイトオーダーで送信
+						byte[] keyBytes = BitConverter.GetBytes ((int)key.KeyChar); // 4ByteArray (littele Endian)
+						if (BitConverter.IsLittleEndian) {
+							Array.Reverse (keyBytes); // little Endian -> big endian
+						}
+						connection.Write (keyBytes, 0, keyBytes.Length);
+						Console.Out.WriteLine ();
+						break;
+					case 'q':
+						done = true;
+						break;
 					}
-					connection.Write(keyBytes, 0, keyBytes.Length);
-					Console.Out.WriteLine();
-					break;
-				case 'q':
-					done = true;
-					break;
 				}
 
 				RemoteReceiveTest (connection);
+
+				Thread.Sleep (9); // 適当
 			}
 		}
 
