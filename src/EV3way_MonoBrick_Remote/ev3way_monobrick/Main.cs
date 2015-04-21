@@ -111,6 +111,8 @@ namespace ETTobocon.EV3
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
+			RemoteLogTest ("EV3 is ready.", connection);
+
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_START))
@@ -132,6 +134,8 @@ namespace ETTobocon.EV3
 			sbyte turn;
 			int counter = 0;
 			bool alert = false;
+
+			RemoteLogTest ("EV3 run.", connection);
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -175,6 +179,8 @@ namespace ETTobocon.EV3
 				// 尻尾制御と障害物検知を使用する場合2msecで安定
 				Thread.Sleep(2);
 			}
+
+			RemoteLogTest ("EV3 stopped.", connection);
 		}
 
 		/*
@@ -233,6 +239,25 @@ namespace ETTobocon.EV3
 			return false;
 		}
 
+		/// <summary>
+		/// 文字列をBluetooth通信で送る.
+		/// </summary>
+		/// <param name="str">String you want to send. (max : 255 bytes)</param>
+		/// <param name="connection">Connection.</param>
+		static void RemoteLogTest(string str, NetworkStream connection)
+		{
+			// LeJOS 版に合わせてネットワークバイトオーダーで送信
+
+			// サイズ情報を送るため, 1byte余分に取る
+			byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes (str + ' ');
+			if (BitConverter.IsLittleEndian) {
+				Array.Reverse(keyBytes); // little Endian -> big endian
+			}
+			keyBytes[0] = (byte)(keyBytes.Length - 1);
+			connection.Write(keyBytes, 0, keyBytes.Length);
+
+			return;
+		}
 	}
 }
 
