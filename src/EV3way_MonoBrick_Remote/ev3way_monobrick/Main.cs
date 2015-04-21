@@ -111,6 +111,8 @@ namespace ETTobocon.EV3
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
+			RemoteLogTest ("EV3 is ready.", connection);
+
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_START))
@@ -133,7 +135,7 @@ namespace ETTobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			RemoteLogTest ("hoge", connection);
+			RemoteLogTest ("EV3 run.", connection);
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -177,6 +179,8 @@ namespace ETTobocon.EV3
 				// 尻尾制御と障害物検知を使用する場合2msecで安定
 				Thread.Sleep(2);
 			}
+
+			RemoteLogTest ("EV3 stopped.", connection);
 		}
 
 		/*
