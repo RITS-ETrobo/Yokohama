@@ -54,7 +54,8 @@ namespace EV3Way_MonoBrick_RemoteConsole
 
 				RemoteReceiveTest (connection);
 
-				Thread.Sleep (9); // 適当
+				// ロボット側の倒立振子制御ループが4msで回るので, それより短い値を指定.
+				Thread.Sleep (2); // TODO: 適切な値か検証する
 			}
 		}
 
