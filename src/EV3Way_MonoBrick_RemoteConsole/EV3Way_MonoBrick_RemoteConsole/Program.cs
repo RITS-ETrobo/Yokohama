@@ -32,7 +32,7 @@ namespace EV3Way_MonoBrick_RemoteConsole
 
 			bool	done = false;
 			while (!done) {
-				if (Console.KeyAvailable) {
+				if (Console.KeyAvailable) {	// ReadKey()でキー入力待ちになりその後のテキスト受信処理に進まなくなるのを回避
 					Console.Out.Write (">");
 					ConsoleKeyInfo key = Console.ReadKey ();
 					switch (key.KeyChar) {
