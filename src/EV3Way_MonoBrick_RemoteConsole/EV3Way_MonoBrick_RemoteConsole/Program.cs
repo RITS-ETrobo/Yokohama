@@ -67,6 +67,17 @@ namespace EV3Way_MonoBrick_RemoteConsole
 		/// Receive a string from EV3.
 		/// </summary>
 		/// <param name="connection">Connection.</param>
+		/// <remarks>
+		/// 通信プロトコルは次の通りである. ASCII文字として受信する.
+		/// <list type="bullet">
+		/// <item>
+		/// <description>1byte目 : 受信した文字列長. 1byteで表せる範囲の制限上, 文字列の最大長は255である.</description>
+		/// </item>
+		/// <item>
+		/// <description>2byte目以降 : 受信文字列を逆順にしたもの. 当メソッド内で, 元の順に直している.</description>
+		/// </item>
+		/// </list>
+		/// </remarks>
 		private static void RemoteReceiveTest(NetworkStream connection)
 		{
 

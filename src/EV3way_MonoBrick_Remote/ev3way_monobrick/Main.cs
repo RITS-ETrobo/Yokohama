@@ -244,6 +244,19 @@ namespace ETTobocon.EV3
 		/// </summary>
 		/// <param name="str">String you want to send. (max : 255 bytes)</param>
 		/// <param name="connection">Connection.</param>
+		/// <remarks>
+		/// 通信プロトコルは次の通りである. ASCIIエンコーディングして送信する.
+		/// <list type="bullet">
+		/// <item>
+		/// <description>1byte目 : 送信する文字列長. 1byteで表せる範囲の制限上, 文字列の最大長は255である.</description>
+		/// </item>
+		/// <item>
+		/// <description>
+		/// 2byte目以降 : 送信文字列を逆順にしたもの. ただし, 逆順処理は当メソッド内で行われるため,
+		/// <paramref name="str"/>に指定する文字列は元の順でよい.</description>
+		/// </item>
+		/// </list>
+		/// </remarks>
 		static void RemoteLogTest(string str, NetworkStream connection)
 		{
 			// LeJOS 版に合わせてネットワークバイトオーダーで送信
