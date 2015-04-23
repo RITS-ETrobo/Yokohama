@@ -10,6 +10,10 @@ namespace EV3Way_MonoBrick_RemoteConsole
 	{
 		// constant
 		private const int SOCKET_PORT = 7360;
+		/// <summary>
+		/// EV3から送られてくる文字列の最大長.
+		/// </summary>
+		private const int REMOTE_TRANSFER_SIZE_MAX = 255;
 	
 		public static void Main (string[] args)
 		{
@@ -69,7 +73,7 @@ namespace EV3Way_MonoBrick_RemoteConsole
 			// 受信
 			try{
 				if (connection.DataAvailable) {
-					var buff = new byte[256];
+					var buff = new byte[REMOTE_TRANSFER_SIZE_MAX + 1];
 					connection.Read(buff, 0, 1);
 					int receiveBytes = buff[0];
 					connection.Read(buff, 0, receiveBytes);
