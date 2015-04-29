@@ -1,5 +1,7 @@
-﻿//Brick class (get battery voltage, power off ,reboot, exit and change hostname )
-// by jtFuruhata 2014
+﻿/**
+ *	@mainpage	Brick class (get battery voltage, power off ,reboot, exit and change hostname )
+ *	@author	jtFuruhata 2014
+ */
 
 using System;
 using System.IO;
@@ -69,63 +71,81 @@ namespace ETRobocon.EV3
 			return MonoBrickFirmware.Native.ProcessHelper.RunAndWaitForProcess (fileName, arguments);
 		}
 
-		/// <summary>
-		/// バッテリの電源電圧をボルト単位で取得する
-		/// </summary>
-		/// <returns>電圧(V)</returns>
+		///	<summary>
+		///	バッテリの電源電圧をボルト単位で取得する
+		///	</summary>
+		///	<returns>
+		///	電圧(V)
+		///	</returns>
 		public static float GetVoltage ()
 		{
 			float CinV = convert(Brick.getBatteryCurrentRaw())/AMP_CIN;
 			return convert(Brick.getBatteryVoltageRaw())/AMP_VIN + CinV + VCE;
 		}
 
-		/// <summary>
-		/// バッテリの電源電圧をミリボルト単位で取得する
-		/// </summary>
-		/// <returns>電圧(mV)</returns>
+		///	<summary>
+		///	バッテリの電源電圧をミリボルト単位で取得する
+		///	</summary>
+		///	<returns>
+		///	電圧(mV)
+		///	</returns>
 		public static int GetVoltageMilliVolt ()
 		{
 			return (int)(Brick.GetVoltage()*1000f);
 		}
 
-		/// <summary>
-		/// EV3インテリジェントブリックの電源を切る
-		/// </summary>
+		///	<summary>
+		///	EV3インテリジェントブリックの電源を切る
+		///	</summary>
+		///	<returns>
+		///	なし
+		///	</returns>
 		public static void Poweroff ()
 		{
 			MonoBrickFirmware.Native.ProcessHelper.StartProcess ("halt", "-p");
 		}
 
-		/// <summary>
-		/// EV3インテリジェントブリックを再起動する
-		/// </summary>
+		///	<summary>
+		///	EV3インテリジェントブリックを再起動する
+		///	</summary>
+		///	<returns>
+		///	なし
+		///	</returns>
 		public static void Reboot ()
 		{
 			MonoBrickFirmware.Native.ProcessHelper.StartProcess ("reboot");
 		}
 
-		/// <summary>
-		/// ユーザアプリを終了し、MonoBrickメインメニューへ戻る
-		/// </summary>
+		///	<summary>
+		///	ユーザアプリを終了し、MonoBrickメインメニューへ戻る
+		///	</summary>
+		///	<returns>
+		///	なし
+		///	</returns>
 		public static void ExitToMenu ()
 		{
 			MonoBrickFirmware.Native.ProcessHelper.StartProcess (MONO_HOME + "/mono", 
 				"--full-aot " + MONO_HOME + "/StartupApp.exe");
 		}
 
-		/// <summary>
-		/// EV3インテリジェントブリックのホスト名を取得する
-		/// </summary>
-		/// <returns>ホスト名</returns>
+		///	<summary>
+		///	EV3インテリジェントブリックのホスト名を取得する
+		///	</summary>
+		///	<returns>
+		///	ホスト名
+		///	</returns>
 		public static string GetName ()
 		{
 			return MonoBrickFirmware.Native.ProcessHelper.RunAndWaitForProcessWithOutput ("hostname");
 		}
 
-		/// <summary>
-		/// EV3インテリジェントブリックのホスト名およびBluetoothデバイス名を設定する
-		/// </summary>
-		/// <param name="name">設定するホスト名（デバイス名）</param>
+		///	<summary>
+		///	EV3インテリジェントブリックのホスト名およびBluetoothデバイス名を設定する
+		///	</summary>
+		///	<param name="name">設定するホスト名（デバイス名）</param>
+		///	<returns>
+		///	なし
+		///	</returns>
 		public static void SetName (string name)
 		{
 			FileStream fs = File.Create (LEJOS_HOSTNAME);
@@ -138,9 +158,12 @@ namespace ETRobocon.EV3
 			Brick.shell ("hciconfig", "hci0 name " + name);
 		}
 
-		/// <summary>
-		/// Bluetooth関係のETロボコン拡張機能を有効にする
-		/// </summary>
+		///	<summary>
+		///	Bluetooth関係のETロボコン拡張機能を有効にする
+		///	</summary>
+		///	<returns>
+		///	なし
+		///	</returns>
 		public static void InstallETRoboExt ()
 		{
 			if (!File.Exists (START_NETWORK_ORG)) {
@@ -186,4 +209,3 @@ namespace ETRobocon.EV3
 		}
 	}
 }
-

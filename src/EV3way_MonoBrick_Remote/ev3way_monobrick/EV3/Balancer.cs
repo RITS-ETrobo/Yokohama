@@ -12,26 +12,53 @@ namespace ETRobocon.EV3
 {
 	class Balancer
 	{
-		const float CMD_MAX = 100.0F;                    /* 前進/旋回命令絶対最大値 */
-		const float DEG2RAD = 0.01745329238F;            /* 角度単位変換係数(=pi/180) */
-		const float EXEC_PERIOD = 0.00400000019F;            /* バランス制御実行周期(秒) */
+		/// 前進/旋回命令絶対最大値
+		const float CMD_MAX = 100.0F;
 
-		const float A_D = 0.8F;    	   /* low pass filter gain for motors average count */
-		const float A_R = 0.996F;      /* low pass filter gain for motors target count */
-		/* servo control state feedback gain for NXT standard tire */
+		///	角度単位変換係数(=pi/180)
+		const float DEG2RAD = 0.01745329238F;
+
+		/// バランス制御実行周期(秒)
+		const float EXEC_PERIOD = 0.00400000019F;
+
+		/// low pass filter gain for motors average count
+		const float A_D = 0.8F;
+
+		/// low pass filter gain for motors target count
+		const float A_R = 0.996F;
+
+		///	servo control state feedback gain for NXT standard tire
 		static float[] K_F = new float[4] {-0.870303F, -31.9978F, -1.1566F * 0.6F, -2.78873F};
-		const float K_I = -0.44721F;   /* servo control integral gain */
-		const float K_PHIDOT = 25.0F * 2.5F;  /* turn target speed gain */
-		const float K_THETADOT = 7.5F; /* forward target speed gain */
 
-		const float BATTERY_GAIN = 0.001089F;	/* battery voltage gain for motor PWM outputs */
-		const float BATTERY_OFFSET = 0.625F;	/* battery voltage offset for motor PWM outputs */
+		/// servo control integral gain
+		const float K_I = -0.44721F;
 
-		static float ud_err_theta;          /* 左右車輪の平均回転角度(θ)目標誤差状態値 */
-		static float ud_psi;                /* 車体ピッチ角度(ψ)状態値 */
-		static float ud_theta_lpf;          /* 左右車輪の平均回転角度(θ)状態値 */
-		static float ud_theta_ref;          /* 左右車輪の目標平均回転角度(θ)状態値 */
-		static float ud_thetadot_cmd_lpf;   /* 左右車輪の目標平均回転角速度(dθ/dt)状態値 */
+		/// turn target speed gain
+		const float K_PHIDOT = 25.0F * 2.5F;
+
+		/// forward target speed gain
+		const float K_THETADOT = 7.5F;
+
+		/// battery voltage gain for motor PWM outputs
+		const float BATTERY_GAIN = 0.001089F;
+
+		/// battery voltage offset for motor PWM outputs
+		const float BATTERY_OFFSET = 0.625F;	/*  */
+
+		/// 左右車輪の平均回転角度(θ)目標誤差状態値
+		static float ud_err_theta;
+
+		/// 車体ピッチ角度(ψ)状態値
+		static float ud_psi;
+
+		///	左右車輪の平均回転角度(θ)状態値
+		static float ud_theta_lpf;          /*  */
+
+		///	左右車輪の目標平均回転角度(θ)状態値
+		static float ud_theta_ref;
+
+		///	左右車輪の目標平均回転角速度(dθ/dt)状態値
+		static float ud_thetadot_cmd_lpf;
 
 		public static void control(float args_cmd_forward, float args_cmd_turn, float
 			args_gyro, float args_gyro_offset, float
@@ -201,7 +228,12 @@ namespace ETRobocon.EV3
 			ud_theta_lpf = tmp_theta_lpf;
 		}
 
-		/* Model initialize function */
+		///	<summary>
+		/// Model initialize function
+		/// </summary>
+		/// <returns>
+		/// なし
+		/// </returns>
 		public static void init()
 		{
 			/* Registration code */
