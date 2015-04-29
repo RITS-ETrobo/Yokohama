@@ -1,0 +1,13 @@
+digraph "ETRobocon.EV3.Brick.GetVoltageMilliVolt"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ETRobocon.EV3.Brick.GetVoltage\lMilliVolt",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ETRobocon.EV3.Brick.GetVoltage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#aeb4e4ad0cad9d2ddff25d3b2d94662f6",tooltip="バッテリの電源電圧をボルト単位で取得する "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ETRobocon.EV3.Brick.getBattery\lCurrentRaw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab786cf5a0f0a4aa06160a5d5acd0298c"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ETRobocon.EV3.Brick.getBattery\lVoltageRaw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab3dcbc11c957d26bf1294be3c718b276"];
+}

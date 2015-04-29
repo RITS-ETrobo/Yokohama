@@ -1,0 +1,14 @@
+digraph "C:/Projects/ETrobo/Yokohama/src/EV3way_MonoBrick_Remote" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_68267d1309a1af8e8297ef4c3efbcdba {
+    graph [ bgcolor="#ddddee", pencolor="black", label="src" fontname="Helvetica", fontsize="10", URL="dir_68267d1309a1af8e8297ef4c3efbcdba.html"]
+  subgraph clusterdir_65d0cf6feb4b0c8ae4e0facaafaa2a25 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_65d0cf6feb4b0c8ae4e0facaafaa2a25.html"];
+    dir_65d0cf6feb4b0c8ae4e0facaafaa2a25 [shape=plaintext label="EV3way_MonoBrick_Remote"];
+    dir_dc4d5974500134e96b53ac805b8396e9 [shape=box label="AOTCompileApp" color="black" fillcolor="white" style="filled" URL="dir_dc4d5974500134e96b53ac805b8396e9.html"];
+    dir_2199777def3f8365b95e4149866ead7c [shape=box label="ev3way_monobrick" color="red" fillcolor="white" style="filled" URL="dir_2199777def3f8365b95e4149866ead7c.html"];
+  }
+  }
+}

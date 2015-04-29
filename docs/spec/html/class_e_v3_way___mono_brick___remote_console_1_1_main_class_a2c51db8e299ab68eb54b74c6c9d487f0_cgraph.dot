@@ -1,0 +1,11 @@
+digraph "EV3Way_MonoBrick_RemoteConsole.MainClass.Main"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="EV3Way_MonoBrick_RemoteConsole.\lMainClass.Main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="EV3Way_MonoBrick_RemoteConsole.\lMainClass.SendCommandLoop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="EV3Way_MonoBrick_RemoteConsole.\lMainClass.RemoteReceiveTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a",tooltip="Receive a string from EV3. "];
+}
