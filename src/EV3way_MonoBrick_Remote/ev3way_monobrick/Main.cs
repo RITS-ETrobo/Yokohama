@@ -9,7 +9,7 @@ using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
 
-// 2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム。
+///	2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム
 namespace ETTobocon.EV3
 {
 	class MainClass
@@ -225,7 +225,7 @@ namespace ETTobocon.EV3
 		/// - false : 障害物無し
 		/// </returns>
 		/// <param name="body">
-		/// 
+		///	EV3bodyのインスタンス 
 		/// </param>
 		static bool sonar_alert(EV3body body)
 		{
@@ -237,10 +237,18 @@ namespace ETTobocon.EV3
 			}
 		}
 
-		/*
-		 * 走行体完全停止用モータの角度制御
-		 * @param angle モータ目標角度[度]
-		 */	
+		///	<summary>
+		///	走行体完全停止用モータの角度制御
+		///	</summary>
+		///	<returns>
+		/// なし
+		/// </returns>
+		/// <param name="body">
+		///	EV3bodyのインスタンス 
+		/// </param>
+		/// <param name="angle">
+		///	モータ目標角度[度] 
+		/// </param>
 		static void tail_control(EV3body body, int angle)
 		{
 			float pwm = (float)(angle - body.motorT.GetTachoCount ()) * P_GAIN; // 比例制御
@@ -257,9 +265,19 @@ namespace ETTobocon.EV3
 			}
 		}
 
-		/*
-    	 * リモートコマンドのチェック	
-     	 */
+		///	<summary>
+		///	リモートコマンドのチェック
+		///	</summary>
+		///	<returns>
+		/// - true : 成功
+		///	- false : 失敗
+		/// </returns>
+		/// <param name="connection">
+		///	サーバー接続状態
+		/// </param>
+		/// <param name="command">
+		///	送信コマンド 
+		/// </param>
 		static bool checkRemoteCommand(NetworkStream connection, int command) 
 		{
 			try{
