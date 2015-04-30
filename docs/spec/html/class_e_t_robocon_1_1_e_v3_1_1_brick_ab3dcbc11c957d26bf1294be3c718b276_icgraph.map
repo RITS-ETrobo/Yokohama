@@ -1,0 +1,5 @@
+<map id="ETRobocon.EV3.Brick.getBatteryVoltageRaw" name="ETRobocon.EV3.Brick.getBatteryVoltageRaw">
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#aeb4e4ad0cad9d2ddff25d3b2d94662f6" title="バッテリの電源電圧をボルト単位で取得する " alt="" coords="269,12,491,39"/>
+<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#a04d80e12070f8a1ec2a8a096082c9921" title="バッテリの電源電圧をミリボルト単位で取得する " alt="" coords="539,5,760,46"/>
+<area shape="rect" id="node4" href="$class_e_t_tobocon_1_1_e_v3_1_1_main_class.html#aaa38d3987949c6c43a6e664e14af4d7c" title="ETTobocon.EV3.MainClass.run" alt="" coords="808,12,1011,39"/>
+</map>
