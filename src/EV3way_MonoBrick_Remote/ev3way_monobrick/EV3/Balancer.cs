@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Threading;
 
 using MonoBrickFirmware;
@@ -43,39 +42,28 @@ namespace ETRobocon.EV3
 		const float BATTERY_GAIN = 0.001089F;
 
 		/// battery voltage offset for motor PWM outputs
-		const float BATTERY_OFFSET = 0.625F;	/*  */
+		const float BATTERY_OFFSET = 0.625F;
 
 		/// 左右車輪の平均回転角度(θ)目標誤差状態値
-		static float ud_err_theta;
+		static float ud_err_theta = 0.0F;
 
 		/// 車体ピッチ角度(ψ)状態値
-		static float ud_psi;
+		static float ud_psi = 0.0F;
 
 		///	左右車輪の平均回転角度(θ)状態値
-		static float ud_theta_lpf;          /*  */
+		static float ud_theta_lpf = 0.0F;
 
 		///	左右車輪の目標平均回転角度(θ)状態値
-		static float ud_theta_ref;
+		static float ud_theta_ref = 0.0F;
 
 		///	左右車輪の目標平均回転角速度(dθ/dt)状態値
-		static float ud_thetadot_cmd_lpf;
+		static float ud_thetadot_cmd_lpf = 0.0F;
 
 		public static void control(float args_cmd_forward, float args_cmd_turn, float
 			args_gyro, float args_gyro_offset, float
 			args_theta_m_l, float args_theta_m_r, float
 			args_battery, out sbyte ret_pwm_l, out sbyte ret_pwm_r)
 		{
-			float tmp_theta;
-			float tmp_theta_lpf;
-			float tmp_pwm_r_limiter;
-			float tmp_psidot;
-			float tmp_pwm_turn;
-			float tmp_pwm_l_limiter;
-			float tmp_thetadot_cmd_lpf;
-			float[] tmp = new float[4];
-			float[] tmp_theta_0 = new float[4];
-			int tmp_0;
-
 			/* Sum: '<sbyte>/Sum' incorporates:
 			 *  Constant: '<S3>/Constant6'
 			 *  Constant: '<sbyte>/Constant'
@@ -88,8 +76,7 @@ namespace ETRobocon.EV3
 			 *  Sum: '<sbyte>/Sum1'
 			 *  UnitDelay: '<sbyte>/Unit Delay'
 			 */
-			tmp_thetadot_cmd_lpf = (((args_cmd_forward / CMD_MAX) * K_THETADOT) * (1.0F
-				- A_R)) + (A_R * ud_thetadot_cmd_lpf);
+			float	tmp_thetadot_cmd_lpf = (((args_cmd_forward / CMD_MAX) * K_THETADOT) * (1.0F - A_R)) + (A_R * ud_thetadot_cmd_lpf);
 
 			/* Gain: '<S4>/Gain' incorporates:
 			 *  Gain: '<S4>/deg2rad'
@@ -101,8 +88,7 @@ namespace ETRobocon.EV3
 			 *  Sum: '<S4>/Sum6'
 			 *  UnitDelay: '<S10>/Unit Delay'
 			 */
-			tmp_theta = (((DEG2RAD * args_theta_m_l) + ud_psi) + ((DEG2RAD *
-				args_theta_m_r) + ud_psi)) * 0.5F;
+			float	tmp_theta = (((DEG2RAD * args_theta_m_l) + ud_psi) + ((DEG2RAD * args_theta_m_r) + ud_psi)) * 0.5F;
 
 			/* Sum: '<S11>/Sum' incorporates:
 			 *  Constant: '<S11>/Constant'
@@ -112,14 +98,14 @@ namespace ETRobocon.EV3
 			 *  Sum: '<S11>/Sum1'
 			 *  UnitDelay: '<S11>/Unit Delay'
 			 */
-			tmp_theta_lpf = ((1.0F - A_D) * tmp_theta) + (A_D * ud_theta_lpf);
+			float	tmp_theta_lpf = ((1.0F - A_D) * tmp_theta) + (A_D * ud_theta_lpf);
 
 			/* Gain: '<S4>/deg2rad2' incorporates:
 			 *  Inport: '<Root>/gyro'
 			 *  Inport: '<Root>/gyro_offset'
 			 *  Sum: '<S4>/Sum2'
 			 */
-			tmp_psidot = (args_gyro - args_gyro_offset) * DEG2RAD;
+			float	tmp_psidot = (args_gyro - args_gyro_offset) * DEG2RAD;
 
 			/* Gain: '<S2>/Gain' incorporates:
 			 *  Constant: '<S3>/Constant2'
@@ -141,32 +127,33 @@ namespace ETRobocon.EV3
 			 *  UnitDelay: '<S5>/Unit Delay'
 			 *  UnitDelay: '<S7>/Unit Delay'
 			 */
+			float[]	tmp = new float[4];
 			tmp[0] = ud_theta_ref;
 			tmp[1] = 0.0F;
 			tmp[2] = tmp_thetadot_cmd_lpf;
 			tmp[3] = 0.0F;
+
+			float[]	tmp_theta_0 = new float[4];
 			tmp_theta_0[0] = tmp_theta;
 			tmp_theta_0[1] = ud_psi;
 			tmp_theta_0[2] = (tmp_theta_lpf - ud_theta_lpf) / EXEC_PERIOD;
 			tmp_theta_0[3] = tmp_psidot;
-			tmp_pwm_r_limiter = 0.0F;
-			for (tmp_0 = 0; tmp_0 < 4; tmp_0++) {
+			float	tmp_pwm_r_limiter = 0.0F;
+			for (int tmp_0 = 0; tmp_0 < 4; tmp_0++) {
 				tmp_pwm_r_limiter += (tmp[tmp_0] - tmp_theta_0[tmp_0]) * K_F[(tmp_0)];
 			}
 
-			tmp_pwm_r_limiter = (((K_I * ud_err_theta) + tmp_pwm_r_limiter) /
-				((BATTERY_GAIN * args_battery) - BATTERY_OFFSET)) *
-				100.0F;
+			tmp_pwm_r_limiter = (((K_I * ud_err_theta) + tmp_pwm_r_limiter) / ((BATTERY_GAIN * args_battery) - BATTERY_OFFSET)) * 100.0F;
 
 			/* Gain: '<S3>/Gain2' incorporates:
 			 *  Constant: '<S3>/Constant1'
 			 *  Inport: '<Root>/cmd_turn'
 			 *  Product: '<S3>/Divide1'
 			 */
-			tmp_pwm_turn = (args_cmd_turn / CMD_MAX) * K_PHIDOT;
+			float	tmp_pwm_turn = (args_cmd_turn / CMD_MAX) * K_PHIDOT;
 
 			/* Sum: '<S2>/Sum' */
-			tmp_pwm_l_limiter = tmp_pwm_r_limiter + tmp_pwm_turn;
+			float	tmp_pwm_l_limiter = tmp_pwm_r_limiter + tmp_pwm_turn;
 
 			/* Saturate: '<S2>/pwm_l_limiter' */
 			tmp_pwm_l_limiter = rt_SATURATE(tmp_pwm_l_limiter, -100.0F, 100.0F);
@@ -205,8 +192,7 @@ namespace ETRobocon.EV3
 			 *  UnitDelay: '<S5>/Unit Delay'
 			 *  UnitDelay: '<S7>/Unit Delay'
 			 */
-			tmp_pwm_r_limiter = ((ud_theta_ref - tmp_theta) * EXEC_PERIOD) +
-				ud_err_theta;
+			tmp_pwm_r_limiter = ((ud_theta_ref - tmp_theta) * EXEC_PERIOD) + ud_err_theta;
 
 			/* user code (Update function Body) */
 			/* System '<Root>' */

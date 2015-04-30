@@ -141,7 +141,6 @@ namespace ETTobocon.EV3
 		///	なし
 		///	</returns>
 		static void wait_start(EV3body body, NetworkStream connection){
-			//スタート待ち
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
@@ -149,8 +148,10 @@ namespace ETTobocon.EV3
 
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_START))
+				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
 					break;  // PC で 'g' キーが押された
+				}
+
 				Thread.Sleep (4);
 			}
 
@@ -174,8 +175,9 @@ namespace ETTobocon.EV3
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) 
+				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
 					break; // PC で 's' キー押されたら走行終了
+				}
 
 				if (++counter >= 40/4) {
 					alert = sonar_alert (body);

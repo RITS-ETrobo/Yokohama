@@ -19,7 +19,9 @@ namespace ETRobocon.EV3
 		protected const float VCE = 0.05f;
 		protected const float AMP_VIN = 0.5f;
 
-		protected const float ADC_REF = 5.0f; // 5.0 Volts
+		/// 5.0 Volts
+		protected const float ADC_REF = 5.0f;
+
 		protected const int ADC_RES = 4095;
 
 		protected const string HOME = "/home/root";
@@ -50,7 +52,7 @@ namespace ETRobocon.EV3
 			this.dev = new UnixDevice ("/dev/lms_analog");
 			this.batteryMem = this.dev.MMap (ANALOG_SIZE, 0);
 		}
-			
+	
 		protected static short getBatteryCurrentRaw ()
 		{
 			return System.BitConverter.ToInt16 (Brick.Instance.batteryMem.Read (ANALOG_BAT_CUR_OFF, 2), 0);
