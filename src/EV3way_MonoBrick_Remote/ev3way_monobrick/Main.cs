@@ -28,6 +28,8 @@ namespace ETTobocon.EV3
 		const int REMOTE_COMMAND_START = 'g'; // 'g'
 		const int REMOTE_COMMAND_STOP  = 's'; // 's'
 
+		//test commit
+
 		public static void Main()
 		{
 			// 構造体の宣言と初期化
