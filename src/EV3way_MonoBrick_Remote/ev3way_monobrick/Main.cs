@@ -9,24 +9,47 @@ using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
 
-// 2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム。
+///	2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム
 namespace ETTobocon.EV3
 {
 	class MainClass
 	{
 		//下記のパラメータは個体/環境に合わせて変更する必要があります
-		const int GYRO_OFFSET = 0;          //ジャイロセンサオフセット値
-		const int LIGHT_BLACK = 0;            //白色の光センサ値
-		const int LIGHT_WHITE = 40;           //黒色の光センサ値
-		const int SONAR_ALERT_DISTANCE = 300;  //超音波センサによる障害物検知距離 [mm]
-		const int TAIL_ANGLE_STAND_UP = 94;   //完全停止時の角度[deg]
-		const int TAIL_ANGLE_DRIVE = 3;       //バランス走行時の角度[deg]
-		const float P_GAIN = 2.5F;            //完全停止用モータ制御比例係数
-		const int PWM_ABS_MAX = 60;           //完全停止用モータ制御PWM絶対最大値
+		///	ジャイロセンサオフセット値
+		const int GYRO_OFFSET = 0;
+
+		///	白色の光センサ値
+		const int LIGHT_BLACK = 0;
+
+		///	黒色の光センサ値
+		const int LIGHT_WHITE = 40;
+
+		///	超音波センサによる障害物検知距離 [mm]
+		const int SONAR_ALERT_DISTANCE = 300;
+
+		///	完全停止時の角度[deg]
+		const int TAIL_ANGLE_STAND_UP = 94;
+
+		///	バランス走行時の角度[deg]
+		const int TAIL_ANGLE_DRIVE = 3;
+
+		///	完全停止用モータ制御比例係数
+		const float P_GAIN = 2.5F;
+
+		///	完全停止用モータ制御PWM絶対最大値
+		const int PWM_ABS_MAX = 60;
+
+		///	ポート番号
 		const int SOCKET_PORT = 7360;
+
+		///	リモートコマンド : ???
 		const int REMOTE_COMMAND_CLOSE = 0;
-		const int REMOTE_COMMAND_START = 'g'; // 'g'
-		const int REMOTE_COMMAND_STOP  = 's'; // 's'
+
+		///	リモートコマンド : 開始 'g'
+		const int REMOTE_COMMAND_START = 'g';
+
+		///	リモートコマンド : 停止 'g'
+		const int REMOTE_COMMAND_STOP  = 's';
 
 		public static void Main()
 		{
@@ -36,7 +59,7 @@ namespace ETTobocon.EV3
 
 			// Bluetooth関係のETロボコン拡張機能を有効にする
 			Brick.InstallETRoboExt ();
-		
+
 			// リモート接続
 			NetworkStream connection = connect();
 
@@ -82,9 +105,14 @@ namespace ETTobocon.EV3
 				Brick.ExitToMenu (); // MonoBrickメインメニューへ戻る
 			}
 		}
-			
+
+		///	<summary>
+		///	サーバーとの接続設定
+		///	</summary>
+		///	<returns>
+		///	サーバーとの接続状態
+		///	</returns>
 		static NetworkStream connect(){
-			// サーバとの接続設定
 			NetworkStream connection;
 			IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
 
@@ -106,8 +134,13 @@ namespace ETTobocon.EV3
 			return connection;
 		}
 
+		///	<summary>
+		///	スタート待ち
+		///	</summary>
+		///	<returns>
+		///	なし
+		///	</returns>
 		static void wait_start(EV3body body, NetworkStream connection){
-			//スタート待ち
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
@@ -115,8 +148,10 @@ namespace ETTobocon.EV3
 
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_START))
+				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
 					break;  // PC で 'g' キーが押された
+				}
+
 				Thread.Sleep (4);
 			}
 
@@ -140,8 +175,9 @@ namespace ETTobocon.EV3
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) 
+				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
 					break; // PC で 's' キー押されたら走行終了
+				}
 
 				if (++counter >= 40/4) {
 					alert = sonar_alert (body);
@@ -183,10 +219,16 @@ namespace ETTobocon.EV3
 			RemoteLogTest ("EV3 stopped.", connection);
 		}
 
-		/*
-		 * 超音波センサによる障害物検知
-		 * @return true(障害物あり)/false(障害物無し)
-		 */
+		///	<summary>
+		///	超音波センサによる障害物検知
+		///	</summary>
+		///	<returns>
+		/// - true : 障害物有り
+		/// - false : 障害物無し
+		/// </returns>
+		/// <param name="body">
+		///	EV3bodyのインスタンス 
+		/// </param>
 		static bool sonar_alert(EV3body body)
 		{
 			int distance = body.sonar.Read();
@@ -197,10 +239,18 @@ namespace ETTobocon.EV3
 			}
 		}
 
-		/*
-		 * 走行体完全停止用モータの角度制御
-		 * @param angle モータ目標角度[度]
-		 */	
+		///	<summary>
+		///	走行体完全停止用モータの角度制御
+		///	</summary>
+		///	<returns>
+		/// なし
+		/// </returns>
+		/// <param name="body">
+		///	EV3bodyのインスタンス 
+		/// </param>
+		/// <param name="angle">
+		///	モータ目標角度[度] 
+		/// </param>
 		static void tail_control(EV3body body, int angle)
 		{
 			float pwm = (float)(angle - body.motorT.GetTachoCount ()) * P_GAIN; // 比例制御
@@ -217,9 +267,19 @@ namespace ETTobocon.EV3
 			}
 		}
 
-		/*
-    	 * リモートコマンドのチェック	
-     	 */
+		///	<summary>
+		///	リモートコマンドのチェック
+		///	</summary>
+		///	<returns>
+		/// - true : 成功
+		///	- false : 失敗
+		/// </returns>
+		/// <param name="connection">
+		///	サーバー接続状態
+		/// </param>
+		/// <param name="command">
+		///	送信コマンド 
+		/// </param>
 		static bool checkRemoteCommand(NetworkStream connection, int command) 
 		{
 			try{

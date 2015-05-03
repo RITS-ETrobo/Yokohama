@@ -7,14 +7,25 @@ using MonoBrickFirmware.Sensors;
 namespace ETTobocon.EV3
 {
 	struct EV3body{
-		//モータオブジェクト
+		///	モータオブジェクト : 左
 		public  Motor motorL;
+
+		///	モータオブジェクト : 右
 		public  Motor motorR;
+
+		///	モータオブジェクト : ????
 		public  Motor motorT;
-		//センサーオブジェクト
+
+		///	センサーオブジェクト : タッチセンサー
 		public  EV3TouchSensor touch;
+
+		///	センサーオブジェクト : 超音波センサー
 		public  EV3UltrasonicSensor sonar;
+
+		///	センサーオブジェクト : 色センサー
 		public  EV3ColorSensor color;
+
+		///	センサーオブジェクト : ジャイロセンサー
 		public  EV3GyroSensor gyro;
 
 		public static void init(ref EV3body body){
