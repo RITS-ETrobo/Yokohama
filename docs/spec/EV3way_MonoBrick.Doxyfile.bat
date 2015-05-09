@@ -1,9 +1,11 @@
+@echo off
+
 rem Check "Graphviz installation".
 set PATH_GRAPHVIZ="C:\Graphviz\bin\g*.exe"
 
 if not exist %PATH_GRAPHVIZ% (
     echo "Graphviz was not installed in C:\Graphviz"
-    exit 1
+    exit 0
 )
 
 rem When this file was executed directly, set %1 to current path.
@@ -24,11 +26,11 @@ doxygen EV3way_MonoBrick.Doxyfile
 
 cd %PATH_TARGET%
 if not exist "index.html" (
-  echo "File not exist."
+  echo "Generated files not exist."
 
   rem Revert all changes.
   git checkout .
-  exit 2
+  exit 0
 )
 
 git add *
