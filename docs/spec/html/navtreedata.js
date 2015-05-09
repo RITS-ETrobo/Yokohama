@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "EV3way_MonoBrick_Remote source", "index.html", [
+  [ "EV3way_MonoBrick source", "index.html", [
     [ "Brick class (get battery voltage, power off ,reboot, exit and change hostname )", "index.html", null ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ]
