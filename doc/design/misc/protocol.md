@@ -44,21 +44,21 @@
 
 送受信するデータの型を表す.
 
-数値 | 意味
+数値 | 表すデータ型
 --- | ---
-0x01 | booleanを送るよ
-0x02 | byteを送るよ
-0x03 | shortを送るよ
-0x04 | intを送るよ
-0x05 | longを送るよ
-0x06 | ushortを送るよ
-0x07 | uintを送るよ
-0x08 | ulongを送るよ
-0x09 | charを送るよ
-0x0A | floatを送るよ
-0x0B | doubleを送るよ
-0x0C | stringを送るよ
-0x0D | 配列を送るよ
+0x01 | boolean
+0x02 | byte
+0x03 | short
+0x04 | int
+0x05 | long
+0x06 | ushort
+0x07 | uint
+0x08 | ulong
+0x09 | char
+0x0A | float
+0x0B | double
+0x0C | string
+0x0D | 配列
 
 ## 備考
 * 各データのバイト表現は, リトルエンディアンとする.
