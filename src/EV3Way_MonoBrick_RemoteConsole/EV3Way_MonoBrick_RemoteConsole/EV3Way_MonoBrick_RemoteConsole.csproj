@@ -34,7 +34,6 @@
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile.bat" />
-        <Command type="AfterExecute" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
