@@ -20,6 +20,11 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterExecute" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -30,8 +35,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterExecute" command="doxygen &quot;..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile&quot;" workingdir="" />
-        <Command type="AfterBuild" command="..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile.bat ..\..\..\docs\spec" />
+        <Command type="AfterBuild" command="..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile.bat" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>

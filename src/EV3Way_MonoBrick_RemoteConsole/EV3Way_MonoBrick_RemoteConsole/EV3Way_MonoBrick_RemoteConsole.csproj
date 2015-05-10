@@ -18,9 +18,13 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\..\bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -29,7 +33,8 @@
     <Externalconsole>true</Externalconsole>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile.bat ..\..\..\docs\spec" />
+        <Command type="AfterBuild" command="..\..\..\docs\spec\EV3way_MonoBrick.Doxyfile.bat" />
+        <Command type="AfterExecute" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
