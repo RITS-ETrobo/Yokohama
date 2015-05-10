@@ -8,17 +8,15 @@ if not exist %PATH_GRAPHVIZ% (
     exit 0
 )
 
-rem When this file was executed directly, set %1 to current path.
-set PATH_CURRENT = %~1
-if "%PATH_CURRENT%" EQU "" (
-    set PATH_CURRENT = "."
-)
+rem When this file was executed directly, set \docs\spec to current path.
+set PATH_CURRENT=%~0\..
+cd %PATH_CURRENT%
 
 rem Remove doxygen files.
 set PATH_TARGET=html
 md %PATH_TARGET%
 cd %PATH_TARGET%
-rd /s /q .
+del /s /q *
 cd ..
 
 rem Generate doxygen files.
