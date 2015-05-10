@@ -9,7 +9,7 @@ if not exist %PATH_GRAPHVIZ% (
 )
 
 rem When this file was executed directly, set \docs\spec to current path.
-set PATH_CURRENT=%~0\..
+set PATH_CURRENT=%~dp0
 cd %PATH_CURRENT%
 
 rem Remove doxygen files.
