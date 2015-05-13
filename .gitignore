@@ -24,3 +24,6 @@ UpgradeLog*.htm
 
 # for common
 *.bak
+
+# for Doxygen
+*.tmp
