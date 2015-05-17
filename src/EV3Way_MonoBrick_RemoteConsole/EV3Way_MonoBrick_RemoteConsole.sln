@@ -15,6 +15,6 @@ Global
 		{AB83B8CF-0437-4CFF-A152-EDA758F67193}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole.csproj
+		version = 0.2.0
 	EndGlobalSection
 EndGlobal
