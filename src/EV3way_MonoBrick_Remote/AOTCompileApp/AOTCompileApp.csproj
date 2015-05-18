@@ -8,7 +8,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AOTCompileApp</RootNamespace>
     <AssemblyName>AOTCompileApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ReleaseVersion>0.2.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
