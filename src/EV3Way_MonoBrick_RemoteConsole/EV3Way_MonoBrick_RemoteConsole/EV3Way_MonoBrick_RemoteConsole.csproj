@@ -25,6 +25,7 @@
         <Command type="AfterBuild" />
       </CustomCommands>
     </CustomCommands>
+    <DocumentationFile>..\..\..\bin\Debug\EV3Way_MonoBrick_RemoteConsole.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -33,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
+    <DocumentationFile>..\..\..\bin\Release\EV3Way_MonoBrick_RemoteConsole.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
