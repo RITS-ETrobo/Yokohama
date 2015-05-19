@@ -8,6 +8,7 @@
     <RootNamespace>EV3Way_MonoBrick_RemoteConsole</RootNamespace>
     <AssemblyName>EV3Way_MonoBrick_RemoteConsole</AssemblyName>
     <ReleaseVersion>0.2.0</ReleaseVersion>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
