@@ -1,5 +1,15 @@
 # ロボット-コンソール間通信プロトコル
 
+* 送受信できるデータ
+
+  * [組み込み型の一覧表 (C# リファレンス)](https://msdn.microsoft.com/ja-jp/library/ya5y69ds.aspx) に記述されている型のうち, object以外
+  * [組み込み型の一覧表 (C# リファレンス)](https://msdn.microsoft.com/ja-jp/library/ya5y69ds.aspx) に記述されている型のうち, string, object以外の配列
+
+* 送受信できるデータの制限
+
+  * string型で送受信できるのは, ASCII(0x00～0x7F)文字列のみ
+  * string型で送受信できるのは, 0～255文字
+  * 送受信できる配列は, 1～255要素
 
 ## プロトコル概観
 
