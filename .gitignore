@@ -29,3 +29,5 @@ UpgradeLog*.htm
 
 # for Doxygen
 *.tmp
+src/EV3way_MonoBrick_Remote/packages/NUnit.2.6.3/license.txt
+src/EV3Way_MonoBrick_RemoteConsole/packages/NUnit.2.6.3/license.txt

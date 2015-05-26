@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EV3Way_MonoBrick_RemoteConsole", "EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole.csproj", "{AB83B8CF-0437-4CFF-A152-EDA758F67193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EV3Way_MonoBrick_RemoteConsole_UnitTest", "EV3Way_MonoBrick_RemoteConsole_UnitTest\EV3Way_MonoBrick_RemoteConsole_UnitTest.csproj", "{5D742A3D-5410-40BE-B54F-9460FB75048C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D742A3D-5410-40BE-B54F-9460FB75048C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5D742A3D-5410-40BE-B54F-9460FB75048C}.Debug|x86.Build.0 = Debug|Any CPU
+		{5D742A3D-5410-40BE-B54F-9460FB75048C}.Release|x86.ActiveCfg = Release|Any CPU
+		{5D742A3D-5410-40BE-B54F-9460FB75048C}.Release|x86.Build.0 = Release|Any CPU
 		{AB83B8CF-0437-4CFF-A152-EDA758F67193}.Debug|x86.ActiveCfg = Debug|x86
 		{AB83B8CF-0437-4CFF-A152-EDA758F67193}.Debug|x86.Build.0 = Debug|x86
 		{AB83B8CF-0437-4CFF-A152-EDA758F67193}.Release|x86.ActiveCfg = Release|x86
