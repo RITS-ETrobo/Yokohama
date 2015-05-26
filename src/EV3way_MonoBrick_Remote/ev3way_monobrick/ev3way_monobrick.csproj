@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{803879AC-26C2-49B0-AAA0-0DE4A7C68C87};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{D143CFF0-F2F5-474A-B631-698EC2E98A12}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ETTobocon.EV3</RootNamespace>
+    <RootNamespace>ETRobocon.EV3</RootNamespace>
     <AssemblyName>EV3Way</AssemblyName>
     <ReleaseVersion>0.2.0</ReleaseVersion>
   </PropertyGroup>
@@ -42,6 +42,7 @@
     <Compile Include="EV3\Brick.cs" />
     <Compile Include="EV3\Balancer.cs" />
     <Compile Include="EV3body.cs" />
+    <Compile Include="MyMath.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
