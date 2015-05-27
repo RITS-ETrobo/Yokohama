@@ -62,7 +62,7 @@ namespace ETTobocon.EV3
 
 			// リモート接続
 			NetworkStream connection = connect();
-
+		
 			// センサーおよびモータに対して初回アクセスをしておく
 			body.color.Read();
 			body.sonar.Read();
@@ -172,13 +172,22 @@ namespace ETTobocon.EV3
 
 			RemoteLogTest ("EV3 run.", connection);
 
+			SelectDialog<string> dlg = new SelectDialog<string>(new string[]{"LineTrace", "PLineTrace"}, "SELECT!", false);
+			dlg.Show ();
+			LineDetector ld = null;
+			if ("LineTrace" == dlg.GetSelection ()) {
+				ld = new LineDetector (0, 100, LineDetector.LineEdge.Left, 50);
+			} else {
+				ld = new PLineDetector (0, 100, LineDetector.LineEdge.Left, 50);
+			}
+
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
 					break; // PC で 's' キー押されたら走行終了
 				}
-
+			
 				if (++counter >= 40/4) {
 					alert = sonar_alert (body);
 					counter = 0;
@@ -188,7 +197,7 @@ namespace ETTobocon.EV3
 					turn = 0;
 				} else {
 					forward = 50;
-					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
+					turn = ld.CalculateTurn();
 				}
 
 				int gyroNow = -body.gyro.Read();
