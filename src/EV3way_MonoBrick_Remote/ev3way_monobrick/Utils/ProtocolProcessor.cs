@@ -41,7 +41,6 @@ namespace ETRobocon.Utils
 		{
 			if (isEV3) {
 				// PCとの接続
-				/*
 				IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
 
 				var listener = new TcpListener (ipAddr, SOCKET_PORT); 
@@ -54,11 +53,9 @@ namespace ETRobocon.Utils
 					_stream = null;
 				}
 				listener.Stop();
-				*/
 			}
 			else {
 				// EV3との接続
-				/*
 				try {
 					// 指定されたサーバに接続
 					Socket	sock   = new Socket(
@@ -69,7 +66,6 @@ namespace ETRobocon.Utils
 				} catch (Exception e) {
 					_stream = null;
 				}
-				*/
 			}
 		}
 
