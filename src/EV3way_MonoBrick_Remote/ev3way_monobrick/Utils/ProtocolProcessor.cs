@@ -74,7 +74,11 @@ namespace ETRobocon.Utils
 		/// <param name="toEV3">通信相手がEV3なら<c>true</c>, PCなら<c>false</c>.</param>
 		public static void Connect(bool toEV3)
 		{
-			throw new NotImplementedException();
+			lock (_instanceLock) {	// 複数のInstanceを生成してしまうことのないよう
+				if (Instance == null) {
+					Instance = new ProtocolProcessor(!toEV3);
+				}
+			}
 		}
 
 		/// <summary>通信相手へデータを送る</summary>
