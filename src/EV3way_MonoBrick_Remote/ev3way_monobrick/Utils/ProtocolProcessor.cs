@@ -30,6 +30,10 @@ namespace ETRobocon.Utils
 		/// <remarks>複数タスクが同時に通信しようとするのを防ぐため.</remarks>
 		private object _streamLock = new object();
 
+
+		///	通信に用いるポート番号
+		private const int SOCKET_PORT = 7360;
+
 		/// <summary>通信確立済みのインスタンスを生成するコンストラクタ.</summary>
 		/// <param name="isEV3">EV3側が持つインスタンスを生成するなら<c>true</c>, PC側が持つインスタンスを生成するなら<c>false</c>.</param>
 		private ProtocolProcessor(bool isEV3)
