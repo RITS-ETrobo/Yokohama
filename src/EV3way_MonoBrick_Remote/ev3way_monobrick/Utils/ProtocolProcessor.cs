@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;	// for IPAddress
 using System.Net.Sockets;	// for NetworkStream
 
 namespace ETRobocon.Utils
