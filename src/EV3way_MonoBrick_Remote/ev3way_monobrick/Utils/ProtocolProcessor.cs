@@ -48,15 +48,10 @@ namespace ETRobocon.Utils
 				var listener = new TcpListener (ipAddr, SOCKET_PORT); 
 				listener.Start(); // クライアントからの受信接続要求の待機を開始
 
-				var dialogCON = new InfoDialog ("Please connect...", false);
-				dialogCON.Show(); // Wait for enter to be pressed
-
 				try {
 					Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
 					connection = new NetworkStream(sock, true);
 				} catch (SocketException) {
-					var dialogE = new InfoDialog ("Connect is Failed.", false);
-					dialogE.Show(); // Wait for enter to be pressed
 					connection = null;
 				}
 				listener.Stop();
