@@ -4,6 +4,29 @@ using System.Net.Sockets;	// for NetworkStream
 
 namespace ETRobocon.Utils
 {
+	/// <summary>送受信するデータの種別</summary>
+	/// <remarks>パケットの1byte目にそのまま用いることを想定している.</remarks>
+	internal enum PacketDataType : byte
+	{
+		Invalid,
+		Boolean,
+		SByte,
+		Short,
+		Int,
+		Long,
+		Byte,
+		UShort,
+		UInt,
+		ULong,
+		Decimal,
+		Char,
+		Float,
+		Double,
+		String,
+
+		NumOfType
+	};
+
 	/// <summary>EV3-PC間通信プロトコルに従って, EV3-PCの通信を行うためのクラス.</summary>
 	/// <remarks>
 	/// <para>シングルトンクラスとして利用する. EV3, PCそれぞれで一つずつインスタンスが存在する.</para>
