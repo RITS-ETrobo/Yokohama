@@ -36,9 +36,44 @@ namespace ETRobocon.Utils
 		{
 			if (isEV3) {
 				// PCとの接続
+				/*
+				NetworkStream connection;
+				IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
+
+				var listener = new TcpListener (ipAddr, SOCKET_PORT); 
+				listener.Start(); // クライアントからの受信接続要求の待機を開始
+
+				var dialogCON = new InfoDialog ("Please connect...", false);
+				dialogCON.Show(); // Wait for enter to be pressed
+
+				try {
+					Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
+					connection = new NetworkStream(sock, true);
+				} catch (SocketException) {
+					var dialogE = new InfoDialog ("Connect is Failed.", false);
+					dialogE.Show(); // Wait for enter to be pressed
+					connection = null;
+				}
+				listener.Stop();
+				return connection;
+				*/
 			}
 			else {
 				// EV3との接続
+				/*
+				try {
+					// 指定されたサーバに接続
+					Socket	sock   = new Socket(
+						AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+					sock.Connect("10.0.1.1", SOCKET_PORT);
+
+					NetworkStream	conn = new NetworkStream(sock, true);
+					SendCommandLoop(conn); // コンソール入力
+					conn.Close();
+				} catch (Exception e) {
+					Console.Out.WriteLine("caught an exception: {0}", e.Message);
+				}
+				*/
 			}
 		}
 
