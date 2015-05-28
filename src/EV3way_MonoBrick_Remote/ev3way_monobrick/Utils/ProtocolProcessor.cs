@@ -34,7 +34,12 @@ namespace ETRobocon.Utils
 		/// <param name="isEV3">EV3側が持つインスタンスを生成するなら<c>true</c>, PC側が持つインスタンスを生成するなら<c>false</c>.</param>
 		private ProtocolProcessor(bool isEV3)
 		{
-			throw new NotImplementedException();
+			if (isEV3) {
+				// PCとの接続
+			}
+			else {
+				// EV3との接続
+			}
 		}
 
 		/// <summary>通信を確立する</summary>
