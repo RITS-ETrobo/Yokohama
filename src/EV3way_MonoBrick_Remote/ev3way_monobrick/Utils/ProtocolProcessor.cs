@@ -42,7 +42,6 @@ namespace ETRobocon.Utils
 			if (isEV3) {
 				// PCとの接続
 				/*
-				NetworkStream connection;
 				IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
 
 				var listener = new TcpListener (ipAddr, SOCKET_PORT); 
@@ -50,12 +49,11 @@ namespace ETRobocon.Utils
 
 				try {
 					Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
-					connection = new NetworkStream(sock, true);
+					_stream = new NetworkStream(sock, true);
 				} catch (SocketException) {
-					connection = null;
+					_stream = null;
 				}
 				listener.Stop();
-				return connection;
 				*/
 			}
 			else {
@@ -67,11 +65,9 @@ namespace ETRobocon.Utils
 						AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 					sock.Connect("10.0.1.1", SOCKET_PORT);
 
-					NetworkStream	conn = new NetworkStream(sock, true);
-					SendCommandLoop(conn); // コンソール入力
-					conn.Close();
+					_stream = new NetworkStream(sock, true);
 				} catch (Exception e) {
-					Console.Out.WriteLine("caught an exception: {0}", e.Message);
+					_stream = null;
 				}
 				*/
 			}
