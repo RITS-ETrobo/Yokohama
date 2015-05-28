@@ -124,6 +124,40 @@ namespace ETRobocon.Utils
 		{
 			throw new NotImplementedException();
 		}
+
+		/// <summary>
+		/// System.TypeからPacketDataTypeへの変換を行う.
+		/// </summary>
+		/// <returns>
+		/// 変換された<see cref="PacketDataType"/>.
+		/// 変換できなかったときは<see cref="PacketDataType.Invalid"/>. 
+		/// </returns>
+		/// <param name="type">変換したい<see cref="System.Type"/>インスタンス.</param>
+		private static PacketDataType GetPacketDataType(Type type)
+		{
+			Type[] types = new Type[(byte)PacketDataType.NumOfType - 1] {
+				typeof(bool),
+				typeof(sbyte),
+				typeof(short),
+				typeof(int),
+				typeof(long),
+				typeof(byte),
+				typeof(ushort),
+				typeof(uint),
+				typeof(ulong),
+				typeof(decimal),
+				typeof(char),
+				typeof(float),
+				typeof(double),
+				typeof(string)
+			};
+			for (byte i = 0; i < types.Length; i++) {
+				if (type.Equals (types [i])) {
+					return (PacketDataType)(i + 1);
+				}
+			}
+			return PacketDataType.Invalid;
+		}
 	}
 }
 
