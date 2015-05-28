@@ -108,7 +108,23 @@ namespace ETRobocon.Utils
 		/// <param name="data">送りたいデータ</param>
 		public void SendData(object data)
 		{
-			throw new NotImplementedException();
+			PacketDataType packetDataType;
+			byte packetDataCount;
+			byte[] packetData;
+
+			// TODO: データの種別を得る
+			// TODO: データの個数を得る
+			// TODO: データのbyte表現を得る
+			if (data is Array) {
+			}
+			else if (data is string) {
+			}
+			else {
+			}
+
+			// TODO: パケットを作成する
+
+			// TODO: パケットを送る
 		}
 
 		/// <summary>通信相手からデータを受け取る.</summary>
