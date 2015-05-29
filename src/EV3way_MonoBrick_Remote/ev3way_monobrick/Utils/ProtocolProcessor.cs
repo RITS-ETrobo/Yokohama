@@ -176,21 +176,23 @@ namespace ETRobocon.Utils
 			byte packetDataCount;
 			byte[] packetData;
 
-			// TODO: データの個数を得る
 			if (data is Array) {
 				Array arrayData = (Array)data;
 				packetDataType = GetPacketDataType(arrayData.GetType().GetElementType());
-				packetData = new byte[arrayData.Length * packetDataType.GetSize()];
-				for (int i = 0; i < arrayData.Length; i++) {
+				packetDataCount = (byte)arrayData.Length;
+				packetData = new byte[packetDataCount * packetDataType.GetSize()];
+				for (int i = 0; i < packetDataCount; i++) {
 					_ConvertToPacketDataMethods[(byte)packetDataType](arrayData.GetValue(i)).CopyTo(packetData, i * packetDataType.GetSize());
 				}
 			}
 			else if (data is string) {
 				packetDataType = PacketDataType.String;
 				packetData = _ConvertToPacketDataMethods[(byte)PacketDataType.String](data);
+				packetDataCount = (byte)packetData.Length;
 			}
 			else {
 				packetDataType = GetPacketDataType(data.GetType());
+				packetDataCount = 1;
 				packetData = _ConvertToPacketDataMethods[(byte)packetDataType](data);
 			}
 
