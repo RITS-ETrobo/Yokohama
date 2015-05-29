@@ -7,6 +7,7 @@
     <ProjectGuid>{D143CFF0-F2F5-474A-B631-698EC2E98A12}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
+    <AssemblyName>EV3Way</AssemblyName>
     <ReleaseVersion>0.2.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
