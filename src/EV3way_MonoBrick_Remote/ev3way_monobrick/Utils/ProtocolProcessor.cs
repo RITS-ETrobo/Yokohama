@@ -4,6 +4,47 @@ using System.Net.Sockets;	// for NetworkStream
 
 namespace ETRobocon.Utils
 {
+	/// <summary>
+	/// PacketDataTypeの拡張メソッド用のクラス.
+	/// </summary>
+	internal static class PacketDataTypeExt
+	{
+		/// <summary>サイズ取得用</summary>
+		static readonly byte[] _sizes = new byte[] {
+			0,	// sizes[0] is dummy.
+			sizeof(bool),
+			sizeof(sbyte),
+			sizeof(short),
+			sizeof(int),
+			sizeof(long),
+			sizeof(byte),
+			sizeof(ushort),
+			sizeof(uint),
+			sizeof(ulong),
+			sizeof(decimal),
+			sizeof(char),
+			sizeof(float),
+			sizeof(double)
+		};
+
+		/// <summary><see cref="PacketDataType"/>のサイズを得る</summary>
+		/// <returns>そのデータのサイズ(バイト)</returns>
+		/// <param name="packetDataType">
+		/// サイズを得たい型.
+		/// <see cref="PacketDataType"/>のうち, Invalid, String, NumOfType以外が指定できる.
+		/// </param>
+		/// <exception cref="System.ArgumentOutOfRangeException">引数が不正.</exception>
+		public static byte GetSize(this PacketDataType packetDataType)
+		{
+			byte typeNum = (byte)packetDataType;
+			if (typeNum <= 0 || typeNum >= _sizes.Length) {
+				throw new ArgumentOutOfRangeException("packetDataType", "This type is not supported.");
+			}
+
+			return _sizes[typeNum];
+		}
+	}
+
 	/// <summary>送受信するデータの種別</summary>
 	/// <remarks>パケットの1byte目にそのまま用いることを想定している.</remarks>
 	internal enum PacketDataType : byte
