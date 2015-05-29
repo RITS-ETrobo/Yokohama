@@ -176,14 +176,17 @@ namespace ETRobocon.Utils
 			byte packetDataCount;
 			byte[] packetData;
 
-			// TODO: データの種別を得る
 			// TODO: データの個数を得る
 			// TODO: データのbyte表現を得る
 			if (data is Array) {
+				Array arrayData = (Array)data;
+				packetDataType = GetPacketDataType(arrayData.GetType().GetElementType());
 			}
 			else if (data is string) {
+				packetDataType = PacketDataType.String;
 			}
 			else {
+				packetDataType = GetPacketDataType(data.GetType());
 			}
 
 			// TODO: パケットを作成する
