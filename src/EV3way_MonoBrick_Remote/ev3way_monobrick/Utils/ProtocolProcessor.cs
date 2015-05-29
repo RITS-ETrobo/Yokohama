@@ -241,72 +241,77 @@ namespace ETRobocon.Utils
 
 		private static byte[] ConvertBoolToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((bool)data);
 		}
 
 		private static byte[] ConvertSByteToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return new byte[1] { (byte)(sbyte)data };
 		}
 
 		private static byte[] ConvertShortToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((short)data);
 		}
 
 		private static byte[] ConvertIntToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((int)data);
 		}
 
 		private static byte[] ConvertLongToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((long)data);
 		}
 
 		private static byte[] ConvertByteToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return new byte[1] { (byte)data };
 		}
 
 		private static byte[] ConvertUShortToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((ushort)data);
 		}
 
 		private static byte[] ConvertUIntToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((uint)data);
 		}
 
 		private static byte[] ConvertULongToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((ulong)data);
 		}
 
 		private static byte[] ConvertDecimalToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			int[] intData = decimal.GetBits((decimal)data);
+			byte[] byteData = new byte[intData.Length * sizeof(int)];
+			for (int i = 0; i < intData.Length; i++) {
+				BitConverter.GetBytes(intData[i]).CopyTo(byteData, i * sizeof(int));
+			}
+			return byteData;
 		}
 
 		private static byte[] ConvertCharToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((char)data);
 		}
 
 		private static byte[] ConvertFloatToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((float)data);
 		}
 
 		private static byte[] ConvertDoubleToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return BitConverter.GetBytes((double)data);
 		}
 
 		private static byte[] ConvertStringToPacketData(object data)
 		{
-			throw new NotImplementedException();
+			return System.Text.Encoding.ASCII.GetBytes((string)data);
 		}
 
 		private static byte[] ConvertToPacketDataDummy(object data)
