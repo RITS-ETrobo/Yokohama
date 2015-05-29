@@ -196,7 +196,11 @@ namespace ETRobocon.Utils
 				packetData = _ConvertToPacketDataMethods[(byte)packetDataType](data);
 			}
 
-			// TODO: パケットを作成する
+			// パケットを作成する
+			byte[] packet = new byte[packetData.Length + 2];
+			packet[0] = (byte)packetDataType;
+			packet[1] = dataCount;
+			packetData.CopyTo(packet, 2);
 
 			// TODO: パケットを送る
 		}
