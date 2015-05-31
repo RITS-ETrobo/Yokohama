@@ -122,6 +122,29 @@ namespace ETRobocon.Utils
 			ConvertStringToPacketData
 		};
 
+		/// <summary>byte配列から各種データへの変換を行うデリゲート</summary>
+		private delegate object ConvertFromPacketData(byte[] data, byte dataCount);
+
+		/// <summary>byte配列から各種データへの変換を行うデリゲートのインスタンスの配列</summary>
+		/// <remarks><see cref="PacketDataType"/>をインデックスに指定することを想定している.</remarks>
+		private static ConvertFromPacketData[] _ConvertFromPacketDataMethods = new ConvertFromPacketData[(byte)PacketDataType.NumOfType] {
+			ConvertFromPacketDataDummy,
+			ConvertPacketDataToBoolArray,
+			ConvertPacketDataToSByteArray,
+			ConvertPacketDataToShortArray,
+			ConvertPacketDataToIntArray,
+			ConvertPacketDataToLongArray,
+			ConvertPacketDataToByteArray,
+			ConvertPacketDataToUShortArray,
+			ConvertPacketDataToUIntArray,
+			ConvertPacketDataToULongArray,
+			ConvertPacketDataToDecimalArray,
+			ConvertPacketDataToCharArray,
+			ConvertPacketDataToFloatArray,
+			ConvertPacketDataToDoubleArray,
+			ConvertPacketDataToString,
+		};
+
 		/// <summary>通信確立済みのインスタンスを生成するコンストラクタ.</summary>
 		/// <param name="isEV3">EV3側が持つインスタンスを生成するなら<c>true</c>, PC側が持つインスタンスを生成するなら<c>false</c>.</param>
 		private ProtocolProcessor(bool isEV3)
@@ -375,6 +398,81 @@ namespace ETRobocon.Utils
 		}
 
 		private static byte[] ConvertToPacketDataDummy(object data)
+		{
+			throw new InvalidOperationException("This method must not be called.\n");
+		}
+
+		private static object ConvertPacketDataToBoolArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToSByteArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToShortArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToIntArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToLongArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToByteArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToUShortArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToUIntArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToULongArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToDecimalArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToCharArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToFloatArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToDoubleArray(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertPacketDataToString(byte[] data, byte dataCount)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static object ConvertFromPacketDataDummy(byte[] data, byte dataCount)
 		{
 			throw new InvalidOperationException("This method must not be called.\n");
 		}
