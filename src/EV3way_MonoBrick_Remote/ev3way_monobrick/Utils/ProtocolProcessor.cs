@@ -336,6 +336,8 @@ namespace ETRobocon.Utils
 			return PacketDataType.Invalid;
 		}
 
+		#region ConvertToPacketData Methods
+
 		private static byte[] ConvertBoolToPacketData(object data)
 		{
 			return BitConverter.GetBytes((bool)data);
@@ -415,6 +417,10 @@ namespace ETRobocon.Utils
 		{
 			throw new InvalidOperationException("This method must not be called.\n");
 		}
+
+		#endregion
+
+		#region ConvertFromPacketData Methods
 
 		private static object ConvertPacketDataToBoolArray(byte[] data, byte dataCount)
 		{
@@ -547,6 +553,8 @@ namespace ETRobocon.Utils
 		{
 			throw new InvalidOperationException("This method must not be called.\n");
 		}
+
+		#endregion
 	}
 }
 
