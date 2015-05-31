@@ -49,7 +49,7 @@ namespace ETRobocon.Utils
 	/// <remarks>パケットの1byte目にそのまま用いることを想定している.</remarks>
 	internal enum PacketDataType : byte
 	{
-		Invalid,
+		Invalid,	///< 使用不可(不正な型)
 		Boolean,
 		SByte,
 		Short,
@@ -65,7 +65,7 @@ namespace ETRobocon.Utils
 		Double,
 		String,
 
-		NumOfType
+		NumOfType	///< データの種類数+1を表す
 	};
 
 	/// <summary>EV3-PC間通信プロトコルに従って, EV3-PCの通信を行うためのクラス.</summary>
@@ -176,6 +176,8 @@ namespace ETRobocon.Utils
 			byte packetDataCount;
 			byte[] packetData;
 
+			// パケットを作成するのに必要な
+			// データの種別, データの個数, データのbyte表現を求める
 			if (data is Array) {
 				Array arrayData = (Array)data;
 				packetDataType = GetPacketDataType(arrayData.GetType().GetElementType());
