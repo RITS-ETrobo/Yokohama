@@ -42,6 +42,12 @@
     <Compile Include="EV3\Brick.cs" />
     <Compile Include="EV3\Balancer.cs" />
     <Compile Include="EV3body.cs" />
+    <Compile Include="..\..\common\ProtocolProcessor.cs">
+      <Link>Utils\ProtocolProcessor.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
 </Project>
