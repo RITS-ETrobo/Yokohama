@@ -14,9 +14,11 @@ x86
 obj
 Debug
 *.pdb
+*.mdb
 
 # for Xamarin Studio
 *.userprefs
+bin/Release/*.xml
 
 # for Visual Studio
 *.suo
@@ -24,3 +26,6 @@ UpgradeLog*.htm
 
 # for common
 *.bak
+
+# for Doxygen
+*.tmp
