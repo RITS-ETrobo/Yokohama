@@ -8,9 +8,12 @@ namespace ETRobocon.EV3
 	/// </summary>
 	public class LineDetector
 	{
+		/// 線のどちら側を読むか決定するenumです。
 		public enum LineEdge:sbyte
 		{
+			/// 線の左側を読みます
 			Left = -1,
+			/// 線の右側を読みます
 			Right = 1
 		}
 
@@ -26,6 +29,13 @@ namespace ETRobocon.EV3
 		/// Turn値の最大/最小値の絶対値
 		protected sbyte MaxTurnAbs;
 
+		/// <summary>
+		/// LineDetectorのインスタンスを生成します。
+		/// </summary>
+		/// <param name="White">光センサが白と認識する値</param>
+		/// <param name="Black">光センサが黒と認識する値</param>
+		/// <param name="edge">線のどちらを読むか</param>
+		/// <param name="MaxTurnAbs">Turn値の最大、最小値の絶対値</param>
 		public LineDetector( int White, int Black, LineEdge edge, sbyte MaxTurnAbs )
 		{
 			this.White = White;
@@ -51,6 +61,13 @@ namespace ETRobocon.EV3
 	/// </summary>
 	public class PLineDetector : LineDetector
 	{
+		/// <summary>
+		/// LineDetectorのインスタンスを生成します。
+		/// </summary>
+		/// <param name="White">光センサが白と認識する値</param>
+		/// <param name="Black">光センサが黒と認識する値</param>
+		/// <param name="edge">線のどちらを読むか</param>
+		/// <param name="MaxTurnAbs">Turn値の最大、最小値の絶対値</param>
 		public PLineDetector ( int White, int Black, LineEdge edge, sbyte MaxTurnAbs)
 			: base (White, Black, edge, MaxTurnAbs)
 		{
