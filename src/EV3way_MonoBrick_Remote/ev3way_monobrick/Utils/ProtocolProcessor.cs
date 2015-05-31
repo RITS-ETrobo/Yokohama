@@ -199,7 +199,7 @@ namespace ETRobocon.Utils
 			// パケットを作成する
 			byte[] packet = new byte[packetData.Length + 2];
 			packet[0] = (byte)packetDataType;
-			packet[1] = dataCount;
+			packet[1] = packetDataCount;
 			packetData.CopyTo(packet, 2);
 
 			// TODO: パケットを送る
