@@ -238,9 +238,16 @@ namespace ETRobocon.Utils
 					byte packetDataCount;
 					byte[] packetData;
 
-					// TODO: ストリームからデータの種別を読み取る
-					// TODO: ストリームからデータの個数を読み取る
 					// TODO: ストリームからデータのbyte表現を読み取る
+
+					byte[] buffer = new byte[2];
+					_stream.Read(buffer, 0, 2);
+
+					// データの種別
+					packetDataType = (PacketDataType)buffer[0];
+
+					// データの個数
+					packetDataCount = buffer[1];
 
 					// TODO: 読み取ったデータを復元
 
