@@ -238,8 +238,6 @@ namespace ETRobocon.Utils
 					byte packetDataCount;
 					byte[] packetData;
 
-					// TODO: ストリームからデータのbyte表現を読み取る
-
 					byte[] buffer = new byte[2];
 					_stream.Read(buffer, 0, 2);
 
@@ -248,6 +246,15 @@ namespace ETRobocon.Utils
 
 					// データの個数
 					packetDataCount = buffer[1];
+
+					// データのbyte表現
+					if (packetDataType == PacketDataType.String) {
+						packetData = new byte[packetDataCount];
+					}
+					else {
+						packetData = new byte[packetDataCount * packetDataType.GetSize()];
+					}
+					_stream.Read(packetData, 0, packetData.Length);
 
 					// TODO: 読み取ったデータを復元
 
