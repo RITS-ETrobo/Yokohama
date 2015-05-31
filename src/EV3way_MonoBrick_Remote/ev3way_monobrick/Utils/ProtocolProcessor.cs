@@ -202,7 +202,17 @@ namespace ETRobocon.Utils
 			packet[1] = packetDataCount;
 			packetData.CopyTo(packet, 2);
 
-			// TODO: パケットを送る
+			// パケットを送る
+			SendPacketData(packet);
+		}
+
+		/// <summary>パケット(byte配列)を送信する</summary>
+		/// <param name="packet">送りたいパケット(byte配列).</param>
+		private void SendPacketData(byte[] packet)
+		{
+			lock (_streamLock) {
+				_stream.Write(packet, 0, packet.Length);
+			}
 		}
 
 		/// <summary>通信相手からデータを受け取る.</summary>
