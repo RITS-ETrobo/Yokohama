@@ -75,13 +75,23 @@ namespace ETRobocon.Utils
 	/// </remarks>
 	public class ProtocolProcessor
 	{
+		/// <summary>ProtocolProcessorクラスのインスタンスのフィールド</summary>
+		/// <remarks>
+		/// C# 6.0 で利用可能な, 自動実装プロパティの初期化が, PC側のRemoteConsoleプロジェクトでビルドできなかった.
+		/// C# 6.0 のコードは書かないほうがよさそう??
+		/// </remarks>
+		private static ProtocolProcessor _instance = null;
+
 		/// <summary>ProtocolProcessorクラスのインスタンス</summary>
 		/// <value>
 		/// プログラム上で一つだけ存在するProtocolProcessorクラスのインスタンス.
 		/// まだ通信確立済みのインスタンスを生成していないときは<c>null</c>.
 		/// </value>
 		/// <seealso cref="Connect"/>
-		public static ProtocolProcessor Instance { get; private set; } = null;
+		public static ProtocolProcessor Instance {
+			get { return _instance; }
+			private set { _instance = value; }
+		}
 
 		/// <summary><see cref="Instance"/>プロパティを排他制御するためのロック</summary>
 		/// <remarks>複数タスクが同時にインスタンス生成をするのを防ぐため.</remarks>
