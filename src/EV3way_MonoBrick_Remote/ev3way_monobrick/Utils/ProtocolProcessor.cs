@@ -191,6 +191,19 @@ namespace ETRobocon.Utils
 			}
 		}
 
+		/// <summary>デストラクタ</summary>
+		/// <remarks>
+		/// プログラムが終了するときに一度だけ呼ばれる.
+		/// プログラマが明示的に呼ぶことは想定していない.
+		/// </remarks>
+		~ProtocolProcessor()
+		{
+			// ソケットを閉じる
+			if (_stream != null) {
+				_stream.Close();
+			}
+		}
+
 		/// <summary>通信相手へデータを送る</summary>
 		/// <param name="data">送りたいデータ</param>
 		public void SendData(object data)
