@@ -404,72 +404,129 @@ namespace ETRobocon.Utils
 
 		private static object ConvertPacketDataToBoolArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			bool[] array = new bool[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToBoolean(data, i * PacketDataType.Boolean.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToSByteArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			sbyte[] array = new sbyte[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = (sbyte)data[i];
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToShortArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			short[] array = new short[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToInt16(data, i * PacketDataType.Short.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToIntArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			int[] array = new int[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToInt32(data, i * PacketDataType.Int.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToLongArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			long[] array = new long[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToInt64(data, i * PacketDataType.Long.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToByteArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			return data.Clone();
 		}
 
 		private static object ConvertPacketDataToUShortArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			ushort[] array = new ushort[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToUInt16(data, i * PacketDataType.UShort.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToUIntArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			uint[] array = new uint[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToUInt32(data, i * PacketDataType.UInt.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToULongArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			ulong[] array = new ulong[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToUInt64(data, i * PacketDataType.ULong.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToDecimalArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			decimal[] array = new decimal[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+
+				// そのdecimal値のint[]表現を求める
+				int[] bits = new int[4];
+				for (int bit = 0; bit < bits.Length; bit++) {
+					bits[bit] = BitConverter.ToInt32(data,
+						i * PacketDataType.Decimal.GetSize() + bit * PacketDataType.Int.GetSize());
+				}
+
+				// int[] -> decimal
+				array[i] = new Decimal(bits);
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToCharArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			char[] array = new char[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToChar(data, i * PacketDataType.Char.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToFloatArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			float[] array = new float[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToSingle(data, i * PacketDataType.Float.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToDoubleArray(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			double[] array = new double[dataCount];
+			for (int i = 0; i < dataCount; i++) {
+				array[i] = BitConverter.ToDouble(data, i * PacketDataType.Double.GetSize());
+			}
+			return (object)array;
 		}
 
 		private static object ConvertPacketDataToString(byte[] data, byte dataCount)
 		{
-			throw new NotImplementedException();
+			return (object)System.Text.Encoding.ASCII.GetString(data, 0, dataCount);
 		}
 
 		private static object ConvertFromPacketDataDummy(byte[] data, byte dataCount)
