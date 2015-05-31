@@ -176,15 +176,21 @@ namespace ETRobocon.Utils
 			}
 			else {
 				// EV3との接続
-				try {
-					// 指定されたサーバに接続
-					Socket	sock   = new Socket(
-						AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					sock.Connect("10.0.1.1", SOCKET_PORT);
+				int retry = 60;	// タイムアウト60秒(1回の試行に1秒ぐらいかかる(測定値))
+				while (retry > 0) {
+					try {
+						// 指定されたサーバに接続
+						Socket	sock = new Socket (
+							               AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+						sock.Connect ("10.0.1.1", SOCKET_PORT);
 
-					_stream = new NetworkStream(sock, true);
-				} catch (Exception e) {
-					_stream = null;
+						_stream = new NetworkStream (sock, true);
+
+						break;
+					} catch (Exception e) {
+						retry--;
+						_stream = null;
+					}
 				}
 			}
 		}
