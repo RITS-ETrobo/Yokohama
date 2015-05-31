@@ -228,7 +228,27 @@ namespace ETRobocon.Utils
 		/// ストリームに受信パケットが無かった場合は<c>null</c>となる.</param>
 		public bool ReceiveData(out object data)
 		{
-			throw new NotImplementedException();
+			bool ret = false;
+			data = null;
+
+			lock (_streamLock) {
+				if (_stream.DataAvailable) {
+
+					PacketDataType packetDataType;
+					byte packetDataCount;
+					byte[] packetData;
+
+					// TODO: ストリームからデータの種別を読み取る
+					// TODO: ストリームからデータの個数を読み取る
+					// TODO: ストリームからデータのbyte表現を読み取る
+
+					// TODO: 読み取ったデータを復元
+
+					ret = true;
+				}
+			}
+
+			return ret;
 		}
 
 		/// <summary>
