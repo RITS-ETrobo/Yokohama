@@ -279,7 +279,8 @@ namespace ETRobocon.Utils
 					}
 					_stream.Read(packetData, 0, packetData.Length);
 
-					// TODO: 読み取ったデータを復元
+					// 読み取ったデータを復元
+					data = _ConvertFromPacketDataMethods[(byte)packetDataType](packetData, packetDataCount);
 
 					ret = true;
 				}
