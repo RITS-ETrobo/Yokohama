@@ -4,7 +4,7 @@ namespace ETTobocon.EV3
 {
 	public class Odometry
 	{
-		private const double WHEEL_RADIUS_MM = 41.0; //車輪の直径[mm]
+		private const double WHEEL_RADIUS_MM = 41.0; //車輪の半径[mm]
 		private const double AXLE_LENGTH_MM = 16.0; //車軸の長さ[mm]
 
 		private Location cur_location = new Location(0.0 , 0.0); //ロボットの現在地
