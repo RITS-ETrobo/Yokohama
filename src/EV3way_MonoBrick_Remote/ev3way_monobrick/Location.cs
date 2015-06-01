@@ -9,8 +9,8 @@ namespace ETTobocon.EV3
 
 		public Location ()
 		{
-			x = 0F;
-			y = 0F;
+			x = 0.0;
+			y = 0.0;
 		}
 
 		public Location (double prm_x, double prm_y){
