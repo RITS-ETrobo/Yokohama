@@ -197,7 +197,7 @@ namespace ETRobocon.EV3
 					turn = 0;
 				} else {
 					forward = 50;
-					turn = ld.CalculateTurn();
+					turn = ld.CalculateTurn(body.color.Read());
 				}
 
 				int gyroNow = -body.gyro.Read();
