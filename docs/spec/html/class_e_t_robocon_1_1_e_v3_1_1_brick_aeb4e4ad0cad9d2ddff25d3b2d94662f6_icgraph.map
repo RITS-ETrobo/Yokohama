@@ -1,0 +1,4 @@
+<map id="ETRobocon.EV3.Brick.GetVoltage" name="ETRobocon.EV3.Brick.GetVoltage">
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#a04d80e12070f8a1ec2a8a096082c9921" title="バッテリの電源電圧をミリボルト単位で取得する " alt="" coords="275,5,496,46"/>
+<area shape="rect" id="node3" href="$class_e_t_tobocon_1_1_e_v3_1_1_main_class.html#aaa38d3987949c6c43a6e664e14af4d7c" title="ETTobocon.EV3.MainClass.run" alt="" coords="544,12,747,39"/>
+</map>
