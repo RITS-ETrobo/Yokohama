@@ -51,8 +51,6 @@ namespace ETRobocon.EV3
 		///	リモートコマンド : 停止 'g'
 		const int REMOTE_COMMAND_STOP  = 's';
 
-		//test commit
-
 		public static void Main()
 		{
 			// 構造体の宣言と初期化
@@ -172,6 +170,10 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
+			//自己位置推定
+			Odometry odm = new Odometry ();
+			int odm_count = 0;
+
 			RemoteLogTest ("EV3 run.", connection);
 
 			while (!body.touch.IsPressed ()) 
@@ -213,9 +215,27 @@ namespace ETRobocon.EV3
 					body.motorR.SetPower(pwmR);
 				}
 
+				// 自己位置推定の計算
+				// - 2014年は4msecごとのループで30回毎に自己位置推定の計算を実施していたので流用（実機での動作検証必要）
+				odm_count = (odm_count + 1) % 30;
+				if (odm_count == 0) {
+					odm.update (thetaL, theTaR);
+				}
+
+				// 自己位置推定のログ出力
+				// - 出力内容:[タグ],[累積走行距離],[自己位置推定のx座標],[自己位置推定のy座標]
+				Location loc = odm.getCurrentLocation ();
+				double distance = odm.getTotalMoveDistanceMM ();
+				String odm_log = "odm_log," 
+					+ distance.ToString ("F6") + "," 
+					+ loc.getX ().ToString("F6") + "," 
+					+ loc.getY ().ToString("F6");
+				RemoteLogTest (odm_log , connection);
+
 				// バランス制御のみだと3msecで安定
 				// 尻尾制御と障害物検知を使用する場合2msecで安定
-				Thread.Sleep(2);
+				// - 尻尾制御+障害物検知+自己位置推定でとりあえず4msecとする（実機での動作検証必要）
+				Thread.Sleep(4);
 			}
 
 			RemoteLogTest ("EV3 stopped.", connection);
