@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace ETTobocon.EV3
+namespace ETRobocon.EV3
 {
 	public class Location
 	{
-		public double x;
-		public double y;
+		private double x;
+		private double y;
 
 		public Location ()
 		{
