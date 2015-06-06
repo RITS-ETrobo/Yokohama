@@ -70,7 +70,7 @@ namespace ETRobocon.Utils
 
 	/// <summary>EV3-PC間通信プロトコルに従って, EV3-PCの通信を行うためのクラス.</summary>
 	/// <remarks>
-	/// <para>シングルトンクラスとして利用する. EV3, PCそれぞれで一つずつインスタンスが存在する.</para>
+	/// <para>シングルトンクラスとして利用する. 使用者はEV3, PCそれぞれで一つずつインスタンスを生成する.</para>
 	/// <para>EV3-PC間通信プロトコルについては, docs/design/misc/protocol.mdを参照のこと.</para>
 	/// </remarks>
 	public class ProtocolProcessor
