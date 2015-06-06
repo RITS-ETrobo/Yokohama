@@ -168,6 +168,7 @@ namespace ETRobocon.Utils
 			// ソケットを閉じる
 			if (_stream != null) {
 				_stream.Close();
+				_stream = null;
 			}
 		}
 
