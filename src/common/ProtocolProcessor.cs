@@ -592,11 +592,15 @@ namespace ETRobocon.Utils
 	/// </summary>
 	public class ProtocolProcessorForPC : ProtocolProcessor
 	{
+		/// <summary>EV3との接続の最大試行回数</summary>
+		/// <remarks>1回の試行は約1秒</remarks>
+		private const int CONNECTION_RETRY_COUNT = 60;
+
 		/// <summary>EV3との通信確立済みのインスタンスを生成するコンストラクタ</summary>
 		private ProtocolProcessorForPC()
 		{
 			// EV3との接続
-			int retry = 60;	// タイムアウト60秒(1回の試行に1秒ぐらいかかる(測定値))
+			int retry = CONNECTION_RETRY_COUNT;
 			while (retry > 0) {
 				try {
 					// 指定されたサーバに接続
