@@ -108,6 +108,9 @@ namespace ETRobocon.Utils
 		///	通信に用いるポート番号
 		protected const int SOCKET_PORT = 7360;
 
+		/// <summary>EV3のIPアドレス</summary>
+		protected const string IP_ADDRESS = "10.0.1.1";
+
 		/// <summary>各種データからbyte配列への変換を行うデリゲート</summary>
 		private delegate byte[] ConvertToPacketData(object data);
 
@@ -558,7 +561,7 @@ namespace ETRobocon.Utils
 		private ProtocolProcessorForEV3()
 		{
 			// PCとの接続
-			IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
+			IPAddress ipAddr = IPAddress.Parse(IP_ADDRESS);
 
 			var listener = new TcpListener (ipAddr, SOCKET_PORT); 
 			listener.Start(); // クライアントからの受信接続要求の待機を開始
@@ -599,7 +602,7 @@ namespace ETRobocon.Utils
 					// 指定されたサーバに接続
 					Socket	sock = new Socket (
 						AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					sock.Connect("10.0.1.1", SOCKET_PORT);
+					sock.Connect(IP_ADDRESS, SOCKET_PORT);
 
 					_stream = new NetworkStream (sock, true);
 
