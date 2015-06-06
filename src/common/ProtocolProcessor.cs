@@ -80,7 +80,7 @@ namespace ETRobocon.Utils
 		/// C# 6.0 で利用可能な, 自動実装プロパティの初期化が, PC側のRemoteConsoleプロジェクトでビルドできなかった.
 		/// C# 6.0 のコードは書かないほうがよさそう??
 		/// </remarks>
-		private static ProtocolProcessor _instance = null;
+		protected static ProtocolProcessor _instance = null;
 
 		/// <summary>ProtocolProcessorクラスのインスタンス</summary>
 		/// <value>
@@ -95,19 +95,18 @@ namespace ETRobocon.Utils
 
 		/// <summary><see cref="Instance"/>プロパティを排他制御するためのロック</summary>
 		/// <remarks>複数タスクが同時にインスタンス生成をするのを防ぐため.</remarks>
-		private static object _instanceLock = new object();
+		protected static object _instanceLock = new object();
 
 		/// <summary>通信用ストリーム</summary>
 		/// <remarks>通信未確立のときは<c>null</c>となる.</remarks>
-		private NetworkStream _stream = null;
+		protected NetworkStream _stream = null;
 
 		/// <summary><see cref="_stream"/>フィールドを排他制御するためのロック</summary>
 		/// <remarks>複数タスクが同時に通信しようとするのを防ぐため.</remarks>
-		private object _streamLock = new object();
-
+		protected object _streamLock = new object();
 
 		///	通信に用いるポート番号
-		private const int SOCKET_PORT = 7360;
+		protected const int SOCKET_PORT = 7360;
 
 		/// <summary>各種データからbyte配列への変換を行うデリゲート</summary>
 		private delegate byte[] ConvertToPacketData(object data);
@@ -155,57 +154,9 @@ namespace ETRobocon.Utils
 			ConvertPacketDataToString,
 		};
 
-		/// <summary>通信確立済みのインスタンスを生成するコンストラクタ.</summary>
-		/// <param name="isEV3">EV3側が持つインスタンスを生成するなら<c>true</c>, PC側が持つインスタンスを生成するなら<c>false</c>.</param>
-		private ProtocolProcessor(bool isEV3)
-		{
-			if (isEV3) {
-				// PCとの接続
-				IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
-
-				var listener = new TcpListener (ipAddr, SOCKET_PORT); 
-				listener.Start(); // クライアントからの受信接続要求の待機を開始
-
-				try {
-					Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
-					_stream = new NetworkStream(sock, true);
-				} catch (SocketException) {
-					_stream = null;
-				}
-				listener.Stop();
-			}
-			else {
-				// EV3との接続
-				int retry = 60;	// タイムアウト60秒(1回の試行に1秒ぐらいかかる(測定値))
-				while (retry > 0) {
-					try {
-						// 指定されたサーバに接続
-						Socket	sock = new Socket (
-							               AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-						sock.Connect ("10.0.1.1", SOCKET_PORT);
-
-						_stream = new NetworkStream (sock, true);
-
-						break;
-					} catch (Exception e) {
-						retry--;
-						_stream = null;
-					}
-				}
-			}
-		}
-
-		/// <summary>通信を確立する</summary>
-		/// <remarks>通信が既に確立していたら何もしない.</remarks>
-		/// <param name="toEV3">通信相手がEV3なら<c>true</c>, PCなら<c>false</c>.</param>
-		public static void Connect(bool toEV3)
-		{
-			lock (_instanceLock) {	// 複数のInstanceを生成してしまうことのないよう
-				if (Instance == null) {
-					Instance = new ProtocolProcessor(!toEV3);
-				}
-			}
-		}
+		/// <summary>コンストラクタ</summary>
+		/// <remarks>処理は何も行わないが, アクセスレベルを設定するために定義する.</remarks>
+		protected ProtocolProcessor() { }
 
 		/// <summary>デストラクタ</summary>
 		/// <remarks>
@@ -583,5 +534,81 @@ namespace ETRobocon.Utils
 
 		#endregion
 	}
+
+
+	/// <summary>
+	/// EV3-PC間通信プロトコルに従って, EV3-PCの通信を行うための機能のうち, EV3側を担当するクラス.
+	/// </summary>
+	public class ProtocolProcessorForEV3 : ProtocolProcessor
+	{
+		/// <summary>PCとの通信確立済みのインスタンスを生成するコンストラクタ</summary>
+		private ProtocolProcessorForEV3()
+		{
+			// PCとの接続
+			IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
+
+			var listener = new TcpListener (ipAddr, SOCKET_PORT); 
+			listener.Start(); // クライアントからの受信接続要求の待機を開始
+
+			try {
+				Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
+				_stream = new NetworkStream(sock, true);
+			} catch (SocketException) {
+				_stream = null;
+			}
+			listener.Stop();
+		}
+
+		/// <summary>PCと通信を確立する</summary>
+		/// <remarks>通信が既に確立していたら何もしない.</remarks>
+		public static void Connect()
+		{
+			lock (_instanceLock) {	// 複数のInstanceを生成してしまうことのないよう
+				if (_instance == null) {
+					_instance = new ProtocolProcessorForEV3();
+				}
+			}
+		}
+	};
+
+	/// <summary>
+	/// EV3-PC間通信プロトコルに従って, EV3-PCの通信を行うための機能のうち, PC側を担当するクラス.
+	/// </summary>
+	public class ProtocolProcessorForPC : ProtocolProcessor
+	{
+		/// <summary>EV3との通信確立済みのインスタンスを生成するコンストラクタ</summary>
+		private ProtocolProcessorForPC()
+		{
+			// EV3との接続
+			int retry = 60;	// タイムアウト60秒(1回の試行に1秒ぐらいかかる(測定値))
+			while (retry > 0) {
+				try {
+					// 指定されたサーバに接続
+					Socket	sock = new Socket (
+						AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+					sock.Connect("10.0.1.1", SOCKET_PORT);
+
+					_stream = new NetworkStream (sock, true);
+
+					break;
+				} catch (Exception e) {
+					retry--;
+					_stream = null;
+				}
+			}
+		}
+
+		/// <summary>EV3と通信を確立する</summary>
+		/// <remarks>通信が既に確立していたら何もしない.</remarks>
+		public static void Connect()
+		{
+			lock (_instanceLock) {	// 複数のInstanceを生成してしまうことのないよう
+				if (_instance == null) {
+					_instance = new ProtocolProcessorForPC();
+				}
+			}
+		}
+	}
 }
+
 
