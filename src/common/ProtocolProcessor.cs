@@ -173,8 +173,9 @@ namespace ETRobocon.Utils
 
 		/// <summary>通信相手へデータを送る</summary>
 		/// <param name="data">送りたいデータ</param>
+		/// <returns>正常に送信できたら<c>true</c>, それ以外は<c>false</c>.</returns>
 		/// <exception cref="System.InvalidOperationException">未接続状態でメソッドが呼ばれた.</exception>
-		public void SendData(object data)
+		public bool SendData(object data)
 		{
 			if (_stream == null) {
 				throw new InvalidOperationException("The connection is not established.\n");
@@ -213,16 +214,27 @@ namespace ETRobocon.Utils
 			packetData.CopyTo(packet, 2);
 
 			// パケットを送る
-			SendPacketData(packet);
+			return SendPacketData(packet);
 		}
 
 		/// <summary>パケット(byte配列)を送信する</summary>
 		/// <param name="packet">送りたいパケット(byte配列).</param>
-		private void SendPacketData(byte[] packet)
+		/// <returns>正常に送信できたら<c>true</c>, それ以外の場合は<c>false</c>.</returns>
+		private bool SendPacketData(byte[] packet)
 		{
-			lock (_streamLock) {
-				_stream.Write(packet, 0, packet.Length);
+			try {
+				lock (_streamLock) {
+					_stream.Write (packet, 0, packet.Length);
+				}
 			}
+			catch (System.IO.IOException) {
+				return false;
+			}
+			catch (System.ObjectDisposedException) {
+				return false;
+			}
+
+			return true;
 		}
 
 		/// <summary>通信相手からデータを受け取る.</summary>
