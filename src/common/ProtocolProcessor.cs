@@ -176,7 +176,7 @@ namespace ETRobocon.Utils
 		}
 
 		/// <summary>通信相手へデータを送る</summary>
-		/// <param name="data">送りたいデータ</param>
+		/// <param name="data">送るデータ</param>
 		/// <returns>正常に送信できたら<c>true</c>, それ以外は<c>false</c>.</returns>
 		/// <exception cref="System.InvalidOperationException">未接続状態でメソッドが呼ばれた.</exception>
 		public bool SendData(object data)
@@ -222,7 +222,7 @@ namespace ETRobocon.Utils
 		}
 
 		/// <summary>パケット(byte配列)を送信する</summary>
-		/// <param name="packet">送りたいパケット(byte配列).</param>
+		/// <param name="packet">送るパケット(byte配列).</param>
 		/// <returns>正常に送信できたら<c>true</c>, それ以外の場合は<c>false</c>.</returns>
 		private bool SendPacketData(byte[] packet)
 		{
