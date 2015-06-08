@@ -15,7 +15,7 @@ namespace ETRobocon.EV3
 		private double total_move_distance_mm = 0.0; //ロボットの累積走行距離[mm]
 		private double cur_theta_rad = 0.0; //現在のロボットの旋回角度[radian]
 
-		private const Object lock_obj = new Object();
+		private readonly Object lock_obj = new Object();
 
 		public Odometry ()
 		{
