@@ -170,6 +170,12 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
+			//  runメソッドのsleep間隔を表すフィールド[msec]
+			// バランス制御のみだと3msecで安定
+			// 尻尾制御と障害物検知を使用する場合2msecで安定
+			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
+			int runThreadIntervalTime = 2;
+
 			//自己位置推定
 			Odometry odm = new Odometry ();
 			int odm_count = 0;
@@ -232,10 +238,7 @@ namespace ETRobocon.EV3
 					+ loc.getY ().ToString("F6");
 				RemoteLogTest (odm_log , connection);
 
-				// バランス制御のみだと3msecで安定
-				// 尻尾制御と障害物検知を使用する場合2msecで安定
-				// - 尻尾制御+障害物検知+自己位置推定でとりあえず4msecとする（実機での動作検証必要）
-				Thread.Sleep(4);
+				Thread.Sleep(runThreadIntervalTime);
 			}
 
 			RemoteLogTest ("EV3 stopped.", connection);
