@@ -87,7 +87,8 @@ namespace ETRobocon.Utils
 		/// プログラム上で一つだけ存在するProtocolProcessorクラスのインスタンス.
 		/// まだ通信確立済みのインスタンスを生成していないときは<c>null</c>.
 		/// </value>
-		/// <seealso cref="Connect"/>
+		/// <seealso cref="ProtocolProcessorForEV3.Connect"/>
+		/// <seealso cref="ProtocolProcessorForPC.Connect"/>
 		public static ProtocolProcessor Instance {
 			get { return _instance; }
 			private set { _instance = value; }
