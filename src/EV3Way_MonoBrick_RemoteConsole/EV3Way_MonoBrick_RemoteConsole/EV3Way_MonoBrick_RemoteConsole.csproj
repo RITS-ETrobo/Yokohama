@@ -45,6 +45,12 @@
     <Compile Include="..\..\common\ProtocolProcessor.cs">
       <Link>Utils\ProtocolProcessor.cs</Link>
     </Compile>
+    <Compile Include="..\..\common\ProtocolProcessorForEV3.cs">
+      <Link>Utils\ProtocolProcessorForEV3.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\ProtocolProcessorForPC.cs">
+      <Link>Utils\ProtocolProcessorForPC.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
