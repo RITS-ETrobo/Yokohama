@@ -176,6 +176,11 @@ namespace ETRobocon.EV3
 			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
 			int runThreadIntervalTime = 2;
 
+			// 自己位置推定の実施間隔を表すフィールド
+			// 2014年度は120msec毎(4msecごとのループで30回毎)に自己位置推定の計算を実施していたので、2015年度もとりあえず流用する
+			// 実機での動作検証必要(refs #115)
+			int odometryIntervalTime = 120 / runThreadIntervalTime;
+
 			//自己位置推定
 			Odometry odm = new Odometry ();
 			int odm_count = 0;
@@ -222,8 +227,7 @@ namespace ETRobocon.EV3
 				}
 
 				// 自己位置推定の計算
-				// - 2014年は4msecごとのループで30回毎に自己位置推定の計算を実施していたので流用（実機での動作検証必要）
-				odm_count = (odm_count + 1) % 30;
+				odm_count = (odm_count + 1) % odometryIntervalTime;
 				if (odm_count == 0) {
 					odm.update (thetaL, theTaR);
 				}
