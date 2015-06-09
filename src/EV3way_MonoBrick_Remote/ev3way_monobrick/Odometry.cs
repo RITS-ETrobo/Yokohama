@@ -98,28 +98,24 @@ namespace ETRobocon.EV3
 		/// ロボットの現在値を取得する.
 		/// </summary>
 		/// <returns>ロボットの現在値.</returns>
-		public Location getCurrentLocation(){
-			Location ret_location = new Location(0.0 , 0.0);
-
-			lock (lock_obj) {
-				ret_location = cur_location;
+		public Location CurLocation{
+			get{
+				lock (lock_obj) {
+					return this.cur_location;
+				}
 			}
-
-			return ret_location;
 		}
 
 		/// <summary>
 		/// ロボットの累積走行距離を取得する.
 		/// </summary>
 		/// <returns>累積走行距離[mm].</returns>
-		public double getTotalMoveDistanceMM(){
-			double ret_distance = 0.0;
-
-			lock (lock_obj) {
-				ret_distance = total_move_distance_mm;
+		public double TotalMoveDistanceMM{
+			get{
+				lock (lock_obj) {
+					return this.total_move_distance_mm;
+				}
 			}
-
-			return ret_distance;
 		}
 
 	}

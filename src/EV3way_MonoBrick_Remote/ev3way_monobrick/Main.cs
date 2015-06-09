@@ -177,8 +177,8 @@ namespace ETRobocon.EV3
 			int runThreadIntervalTime = 2;
 
 			// 自己位置推定の実施間隔を表すフィールド
-			// 2014年度は120msec毎(4msecごとのループで30回毎)に自己位置推定の計算を実施していたので、2015年度もとりあえず流用する
-			// 実機での動作検証必要(refs #115)
+			// 2014年度は120msec毎(4msecごとのループで30回毎)に自己位置推定の計算を実施していた
+			// 2015年度もとりあえず流用するが、別途実機での動作検証必要(refs #115)
 			int odometryIntervalTime = 120 / runThreadIntervalTime;
 
 			//自己位置推定
@@ -234,8 +234,8 @@ namespace ETRobocon.EV3
 
 				// 自己位置推定のログ出力
 				// - 出力内容:[タグ],[累積走行距離],[自己位置推定のx座標],[自己位置推定のy座標]
-				Location loc = odm.getCurrentLocation ();
-				double distance = odm.getTotalMoveDistanceMM ();
+				Location loc = odm.CurLocation;
+				double distance = odm.TotalMoveDistanceMM;
 				String odm_log = "odm_log," 
 					+ distance.ToString ("F6") + "," 
 					+ loc.getX ().ToString("F6") + "," 
