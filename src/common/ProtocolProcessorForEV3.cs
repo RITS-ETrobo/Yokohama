@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;	// for IPAddress
-using System.Net.Sockets;	// for NetworkStream
+using System.Net.Sockets;	// for Socket, SocketException, TcpListener, NetworkStream
 
 namespace ETRobocon.Utils
 {
