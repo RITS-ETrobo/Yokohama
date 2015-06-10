@@ -6,7 +6,7 @@ namespace ETRobocon.Utils
 	/// <summary>
 	/// PacketDataTypeの拡張メソッド用のクラス.
 	/// </summary>
-	internal static class PacketDataTypeExt
+	public static class PacketDataTypeExt
 	{
 		/// <summary>サイズ取得用</summary>
 		static readonly byte[] _sizes = new byte[] {
@@ -46,7 +46,7 @@ namespace ETRobocon.Utils
 
 	/// <summary>送受信するデータの種別</summary>
 	/// <remarks>パケットの1byte目にそのまま用いることを想定している.</remarks>
-	internal enum PacketDataType : byte
+	public enum PacketDataType : byte
 	{
 		Invalid,	///< 使用不可(不正な型)
 		Boolean,
@@ -111,52 +111,6 @@ namespace ETRobocon.Utils
 		/// <summary>EV3のIPアドレス</summary>
 		protected const string IP_ADDRESS = "10.0.1.1";
 
-		/// <summary>各種データからbyte配列への変換を行うデリゲート</summary>
-		private delegate byte[] ConvertToPacketData(object data);
-
-		/// <summary>各種データからbyte配列への変換を行うデリゲートのインスタンスの配列.</summary>
-		/// <remarks><see cref="PacketDataType"/>をインデックスに指定することを想定している.</remarks>
-		private static ConvertToPacketData[] _ConvertToPacketDataMethods = new ConvertToPacketData[(byte)PacketDataType.NumOfType] {
-			ConvertToPacketDataDummy,
-			ConvertBoolToPacketData,
-			ConvertSByteToPacketData,
-			ConvertShortToPacketData,
-			ConvertIntToPacketData,
-			ConvertLongToPacketData,
-			ConvertByteToPacketData,
-			ConvertUShortToPacketData,
-			ConvertUIntToPacketData,
-			ConvertULongToPacketData,
-			ConvertDecimalToPacketData,
-			ConvertCharToPacketData,
-			ConvertFloatToPacketData,
-			ConvertDoubleToPacketData,
-			ConvertStringToPacketData
-		};
-
-		/// <summary>byte配列から各種データへの変換を行うデリゲート</summary>
-		private delegate object ConvertFromPacketData(byte[] data, byte dataCount);
-
-		/// <summary>byte配列から各種データへの変換を行うデリゲートのインスタンスの配列</summary>
-		/// <remarks><see cref="PacketDataType"/>をインデックスに指定することを想定している.</remarks>
-		private static ConvertFromPacketData[] _ConvertFromPacketDataMethods = new ConvertFromPacketData[(byte)PacketDataType.NumOfType] {
-			ConvertFromPacketDataDummy,
-			ConvertPacketDataToBoolArray,
-			ConvertPacketDataToSByteArray,
-			ConvertPacketDataToShortArray,
-			ConvertPacketDataToIntArray,
-			ConvertPacketDataToLongArray,
-			ConvertPacketDataToByteArray,
-			ConvertPacketDataToUShortArray,
-			ConvertPacketDataToUIntArray,
-			ConvertPacketDataToULongArray,
-			ConvertPacketDataToDecimalArray,
-			ConvertPacketDataToCharArray,
-			ConvertPacketDataToFloatArray,
-			ConvertPacketDataToDoubleArray,
-			ConvertPacketDataToString,
-		};
-
 		/// <summary>コンストラクタ</summary>
 		/// <remarks>処理は何も行わないが, アクセスレベルを設定するために定義する.</remarks>
 		protected ProtocolProcessor() { }
@@ -197,18 +151,18 @@ namespace ETRobocon.Utils
 				packetDataCount = (byte)arrayData.Length;
 				packetData = new byte[packetDataCount * packetDataType.GetSize()];
 				for (int i = 0; i < packetDataCount; i++) {
-					_ConvertToPacketDataMethods[(byte)packetDataType](arrayData.GetValue(i)).CopyTo(packetData, i * packetDataType.GetSize());
+					PacketDataConverter.ConvertToPacketData(arrayData.GetValue(i), packetDataType).CopyTo(packetData, i * packetDataType.GetSize());
 				}
 			}
 			else if (data is string) {
 				packetDataType = PacketDataType.String;
-				packetData = _ConvertToPacketDataMethods[(byte)PacketDataType.String](data);
+				packetData = PacketDataConverter.ConvertToPacketData(data, packetDataType);
 				packetDataCount = (byte)packetData.Length;
 			}
 			else {
 				packetDataType = GetPacketDataType(data.GetType());
 				packetDataCount = 1;
-				packetData = _ConvertToPacketDataMethods[(byte)packetDataType](data);
+				packetData = PacketDataConverter.ConvertToPacketData(data, packetDataType);
 			}
 
 			// パケットを作成する
@@ -287,7 +241,7 @@ namespace ETRobocon.Utils
 					_stream.Read(packetData, 0, packetData.Length);
 
 					// 読み取ったデータを復元
-					data = _ConvertFromPacketDataMethods[(byte)packetDataType](packetData, packetDataCount);
+					data = PacketDataConverter.ConvertFromPacketData(packetData, packetDataCount, packetDataType);
 
 					ret = true;
 				}
@@ -329,225 +283,5 @@ namespace ETRobocon.Utils
 			}
 			return PacketDataType.Invalid;
 		}
-
-		#region ConvertToPacketData Methods
-
-		private static byte[] ConvertBoolToPacketData(object data)
-		{
-			return BitConverter.GetBytes((bool)data);
-		}
-
-		private static byte[] ConvertSByteToPacketData(object data)
-		{
-			return new byte[1] { (byte)(sbyte)data };
-		}
-
-		private static byte[] ConvertShortToPacketData(object data)
-		{
-			return BitConverter.GetBytes((short)data);
-		}
-
-		private static byte[] ConvertIntToPacketData(object data)
-		{
-			return BitConverter.GetBytes((int)data);
-		}
-
-		private static byte[] ConvertLongToPacketData(object data)
-		{
-			return BitConverter.GetBytes((long)data);
-		}
-
-		private static byte[] ConvertByteToPacketData(object data)
-		{
-			return new byte[1] { (byte)data };
-		}
-
-		private static byte[] ConvertUShortToPacketData(object data)
-		{
-			return BitConverter.GetBytes((ushort)data);
-		}
-
-		private static byte[] ConvertUIntToPacketData(object data)
-		{
-			return BitConverter.GetBytes((uint)data);
-		}
-
-		private static byte[] ConvertULongToPacketData(object data)
-		{
-			return BitConverter.GetBytes((ulong)data);
-		}
-
-		private static byte[] ConvertDecimalToPacketData(object data)
-		{
-			int[] intData = decimal.GetBits((decimal)data);
-			byte[] byteData = new byte[intData.Length * sizeof(int)];
-			for (int i = 0; i < intData.Length; i++) {
-				BitConverter.GetBytes(intData[i]).CopyTo(byteData, i * sizeof(int));
-			}
-			return byteData;
-		}
-
-		private static byte[] ConvertCharToPacketData(object data)
-		{
-			return BitConverter.GetBytes((char)data);
-		}
-
-		private static byte[] ConvertFloatToPacketData(object data)
-		{
-			return BitConverter.GetBytes((float)data);
-		}
-
-		private static byte[] ConvertDoubleToPacketData(object data)
-		{
-			return BitConverter.GetBytes((double)data);
-		}
-
-		private static byte[] ConvertStringToPacketData(object data)
-		{
-			return System.Text.Encoding.ASCII.GetBytes((string)data);
-		}
-
-		private static byte[] ConvertToPacketDataDummy(object data)
-		{
-			throw new InvalidOperationException("This method must not be called.\n");
-		}
-
-		#endregion
-
-		#region ConvertFromPacketData Methods
-
-		private static object ConvertPacketDataToBoolArray(byte[] data, byte dataCount)
-		{
-			bool[] array = new bool[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToBoolean(data, i * PacketDataType.Boolean.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToSByteArray(byte[] data, byte dataCount)
-		{
-			sbyte[] array = new sbyte[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = (sbyte)data[i];
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToShortArray(byte[] data, byte dataCount)
-		{
-			short[] array = new short[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToInt16(data, i * PacketDataType.Short.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToIntArray(byte[] data, byte dataCount)
-		{
-			int[] array = new int[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToInt32(data, i * PacketDataType.Int.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToLongArray(byte[] data, byte dataCount)
-		{
-			long[] array = new long[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToInt64(data, i * PacketDataType.Long.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToByteArray(byte[] data, byte dataCount)
-		{
-			return data.Clone();
-		}
-
-		private static object ConvertPacketDataToUShortArray(byte[] data, byte dataCount)
-		{
-			ushort[] array = new ushort[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToUInt16(data, i * PacketDataType.UShort.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToUIntArray(byte[] data, byte dataCount)
-		{
-			uint[] array = new uint[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToUInt32(data, i * PacketDataType.UInt.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToULongArray(byte[] data, byte dataCount)
-		{
-			ulong[] array = new ulong[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToUInt64(data, i * PacketDataType.ULong.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToDecimalArray(byte[] data, byte dataCount)
-		{
-			decimal[] array = new decimal[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-
-				// そのdecimal値のint[]表現を求める
-				int[] bits = new int[4];
-				for (int bit = 0; bit < bits.Length; bit++) {
-					bits[bit] = BitConverter.ToInt32(data,
-						i * PacketDataType.Decimal.GetSize() + bit * PacketDataType.Int.GetSize());
-				}
-
-				// int[] -> decimal
-				array[i] = new Decimal(bits);
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToCharArray(byte[] data, byte dataCount)
-		{
-			char[] array = new char[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToChar(data, i * PacketDataType.Char.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToFloatArray(byte[] data, byte dataCount)
-		{
-			float[] array = new float[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToSingle(data, i * PacketDataType.Float.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToDoubleArray(byte[] data, byte dataCount)
-		{
-			double[] array = new double[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = BitConverter.ToDouble(data, i * PacketDataType.Double.GetSize());
-			}
-			return (object)array;
-		}
-
-		private static object ConvertPacketDataToString(byte[] data, byte dataCount)
-		{
-			return (object)System.Text.Encoding.ASCII.GetString(data, 0, dataCount);
-		}
-
-		private static object ConvertFromPacketDataDummy(byte[] data, byte dataCount)
-		{
-			throw new InvalidOperationException("This method must not be called.\n");
-		}
-
-		#endregion
 	}
 }
