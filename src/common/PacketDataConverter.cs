@@ -66,7 +66,7 @@ namespace ETRobocon.Utils
 			if (data == null) {
 				throw new ArgumentNullException();
 			}
-			if (type == PacketDataType.Invalid || (byte)type >= PacketDataType.NumOfType) {
+			if (type == PacketDataType.Invalid || type >= PacketDataType.NumOfType) {
 				throw new ArgumentOutOfRangeException();
 			}
 
@@ -99,7 +99,7 @@ namespace ETRobocon.Utils
 			if (dataCount == 0) {
 				throw new ArgumentException();
 			}
-			if (type == PacketDataType.Invalid || (byte)type >= PacketDataType.NumOfType) {
+			if (type == PacketDataType.Invalid || type >= PacketDataType.NumOfType) {
 				throw new ArgumentOutOfRangeException();
 			}
 
