@@ -26,7 +26,7 @@ namespace ETRobocon.Utils
 
 					_stream = new NetworkStream (sock, true);
 
-					break;
+					return;
 				} catch (Exception e) {
 					retry--;
 					_stream = null;
