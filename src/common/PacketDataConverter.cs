@@ -59,7 +59,7 @@ namespace ETRobocon.Utils
 		/// <param name="type">変換するデータの型</param>
 		/// <exception cref="System.ArgumentNullException"><paramref name="data"/>が<c>null</c>の場合.</exception>
 		/// <exception cref="System.ArgumentOutOfRangeException">不正な<paramref name="type"/>が指定された場合.</exception>
-		/// <exception cref="System.InvalidCastException"><paramref name="data"/>の型が<paramref name="type">でない場合.</exception>
+		/// <exception cref="System.InvalidCastException"><paramref name="data"/>の型が<paramref name="type"/>でない場合.</exception>
 		/// <exception cref="System.Text.EncoderFallbackException"><paramref name="data"/>がASCIIエンコードできない文字列の場合.</exception>
 		public static byte[] ConvertToPacketData(object data, PacketDataType type)
 		{
