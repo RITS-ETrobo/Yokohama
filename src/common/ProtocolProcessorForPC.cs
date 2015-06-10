@@ -15,6 +15,7 @@ namespace ETRobocon.Utils
 		/// <summary>EV3との通信確立済みのインスタンスを生成するコンストラクタ</summary>
 		private ProtocolProcessorForPC()
 		{
+			_stream = null;
 			// EV3との接続
 			int retry = CONNECTION_RETRY_COUNT;
 			while (retry > 0) {
@@ -29,7 +30,6 @@ namespace ETRobocon.Utils
 					return;
 				} catch (Exception e) {
 					retry--;
-					_stream = null;
 				}
 			}
 		}
