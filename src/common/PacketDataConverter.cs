@@ -57,6 +57,10 @@ namespace ETRobocon.Utils
 		/// <returns>変換されたbyte[]</returns>
 		/// <param name="data">変換するデータ</param>
 		/// <param name="type">変換するデータの型</param>
+		/// <exception cref="System.ArgumentNullException"><paramref name="data"/>が<c>null</c>の場合.</exception>
+		/// <exception cref="System.ArgumentOutOfRangeException">不正な<paramref name="type"/>が指定された場合.</exception>
+		/// <exception cref="System.InvalidCastException"><paramref name="data"/>の型が<paramref name="type">でない場合.</exception>
+		/// <exception cref="System.Text.EncoderFallbackException"><paramref name="data"/>がASCIIエンコードできない文字列の場合.</exception>
 		public static byte[] ConvertToPacketData(object data, PacketDataType type)
 		{
 			if (data == null) {
@@ -74,6 +78,19 @@ namespace ETRobocon.Utils
 		/// <param name="data">変換するbyte配列</param>
 		/// <param name="dataCount"><paramref name="data"/>が含んでいるデータの数</param>
 		/// <param name="type">変換するデータの型</param>
+		/// <exception cref="System.ArgumentNullException"><paramref name="data"/>が<c>null</c>の場合.</exception>
+		/// <exception cref="System.ArgumentException">
+		/// <paramref name="dataCount"/>が<c>0</c>の場合.
+		/// または, <paramref name="data"/>の型が<paramref name="type"/>でない場合(ただし常にではない).
+		/// (<paramref name="data"/>の型と<paramref name="type"/>が一致していなくても変換できるときはあるが,
+		/// 正しくない変換となる.
+		/// </exception>
+		/// <exception cref="System.ArgumentOutOfRangeException">
+		/// 不正な<paramref name="type"/>が指定された場合.
+		/// または, <paramref name="data"/>に含まれるデータの数が<paramref name="dataCount"/>で指定した数より少ない場合.
+		/// または, <paramref name="dataCount"/>よりも短い文字数の文字列が<paramref name="data"/>に指定されたとき.
+		/// </exception>
+		/// <exception cref="System.Text.DecoderFallbackException"><paramref name="data"/>がASCIIデコードできない文字列の場合.</exception>
 		public static object ConvertFromPacketData(byte[] data, byte dataCount, PacketDataType type)
 		{
 			if (data == null) {
