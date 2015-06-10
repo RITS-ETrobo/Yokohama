@@ -187,8 +187,14 @@ namespace ETRobocon.Utils
 		private static object ConvertPacketDataToSByteArray(byte[] data, byte dataCount)
 		{
 			sbyte[] array = new sbyte[dataCount];
-			for (int i = 0; i < dataCount; i++) {
-				array[i] = (sbyte)data[i];
+
+			try {
+				for (int i = 0; i < dataCount; i++) {
+					array[i] = (sbyte)data[i];
+				}
+			}
+			catch (InvalidCastException) {
+				throw new ArgumentException();
 			}
 			return (object)array;
 		}
