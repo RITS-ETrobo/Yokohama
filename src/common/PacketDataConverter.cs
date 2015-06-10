@@ -59,6 +59,13 @@ namespace ETRobocon.Utils
 		/// <param name="type">変換するデータの型</param>
 		public static byte[] ConvertToPacketData(object data, PacketDataType type)
 		{
+			if (data == null) {
+				throw new ArgumentNullException();
+			}
+			if (type == PacketDataType.Invalid || (byte)type >= PacketDataType.NumOfType) {
+				throw new ArgumentOutOfRangeException();
+			}
+
 			return _ConvertToPacketDataMethods[(byte)type](data);
 		}
 
@@ -69,6 +76,16 @@ namespace ETRobocon.Utils
 		/// <param name="type">変換するデータの型</param>
 		public static object ConvertFromPacketData(byte[] data, byte dataCount, PacketDataType type)
 		{
+			if (data == null) {
+				throw new ArgumentNullException();
+			}
+			if (dataCount == 0) {
+				throw new ArgumentException();
+			}
+			if (type == PacketDataType.Invalid || (byte)type >= PacketDataType.NumOfType) {
+				throw new ArgumentOutOfRangeException();
+			}
+
 			return _ConvertFromPacketDataMethods[(byte)type](data, dataCount);
 		}
 
