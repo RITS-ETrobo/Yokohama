@@ -16,15 +16,17 @@ namespace ETRobocon.Utils
 			IPAddress ipAddr = IPAddress.Parse(IP_ADDRESS);
 
 			var listener = new TcpListener (ipAddr, SOCKET_PORT); 
-			listener.Start(); // クライアントからの受信接続要求の待機を開始
 
 			try {
+				listener.Start(); // クライアントからの受信接続要求の待機を開始
+
 				Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
 				_stream = new NetworkStream(sock, true);
+
+				listener.Stop();
 			} catch (SocketException) {
 				_stream = null;
 			}
-			listener.Stop();
 		}
 
 		/// <summary>PCと通信を確立する</summary>
