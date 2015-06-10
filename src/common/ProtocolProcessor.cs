@@ -111,6 +111,29 @@ namespace ETRobocon.Utils
 		/// <summary>EV3のIPアドレス</summary>
 		protected const string IP_ADDRESS = "10.0.1.1";
 
+		/// <summary><see cref="PacketDataType"/> から <see cref="System.Type"/> への変換用</summary>
+		/// <remarks>
+		/// <see cref="PacketDataType"/>をインデックスに用いることを想定しているが,
+		/// <see cref="PacketDataType.Invalid"/>にあたる<see cref="System.Type"/>が無いことに注意.
+		/// (対応が<see cref="PacketDataType"/>と1ずつずれる.)
+		/// </remarks>
+		private readonly static Type[] types = new Type[(byte)PacketDataType.NumOfType - 1] {
+			typeof(bool),
+			typeof(sbyte),
+			typeof(short),
+			typeof(int),
+			typeof(long),
+			typeof(byte),
+			typeof(ushort),
+			typeof(uint),
+			typeof(ulong),
+			typeof(decimal),
+			typeof(char),
+			typeof(float),
+			typeof(double),
+			typeof(string)
+		};
+
 		/// <summary>コンストラクタ</summary>
 		/// <remarks>処理は何も行わないが, アクセスレベルを設定するために定義する.</remarks>
 		protected ProtocolProcessor() { }
@@ -260,22 +283,6 @@ namespace ETRobocon.Utils
 		/// <param name="type">変換したい<see cref="System.Type"/>インスタンス.</param>
 		private static PacketDataType GetPacketDataType(Type type)
 		{
-			Type[] types = new Type[(byte)PacketDataType.NumOfType - 1] {
-				typeof(bool),
-				typeof(sbyte),
-				typeof(short),
-				typeof(int),
-				typeof(long),
-				typeof(byte),
-				typeof(ushort),
-				typeof(uint),
-				typeof(ulong),
-				typeof(decimal),
-				typeof(char),
-				typeof(float),
-				typeof(double),
-				typeof(string)
-			};
 			for (byte i = 0; i < types.Length; i++) {
 				if (type.Equals (types [i])) {
 					return (PacketDataType)(i + 1);
