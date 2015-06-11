@@ -14,7 +14,7 @@ namespace ETRobocon.Utils
 		/// <summary>EV3との通信確立済みのインスタンスを生成するコンストラクタ</summary>
 		/// <remarks>
 		/// EV3への接続を最大<see cref="CONNECTION_RETRY_COUNT"/>回試みる. (1回の試行にかかる時間は約1秒)
-		/// それでも通信確立できなかった場合は, <see cref="_stream"/>は<c>null</c>となる.
+		/// それでも通信確立できなかった場合は, <see cref="ProtocolProcessor._stream"/>は<c>null</c>となる.
 		/// </remarks>
 		private ProtocolProcessorForPC()
 		{
