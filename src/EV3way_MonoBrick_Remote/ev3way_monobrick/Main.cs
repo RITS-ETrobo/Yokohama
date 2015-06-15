@@ -27,18 +27,6 @@ namespace ETRobocon.EV3
 		///	超音波センサによる障害物検知距離 [mm]
 		const int SONAR_ALERT_DISTANCE = 300;
 
-		///	完全停止時の角度[deg]
-		const int TAIL_ANGLE_STAND_UP = 94;
-
-		///	バランス走行時の角度[deg]
-		const int TAIL_ANGLE_DRIVE = 3;
-
-		///	完全停止用モータ制御比例係数
-		const float P_GAIN = 2.5F;
-
-		///	完全停止用モータ制御PWM絶対最大値
-		const int PWM_ABS_MAX = 60;
-
 		///	ポート番号
 		const int SOCKET_PORT = 7360;
 
@@ -55,6 +43,7 @@ namespace ETRobocon.EV3
 		{
 			// 構造体の宣言と初期化
 			var body = new EV3body ();
+
 			EV3body.init (ref body);
 
 			// Bluetooth関係のETロボコン拡張機能を有効にする
@@ -69,11 +58,9 @@ namespace ETRobocon.EV3
 			body.gyro.Read ();
 			body.motorL.SetPower (0);
 			body.motorR.SetPower (0);
-			body.motorT.SetPower (0);
 
 			body.motorL.ResetTacho ();
 			body.motorR.ResetTacho ();
-			body.motorT.ResetTacho ();
 			Balancer.init ();
 
 			// スタート待ち
@@ -91,7 +78,6 @@ namespace ETRobocon.EV3
 
 			body.motorL.Off ();
 			body.motorR.Off ();
-			body.motorT.Off ();
 
 			// ソケットを閉じる
 			if (connection != null) {
@@ -147,7 +133,7 @@ namespace ETRobocon.EV3
 			RemoteLogTest ("EV3 is ready.", connection);
 
 			while (!body.touch.IsPressed()) {
-				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+				body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
 					break;  // PC で 'g' キーが押された
 				}
@@ -156,7 +142,7 @@ namespace ETRobocon.EV3
 			}
 
 			while (body.touch.IsPressed ()) {
-				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+				body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 				Thread.Sleep (4);
 			}
 		}
@@ -174,7 +160,7 @@ namespace ETRobocon.EV3
 
 			while (!body.touch.IsPressed ()) 
 			{
-				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
+				body.motorTail.SetMotorAngle(MotorTail.TAIL_ANGLE_DRIVE);	// バランス走行用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
 					break; // PC で 's' キー押されたら走行終了
 				}
@@ -236,34 +222,6 @@ namespace ETRobocon.EV3
 				return true; /* 障害物を検知 */
 			}else{
 				return false; /* 障害物無し */
-			}
-		}
-
-		///	<summary>
-		///	走行体完全停止用モータの角度制御
-		///	</summary>
-		///	<returns>
-		/// なし
-		/// </returns>
-		/// <param name="body">
-		///	EV3bodyのインスタンス 
-		/// </param>
-		/// <param name="angle">
-		///	モータ目標角度[度] 
-		/// </param>
-		static void tail_control(EV3body body, int angle)
-		{
-			float pwm = (float)(angle - body.motorT.GetTachoCount ()) * P_GAIN; // 比例制御
-			// PWM出力飽和処理
-			if (pwm > PWM_ABS_MAX) {
-				pwm = PWM_ABS_MAX;
-			} else if (pwm < -PWM_ABS_MAX) {
-				pwm = -PWM_ABS_MAX;
-			}
-			if ((sbyte)pwm == 0) {
-				body.motorT.Brake();
-			} else {
-				body.motorT.SetPower((sbyte)pwm);
 			}
 		}
 
