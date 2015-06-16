@@ -2,6 +2,9 @@
 
 namespace ETRobocon.EV3
 {
+	/// <summary>
+	/// 自己位置推定を行うクラス
+	/// </summary>
 	public class Odometry
 	{
 		private const double WHEEL_RADIUS_MM = 41.0; //車輪の半径[mm]
@@ -17,6 +20,10 @@ namespace ETRobocon.EV3
 
 		private readonly Object lock_obj = new Object();
 
+		/// <summary>
+		/// 自己位置推定クラスのコンストラクタ
+		/// <see cref="ETRobocon.EV3.Odometry"/>
+		/// </summary>
 		public Odometry ()
 		{
 		}
@@ -60,8 +67,8 @@ namespace ETRobocon.EV3
 				double trigono_func_arg = prev_theta_rad + delta_theta_rad / 2.0;
 				double coefficient = delta_move_distance_mm * sinc_approx( delta_theta_rad / 2.0); 
 				cur_location = new Location (
-					prev_location.getX() + coefficient * Math.Cos (trigono_func_arg),
-					prev_location.getY() + coefficient * Math.Sin (trigono_func_arg)
+					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
+					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
 				);
 
 			}

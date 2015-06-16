@@ -238,8 +238,8 @@ namespace ETRobocon.EV3
 				double distance = odm.TotalMoveDistanceMM;
 				String odm_log = "odm_log," 
 					+ distance.ToString ("F6") + "," 
-					+ loc.getX ().ToString("F6") + "," 
-					+ loc.getY ().ToString("F6");
+					+ loc.X.ToString("F6") + "," 
+					+ loc.Y.ToString("F6");
 				RemoteLogTest (odm_log , connection);
 
 				Thread.Sleep(runThreadIntervalTime);
