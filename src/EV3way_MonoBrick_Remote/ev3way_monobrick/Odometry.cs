@@ -35,7 +35,7 @@ namespace ETRobocon.EV3
 		/// <summary>
 		/// 現在の左モーターのエンコーダー値[度]
 		/// </summary>
-		private int _CurLeftEncoderDEG = 0; 
+		private int _curLeftEncoderDEG = 0; 
 
 		/// <summary>
 		/// 右エンコーダー値の前回との差分[radian]
@@ -83,16 +83,16 @@ namespace ETRobocon.EV3
 //				Location prev_location = _curLocation;
 				_prevLocation = _curLocation;
 				int prev_right_encoder_deg = _curRightEncoderDEG;
-				int prev_left_encoder_deg = _CurLeftEncoderDEG;
+				int prev_left_encoder_deg = _curLeftEncoderDEG;
 				double prev_theta_rad = _curThetaRAD;
 
 				//現在のエンコーダー値[度]の更新
 				_curRightEncoderDEG = rightTachoCount;
-				_CurLeftEncoderDEG = leftTachoCount;
+				_curLeftEncoderDEG = leftTachoCount;
 
 				//エンコーダー値の差分[radian]の算出
 				_diffRightEncoderRAD = degreeToRadian( _curRightEncoderDEG - prev_right_encoder_deg);
-				_diffLeftEncoderRAD = degreeToRadian( _CurLeftEncoderDEG - prev_left_encoder_deg);
+				_diffLeftEncoderRAD = degreeToRadian( _curLeftEncoderDEG - prev_left_encoder_deg);
 
 				//走行距離[mm]の算出
 				double delta_right_move_distance_mm = WHEEL_RADIUS_MM * _diffRightEncoderRAD; //右車輪走行距離増加分
