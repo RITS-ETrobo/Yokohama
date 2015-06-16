@@ -11,7 +11,7 @@ namespace ETRobocon.EV3
 		/// <summary>
 		/// 位置座標x
 		/// </summary>
-		private double x;
+		private double _x;
 
 		/// <summary>
 		/// 位置座標xのset/getを行うproperty
@@ -19,17 +19,17 @@ namespace ETRobocon.EV3
 		/// <value>位置座標x.</value>
 		public double X{
 			set{
-				this.x = value;
+				this._x = value;
 			}
 			get{
-				return x;
+				return _x;
 			}
 		}
 			
 		/// <summary>
 		/// 位置座標y
 		/// </summary>
-		private double y;
+		private double _y;
 
 		/// <summary>
 		/// 位置座標yのset/getを行うproperty
@@ -37,10 +37,10 @@ namespace ETRobocon.EV3
 		/// <value>位置座標y</value>
 		public double Y{
 			set{
-				this.y = value;
+				this._y = value;
 			}
 			get{
-				return y;
+				return _y;
 			}
 		}
 
@@ -48,11 +48,11 @@ namespace ETRobocon.EV3
 		/// 位置座標(x,y)を表す構造体のコンストラクタ
 		/// <see cref="ETRobocon.EV3.Location"/>
 		/// </summary>
-		/// <param name="prm_x">位置座標x.</param>
-		/// <param name="prm_y">位置座標y.</param>
-		public Location (double prm_x, double prm_y){
-			x = prm_x;
-			y = prm_y;
+		/// <param name="x">位置座標x.</param>
+		/// <param name="y">位置座標y.</param>
+		public Location (double x, double y){
+			_x = x;
+			_y = y;
 		}
 	}
 }

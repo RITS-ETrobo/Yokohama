@@ -20,42 +20,42 @@ namespace ETRobocon.EV3
 		/// <summary>
 		/// ロボットの現在地
 		/// </summary>
-		private Location cur_location = new Location(0.0 , 0.0);
+		private Location _curLocation = new Location(0.0 , 0.0);
 
 		/// <summary>
 		/// 現在の右モーターのエンコーダー値[度]
 		/// </summary>
-		private int cur_right_encoder_deg = 0;
+		private int _curRightEncoderDEG = 0;
 
 		/// <summary>
 		/// 現在の左モーターのエンコーダー値[度]
 		/// </summary>
-		private int cur_left_encoder_deg = 0; 
+		private int _CurLeftEncoderDEG = 0; 
 
 		/// <summary>
 		/// 右エンコーダー値の前回との差分[radian]
 		/// </summary>
-		private double diff_right_encoder_rad = 0.0;
+		private double _diffRightEncoderRAD = 0.0;
 
 		/// <summary>
 		/// 左エンコーダー値の前回との差分[radian]
 		/// </summary>
-		private double diff_left_encoder_rad = 0.0;
+		private double _diffLeftEncoderRAD = 0.0;
 
 		/// <summary>
 		/// ロボットの累積走行距離[mm]
 		/// </summary>
-		private double total_move_distance_mm = 0.0;
+		private double _totalMoveDistanceMM = 0.0;
 
 		/// <summary>
 		/// 現在のロボットの旋回角度[radian]
 		/// </summary>
-		private double cur_theta_rad = 0.0;
+		private double _curThetaRAD = 0.0;
 
 		/// <summary>
 		/// ロック用オブジェクト
 		/// </summary>
-		private readonly Object lock_obj = new Object();
+		private readonly Object LOCK_OBJ = new Object();
 
 		/// <summary>
 		/// 自己位置推定クラスのコンストラクタ
@@ -68,42 +68,42 @@ namespace ETRobocon.EV3
 		/// <summary>
 		/// 自己位置推定を実施する.
 		/// </summary>
-		/// <param name="args_left_tacho_count">左モーターのMotor.getTachoCount()の値[度].</param>
-		/// <param name="args_right_tacho_count">右モーターのMotor.getTachoCount()の値[度].</param>
-		public void update(int args_left_tacho_count , int args_right_tacho_count){
+		/// <param name="leftTachoCount">左モーターのMotor.getTachoCount()の値[度].</param>
+		/// <param name="rightTachoCount">右モーターのMotor.getTachoCount()の値[度].</param>
+		public void update(int leftTachoCount , int rightTachoCount){
 
-			lock(lock_obj){
+			lock(LOCK_OBJ){
 
 				//前回の結果をローカル変数に格納
-				Location prev_location = cur_location;
-				int prev_right_encoder_deg = cur_right_encoder_deg;
-				int prev_left_encoder_deg = cur_left_encoder_deg;
-				double prev_theta_rad = cur_theta_rad;
+				Location prev_location = _curLocation;
+				int prev_right_encoder_deg = _curRightEncoderDEG;
+				int prev_left_encoder_deg = _CurLeftEncoderDEG;
+				double prev_theta_rad = _curThetaRAD;
 
 				//現在のエンコーダー値[度]の更新
-				cur_right_encoder_deg = args_right_tacho_count;
-				cur_left_encoder_deg = args_left_tacho_count;
+				_curRightEncoderDEG = rightTachoCount;
+				_CurLeftEncoderDEG = leftTachoCount;
 
 				//エンコーダー値の差分[radian]の算出
-				diff_right_encoder_rad = degreeToRadian( cur_right_encoder_deg - prev_right_encoder_deg);
-				diff_left_encoder_rad = degreeToRadian( cur_left_encoder_deg - prev_left_encoder_deg);
+				_diffRightEncoderRAD = degreeToRadian( _curRightEncoderDEG - prev_right_encoder_deg);
+				_diffLeftEncoderRAD = degreeToRadian( _CurLeftEncoderDEG - prev_left_encoder_deg);
 
 				//走行距離[mm]の算出
-				double delta_right_move_distance_mm = WHEEL_RADIUS_MM * diff_right_encoder_rad; //右車輪走行距離増加分
-				double delta_left_move_distance_mm = WHEEL_RADIUS_MM * diff_left_encoder_rad; //左車輪走行距離増加分
+				double delta_right_move_distance_mm = WHEEL_RADIUS_MM * _diffRightEncoderRAD; //右車輪走行距離増加分
+				double delta_left_move_distance_mm = WHEEL_RADIUS_MM * _diffLeftEncoderRAD; //左車輪走行距離増加分
 				double delta_move_distance_mm = (delta_right_move_distance_mm + delta_left_move_distance_mm) / 2.0; //ロボット全体の走行距離増加分
-				total_move_distance_mm += delta_move_distance_mm; //累積走行距離[mm]に加算
+				_totalMoveDistanceMM += delta_move_distance_mm; //累積走行距離[mm]に加算
 
 				//ロボットの旋回角度増加分[radian]の算出
 				double delta_theta_rad = (delta_right_move_distance_mm - delta_left_move_distance_mm) / AXLE_LENGTH_MM;
 
 				//ロボットの旋回角度[radian]の更新
-				cur_theta_rad = prev_theta_rad + delta_theta_rad;
+				_curThetaRAD = prev_theta_rad + delta_theta_rad;
 
 				//ロボットの現在地の更新
 				double trigono_func_arg = prev_theta_rad + delta_theta_rad / 2.0;
 				double coefficient = delta_move_distance_mm * sinc_approx( delta_theta_rad / 2.0); 
-				cur_location = new Location (
+				_curLocation = new Location (
 					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
 					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
 				);
@@ -115,20 +115,20 @@ namespace ETRobocon.EV3
 		/// 度数法[度]から弧度法[radian]へ変換する.
 		/// </summary>
 		/// <returns>弧度法に直した値[radian].</returns>
-		/// <param name="args_degree">度数法の値[度].</param>
-		private double degreeToRadian (int args_degree){
-			return args_degree * Math.PI / 180.0;
+		/// <param name="degree">度数法の値[度].</param>
+		private double degreeToRadian (int degree){
+			return degree * Math.PI / 180.0;
 		}
 
 		/// <summary>
 		/// sinc関数の近似解をテイラー展開で求める.
 		/// </summary>
 		/// <returns>The approx.</returns>
-		/// <param name="args_rad">sinc関数の引数[radian].</param>
-		private double sinc_approx( double args_rad){
+		/// <param name="rad">sinc関数の引数[radian].</param>
+		private double sinc_approx( double rad){
 
 			double ret = 1.0;
-			double rad_squared = Math.Pow (args_rad, 2);
+			double rad_squared = Math.Pow (rad, 2);
 
 			ret -= rad_squared / (3 * 2 * 1);
 			ret += Math.Pow (rad_squared, 2) / (5 * 4 * 3 * 2 * 1);
@@ -144,8 +144,8 @@ namespace ETRobocon.EV3
 		/// <returns>ロボットの現在値.</returns>
 		public Location CurLocation{
 			get{
-				lock (lock_obj) {
-					return this.cur_location;
+				lock (LOCK_OBJ) {
+					return this._curLocation;
 				}
 			}
 		}
@@ -156,8 +156,8 @@ namespace ETRobocon.EV3
 		/// <returns>累積走行距離[mm].</returns>
 		public double TotalMoveDistanceMM{
 			get{
-				lock (lock_obj) {
-					return this.total_move_distance_mm;
+				lock (LOCK_OBJ) {
+					return this._totalMoveDistanceMM;
 				}
 			}
 		}
