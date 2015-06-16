@@ -18,9 +18,14 @@ namespace ETRobocon.EV3
 		private const double AXLE_LENGTH_MM = 16.0;
 
 		/// <summary>
-		/// ロボットの現在地
+		/// ロボットが現在いる位置
 		/// </summary>
 		private Location _curLocation = new Location(0.0 , 0.0);
+
+		/// <summary>
+		/// ロボットが前回いた位置
+		/// </summary>
+		private Location _prevLocation = new Location (0.0, 0.0);
 
 		/// <summary>
 		/// 現在の右モーターのエンコーダー値[度]
@@ -75,7 +80,8 @@ namespace ETRobocon.EV3
 			lock(LOCK_OBJ){
 
 				//前回の結果をローカル変数に格納
-				Location prev_location = _curLocation;
+//				Location prev_location = _curLocation;
+				_prevLocation = _curLocation;
 				int prev_right_encoder_deg = _curRightEncoderDEG;
 				int prev_left_encoder_deg = _CurLeftEncoderDEG;
 				double prev_theta_rad = _curThetaRAD;
@@ -103,10 +109,12 @@ namespace ETRobocon.EV3
 				//ロボットの現在地の更新
 				double trigono_func_arg = prev_theta_rad + delta_theta_rad / 2.0;
 				double coefficient = delta_move_distance_mm * sinc_approx( delta_theta_rad / 2.0); 
-				_curLocation = new Location (
-					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
-					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
-				);
+				_curLocation.X = _prevLocation.X + coefficient * Math.Cos (trigono_func_arg);
+				_curLocation.Y = _prevLocation.Y + coefficient * Math.Sin (trigono_func_arg);
+//				_curLocation = new Location (
+//					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
+//					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
+//				);
 
 			}
 		}
