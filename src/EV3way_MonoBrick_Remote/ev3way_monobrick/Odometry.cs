@@ -7,17 +7,54 @@ namespace ETRobocon.EV3
 	/// </summary>
 	public class Odometry
 	{
-		private const double WHEEL_RADIUS_MM = 41.0; //車輪の半径[mm]
-		private const double AXLE_LENGTH_MM = 16.0; //車軸の長さ[mm]
+		/// <summary>
+		/// 車輪の半径[mm](refs #65)
+		/// </summary>
+		private const double WHEEL_RADIUS_MM = 41.0;
 
-		private Location cur_location = new Location(0.0 , 0.0); //ロボットの現在地
-		private int cur_right_encoder_deg = 0; //現在の右モーターのエンコーダー値[度]
-		private int cur_left_encoder_deg = 0; //現在の左モーターのエンコーダー値[度]
-		private double diff_right_encoder_rad = 0.0; //右エンコーダー値の差分[radian]
-		private double diff_left_encoder_rad = 0.0; //左エンコーダー値の差分[radian]
-		private double total_move_distance_mm = 0.0; //ロボットの累積走行距離[mm]
-		private double cur_theta_rad = 0.0; //現在のロボットの旋回角度[radian]
+		/// <summary>
+		/// 車軸の長さ[mm](refs #65)
+		/// </summary>
+		private const double AXLE_LENGTH_MM = 16.0;
 
+		/// <summary>
+		/// ロボットの現在地
+		/// </summary>
+		private Location cur_location = new Location(0.0 , 0.0);
+
+		/// <summary>
+		/// 現在の右モーターのエンコーダー値[度]
+		/// </summary>
+		private int cur_right_encoder_deg = 0;
+
+		/// <summary>
+		/// 現在の左モーターのエンコーダー値[度]
+		/// </summary>
+		private int cur_left_encoder_deg = 0; 
+
+		/// <summary>
+		/// 右エンコーダー値の前回との差分[radian]
+		/// </summary>
+		private double diff_right_encoder_rad = 0.0;
+
+		/// <summary>
+		/// 左エンコーダー値の前回との差分[radian]
+		/// </summary>
+		private double diff_left_encoder_rad = 0.0;
+
+		/// <summary>
+		/// ロボットの累積走行距離[mm]
+		/// </summary>
+		private double total_move_distance_mm = 0.0;
+
+		/// <summary>
+		/// 現在のロボットの旋回角度[radian]
+		/// </summary>
+		private double cur_theta_rad = 0.0;
+
+		/// <summary>
+		/// ロック用オブジェクト
+		/// </summary>
 		private readonly Object lock_obj = new Object();
 
 		/// <summary>

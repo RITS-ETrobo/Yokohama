@@ -8,7 +8,11 @@ namespace ETRobocon.EV3
 	/// </summary>
 	public struct Location
 	{
+		/// <summary>
+		/// 位置座標x
+		/// </summary>
 		private double x;
+
 		/// <summary>
 		/// 位置座標xのset/getを行うproperty
 		/// </summary>
@@ -22,7 +26,11 @@ namespace ETRobocon.EV3
 			}
 		}
 			
+		/// <summary>
+		/// 位置座標y
+		/// </summary>
 		private double y;
+
 		/// <summary>
 		/// 位置座標yのset/getを行うproperty
 		/// </summary>
