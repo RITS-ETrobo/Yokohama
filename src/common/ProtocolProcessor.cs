@@ -157,6 +157,10 @@ namespace ETRobocon.Utils
 		/// <returns>正常に送信できたら<c>true</c>, それ以外は<c>false</c>.</returns>
 		/// <exception cref="System.InvalidOperationException">未接続状態でメソッドが呼ばれた.</exception>
 		/// <exception cref="System.ArgumentException"><paramref name="data"/>がサイズ0のArray型である.</exception>
+		/// <exception cref="System.ArgumentNullException"><paramref name="data"/>が<c>null</c>,
+		/// または<paramref name="data"/>が<c>null</c>を要素に持つ配列の場合.</exception>
+		/// <exception cref="System.ArgumentOutOfRangeException"><paramref name="data"/>の型が, 送信できない型の場合.</exception>
+		/// <exception cref="System.Text.EncoderFallbackException"><paramref name="data"/>がASCIIエンコードできない文字列の場合.</exception>
 		public bool SendData(object data)
 		{
 			if (_stream == null) {
