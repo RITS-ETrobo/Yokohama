@@ -156,6 +156,7 @@ namespace ETRobocon.Utils
 		/// <param name="data">送るデータ</param>
 		/// <returns>正常に送信できたら<c>true</c>, それ以外は<c>false</c>.</returns>
 		/// <exception cref="System.InvalidOperationException">未接続状態でメソッドが呼ばれた.</exception>
+		/// <exception cref="System.ArgumentException"><paramref name="data"/>がサイズ0のArray型である.</exception>
 		public bool SendData(object data)
 		{
 			if (_stream == null) {
@@ -172,6 +173,9 @@ namespace ETRobocon.Utils
 				Array arrayData = (Array)data;
 				packetDataType = GetPacketDataType(arrayData.GetType().GetElementType());
 				packetDataCount = (byte)arrayData.Length;
+				if (packetDataCount == 0) {
+					throw new ArgumentException("The Array length is 0.", "data");
+				}
 				packetData = new byte[packetDataCount * packetDataType.GetSize()];
 				for (int i = 0; i < packetDataCount; i++) {
 					PacketDataConverter.ConvertToPacketData(arrayData.GetValue(i), packetDataType).CopyTo(packetData, i * packetDataType.GetSize());
