@@ -47,7 +47,13 @@ namespace ETRobocon.EV3
 		/// <param name="angle">設定したい角度</param>
 		public void SetMotorAngle(int angle)
 		{
-			this.Angle = angle + 3;
+			if (angle > TAIL_ANGLE_MAX) {
+				angle = TAIL_ANGLE_MAX;
+			}
+			if (angle < TAIL_ANGLE_DRIVE) {
+				angle = TAIL_ANGLE_DRIVE;
+			}
+			this.Angle = angle + 3;	// クラスで定めている角度からAPIが定めている角度に変換
 			float pwm = (float)(Angle - this.motorTail.GetTachoCount ()) * P_GAIN; // 比例制御
 			// PWM出力飽和処理
 			if (pwm > PWM_ABS_MAX) {
