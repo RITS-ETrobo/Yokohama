@@ -54,6 +54,7 @@
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
     </Compile>
+    <Compile Include="Utils\LogTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
