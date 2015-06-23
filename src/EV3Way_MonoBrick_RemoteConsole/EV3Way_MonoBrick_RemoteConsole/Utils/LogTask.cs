@@ -8,6 +8,12 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		public LogTask ()
 		{
 		}
+
+
+		/// <summary>ログ受信・表示タスクを開始する</summary>
+		public static void Run()
+		{
+		}
 	}
 }
 
