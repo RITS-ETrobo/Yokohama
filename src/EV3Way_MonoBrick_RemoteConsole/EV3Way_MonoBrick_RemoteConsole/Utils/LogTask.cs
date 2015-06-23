@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace EV3Way_MonoBrick_RemoteConsole.Utils
 {
@@ -8,6 +9,9 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログ機能のインスタンス</summary>
 		private static LogTask _instance = new LogTask();
 
+		/// <summary>ログタスクが実行されているスレッド</summary>
+		private Thread _logThread;
+
 		private LogTask ()
 		{
 		}
@@ -16,7 +20,17 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログ受信・表示タスクを開始する</summary>
 		public static void Run()
 		{
+			LogTask._instance._logThread = new Thread (LogTask._instance.Loop);
+			LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
+			LogTask._instance._logThread.Start ();
+		}
+
+		/// <summary>タスクのメインループ</summary>
+		private void Loop()
+		{
+			while (true) {
+
+			}
 		}
 	}
 }
-

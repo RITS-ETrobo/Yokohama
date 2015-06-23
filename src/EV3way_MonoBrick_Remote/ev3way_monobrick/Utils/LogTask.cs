@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ETRobocon.Utils
 {
@@ -7,6 +8,9 @@ namespace ETRobocon.Utils
 	{
 		/// <summary>ログ機能のインスタンス</summary>
 		private static LogTask _instance = new LogTask();
+
+		/// <summary>ログタスクが実行されているスレッド</summary>
+		private Thread _logThread;
 
 		private LogTask ()
 		{
@@ -17,6 +21,9 @@ namespace ETRobocon.Utils
 		/// <remarks>通信確立も行うので, 接続待ち状態となる.</remarks>
 		public static void Run()
 		{
+			LogTask._instance._logThread = new Thread (LogTask._instance.Loop);
+			LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
+			LogTask._instance._logThread.Start ();
 		}
 
 		/// <summary>ログをリモートで送信する</summary>
@@ -24,6 +31,14 @@ namespace ETRobocon.Utils
 		/// <param name="data">送るデータ</param>
 		public static void LogRemote(object data)
 		{
+		}
+
+		/// <summary>タスクのメインループ</summary>
+		private void Loop()
+		{
+			while (true) {
+				
+			}
 		}
 	}
 }
