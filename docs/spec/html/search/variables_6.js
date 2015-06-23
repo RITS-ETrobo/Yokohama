@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['home',['HOME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a92762e8ec837d5bbbc97038df72d99bc',1,'ETRobocon::EV3::Brick']]],
-  ['hostname',['HOSTNAME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a5eed83a13ed5715620e597e39558b5f2',1,'ETRobocon::EV3::Brick']]]
+  ['gyro',['gyro',['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#a0875b889c2452b24b30e907f192380e3',1,'ETRobocon::EV3::EV3body']]],
+  ['gyro_5foffset',['GYRO_OFFSET',['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html#a9d94b60fad9125aa1dbf70b7f7be45f3',1,'ETRobocon::EV3::MainClass']]]
 ];

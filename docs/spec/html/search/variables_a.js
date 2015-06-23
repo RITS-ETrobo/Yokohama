@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['mono_5fhome',['MONO_HOME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a6980f1db49c5b8797b9587d2ab461f1d',1,'ETRobocon::EV3::Brick']]],
-  ['monopath',['monoPath',['../class_a_o_t_compile_app_1_1_main_class.html#a8e9cafd072b6b9503e968ab2477b61f9',1,'AOTCompileApp::MainClass']]],
-  ['motorl',['motorL',['../struct_e_t_tobocon_1_1_e_v3_1_1_e_v3body.html#a30399b7b1bdde38ced6e3cf5184c5191',1,'ETTobocon::EV3::EV3body']]],
-  ['motorr',['motorR',['../struct_e_t_tobocon_1_1_e_v3_1_1_e_v3body.html#a9cc4373cdc03a323301e450c263a7bc9',1,'ETTobocon::EV3::EV3body']]],
-  ['motort',['motorT',['../struct_e_t_tobocon_1_1_e_v3_1_1_e_v3body.html#a6a891eef0987a9000d28d448483164ac',1,'ETTobocon::EV3::EV3body']]]
+  ['lejos_5fbtpin',['LEJOS_BTPIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a3136368500f02885500f629ef651c414',1,'ETRobocon::EV3::Brick']]],
+  ['lejos_5fhome',['LEJOS_HOME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ac42576476e3fd893f6e10ac2ab54d8b4',1,'ETRobocon::EV3::Brick']]],
+  ['lejos_5fhostname',['LEJOS_HOSTNAME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#af6fc15320fa8db0c2088c6de3c0f2e89',1,'ETRobocon::EV3::Brick']]],
+  ['light_5fblack',['LIGHT_BLACK',['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html#a433da37c483570ace4aa0df15bf30247',1,'ETRobocon::EV3::MainClass']]],
+  ['light_5fwhite',['LIGHT_WHITE',['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html#ae00b71b49dd7948dcb82e5e35cddcf18',1,'ETRobocon::EV3::MainClass']]]
 ];
