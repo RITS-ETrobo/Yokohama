@@ -5,7 +5,10 @@ namespace ETRobocon.Utils
 	/// <summary>ログ機能(送信)</summary>
 	public class LogTask
 	{
-		public LogTask ()
+		/// <summary>ログ機能のインスタンス</summary>
+		private static LogTask _instance = new LogTask();
+
+		private LogTask ()
 		{
 		}
 
