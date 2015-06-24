@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['balancer',['Balancer',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html',1,'ETRobocon::EV3']]],
-  ['balancer_2ecs',['Balancer.cs',['../_balancer_8cs.html',1,'']]],
-  ['battery_5fgain',['BATTERY_GAIN',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a6253d4c4e299b76e4981e14a6d71b5ff',1,'ETRobocon::EV3::Balancer']]],
-  ['battery_5foffset',['BATTERY_OFFSET',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a21ba1160c247bdf10ec2cbe1defdfd23',1,'ETRobocon::EV3::Balancer']]],
-  ['batterymem',['batteryMem',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a626cc005dfd48b944868d74e5aff80f4',1,'ETRobocon::EV3::Brick']]],
-  ['brick',['Brick',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a1f82cc95bc5da1e98228d26aa20dcb68',1,'ETRobocon.EV3.Brick.Brick()'],['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a576cbcf0290f2b264d0c89189f3cb0b3',1,'ETRobocon.EV3.Brick.Brick()']]],
-  ['brick',['Brick',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html',1,'ETRobocon::EV3']]],
-  ['brick_2ecs',['Brick.cs',['../_brick_8cs.html',1,'']]],
-  ['btpin',['BTPIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a66abaa8094cd0c8b573a102bd237c412',1,'ETRobocon::EV3::Brick']]],
-  ['brick_20class_20_28get_20battery_20voltage_2c_20power_20off_20_2creboot_2c_20exit_20and_20change_20hostname_20_29',['Brick class (get battery voltage, power off ,reboot, exit and change hostname )',['../index.html',1,'']]]
+  ['a_5fd',['A_D',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a5590c92e8b840c499be69cd15a037870',1,'ETRobocon::EV3::Balancer']]],
+  ['a_5fr',['A_R',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#ac97091cb2568c9c3f953493dd9e15a8c',1,'ETRobocon::EV3::Balancer']]],
+  ['adc_5fref',['ADC_REF',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a2aae5571b96ac1833295faba9c993b3c',1,'ETRobocon::EV3::Brick']]],
+  ['adc_5fres',['ADC_RES',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#afd05510d49ddfe7ccee1748082ee7208',1,'ETRobocon::EV3::Brick']]],
+  ['amp_5fcin',['AMP_CIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab0f35f43f4d40b2f60a0366787bb5dc3',1,'ETRobocon::EV3::Brick']]],
+  ['amp_5fvin',['AMP_VIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ae10adbafbaeefbf8c809b5b5da22f4ad',1,'ETRobocon::EV3::Brick']]],
+  ['analog_5fbat_5fcur_5foff',['ANALOG_BAT_CUR_OFF',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ac960ba2bf46025b6c9c6111a48fdd0aa',1,'ETRobocon::EV3::Brick']]],
+  ['analog_5fbat_5fv_5foff',['ANALOG_BAT_V_OFF',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#aee68148e76cf7984024ebdc657526e17',1,'ETRobocon::EV3::Brick']]],
+  ['analog_5fsize',['ANALOG_SIZE',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#af7dfb88e41d5916d498fb44ffccdd476',1,'ETRobocon::EV3::Brick']]],
+  ['aotcompileapp',['AOTCompileApp',['../namespace_a_o_t_compile_app.html',1,'']]],
+  ['assemblyinfo_2ecs',['AssemblyInfo.cs',['../_assembly_info_8cs.html',1,'']]]
 ];
