@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.Odometry
 {
 	/// <summary>
 	/// 自己位置推定を行うクラス

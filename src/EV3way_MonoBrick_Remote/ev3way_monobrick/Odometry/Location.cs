@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.Odometry
 {
 	/// <summary>
 	/// 位置座標(x,y)を表す構造体

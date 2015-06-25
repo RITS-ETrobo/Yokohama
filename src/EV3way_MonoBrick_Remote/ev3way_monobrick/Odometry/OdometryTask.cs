@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using MonoBrickFirmware.Movement;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.Odometry
 {
 	/// <summary>
 	/// 自己位置推定計算を行うタスク.

@@ -8,6 +8,7 @@ using MonoBrickFirmware.Display.Dialogs;
 using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
+using ETRobocon.Odometry;
 
 ///	2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム
 namespace ETRobocon.EV3
