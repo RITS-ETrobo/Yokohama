@@ -23,6 +23,8 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログ受信・表示タスクを開始する</summary>
 		public static void Run()
 		{
+			ProtocolProcessorForPC.Connect();
+
 			LogTask._instance._logThread = new Thread (LogTask._instance.Loop);
 			LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
 			LogTask._instance._logThread.Start ();
@@ -31,7 +33,15 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>タスクのメインループ</summary>
 		private void Loop()
 		{
-			while (true) {
+			object data;
+
+			while (true)
+			{
+				if (ProtocolProcessorForPC.Instance.ReceiveData(out data))
+				{
+					// 受信したログを表示
+				}
+
 				Thread.Sleep(LOOP_INTERVAL);
 			}
 		}
