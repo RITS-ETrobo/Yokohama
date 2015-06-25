@@ -15,6 +15,9 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログタスクのメインループのSleep時間</summary>
 		private const int LOOP_INTERVAL = 16;
 
+		/// <summary>ログとして受信できないデータが送られてきたときの代替文字列</summary>
+		private const string INVALID_RECEIVE_DATA = "(Invalid Data)";
+
 		private LogTask ()
 		{
 		}
@@ -40,6 +43,39 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 				if (ProtocolProcessorForPC.Instance.ReceiveData(out data))
 				{
 					// 受信したログを表示
+					if (data is string)	// 文字列
+					{
+						Console.WriteLine((string)data);
+					}
+					else if (data is Array)	// それ以外の組み込み型
+					{
+						Array array = (Array)data;
+						string str = "";
+						foreach (object obj in array)
+						{
+							if (obj is bool) { str += ((bool)obj).ToString(); }
+							else if (obj is sbyte) { str += ((sbyte)obj).ToString(); }
+							else if (obj is short) { str += ((short)obj).ToString(); }
+							else if (obj is int) { str += ((int)obj).ToString(); }
+							else if (obj is long) { str += ((long)obj).ToString(); }
+							else if (obj is byte) { str += ((byte)obj).ToString(); }
+							else if (obj is ushort) { str += ((ushort)obj).ToString(); }
+							else if (obj is uint) { str += ((uint)obj).ToString(); }
+							else if (obj is ulong) { str += ((ulong)obj).ToString(); }
+							else if (obj is decimal) { str += ((decimal)obj).ToString(); }
+							else if (obj is char) { str += ((char)obj).ToString(); }
+							else if (obj is float) { str += ((float)obj).ToString(); }
+							else if (obj is double) { str += ((double)obj).ToString(); }
+							else { str += INVALID_RECEIVE_DATA; }
+
+							str += " ";
+						}
+						Console.WriteLine(str);
+					}
+					else
+					{
+						Console.WriteLine(INVALID_RECEIVE_DATA);
+					}
 				}
 
 				Thread.Sleep(LOOP_INTERVAL);
