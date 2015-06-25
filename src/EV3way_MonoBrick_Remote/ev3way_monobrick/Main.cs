@@ -176,16 +176,13 @@ namespace ETRobocon.EV3
 			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
 			int runThreadIntervalTime = 2;
 
-			// 自己位置推定の実施間隔を表すフィールド
-			// 2014年度は120msec毎(4msecごとのループで30回毎)に自己位置推定の計算を実施していた
-			// 2015年度もとりあえず流用するが、別途実機での動作検証必要(refs #115)
-			int odometryIntervalTime = 120 / runThreadIntervalTime;
-
-			//自己位置推定
-			Odometry odm = new Odometry ();
-			int odm_count = 0;
-
 			RemoteLogTest ("EV3 run.", connection);
+
+			//自己位置推定計算タスクのインスタンス生成
+			OdometryTask odm_task = new OdometryTask (body.motorL,body.motorR);
+
+			//自己位置推定計算タスクの開始
+			odm_task.startTask ();
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -226,24 +223,16 @@ namespace ETRobocon.EV3
 					body.motorR.SetPower(pwmR);
 				}
 
-				// 自己位置推定の計算
-				odm_count = (odm_count + 1) % odometryIntervalTime;
-				if (odm_count == 0) {
-					odm.update (thetaL, theTaR);
-				}
-
-				// 自己位置推定のログ出力
-				// - 出力内容:[タグ],[累積走行距離],[自己位置推定のx座標],[自己位置推定のy座標]
-				Location loc = odm.CurLocation;
-				double distance = odm.TotalMoveDistanceMM;
-				String odm_log = "odm_log," 
-					+ distance.ToString ("F6") + "," 
-					+ loc.X.ToString("F6") + "," 
-					+ loc.Y.ToString("F6");
-				RemoteLogTest (odm_log , connection);
+				//ロボットの現在値・累積走行距離を取得
+				//メインスレッドからは任意のタイミングで呼ぶだけ
+				odm_task.getCurrentLocation ();
+				odm_task.getTotalMoveDistanceMM ();
 
 				Thread.Sleep(runThreadIntervalTime);
 			}
+
+			//自己位置推定計算タスクの終了
+			odm_task.endTask ();
 
 			RemoteLogTest ("EV3 stopped.", connection);
 		}
