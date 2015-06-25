@@ -172,15 +172,20 @@ namespace ETRobocon.EV3
 
 			RemoteLogTest ("EV3 run.", connection);
 
-			SelectDialog<string> dlg = new SelectDialog<string>(new string[]{"LineTrace", "PLineTrace"}, "SELECT!", false);
+			SelectDialog<string> dlg = new SelectDialog<string>(new string[]{"LineTrace", "PLineTrace", "LineTraceOld"}, "SELECT!", false);
 			dlg.Show ();
 			LineDetector ld = null;
 			if ("LineTrace" == dlg.GetSelection ()) {
-				ld = new LineDetector (0, 100, LineDetector.LineEdge.Left, 50);
+				ld = new LineDetector (0, 60, LineDetector.LineEdge.Left, 70);
+			} else if ("PLineTrace" == dlg.GetSelection ()) {
+				ld = new PLineDetector (0, 60, LineDetector.LineEdge.Left, 70);
 			} else {
-				ld = new PLineDetector (0, 100, LineDetector.LineEdge.Left, 50);
+				ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 70);
 			}
-
+			while (!body.touch.IsPressed ()) {
+			}
+			while (body.touch.IsPressed ()) {
+			}
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
