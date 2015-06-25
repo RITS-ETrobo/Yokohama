@@ -12,6 +12,9 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログタスクが実行されているスレッド</summary>
 		private Thread _logThread;
 
+		/// <summary>ログタスクのメインループのSleep時間</summary>
+		private const int LOOP_INTERVAL = 16;
+
 		private LogTask ()
 		{
 		}
@@ -29,7 +32,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		private void Loop()
 		{
 			while (true) {
-
+				Thread.Sleep(LOOP_INTERVAL);
 			}
 		}
 	}

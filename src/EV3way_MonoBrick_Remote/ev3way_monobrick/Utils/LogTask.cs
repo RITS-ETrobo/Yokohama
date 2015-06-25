@@ -12,6 +12,9 @@ namespace ETRobocon.Utils
 		/// <summary>ログタスクが実行されているスレッド</summary>
 		private Thread _logThread;
 
+		/// <summary>ログタスクのメインループのSleep時間</summary>
+		private const int LOOP_INTERVAL = 16;
+
 		private LogTask ()
 		{
 		}
@@ -37,7 +40,7 @@ namespace ETRobocon.Utils
 		private void Loop()
 		{
 			while (true) {
-				
+				Thread.Sleep(LOOP_INTERVAL);
 			}
 		}
 	}
