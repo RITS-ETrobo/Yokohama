@@ -32,6 +32,8 @@ namespace ETRobocon.Utils
 		/// <remarks>通信確立も行うので, 接続待ち状態となる.</remarks>
 		public static void Run()
 		{
+			ProtocolProcessorForEV3.Connect();
+
 			LogTask._instance._logThread = new Thread (LogTask._instance.Loop);
 			LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
 			LogTask._instance._logThread.Start ();
@@ -66,7 +68,14 @@ namespace ETRobocon.Utils
 					}
 				}
 
-				// TODO: ログを送る
+				// ログを送る
+				if (data != null)
+				{
+					if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+					{
+						// TODO: ネットワークエラーによる送信失敗
+					}
+				}
 
 				Thread.Sleep(LOOP_INTERVAL);
 			}
