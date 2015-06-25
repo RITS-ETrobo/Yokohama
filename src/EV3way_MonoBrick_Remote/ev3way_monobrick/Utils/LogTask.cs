@@ -75,6 +75,7 @@ namespace ETRobocon.Utils
 					{
 						// TODO: ネットワークエラーによる送信失敗
 					}
+					continue;
 				}
 
 				Thread.Sleep(LOOP_INTERVAL);
