@@ -71,7 +71,23 @@ namespace ETRobocon.EV3
 		public PLineDetector ( int White, int Black, LineEdge edge, sbyte MaxTurnAbs)
 			: base (White, Black, edge, MaxTurnAbs)
 		{
-			// nothing to do
+			half = (White + Black) / 2;
+			gradient = (float)((2 * MaxTurnAbs) / (White - Black));
+		}
+
+		int half = 0;
+		float gradient = 0;
+
+		/// <summary>
+		/// Turn値を計算します。
+		/// </summary>
+		/// <returns>Turn値</returns>
+		public override sbyte CalculateTurn( int colorValue )
+		{
+			return (sbyte)(((colorValue - half) * gradient ) * (sbyte)edge);
+		}
+	}
+
 		}
 
 		/// <summary>
