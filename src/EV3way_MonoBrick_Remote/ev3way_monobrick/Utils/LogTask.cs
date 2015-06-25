@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;	// for Queue
 using System.Threading;
 
 namespace ETRobocon.Utils
@@ -15,8 +16,15 @@ namespace ETRobocon.Utils
 		/// <summary>ログタスクのメインループのSleep時間</summary>
 		private const int LOOP_INTERVAL = 16;
 
+		/// <summary>ログを溜めておくQueue</summary>
+		private Queue _logBuffer;
+
+		/// <summary>ログのEnqueue, Dequeueを排他させるためのLock</summary>
+		private object _logBufferLock = new object();
+
 		private LogTask ()
 		{
+			_logBuffer = new Queue();
 		}
 
 
@@ -34,12 +42,32 @@ namespace ETRobocon.Utils
 		/// <param name="data">送るデータ</param>
 		public static void LogRemote(object data)
 		{
+			lock (LogTask._instance._logBufferLock)
+			{
+				LogTask._instance._logBuffer.Enqueue(data);
+			}
 		}
 
 		/// <summary>タスクのメインループ</summary>
 		private void Loop()
 		{
-			while (true) {
+			object data;
+
+			while (true)
+			{
+				data = null;
+
+				// Queueに溜まっているログを取得
+				lock (_logBufferLock)
+				{
+					if (_logBuffer.Count != 0)
+					{
+						data = _logBuffer.Dequeue();
+					}
+				}
+
+				// TODO: ログを送る
+
 				Thread.Sleep(LOOP_INTERVAL);
 			}
 		}
