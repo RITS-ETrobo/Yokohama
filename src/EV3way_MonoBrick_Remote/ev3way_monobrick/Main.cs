@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Diagnostics;
 
 using MonoBrickFirmware.Display.Dialogs;
@@ -9,6 +10,7 @@ using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
 using ETRobocon.Odometry;
+using ETRobocon.Utils;
 
 ///	2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム
 namespace ETRobocon.EV3
@@ -62,7 +64,8 @@ namespace ETRobocon.EV3
 			Brick.InstallETRoboExt ();
 
 			// リモート接続
-			NetworkStream connection = connect();
+//			NetworkStream connection = connect();
+			ProtocolProcessorForEV3.Connect();
 
 			// センサーおよびモータに対して初回アクセスをしておく
 			body.color.Read();
@@ -78,13 +81,15 @@ namespace ETRobocon.EV3
 			Balancer.init ();
 
 			// スタート待ち
-			wait_start(body, connection);
+//			wait_start(body, connection);
+			wait_start(body);
 
 			var dialogRun = new InfoDialog ("Running", false);
 			dialogRun.Show ();//Wait for enter to be pressed
 
 			try{
-				run(body, connection);
+//				run(body, connection);
+				run(body);
 			}catch(Exception){
 				var dialogE = new InfoDialog ("Exception.", false);
 				dialogE.Show();//Wait for enter to be pressed
@@ -95,9 +100,9 @@ namespace ETRobocon.EV3
 			body.motorT.Off ();
 
 			// ソケットを閉じる
-			if (connection != null) {
-				connection.Close ();
-			}
+//			if (connection != null) {
+//				connection.Close ();
+//			}
 
 			Lcd.Instance.Clear ();
 			Lcd.Instance.Update ();
@@ -150,6 +155,28 @@ namespace ETRobocon.EV3
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
+					break;  // PC で 'g' キーが押された
+				}
+
+				Thread.Sleep (4);
+			}
+
+			while (body.touch.IsPressed ()) {
+				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+				Thread.Sleep (4);
+			}
+		}
+
+		/// ProtocolProcessorのテスト用
+		static void wait_start(EV3body body) {
+			var dialogSTART = new InfoDialog ("Touch to START", false);
+			dialogSTART.Show (); // Wait for enter to be pressed
+
+			ProtocolProcessorForEV3.Instance.SendData("EV3 is ready.");
+
+			while (!body.touch.IsPressed()) {
+				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+				if (checkRemoteCommand(REMOTE_COMMAND_START)) {
 					break;  // PC で 'g' キーが押された
 				}
 
@@ -238,6 +265,83 @@ namespace ETRobocon.EV3
 			RemoteLogTest ("EV3 stopped.", connection);
 		}
 
+		/// <summary>ProtocolProcessorのテスト用</summary>
+		static void run(EV3body body){
+			// 電圧を取得
+			int battery = Brick.GetVoltageMilliVolt();
+
+			sbyte forward;
+			sbyte turn;
+			int counter = 0;
+			bool alert = false;
+
+			//  runメソッドのsleep間隔を表すフィールド[msec]
+			// バランス制御のみだと3msecで安定
+			// 尻尾制御と障害物検知を使用する場合2msecで安定
+			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
+			int runThreadIntervalTime = 2;
+
+			ProtocolProcessorForEV3.Instance.SendData("EV3 run.");
+
+			//自己位置推定計算タスクのインスタンス生成
+			OdometryTask odm_task = new OdometryTask (body.motorL,body.motorR);
+
+			//自己位置推定計算タスクの開始
+			odm_task.startTask ();
+
+			while (!body.touch.IsPressed ()) 
+			{
+				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
+				if (checkRemoteCommand(REMOTE_COMMAND_STOP)) {
+					break; // PC で 's' キー押されたら走行終了
+				}
+
+				if (++counter >= 40/4) {
+					alert = sonar_alert (body);
+					counter = 0;
+				}
+				if (alert) {
+					forward = 0;
+					turn = 0;
+				} else {
+					forward = 50;
+					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
+				}
+
+				int gyroNow = -body.gyro.Read();
+				int thetaL = body.motorL.GetTachoCount();
+				int theTaR = body.motorR.GetTachoCount();
+				sbyte pwmL, pwmR;
+				Balancer.control (
+					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
+					out pwmL, out pwmR
+				);
+
+				if (pwmL == 0) {
+					body.motorL.Brake();
+				} else {
+					body.motorL.SetPower(pwmL);
+				}
+				if (pwmR == 0) {
+					body.motorR.Brake();
+				} else {
+					body.motorR.SetPower(pwmR);
+				}
+
+				//ロボットの現在値・累積走行距離を取得
+				//メインスレッドからは任意のタイミングで呼ぶだけ
+				odm_task.getCurrentLocation ();
+				odm_task.getTotalMoveDistanceMM ();
+
+				Thread.Sleep(runThreadIntervalTime);
+			}
+
+			//自己位置推定計算タスクの終了
+			odm_task.endTask ();
+
+			ProtocolProcessorForEV3.Instance.SendData("EV3 stopped.");
+		}
+
 		///	<summary>
 		///	超音波センサによる障害物検知
 		///	</summary>
@@ -310,6 +414,26 @@ namespace ETRobocon.EV3
 
 					if (BitConverter.ToInt32(buff,0) == command) {
 						return true;
+					}
+				}
+			}catch(Exception){
+				return false;
+			}
+			return false;
+		}
+
+		/// <summary>ProtocolProcessorのテスト用</summary>
+		static bool checkRemoteCommand(int command) 
+		{
+			try{
+				object receiveObj;
+				if (ProtocolProcessorForEV3.Instance.ReceiveData(out receiveObj)) {
+					if (receiveObj is Array && receiveObj.GetType().GetElementType().Equals(typeof(char))) {
+						char key = (char)((Array)receiveObj).GetValue(0);
+
+						if (key == command) {
+							return true;
+						}
 					}
 				}
 			}catch(Exception){
