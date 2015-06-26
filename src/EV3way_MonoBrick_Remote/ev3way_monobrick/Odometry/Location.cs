@@ -46,7 +46,7 @@ namespace ETRobocon.Odometry
 
 		/// <summary>
 		/// 位置座標(x,y)を表す構造体のコンストラクタ
-		/// <see cref="ETRobocon.EV3.Location"/>
+		/// <see cref="ETRobocon.Odometry.Location"/>
 		/// </summary>
 		/// <param name="x">位置座標x.</param>
 		/// <param name="y">位置座標y.</param>

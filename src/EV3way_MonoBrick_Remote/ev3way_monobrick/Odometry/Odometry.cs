@@ -64,7 +64,7 @@ namespace ETRobocon.Odometry
 
 		/// <summary>
 		/// 自己位置推定クラスのコンストラクタ
-		/// <see cref="ETRobocon.EV3.Odometry"/>
+		/// <see cref="ETRobocon.Odometry.Odometry"/>
 		/// </summary>
 		public Odometry ()
 		{

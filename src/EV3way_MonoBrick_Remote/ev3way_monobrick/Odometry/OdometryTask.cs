@@ -42,7 +42,7 @@ namespace ETRobocon.Odometry
 		const int INTERVAL_TIME = 120;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ETRobocon.EV3.OdometryTask"/> class.
+		/// Initializes a new instance of the <see cref="ETRobocon.Odometry.OdometryTask"/> class.
 		/// </summary>
 		/// <param name="motorL">左モーターのインスタンス.</param>
 		/// <param name="motorR">右モーターのインスタンス.</param>
