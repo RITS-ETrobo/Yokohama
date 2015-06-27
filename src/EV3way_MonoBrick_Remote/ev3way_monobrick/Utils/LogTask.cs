@@ -4,6 +4,16 @@ using System.Threading;
 
 namespace ETRobocon.Utils
 {
+	/// <summary>ログ機能が使用不可となるエラー</summary>
+	/// <remarks>NoError以外が設定されると, それ以降ログ機能が使用できなくなる.(復帰不可)</remarks>
+	public enum ErrorType
+	{
+		NoError,		///< 正常動作中
+		NetworkError,	///< EV3-PC間の接続エラー
+		MemoryOver,		///< キューに積みすぎてメモリオーバー
+		OtherError		///< その他のエラー
+	};
+
 	/// <summary>ログ機能(送信)</summary>
 	public class LogTask
 	{
@@ -22,9 +32,13 @@ namespace ETRobocon.Utils
 		/// <summary>ログのEnqueue, Dequeueを排他させるためのLock</summary>
 		private object _logBufferLock = new object();
 
+		/// <summary>エラーの発生状況</summary>
+		public ErrorType ErrorStatus { get; private set; }
+
 		private LogTask ()
 		{
 			_logBuffer = new Queue();
+			ErrorStatus = ErrorType.NoError;
 		}
 
 
@@ -32,11 +46,19 @@ namespace ETRobocon.Utils
 		/// <remarks>通信確立も行うので, 接続待ち状態となる.</remarks>
 		public static void Run()
 		{
-			ProtocolProcessorForEV3.Connect();
+			try
+			{
+				ProtocolProcessorForEV3.Connect();
 
-			LogTask._instance._logThread = new Thread (LogTask._instance.Loop);
-			LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
-			LogTask._instance._logThread.Start ();
+				LogTask._instance._logThread = new Thread(LogTask._instance.Loop);
+				LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
+				LogTask._instance._logThread.Start();
+			}
+			catch (Exception)
+			{
+				LogTask._instance.ErrorStatus = ErrorType.OtherError;
+				// TODO: ログファイルへの出力
+			}
 		}
 
 		/// <summary>ログをリモートで送信する</summary>
@@ -44,9 +66,22 @@ namespace ETRobocon.Utils
 		/// <param name="data">送るデータ</param>
 		public static void LogRemote(object data)
 		{
-			lock (LogTask._instance._logBufferLock)
+			try
 			{
-				LogTask._instance._logBuffer.Enqueue(data);
+				lock (LogTask._instance._logBufferLock)
+				{
+					LogTask._instance._logBuffer.Enqueue(data);
+				}
+			}
+			catch (OutOfMemoryException)
+			{
+				LogTask._instance.ErrorStatus = ErrorType.MemoryOver;
+				// TODO: ログファイルへの出力
+			}
+			catch (Exception)
+			{
+				LogTask._instance.ErrorStatus = ErrorType.OtherError;
+				// TODO: ログファイルへの出力
 			}
 		}
 
@@ -55,30 +90,43 @@ namespace ETRobocon.Utils
 		{
 			object data;
 
-			while (true)
+			try
 			{
-				data = null;
-
-				// Queueに溜まっているログを取得
-				lock (_logBufferLock)
+				while (true)
 				{
-					if (_logBuffer.Count != 0)
-					{
-						data = _logBuffer.Dequeue();
-					}
-				}
+					data = null;
 
-				// ログを送る
-				if (data != null)
-				{
-					if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+					// Queueに溜まっているログを取得
+					lock (_logBufferLock)
 					{
-						// TODO: ネットワークエラーによる送信失敗
+						if (_logBuffer.Count != 0)
+						{
+							data = _logBuffer.Dequeue();
+						}
 					}
-					continue;
-				}
 
-				Thread.Sleep(LOOP_INTERVAL);
+					// ログを送る
+					if (data != null)
+					{
+						if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+						{
+							// TODO: ネットワークエラーによる送信失敗
+						}
+						continue;
+					}
+
+					Thread.Sleep(LOOP_INTERVAL);
+				}
+			}
+			catch (InvalidOperationException)
+			{
+				ErrorStatus = ErrorType.NetworkError;
+				// TODO: ログファイルへの出力
+			}
+			catch (Exception)
+			{
+				ErrorStatus = ErrorType.OtherError;
+				// TODO: ログファイルへの出力
 			}
 		}
 	}
