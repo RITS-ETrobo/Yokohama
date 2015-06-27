@@ -76,6 +76,8 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 					{
 						Console.WriteLine(INVALID_RECEIVE_DATA);
 					}
+
+					continue;
 				}
 
 				Thread.Sleep(LOOP_INTERVAL);
