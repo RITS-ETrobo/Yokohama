@@ -48,11 +48,14 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				ProtocolProcessorForEV3.Connect();
+				if (LogTask._instance.ErrorStatus == ErrorType.NoError)
+				{
+					ProtocolProcessorForEV3.Connect();
 
-				LogTask._instance._logThread = new Thread(LogTask._instance.Loop);
-				LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
-				LogTask._instance._logThread.Start();
+					LogTask._instance._logThread = new Thread(LogTask._instance.Loop);
+					LogTask._instance._logThread.Priority = ThreadPriority.Lowest;
+					LogTask._instance._logThread.Start();
+				}
 			}
 			catch (Exception)
 			{
@@ -68,9 +71,12 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				lock (LogTask._instance._logBufferLock)
+				if (LogTask._instance.ErrorStatus == ErrorType.NoError)
 				{
-					LogTask._instance._logBuffer.Enqueue(data);
+					lock (LogTask._instance._logBufferLock)
+					{
+						LogTask._instance._logBuffer.Enqueue(data);
+					}
 				}
 			}
 			catch (OutOfMemoryException)
@@ -94,6 +100,11 @@ namespace ETRobocon.Utils
 			{
 				while (true)
 				{
+					if (ErrorStatus != ErrorType.NoError)
+					{
+						break;
+					}
+
 					data = null;
 
 					// Queueに溜まっているログを取得
