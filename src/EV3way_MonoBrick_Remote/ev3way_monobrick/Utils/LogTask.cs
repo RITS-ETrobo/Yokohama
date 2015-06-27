@@ -32,12 +32,30 @@ namespace ETRobocon.Utils
 		/// <summary>ログのEnqueue, Dequeueを排他させるためのLock</summary>
 		private object _logBufferLock = new object();
 
+		/// <summary><see cref=" Enable"/>のフィールド</summary>
+		private bool _enable = false;
+
+		/// <summary>ログ送信の有効/無効</summary>
+		/// <remarks>無効にしても, ログのキューイングはできる</remarks>
+		public static bool Enable
+		{
+			get
+			{
+				return LogTask._instance._enable;
+			}
+			set
+			{
+				LogTask._instance._enable = value;
+			}
+		}
+
 		/// <summary>エラーの発生状況</summary>
 		public ErrorType ErrorStatus { get; private set; }
 
 		private LogTask ()
 		{
 			_logBuffer = new Queue();
+			_enable = false;
 			ErrorStatus = ErrorType.NoError;
 		}
 
@@ -105,25 +123,28 @@ namespace ETRobocon.Utils
 						break;
 					}
 
-					data = null;
-
-					// Queueに溜まっているログを取得
-					lock (_logBufferLock)
+					if (_enable)
 					{
-						if (_logBuffer.Count != 0)
-						{
-							data = _logBuffer.Dequeue();
-						}
-					}
+						data = null;
 
-					// ログを送る
-					if (data != null)
-					{
-						if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+						// Queueに溜まっているログを取得
+						lock (_logBufferLock)
 						{
-							// TODO: ネットワークエラーによる送信失敗
+							if (_logBuffer.Count != 0)
+							{
+								data = _logBuffer.Dequeue();
+							}
 						}
-						continue;
+
+						// ログを送る
+						if (data != null)
+						{
+							if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+							{
+								// TODO: ネットワークエラーによる送信失敗
+							}
+							continue;
+						}
 					}
 
 					Thread.Sleep(LOOP_INTERVAL);
