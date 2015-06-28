@@ -1,0 +1,7 @@
+<map id="ETRobocon.EV3.MainClass.run" name="ETRobocon.EV3.MainClass.run">
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#a04d80e12070f8a1ec2a8a096082c9921" title="バッテリの電源電圧をミリボルト単位で取得する " alt="" coords="259,39,480,80"/>
+<area shape="rect" id="node6" href="$class_e_t_robocon_1_1_e_v3_1_1_balancer.html#acf892d9ec0d9bc53a4c90ebab5b096fc" title="ETRobocon.EV3.Balancer.control" alt="" coords="261,105,477,131"/>
+<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#aeb4e4ad0cad9d2ddff25d3b2d94662f6" title="バッテリの電源電圧をボルト単位で取得する " alt="" coords="528,46,749,73"/>
+<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab786cf5a0f0a4aa06160a5d5acd0298c" title="ETRobocon.EV3.Brick.getBattery\lCurrentRaw" alt="" coords="797,5,1013,47"/>
+<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab3dcbc11c957d26bf1294be3c718b276" title="ETRobocon.EV3.Brick.getBattery\lVoltageRaw" alt="" coords="797,71,1013,112"/>
+</map>
