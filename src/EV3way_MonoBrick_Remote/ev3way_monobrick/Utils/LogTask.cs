@@ -66,7 +66,10 @@ namespace ETRobocon.Utils
 		/// <summary>このインスタンスのエラーの発生状況</summary>
 		public ErrorType InstanceErrorStatus
 		{
-			get;
+			get
+			{
+				return _instanceErrorStatus;
+			}
 			private set
 			{
 				if (value != ErrorType.NoError)
