@@ -41,22 +41,36 @@ namespace ETRobocon.Utils
 		{
 			get
 			{
-				return LogTask._instance._enable;
+				return LogTask._instance._errorStatus == ErrorType.NoError ? LogTask._instance._enable : false;
 			}
 			set
 			{
-				LogTask._instance._enable = value;
+				LogTask._instance._enable = LogTask._instance._errorStatus == ErrorType.NoError ? value : false;
 			}
 		}
 
+		/// <summary><see cref="ErrorStatus"/>のフィールド</summary>
+		private ErrorType _errorStatus;
+
 		/// <summary>エラーの発生状況</summary>
-		public ErrorType ErrorStatus { get; private set; }
+		public static ErrorType ErrorStatus
+		{
+			get;
+			private set
+			{
+				if (value != ErrorType.NoError)
+				{
+					LogTask._instance._enable = false;
+				}
+				LogTask._instance._errorStatus = value;
+			}
+		}
 
 		private LogTask ()
 		{
 			_logBuffer = new Queue();
 			_enable = false;
-			ErrorStatus = ErrorType.NoError;
+			LogTask.ErrorStatus = ErrorType.NoError;
 		}
 
 
@@ -66,7 +80,7 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				if (LogTask._instance.ErrorStatus == ErrorType.NoError)
+				if (LogTask.ErrorStatus == ErrorType.NoError)
 				{
 					ProtocolProcessorForEV3.Connect();
 
@@ -77,7 +91,7 @@ namespace ETRobocon.Utils
 			}
 			catch (Exception)
 			{
-				LogTask._instance.ErrorStatus = ErrorType.OtherError;
+				LogTask.ErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
@@ -89,7 +103,7 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				if (LogTask._instance.ErrorStatus == ErrorType.NoError)
+				if (LogTask.ErrorStatus == ErrorType.NoError)
 				{
 					lock (LogTask._instance._logBufferLock)
 					{
@@ -99,12 +113,12 @@ namespace ETRobocon.Utils
 			}
 			catch (OutOfMemoryException)
 			{
-				LogTask._instance.ErrorStatus = ErrorType.MemoryOver;
+				LogTask.ErrorStatus = ErrorType.MemoryOver;
 				// TODO: ログファイルへの出力
 			}
 			catch (Exception)
 			{
-				LogTask._instance.ErrorStatus = ErrorType.OtherError;
+				LogTask.ErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
@@ -118,7 +132,7 @@ namespace ETRobocon.Utils
 			{
 				while (true)
 				{
-					if (ErrorStatus != ErrorType.NoError)
+					if (LogTask.ErrorStatus != ErrorType.NoError)
 					{
 						break;
 					}
@@ -152,12 +166,12 @@ namespace ETRobocon.Utils
 			}
 			catch (InvalidOperationException)
 			{
-				ErrorStatus = ErrorType.NetworkError;
+				LogTask.ErrorStatus = ErrorType.NetworkError;
 				// TODO: ログファイルへの出力
 			}
 			catch (Exception)
 			{
-				ErrorStatus = ErrorType.OtherError;
+				LogTask.ErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
