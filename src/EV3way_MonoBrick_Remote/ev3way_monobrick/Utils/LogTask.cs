@@ -176,11 +176,19 @@ namespace ETRobocon.Utils
 						// ログを送る
 						if (data != null)
 						{
-							if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+							try
 							{
-								InstanceErrorStatus = ErrorType.NetworkError;
+								if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
+								{
+									InstanceErrorStatus = ErrorType.NetworkError;
+									// TODO: ログファイルへの出力
+								}
+							}
+							catch (ArgumentException)
+							{
 								// TODO: ログファイルへの出力
 							}
+
 							continue;
 						}
 					}
