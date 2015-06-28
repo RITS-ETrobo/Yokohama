@@ -32,45 +32,68 @@ namespace ETRobocon.Utils
 		/// <summary>ログのEnqueue, Dequeueを排他させるためのLock</summary>
 		private object _logBufferLock = new object();
 
-		/// <summary><see cref=" Enable"/>のフィールド</summary>
-		private bool _enable = false;
-
+		/// <summary><see cref="InstanceEnable"/>のフィールド</summary>
+		private bool _instanceEnable = false;
+		/// <summary>このインスタンスによるログ送信の有効/無効</summary>
+		/// <remarks>無効にしても, ログのキューイングはできる</remarks>
+		public bool InstanceEnable
+		{
+			get
+			{
+				return _instanceErrorStatus == ErrorType.NoError ? _instanceEnable : false;
+			}
+			set
+			{
+				_instanceEnable = _instanceErrorStatus == ErrorType.NoError ? value : false;
+			}
+		}
 		/// <summary>ログ送信の有効/無効</summary>
 		/// <remarks>無効にしても, ログのキューイングはできる</remarks>
 		public static bool Enable
 		{
 			get
 			{
-				return LogTask._instance._errorStatus == ErrorType.NoError ? LogTask._instance._enable : false;
+				return LogTask._instance.InstanceEnable;
 			}
 			set
 			{
-				LogTask._instance._enable = LogTask._instance._errorStatus == ErrorType.NoError ? value : false;
+				LogTask._instance.InstanceEnable = value;
 			}
 		}
 
-		/// <summary><see cref="ErrorStatus"/>のフィールド</summary>
-		private ErrorType _errorStatus;
-
-		/// <summary>エラーの発生状況</summary>
-		public static ErrorType ErrorStatus
+		/// <summary><see cref="InstanceErrorStatus"/>のフィールド</summary>
+		private ErrorType _instanceErrorStatus;
+		/// <summary>このインスタンスのエラーの発生状況</summary>
+		public ErrorType InstanceErrorStatus
 		{
 			get;
 			private set
 			{
 				if (value != ErrorType.NoError)
 				{
-					LogTask._instance._enable = false;
+					_instanceEnable = false;
 				}
-				LogTask._instance._errorStatus = value;
+				_instanceErrorStatus = value;
+			}
+		}
+		/// <summary>エラーの発生状況</summary>
+		public static ErrorType ErrorStatus
+		{
+			get
+			{
+				return LogTask._instance.InstanceErrorStatus;
+			}
+			private set
+			{
+				LogTask._instance.InstanceErrorStatus = value;
 			}
 		}
 
 		private LogTask ()
 		{
 			_logBuffer = new Queue();
-			_enable = false;
-			LogTask.ErrorStatus = ErrorType.NoError;
+			InstanceEnable = false;
+			InstanceErrorStatus = ErrorType.NoError;
 		}
 
 
@@ -80,7 +103,7 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				if (LogTask.ErrorStatus == ErrorType.NoError)
+				if (ErrorStatus == ErrorType.NoError)
 				{
 					ProtocolProcessorForEV3.Connect();
 
@@ -91,7 +114,7 @@ namespace ETRobocon.Utils
 			}
 			catch (Exception)
 			{
-				LogTask.ErrorStatus = ErrorType.OtherError;
+				ErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
@@ -103,7 +126,7 @@ namespace ETRobocon.Utils
 		{
 			try
 			{
-				if (LogTask.ErrorStatus == ErrorType.NoError)
+				if (ErrorStatus == ErrorType.NoError)
 				{
 					lock (LogTask._instance._logBufferLock)
 					{
@@ -113,12 +136,12 @@ namespace ETRobocon.Utils
 			}
 			catch (OutOfMemoryException)
 			{
-				LogTask.ErrorStatus = ErrorType.MemoryOver;
+				ErrorStatus = ErrorType.MemoryOver;
 				// TODO: ログファイルへの出力
 			}
 			catch (Exception)
 			{
-				LogTask.ErrorStatus = ErrorType.OtherError;
+				ErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
@@ -132,12 +155,12 @@ namespace ETRobocon.Utils
 			{
 				while (true)
 				{
-					if (LogTask.ErrorStatus != ErrorType.NoError)
+					if (InstanceErrorStatus != ErrorType.NoError)
 					{
 						break;
 					}
 
-					if (_enable)
+					if (InstanceEnable)
 					{
 						data = null;
 
@@ -166,12 +189,12 @@ namespace ETRobocon.Utils
 			}
 			catch (InvalidOperationException)
 			{
-				LogTask.ErrorStatus = ErrorType.NetworkError;
+				InstanceErrorStatus = ErrorType.NetworkError;
 				// TODO: ログファイルへの出力
 			}
 			catch (Exception)
 			{
-				LogTask.ErrorStatus = ErrorType.OtherError;
+				InstanceErrorStatus = ErrorType.OtherError;
 				// TODO: ログファイルへの出力
 			}
 		}
