@@ -178,7 +178,8 @@ namespace ETRobocon.Utils
 						{
 							if (ProtocolProcessorForEV3.Instance.SendData(data) == false)
 							{
-								// TODO: ネットワークエラーによる送信失敗
+								InstanceErrorStatus = ErrorType.NetworkError;
+								// TODO: ログファイルへの出力
 							}
 							continue;
 						}
