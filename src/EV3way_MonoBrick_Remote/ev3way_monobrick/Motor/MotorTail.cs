@@ -8,9 +8,9 @@ namespace ETRobocon.EV3
 	public class MotorTail
 	{
 
-		public const int TAIL_ANGLE_STAND_UP = 91;   //完全停止時の角度[deg]
-		public const int TAIL_ANGLE_DRIVE = 0;       //バランス走行時の角度[deg]
-		public const int TAIL_ANGLE_LOOKUPGATE = 85; //パラメータ未調整
+		public const int TAIL_ANGLE_STAND_UP = 89;   //完全停止時の角度[deg]	//91から89に修正
+		public const int TAIL_ANGLE_DRIVE = 5;       //バランス走行時の角度[deg]
+		public const int TAIL_ANGLE_LOOKUPGATE = 42; //ルックアップゲート用角度. 調整済み.
 
 		///	完全停止用モータ制御比例係数
 		private const float P_GAIN = 2.5F;
