@@ -9,7 +9,7 @@ namespace ETRobocon.EV3
 	public class MotorTail
 	{
 
-		public const int TAIL_ANGLE_STAND_UP = 89;   //完全停止時の角度[deg]	//91から89に修正
+		public const int TAIL_ANGLE_STAND_UP = 91;   //完全停止時の角度[deg]
 		public const int TAIL_ANGLE_DRIVE = 5;       //バランス走行時の角度[deg]
 		public const int TAIL_ANGLE_LOOKUPGATE = 42; //ルックアップゲート用角度. 調整済み.
 		private const int TAIL_ANGLE_MAX = 150;		 //尻尾の角度の最大. この角度を超えた制御はこの角度に収められる.
@@ -79,7 +79,6 @@ namespace ETRobocon.EV3
 
 			/*motorWaitHandle = */motorTail.SpeedProfile (speed, 0, (uint)moveTachoCount, 0, true);
 			//motorWaitHandle.WaitOne();
-			LcdConsole.WriteLine("Tacho: " + motorTail.GetTachoCount());
 
 			/* これまでの尻尾制御ソースコード
 			 * ループ(4ms周期?)の中で常に呼び出し, その呼び出しのときの回転数(角度)から計算したパワーを

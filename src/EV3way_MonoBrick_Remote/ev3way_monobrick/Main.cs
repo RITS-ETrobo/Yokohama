@@ -132,8 +132,9 @@ namespace ETRobocon.EV3
 
 			RemoteLogTest ("EV3 is ready.", connection);
 
+			body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
+
 			while (!body.touch.IsPressed()) {
-				body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
 					break;  // PC で 'g' キーが押された
 				}
@@ -158,9 +159,9 @@ namespace ETRobocon.EV3
 
 			RemoteLogTest ("EV3 run.", connection);
 
+			body.motorTail.SetMotorAngle(MotorTail.TAIL_ANGLE_DRIVE);	// バランス走行用角度に制御
 			while (!body.touch.IsPressed ()) 
 			{
-				body.motorTail.SetMotorAngle(MotorTail.TAIL_ANGLE_DRIVE);	// バランス走行用角度に制御
 				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
 					break; // PC で 's' キー押されたら走行終了
 				}
