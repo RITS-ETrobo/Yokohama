@@ -21,5 +21,13 @@ namespace ETRobocon.Utils
 				new Command(CommandID.Log, typeof(bool), null)
 			};
 		}
+
+		/// <summary>指定したIDに対応するコマンドを取得する</summary>
+		/// <returns>指定したIDを持つコマンド</returns>
+		/// <param name="commandId">取得したいコマンドのID</param>
+		public static Command GetCommand(CommandID commandId)
+		{
+			return CommandManager._Instance._Commands[(int)commandId];
+		}
 	}
 }
