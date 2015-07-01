@@ -19,7 +19,7 @@ namespace ETRobocon.Utils
 				new Command(CommandID.Run, null, null),
 				new Command(CommandID.Stop, null, null),
 				new Command(CommandID.Log, typeof(bool), null)
-			}
+			};
 		}
 	}
 }
