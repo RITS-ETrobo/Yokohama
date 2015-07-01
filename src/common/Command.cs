@@ -16,8 +16,15 @@ namespace ETRobocon.Utils
 		/// <value>第二パラメータが無ければ<c>null</c>, それ以外はその型の<see cref="System.Type"/></value>
 		public Type ParameterType2 { get; set; }
 
-		public Command ()
+		/// <summary>コマンドの作成</summary>
+		/// <param name="commandId">このコマンドのID</param>
+		/// <param name="parameterType1">このコマンドの第一パラメータの型. 第一パラメータが無ければ<c>null</c>.</param>
+		/// <param name="parameterType2">このコマンドの第二パラメータの型. 第二パラメータが無ければ<c>null</c>.</param>
+		public Command (CommandID commandId, Type parameterType1, Type parameterType2)
 		{
+			Id = commandId;
+			ParameterType1 = parameterType1;
+			ParameterType2 = parameterType2;
 		}
 	}
 }
