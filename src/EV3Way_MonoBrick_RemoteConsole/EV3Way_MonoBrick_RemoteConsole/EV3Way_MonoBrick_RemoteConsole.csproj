@@ -54,6 +54,15 @@
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
     </Compile>
+    <Compile Include="..\..\common\Command.cs">
+      <Link>Utils\Command.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\CommandID.cs">
+      <Link>Utils\CommandID.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\CommandManager.cs">
+      <Link>Utils\CommandManager.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
