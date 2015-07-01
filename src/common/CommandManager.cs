@@ -15,7 +15,7 @@ namespace ETRobocon.Utils
 		{
 			// 全コマンドリストの作成
 			// この配列の要素の順序は, CommandIDの列挙順と一致させること.
-			_Commands = new Command[CommandID.NumOfCommand] {
+			_Commands = new Command[(int)CommandID.NumOfCommand] {
 				new Command(CommandID.Run, null, null),
 				new Command(CommandID.Stop, null, null),
 				new Command(CommandID.Log, typeof(bool), null)
