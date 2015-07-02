@@ -50,13 +50,33 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 				if (key.Key == ConsoleKey.Enter)
 				{
 					Console.Write('\n');
+
+					Command command = ParseCommand(str);
+
 					str = "";
+
+					if (command.Id == CommandID.Invalid)
+					{
+						// TODO: usageの表示
+						continue;
+					}
 				}
 				else
 				{
 					str += key.KeyChar;
 				}
 			}
+		}
+
+		/// <summary>ユーザーが入力した文字列からコマンドへ変換する</summary>
+		/// <returns>
+		/// 文字列から変換されたコマンド.
+		/// 変換できなかった場合は<see cref="Command.Id"/>が<see cref="CommandID.Invalid"/>となる.
+		/// </returns>
+		/// <param name="str">ユーザが入力した文字列</param>
+		private Command ParseCommand(string str)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
