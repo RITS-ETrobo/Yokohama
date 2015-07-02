@@ -64,6 +64,9 @@
     <Compile Include="..\..\common\CommandFormatManager.cs">
       <Link>Utils\CommandFormatManager.cs</Link>
     </Compile>
+    <Compile Include="..\..\common\Command.cs">
+      <Link>Utils\Command.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
