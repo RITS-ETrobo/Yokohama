@@ -17,8 +17,18 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>コマンドタスクのメインループのSleep時間</summary>
 		private const int LOOP_INTERVAL = 16;
 
+		/// <summary>コマンドの名前</summary>
+		/// <remarks><see cref="CommandID"/>と, コマンドの名前を結びつけるために利用する.</remarks>
+		private string[] _CommandName;
+
 		private CommandTask()
 		{
+			// CommandIDの列挙順と対応させること
+			_CommandName = new string[(int)CommandID.NumOfCommand] {
+				"run",
+				"stop",
+				"log"
+			};
 		}
 
 		/// <summary>コマンドタスクの開始</summary>
