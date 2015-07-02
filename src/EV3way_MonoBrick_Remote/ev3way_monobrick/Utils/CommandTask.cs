@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;	// for Thread
+using MonoBrickFirmware.Display.Dialogs;	// for InfoDialog
 
 namespace ETRobocon.Utils
 {
@@ -15,8 +16,21 @@ namespace ETRobocon.Utils
 		/// <summary>コマンドタスクのメインループのSleep時間</summary>
 		private const int LOOP_INTERVAL = 16;
 
+		/// <summary>コマンドの実装メソッドのデリゲート</summary>
+		private delegate void CommandMethodDel(object parameter1, object parameter2);
+
+		/// <summary>コマンドの実装メソッド</summary>
+		/// <remarks><see cref="CommandID"/>と, コマンドの実装を結びつけるために利用する.</remarks>
+		private CommandMethodDel[] _CommandMethods;
+
 		private CommandTask()
 		{
+			// CommandIDの列挙順と対応させること
+			_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
+				CommandRun,
+				CommandStop,
+				CommandLog
+			};
 		}
 
 		/// <summary>コマンドタスクの開始</summary>
@@ -36,6 +50,24 @@ namespace ETRobocon.Utils
 			{
 				Thread.Sleep(LOOP_INTERVAL);
 			}
+		}
+
+		private void CommandRun(object parameter1, object parameter2)
+		{
+			var dialogRun = new InfoDialog ("Run Command", false);
+			dialogRun.Show ();
+		}
+
+		private void CommandStop(object parameter1, object parameter2)
+		{
+			var dialogRun = new InfoDialog ("Stop command", false);
+			dialogRun.Show ();
+		}
+
+		private void CommandLog(object parameter1, object parameter2)
+		{
+			var dialogRun = new InfoDialog ("Log command", false);
+			dialogRun.Show ();
 		}
 	}
 }
