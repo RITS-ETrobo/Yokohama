@@ -14,9 +14,6 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>コマンドタスクが実行されているスレッド</summary>
 		private Thread _CommandThread;
 
-		/// <summary>コマンドタスクのメインループのSleep時間</summary>
-		private const int LOOP_INTERVAL = 16;
-
 		/// <summary>コマンドの名前</summary>
 		/// <remarks><see cref="CommandID"/>と, コマンドの名前を結びつけるために利用する.</remarks>
 		private string[] _CommandName;
@@ -44,9 +41,21 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>コマンドタスクのメインループ</summary>
 		private void Loop()
 		{
+			string str = "";
+
 			while (true)
 			{
-				Thread.Sleep(LOOP_INTERVAL);
+				ConsoleKeyInfo key = Console.ReadKey();	// 待ち状態となる
+
+				if (key.Key == ConsoleKey.Enter)
+				{
+					Console.Write('\n');
+					str = "";
+				}
+				else
+				{
+					str += key.KeyChar;
+				}
 			}
 		}
 	}
