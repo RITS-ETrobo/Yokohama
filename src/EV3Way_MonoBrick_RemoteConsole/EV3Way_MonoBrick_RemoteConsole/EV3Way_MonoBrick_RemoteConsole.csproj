@@ -63,6 +63,7 @@
     <Compile Include="..\..\common\CommandManager.cs">
       <Link>Utils\CommandManager.cs</Link>
     </Compile>
+    <Compile Include="Utils\CommandTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
