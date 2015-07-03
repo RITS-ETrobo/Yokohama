@@ -66,6 +66,17 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 						DisplayHelp();
 						continue;
 					}
+
+					// 送信
+					Console.WriteLine("sending command...:" + _CommandName[(int)command.Id]);
+
+					ProtocolProcessorForPC.Instance.SendData((object)(int)command.Id);
+					if (command.Parameter1 != null) {
+						ProtocolProcessorForPC.Instance.SendData(command.Parameter1);
+					}
+					if (command.Parameter2 != null) {
+						ProtocolProcessorForPC.Instance.SendData(command.Parameter2);
+					}
 				}
 				else
 				{
