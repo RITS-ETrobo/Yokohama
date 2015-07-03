@@ -77,6 +77,14 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		private CommandID ConvertStringToId(string commandName)
 		{
 			throw new NotImplementedException();
+			for (int i = 0; i < (int)CommandID.NumOfCommand; i++)
+			{
+				if (_CommandName[i].CompareTo(commandName) == 0)
+				{
+					return (CommandID)i;
+				}
+			}
+			return CommandID.Invalid;
 		}
 
 		/// <summary>ユーザーが入力した文字列からコマンドへ変換する</summary>
