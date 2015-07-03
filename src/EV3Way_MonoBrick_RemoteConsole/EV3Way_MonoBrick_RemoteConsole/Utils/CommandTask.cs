@@ -57,7 +57,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 
 					if (command.Id == CommandID.Invalid)
 					{
-						// TODO: usageの表示
+						DisplayHelp();
 						continue;
 					}
 				}
@@ -112,6 +112,35 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 				
 			// そのコマンドのフォーマットに従って解析
 			return CommandFormatManager.GetCommandFormat(command_id).ParseStringToCommand(argv);
+		}
+
+		/// <summary>コマンドの使い方(フォーマット)を表示</summary>
+		private void DisplayHelp()
+		{
+			Console.WriteLine("usage: {");
+
+			for (int i = 0; i < (int)CommandID.NumOfCommand; i++)
+			{
+				CommandFormat command_format = CommandFormatManager.GetCommandFormat((CommandID)i);
+
+				// 名前
+				Console.Write("\tname:" + _CommandName[i]);
+
+				// パラメータ1
+				if (command_format.ParameterType1 != null)
+				{
+					Console.Write("\tparameter1:" + command_format.ParameterType1.ToString());
+				}
+
+				// パラメータ2
+				if (command_format.ParameterType2 != null)
+				{
+					Console.Write("\tparameter2:" + command_format.ParameterType2.ToString());
+				}
+
+				Console.Write('\n');
+			}
+			Console.WriteLine("}");
 		}
 	}
 }
