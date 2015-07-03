@@ -51,6 +51,12 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 				{
 					Console.Write('\n');
 
+					// quit は特別処理
+					if (str.Equals("quit"))
+					{
+						break;
+					}
+
 					Command command = ParseCommand(str);
 
 					str = "";
@@ -140,7 +146,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 
 				Console.Write('\n');
 			}
-			Console.WriteLine("}");
+			Console.WriteLine("\tname:quit\n}");
 		}
 	}
 }
