@@ -45,11 +45,24 @@ namespace ETRobocon.EV3
 		///	リモートコマンド : ???
 		const int REMOTE_COMMAND_CLOSE = 0;
 
-		///	リモートコマンド : 開始 'g'
-		const int REMOTE_COMMAND_START = 'g';
+		/// <summary><see cref="RunCommandReceived"/>のフィールド</summary>
+		private static bool _RunCommandReceived = false;
+		/// <summary>runコマンドを受信したら立つフラグ</summary>
+		public static bool RunCommandReceived
+		{
+			get{ return _RunCommandReceived; }
+			set{ _RunCommandReceived = value; }
+		}
 
-		///	リモートコマンド : 停止 'g'
-		const int REMOTE_COMMAND_STOP  = 's';
+		/// <summary><see cref="StopCommandReceived"/>のフィールド</summary>
+		private static bool _StopCommandReceived = false;
+		/// <summary>stopコマンドを受信したら立つフラグ</summary>
+		/// <value><c>true</c> if stop command received; otherwise, <c>false</c>.</value>
+		public static bool StopCommandReceived
+		{
+			get{ return _StopCommandReceived; }
+			set{ _StopCommandReceived = value; }
+		}
 
 		public static void Main()
 		{
@@ -148,8 +161,9 @@ namespace ETRobocon.EV3
 
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
-					break;  // PC で 'g' キーが押された
+				if (MainClass.RunCommandReceived) {
+					MainClass.RunCommandReceived = false;
+					break;  // "run"コマンド受信
 				}
 
 				Thread.Sleep (4);
@@ -175,8 +189,9 @@ namespace ETRobocon.EV3
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
-					break; // PC で 's' キー押されたら走行終了
+				if (MainClass.StopCommandReceived) {
+					MainClass.StopCommandReceived = false;
+					break; // "stop"コマンド受信
 				}
 
 				if (++counter >= 40/4) {

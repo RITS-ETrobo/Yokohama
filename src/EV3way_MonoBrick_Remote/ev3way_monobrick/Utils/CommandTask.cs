@@ -2,6 +2,8 @@
 using System.Threading;	// for Thread
 using MonoBrickFirmware.Display.Dialogs;	// for InfoDialog
 
+using ETRobocon.EV3;	// for MainClass
+
 namespace ETRobocon.Utils
 {
 	/// <summary>コマンド受信・実行タスク</summary>
@@ -112,14 +114,12 @@ namespace ETRobocon.Utils
 
 		private void CommandRun(object parameter1, object parameter2)
 		{
-			var dialogRun = new InfoDialog ("Run Command", false);
-			dialogRun.Show ();
+			MainClass.RunCommandReceived = true;
 		}
 
 		private void CommandStop(object parameter1, object parameter2)
 		{
-			var dialogRun = new InfoDialog ("Stop command", false);
-			dialogRun.Show ();
+			MainClass.StopCommandReceived = true;
 		}
 
 		private void CommandLog(object parameter1, object parameter2)
