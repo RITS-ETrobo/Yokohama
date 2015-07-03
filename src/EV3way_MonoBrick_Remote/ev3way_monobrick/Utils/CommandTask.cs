@@ -59,7 +59,22 @@ namespace ETRobocon.Utils
 
 					CommandFormat command_format = CommandFormatManager.GetCommandFormat(command_id);
 
-					// TODO: コマンドパラメータ受信 & 実行
+					object param1 = null;
+					object param2 = null;
+
+					// コマンドパラメータ受信
+					if (command_format.ParameterType1 != null)
+					{
+						// TODO: パラメータ1の受信
+
+						if (command_format.ParameterType2 != null)
+						{
+							// TODO: パラメータ2の受信
+						}
+					}
+
+					// コマンド実行
+					_CommandMethods[(int)command_id](param1, param2);
 				}
 
 				Thread.Sleep(LOOP_INTERVAL);
