@@ -53,6 +53,12 @@ namespace ETRobocon.Utils
 				data = null;
 				if (ProtocolProcessorForEV3.Instance.ReceiveData (out data))
 				{
+					Array array = (Array)data;
+					object raw_command_id = array.GetValue(0);
+					CommandID command_id = (CommandID)(int)raw_command_id;	// IDは必ずintで送られてくる
+
+					CommandFormat command_format = CommandFormatManager.GetCommandFormat(command_id);
+
 					// TODO: コマンドパラメータ受信 & 実行
 				}
 
