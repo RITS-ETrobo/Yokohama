@@ -42,6 +42,11 @@ namespace ETRobocon.Utils
 			{
 				return parsedCommand;
 			}
+			// パラメータをとるコマンドなのにパラメータがなければ不正
+			if ((ParameterType1 != null && argv.Length < 2) || (ParameterType2 != null && argv.Length < 3))
+			{
+				return parsedCommand;
+			}
 
 			// パラメータ1
 			if (argv.Length >= 2)
