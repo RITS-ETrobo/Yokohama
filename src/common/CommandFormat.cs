@@ -26,5 +26,16 @@ namespace ETRobocon.Utils
 			ParameterType1 = parameterType1;
 			ParameterType2 = parameterType2;
 		}
+
+		/// <summary>文字列の配列から, このコマンドのフォーマットに従って<see cref="Command"/>を作成する.</summary>
+		/// <returns>
+		/// 変換された<see cref="Command"/>.
+		/// 変換が失敗すると, <see cref="Command.Id"/>が<see cref="CommandID.Invalid"/>に設定される.
+		/// </returns>
+		/// <param name="argv">ユーザが入力したコマンド名, およびパラメータを表す文字列</param>
+		public Command ParseStringToCommand(string[] argv)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

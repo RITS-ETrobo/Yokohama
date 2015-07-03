@@ -68,6 +68,17 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 			}
 		}
 
+		/// <summary>文字列からコマンドIDへ変換する</summary>
+		/// <returns>
+		/// コマンド名に対応する<see cref="CommandID"/>.
+		/// 対応するものが無ければ, <see cref="CommandID.Invalid"/>
+		/// </returns>
+		/// <param name="commandName">コマンドの名前</param>
+		private CommandID ConvertStringToId(string commandName)
+		{
+			throw new NotImplementedException();
+		}
+
 		/// <summary>ユーザーが入力した文字列からコマンドへ変換する</summary>
 		/// <returns>
 		/// 文字列から変換されたコマンド.
@@ -76,7 +87,18 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <param name="str">ユーザが入力した文字列</param>
 		private Command ParseCommand(string str)
 		{
-			throw new NotImplementedException();
+			string[] argv = str.Split(null);
+
+			// このコマンド名に対応するコマンドIDを取得
+			CommandID command_id;
+			command_id = ConvertStringToId(argv[0]);
+			if (command_id == CommandID.Invalid)
+			{
+				return new Command(CommandID.Invalid, null, null);
+			}
+				
+			// そのコマンドのフォーマットに従って解析
+			return CommandFormatManager.GetCommandFormat(command_id).ParseStringToCommand(argv);
 		}
 	}
 }
