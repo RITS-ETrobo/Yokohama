@@ -46,8 +46,16 @@ namespace ETRobocon.Utils
 		/// <summary>コマンドタスクのメインループ</summary>
 		private void Loop()
 		{
+			object data;
+
 			while (true)
 			{
+				data = null;
+				if (ProtocolProcessorForEV3.Instance.ReceiveData (out data))
+				{
+					// TODO: コマンドパラメータ受信 & 実行
+				}
+
 				Thread.Sleep(LOOP_INTERVAL);
 			}
 		}
