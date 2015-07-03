@@ -57,41 +57,28 @@ namespace ETRobocon.Utils
 			object data;
 			int receive_count;
 
-			while (true)
+			try
 			{
-				data = null;
-				if (ProtocolProcessorForEV3.Instance.ReceiveData (out data))
+				while (true)
 				{
-					Array array = (Array)data;
-					object raw_command_id = array.GetValue(0);
-					CommandID command_id = (CommandID)(int)raw_command_id;	// IDは必ずintで送られてくる
-
-					CommandFormat command_format = CommandFormatManager.GetCommandFormat(command_id);
-
-					object param1 = null;
-					object param2 = null;
-
-					// コマンドパラメータ受信
-					if (command_format.ParameterType1 != null)
+					data = null;
+					if (ProtocolProcessorForEV3.Instance.ReceiveData (out data))
 					{
-						// パラメータ1の受信
-						receive_count = 0;
-						while (ProtocolProcessorForEV3.Instance.ReceiveData(out param1) == false)
-						{
-							Thread.Sleep(RECEIVE_INTERVAL);
-							receive_count++;
-							if (receive_count == RECEIVE_WAIT_COUNT_MAX)
-							{
-								// TODO: ログファイルに残す
-								break;
-							}
-						}
+						Array array = (Array)data;
+						object raw_command_id = array.GetValue(0);
+						CommandID command_id = (CommandID)(int)raw_command_id;	// IDは必ずintで送られてくる
 
-						if (command_format.ParameterType2 != null)
+						CommandFormat command_format = CommandFormatManager.GetCommandFormat(command_id);
+
+						object param1 = null;
+						object param2 = null;
+
+						// コマンドパラメータ受信
+						if (command_format.ParameterType1 != null)
 						{
-							// パラメータ2の受信
+							// パラメータ1の受信
 							receive_count = 0;
-							while (ProtocolProcessorForEV3.Instance.ReceiveData(out param2) == false)
+							while (ProtocolProcessorForEV3.Instance.ReceiveData(out param1) == false)
 							{
 								Thread.Sleep(RECEIVE_INTERVAL);
 								receive_count++;
@@ -101,14 +88,34 @@ namespace ETRobocon.Utils
 									break;
 								}
 							}
+
+							if (command_format.ParameterType2 != null)
+							{
+								// パラメータ2の受信
+								receive_count = 0;
+								while (ProtocolProcessorForEV3.Instance.ReceiveData(out param2) == false)
+								{
+									Thread.Sleep(RECEIVE_INTERVAL);
+									receive_count++;
+									if (receive_count == RECEIVE_WAIT_COUNT_MAX)
+									{
+										// TODO: ログファイルに残す
+										break;
+									}
+								}
+							}
 						}
+
+						// コマンド実行
+						_CommandMethods[(int)command_id](param1, param2);
 					}
 
-					// コマンド実行
-					_CommandMethods[(int)command_id](param1, param2);
+					Thread.Sleep(LOOP_INTERVAL);
 				}
-
-				Thread.Sleep(LOOP_INTERVAL);
+			}
+			catch (Exception)
+			{
+				// TODO: ログファイルへの出力
 			}
 		}
 
