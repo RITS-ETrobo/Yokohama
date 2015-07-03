@@ -93,8 +93,14 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// 変換できなかった場合は<see cref="Command.Id"/>が<see cref="CommandID.Invalid"/>となる.
 		/// </returns>
 		/// <param name="str">ユーザが入力した文字列</param>
+		/// <exception cref="System.ArgumentNullException">引数が<c>null</c></exception>
 		private Command ParseCommand(string str)
 		{
+			if (str == null)
+			{
+				throw new ArgumentNullException ("str");
+			}
+
 			string[] argv = str.Split(null);
 
 			// このコマンド名に対応するコマンドIDを取得
