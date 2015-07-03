@@ -36,6 +36,38 @@ namespace ETRobocon.Utils
 		public Command ParseStringToCommand(string[] argv)
 		{
 			throw new NotImplementedException();
+			Command parsedCommand = new Command(CommandID.Invalid, null, null);
+
+			// パラメータが2個以上あるのは不正
+			if (argv.Length > 3)
+			{
+				return parsedCommand;
+			}
+
+			// パラメータ1
+			if (argv.Length >= 2)
+			{
+				// TODO: パラメータの変換
+				if (!true)
+				{
+					return parsedCommand;
+				}
+			}
+
+			// パラメータ2
+			if (argv.Length >= 3)
+			{
+				// TODO: パラメータの変換
+				if (!true)
+				{
+					return parsedCommand;
+				}
+			}
+
+			// ID
+			parsedCommand.Id = this.Id;
+
+			return parsedCommand;
 		}
 	}
 }
