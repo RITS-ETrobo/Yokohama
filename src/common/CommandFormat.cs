@@ -35,7 +35,6 @@ namespace ETRobocon.Utils
 		/// <param name="argv">ユーザが入力したコマンド名, およびパラメータを表す文字列</param>
 		public Command ParseStringToCommand(string[] argv)
 		{
-			throw new NotImplementedException();
 			Command parsedCommand = new Command(CommandID.Invalid, null, null);
 
 			// パラメータが2個以上あるのは不正

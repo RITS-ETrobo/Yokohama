@@ -76,7 +76,6 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <param name="commandName">コマンドの名前</param>
 		private CommandID ConvertStringToId(string commandName)
 		{
-			throw new NotImplementedException();
 			for (int i = 0; i < (int)CommandID.NumOfCommand; i++)
 			{
 				if (_CommandName[i].CompareTo(commandName) == 0)
