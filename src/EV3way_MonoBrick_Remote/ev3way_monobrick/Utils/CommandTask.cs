@@ -16,6 +16,12 @@ namespace ETRobocon.Utils
 		/// <summary>コマンドタスクのメインループのSleep時間</summary>
 		private const int LOOP_INTERVAL = 16;
 
+		/// <summary>コマンドパラメータがEV3側に到着するのが遅れたときの待ち時間</summary>
+		private const int RECEIVE_INTERVAL = 4;
+
+		/// <summary>この回数だけパラメータの受信を試みる</summary>
+		private const int RECEIVE_WAIT_COUNT_MAX = 5;
+
 		/// <summary>コマンドの実装メソッドのデリゲート</summary>
 		private delegate void CommandMethodDel(object parameter1, object parameter2);
 
@@ -47,6 +53,7 @@ namespace ETRobocon.Utils
 		private void Loop()
 		{
 			object data;
+			int receive_count;
 
 			while (true)
 			{
@@ -65,11 +72,33 @@ namespace ETRobocon.Utils
 					// コマンドパラメータ受信
 					if (command_format.ParameterType1 != null)
 					{
-						// TODO: パラメータ1の受信
+						// パラメータ1の受信
+						receive_count = 0;
+						while (ProtocolProcessorForEV3.Instance.ReceiveData(out param1) == false)
+						{
+							Thread.Sleep(RECEIVE_INTERVAL);
+							receive_count++;
+							if (receive_count == RECEIVE_WAIT_COUNT_MAX)
+							{
+								// TODO: ログファイルに残す
+								break;
+							}
+						}
 
 						if (command_format.ParameterType2 != null)
 						{
-							// TODO: パラメータ2の受信
+							// パラメータ2の受信
+							receive_count = 0;
+							while (ProtocolProcessorForEV3.Instance.ReceiveData(out param2) == false)
+							{
+								Thread.Sleep(RECEIVE_INTERVAL);
+								receive_count++;
+								if (receive_count == RECEIVE_WAIT_COUNT_MAX)
+								{
+									// TODO: ログファイルに残す
+									break;
+								}
+							}
 						}
 					}
 
