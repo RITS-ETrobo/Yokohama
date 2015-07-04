@@ -18,6 +18,9 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <remarks><see cref="CommandID"/>と, コマンドの名前を結びつけるために利用する.</remarks>
 		private string[] _CommandName;
 
+		/// <summary>プロンプト文字列</summary>
+		private const string PROMPT = ">";
+
 		private CommandTask()
 		{
 			// CommandIDの列挙順と対応させること
@@ -43,6 +46,8 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		{
 			string str = "";
 
+			Console.Write(PROMPT);
+
 			while (true)
 			{
 				ConsoleKeyInfo key = Console.ReadKey();	// 待ち状態となる
@@ -64,6 +69,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 					if (command.Id == CommandID.Invalid)
 					{
 						DisplayHelp();
+						Console.Write(PROMPT);
 						continue;
 					}
 
@@ -77,6 +83,8 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 					if (command.Parameter2 != null) {
 						ProtocolProcessorForPC.Instance.SendData(command.Parameter2);
 					}
+
+					Console.Write(PROMPT);
 				}
 				else
 				{
