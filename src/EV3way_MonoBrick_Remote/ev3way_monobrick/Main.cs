@@ -180,7 +180,7 @@ namespace ETRobocon.EV3
 			} else if ("PLineTrace" == dlg.GetSelection ()) {
 				ld = new PLineDetector (0, 60, LineDetector.LineEdge.Left, 70);
 			} else {
-				ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 70);
+				ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f );
 			}
 			while (!body.touch.IsPressed ()) {
 			}

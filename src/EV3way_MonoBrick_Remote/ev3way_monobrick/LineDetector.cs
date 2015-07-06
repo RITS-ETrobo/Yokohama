@@ -102,9 +102,9 @@ namespace ETRobocon.EV3
 		const float InitKp = 60.0f;
 		const float InitKi = 0.0f;
 		const float InitKd = 180.0f;
-		float Kp = InitKp;
-		float Ki = InitKi;
-		float Kd = InitKd;
+		float mKp = InitKp;
+		float mKi = InitKi;
+		float mKd = InitKd;
 		int bufIndex = 0;
 
 		/// <summary>
@@ -114,11 +114,14 @@ namespace ETRobocon.EV3
 		/// <param name="Black">光センサが黒と認識する値</param>
 		/// <param name="edge">線のどちらを読むか</param>
 		/// <param name="MaxTurnAbs">Turn値の最大、最小値の絶対値</param>
-		public LineDetectorOld ( int White, int Black, LineEdge edge, sbyte MaxTurnAbs)
-			: base (White, Black, edge, MaxTurnAbs)
+		public LineDetectorOld ( int White, int Black, LineEdge edge, float Kp, float Ki, float Kd )
+			: base (White, Black, edge, 0)
 		{
 			lineThreshold = Black + ((3 * (White - Black)) / 4);
 			InitBuffer ();
+			this.mKp = Kp;
+			this.mKi = Ki;
+			this.mKd = Kd;
 		}
 
 		/// <summary>
@@ -159,16 +162,16 @@ namespace ETRobocon.EV3
 
 			// Integral 積分対象
 			// I += P;
-			float I = 0;
-			for(int i = 0; i < BufferSize; i++)
-			{
-				I += ringBuffer[i];
-			}
+			//float I = 0;
+			//for(int i = 0; i < BufferSize; i++)
+			//{
+			//	I += ringBuffer[i];
+			//}
 
 			//Derivative
 			float D = P - pP;
 
-			float Y = (Kp * P) + (Ki * I) + (Kd * D);
+			float Y = (mKp * P) + /*(Ki * I) +*/ (mKd * D);
 
 			return Y;
 		}
