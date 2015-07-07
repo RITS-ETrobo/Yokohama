@@ -23,12 +23,19 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 
 		private CommandTask()
 		{
-			// CommandIDの列挙順と対応させること
-			_CommandName = new string[(int)CommandID.NumOfCommand] {
-				"run",
-				"stop",
-				"log"
-			};
+			try
+			{
+				// CommandIDの列挙順と対応させること
+				_CommandName = new string[(int)CommandID.NumOfCommand] {
+					"run",
+					"stop",
+					"log"
+				};
+			}
+			catch(Exception)
+			{
+				Console.Out.WriteLine("caught an exception: {0}", e.Message);
+			}
 		}
 
 		/// <summary>コマンドタスクの開始</summary>
