@@ -76,6 +76,37 @@ namespace ETRobocon.Utils
 			return parsedCommand;
 		}
 
+		/// <summary>文字列を指定した型に変換(処理部分)</summary>
+		/// <returns>
+		/// 型変換したものをボックス化した<c>object</c>.
+		/// 型変換に失敗した場合は<c>null</c>.
+		/// </returns>
+		/// <param name="str">変換する文字列</param>
+		/// <param name="type">変換先の型</param>
+		private static object ParseStringWithType_Processor(string str, Type type)
+		{
+			if ((str == null) || (type == null))
+			{
+				return null;
+			}
+
+			if (type.Equals(typeof(bool)))	{	return	(object)Convert.ToBoolean(str);	}
+			if (type.Equals(typeof(sbyte)))	{	return	(object)Convert.ToSByte(str);	}
+			if (type.Equals(typeof(short)))	{	return	(object)Convert.ToInt16(str);	}
+			if (type.Equals(typeof(int)))	{	return	(object)Convert.ToInt32(str);	}
+			if (type.Equals(typeof(long)))	{	return	(object)Convert.ToInt64(str);	}
+			if (type.Equals(typeof(byte)))	{	return	(object)Convert.ToByte(str);	}
+			if (type.Equals(typeof(ushort)))	{	return	(object)Convert.ToUInt16(str);	}
+			if (type.Equals(typeof(uint)))	{	return	(object)Convert.ToUInt32(str);	}
+			if (type.Equals(typeof(ulong)))	{	return	(object)Convert.ToUInt64(str);	}
+			if (type.Equals(typeof(decimal)))	{	return	(object)Convert.ToDecimal(str);	}
+			if (type.Equals(typeof(char)))	{	return	(object)Convert.ToChar(str);	}
+			if (type.Equals(typeof(float)))	{	return	(object)Convert.ToSingle(str);	}
+			if (type.Equals(typeof(double)))	{	return	(object)Convert.ToDouble(str);	}
+			if (type.Equals(typeof(string)))	{	return	(object)str;	}
+			return null;
+		}
+
 		/// <summary>文字列を指定した型に変換</summary>
 		/// <returns>
 		/// 型変換したものをボックス化した<c>object</c>.
@@ -85,27 +116,9 @@ namespace ETRobocon.Utils
 		/// <param name="type">変換先の型</param>
 		private static object ParseStringWithType(string str, Type type)
 		{
-			if (str == null || type == null)
+			try
 			{
-				return null;
-			}
-
-			try {
-				if (type.Equals (typeof(bool))) { return (object)Convert.ToBoolean(str); }
-				else if (type.Equals (typeof(sbyte))) {	return (object)Convert.ToSByte(str); }
-				else if (type.Equals (typeof(short))) { return (object)Convert.ToInt16(str); }
-				else if (type.Equals (typeof(int))) { return (object)Convert.ToInt32(str); }
-				else if (type.Equals (typeof(long))) { return (object)Convert.ToInt64(str); }
-				else if (type.Equals (typeof(byte))) { return (object)Convert.ToByte(str); }
-				else if (type.Equals (typeof(ushort))) { return (object)Convert.ToUInt16(str); }
-				else if (type.Equals (typeof(uint))) { return (object)Convert.ToUInt32(str); }
-				else if (type.Equals (typeof(ulong))) { return (object)Convert.ToUInt64(str); }
-				else if (type.Equals (typeof(decimal))) { return (object)Convert.ToDecimal(str); }
-				else if (type.Equals (typeof(char))) { return (object)Convert.ToChar(str); }
-				else if (type.Equals (typeof(float))) { return (object)Convert.ToSingle(str); }
-				else if (type.Equals (typeof(double))) { return (object)Convert.ToDouble(str); }
-				else if (type.Equals (typeof(string))) { return (object)str; }
-				else { return null; }
+				return	ParseStringWithType_Processor(str, type);
 			}
 			catch (FormatException)
 			{
