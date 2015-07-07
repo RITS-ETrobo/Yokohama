@@ -60,50 +60,55 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		{
 			string str = "";
 
-			Console.Write(PROMPT);
+			try {
+				Console.Write(PROMPT);
 
-			while (true)
-			{
-				ConsoleKeyInfo key = Console.ReadKey();	// 待ち状態となる
-
-				if (key.Key == ConsoleKey.Enter)
+				while (true)
 				{
-					Console.Write('\n');
+					ConsoleKeyInfo key = Console.ReadKey();	// 待ち状態となる
 
-					// quit は特別処理
-					if (str.Equals("quit"))
+					if (key.Key == ConsoleKey.Enter)
 					{
-						break;
-					}
+						Console.Write('\n');
 
-					Command command = ParseCommand(str);
+						// quit は特別処理
+						if (str.Equals("quit"))
+						{
+							break;
+						}
 
-					str = "";
+						Command command = ParseCommand(str);
 
-					if (command.Id == CommandID.Invalid)
-					{
-						DisplayHelp();
+						str = "";
+
+						if (command.Id == CommandID.Invalid)
+						{
+							DisplayHelp();
+							Console.Write(PROMPT);
+							continue;
+						}
+
+						// 送信
+						Console.WriteLine("sending command...:" + _CommandName[(int)command.Id]);
+
+						ProtocolProcessorForPC.Instance.SendData((object)(int)command.Id);
+						if (command.Parameter1 != null) {
+							ProtocolProcessorForPC.Instance.SendData(command.Parameter1);
+						}
+						if (command.Parameter2 != null) {
+							ProtocolProcessorForPC.Instance.SendData(command.Parameter2);
+						}
+
 						Console.Write(PROMPT);
-						continue;
 					}
-
-					// 送信
-					Console.WriteLine("sending command...:" + _CommandName[(int)command.Id]);
-
-					ProtocolProcessorForPC.Instance.SendData((object)(int)command.Id);
-					if (command.Parameter1 != null) {
-						ProtocolProcessorForPC.Instance.SendData(command.Parameter1);
+					else
+					{
+						str += key.KeyChar;
 					}
-					if (command.Parameter2 != null) {
-						ProtocolProcessorForPC.Instance.SendData(command.Parameter2);
-					}
-
-					Console.Write(PROMPT);
 				}
-				else
-				{
-					str += key.KeyChar;
-				}
+			}
+			catch (Exception e){
+				Console.Out.WriteLine("caught an exception: {0}", e.Message);
 			}
 		}
 
