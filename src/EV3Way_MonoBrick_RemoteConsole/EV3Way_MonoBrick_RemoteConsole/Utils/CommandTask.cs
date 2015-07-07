@@ -41,11 +41,18 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>コマンドタスクの開始</summary>
 		public static void Run()
 		{
-			ProtocolProcessorForPC.Connect();
+			try
+			{
+				ProtocolProcessorForPC.Connect();
 
-			CommandTask._Instance._CommandThread = new Thread(CommandTask._Instance.Loop);
-			CommandTask._Instance._CommandThread.Priority = ThreadPriority.Lowest;
-			CommandTask._Instance._CommandThread.Start();
+				CommandTask._Instance._CommandThread = new Thread(CommandTask._Instance.Loop);
+				CommandTask._Instance._CommandThread.Priority = ThreadPriority.Lowest;
+				CommandTask._Instance._CommandThread.Start();
+			}
+			catch (Exception)
+			{
+				Console.Out.WriteLine("caught an exception: {0}", e.Message);
+			}
 		}
 
 		/// <summary>コマンドタスクのメインループ</summary>
