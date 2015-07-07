@@ -32,7 +32,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 					"log"
 				};
 			}
-			catch(Exception)
+			catch(Exception e)
 			{
 				Console.Out.WriteLine("caught an exception: {0}", e.Message);
 			}
@@ -49,7 +49,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 				CommandTask._Instance._CommandThread.Priority = ThreadPriority.Lowest;
 				CommandTask._Instance._CommandThread.Start();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				Console.Out.WriteLine("caught an exception: {0}", e.Message);
 			}
