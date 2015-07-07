@@ -33,12 +33,18 @@ namespace ETRobocon.Utils
 
 		private CommandTask()
 		{
-			// CommandIDの列挙順と対応させること
-			_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
-				CommandRun,
-				CommandStop,
-				CommandLog
-			};
+			try {
+				// CommandIDの列挙順と対応させること
+				_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
+					CommandRun,
+					CommandStop,
+					CommandLog
+				};
+			}
+			catch (Exception)
+			{
+				// TODO: ログファイルへの出力
+			}
 		}
 
 		/// <summary>コマンドタスクの開始</summary>
