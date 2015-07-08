@@ -37,7 +37,8 @@ namespace ETRobocon.Utils
 		{
 			Command parsedCommand = new Command(CommandID.Invalid, null, null);
 
-			// パラメータが2個以上あるのは不正
+			// パラメータが3個以上あるのは不正
+			// (最初の要素にはコマンド名が入っているので, argvの要素数 = パラメータ数 + 1)
 			if (argv.Length > 3)
 			{
 				return parsedCommand;
