@@ -64,7 +64,7 @@ namespace ETRobocon.Odometry
 			
 				while(_isRoop){
 					_odometry.update(_motorL.GetTachoCount(),_motorR.GetTachoCount());
-					sendOdometryLogTask(_odometry.TotalMoveDistanceMM,_odometry.CurLocation.X,_odometry.CurLocation.Y);
+//					sendOdometryLogTask(_odometry.TotalMoveDistanceMM,_odometry.CurLocation.X,_odometry.CurLocation.Y);
 					Thread.Sleep(INTERVAL_TIME);
 				}
 			});
@@ -98,13 +98,13 @@ namespace ETRobocon.Odometry
 		/// <summary>
 		/// 自己位置推定のログを送信するタスク
 		/// </summary>
-		private void sendOdometryLogTask(double distance,double locX,double locY){
-
-			Task.Factory.StartNew (() => {
-				ProtocolProcessorForEV3.Instance.SendData(new double[3]{ distance, locX, locY });
-			});
-
-		}
+//		private void sendOdometryLogTask(double distance,double locX,double locY){
+//
+//			Task.Factory.StartNew (() => {
+//				ProtocolProcessorForEV3.Instance.SendData(new double[3]{ distance, locX, locY });
+//			});
+//
+//		}
 
 	}
 }

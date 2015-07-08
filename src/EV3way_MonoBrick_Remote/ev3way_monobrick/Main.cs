@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 using MonoBrickFirmware.Display.Dialogs;
 using MonoBrickFirmware.Display;
@@ -64,8 +65,8 @@ namespace ETRobocon.EV3
 			Brick.InstallETRoboExt ();
 
 			// リモート接続
-//			NetworkStream connection = connect();
-			ProtocolProcessorForEV3.Connect();
+			NetworkStream connection = connect();
+//			ProtocolProcessorForEV3.Connect();
 
 			// センサーおよびモータに対して初回アクセスをしておく
 			body.color.Read();
@@ -81,15 +82,15 @@ namespace ETRobocon.EV3
 			Balancer.init ();
 
 			// スタート待ち
-//			wait_start(body, connection);
-			wait_start(body);
+			wait_start(body, connection);
+//			wait_start(body);
 
 			var dialogRun = new InfoDialog ("Running", false);
 			dialogRun.Show ();//Wait for enter to be pressed
 
 			try{
-//				run(body, connection);
-				run(body);
+				run(body, connection);
+//				run(body);
 			}catch(Exception){
 				var dialogE = new InfoDialog ("Exception.", false);
 				dialogE.Show();//Wait for enter to be pressed
@@ -100,9 +101,9 @@ namespace ETRobocon.EV3
 			body.motorT.Off ();
 
 			// ソケットを閉じる
-//			if (connection != null) {
-//				connection.Close ();
-//			}
+			if (connection != null) {
+				connection.Close ();
+			}
 
 			Lcd.Instance.Clear ();
 			Lcd.Instance.Update ();
@@ -168,26 +169,26 @@ namespace ETRobocon.EV3
 		}
 
 		/// ProtocolProcessorのテスト用
-		static void wait_start(EV3body body) {
-			var dialogSTART = new InfoDialog ("Touch to START", false);
-			dialogSTART.Show (); // Wait for enter to be pressed
-
-			ProtocolProcessorForEV3.Instance.SendData("EV3 is ready.");
-
-			while (!body.touch.IsPressed()) {
-				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				if (checkRemoteCommand(REMOTE_COMMAND_START)) {
-					break;  // PC で 'g' キーが押された
-				}
-
-				Thread.Sleep (4);
-			}
-
-			while (body.touch.IsPressed ()) {
-				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				Thread.Sleep (4);
-			}
-		}
+//		static void wait_start(EV3body body) {
+//			var dialogSTART = new InfoDialog ("Touch to START", false);
+//			dialogSTART.Show (); // Wait for enter to be pressed
+//
+//			ProtocolProcessorForEV3.Instance.SendData("EV3 is ready.");
+//
+//			while (!body.touch.IsPressed()) {
+//				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+//				if (checkRemoteCommand(REMOTE_COMMAND_START)) {
+//					break;  // PC で 'g' キーが押された
+//				}
+//
+//				Thread.Sleep (4);
+//			}
+//
+//			while (body.touch.IsPressed ()) {
+//				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+//				Thread.Sleep (4);
+//			}
+//		}
 
 		static void run(EV3body body, NetworkStream connection){
 			// 電圧を取得
@@ -205,6 +206,11 @@ namespace ETRobocon.EV3
 			int runThreadIntervalTime = 2;
 
 			RemoteLogTest ("EV3 run.", connection);
+
+			//自己位置推定のログ出力（動作確認用）
+			List<double> odmLogList = new List<double>();
+			int odmLogIntervalTime = 25; //4msecごとのループで25回毎=100msごとに値を見に行く
+			int odmLogCount = odmLogIntervalTime;
 
 			//自己位置推定計算タスクのインスタンス生成
 			OdometryTask odm_task = new OdometryTask (body.motorL,body.motorR);
@@ -251,10 +257,20 @@ namespace ETRobocon.EV3
 					body.motorR.SetPower(pwmR);
 				}
 
+				//自己位置推定ログ（動作確認）
+				odmLogCount = odmLogCount % odmLogIntervalTime;
+				if (odmLogCount == 0) {
+					odmLogList.Add (odm_task.getTotalMoveDistanceMM ());
+					Location loc = odm_task.getCurrentLocation ();
+					odmLogList.Add (loc.X);
+					odmLogList.Add (loc.Y);
+				}
+				odmLogCount++;
+
 				//ロボットの現在値・累積走行距離を取得
 				//メインスレッドからは任意のタイミングで呼ぶだけ
-				odm_task.getCurrentLocation ();
-				odm_task.getTotalMoveDistanceMM ();
+//				odm_task.getCurrentLocation ();
+//				odm_task.getTotalMoveDistanceMM ();
 
 				Thread.Sleep(runThreadIntervalTime);
 			}
@@ -262,85 +278,92 @@ namespace ETRobocon.EV3
 			//自己位置推定計算タスクの終了
 			odm_task.endTask ();
 
+			for (int i = 0; i < odmLogList.Count; i += 3) {
+				String str = odmLogList[i] +",";
+				str += odmLogList[i + 1] +",";
+				str += odmLogList[i + 2];
+				RemoteLogTest (str, connection);
+			}
+				
 			RemoteLogTest ("EV3 stopped.", connection);
 		}
 
 		/// <summary>ProtocolProcessorのテスト用</summary>
-		static void run(EV3body body){
-			// 電圧を取得
-			int battery = Brick.GetVoltageMilliVolt();
-
-			sbyte forward;
-			sbyte turn;
-			int counter = 0;
-			bool alert = false;
-
-			//  runメソッドのsleep間隔を表すフィールド[msec]
-			// バランス制御のみだと3msecで安定
-			// 尻尾制御と障害物検知を使用する場合2msecで安定
-			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
-			int runThreadIntervalTime = 2;
-
-			ProtocolProcessorForEV3.Instance.SendData("EV3 run.");
-
-			//自己位置推定計算タスクのインスタンス生成
-			OdometryTask odm_task = new OdometryTask (body.motorL,body.motorR);
-
-			//自己位置推定計算タスクの開始
-			odm_task.startTask ();
-
-			while (!body.touch.IsPressed ()) 
-			{
-				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
-				if (checkRemoteCommand(REMOTE_COMMAND_STOP)) {
-					break; // PC で 's' キー押されたら走行終了
-				}
-
-				if (++counter >= 40/4) {
-					alert = sonar_alert (body);
-					counter = 0;
-				}
-				if (alert) {
-					forward = 0;
-					turn = 0;
-				} else {
-					forward = 50;
-					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
-				}
-
-				int gyroNow = -body.gyro.Read();
-				int thetaL = body.motorL.GetTachoCount();
-				int theTaR = body.motorR.GetTachoCount();
-				sbyte pwmL, pwmR;
-				Balancer.control (
-					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
-					out pwmL, out pwmR
-				);
-
-				if (pwmL == 0) {
-					body.motorL.Brake();
-				} else {
-					body.motorL.SetPower(pwmL);
-				}
-				if (pwmR == 0) {
-					body.motorR.Brake();
-				} else {
-					body.motorR.SetPower(pwmR);
-				}
-
-				//ロボットの現在値・累積走行距離を取得
-				//メインスレッドからは任意のタイミングで呼ぶだけ
-				odm_task.getCurrentLocation ();
-				odm_task.getTotalMoveDistanceMM ();
-
-				Thread.Sleep(runThreadIntervalTime);
-			}
-
-			//自己位置推定計算タスクの終了
-			odm_task.endTask ();
-
-			ProtocolProcessorForEV3.Instance.SendData("EV3 stopped.");
-		}
+//		static void run(EV3body body){
+//			// 電圧を取得
+//			int battery = Brick.GetVoltageMilliVolt();
+//
+//			sbyte forward;
+//			sbyte turn;
+//			int counter = 0;
+//			bool alert = false;
+//
+//			//  runメソッドのsleep間隔を表すフィールド[msec]
+//			// バランス制御のみだと3msecで安定
+//			// 尻尾制御と障害物検知を使用する場合2msecで安定
+//			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
+//			int runThreadIntervalTime = 2;
+//
+//			ProtocolProcessorForEV3.Instance.SendData("EV3 run.");
+//
+//			//自己位置推定計算タスクのインスタンス生成
+//			OdometryTask odm_task = new OdometryTask (body.motorL,body.motorR);
+//
+//			//自己位置推定計算タスクの開始
+//			odm_task.startTask ();
+//
+//			while (!body.touch.IsPressed ()) 
+//			{
+//				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
+//				if (checkRemoteCommand(REMOTE_COMMAND_STOP)) {
+//					break; // PC で 's' キー押されたら走行終了
+//				}
+//
+//				if (++counter >= 40/4) {
+//					alert = sonar_alert (body);
+//					counter = 0;
+//				}
+//				if (alert) {
+//					forward = 0;
+//					turn = 0;
+//				} else {
+//					forward = 50;
+//					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
+//				}
+//
+//				int gyroNow = -body.gyro.Read();
+//				int thetaL = body.motorL.GetTachoCount();
+//				int theTaR = body.motorR.GetTachoCount();
+//				sbyte pwmL, pwmR;
+//				Balancer.control (
+//					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
+//					out pwmL, out pwmR
+//				);
+//
+//				if (pwmL == 0) {
+//					body.motorL.Brake();
+//				} else {
+//					body.motorL.SetPower(pwmL);
+//				}
+//				if (pwmR == 0) {
+//					body.motorR.Brake();
+//				} else {
+//					body.motorR.SetPower(pwmR);
+//				}
+//
+//				//ロボットの現在値・累積走行距離を取得
+//				//メインスレッドからは任意のタイミングで呼ぶだけ
+//				odm_task.getCurrentLocation ();
+//				odm_task.getTotalMoveDistanceMM ();
+//
+//				Thread.Sleep(runThreadIntervalTime);
+//			}
+//
+//			//自己位置推定計算タスクの終了
+//			odm_task.endTask ();
+//
+//			ProtocolProcessorForEV3.Instance.SendData("EV3 stopped.");
+//		}
 
 		///	<summary>
 		///	超音波センサによる障害物検知
