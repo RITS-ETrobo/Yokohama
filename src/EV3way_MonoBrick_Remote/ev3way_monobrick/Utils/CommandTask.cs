@@ -15,10 +15,10 @@ namespace ETRobocon.Utils
 		/// <summary>コマンドタスクが実行されているスレッド</summary>
 		private Thread _CommandThread;
 
-		/// <summary>コマンドタスクのメインループのSleep時間</summary>
+		/// <summary>コマンドタスクのメインループのSleep時間[ms]</summary>
 		private const int LOOP_INTERVAL = 16;
 
-		/// <summary>コマンドパラメータがEV3側に到着するのが遅れたときの待ち時間</summary>
+		/// <summary>コマンドパラメータがEV3側に到着するのが遅れたときの待ち時間[ms]</summary>
 		private const int RECEIVE_INTERVAL = 4;
 
 		/// <summary>この回数だけパラメータの受信を試みる</summary>
