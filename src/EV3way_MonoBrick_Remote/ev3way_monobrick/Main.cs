@@ -161,6 +161,7 @@ namespace ETRobocon.EV3
 			}
 		}
 
+
 		static void run(EV3body body, NetworkStream connection){
 			// 電圧を取得
 			int battery = Brick.GetVoltageMilliVolt();
@@ -182,6 +183,9 @@ namespace ETRobocon.EV3
 			} else {
 				ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f );
 			}
+
+			IFilter filter = new MovingAverageFilter (20);
+
 			while (!body.touch.IsPressed ()) {
 			}
 			while (body.touch.IsPressed ()) {
@@ -202,7 +206,7 @@ namespace ETRobocon.EV3
 					turn = 0;
 				} else {
 					forward = 50;
-					turn = ld.CalculateTurn(body.color.Read());
+					turn = ld.CalculateTurn( filter.Filter( (sbyte)body.color.Read() ));
 				}
 
 				int gyroNow = -body.gyro.Read();

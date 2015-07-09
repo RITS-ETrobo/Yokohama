@@ -43,6 +43,7 @@
     <Compile Include="EV3\Balancer.cs" />
     <Compile Include="EV3body.cs" />
     <Compile Include="LineDetector.cs" />
+    <Compile Include="IFilter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
