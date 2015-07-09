@@ -171,25 +171,10 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			RemoteLogTest ("EV3 run.", connection);
-
-			SelectDialog<string> dlg = new SelectDialog<string>(new string[]{"LineTrace", "PLineTrace", "LineTraceOld"}, "SELECT!", false);
-			dlg.Show ();
-			LineDetector ld = null;
-			if ("LineTrace" == dlg.GetSelection ()) {
-				ld = new LineDetector (0, 60, LineDetector.LineEdge.Left, 70);
-			} else if ("PLineTrace" == dlg.GetSelection ()) {
-				ld = new PLineDetector (0, 60, LineDetector.LineEdge.Left, 70);
-			} else {
-				ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f );
-			}
+			LineDetector ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 
 			IFilter filter = new MovingAverageFilter (20);
 
-			while (!body.touch.IsPressed ()) {
-			}
-			while (body.touch.IsPressed ()) {
-			}
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
