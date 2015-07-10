@@ -173,8 +173,6 @@ namespace ETRobocon.EV3
 
 			LineDetector ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 
-			IFilter filter = new MovingAverageFilter (20);
-
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
@@ -191,7 +189,7 @@ namespace ETRobocon.EV3
 					turn = 0;
 				} else {
 					forward = 50;
-					turn = ld.CalculateTurn( filter.Filter( (sbyte)body.color.Read() ));
+					turn = ld.CalculateTurn(body.color.Read());
 				}
 
 				int gyroNow = -body.gyro.Read();
