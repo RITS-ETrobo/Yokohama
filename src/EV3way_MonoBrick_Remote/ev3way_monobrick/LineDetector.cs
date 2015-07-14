@@ -200,7 +200,7 @@ namespace ETRobocon.EV3
 			float Y = control(P);
 
 			//ラインの右側をトレースするか左側をトレースするかで旋回方向が決まる
-			Y *= (float)edge;
+			Y *= (float)-edge;
 
 			return (sbyte)Y;
 		}
