@@ -36,7 +36,7 @@ namespace ETRobocon.EV3
 		const float K_PHIDOT = 25.0F * 2.5F;
 
 		/// forward target speed gain
-		const float K_THETADOT = 14.7F;
+		const float K_THETADOT = 12.9F;
 
 		/// battery voltage gain for motor PWM outputs
 		const float BATTERY_GAIN = 0.001089F;
