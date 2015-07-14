@@ -109,6 +109,10 @@ namespace ETRobocon.Utils
 		}
 
 		/// <summary>文字列を指定した型に変換</summary>
+		/// <remarks>
+		/// 他のメソッドと同様, 型変換失敗によらないシステムエラーは発生する場合があるので,
+		/// 呼び出し元(上位)では例外をcatchすること.
+		/// </remarks>
 		/// <returns>
 		/// 型変換したものをボックス化した<c>object</c>.
 		/// 型変換に失敗した場合は<c>null</c>.
