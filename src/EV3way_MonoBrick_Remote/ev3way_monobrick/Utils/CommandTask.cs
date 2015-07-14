@@ -33,22 +33,35 @@ namespace ETRobocon.Utils
 
 		private CommandTask()
 		{
-			// CommandIDの列挙順と対応させること
-			_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
-				CommandRun,
-				CommandStop,
-				CommandLog
-			};
+			try {
+				// CommandIDの列挙順と対応させること
+				_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
+					CommandRun,
+					CommandStop,
+					CommandLog
+				};
+			}
+			catch (Exception)
+			{
+				// TODO: ログファイルへの出力
+			}
 		}
 
 		/// <summary>コマンドタスクの開始</summary>
 		public static void Run()
 		{
-			ProtocolProcessorForEV3.Connect();
+			try
+			{
+				ProtocolProcessorForEV3.Connect();
 
-			CommandTask._Instance._CommandThread = new Thread(CommandTask._Instance.Loop);
-			CommandTask._Instance._CommandThread.Priority = ThreadPriority.Lowest;
-			CommandTask._Instance._CommandThread.Start();
+				CommandTask._Instance._CommandThread = new Thread(CommandTask._Instance.Loop);
+				CommandTask._Instance._CommandThread.Priority = ThreadPriority.Lowest;
+				CommandTask._Instance._CommandThread.Start();
+			}
+			catch (Exception)
+			{
+				// TODO: ログファイルへの出力
+			}
 		}
 
 		/// <summary>コマンドタスクのメインループ</summary>

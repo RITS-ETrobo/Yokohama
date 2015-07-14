@@ -13,13 +13,20 @@ namespace ETRobocon.Utils
 
 		private CommandFormatManager ()
 		{
-			// 全コマンドフォーマットの作成
-			// この配列の要素の順序は, CommandIDの列挙順と一致させること.
-			_CommandFormats = new CommandFormat[(int)CommandID.NumOfCommand] {
-				new CommandFormat(CommandID.Run, null, null),
-				new CommandFormat(CommandID.Stop, null, null),
-				new CommandFormat(CommandID.Log, typeof(bool), null)
-			};
+			try
+			{
+				// 全コマンドフォーマットの作成
+				// この配列の要素の順序は, CommandIDの列挙順と一致させること.
+				_CommandFormats = new CommandFormat[(int)CommandID.NumOfCommand] {
+					new CommandFormat(CommandID.Run, null, null),
+					new CommandFormat(CommandID.Stop, null, null),
+					new CommandFormat(CommandID.Log, typeof(bool), null)
+				};
+			}
+			catch (Exception)
+			{
+				// TODO: ログファイルへの出力
+			}
 		}
 
 		/// <summary>指定したIDに対応するコマンドのフォーマットを取得する</summary>
