@@ -22,7 +22,7 @@ namespace ETRobocon.EV3
 		static float[] K_F = new float[4] {-0.84000F, -40.87459F, -0.90567F, -4.23856F};
 		const float K_I = -0.44721F;   /* servo control integral gain */
 		const float K_PHIDOT = 25.0F * 2.5F;  /* turn target speed gain */
-		const float K_THETADOT = 14.7F; /* forward target speed gain */
+		const float K_THETADOT = 12.9F; /* forward target speed gain */
 
 		const float BATTERY_GAIN = 0.001089F;	/* battery voltage gain for motor PWM outputs */
 		const float BATTERY_OFFSET = 0.625F;	/* battery voltage offset for motor PWM outputs */
