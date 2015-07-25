@@ -9,6 +9,7 @@ using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
 
+
 ///	2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム
 namespace ETRobocon.EV3
 {
@@ -166,9 +167,10 @@ namespace ETRobocon.EV3
 			int battery = Brick.GetVoltageMilliVolt();
 
 			sbyte forward;
-			sbyte turn;
+			sbyte turn;	//プラス:左カーブ　マイナス:右カーブ
 			int counter = 0;
 			bool alert = false;
+			sbyte pwmL = 0, pwmR = 0;
 
 			RemoteLogTest ("EV3 run.", connection);
 
@@ -188,13 +190,17 @@ namespace ETRobocon.EV3
 					turn = 0;
 				} else {
 					forward = 50;
-					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
+					// ライントレースしない(#169)
+					turn = 0;	// = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
 				}
 
 				int gyroNow = -body.gyro.Read();
 				int thetaL = body.motorL.GetTachoCount();
 				int theTaR = body.motorR.GetTachoCount();
-				sbyte pwmL, pwmR;
+
+				// 直前に設定したパワーと, 結果動いた角度から, これから動かす角度を設定する
+				body.motorLRCalibration (pwmL, pwmR, thetaL, theTaR, ref turn);
+
 				Balancer.control (
 					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
 					out pwmL, out pwmR
