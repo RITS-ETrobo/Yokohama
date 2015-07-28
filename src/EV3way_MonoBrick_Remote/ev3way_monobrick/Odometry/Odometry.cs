@@ -15,7 +15,7 @@ namespace ETRobocon.Odometry
 		/// <summary>
 		/// 車軸の長さ[mm](refs #65)
 		/// </summary>
-		private const double AXLE_LENGTH_MM = 16.0;
+		private const double AXLE_LENGTH_MM = 160.0;
 
 		/// <summary>
 		/// ロボットが現在いる位置
