@@ -33,6 +33,12 @@ namespace ETRobocon.EV3
 		///	バランス走行時の角度[deg]
 		const int TAIL_ANGLE_DRIVE = 3;
 
+		/// スタートダッシュ前傾姿勢の角度[deg]
+		const int TAIL_ANGLE_START_DUSH = TAIL_ANGLE_STAND_UP + 20;
+
+		/// スタートダッシュ前傾姿勢になるための時間[msec]
+		const int START_DUSH_TIME = 100;
+
 		///	完全停止用モータ制御比例係数
 		const float P_GAIN = 2.5F;
 
@@ -171,6 +177,9 @@ namespace ETRobocon.EV3
 			bool alert = false;
 
 			RemoteLogTest ("EV3 run.", connection);
+
+			tail_control (body, TAIL_ANGLE_START_DUSH);
+			Thread.Sleep (START_DUSH_TIME);
 
 			while (!body.touch.IsPressed ()) 
 			{
