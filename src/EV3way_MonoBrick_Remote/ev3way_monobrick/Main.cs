@@ -77,6 +77,17 @@ namespace ETRobocon.EV3
 			body.motorR.SetPower (0);
 			body.motorT.SetPower (0);
 
+			{	//走行開始前 尻尾位置初期設定 処理
+				int count_resettailtacho = 100;
+				while (count_resettailtacho > 0) {
+					body.motorT.SetPower (-5);
+					count_resettailtacho--;
+					Thread.Sleep (4);
+				}
+				body.motorT.Brake ();
+				body.motorT.ResetTacho ();
+			}
+
 			body.motorL.ResetTacho ();
 			body.motorR.ResetTacho ();
 			body.motorT.ResetTacho ();
