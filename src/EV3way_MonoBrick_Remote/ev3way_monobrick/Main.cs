@@ -28,7 +28,7 @@ namespace ETRobocon.EV3
 		const int SONAR_ALERT_DISTANCE = 300;
 
 		///	完全停止時の角度[deg]
-		const int TAIL_ANGLE_STAND_UP = 94;
+		const int TAIL_ANGLE_STAND_UP = 97;
 
 		///	バランス走行時の角度[deg]
 		const int TAIL_ANGLE_DRIVE = 3;
