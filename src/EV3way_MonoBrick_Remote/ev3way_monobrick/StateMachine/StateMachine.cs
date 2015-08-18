@@ -1,10 +1,14 @@
 ﻿using System;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.StateMachine
 {
 	public class StateMachine
 	{
 		public StateMachine ()
+		{
+		}
+
+		public void Run()
 		{
 		}
 	}

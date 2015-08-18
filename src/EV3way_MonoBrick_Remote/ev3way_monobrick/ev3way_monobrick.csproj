@@ -56,6 +56,8 @@
     </Compile>
     <Compile Include="StateMachine\StateMachine.cs" />
     <Compile Include="StateMachine\State.cs" />
+    <Compile Include="StateMachine\TriggerID.cs" />
+    <Compile Include="StateMachine\StateID.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
