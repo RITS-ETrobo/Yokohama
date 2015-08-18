@@ -54,9 +54,12 @@
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
     </Compile>
+    <Compile Include="StateMachine\StateMachine.cs" />
+    <Compile Include="StateMachine\State.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="StateMachine\" />
   </ItemGroup>
 </Project>
