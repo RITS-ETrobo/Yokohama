@@ -23,7 +23,7 @@ namespace ETRobocon.Utils
 		/// <summary>ログタスクが実行されているスレッド</summary>
 		private Thread _logThread;
 
-		/// <summary>ログタスクのメインループのSleep時間</summary>
+		/// <summary>ログタスクのメインループのSleep時間[ms]</summary>
 		private const int LOOP_INTERVAL = 16;
 
 		/// <summary>ログを溜めておくQueue</summary>
