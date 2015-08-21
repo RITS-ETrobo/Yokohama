@@ -1,4 +1,7 @@
-﻿
+﻿// ここでバッテリー用か乾電池用かを決めます。
+// 乾電池の場合は、コメントアウトします。
+//#define RechargeableBattery
+
 using System;
 using System.Threading;
 
@@ -15,11 +18,14 @@ namespace ETRobocon.EV3
 		const float CMD_MAX = 100.0F;                    /* 前進/旋回命令絶対最大値 */
 		const float DEG2RAD = 0.01745329238F;            /* 角度単位変換係数(=pi/180) */
 		const float EXEC_PERIOD = 0.00400000019F;            /* バランス制御実行周期(秒) */
-
 		const float A_D = 0.8F;    	   /* low pass filter gain for motors average count */
 		const float A_R = 0.996F;      /* low pass filter gain for motors target count */
 		/* servo control state feedback gain for NXT standard tire */
+		#if RechargeableBattery
 		static float[] K_F = new float[4] {-0.84000F, -40.87459F, -0.90567F, -4.23856F};
+		#else
+		static float[] K_F = new float[4] {-0.870383F, -31.9978F, -1.1566F * 0.6F, -2.78873F};
+		#endif
 		const float K_I = -0.44721F;   /* servo control integral gain */
 		const float K_PHIDOT = 25.0F * 2.5F;  /* turn target speed gain */
 		const float K_THETADOT = 14.7F; /* forward target speed gain */
