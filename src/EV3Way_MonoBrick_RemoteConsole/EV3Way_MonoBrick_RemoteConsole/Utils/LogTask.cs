@@ -13,7 +13,7 @@ namespace EV3Way_MonoBrick_RemoteConsole.Utils
 		/// <summary>ログタスクが実行されているスレッド</summary>
 		private Thread _logThread;
 
-		/// <summary>ログタスクのメインループのSleep時間</summary>
+		/// <summary>ログタスクのメインループのSleep時間[ms]</summary>
 		private const int LOOP_INTERVAL = 16;
 
 		/// <summary>ログとして受信できないデータが送られてきたときの代替文字列</summary>
