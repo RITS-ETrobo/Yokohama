@@ -58,10 +58,14 @@
     <Compile Include="StateMachine\State.cs" />
     <Compile Include="StateMachine\TriggerID.cs" />
     <Compile Include="StateMachine\StateID.cs" />
+    <Compile Include="StateMachine\States\ReadyState.cs" />
+    <Compile Include="StateMachine\States\CompleteState.cs" />
+    <Compile Include="StateMachine\States\StraightWithLineTraceState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="StateMachine\" />
+    <Folder Include="StateMachine\States\" />
   </ItemGroup>
 </Project>
