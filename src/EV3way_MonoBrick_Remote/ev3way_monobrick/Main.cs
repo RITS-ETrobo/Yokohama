@@ -69,8 +69,12 @@ namespace ETRobocon.EV3
 			// Bluetooth関係のETロボコン拡張機能を有効にする
 			Brick.InstallETRoboExt ();
 
-			// リモート接続 & コマンドタスク開始
+			// コマンドタスク開始 & ログタスク開始
+			// どちらも通信確立を行うが, どちらを先に呼び出しても良い.
+			// (一方で通信確立すると, もう一方の通信確立処理はスキップされる.)
 			CommandTask.Run();
+			LogTask.Run();
+			LogTask.Enable = true;
 
 			// センサーおよびモータに対して初回アクセスをしておく
 			body.color.Read();
@@ -120,7 +124,7 @@ namespace ETRobocon.EV3
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
-			// RemoteLogTest ("EV3 is ready.", connection);
+			LogTask.LogRemote("EV3 is ready.");
 
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
@@ -147,7 +151,7 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			// RemoteLogTest ("EV3 run.", connection);
+			LogTask.LogRemote("EV3 run.");
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -194,7 +198,7 @@ namespace ETRobocon.EV3
 				Thread.Sleep(2);
 			}
 
-			// RemoteLogTest ("EV3 stopped.", connection);
+			LogTask.LogRemote("EV3 stopped.");
 		}
 
 		///	<summary>
