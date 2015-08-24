@@ -47,6 +47,10 @@ namespace ETRobocon.StateMachine
 
 		public void Run()
 		{
+			// このままループに入ると, 最初のStateのEnter()が実行されない.
+			// そのため, 最初のStateだけ特別にここでEnter()を呼び出す.
+			_states[(int)currentState].Enter();
+
 			while (true)
 			{
 				_states[(int)currentState].Do();
@@ -62,8 +66,12 @@ namespace ETRobocon.StateMachine
 					{
 						// 状態遷移表に該当する遷移があれば, 遷移させる
 
+						_states[(int)currentState].Exit();
+
 						transition.Value.TransitionMethod ();
 						currentState = transition.Value.NextState;
+
+						_states[(int)currentState].Enter();
 					}
 				}
 
