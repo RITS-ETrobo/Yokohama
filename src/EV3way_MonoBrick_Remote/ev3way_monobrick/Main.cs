@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Net;
-using System.Net.Sockets;
 using System.Threading;
 using System.Diagnostics;
-using System.Collections.Generic;
 
 using MonoBrickFirmware.Display.Dialogs;
 using MonoBrickFirmware.Display;
@@ -42,22 +39,32 @@ namespace ETRobocon.EV3
 		///	完全停止用モータ制御PWM絶対最大値
 		const int PWM_ABS_MAX = 60;
 
-		///	ポート番号
-		const int SOCKET_PORT = 7360;
-
 		///	リモートコマンド : ???
 		const int REMOTE_COMMAND_CLOSE = 0;
-
-		///	リモートコマンド : 開始 'g'
-		const int REMOTE_COMMAND_START = 'g';
-
-		///	リモートコマンド : 停止 'g'
-		const int REMOTE_COMMAND_STOP  = 's';
 
 		/// <summary>
 		/// 自己位置推定
 		/// </summary>
 		static ETRobocon.Odometry.Odometry odm;
+
+		/// <summary><see cref="RunCommandReceived"/>のフィールド</summary>
+		private static bool _RunCommandReceived = false;
+		/// <summary>runコマンドを受信したら立つフラグ</summary>
+		public static bool RunCommandReceived
+		{
+			get{ return _RunCommandReceived; }
+			set{ _RunCommandReceived = value; }
+		}
+
+		/// <summary><see cref="StopCommandReceived"/>のフィールド</summary>
+		private static bool _StopCommandReceived = false;
+		/// <summary>stopコマンドを受信したら立つフラグ</summary>
+		/// <value><c>true</c> if stop command received; otherwise, <c>false</c>.</value>
+		public static bool StopCommandReceived
+		{
+			get{ return _StopCommandReceived; }
+			set{ _StopCommandReceived = value; }
+		}
 
 		public static void Main()
 		{
@@ -68,8 +75,12 @@ namespace ETRobocon.EV3
 			// Bluetooth関係のETロボコン拡張機能を有効にする
 			Brick.InstallETRoboExt ();
 
-			// リモート接続
-			NetworkStream connection = connect();
+			// コマンドタスク開始 & ログタスク開始
+			// どちらも通信確立を行うが, どちらを先に呼び出しても良い.
+			// (一方で通信確立すると, もう一方の通信確立処理はスキップされる.)
+			CommandTask.Run();
+			LogTask.Run();
+			LogTask.Enable = true;
 
 			// センサーおよびモータに対して初回アクセスをしておく
 			body.color.Read();
@@ -88,13 +99,13 @@ namespace ETRobocon.EV3
 			odm = new ETRobocon.Odometry.Odometry();
 
 			// スタート待ち
-			wait_start(body, connection);
+			wait_start(body);
 
 			var dialogRun = new InfoDialog ("Running", false);
 			dialogRun.Show ();//Wait for enter to be pressed
 
 			try{
-				run(body, connection);
+				run(body);
 			}catch(Exception){
 				var dialogE = new InfoDialog ("Exception.", false);
 				dialogE.Show();//Wait for enter to be pressed
@@ -103,11 +114,6 @@ namespace ETRobocon.EV3
 			body.motorL.Off ();
 			body.motorR.Off ();
 			body.motorT.Off ();
-
-			// ソケットを閉じる
-			if (connection != null) {
-				connection.Close ();
-			}
 
 			Lcd.Instance.Clear ();
 			Lcd.Instance.Update ();
@@ -118,49 +124,22 @@ namespace ETRobocon.EV3
 		}
 
 		///	<summary>
-		///	サーバーとの接続設定
-		///	</summary>
-		///	<returns>
-		///	サーバーとの接続状態
-		///	</returns>
-		static NetworkStream connect(){
-			NetworkStream connection;
-			IPAddress ipAddr = IPAddress.Parse("10.0.1.1");
-
-			var listener = new TcpListener (ipAddr, SOCKET_PORT); 
-			listener.Start(); // クライアントからの受信接続要求の待機を開始
-
-			var dialogCON = new InfoDialog ("Please connect...", false);
-			dialogCON.Show(); // Wait for enter to be pressed
-
-			try {
-				Socket sock = listener.AcceptSocket(); // 接続要求の受け入れ
-				connection = new NetworkStream(sock, true);
-			} catch (SocketException) {
-				var dialogE = new InfoDialog ("Connect is Failed.", false);
-				dialogE.Show(); // Wait for enter to be pressed
-				connection = null;
-			}
-			listener.Stop();
-			return connection;
-		}
-
-		///	<summary>
 		///	スタート待ち
 		///	</summary>
 		///	<returns>
 		///	なし
 		///	</returns>
-		static void wait_start(EV3body body, NetworkStream connection){
-			var dialogSTART = new InfoDialog ("Touch to START!!!", false);
+		static void wait_start(EV3body body){
+			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show (); // Wait for enter to be pressed
 
-			RemoteLogTest ("EV3 is ready.", connection);
+			LogTask.LogRemote("EV3 is ready.");
 
 			while (!body.touch.IsPressed()) {
 				tail_control(body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_START)) {
-					break;  // PC で 'g' キーが押された
+				if (MainClass.RunCommandReceived) {
+					MainClass.RunCommandReceived = false;
+					break;  // "run"コマンド受信
 				}
 
 				Thread.Sleep (4);
@@ -172,8 +151,7 @@ namespace ETRobocon.EV3
 			}
 		}
 
-
-		static void run(EV3body body, NetworkStream connection){
+		static void run(EV3body body){
 			// 電圧を取得
 			int battery = Brick.GetVoltageMilliVolt();
 
@@ -182,25 +160,14 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			//  runメソッドのsleep間隔を表すフィールド[msec]
-			// バランス制御のみだと3msecで安定
-			// 尻尾制御と障害物検知を使用する場合2msecで安定
-			// - 尻尾制御+障害物検知+自己位置推定でとりあえず2msecとする（実機での動作検証必要）
-			int runThreadIntervalTime = 2;
-
-			RemoteLogTest ("EV3 run.", connection);
-
-			//自己位置推定のログ出力（動作確認用）
-			List<double> odmLogList = new List<double>();
-			int odmLogIntervalTime = 25; //4msecごとのループで25回毎=100msごとに値を見に行く
-			int odmLogCount = odmLogIntervalTime;
-
+			LogTask.LogRemote("EV3 run.");
 
 			while (!body.touch.IsPressed ()) 
 			{
 				tail_control(body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
-				if (checkRemoteCommand(connection, REMOTE_COMMAND_STOP)) {
-					break; // PC で 's' キー押されたら走行終了
+				if (MainClass.StopCommandReceived) {
+					MainClass.StopCommandReceived = false;
+					break; // "stop"コマンド受信
 				}
 
 				if (++counter >= 40/4) {
@@ -215,10 +182,9 @@ namespace ETRobocon.EV3
 					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
 				}
 
-				int gyroNow = -body.gyro.Read();
+				int gyroNow = body.gyro.Read();
 				int thetaL = body.motorL.GetTachoCount();
 				int theTaR = body.motorR.GetTachoCount();
-
 				sbyte pwmL, pwmR;
 				Balancer.control (
 					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
@@ -236,42 +202,15 @@ namespace ETRobocon.EV3
 					body.motorR.SetPower(pwmR);
 				}
 
-				odmLogCount = odmLogCount % odmLogIntervalTime;
-				if (odmLogCount == 0) {
-					odm.update (body.motorL.GetTachoCount (), body.motorR.GetTachoCount ());
-					odmLogList.Add (odm.TotalMoveDistanceMM);
-					Location loc = odm.CurLocation;
-					odmLogList.Add (loc.X);
-					odmLogList.Add (loc.Y);
-				}
-				odmLogCount++;
+				odm.update (body.motorL.GetTachoCount (), body.motorR.GetTachoCount ());
 
-				Thread.Sleep(runThreadIntervalTime);
+				// バランス制御のみだと3msecで安定
+				// 尻尾制御と障害物検知を使用する場合2msecで安定
+				// 上に加えて自己位置推定を入れても2msecで安定
+				Thread.Sleep(2);
 			}
 
-			body.motorL.Brake();
-			body.motorR.Brake();
-
-			//オドメトリログファイル出力
-			RemoteLogTest ("read odmList start", connection);	
-			int count = 0;
-			String odmStr = "";
-			int odmListCount = odmLogList.Count;
-			foreach(double value in odmLogList){
-				odmStr += value + ",";
-				if (++count % 3 == 0) {
-					odmStr += System.Environment.NewLine;
-					System.IO.File.AppendAllText("odm.csv",odmStr);
-					odmStr = "";
-				}
-				if (count % 100 == 0) {
-					RemoteLogTest ("read odmList : " + count + "/" + odmListCount, connection);
-				}
-			}
-			System.IO.File.WriteAllText("odm.csv",odmStr);
-			RemoteLogTest ("read odmList end", connection);
-				
-			RemoteLogTest ("EV3 stopped.", connection);
+			LogTask.LogRemote("EV3 stopped.");
 		}
 
 		///	<summary>
@@ -320,91 +259,6 @@ namespace ETRobocon.EV3
 			} else {
 				body.motorT.SetPower((sbyte)pwm);
 			}
-		}
-
-		///	<summary>
-		///	リモートコマンドのチェック
-		///	</summary>
-		///	<returns>
-		/// - true : 成功
-		///	- false : 失敗
-		/// </returns>
-		/// <param name="connection">
-		///	サーバー接続状態
-		/// </param>
-		/// <param name="command">
-		///	送信コマンド 
-		/// </param>
-		static bool checkRemoteCommand(NetworkStream connection, int command) 
-		{
-			try{
-				if (connection.DataAvailable) {
-					var buff = new byte[4];
-					connection.Read(buff, 0, buff.Length);
-					// ネットワークバイトオーダー(big endian)で受信したため little endian に変換
-					Array.Reverse(buff); // big endian -> little endian
-
-					if (BitConverter.ToInt32(buff,0) == command) {
-						return true;
-					}
-				}
-			}catch(Exception){
-				return false;
-			}
-			return false;
-		}
-
-		/// <summary>ProtocolProcessorのテスト用</summary>
-		static bool checkRemoteCommand(int command) 
-		{
-			try{
-				object receiveObj;
-				if (ProtocolProcessorForEV3.Instance.ReceiveData(out receiveObj)) {
-					if (receiveObj is Array && receiveObj.GetType().GetElementType().Equals(typeof(char))) {
-						char key = (char)((Array)receiveObj).GetValue(0);
-
-						if (key == command) {
-							return true;
-						}
-					}
-				}
-			}catch(Exception){
-				return false;
-			}
-			return false;
-		}
-
-		/// <summary>
-		/// 文字列をBluetooth通信で送る.
-		/// </summary>
-		/// <param name="str">String you want to send. (max : 255 bytes)</param>
-		/// <param name="connection">Connection.</param>
-		/// <remarks>
-		/// 通信プロトコルは次の通りである. ASCIIエンコーディングして送信する.
-		/// <list type="bullet">
-		/// <item>
-		/// <description>1byte目 : 送信する文字列長. 1byteで表せる範囲の制限上, 文字列の最大長は255である.</description>
-		/// </item>
-		/// <item>
-		/// <description>
-		/// 2byte目以降 : 送信文字列を逆順にしたもの. ただし, 逆順処理は当メソッド内で行われるため,
-		/// <paramref name="str"/>に指定する文字列は元の順でよい.</description>
-		/// </item>
-		/// </list>
-		/// </remarks>
-		static void RemoteLogTest(string str, NetworkStream connection)
-		{
-			// LeJOS 版に合わせてネットワークバイトオーダーで送信
-
-			// サイズ情報を送るため, 1byte余分に取る
-			byte[] keyBytes = System.Text.Encoding.ASCII.GetBytes (str + ' ');
-			if (BitConverter.IsLittleEndian) {
-				Array.Reverse(keyBytes); // little Endian -> big endian
-			}
-			keyBytes[0] = (byte)(keyBytes.Length - 1);
-			connection.Write(keyBytes, 0, keyBytes.Length);
-
-			return;
 		}
 	}
 }
