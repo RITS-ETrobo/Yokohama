@@ -28,6 +28,24 @@ namespace ETRobocon.Utils
                 _flags[i] = false;
             }
 		}
+
+        /// <summary>コマンドを受信した</summary>
+        /// <param name="command">受信したコマンドのID</param>
+        public void ReceiveCommand(CommandID command)
+        {
+            _flags[(int)command] = true;
+        }
+
+        /// <summary>コマンドを受信したか確認</summary>
+        /// <remarks>確認をすると, そのコマンドの受信状況は, "未受信"にリセットされる.</remarks>
+        /// <param name="command">確認するコマンドのID</param>
+        /// <returns>コマンドを受信していた場合はtrue, 未受信の場合はfalse</returns>
+        public bool CheckCommandReceived(CommandID command)
+        {
+            bool ret = _flags[(int)command];
+            _flags[(int)command] = false;
+            return ret;
+        }
 	}
 }
 
