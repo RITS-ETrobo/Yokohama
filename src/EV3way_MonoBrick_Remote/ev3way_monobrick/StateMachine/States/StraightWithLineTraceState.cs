@@ -77,6 +77,10 @@ namespace ETRobocon.StateMachine
 			{
 				return TriggerID.TouchSensor;
 			}
+			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
+			{
+				return TriggerID.StopCommand;
+			}
 
 			return TriggerID.NoTrigger;
 		}

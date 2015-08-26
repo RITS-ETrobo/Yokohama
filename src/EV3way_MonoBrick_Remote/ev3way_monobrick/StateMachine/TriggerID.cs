@@ -6,6 +6,8 @@ namespace ETRobocon.StateMachine
 	{
 		NoTrigger = -1,
 		TouchSensor,
+		RunCommand,
+		StopCommand,
 
 		NumOfTrigger
 	}
