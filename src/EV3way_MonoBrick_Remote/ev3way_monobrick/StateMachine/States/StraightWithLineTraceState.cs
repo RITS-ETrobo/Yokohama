@@ -5,7 +5,7 @@ namespace ETRobocon.StateMachine
 {
 	public class StraightWithLineTraceState : State
 	{
-		public StraightWithLineTraceState(EV3body body) : base(body)
+		public StraightWithLineTraceState(EV3body body) : base(body, 2)
 		{
 		}
 

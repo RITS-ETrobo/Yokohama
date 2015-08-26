@@ -5,7 +5,7 @@ namespace ETRobocon.StateMachine
 {
 	public class CompleteState : State
 	{
-		public CompleteState(EV3body body) : base(body)
+		public CompleteState(EV3body body) : base(body, 4)
 		{
 		}
 

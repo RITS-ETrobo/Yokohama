@@ -8,9 +8,13 @@ namespace ETRobocon.StateMachine
 		/// <summary>機体</summary>
 		protected EV3body _body;
 
-		public State(EV3body body)
+		/// <summary>この状態の実行活動を繰り返すときの間隔[ms]</summary>
+		public readonly int IntervalTime;
+
+		public State(EV3body body, int intervalTime)
 		{
 			_body = body;
+			IntervalTime = intervalTime;
 		}
 
 		/// <summary>任意のStateからこのStateに遷移するときに実行される処理</summary>

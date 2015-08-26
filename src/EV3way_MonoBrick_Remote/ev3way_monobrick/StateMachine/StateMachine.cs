@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
@@ -81,6 +82,7 @@ namespace ETRobocon.StateMachine
 					}
 				}
 
+				Thread.Sleep(_states[(int)currentState].IntervalTime);
 			}
 		}
 
