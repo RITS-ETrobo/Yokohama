@@ -65,6 +65,9 @@ namespace ETRobocon.StateMachine
 			} else {
 				_body.motorR.SetPower(pwmR);
 			}
+
+			// 自己位置の更新
+			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
 		}
 
 		public override void Exit()
