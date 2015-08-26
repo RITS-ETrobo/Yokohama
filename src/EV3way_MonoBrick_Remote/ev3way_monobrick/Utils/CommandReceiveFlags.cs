@@ -19,7 +19,7 @@ namespace ETRobocon.Utils
         /// <remarks>各要素は, <see cref="CommandID"/>の定義順と一致する.</remarks>
         private bool[] _flags;
 
-		public CommandReceiveFlags()
+		private CommandReceiveFlags()
 		{
             _flags = new bool[(int)CommandID.NumOfCommand];
             // 一応, 明示的に初期化
