@@ -6,6 +6,7 @@ using MonoBrickFirmware.Display.Dialogs;
 using MonoBrickFirmware.Display;
 
 using ETRobocon.EV3;
+using ETRobocon.Odometry;
 using ETRobocon.Utils;
 using ETRobocon.StateMachine;
 
@@ -41,6 +42,11 @@ namespace ETRobocon.EV3
 
 		///	リモートコマンド : ???
 		const int REMOTE_COMMAND_CLOSE = 0;
+
+		/// <summary>
+		/// 自己位置推定
+		/// </summary>
+		static ETRobocon.Odometry.Odometry odm;
 
 		/// <summary><see cref="RunCommandReceived"/>のフィールド</summary>
 		private static bool _RunCommandReceived = false;
@@ -94,6 +100,9 @@ namespace ETRobocon.EV3
 			body.motorR.ResetTacho ();
 			body.motorT.ResetTacho ();
 			Balancer.init ();
+
+			///自己位置推定インスタンス作成
+			odm = new ETRobocon.Odometry.Odometry();
 
 			// スタート待ち
 			wait_start(body);
@@ -199,8 +208,11 @@ namespace ETRobocon.EV3
 					body.motorR.SetPower(pwmR);
 				}
 
+				odm.update (body.motorL.GetTachoCount (), body.motorR.GetTachoCount ());
+
 				// バランス制御のみだと3msecで安定
 				// 尻尾制御と障害物検知を使用する場合2msecで安定
+				// 上に加えて自己位置推定を入れても2msecで安定
 				Thread.Sleep(2);
 			}
 
