@@ -71,7 +71,6 @@
       <Link>Utils\Command.cs</Link>
     </Compile>
     <Compile Include="Odometry\Odometry.cs" />
-    <Compile Include="Odometry\OdometryTask.cs" />
     <Compile Include="Odometry\Location.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
