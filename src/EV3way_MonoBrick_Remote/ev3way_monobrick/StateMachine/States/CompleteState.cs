@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;	// for Debugger
+using MonoBrickFirmware.Display;	// for Lcd
 using ETRobocon.EV3;
+using ETRobocon.Utils;
 
 namespace ETRobocon.StateMachine
 {
@@ -11,6 +14,18 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
+			LogTask.LogRemote("EV3 stopped.");
+
+			_body.motorL.Off ();
+			_body.motorR.Off ();
+			_body.motorT.Off ();
+
+			Lcd.Instance.Clear ();
+			Lcd.Instance.Update ();
+
+			if (Debugger.IsAttached) {
+				Brick.ExitToMenu (); // MonoBrickメインメニューへ戻る
+			}
 		}
 
 		public override void Do()
