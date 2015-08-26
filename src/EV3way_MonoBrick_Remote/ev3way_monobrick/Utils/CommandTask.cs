@@ -31,9 +31,18 @@ namespace ETRobocon.Utils
 		/// <remarks><see cref="CommandID"/>と, コマンドの実装を結びつけるために利用する.</remarks>
 		private CommandMethodDel[] _CommandMethods;
 
+        /// <summary>コマンドの受信状況</summary>
+        /// <remarks>
+        /// 他クラスがコマンド受信状況を把握するため,
+        /// <see cref="CommandReceiveFlags"/>インスタンスの参照を持っておく.
+        /// </remarks>
+        private CommandReceiveFlags _commandReceiveFlags;
+
 		private CommandTask()
 		{
 			try {
+				_commandReceiveFlags = CommandReceiveFlags.Instance;
+
 				// CommandIDの列挙順と対応させること
 				_CommandMethods = new CommandMethodDel[(int)CommandID.NumOfCommand] {
 					CommandRun,
@@ -118,6 +127,9 @@ namespace ETRobocon.Utils
 								}
 							}
 						}
+
+                        // コマンドを受信したフラグを立てる
+                        _commandReceiveFlags.ReceiveCommand(command_format.Id);
 
 						// コマンド実行
 						_CommandMethods[(int)command_id](param1, param2);

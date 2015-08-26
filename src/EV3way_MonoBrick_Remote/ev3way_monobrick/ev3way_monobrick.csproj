@@ -9,8 +9,6 @@
     <RootNamespace>ETRobocon.EV3</RootNamespace>
     <AssemblyName>EV3Way</AssemblyName>
     <ReleaseVersion>0.5.0</ReleaseVersion>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,8 +75,7 @@
     <Compile Include="..\..\common\Command.cs">
       <Link>Utils\Command.cs</Link>
     </Compile>
->>>>>>> release
-  </ItemGroup>
+    <Compile Include="Utils\CommandReceiveFlags.cs" /></ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
