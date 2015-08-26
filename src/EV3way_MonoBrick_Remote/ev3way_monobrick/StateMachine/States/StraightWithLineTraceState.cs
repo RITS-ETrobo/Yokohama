@@ -1,10 +1,11 @@
 ﻿using System;
+using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
 	public class StraightWithLineTraceState : State
 	{
-		public StraightWithLineTraceState()
+		public StraightWithLineTraceState(EV3body body) : base(body)
 		{
 		}
 

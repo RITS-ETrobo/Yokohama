@@ -1,10 +1,17 @@
 ﻿using System;
+using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
 	public abstract class State
 	{
-		public State() {}
+		/// <summary>機体</summary>
+		protected EV3body _body;
+
+		public State(EV3body body)
+		{
+			_body = body;
+		}
 
 		/// <summary>任意のStateからこのStateに遷移するときに実行される処理</summary>
 		public abstract void Enter();

@@ -1,4 +1,5 @@
 ﻿using System;
+using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
@@ -13,15 +14,20 @@ namespace ETRobocon.StateMachine
 		/// <summary>状態遷移表</summary>
 		private Transition?[,] TransitionMatrix;
 
-		public StateMachine ()
+		/// <summary>機体</summary>
+		private EV3body _body;
+
+		public StateMachine(EV3body body)
 		{
+			_body = body;
+
 			currentState = StateID.Ready;
 
 			_states = new State[(int)StateID.NumOfState]
 			{
-				new ReadyState(),	// Ready
-				new StraightWithLineTraceState(),	// Straight1
-				new CompleteState()	// Complete
+				new ReadyState(_body),	// Ready
+				new StraightWithLineTraceState(_body),	// Straight1
+				new CompleteState(_body)	// Complete
 			};
 
 			TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]

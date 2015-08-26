@@ -6,7 +6,11 @@ using MonoBrickFirmware.Sensors;
 
 namespace ETRobocon.EV3
 {
-	struct EV3body{
+	/// <summary>機体</summary>
+	// EV3bodyは構造体だがメンバは全部参照型なので,
+	// 構造体がコピーされても, 中身はたぶん同じデバイスを参照するはず.
+	// TODO: EV3body構造体をやめ, モデル図のとおりに機体制御と機体情報のクラスを作成する.
+	public struct EV3body{
 		///	モータオブジェクト : 左
 		public  Motor motorL;
 

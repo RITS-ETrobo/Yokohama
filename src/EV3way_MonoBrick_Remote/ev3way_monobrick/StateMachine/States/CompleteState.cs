@@ -1,10 +1,11 @@
 ﻿using System;
+using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
 	public class CompleteState : State
 	{
-		public CompleteState()
+		public CompleteState(EV3body body) : base(body)
 		{
 		}
 
