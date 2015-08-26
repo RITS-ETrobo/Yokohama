@@ -146,12 +146,12 @@ namespace ETRobocon.Utils
 
 		private void CommandRun(object parameter1, object parameter2)
 		{
-			MainClass.RunCommandReceived = true;
+			// Nothing to do
 		}
 
 		private void CommandStop(object parameter1, object parameter2)
 		{
-			MainClass.StopCommandReceived = true;
+			// Nothing to do
 		}
 
 		private void CommandLog(object parameter1, object parameter2)
