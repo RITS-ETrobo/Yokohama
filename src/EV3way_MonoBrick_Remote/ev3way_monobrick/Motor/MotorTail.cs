@@ -41,9 +41,9 @@ namespace ETRobocon.EV3
 		private float subTargetAnglePerStep;
 
 		/// <summary>targetAngleに持っていくまでの段階数</summary>
-		private int movingSteps;
+		private int totalSteps;
 
-		/// <summary>現在の段階/movingSteps</summary>
+		/// <summary>現在の段階/totalSteps</summary>
 		private int currentStep;
 
 		/// <summary>Create instance</summary>
@@ -89,7 +89,7 @@ namespace ETRobocon.EV3
 			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
-			movingSteps = 1;
+			totalSteps = 1;
 			currentStep = 1;
 			subTargetAnglePerStep = targetAngle - startAngle;
 			subTargetAngle = targetAngle;
@@ -110,9 +110,9 @@ namespace ETRobocon.EV3
 			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
-			movingSteps = steps;
+			totalSteps = steps;
 			currentStep = 1;
-			subTargetAnglePerStep = (float)(targetAngle - startAngle) / movingSteps;
+			subTargetAnglePerStep = (float)(targetAngle - startAngle) / totalSteps;
 			subTargetAngle = (int)(startAngle + subTargetAnglePerStep * currentStep);
 		}
 
@@ -124,19 +124,20 @@ namespace ETRobocon.EV3
 		/// </summary>
 		public void UpdateTailAngle(){
 			float pwm;
-			int currentTacho;
-			currentTacho = motorTail.GetTachoCount ();
+			int currentAngle;
+			currentAngle = motorTail.GetTachoCount ();
 
-			if (currentStep > movingSteps) {
-				pwm = (targetAngle - currentTacho)*P_GAIN;
+			// 段階制御が終了していたら, 単純な比例制御
+			if (currentStep > totalSteps) {
+				pwm = (targetAngle - currentAngle)*P_GAIN;
 			}else{
 				// 尻尾が段階的目標角度になっていたら, 次の目標角度に更新
-				if (currentTacho == subTargetAngle) {
+				if (IsReachedSubTargetAngle (currentAngle)) {
 					currentStep++;
 					subTargetAngle = (int)(startAngle + subTargetAnglePerStep * currentStep);
 				}
 				// モーターに送るパワーを決定する.
-				pwm = (subTargetAngle - currentTacho) * P_GAIN; // 比例制御
+				pwm = (subTargetAngle - currentAngle) * P_GAIN; // 比例制御
 			}
 			// PWM出力飽和処理
 			if (pwm > PWM_ABS_MAX) {
@@ -151,6 +152,15 @@ namespace ETRobocon.EV3
 			} else {
 				motorTail.SetPower((sbyte)pwm);
 			}
+		}
+
+		/// <summary>
+		/// Determines whether this instance is reached sub target angle the specified currentAngle.
+		/// </summary>
+		/// <returns><c>true</c> if this instance is reached sub target angle the specified currentAngle; otherwise, <c>false</c>.</returns>
+		/// <param name="currentAngle">Current angle.</param>
+		private bool IsReachedSubTargetAngle(int currentAngle){
+			return (startAngle - targetAngle) * (currentAngle - subTargetAngle) <= 0;
 		}
 	}
 }
