@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['getbatterycurrentraw',['getBatteryCurrentRaw',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab786cf5a0f0a4aa06160a5d5acd0298c',1,'ETRobocon::EV3::Brick']]],
-  ['getbatteryvoltageraw',['getBatteryVoltageRaw',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab3dcbc11c957d26bf1294be3c718b276',1,'ETRobocon::EV3::Brick']]],
-  ['getname',['GetName',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a4f5b1c7e45ab9962c9371acdb145e891',1,'ETRobocon::EV3::Brick']]],
-  ['getvoltage',['GetVoltage',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#aeb4e4ad0cad9d2ddff25d3b2d94662f6',1,'ETRobocon::EV3::Brick']]],
-  ['getvoltagemillivolt',['GetVoltageMilliVolt',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a04d80e12070f8a1ec2a8a096082c9921',1,'ETRobocon::EV3::Brick']]],
-  ['gyro',['gyro',['../struct_e_t_tobocon_1_1_e_v3_1_1_e_v3body.html#afba101ae9103764b970fc43d36cb1f96',1,'ETTobocon::EV3::EV3body']]],
-  ['gyro_5foffset',['GYRO_OFFSET',['../class_e_t_tobocon_1_1_e_v3_1_1_main_class.html#aac3dc251f55162cb48c1f898cba71507',1,'ETTobocon::EV3::MainClass']]]
+  ['etrobocon',['ETRobocon',['../namespace_e_t_robocon.html',1,'']]],
+  ['ev3',['EV3',['../namespace_e_t_robocon_1_1_e_v3.html',1,'ETRobocon']]],
+  ['ev3body',['EV3body',['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html',1,'ETRobocon::EV3']]],
+  ['ev3body_2ecs',['EV3body.cs',['../_e_v3body_8cs.html',1,'']]],
+  ['ev3way_5fmonobrick_5fremoteconsole',['EV3Way_MonoBrick_RemoteConsole',['../namespace_e_v3_way___mono_brick___remote_console.html',1,'']]],
+  ['exec_5fperiod',['EXEC_PERIOD',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#ac75b9ac5cc1590b264dcf6b202088318',1,'ETRobocon::EV3::Balancer']]],
+  ['exittomenu',['ExitToMenu',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a64c7c311a8b71cf36ce13efdc3b1f24d',1,'ETRobocon::EV3::Brick']]],
+  ['utils',['Utils',['../namespace_e_t_robocon_1_1_utils.html',1,'ETRobocon']]]
 ];

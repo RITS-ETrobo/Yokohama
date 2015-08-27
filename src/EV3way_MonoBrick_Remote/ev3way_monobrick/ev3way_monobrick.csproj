@@ -8,7 +8,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
     <AssemblyName>EV3Way</AssemblyName>
-    <ReleaseVersion>0.3.0</ReleaseVersion>
+    <ReleaseVersion>0.5.0</ReleaseVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,10 +44,40 @@
     <Compile Include="EV3\Brick.cs" />
     <Compile Include="EV3\Balancer.cs" />
     <Compile Include="EV3body.cs" />
+    <Compile Include="..\..\common\ProtocolProcessor.cs">
+      <Link>Utils\ProtocolProcessor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\ProtocolProcessorForEV3.cs">
+      <Link>Utils\ProtocolProcessorForEV3.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\ProtocolProcessorForPC.cs">
+      <Link>Utils\ProtocolProcessorForPC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\PacketDataConverter.cs">
+      <Link>Utils\PacketDataConverter.cs</Link>
+    </Compile>
+    <Compile Include="Utils\LogTask.cs" />
+    <Compile Include="..\..\common\CommandID.cs">
+      <Link>Utils\CommandID.cs</Link>
+    </Compile>
+    <Compile Include="Utils\CommandTask.cs" />
+    <Compile Include="..\..\common\CommandFormat.cs">
+      <Link>Utils\CommandFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\CommandFormatManager.cs">
+      <Link>Utils\CommandFormatManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\Command.cs">
+      <Link>Utils\Command.cs</Link>
+    </Compile>
+    <Compile Include="Odometry\Odometry.cs" />
+    <Compile Include="Odometry\Location.cs" />
     <Compile Include="Motor\MotorTail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Folder Include="Utils\" />
+    <Folder Include="Odometry\" />
     <Folder Include="Motor\" />
   </ItemGroup>
 </Project>
