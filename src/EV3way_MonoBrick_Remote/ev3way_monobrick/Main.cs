@@ -150,7 +150,7 @@ namespace ETRobocon.EV3
 
 			LogTask.LogRemote("EV3 run.");
 
-			body.motorTail.SetMotorAngleImmediately(MotorTail.TAIL_ANGLE_LOOKUPGATE);	// バランス走行用角度に制御
+			body.motorTail.SetMotorAngleImmediately(MotorTail.TAIL_ANGLE_DRIVE);	// バランス走行用角度に制御
 			while (!body.touch.IsPressed ()) 
 			{
 				body.motorTail.UpdateTailAngle ();
