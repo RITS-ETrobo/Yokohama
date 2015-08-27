@@ -160,7 +160,7 @@ namespace ETRobocon.EV3
 
 			RemoteLogTest ("EV3 run.", connection);
 
-			body.motorTail.SetMotorAngleSlowly(MotorTail.TAIL_ANGLE_LOOKUPGATE, 100);	// バランス走行用角度に制御
+			body.motorTail.SetMotorAngleImmediately(MotorTail.TAIL_ANGLE_LOOKUPGATE);	// バランス走行用角度に制御
 			while (!body.touch.IsPressed ()) 
 			{
 				body.motorTail.UpdateTailAngle ();
@@ -168,37 +168,37 @@ namespace ETRobocon.EV3
 					break; // PC で 's' キー押されたら走行終了
 				}
 
-//				if (++counter >= 40/4) {
-//					alert = sonar_alert (body);
-//					counter = 0;
-//				}
-//				if (alert) {
-//					forward = 0;
-//					turn = 0;
-//				} else {
-//					forward = 50;
-//					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
-//				}
-//
-//				int gyroNow = -body.gyro.Read();
-//				int thetaL = body.motorL.GetTachoCount();
-//				int theTaR = body.motorR.GetTachoCount();
-//				sbyte pwmL, pwmR;
-//				Balancer.control (
-//					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
-//					out pwmL, out pwmR
-//				);
-//
-//				if (pwmL == 0) {
-//					body.motorL.Brake();
-//				} else {
-//					body.motorL.SetPower(pwmL);
-//				}
-//				if (pwmR == 0) {
-//					body.motorR.Brake();
-//				} else {
-//					body.motorR.SetPower(pwmR);
-//				}
+				if (++counter >= 40/4) {
+					alert = sonar_alert (body);
+					counter = 0;
+				}
+				if (alert) {
+					forward = 0;
+					turn = 0;
+				} else {
+					forward = 50;
+					turn = (body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
+				}
+
+				int gyroNow = -body.gyro.Read();
+				int thetaL = body.motorL.GetTachoCount();
+				int theTaR = body.motorR.GetTachoCount();
+				sbyte pwmL, pwmR;
+				Balancer.control (
+					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)battery,
+					out pwmL, out pwmR
+				);
+
+				if (pwmL == 0) {
+					body.motorL.Brake();
+				} else {
+					body.motorL.SetPower(pwmL);
+				}
+				if (pwmR == 0) {
+					body.motorR.Brake();
+				} else {
+					body.motorR.SetPower(pwmR);
+				}
 
 				// バランス制御のみだと3msecで安定
 				// 尻尾制御と障害物検知を使用する場合2msecで安定
