@@ -108,6 +108,9 @@ namespace ETRobocon.EV3
 			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
+			if (steps < 1) {
+				steps = 1;
+			}
 			totalSteps = steps;
 			currentStep = 1;
 			subTargetAnglePerStep = (float)(targetAngle - startAngle) / totalSteps;
