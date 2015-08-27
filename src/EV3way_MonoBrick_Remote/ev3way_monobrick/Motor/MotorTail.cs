@@ -25,9 +25,6 @@ namespace ETRobocon.EV3
 		/// <summary>制御する尻尾モーター</summary>
 		private Motor motorTail;
 
-		/// <summary>尻尾モーターの, 上がりきった位置からの角度[deg]. </summary>
-		//public int Angle { private set; get; }
-
 		/// <summary>SetMotorAngleImmediately(もしくはSetMotorAngleSlowly)で指定したときの角度</summary>
 		private int startAngle;
 
@@ -65,6 +62,7 @@ namespace ETRobocon.EV3
 			motorTail.ResetTacho ();
 		}
 
+		/// <summary>Destroy instance</summary>
 		~MotorTail(){
 			TurnOff ();
 		}
@@ -118,9 +116,9 @@ namespace ETRobocon.EV3
 
 
 		/// <summary>
-		/// This function is called in main loop.
-		/// This function uses some parameters which were set by setMotorAngleImmediately() or setMotorAngleSlowly().
-		/// So, each of these 2 functions must be called only once before UpdateTailAngle().
+		/// メインループでの尻尾制御を行う.
+		/// メインループに入る前に, SetMotorAngleImmediately(), もしくはSetMotorAngleSlowly()の
+		/// どちらが呼ばれていなければならない. 
 		/// </summary>
 		public void UpdateTailAngle(){
 			float pwm;
@@ -155,10 +153,11 @@ namespace ETRobocon.EV3
 		}
 
 		/// <summary>
-		/// Determines whether this instance is reached sub target angle the specified currentAngle.
+		/// 尻尾が段階目標角度に到達したか判定する.
+		/// 自重による負荷で追い越してしまう可能性があるので, このような条件式を採用している.
 		/// </summary>
-		/// <returns><c>true</c> if this instance is reached sub target angle the specified currentAngle; otherwise, <c>false</c>.</returns>
-		/// <param name="currentAngle">Current angle.</param>
+		/// <returns><c>true</c> 現在の尻尾角度が, 段階目標角度に到達している; それ以外は,<c>false</c>.</returns>
+		/// <param name="currentAngle">現在の尻尾角度</param>
 		private bool IsReachedSubTargetAngle(int currentAngle){
 			return (startAngle - targetAngle) * (currentAngle - subTargetAngle) <= 0;
 		}
