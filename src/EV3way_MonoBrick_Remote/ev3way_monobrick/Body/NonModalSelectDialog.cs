@@ -27,15 +27,26 @@ namespace ETRobocon.Body
 		/// <returns>成功時 : true, 既に表示されていた場合 : false</returns>
 		public new bool Show()
 		{
-			_task = new Task(this.Run);
-			_task.Start();
+			if (!IsShowing)
+			{
+				IsShowing = true;
 
-			return true;
+				_task = new Task(this.Run);
+				_task.Start();
+
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		private void Run()
 		{
 			base.Show();
+
+			IsShowing = false;
 		}
 	}
 }
