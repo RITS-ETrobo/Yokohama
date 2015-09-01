@@ -1,7 +1,7 @@
 ﻿using System;
 using MonoBrickFirmware.Display.Dialogs;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.Body
 {
 	/// <summary>
 	/// 非モーダルな選択用ダイアログ.

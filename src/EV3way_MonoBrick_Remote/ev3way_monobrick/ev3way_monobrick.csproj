@@ -72,11 +72,12 @@
     </Compile>
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
-    <Compile Include="NonModalSelectDialog.cs" />
+    <Compile Include="Body\NonModalSelectDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="Odometry\" />
+    <Folder Include="Body\" />
   </ItemGroup>
 </Project>
