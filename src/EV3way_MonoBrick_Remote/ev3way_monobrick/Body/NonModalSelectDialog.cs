@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;	// for CancellationTokenSource
 using System.Threading.Tasks;
 using MonoBrickFirmware.Display.Dialogs;
 
@@ -16,6 +17,9 @@ namespace ETRobocon.Body
 
 		/// <summary>モーダルダイアログを非モーダルとして使うための非同期タスク</summary>
 		private Task _task;
+
+		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
+		private CancellationTokenSource _cancellationTokenSource;
 
 		public NonModalSelectDialog(SelectionType[] selections, string title, bool allowEsc)
 			: base(selections, title, allowEsc)
@@ -44,9 +48,15 @@ namespace ETRobocon.Body
 
 		private void Run()
 		{
-			base.Show();
+			base.Show(_cancellationTokenSource.Token);
 
 			IsShowing = false;
+		}
+
+		/// <summary>このダイアログを閉じる</summary>
+		public void Cancel()
+		{
+			_cancellationTokenSource.Cancel();
 		}
 	}
 }
