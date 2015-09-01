@@ -54,7 +54,7 @@ namespace ETRobocon.EV3
 				return _totalSteps;
 			}
 			set{
-				_totalSteps = value;
+				_totalSteps = (value < 1) ? 1 : value;
 			}
 		}
 
@@ -114,9 +114,6 @@ namespace ETRobocon.EV3
 		{
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
-			if (steps < 1) {
-				steps = 1;
-			}
 			totalSteps = steps;
 			currentStep = 1;
 			subTargetAnglePerStep = (float)(targetAngle - startAngle) / totalSteps;
