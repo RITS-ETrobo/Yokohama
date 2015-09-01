@@ -35,7 +35,9 @@ namespace ETRobocon.EV3
 				return _targetAngle;
 			}
 			set{
-				_targetAngle = value;
+				_targetAngle =
+					 (value < TAIL_ANGLE_MIN) ? TAIL_ANGLE_MIN :
+					((value > TAIL_ANGLE_MAX) ? TAIL_ANGLE_MAX : value);
 			}
 		}
 
@@ -87,12 +89,6 @@ namespace ETRobocon.EV3
 		/// <param name="angle">設定したい角度</param>
 		public void SetMotorAngleImmediately(int angle)
 		{
-			if (angle > TAIL_ANGLE_MAX) {
-				angle = TAIL_ANGLE_MAX;
-			}
-			if (angle < TAIL_ANGLE_MIN) {
-				angle = TAIL_ANGLE_MIN;
-			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
 			totalSteps = 1;
@@ -108,12 +104,6 @@ namespace ETRobocon.EV3
 		/// <param name="steps">段階数. 値が大きいほどゆっくり設定する</param>
 		public void SetMotorAngleSlowly(int angle, int steps)
 		{
-			if (angle > TAIL_ANGLE_MAX) {
-				angle = TAIL_ANGLE_MAX;
-			}
-			if (angle < TAIL_ANGLE_MIN) {
-				angle = TAIL_ANGLE_MIN;
-			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
 			if (steps < 1) {
