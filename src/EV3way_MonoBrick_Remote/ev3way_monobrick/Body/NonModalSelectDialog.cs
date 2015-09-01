@@ -21,6 +21,9 @@ namespace ETRobocon.Body
 		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
 		private CancellationTokenSource _cancellationTokenSource;
 
+		/// <summary>排他制御のためのロック</summary>
+		private object _lockObj = new object();
+
 		public NonModalSelectDialog(SelectionType[] selections, string title, bool allowEsc)
 			: base(selections, title, allowEsc)
 		{
@@ -31,20 +34,23 @@ namespace ETRobocon.Body
 		/// <returns>成功時 : true, 既に表示されていた場合 : false</returns>
 		public new bool Show()
 		{
-			if (!IsShowing)
+			lock (_lockObj)
 			{
-				IsShowing = true;
+				if (!IsShowing)
+				{
+					IsShowing = true;
 				
-				_cancellationTokenSource = new CancellationTokenSource ();
+					_cancellationTokenSource = new CancellationTokenSource ();
 
-				_task = new Task(this.Run);
-				_task.Start();
+					_task = new Task(this.Run);
+					_task.Start();
 
-				return true;
-			}
-			else
-			{
-				return false;
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 		}
 
