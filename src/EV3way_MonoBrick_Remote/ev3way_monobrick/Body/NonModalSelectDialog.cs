@@ -56,7 +56,10 @@ namespace ETRobocon.Body
 		/// <summary>このダイアログを閉じる</summary>
 		public void Cancel()
 		{
-			_cancellationTokenSource.Cancel();
+			if (IsShowing)
+			{
+				_cancellationTokenSource.Cancel();
+			}
 		}
 	}
 }
