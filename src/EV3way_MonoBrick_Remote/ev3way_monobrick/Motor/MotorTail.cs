@@ -28,8 +28,16 @@ namespace ETRobocon.EV3
 		/// <summary>SetMotorAngleImmediately(もしくはSetMotorAngleSlowly)で指定したときの角度</summary>
 		private int startAngle;
 
+		private int _targetAngle;
 		/// <summary>最終的に一致させる角度</summary>
-		private int targetAngle;
+		private int targetAngle{
+			get{
+				return _targetAngle;
+			}
+			set{
+				_targetAngle = value;
+			}
+		}
 
 		/// <summary>段階的に動かすときに, 目標とする角度</summary>
 		private int subTargetAngle;
