@@ -34,6 +34,8 @@ namespace ETRobocon.Body
 			if (!IsShowing)
 			{
 				IsShowing = true;
+				
+				_cancellationTokenSource = new CancellationTokenSource ();
 
 				_task = new Task(this.Run);
 				_task.Start();
