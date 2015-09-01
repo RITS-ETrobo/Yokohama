@@ -9,9 +9,14 @@ namespace ETRobocon.Body
 	/// </summary>
 	public class NonModalSelectDialog<SelectionType> : SelectDialog<SelectionType>
 	{
+		/// <summary>このダイアログが表示されているかどうか</summary>
+		/// <value>表示されているときは<c>true</c>, 表示されていないときは<c>false</c>.</value>
+		public bool IsShowing { get; set; }
+
 		public NonModalSelectDialog(SelectionType[] selections, string title, bool allowEsc)
 			: base(selections, title, allowEsc)
 		{
+			IsShowing = false;
 		}
 	}
 }
