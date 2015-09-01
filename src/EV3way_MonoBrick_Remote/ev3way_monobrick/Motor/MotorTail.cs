@@ -47,8 +47,16 @@ namespace ETRobocon.EV3
 		/// <summary>1段階で動かす角度</summary>
 		private float subTargetAnglePerStep;
 
+		private int _totalSteps;
 		/// <summary>targetAngleに持っていくまでの段階数</summary>
-		private int totalSteps;
+		private int totalSteps{
+			get{
+				return _totalSteps;
+			}
+			set{
+				_totalSteps = value;
+			}
+		}
 
 		/// <summary>現在の段階/totalSteps</summary>
 		private int currentStep;
