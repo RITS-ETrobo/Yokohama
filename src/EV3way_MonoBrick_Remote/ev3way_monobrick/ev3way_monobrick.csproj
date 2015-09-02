@@ -7,7 +7,6 @@
     <ProjectGuid>{D143CFF0-F2F5-474A-B631-698EC2E98A12}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
-    <AssemblyName>EV3Way</AssemblyName>
     <ReleaseVersion>0.5.0</ReleaseVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -23,6 +22,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>..\..\..\bin\Debug\EV3Way.xml</DocumentationFile>
+    <AssemblyName>EV3Way</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -32,6 +32,16 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>..\..\..\bin\Release\EV3Way.xml</DocumentationFile>
+    <AssemblyName>EV3Way</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '充電池|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\充電池</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>ev3way_monobrick</AssemblyName>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>RechargeableBattery</DefineConstants>
+    <DocumentationFile>bin\x86\充電池\EV3Way.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
