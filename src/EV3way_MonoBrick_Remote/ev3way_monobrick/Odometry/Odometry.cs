@@ -100,9 +100,6 @@ namespace ETRobocon.Odometry
 			//ロボットの旋回角度増加分[radian]の算出
 			double delta_theta_rad = (delta_right_move_distance_mm - delta_left_move_distance_mm) / AXLE_LENGTH_MM;
 
-			//ロボットの旋回角度[radian]の更新
-			_curThetaRAD = prev_theta_rad + delta_theta_rad;
-
 			//ロボットの現在値を求めるための値を算出
 			double trigono_func_arg = prev_theta_rad + delta_theta_rad / 2.0;
 			double coefficient = delta_move_distance_mm * sinc_approx( delta_theta_rad / 2.0); 
@@ -115,6 +112,9 @@ namespace ETRobocon.Odometry
 //					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
 //					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
 //				);
+
+				//ロボットの旋回角度[radian]の更新
+				_curThetaRAD = prev_theta_rad + delta_theta_rad;
 
 				//累積走行距離[mm]に加算
 				_totalMoveDistanceMM += delta_move_distance_mm; 
