@@ -1,8 +1,4 @@
-﻿// ここでバッテリー用か乾電池用かを決めます。
-// 乾電池の場合は、コメントアウトします。
-//#define RechargeableBattery
-
-using System;
+﻿using System;
 using System.Threading;
 
 using MonoBrickFirmware;
