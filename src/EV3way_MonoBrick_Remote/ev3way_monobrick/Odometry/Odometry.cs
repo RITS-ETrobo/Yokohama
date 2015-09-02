@@ -172,6 +172,17 @@ namespace ETRobocon.Odometry
 			}
 		}
 
+		/// <summary>
+		/// ロボットの進行方向を取得する.
+		/// </summary>
+		/// <value>ロボットの進行方向[RAD].</value>
+		public double CurThetaRAD{
+			get{
+				lock (LOCK_OBJ) {
+					return this._curThetaRAD;
+				}
+			}
+		}
 	}
 }
 
