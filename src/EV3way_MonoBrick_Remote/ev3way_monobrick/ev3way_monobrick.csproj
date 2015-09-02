@@ -8,8 +8,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
     <ReleaseVersion>0.5.0</ReleaseVersion>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +64,13 @@
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
     </Compile>
+    <Compile Include="StateMachine\StateMachine.cs" />
+    <Compile Include="StateMachine\State.cs" />
+    <Compile Include="StateMachine\TriggerID.cs" />
+    <Compile Include="StateMachine\StateID.cs" />
+    <Compile Include="StateMachine\States\ReadyState.cs" />
+    <Compile Include="StateMachine\States\CompleteState.cs" />
+    <Compile Include="StateMachine\States\StraightWithLineTraceState.cs" />
     <Compile Include="Utils\LogTask.cs" />
     <Compile Include="..\..\common\CommandID.cs">
       <Link>Utils\CommandID.cs</Link>
@@ -80,12 +85,15 @@
     <Compile Include="..\..\common\Command.cs">
       <Link>Utils\Command.cs</Link>
     </Compile>
+    <Compile Include="Utils\CommandReceiveFlags.cs" />
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="StateMachine\" />
+    <Folder Include="StateMachine\States\" />
     <Folder Include="Odometry\" />
   </ItemGroup>
 </Project>
