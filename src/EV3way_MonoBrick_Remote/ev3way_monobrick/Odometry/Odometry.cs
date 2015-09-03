@@ -67,8 +67,8 @@ namespace ETRobocon.Odometry
 		public const bool AVAILABLE_LOG_FEATURE = true;
 		/// <summary>自己位置推定のログ機能を使用しない定義</summary>
 		public const bool UNAVAILABLE_LOG_FEATURE = false;
-		/// <summary>自己位置推定のログ機能を使用するかしないかを保持する変数</summary>
-		private bool _isAvailableLogFeature = false;
+		/// <summary>自己位置推定のログ機能を使用するかしないかのフラグ</summary>
+		private bool _logFeatureFlag = false;
 		/// <summary>
 		/// 自己位置推定のログを保存しておくリスト.
 		/// Listにはdouble型の可変長配列を保存する.
@@ -80,9 +80,9 @@ namespace ETRobocon.Odometry
 		/// <see cref="ETRobocon.Odometry.Odometry"/>
 		/// </summary>
 		/// <param name="odmLogFlag">自己位置推定のログ機能を使用するかしないか.<c>true</c> 使用する.</param>
-		public Odometry (bool odmLogFlag)
+		public Odometry (bool logFeatureFlag)
 		{
-			_isAvailableLogFeature = odmLogFlag;
+			_logFeatureFlag = logFeatureFlag;
 		}
 
 		/// <summary>
@@ -134,17 +134,16 @@ namespace ETRobocon.Odometry
 				//累積走行距離[mm]に加算
 				_totalMoveDistanceMM += delta_move_distance_mm; 
 
-				//ログ機能が有効な時だけ保存する
-				if (_isAvailableLogFeature) {
-					saveLog ( 
-						(double)leftTachoCount,
-						(double)rightTachoCount,
-						_curLocation.X,
-						_curLocation.Y,
-						_curThetaRAD,
-						_totalMoveDistanceMM
-					);
-				}
+				//ログの保存.ログ機能が有効かどうかはメソッド内で判定する
+				saveLog ( 
+					(double)leftTachoCount,
+					(double)rightTachoCount,
+					_curLocation.X,
+					_curLocation.Y,
+					_curThetaRAD,
+					_totalMoveDistanceMM
+				);
+
 			}
 		}
 
@@ -176,20 +175,41 @@ namespace ETRobocon.Odometry
 		}
 
 		/// <summary>
-		/// 自己位置推定のログを保存する.
+		/// 自己位置推定のログをログ機能が有効な時だけ保存する.
 		/// </summary>
 		/// <param name="data">保存したい自己位置推定のログのdouble型可変長配列.</param>
 		private void saveLog(params double[] data){
-			if (_isAvailableLogFeature) {
+			if (_logFeatureFlag) {
 				logList.Add (data);
 			}
 		}
 
 		/// <summary>
-		/// 自己位置推定のログをファイルに出力する.
+		/// 自己位置推定のログをログ機能が有効な時だけファイルに出力する.
 		/// </summary>
 		public void outputLogToFile(){
-			if (_isAvailableLogFeature) {
+			if (_logFeatureFlag) {
+
+				//前回のログを削除する
+				System.IO.File.Delete ("odm.csv");
+
+				for (int i = 0; i < logList.Count; i++) {
+
+					//update1回のログを取り出す
+					double[] data = logList [i];
+
+					//update1回のログに含まれるデータをカンマ区切りで並べる
+					String str = "";
+					foreach(double value in data){
+						str += value + ",";
+					}
+					str += System.Environment.NewLine;
+
+					//カンマ区切りで並べたデータをCSVファイルに書き込む
+					System.IO.File.AppendAllText("odm.csv",str);
+			
+
+				}
 
 			}
 		}
