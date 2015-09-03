@@ -28,8 +28,18 @@ namespace ETRobocon.EV3
 		/// <summary>SetMotorAngleImmediately(もしくはSetMotorAngleSlowly)で指定したときの角度</summary>
 		private int startAngle;
 
+		private int _targetAngle;
 		/// <summary>最終的に一致させる角度</summary>
-		private int targetAngle;
+		private int targetAngle{
+			get{
+				return _targetAngle;
+			}
+			set{
+				_targetAngle =
+					 (value < TAIL_ANGLE_MIN) ? TAIL_ANGLE_MIN :
+					((value > TAIL_ANGLE_MAX) ? TAIL_ANGLE_MAX : value);
+			}
+		}
 
 		/// <summary>段階的に動かすときに, 目標とする角度</summary>
 		private int subTargetAngle;
@@ -37,8 +47,16 @@ namespace ETRobocon.EV3
 		/// <summary>1段階で動かす角度</summary>
 		private float subTargetAnglePerStep;
 
+		private int _totalSteps;
 		/// <summary>targetAngleに持っていくまでの段階数</summary>
-		private int totalSteps;
+		private int totalSteps{
+			get{
+				return _totalSteps;
+			}
+			set{
+				_totalSteps = (value < 1) ? 1 : value;
+			}
+		}
 
 		/// <summary>現在の段階/totalSteps</summary>
 		private int currentStep;
@@ -79,12 +97,6 @@ namespace ETRobocon.EV3
 		/// <param name="angle">設定したい角度</param>
 		public void SetMotorAngleImmediately(int angle)
 		{
-			if (angle > TAIL_ANGLE_MAX) {
-				angle = TAIL_ANGLE_MAX;
-			}
-			if (angle < TAIL_ANGLE_MIN) {
-				angle = TAIL_ANGLE_MIN;
-			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
 			totalSteps = 1;
@@ -100,17 +112,8 @@ namespace ETRobocon.EV3
 		/// <param name="steps">段階数. 値が大きいほどゆっくり設定する</param>
 		public void SetMotorAngleSlowly(int angle, int steps)
 		{
-			if (angle > TAIL_ANGLE_MAX) {
-				angle = TAIL_ANGLE_MAX;
-			}
-			if (angle < TAIL_ANGLE_MIN) {
-				angle = TAIL_ANGLE_MIN;
-			}
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
-			if (steps < 1) {
-				steps = 1;
-			}
 			totalSteps = steps;
 			currentStep = 1;
 			subTargetAnglePerStep = (float)(targetAngle - startAngle) / totalSteps;
