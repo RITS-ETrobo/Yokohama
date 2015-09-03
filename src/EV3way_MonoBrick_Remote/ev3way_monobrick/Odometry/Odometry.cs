@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ETRobocon.Odometry
 {
@@ -62,12 +63,26 @@ namespace ETRobocon.Odometry
 		/// </summary>
 		private readonly Object LOCK_OBJ = new Object();
 
+		/// <summary>自己位置推定のログ機能を使用する定義</summary>
+		public const bool AVAILABLE_LOG_FEATURE = true;
+		/// <summary>自己位置推定のログ機能を使用しない定義</summary>
+		public const bool UNAVAILABLE_LOG_FEATURE = false;
+		/// <summary>自己位置推定のログ機能を使用するかしないかを保持する変数</summary>
+		private bool _isAvailableLogFeature = false;
+		/// <summary>
+		/// 自己位置推定のログを保存しておくリスト.
+		/// Listにはdouble型の可変長配列を保存する.
+		/// </summary>
+		private List<double[]> logList = new List<double[]> ();
+
 		/// <summary>
 		/// 自己位置推定クラスのコンストラクタ
 		/// <see cref="ETRobocon.Odometry.Odometry"/>
 		/// </summary>
-		public Odometry ()
+		/// <param name="odmLogFlag">自己位置推定のログ機能を使用するかしないか.<c>true</c> 使用する.</param>
+		public Odometry (bool odmLogFlag)
 		{
+			_isAvailableLogFeature = odmLogFlag;
 		}
 
 		/// <summary>
@@ -118,6 +133,18 @@ namespace ETRobocon.Odometry
 
 				//累積走行距離[mm]に加算
 				_totalMoveDistanceMM += delta_move_distance_mm; 
+
+				//ログ機能が有効な時だけ保存する
+				if (_isAvailableLogFeature) {
+					saveLog ( 
+						(double)leftTachoCount,
+						(double)rightTachoCount,
+						_curLocation.X,
+						_curLocation.Y,
+						_curThetaRAD,
+						_totalMoveDistanceMM
+					);
+				}
 			}
 		}
 
@@ -146,6 +173,25 @@ namespace ETRobocon.Odometry
 			//ret += Math.Pow (rad_squared, 4) / (9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1);
 			//ret -= Math.Pow (rad_squared, 5) / (11 * 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1);
 			return ret;
+		}
+
+		/// <summary>
+		/// 自己位置推定のログを保存する.
+		/// </summary>
+		/// <param name="data">保存したい自己位置推定のログのdouble型可変長配列.</param>
+		private void saveLog(params double[] data){
+			if (_isAvailableLogFeature) {
+				logList.Add (data);
+			}
+		}
+
+		/// <summary>
+		/// 自己位置推定のログをファイルに出力する.
+		/// </summary>
+		public void outputLogToFile(){
+			if (_isAvailableLogFeature) {
+
+			}
 		}
 
 		/// <summary>
