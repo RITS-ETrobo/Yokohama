@@ -92,25 +92,11 @@ namespace ETRobocon.EV3
 		}
 
 		/// <summary>
-		/// 尻尾モーターの角度を設定する.
-		/// </summary>
-		/// <param name="angle">設定したい角度</param>
-		public void SetMotorAngleImmediately(int angle)
-		{
-			startAngle = motorTail.GetTachoCount ();
-			targetAngle = angle;
-			totalSteps = 1;
-			currentStep = 1;
-			subTargetAnglePerStep = targetAngle - startAngle;
-			subTargetAngle = targetAngle;
-		}
-
-		/// <summary>
 		/// 尻尾モーターの角度を指定した段階数を踏んで設定する.
 		/// </summary>
 		/// <param name="angle">設定したい角度</param>
 		/// <param name="steps">段階数. 値が大きいほどゆっくり設定する</param>
-		public void SetMotorAngleSlowly(int angle, int steps)
+		public void SetMotorAngle(int angle, int steps=1)
 		{
 			startAngle = motorTail.GetTachoCount ();
 			targetAngle = angle;
