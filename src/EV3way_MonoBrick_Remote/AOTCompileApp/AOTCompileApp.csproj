@@ -31,6 +31,12 @@
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>..\..\..\bin\Release\AOTCompileApp.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '充電池|x86' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\充電池</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="MonoBrickFirmware">
