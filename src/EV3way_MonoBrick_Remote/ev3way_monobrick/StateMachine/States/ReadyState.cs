@@ -8,6 +8,8 @@ namespace ETRobocon.StateMachine
 {
 	public class ReadyState : State
 	{
+		private Body.NonModalSelectDialog<string> _selectDialog;
+
 		public ReadyState(EV3body body) : base(body, 4)
 		{
 		}
@@ -38,8 +40,8 @@ namespace ETRobocon.StateMachine
 			_body.motorT.ResetTacho ();
 			Balancer.init ();
 
-			var dialogSTART = new InfoDialog ("Touch to START", false);
-			dialogSTART.Show ();
+			_selectDialog = new Body.NonModalSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
+			_selectDialog.Show();
 
 			LogTask.LogRemote("EV3 is ready.");
 		}
@@ -57,6 +59,8 @@ namespace ETRobocon.StateMachine
 				tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
 				Thread.Sleep (4);
 			}
+
+			_selectDialog.Cancel();
 		}
 
 		public override TriggerID JudgeTransition()
@@ -68,6 +72,14 @@ namespace ETRobocon.StateMachine
 			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Run))
 			{
 				return TriggerID.RunCommand;
+			}
+			else if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 0)
+			{
+				return TriggerID.Select1;
+			}
+			else if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 1)
+			{
+				return TriggerID.Select2;
 			}
 
 			return TriggerID.NoTrigger;
