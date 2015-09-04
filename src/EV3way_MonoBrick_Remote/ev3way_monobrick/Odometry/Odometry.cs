@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ETRobocon.Utils;
 
 namespace ETRobocon.Odometry
 {
@@ -65,10 +66,13 @@ namespace ETRobocon.Odometry
 
 		/// <summary>自己位置推定のログ機能を使用する定義</summary>
 		public const bool AVAILABLE_LOG_FEATURE = true;
+
 		/// <summary>自己位置推定のログ機能を使用しない定義</summary>
 		public const bool UNAVAILABLE_LOG_FEATURE = false;
+
 		/// <summary>自己位置推定のログ機能を使用するかしないかのフラグ</summary>
 		private bool _logFeatureFlag = false;
+
 		/// <summary>
 		/// 自己位置推定のログを保存しておくリスト.
 		/// Listにはdouble型の可変長配列を保存する.
@@ -79,10 +83,12 @@ namespace ETRobocon.Odometry
 		/// 自己位置推定クラスのコンストラクタ
 		/// <see cref="ETRobocon.Odometry.Odometry"/>
 		/// </summary>
-		/// <param name="odmLogFlag">自己位置推定のログ機能を使用するかしないか.<c>true</c> 使用する.</param>
+		/// <param name="logFeatureFlag">自己位置推定のログ機能を使用するかしないか.<c>true</c> 使用する.</param>
 		public Odometry (bool logFeatureFlag)
 		{
 			_logFeatureFlag = logFeatureFlag;
+			String str = "Odometry : LogFeature is " + _logFeatureFlag;
+			LogTask.LogRemote (str);
 		}
 
 		/// <summary>
@@ -190,6 +196,8 @@ namespace ETRobocon.Odometry
 		public void outputLogToFile(){
 			if (_logFeatureFlag) {
 
+				LogTask.LogRemote ("#START : Making odometry log file.");
+
 				//前回のログを削除する
 				System.IO.File.Delete ("odm.csv");
 
@@ -207,10 +215,14 @@ namespace ETRobocon.Odometry
 
 					//カンマ区切りで並べたデータをCSVファイルに書き込む
 					System.IO.File.AppendAllText("odm.csv",str);
-			
 
+					//ファイル書き込み完了度合をコンソールに出力する
+					if (i % 100 == 0) {
+						String s = "#WRITING : " + i + "/" + logList.Count ;
+						LogTask.LogRemote (s);
+					}
 				}
-
+				LogTask.LogRemote ("#END : Making odometry log file.");
 			}
 		}
 
