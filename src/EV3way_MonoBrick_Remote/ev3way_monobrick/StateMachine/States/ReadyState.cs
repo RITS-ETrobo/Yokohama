@@ -8,7 +8,7 @@ namespace ETRobocon.StateMachine
 {
 	public class ReadyState : State
 	{
-		private Body.NonModalSelectDialog<string> _selectDialog;
+		private Body.ModelessSelectDialog<string> _selectDialog;
 
 		public ReadyState(EV3body body) : base(body, 4)
 		{
@@ -40,7 +40,7 @@ namespace ETRobocon.StateMachine
 			_body.motorT.ResetTacho ();
 			Balancer.init ();
 
-			_selectDialog = new Body.NonModalSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
+			_selectDialog = new Body.ModelessSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
 			_selectDialog.Show();
 
 			LogTask.LogRemote("EV3 is ready.");

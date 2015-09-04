@@ -9,7 +9,7 @@ namespace ETRobocon.Body
 	/// 非モーダルな選択用ダイアログ.
 	/// 既存のMonoBrickのモーダルなSelectDialogを, 非モーダルにしたもの.
 	/// </summary>
-	public class NonModalSelectDialog<SelectionType> : SelectDialog<SelectionType>
+	public class ModelessSelectDialog<SelectionType> : SelectDialog<SelectionType>
 	{
 		/// <summary>このダイアログが表示されているかどうか</summary>
 		/// <value>表示されているときは<c>true</c>, 表示されていないときは<c>false</c>.</value>
@@ -24,7 +24,7 @@ namespace ETRobocon.Body
 		/// <summary>排他制御のためのロック</summary>
 		private object _lockObj = new object();
 
-		public NonModalSelectDialog(SelectionType[] selections, string title, bool allowEsc)
+		public ModelessSelectDialog(SelectionType[] selections, string title, bool allowEsc)
 			: base(selections, title, allowEsc)
 		{
 			IsShowing = false;
