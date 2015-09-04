@@ -15,13 +15,8 @@ namespace ETRobocon.Body
 		/// <value>表示されているときは<c>true</c>, 表示されていないときは<c>false</c>.</value>
 		public bool IsShowing { get; set; }
 
-<<<<<<< HEAD:src/EV3way_MonoBrick_Remote/ev3way_monobrick/Body/NonModalSelectDialog.cs
-		/// <summary>モーダルダイアログを非モーダルとして使うための非同期タスク</summary>
-		private Task _showModalDialogTask;
-=======
 		/// <summary>モーダルダイアログをモーダレスとして使うための非同期タスク</summary>
-		private Task _task;
->>>>>>> origin/feature/230:src/EV3way_MonoBrick_Remote/ev3way_monobrick/Body/ModelessSelectDialog.cs
+		private Task _showModalDialogTask;
 
 		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
 		private CancellationTokenSource _cancellationTokenSource;
