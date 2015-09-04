@@ -25,6 +25,11 @@ namespace ETRobocon.StateMachine
 
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
+
+			// 走行開始前にタイヤが動いていると自己位置推定に誤差が出てくるのでTachoCountの値をリセットする]
+			//  - ココじゃなくてStateMachine.cs内の走行準備からの遷移であるnew Transition(StateID.Straight1, Nop)のNopのところでやるべき？
+			_body.motorL.ResetTacho ();
+			_body.motorR.ResetTacho ();
 		}
 
 		public override void Do()
