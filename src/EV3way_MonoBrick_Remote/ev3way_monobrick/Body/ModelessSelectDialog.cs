@@ -16,7 +16,7 @@ namespace ETRobocon.Body
 		public bool IsShowing { get; set; }
 
 		/// <summary>モーダルダイアログをモーダレスとして使うための非同期タスク</summary>
-		private Task _task;
+		private Task _showModalDialogTask;
 
 		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
 		private CancellationTokenSource _cancellationTokenSource;
@@ -42,8 +42,8 @@ namespace ETRobocon.Body
 				
 					_cancellationTokenSource = new CancellationTokenSource ();
 
-					_task = new Task(this.Run);
-					_task.Start();
+					_showModalDialogTask = new Task(this.Run);
+					_showModalDialogTask.Start();
 
 					return true;
 				}
