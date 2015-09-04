@@ -88,7 +88,7 @@
     <Compile Include="Utils\CommandReceiveFlags.cs" />
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
-    <Compile Include="Body\NonModalSelectDialog.cs" />
+    <Compile Include="Body\ModelessSelectDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
