@@ -42,7 +42,7 @@ namespace ETRobocon.StateMachine
 
 			LogTask.LogRemote("EV3 is ready.");
 
-			_body.motorTail.SetMotorAngleImmediately (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 		}
 
 		public override void Do()
@@ -52,7 +52,7 @@ namespace ETRobocon.StateMachine
 
 		public override void Exit()
 		{
-			_body.motorTail.SetMotorAngleImmediately (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 
 			// スイッチが離されるのを待つ
 			// TODO: "押されたときだけを検出する"ような機能をタッチセンサーに持たせ, ここの処理は削除する.
