@@ -6,8 +6,8 @@ using MonoBrickFirmware.Display.Dialogs;
 namespace ETRobocon.Body
 {
 	/// <summary>
-	/// 非モーダルな選択用ダイアログ.
-	/// 既存のMonoBrickのモーダルなSelectDialogを, 非モーダルにしたもの.
+	/// モーダレスな選択用ダイアログ.
+	/// 既存のMonoBrickのモーダルなSelectDialogを, モーダレスにしたもの.
 	/// </summary>
 	public class ModelessSelectDialog<SelectionType> : SelectDialog<SelectionType>
 	{
@@ -15,7 +15,7 @@ namespace ETRobocon.Body
 		/// <value>表示されているときは<c>true</c>, 表示されていないときは<c>false</c>.</value>
 		public bool IsShowing { get; set; }
 
-		/// <summary>モーダルダイアログを非モーダルとして使うための非同期タスク</summary>
+		/// <summary>モーダルダイアログをモーダレスとして使うための非同期タスク</summary>
 		private Task _task;
 
 		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
@@ -30,7 +30,7 @@ namespace ETRobocon.Body
 			IsShowing = false;
 		}
 
-		/// <summary>この非モーダル選択ダイアログを表示する</summary>
+		/// <summary>このモーダレス選択ダイアログを表示する</summary>
 		/// <returns>成功時 : true, 既に表示されていた場合 : false</returns>
 		public new bool Show()
 		{
