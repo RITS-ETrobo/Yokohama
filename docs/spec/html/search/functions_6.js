@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['poweroff',['Poweroff',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a1c46e1ac7474b2f33275bc2465d2b4e7',1,'ETRobocon::EV3::Brick']]],
-  ['protocolprocessor',['ProtocolProcessor',['../class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a6b68bc76531bbb8748a341aae0669c5b',1,'ETRobocon::Utils::ProtocolProcessor']]],
-  ['protocolprocessorforev3',['ProtocolProcessorForEV3',['../class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_e_v3.html#a88f728915677ea3de18a2f1d44c1319b',1,'ETRobocon::Utils::ProtocolProcessorForEV3']]],
-  ['protocolprocessorforpc',['ProtocolProcessorForPC',['../class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_p_c.html#a1cbdf720d975e5636f55f6bae0fd762f',1,'ETRobocon::Utils::ProtocolProcessorForPC']]]
+  ['judgetransition',['JudgeTransition',['../class_e_t_robocon_1_1_state_machine_1_1_state.html#a0472fd4c3600b36a53eac709b9dbcd16',1,'ETRobocon.StateMachine.State.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_complete_state.html#a2b6e7872486c73b71321b863e8cd5146',1,'ETRobocon.StateMachine.CompleteState.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#a8cf00742f38e600f65607abed0321dae',1,'ETRobocon.StateMachine.ReadyState.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#afc5cb64d8365cae852f6a92315a4271b',1,'ETRobocon.StateMachine.StraightWithLineTraceState.JudgeTransition()']]]
 ];

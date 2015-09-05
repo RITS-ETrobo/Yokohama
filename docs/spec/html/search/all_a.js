@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['k_5ff',['K_F',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a2c8e2c0275fd824f9bd3fa4f8324f69a',1,'ETRobocon::EV3::Balancer']]],
-  ['k_5fi',['K_I',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#ad4032940f6452e5ebd600338416130c8',1,'ETRobocon::EV3::Balancer']]],
-  ['k_5fphidot',['K_PHIDOT',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#aac71246b5f076db61646cb3f7d60837a',1,'ETRobocon::EV3::Balancer']]],
-  ['k_5fthetadot',['K_THETADOT',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a1fab96dac4bd65b8020c4f7d6799d237',1,'ETRobocon::EV3::Balancer']]]
+  ['judgetransition',['JudgeTransition',['../class_e_t_robocon_1_1_state_machine_1_1_state.html#a0472fd4c3600b36a53eac709b9dbcd16',1,'ETRobocon.StateMachine.State.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_complete_state.html#a2b6e7872486c73b71321b863e8cd5146',1,'ETRobocon.StateMachine.CompleteState.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#a8cf00742f38e600f65607abed0321dae',1,'ETRobocon.StateMachine.ReadyState.JudgeTransition()'],['../class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#afc5cb64d8365cae852f6a92315a4271b',1,'ETRobocon.StateMachine.StraightWithLineTraceState.JudgeTransition()']]]
 ];
