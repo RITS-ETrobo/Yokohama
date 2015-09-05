@@ -15,7 +15,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
@@ -29,7 +29,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_o_t_compile_app_2_main_8cs.html"
+"_a_o_t_compile_app_2_main_8cs.html",
+"class_e_t_robocon_1_1_utils_1_1_command_task.html#a07caaa78e2be3a32672920a5d8491d0e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

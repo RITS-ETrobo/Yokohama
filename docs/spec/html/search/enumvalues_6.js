@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numoftype',['NumOfType',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a64e040fe8be84fdbda05c0db0cc785fc',1,'ETRobocon::Utils']]]
+  ['memoryover',['MemoryOver',['../namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0ac9fc70006e5d72e19106cb6ad483db59',1,'ETRobocon::Utils']]]
 ];

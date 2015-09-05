@@ -1,14 +1,22 @@
 var searchData=
 [
-  ['main',['Main',['../class_a_o_t_compile_app_1_1_main_class.html#a0547e129a9849579234a54877e10f5a9',1,'AOTCompileApp.MainClass.Main()'],['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html#a3135937ba13c7a359b99255a07473eb8',1,'ETRobocon.EV3.MainClass.Main()'],['../class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0',1,'EV3Way_MonoBrick_RemoteConsole.MainClass.Main()']]],
-  ['main_2ecs',['Main.cs',['../ev3way__monobrick_2_main_8cs.html',1,'']]],
-  ['main_2ecs',['Main.cs',['../_a_o_t_compile_app_2_main_8cs.html',1,'']]],
-  ['mainclass',['MainClass',['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html',1,'ETRobocon::EV3']]],
-  ['mainclass',['MainClass',['../class_e_v3_way___mono_brick___remote_console_1_1_main_class.html',1,'EV3Way_MonoBrick_RemoteConsole']]],
-  ['mainclass',['MainClass',['../class_a_o_t_compile_app_1_1_main_class.html',1,'AOTCompileApp']]],
-  ['mono_5fhome',['MONO_HOME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a6980f1db49c5b8797b9587d2ab461f1d',1,'ETRobocon::EV3::Brick']]],
-  ['monopath',['monoPath',['../class_a_o_t_compile_app_1_1_main_class.html#a8e9cafd072b6b9503e968ab2477b61f9',1,'AOTCompileApp::MainClass']]],
-  ['motorl',['motorL',['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#a72a539542ab1ecfe12005730d46c6fac',1,'ETRobocon::EV3::EV3body']]],
-  ['motorr',['motorR',['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#aa9dafc51de7cdc1c533f1de0c939b28a',1,'ETRobocon::EV3::EV3body']]],
-  ['motort',['motorT',['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#a6d47c0e22b1c5790a6aa114dae3542fc',1,'ETRobocon::EV3::EV3body']]]
+  ['lejos_5fbtpin',['LEJOS_BTPIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a3136368500f02885500f629ef651c414',1,'ETRobocon::EV3::Brick']]],
+  ['lejos_5fhome',['LEJOS_HOME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ac42576476e3fd893f6e10ac2ab54d8b4',1,'ETRobocon::EV3::Brick']]],
+  ['lejos_5fhostname',['LEJOS_HOSTNAME',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#af6fc15320fa8db0c2088c6de3c0f2e89',1,'ETRobocon::EV3::Brick']]],
+  ['light_5fblack',['LIGHT_BLACK',['../class_e_t_robocon_1_1_state_machine_1_1_state.html#ad266dc392e36ebad382f0204dfe02031',1,'ETRobocon::StateMachine::State']]],
+  ['light_5fwhite',['LIGHT_WHITE',['../class_e_t_robocon_1_1_state_machine_1_1_state.html#ae6f5a226dedf38c9b6af41fae2a8a656',1,'ETRobocon::StateMachine::State']]],
+  ['location',['Location',['../struct_e_t_robocon_1_1_odometry_1_1_location.html',1,'ETRobocon::Odometry']]],
+  ['location',['Location',['../struct_e_t_robocon_1_1_odometry_1_1_location.html#a30f05b7447f59cb4f89269f566372219',1,'ETRobocon::Odometry::Location']]],
+  ['location_2ecs',['Location.cs',['../_location_8cs.html',1,'']]],
+  ['lock_5fobj',['LOCK_OBJ',['../class_e_t_robocon_1_1_odometry_1_1_odometry.html#ac53af8c6533c24a046423bbce0f9b437',1,'ETRobocon::Odometry::Odometry']]],
+  ['log',['Log',['../namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79ace0be71e33226e4c1db2bcea5959f16b',1,'ETRobocon::Utils']]],
+  ['logremote',['LogRemote',['../class_e_t_robocon_1_1_utils_1_1_log_task.html#a6fb6752883b102d0bd995e1d392047c1',1,'ETRobocon::Utils::LogTask']]],
+  ['logtask',['LogTask',['../class_e_t_robocon_1_1_utils_1_1_log_task.html#acb998ffef6265f47e6d634d1279c9d15',1,'ETRobocon.Utils.LogTask.LogTask()'],['../class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#af81529fc6520deb6e1356a70aa7e9e92',1,'EV3Way_MonoBrick_RemoteConsole.Utils.LogTask.LogTask()']]],
+  ['logtask',['LogTask',['../class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html',1,'EV3Way_MonoBrick_RemoteConsole::Utils']]],
+  ['logtask',['LogTask',['../class_e_t_robocon_1_1_utils_1_1_log_task.html',1,'ETRobocon::Utils']]],
+  ['logtask_2ecs',['LogTask.cs',['../_e_v3way___mono_brick___remote_2ev3way__monobrick_2_utils_2_log_task_8cs.html',1,'']]],
+  ['logtask_2ecs',['LogTask.cs',['../_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_log_task_8cs.html',1,'']]],
+  ['long',['Long',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a8394f0347c184cf156ac5924dccb773b',1,'ETRobocon::Utils']]],
+  ['loop',['Loop',['../class_e_t_robocon_1_1_utils_1_1_command_task.html#af54b02282c28236d3a07f1ee626afd86',1,'ETRobocon.Utils.CommandTask.Loop()'],['../class_e_t_robocon_1_1_utils_1_1_log_task.html#aea303f5d3bcc60bd1262fab8607c52de',1,'ETRobocon.Utils.LogTask.Loop()'],['../class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#a8e7859e3995b635062cd246ad5315872',1,'EV3Way_MonoBrick_RemoteConsole.Utils.CommandTask.Loop()'],['../class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#aaebfc16331c32ab3729de2b28a034c05',1,'EV3Way_MonoBrick_RemoteConsole.Utils.LogTask.Loop()']]],
+  ['loop_5finterval',['LOOP_INTERVAL',['../class_e_t_robocon_1_1_utils_1_1_command_task.html#aa4eb6d12edc164963e8f80fba0e1cc8a',1,'ETRobocon.Utils.CommandTask.LOOP_INTERVAL()'],['../class_e_t_robocon_1_1_utils_1_1_log_task.html#ab7b478834655b413db458585d552bd48',1,'ETRobocon.Utils.LogTask.LOOP_INTERVAL()'],['../class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a2e51a8bb65784b5caaec29e40665fbc4',1,'EV3Way_MonoBrick_RemoteConsole.Utils.LogTask.LOOP_INTERVAL()']]]
 ];
