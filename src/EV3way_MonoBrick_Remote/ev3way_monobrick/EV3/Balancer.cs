@@ -27,7 +27,7 @@ namespace ETRobocon.EV3
 		const float A_R = 0.996F;
 
 		///	servo control state feedback gain for NXT standard tire
-		static float[] K_F = new float[4] {-0.84000F, -40.87459F, -0.90567F, -4.23856F};
+		static float[] K_F = new float[4] {-0.870383F, -31.9978F, -1.1566F * 0.6F, -2.78873F};
 
 		/// servo control integral gain
 		const float K_I = -0.44721F;

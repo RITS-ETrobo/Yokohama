@@ -171,7 +171,7 @@ namespace ETRobocon.EV3
 			int counter = 0;
 			bool alert = false;
 
-			LineDetector ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 60.0f, 0, 180.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
+			LineDetector ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 
 			while (!body.touch.IsPressed ()) 
 			{
@@ -192,7 +192,7 @@ namespace ETRobocon.EV3
 					turn = ld.CalculateTurn(body.color.Read());
 				}
 
-				int gyroNow = -body.gyro.Read();
+				int gyroNow = body.gyro.Read();
 				int thetaL = body.motorL.GetTachoCount();
 				int theTaR = body.motorR.GetTachoCount();
 				sbyte pwmL, pwmR;
