@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main',['Main',['../class_a_o_t_compile_app_1_1_main_class.html#a0547e129a9849579234a54877e10f5a9',1,'AOTCompileApp.MainClass.Main()'],['../class_e_t_robocon_1_1_e_v3_1_1_main_class.html#a3135937ba13c7a359b99255a07473eb8',1,'ETRobocon.EV3.MainClass.Main()'],['../class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0',1,'EV3Way_MonoBrick_RemoteConsole.MainClass.Main()']]]
+  ['init',['init',['../class_e_t_robocon_1_1_e_v3_1_1_balancer.html#a0856e44e01168011d0ccd617704afac4',1,'ETRobocon.EV3.Balancer.init()'],['../struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#a8e2dbb0c123ec1de0b56176cd1bdb084',1,'ETRobocon.EV3.EV3body.init()']]],
+  ['installetroboext',['InstallETRoboExt',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#a512b6cf738662fc2bd781b072b02cb4e',1,'ETRobocon::EV3::Brick']]]
 ];

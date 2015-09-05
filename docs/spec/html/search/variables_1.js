@@ -8,5 +8,6 @@ var searchData=
   ['amp_5fvin',['AMP_VIN',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ae10adbafbaeefbf8c809b5b5da22f4ad',1,'ETRobocon::EV3::Brick']]],
   ['analog_5fbat_5fcur_5foff',['ANALOG_BAT_CUR_OFF',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#ac960ba2bf46025b6c9c6111a48fdd0aa',1,'ETRobocon::EV3::Brick']]],
   ['analog_5fbat_5fv_5foff',['ANALOG_BAT_V_OFF',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#aee68148e76cf7984024ebdc657526e17',1,'ETRobocon::EV3::Brick']]],
-  ['analog_5fsize',['ANALOG_SIZE',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#af7dfb88e41d5916d498fb44ffccdd476',1,'ETRobocon::EV3::Brick']]]
+  ['analog_5fsize',['ANALOG_SIZE',['../class_e_t_robocon_1_1_e_v3_1_1_brick.html#af7dfb88e41d5916d498fb44ffccdd476',1,'ETRobocon::EV3::Brick']]],
+  ['axle_5flength_5fmm',['AXLE_LENGTH_MM',['../class_e_t_robocon_1_1_odometry_1_1_odometry.html#a02403f70c12734e1876175d9daccd7c8',1,'ETRobocon::Odometry::Odometry']]]
 ];

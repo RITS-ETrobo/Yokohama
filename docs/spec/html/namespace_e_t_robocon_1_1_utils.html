@@ -113,6 +113,23 @@ $(document).ready(function(){initNavTree('namespace_e_t_robocon_1_1_utils.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_e_t_robocon_1_1_utils_1_1_command.html">Command</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド <a href="struct_e_t_robocon_1_1_utils_1_1_command.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_command_format.html">CommandFormat</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンドのフォーマット <a href="class_e_t_robocon_1_1_utils_1_1_command_format.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_command_format_manager.html">CommandFormatManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">全ての<a class="el" href="class_e_t_robocon_1_1_utils_1_1_command_format.html" title="コマンドのフォーマット">CommandFormat</a>を管理するクラス <a href="class_e_t_robocon_1_1_utils_1_1_command_format_manager.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_command_receive_flags.html">CommandReceiveFlags</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_command_task.html">CommandTask</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド受信・実行タスク <a href="class_e_t_robocon_1_1_utils_1_1_command_task.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_log_task.html">LogTask</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログ機能(送信) <a href="class_e_t_robocon_1_1_utils_1_1_log_task.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html">PacketDataConverter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">各種データ←→byte[] の変換を扱う.  <a href="class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +148,17 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:aaeeb790788636ba67d3cfef0bec05b79"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79">CommandID</a> { <br />
+&#160;&#160;<a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79a4bbb8f967da6d1a610596d7257179c2b">CommandID.Invalid</a> = -1, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79ac5301693c4e792bcd5a479ef38fb8f8d">CommandID.Run</a>, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79a11a755d598c0c417f9a36758c3da7481">CommandID.Stop</a>, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79ace0be71e33226e4c1db2bcea5959f16b">CommandID.Log</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79a770c6d0fcad557a30211beb2f4dea66f">CommandID.NumOfCommand</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:aaeeb790788636ba67d3cfef0bec05b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンドのID <a href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79">More...</a><br /></td></tr>
+<tr class="separator:aaeeb790788636ba67d3cfef0bec05b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac410eebd57edc36d891b4b84ed9cd4a5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5">PacketDataType</a> : byte { <br />
 &#160;&#160;<a class="el" href="namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a4bbb8f967da6d1a610596d7257179c2b">PacketDataType.Invalid</a>, 
 <a class="el" href="namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a27226c864bac7454a8504f8edb15d95b">PacketDataType.Boolean</a>, 
@@ -155,8 +183,79 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ac410eebd57edc36d891b4b84ed9cd4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">送受信するデータの種別 <a href="namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5">More...</a><br /></td></tr>
 <tr class="separator:ac410eebd57edc36d891b4b84ed9cd4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f144a415cd6f1ee58602787dc998cb0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0">ErrorType</a> { <a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0a70a47cae4eb221930f2663fd244369ea">ErrorType.NoError</a>, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0a47423b8444592efbe331550c5620e821">ErrorType.NetworkError</a>, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0ac9fc70006e5d72e19106cb6ad483db59">ErrorType.MemoryOver</a>, 
+<a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0a611572ba77cbd55463aeb65f1f77a052">ErrorType.OtherError</a>
+ }</td></tr>
+<tr class="memdesc:a1f144a415cd6f1ee58602787dc998cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログ機能が使用不可となるエラー <a href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0">More...</a><br /></td></tr>
+<tr class="separator:a1f144a415cd6f1ee58602787dc998cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79">ETRobocon.Utils.CommandID</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コマンドのID</p>
+<p><a class="el" href="namespace_e_t_robocon_1_1_e_v3.html" title="2輪倒立振子ライントレースロボットの MonoBrick 用 c# プログラム ">EV3</a>, PC両者でIDを統一し, 両者の疎通を図る.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79a4bbb8f967da6d1a610596d7257179c2b"></a>Invalid&#160;</td><td class="fielddoc">
+<p>不正なコマンド </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79ac5301693c4e792bcd5a479ef38fb8f8d"></a>Run&#160;</td><td class="fielddoc">
+<p>走行開始 </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79a11a755d598c0c417f9a36758c3da7481"></a>Stop&#160;</td><td class="fielddoc">
+<p>走行停止 </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79ace0be71e33226e4c1db2bcea5959f16b"></a>Log&#160;</td><td class="fielddoc">
+<p>ログ送信有効/無効 </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="aaeeb790788636ba67d3cfef0bec05b79a770c6d0fcad557a30211beb2f4dea66f"></a>NumOfCommand&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="_command_i_d_8cs_source.html#l00007">7</a> of file <a class="el" href="_command_i_d_8cs_source.html">CommandID.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1f144a415cd6f1ee58602787dc998cb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0">ETRobocon.Utils.ErrorType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ログ機能が使用不可となるエラー</p>
+<p>NoError以外が設定されると, それ以降ログ機能が使用できなくなる.(復帰不可)</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a1f144a415cd6f1ee58602787dc998cb0a70a47cae4eb221930f2663fd244369ea"></a>NoError&#160;</td><td class="fielddoc">
+<p>正常動作中 </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1f144a415cd6f1ee58602787dc998cb0a47423b8444592efbe331550c5620e821"></a>NetworkError&#160;</td><td class="fielddoc">
+<p>EV3-PC間の接続エラー </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1f144a415cd6f1ee58602787dc998cb0ac9fc70006e5d72e19106cb6ad483db59"></a>MemoryOver&#160;</td><td class="fielddoc">
+<p>キューに積みすぎてメモリオーバー </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1f144a415cd6f1ee58602787dc998cb0a611572ba77cbd55463aeb65f1f77a052"></a>OtherError&#160;</td><td class="fielddoc">
+<p>その他のエラー </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="_e_v3way___mono_brick___remote_2ev3way__monobrick_2_utils_2_log_task_8cs_source.html#l00009">9</a> of file <a class="el" href="_e_v3way___mono_brick___remote_2ev3way__monobrick_2_utils_2_log_task_8cs_source.html">LogTask.cs</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ac410eebd57edc36d891b4b84ed9cd4a5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +315,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_e_t_robocon.html">ETRobocon</a></li><li class="navelem"><a class="el" href="namespace_e_t_robocon_1_1_utils.html">Utils</a></li>
-    <li class="footer">Generated on Tue Jun 23 2015 19:29:40 for EV3way_MonoBrick source by
+    <li class="footer">Generated on Sat Sep 5 2015 22:17:47 for EV3way_MonoBrick source by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
