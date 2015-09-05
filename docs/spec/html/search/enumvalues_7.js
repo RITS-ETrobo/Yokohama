@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['sbyte',['SByte',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a7e76fb67fc7b4cb0004bc45f2bd92723',1,'ETRobocon::Utils']]],
-  ['short',['Short',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a30bb747c98bccdd11b3f89e644c4d0ad',1,'ETRobocon::Utils']]],
-  ['string',['String',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a27118326006d3829667a400ad23d5d98',1,'ETRobocon::Utils']]]
+  ['networkerror',['NetworkError',['../namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0a47423b8444592efbe331550c5620e821',1,'ETRobocon::Utils']]],
+  ['noerror',['NoError',['../namespace_e_t_robocon_1_1_utils.html#a1f144a415cd6f1ee58602787dc998cb0a70a47cae4eb221930f2663fd244369ea',1,'ETRobocon::Utils']]],
+  ['notrigger',['NoTrigger',['../namespace_e_t_robocon_1_1_state_machine.html#a1b6ef780bb598fc94a9e2d79df60659faedd9ae8b1aea4323e3ce2ce4fa9b391c',1,'ETRobocon::StateMachine']]],
+  ['numofcommand',['NumOfCommand',['../namespace_e_t_robocon_1_1_utils.html#aaeeb790788636ba67d3cfef0bec05b79a770c6d0fcad557a30211beb2f4dea66f',1,'ETRobocon::Utils']]],
+  ['numofstate',['NumOfState',['../namespace_e_t_robocon_1_1_state_machine.html#a03228198b9cd4e43412d359c43f13f7aa616bb13f7878cfdb6bedfdbd65916f36',1,'ETRobocon::StateMachine']]],
+  ['numoftrigger',['NumOfTrigger',['../namespace_e_t_robocon_1_1_state_machine.html#a1b6ef780bb598fc94a9e2d79df60659fad1894cd6bb988f9ed9ec93fb485bf98f',1,'ETRobocon::StateMachine']]],
+  ['numoftype',['NumOfType',['../namespace_e_t_robocon_1_1_utils.html#ac410eebd57edc36d891b4b84ed9cd4a5a64e040fe8be84fdbda05c0db0cc785fc',1,'ETRobocon::Utils']]]
 ];

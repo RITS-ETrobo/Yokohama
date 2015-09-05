@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance',['Instance',['../class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a6619fdfb4a4958b424ee1baeafab6a64',1,'ETRobocon::Utils::ProtocolProcessor']]]
+  ['curlocation',['CurLocation',['../class_e_t_robocon_1_1_odometry_1_1_odometry.html#aa8e4eeab498fdbdb9b960e535418810f',1,'ETRobocon::Odometry::Odometry']]]
 ];

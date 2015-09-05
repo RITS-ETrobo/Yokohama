@@ -1,4 +1,11 @@
 <map id="EV3Way_MonoBrick_RemoteConsole.MainClass.Main" name="EV3Way_MonoBrick_RemoteConsole.MainClass.Main">
-<area shape="rect" id="node2" href="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d" title="EV3Way_MonoBrick_RemoteConsole.\lMainClass.SendCommandLoop" alt="" coords="300,5,547,47"/>
-<area shape="rect" id="node3" href="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a" title="Receive a string from EV3. " alt="" coords="595,5,841,47"/>
+<area shape="rect" id="node2" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#ad493396ae6debe5f7de9add374c83561" title="コマンドタスクの開始" alt="" coords="300,39,547,80"/>
+<area shape="rect" id="node7" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a4455d6a7fd00e91850b0949de8ac0f66" title="ログ受信・表示タスクを開始する" alt="" coords="300,104,547,145"/>
+<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_p_c.html#a0660ee9ad1b1ed4c4ff64c02bc9031e4" title="EV3と通信を確立する" alt="" coords="633,71,803,112"/>
+<area shape="rect" id="node4" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#a8e7859e3995b635062cd246ad5315872" title="コマンドタスクのメインループ" alt="" coords="595,5,841,47"/>
+<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#ac03cc47d73136256e1ae5d3dfd092229" title="通信相手へデータを送る" alt="" coords="889,5,1060,47"/>
+<area shape="rect" id="node6" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a2942678b4736581f89dd5e6c73785599" title="データ から byte[] への変換(エンコード)を行う" alt="" coords="1116,5,1321,47"/>
+<area shape="rect" id="node8" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#aaebfc16331c32ab3729de2b28a034c05" title="タスクのメインループ" alt="" coords="595,136,841,177"/>
+<area shape="rect" id="node9" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a4d2492d35ad25c22322f5afdd89c458e" title="通信相手からデータを受け取る." alt="" coords="889,136,1060,177"/>
+<area shape="rect" id="node10" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a23224473de8a6563b3b1f036807c7858" title="byte[] から データへの変換(デコード)を行う" alt="" coords="1108,136,1329,177"/>
 </map>
