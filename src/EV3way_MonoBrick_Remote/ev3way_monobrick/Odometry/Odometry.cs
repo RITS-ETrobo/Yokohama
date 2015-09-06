@@ -84,6 +84,9 @@ namespace ETRobocon.Odometry
 			_logFeatureFlag = logFeatureFlag;
 			String str = "Odometry : LogFeature is " + _logFeatureFlag;
 			LogTask.LogRemote (str);
+
+			//前回のログファイルがあれば削除する
+			System.IO.File.Delete ("odm.csv");
 		}
 
 		/// <summary>
@@ -185,9 +188,6 @@ namespace ETRobocon.Odometry
 			if (_logFeatureFlag) {
 
 				LogTask.LogRemote ("#START : Making odometry log file.");
-
-				//前回のログを削除する
-				System.IO.File.Delete ("odm.csv");
 
 				for (int i = 0; i < logList.Count; i++) {
 
