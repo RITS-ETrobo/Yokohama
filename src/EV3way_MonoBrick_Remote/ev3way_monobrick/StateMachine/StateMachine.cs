@@ -110,6 +110,12 @@ namespace ETRobocon.StateMachine
 				TransitionMethod = transitionMethod;
 			}
 		}
+
+		/// <summary>状態遷移表で, 文字数短縮のためのメソッド</summary>
+		private Transition T(StateID nextState, TransitionMethodDel transitionMethod)
+		{
+			return new Transition(nextState, transitionMethod);
+		}
 	}
 }
 
