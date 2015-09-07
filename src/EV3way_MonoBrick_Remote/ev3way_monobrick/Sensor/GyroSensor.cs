@@ -7,9 +7,13 @@ namespace ETRobocon.EV3
 	{
 		EV3GyroSensor gyroSensor;
 		private int sensorValue;
+		private bool rapidChange;
+
 		public GyroSensor (SensorPort inport, GyroMode velocity )
 		{
 			gyroSensor = new EV3GyroSensor (inport, velocity);
+			sensorValue = 0;
+			rapidChange = false;
 		}
 
 		public int GetSensorValue(){
