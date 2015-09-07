@@ -9,6 +9,7 @@ namespace ETRobocon.EV3
 		private int sensorValue;
 		private bool rapidChange;
 
+		private const int BORDER_RAPID_CHANGE = 100;
 		public GyroSensor (SensorPort inport, GyroMode velocity )
 		{
 			gyroSensor = new EV3GyroSensor (inport, velocity);
@@ -18,6 +19,10 @@ namespace ETRobocon.EV3
 
 		public int GetSensorValue(){
 			sensorValue = gyroSensor.Read ();
+			if (sensorValue < -BORDER_RAPID_CHANGE || sensorValue > BORDER_RAPID_CHANGE) {
+				rapidChange = true;
+			}
+
 			return sensorValue;
 		}
 
