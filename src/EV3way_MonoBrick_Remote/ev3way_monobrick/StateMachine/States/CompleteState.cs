@@ -26,6 +26,8 @@ namespace ETRobocon.StateMachine
 			if (Debugger.IsAttached) {
 				Brick.ExitToMenu (); // MonoBrickメインメニューへ戻る
 			}
+//
+//			_body.gyro.PrintLogs ();
 		}
 
 		public override void Do()

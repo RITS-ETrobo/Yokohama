@@ -61,7 +61,10 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.gyro.GetRapidChange ()) {
+				return TriggerID.DetectShock;
+			}
+			else if (_body.touch.IsPressed())
 			{
 				return TriggerID.TouchSensor;
 			}
