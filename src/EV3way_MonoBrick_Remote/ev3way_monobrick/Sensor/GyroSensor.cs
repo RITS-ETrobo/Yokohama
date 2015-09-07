@@ -1,24 +1,32 @@
 ﻿using System;
 using MonoBrickFirmware.Sensors;
+using ETRobocon.Utils;
 
 namespace ETRobocon.EV3
 {
 	public class GyroSensor
 	{
 		EV3GyroSensor gyroSensor;
-		private int sensorValue;
+
+		/// <summary>センサーの値を保持する</summary>
 		private bool rapidChange;
 
-		private const int BORDER_RAPID_CHANGE = 100;
+		/// <summary>正常値の上限(-1倍すれば下限)</summary>
+		private const int BORDER_RAPID_CHANGE = 180;
+
 		public GyroSensor (SensorPort inport, GyroMode velocity )
 		{
 			gyroSensor = new EV3GyroSensor (inport, velocity);
-			sensorValue = 0;
 			rapidChange = false;
 		}
 
+		/// <summary>ジャイロセンサーの値を返す. また, 値が異常値かどうか判断する.</summary>
+		/// <returns>ジャイロセンサーの値</returns>
 		public int GetSensorValue(){
+			int sensorValue;
 			sensorValue = gyroSensor.Read ();
+
+			// 値が異常値を示したら, 急激な変化があったと判断する.
 			if (sensorValue < -BORDER_RAPID_CHANGE || sensorValue > BORDER_RAPID_CHANGE) {
 				rapidChange = true;
 			}
@@ -26,6 +34,7 @@ namespace ETRobocon.EV3
 			return sensorValue;
 		}
 
+		/// <summary>センサーが取得した値が異常値かどうかを返す</summary>
 		public bool GetRapidChange(){
 			return rapidChange;
 		}
