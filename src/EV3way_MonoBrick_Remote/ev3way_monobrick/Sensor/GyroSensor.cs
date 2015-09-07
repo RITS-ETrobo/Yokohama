@@ -6,13 +6,15 @@ namespace ETRobocon.EV3
 	public class GyroSensor
 	{
 		EV3GyroSensor gyroSensor;
+		private int sensorValue;
 		public GyroSensor (SensorPort inport, GyroMode velocity )
 		{
 			gyroSensor = new EV3GyroSensor (inport, velocity);
 		}
 
-		public int Read(){
-			return gyroSensor.Read ();
+		public int GetSensorValue(){
+			sensorValue = gyroSensor.Read ();
+			return sensorValue;
 		}
 	}
 }

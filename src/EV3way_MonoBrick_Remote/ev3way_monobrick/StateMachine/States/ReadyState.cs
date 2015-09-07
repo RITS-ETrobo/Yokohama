@@ -28,7 +28,7 @@ namespace ETRobocon.StateMachine
 			// センサーおよびモータに対して初回アクセスをしておく
 			_body.color.Read();
 			_body.sonar.Read();
-			_body.gyro.Read ();
+			_body.gyro.GetSensorValue ();
 			_body.motorL.SetPower (0);
 			_body.motorR.SetPower (0);
 			_body.motorT.SetPower (0);

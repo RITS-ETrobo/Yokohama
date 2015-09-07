@@ -46,7 +46,7 @@ namespace ETRobocon.StateMachine
 				turn = (_body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
 			}
 
-			int gyroNow = _body.gyro.Read();
+			int gyroNow = _body.gyro.GetSensorValue();
 			int thetaL = _body.motorL.GetTachoCount();
 			int theTaR = _body.motorR.GetTachoCount();
 			sbyte pwmL, pwmR;
