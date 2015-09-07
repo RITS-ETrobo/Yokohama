@@ -3,6 +3,7 @@ using System.Net.Sockets;
 
 using MonoBrickFirmware.Movement;
 using MonoBrickFirmware.Sensors;
+using ETRobocon.Body;
 
 namespace ETRobocon.EV3
 {
