@@ -20,6 +20,20 @@ namespace ETRobocon.Body
 			_ev3TouchSensor = new EV3TouchSensor(SensorPort.In1);
 			_previousTouchState = false;
 		}
+
+		/// <summary>タッチセンサが離されたことを検出する</summary>
+		/// <returns>タッチセンサが離されたことを検出したら<c>true</c>, 検出していないときは<c>false</c></returns>
+		public bool DetectReleased()
+		{
+			bool now_touch_state = _ev3TouchSensor.IsPressed();
+
+			// 前回の測定時は押されていて, 今回の測定時は押されていなかったときは, 離されたと判定.
+			bool ret = (_previousTouchState == true && now_touch_state == false) ? true : false;
+
+			_previousTouchState = now_touch_state;
+
+			return ret;
+		}
 	}
 }
 
