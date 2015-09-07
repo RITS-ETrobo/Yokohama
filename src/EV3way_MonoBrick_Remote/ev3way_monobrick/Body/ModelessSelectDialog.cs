@@ -47,10 +47,8 @@ namespace ETRobocon.Body
 
 					return true;
 				}
-				else
-				{
-					return false;
-				}
+
+				return false;
 			}
 		}
 

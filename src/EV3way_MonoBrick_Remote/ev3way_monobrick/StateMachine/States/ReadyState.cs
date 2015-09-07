@@ -69,15 +69,15 @@ namespace ETRobocon.StateMachine
 			{
 				return TriggerID.TouchSensor;
 			}
-			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Run))
+			if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Run))
 			{
 				return TriggerID.RunCommand;
 			}
-			else if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 0)
+			if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 0)
 			{
 				return TriggerID.Select1;
 			}
-			else if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 1)
+			if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 1)
 			{
 				return TriggerID.Select2;
 			}
