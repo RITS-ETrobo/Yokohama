@@ -1,6 +1,6 @@
 using System;
 
-namespace ETRobocon.EV3
+namespace ETRobocon.Body
 {
 	public class TouchSensor
 	{
