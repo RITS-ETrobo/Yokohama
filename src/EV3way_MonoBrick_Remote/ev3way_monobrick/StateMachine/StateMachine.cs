@@ -4,6 +4,9 @@ using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
+	// 状態遷移表で, 文字数短縮のためのエイリアス
+	using S = StateID;
+
 	public class StateMachine
 	{
 		/// <summary>現在の状態</summary>
