@@ -73,13 +73,18 @@ namespace ETRobocon.StateMachine
 			{
 				return TriggerID.RunCommand;
 			}
-			if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 0)
-			{
-				return TriggerID.Select1;
-			}
-			if (!_selectDialog.IsShowing && _selectDialog.GetSelectionIndex() == 1)
-			{
-				return TriggerID.Select2;
+			if (!_selectDialog.IsShowing) {
+				switch (_selectDialog.GetSelectionIndex ()) {
+				case 0:
+					return TriggerID.Select1;
+
+				case 1:
+					return TriggerID.Select2;
+
+				default:
+					// 何もしない
+					break;
+				}
 			}
 
 			return TriggerID.NoTrigger;
