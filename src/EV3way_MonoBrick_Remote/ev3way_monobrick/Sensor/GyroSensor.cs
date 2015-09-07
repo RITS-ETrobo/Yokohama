@@ -20,6 +20,10 @@ namespace ETRobocon.EV3
 			sensorValue = gyroSensor.Read ();
 			return sensorValue;
 		}
+
+		public bool GetRapidChange(){
+			return rapidChange;
+		}
 	}
 }
 
