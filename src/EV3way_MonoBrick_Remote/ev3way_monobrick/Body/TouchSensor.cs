@@ -8,9 +8,13 @@ namespace ETRobocon.Body
 		/// <summary>既存のタッチセンサクラス</summary>
 		private EV3TouchSensor _ev3TouchSensor;
 
+		/// <summary>前回測定時の, 押下状態</summary>
+		private bool _previousTouchState;
+
 		public TouchSensor()
 		{
 			_ev3TouchSensor = new EV3TouchSensor(SensorPort.In1);
+			_previousTouchState = false;
 		}
 	}
 }
