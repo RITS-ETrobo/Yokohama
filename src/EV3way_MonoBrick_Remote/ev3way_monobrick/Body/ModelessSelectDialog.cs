@@ -56,7 +56,10 @@ namespace ETRobocon.Body
 
 		private void Run()
 		{
+			// 既存のAPIによりダイアログを表示させると, このタスクはブロックされる
 			base.Show(_cancellationTokenSource.Token);
+
+			// 以降, ダイアログが閉じられると, 処理が続行される
 
 			IsShowing = false;
 		}
