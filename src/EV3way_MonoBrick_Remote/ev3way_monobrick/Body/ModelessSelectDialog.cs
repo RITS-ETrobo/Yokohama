@@ -36,20 +36,19 @@ namespace ETRobocon.Body
 		{
 			lock (_lockObj)
 			{
-				if (!IsShowing)
+				if (IsShowing)
 				{
-					IsShowing = true;
-				
-					_cancellationTokenSource = new CancellationTokenSource ();
-
-					_showModalDialogTask = new Task(this.Run);
-					_showModalDialogTask.Start();
-
-					return true;
+					return false;
 				}
-
-				return false;
+				IsShowing = true;
 			}
+
+			_cancellationTokenSource = new CancellationTokenSource ();
+
+			_showModalDialogTask = new Task(this.Run);
+			_showModalDialogTask.Start();
+
+			return true;
 		}
 
 		private void Run()
