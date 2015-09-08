@@ -54,6 +54,7 @@ namespace ETRobocon.Body
 			}
 		}
 
+		/// <summary>モーダレス性を実現するための非同期メソッド</summary>
 		private void Run()
 		{
 			// 既存のAPIによりダイアログを表示させると, このタスクはブロックされる
