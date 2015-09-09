@@ -36,7 +36,12 @@ namespace ETRobocon.Body
 			return sensorValue;
 		}
 
-		/// <summary>センサーが取得した値が異常値かどうかを返す</summary>
+		/// <summary>
+		/// センサーが取得した値が異常値かどうかを返す.
+		/// 異常値であれば, 衝撃を検知したと判断できる.
+		/// </summary>
+		/// <returns><c>true</c>, 異常値を取得していた(衝撃検知),
+		///          <c>false</c> 正常値を取得していた(衝撃検知せず).</returns>
 		public bool GetRapidChange(){
 			return rapidChange;
 		}
