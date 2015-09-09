@@ -56,10 +56,10 @@ namespace ETRobocon.Body
 
 		private void Run()
 		{
-			// 既存のAPIによりダイアログを表示させると, このタスクはブロックされる
+			// モーダルダイアログを開く.
+			// ダイアログは, ユーザによるボタン操作, もしくは
+			// ModelessSelectDialog<SelectionType>インスタンスのCancel()を呼び出すことで閉じられる.
 			base.Show(_cancellationTokenSource.Token);
-
-			// 以降, ダイアログが閉じられると, 処理が続行される
 
 			IsShowing = false;
 		}
