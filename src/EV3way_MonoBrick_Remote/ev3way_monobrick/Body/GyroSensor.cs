@@ -14,9 +14,9 @@ namespace ETRobocon.Body
 		/// <summary>正常値の上限(-1倍すれば下限)</summary>
 		private const int BORDER_RAPID_CHANGE = 180;
 
-		public GyroSensor (SensorPort inport, GyroMode velocity )
+		public GyroSensor (SensorPort portSensorIn)
 		{
-			gyroSensor = new EV3GyroSensor (inport, velocity);
+			gyroSensor = new EV3GyroSensor (portSensorIn, GyroMode.AngularVelocity);
 			rapidChange = false;
 		}
 
