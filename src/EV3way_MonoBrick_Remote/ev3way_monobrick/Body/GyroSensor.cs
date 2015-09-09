@@ -11,7 +11,11 @@ namespace ETRobocon.Body
 		/// <summary>センサーの値を保持する</summary>
 		private bool rapidChange;
 
-		/// <summary>正常と判断するジャイロセンサー値の大きさの上限</summary>
+		/// <summary>
+		/// 正常と判断するジャイロセンサー値の大きさの上限.
+		/// 調査結果から, 正常走行時に, ジャイロセンサー値が3桁になる事態は想定できない.
+		/// 詳細は, https://github.com/RITS-ETrobo/Yokohama/wiki/reports_GyroSensor を参照する事
+		/// </summary>
 		private const int BORDER_RAPID_CHANGE = 180;
 
 		public GyroSensor (SensorPort inport, GyroMode velocity )
