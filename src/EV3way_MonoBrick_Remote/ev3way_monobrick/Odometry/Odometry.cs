@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using ETRobocon.Utils;
 
 namespace ETRobocon.Odometry
 {
@@ -57,17 +59,34 @@ namespace ETRobocon.Odometry
 		/// </summary>
 		private double _curThetaRAD = 0.0;
 
+		/// <summary>自己位置推定のログ機能を使用する定義</summary>
+		public const bool AVAILABLE_LOG_FEATURE = true;
+
+		/// <summary>自己位置推定のログ機能を使用しない定義</summary>
+		public const bool UNAVAILABLE_LOG_FEATURE = false;
+
+		/// <summary>自己位置推定のログ機能を使用するかしないかのフラグ</summary>
+		private bool _logFeatureFlag = false;
+
 		/// <summary>
-		/// ロック用オブジェクト
+		/// 自己位置推定のログを保存しておくリスト.
+		/// Listにはdouble型の可変長配列を保存する.
 		/// </summary>
-		private readonly Object LOCK_OBJ = new Object();
+		private List<double[]> logList = new List<double[]> ();
 
 		/// <summary>
 		/// 自己位置推定クラスのコンストラクタ
 		/// <see cref="ETRobocon.Odometry.Odometry"/>
 		/// </summary>
-		public Odometry ()
+		/// <param name="logFeatureFlag">自己位置推定のログ機能を使用するかしないか.<c>true</c> 使用する.</param>
+		public Odometry (bool logFeatureFlag)
 		{
+			_logFeatureFlag = logFeatureFlag;
+			String str = "Odometry : LogFeature is " + _logFeatureFlag;
+			LogTask.LogRemote (str);
+
+			//前回のログファイルがあれば削除する
+			System.IO.File.Delete ("odm.csv");
 		}
 
 		/// <summary>
@@ -100,25 +119,29 @@ namespace ETRobocon.Odometry
 			//ロボットの旋回角度増加分[radian]の算出
 			double delta_theta_rad = (delta_right_move_distance_mm - delta_left_move_distance_mm) / AXLE_LENGTH_MM;
 
-			//ロボットの旋回角度[radian]の更新
-			_curThetaRAD = prev_theta_rad + delta_theta_rad;
-
 			//ロボットの現在値を求めるための値を算出
 			double trigono_func_arg = prev_theta_rad + delta_theta_rad / 2.0;
 			double coefficient = delta_move_distance_mm * sinc_approx( delta_theta_rad / 2.0); 
 
-			lock(LOCK_OBJ){// 累積走行距離と現在地を更新中にアクセスできないようにするため
-				//ロボットの現在地の更新
-				_curLocation.X = _prevLocation.X + coefficient * Math.Cos (trigono_func_arg);
-				_curLocation.Y = _prevLocation.Y + coefficient * Math.Sin (trigono_func_arg);
-//				_curLocation = new Location (
-//					prev_location.X + coefficient * Math.Cos (trigono_func_arg),
-//					prev_location.Y + coefficient * Math.Sin (trigono_func_arg)
-//				);
+			//ロボットの現在地の更新
+			_curLocation.X = _prevLocation.X + coefficient * Math.Cos (trigono_func_arg);
+			_curLocation.Y = _prevLocation.Y + coefficient * Math.Sin (trigono_func_arg);
 
-				//累積走行距離[mm]に加算
-				_totalMoveDistanceMM += delta_move_distance_mm; 
-			}
+			//ロボットの旋回角度[radian]の更新
+			_curThetaRAD = prev_theta_rad + delta_theta_rad;
+
+			//累積走行距離[mm]に加算
+			_totalMoveDistanceMM += delta_move_distance_mm; 
+
+			//ログの保存.ログ機能が有効かどうかはメソッド内で判定する
+			saveLog ( 
+				(double)leftTachoCount,
+				(double)rightTachoCount,
+				_curLocation.X,
+				_curLocation.Y,
+				_curThetaRAD,
+				_totalMoveDistanceMM
+			);
 		}
 
 		/// <summary>
@@ -149,14 +172,55 @@ namespace ETRobocon.Odometry
 		}
 
 		/// <summary>
+		/// 自己位置推定のログをログ機能が有効な時だけ保存する.
+		/// </summary>
+		/// <param name="data">保存したい自己位置推定のログのdouble型可変長配列.</param>
+		private void saveLog(params double[] data){
+			if (_logFeatureFlag) {
+				logList.Add (data);
+			}
+		}
+
+		/// <summary>
+		/// 自己位置推定のログをログ機能が有効な時だけファイルに出力する.
+		/// </summary>
+		public void outputLogToFile(){
+			if (_logFeatureFlag) {
+
+				LogTask.LogRemote ("#START : Making odometry log file.");
+
+				for (int i = 0; i < logList.Count; i++) {
+
+					//update1回のログを取り出す
+					double[] data = logList [i];
+
+					//update1回のログに含まれるデータをカンマ区切りで並べる
+					String str = "";
+					foreach(double value in data){
+						str += value + ",";
+					}
+					str += System.Environment.NewLine;
+
+					//カンマ区切りで並べたデータをCSVファイルに書き込む
+					System.IO.File.AppendAllText("odm.csv",str);
+
+					//ファイル書き込み完了度合をコンソールに出力する
+					if (i % 100 == 0) {
+						String s = "#WRITING : " + i + "/" + logList.Count ;
+						LogTask.LogRemote (s);
+					}
+				}
+				LogTask.LogRemote ("#END : Making odometry log file.");
+			}
+		}
+
+		/// <summary>
 		/// ロボットの現在値を取得する.
 		/// </summary>
 		/// <returns>ロボットの現在値.</returns>
 		public Location CurLocation{
 			get{
-				lock (LOCK_OBJ) {
-					return this._curLocation;
-				}
+				return this._curLocation;
 			}
 		}
 
@@ -166,12 +230,19 @@ namespace ETRobocon.Odometry
 		/// <returns>累積走行距離[mm].</returns>
 		public double TotalMoveDistanceMM{
 			get{
-				lock (LOCK_OBJ) {
-					return this._totalMoveDistanceMM;
-				}
+				return this._totalMoveDistanceMM;
 			}
 		}
 
+		/// <summary>
+		/// ロボットの進行方向を取得する.
+		/// </summary>
+		/// <value>ロボットの進行方向[RAD].</value>
+		public double CurThetaRAD{
+			get{
+				return this._curThetaRAD;
+			}
+		}
 	}
 }
 

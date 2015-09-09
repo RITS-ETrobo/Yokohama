@@ -20,6 +20,9 @@ namespace ETRobocon.StateMachine
 			_body.motorR.Off ();
 			_body.motorT.Off ();
 
+			// 自己位置推定ログのファイルへの書き出し
+			_body.odm.outputLogToFile ();
+
 			Lcd.Instance.Clear ();
 			Lcd.Instance.Update ();
 
