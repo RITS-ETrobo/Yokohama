@@ -41,7 +41,7 @@ namespace ETRobocon.EV3
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
 			body.motorT = new Motor (MotorPort.OutA);
-			body.touch = new TouchSensor(); 
+			body.touch = new TouchSensor(SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
 			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
 			body.gyro = new EV3GyroSensor (SensorPort.In4,	GyroMode.AngularVelocity);
