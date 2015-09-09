@@ -29,6 +29,8 @@ namespace ETRobocon.Body
 			// 値が異常値を示したら, 急激な変化があったと判断する.
 			if (sensorValue < -BORDER_RAPID_CHANGE || sensorValue > BORDER_RAPID_CHANGE) {
 				rapidChange = true;
+			} else {
+				rapidChange = false;
 			}
 
 			return sensorValue;
