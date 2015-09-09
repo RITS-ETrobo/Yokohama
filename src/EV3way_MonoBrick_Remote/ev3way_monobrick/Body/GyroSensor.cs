@@ -14,6 +14,8 @@ namespace ETRobocon.Body
 		/// <summary>正常値の上限(-1倍すれば下限)</summary>
 		private const int BORDER_RAPID_CHANGE = 180;
 
+		/// <summary>ジャイロセンサーに対応するポートを設定する.</summary>
+		/// <param name="portSensorIn">ジャイロセンサーに対応する入力ポート</param>
 		public GyroSensor (SensorPort portSensorIn)
 		{
 			gyroSensor = new EV3GyroSensor (portSensorIn, GyroMode.AngularVelocity);
