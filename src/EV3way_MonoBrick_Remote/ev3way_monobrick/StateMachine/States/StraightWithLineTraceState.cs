@@ -51,7 +51,7 @@ namespace ETRobocon.StateMachine
 				turn = (_body.color.Read () >= (LIGHT_BLACK + LIGHT_WHITE) / 2) ? (sbyte)50 : (sbyte)-50;
 			}
 
-			int gyroNow = _body.gyro.Read();
+			int gyroNow = _body.gyro.GetSensorValue();
 			int thetaL = _body.motorL.GetTachoCount();
 			int theTaR = _body.motorR.GetTachoCount();
 			sbyte pwmL, pwmR;
@@ -81,7 +81,10 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.gyro.GetRapidChange ()) {
+				return TriggerID.DetectShock;
+			}
+			else if (_body.touch.IsPressed())
 			{
 				return TriggerID.TouchSensor;
 			}
