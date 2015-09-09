@@ -21,7 +21,7 @@ namespace ETRobocon.Body
 		/// <summary>このダイアログを外部から閉じるためのCancellationTokenSource</summary>
 		private CancellationTokenSource _cancellationTokenSource;
 
-		/// <summary>排他制御のためのロック</summary>
+		/// <summary>ダイアログを複数表示させないための排他制御のロック</summary>
 		private object _lockObj = new object();
 
 		public ModelessSelectDialog(SelectionType[] selections, string title, bool allowEsc)
@@ -34,6 +34,9 @@ namespace ETRobocon.Body
 		/// <returns>成功時 : true, 既に表示されていた場合 : false</returns>
 		public new bool Show()
 		{
+			// IsShowingの判定と, IsShowingのtrueのセットの間に, 他タスクへ処理が切り替わると,
+			// 複数のタスクでダイアログ表示処理が実行されてしまう可能性がある.
+			// そのためIsShowingの判定からtrueのセットまでは, クリティカルセクション.
 			lock (_lockObj)
 			{
 				if (!IsShowing)
