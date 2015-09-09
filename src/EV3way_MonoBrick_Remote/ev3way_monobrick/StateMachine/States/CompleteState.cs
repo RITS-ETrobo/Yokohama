@@ -18,7 +18,7 @@ namespace ETRobocon.StateMachine
 
 			_body.motorL.Off ();
 			_body.motorR.Off ();
-			_body.motorT.Off ();
+			_body.motorTail.TurnOff ();
 
 			Lcd.Instance.Clear ();
 			Lcd.Instance.Update ();
