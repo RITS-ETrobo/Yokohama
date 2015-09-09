@@ -8,7 +8,10 @@ namespace ETRobocon.Body
 	{
 		EV3GyroSensor gyroSensor;
 
-		/// <summary>センサーの値を保持する</summary>
+		/// <summary>
+		/// GetSensorValueメソッドで衝撃を検知したかどうかを保持する.
+		/// true:衝撃を検知した.  false:衝撃を検知していない.
+		/// </summary>
 		private bool rapidChange;
 
 		/// <summary>正常値の上限(-1倍すれば下限)</summary>
