@@ -17,8 +17,8 @@ namespace ETRobocon.EV3
 		///	モータオブジェクト : 右
 		public  Motor motorR;
 
-		///	モータオブジェクト : ????
-		public  Motor motorT;
+		///	モータオブジェクト : 尻尾
+		public MotorTail motorTail;
 
 		///	センサーオブジェクト : タッチセンサー
 		public  EV3TouchSensor touch;
@@ -38,7 +38,8 @@ namespace ETRobocon.EV3
 		public static void init(ref EV3body body){
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
-			body.motorT = new Motor (MotorPort.OutA);
+			body.motorTail = new MotorTail ();
+
 			body.touch = new EV3TouchSensor (SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
 			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);

@@ -11,6 +11,7 @@ namespace ETRobocon.EV3
 		{
 			// 構造体の宣言と初期化
 			var body = new EV3body ();
+
 			EV3body.init (ref body);
 
 			var state_machine = new StateMachine.StateMachine(body);
