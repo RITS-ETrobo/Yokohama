@@ -39,22 +39,19 @@ namespace ETRobocon.Body
 			// そのためIsShowingの判定からtrueのセットまでは, クリティカルセクション.
 			lock (_lockObj)
 			{
-				if (!IsShowing)
-				{
-					IsShowing = true;
-				
-					_cancellationTokenSource = new CancellationTokenSource ();
-
-					_showModalDialogTask = new Task(this.Run);
-					_showModalDialogTask.Start();
-
-					return true;
-				}
-				else
+				if (IsShowing)
 				{
 					return false;
 				}
+				IsShowing = true;
 			}
+
+			_cancellationTokenSource = new CancellationTokenSource ();
+
+			_showModalDialogTask = new Task(this.Run);
+			_showModalDialogTask.Start();
+
+			return true;
 		}
 
 		private void Run()
