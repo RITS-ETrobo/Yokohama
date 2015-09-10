@@ -89,6 +89,7 @@
     <Compile Include="Utils\CommandReceiveFlags.cs" />
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
+    <Compile Include="Body\TouchSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -97,6 +98,7 @@
     <Folder Include="StateMachine\" />
     <Folder Include="StateMachine\States\" />
     <Folder Include="Odometry\" />
+    <Folder Include="Body\" />
     <Folder Include="Motor\" />
   </ItemGroup>
 </Project>
