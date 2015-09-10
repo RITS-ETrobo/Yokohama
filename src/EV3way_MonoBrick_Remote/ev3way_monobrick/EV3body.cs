@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using MonoBrickFirmware.Movement;
 using MonoBrickFirmware.Sensors;
 
+using ETRobocon.Body;
+
 namespace ETRobocon.EV3
 {
 	/// <summary>機体</summary>
@@ -21,7 +23,7 @@ namespace ETRobocon.EV3
 		public MotorTail motorTail;
 
 		///	センサーオブジェクト : タッチセンサー
-		public  EV3TouchSensor touch;
+		public  TouchSensor touch;
 
 		///	センサーオブジェクト : 超音波センサー
 		public  EV3UltrasonicSensor sonar;
@@ -39,8 +41,7 @@ namespace ETRobocon.EV3
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
 			body.motorTail = new MotorTail ();
-
-			body.touch = new EV3TouchSensor (SensorPort.In1); 
+			body.touch = new TouchSensor(SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
 			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
 			body.gyro = new EV3GyroSensor (SensorPort.In4,	GyroMode.AngularVelocity);
