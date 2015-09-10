@@ -31,22 +31,23 @@ namespace ETRobocon.StateMachine
 			_body.gyro.Read ();
 			_body.motorL.SetPower (0);
 			_body.motorR.SetPower (0);
-			_body.motorT.SetPower (0);
 
 			_body.motorL.ResetTacho ();
 			_body.motorR.ResetTacho ();
-			_body.motorT.ResetTacho ();
+
 			Balancer.init ();
 
 			var dialogSTART = new InfoDialog ("Touch to START", false);
 			dialogSTART.Show ();
 
 			LogTask.LogRemote("EV3 is ready.");
+
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 		}
 
 		public override void Do()
 		{
-			tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+			_body.motorTail.UpdateTailAngle ();
 		}
 
 		public override void Exit()
