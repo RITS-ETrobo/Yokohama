@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>EV3way_MonoBrick source: D:/Projects/ETrobo/Yokohama/src/EV3Way_MonoBrick_RemoteConsole/EV3Way_MonoBrick_RemoteConsole/Program.cs Source File</title>
+<title>EV3way_MonoBrick source: C:/Projects/ETrobocon/Yokohama_merge/src/EV3Way_MonoBrick_RemoteConsole/EV3Way_MonoBrick_RemoteConsole/Program.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,104 +107,42 @@ $(document).ready(function(){initNavTree('_program_8cs_source.html','');});
 </div><!--header-->
 <div class="contents">
 <a href="_program_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net.Sockets;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_v3_way___mono_brick___remote_console.html">EV3Way_MonoBrick_RemoteConsole</a>.<a class="code" href="namespace_e_v3_way___mono_brick___remote_console_1_1_utils.html">Utils</a>;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespace_e_v3_way___mono_brick___remote_console.html">    7</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_v3_way___mono_brick___remote_console.html">EV3Way_MonoBrick_RemoteConsole</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html">MainClass</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">// constant</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a772e2180e77ca13fe1fba7b3da545207">   12</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a772e2180e77ca13fe1fba7b3da545207">SOCKET_PORT</a> = 7360;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a0acd188405f8b35190355efe0826be29">   15</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a0acd188405f8b35190355efe0826be29">REMOTE_TRANSFER_SIZE_MAX</a> = 255;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">Main</a> (<span class="keywordtype">string</span>[] args)</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="comment">// 指定されたサーバに接続</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                Socket  sock   = <span class="keyword">new</span> Socket(</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                    AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                sock.Connect(<span class="stringliteral">&quot;10.0.1.1&quot;</span>, SOCKET_PORT);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                NetworkStream   conn = <span class="keyword">new</span> NetworkStream(sock, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d">SendCommandLoop</a>(conn); <span class="comment">// コンソール入力</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                conn.Close();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                Console.Out.WriteLine(<span class="stringliteral">&quot;caught an exception: {0}&quot;</span>, e.Message);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d">   33</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d">SendCommandLoop</a>(NetworkStream connection) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            Console.Out.WriteLine (<span class="stringliteral">&quot;Please key g[start] s[stop] q[quit]:&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordtype">bool</span>    done = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">while</span> (!done) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">if</span> (Console.KeyAvailable) { <span class="comment">// ReadKey()でキー入力待ちになりその後のテキスト受信処理に進まなくなるのを回避</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    Console.Out.Write (<span class="stringliteral">&quot;&gt;&quot;</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    ConsoleKeyInfo key = Console.ReadKey ();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keywordflow">switch</span> (key.KeyChar) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keywordflow">case</span> <span class="charliteral">&#39;g&#39;</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    <span class="keywordflow">case</span> <span class="charliteral">&#39;s&#39;</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <span class="comment">// LeJOS 版に合わせてネットワークバイトオーダーで送信</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        byte[] keyBytes = BitConverter.GetBytes ((<span class="keywordtype">int</span>)key.KeyChar); <span class="comment">// 4ByteArray (littele Endian)</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keywordflow">if</span> (BitConverter.IsLittleEndian) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                            Array.Reverse (keyBytes); <span class="comment">// little Endian -&gt; big endian</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        connection.Write (keyBytes, 0, keyBytes.Length);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        Console.Out.WriteLine ();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <span class="keywordflow">case</span> <span class="charliteral">&#39;q&#39;</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        done = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a">RemoteReceiveTest</a> (connection);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="comment">// ロボット側の倒立振子制御ループが4msで回るので, それより短い値を指定.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                Thread.Sleep (2); <span class="comment">// TODO: 適切な値か検証する</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a">   80</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a">RemoteReceiveTest</a>(NetworkStream connection)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="comment">// 受信</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> (connection.DataAvailable) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    var buff = <span class="keyword">new</span> byte[REMOTE_TRANSFER_SIZE_MAX + 1];</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    connection.Read(buff, 0, 1);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordtype">int</span> receiveBytes = buff[0];</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    connection.Read(buff, 0, receiveBytes);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="comment">// ネットワークバイトオーダー(big endian)で受信したため little endian に変換</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    Array.Reverse(buff, 0, receiveBytes); <span class="comment">// big endian -&gt; little endian</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    Console.Out.WriteLine(<a class="code" href="namespace_system.html">System</a>.Text.Encoding.ASCII.GetString(buff, 0, receiveBytes));</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }<span class="keywordflow">catch</span>(Exception){</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
-<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_a772e2180e77ca13fe1fba7b3da545207"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a772e2180e77ca13fe1fba7b3da545207">EV3Way_MonoBrick_RemoteConsole.MainClass.SOCKET_PORT</a></div><div class="ttdeci">const int SOCKET_PORT</div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00012">Program.cs:12</a></div></div>
-<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_a0acd188405f8b35190355efe0826be29"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a0acd188405f8b35190355efe0826be29">EV3Way_MonoBrick_RemoteConsole.MainClass.REMOTE_TRANSFER_SIZE_MAX</a></div><div class="ttdeci">const int REMOTE_TRANSFER_SIZE_MAX</div><div class="ttdoc">EV3から送られてくる文字列の最大長. </div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00015">Program.cs:15</a></div></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">   11</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">Main</a> (<span class="keywordtype">string</span>[] args)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html">CommandTask</a>.<a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#ad493396ae6debe5f7de9add374c83561">Run</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html">LogTask</a>.<a class="code" href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a4455d6a7fd00e91850b0949de8ac0f66">Run</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            } <span class="keywordflow">catch</span> (Exception e) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                Console.Out.WriteLine(<span class="stringliteral">&quot;caught an exception: {0}&quot;</span>, e.Message);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="ttc" id="namespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div></div>
-<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_adc7b42e86e43533f94eec5716650757a"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#adc7b42e86e43533f94eec5716650757a">EV3Way_MonoBrick_RemoteConsole.MainClass.RemoteReceiveTest</a></div><div class="ttdeci">static void RemoteReceiveTest(NetworkStream connection)</div><div class="ttdoc">Receive a string from EV3. </div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00080">Program.cs:80</a></div></div>
-<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_aa143365fcd7e34efc46e4135745ad63d"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#aa143365fcd7e34efc46e4135745ad63d">EV3Way_MonoBrick_RemoteConsole.MainClass.SendCommandLoop</a></div><div class="ttdeci">static void SendCommandLoop(NetworkStream connection)</div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00033">Program.cs:33</a></div></div>
+<div class="ttc" id="namespace_e_v3_way___mono_brick___remote_console_1_1_utils_html"><div class="ttname"><a href="namespace_e_v3_way___mono_brick___remote_console_1_1_utils.html">EV3Way_MonoBrick_RemoteConsole.Utils</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_command_task_8cs_source.html#l00006">CommandTask.cs:6</a></div></div>
+<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task_html"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html">EV3Way_MonoBrick_RemoteConsole.Utils.CommandTask</a></div><div class="ttdoc">コマンド入力・送信タスク</div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_command_task_8cs_source.html#l00009">CommandTask.cs:9</a></div></div>
+<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task_html_ad493396ae6debe5f7de9add374c83561"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#ad493396ae6debe5f7de9add374c83561">EV3Way_MonoBrick_RemoteConsole.Utils.CommandTask.Run</a></div><div class="ttdeci">static void Run()</div><div class="ttdoc">コマンドタスクの開始</div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_command_task_8cs_source.html#l00042">CommandTask.cs:42</a></div></div>
 <div class="ttc" id="namespace_e_v3_way___mono_brick___remote_console_html"><div class="ttname"><a href="namespace_e_v3_way___mono_brick___remote_console.html">EV3Way_MonoBrick_RemoteConsole</a></div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00007">Program.cs:7</a></div></div>
-<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_a2c51db8e299ab68eb54b74c6c9d487f0"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">EV3Way_MonoBrick_RemoteConsole.MainClass.Main</a></div><div class="ttdeci">static void Main(string[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00017">Program.cs:17</a></div></div>
+<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task_html_a4455d6a7fd00e91850b0949de8ac0f66"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a4455d6a7fd00e91850b0949de8ac0f66">EV3Way_MonoBrick_RemoteConsole.Utils.LogTask.Run</a></div><div class="ttdeci">static void Run()</div><div class="ttdoc">ログ受信・表示タスクを開始する</div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_log_task_8cs_source.html#l00028">LogTask.cs:28</a></div></div>
+<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task_html"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html">EV3Way_MonoBrick_RemoteConsole.Utils.LogTask</a></div><div class="ttdoc">ログ機能(受信と表示)</div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_way___mono_brick___remote_console_2_e_v3_way___mono_brick___remote_console_2_utils_2_log_task_8cs_source.html#l00008">LogTask.cs:8</a></div></div>
+<div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html_a2c51db8e299ab68eb54b74c6c9d487f0"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0">EV3Way_MonoBrick_RemoteConsole.MainClass.Main</a></div><div class="ttdeci">static void Main(string[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00011">Program.cs:11</a></div></div>
 <div class="ttc" id="class_e_v3_way___mono_brick___remote_console_1_1_main_class_html"><div class="ttname"><a href="class_e_v3_way___mono_brick___remote_console_1_1_main_class.html">EV3Way_MonoBrick_RemoteConsole.MainClass</a></div><div class="ttdef"><b>Definition:</b> <a href="_program_8cs_source.html#l00009">Program.cs:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f9baf1a3ae6c110a01f8bdf2076b43d5.html">src</a></li><li class="navelem"><a class="el" href="dir_890f8e503d33fd06add0c784856a174e.html">EV3Way_MonoBrick_RemoteConsole</a></li><li class="navelem"><a class="el" href="dir_268db65d355c04b0c43fa8b8c9644b22.html">EV3Way_MonoBrick_RemoteConsole</a></li><li class="navelem"><a class="el" href="_program_8cs.html">Program.cs</a></li>
-    <li class="footer">Generated on Tue Jun 23 2015 19:29:40 for EV3way_MonoBrick source by
+    <li class="navelem"><a class="el" href="dir_8626a6ccbd7ae84978bfa470eaa75872.html">src</a></li><li class="navelem"><a class="el" href="dir_fb3e757d5d27d0710c44884ff14b5666.html">EV3Way_MonoBrick_RemoteConsole</a></li><li class="navelem"><a class="el" href="dir_b2ac590be83b913b6ce3dc4d781b5f5f.html">EV3Way_MonoBrick_RemoteConsole</a></li><li class="navelem"><a class="el" href="_program_8cs.html">Program.cs</a></li>
+    <li class="footer">Generated on Sat Sep 5 2015 22:17:46 for EV3way_MonoBrick source by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

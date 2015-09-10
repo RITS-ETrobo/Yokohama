@@ -1,0 +1,5 @@
+<map id="ETRobocon.Utils.ProtocolProcessorForPC.Connect" name="ETRobocon.Utils.ProtocolProcessorForPC.Connect">
+<area shape="rect" id="node2" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#ad493396ae6debe5f7de9add374c83561" title="コマンドタスクの開始" alt="" coords="224,5,471,47"/>
+<area shape="rect" id="node4" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a4455d6a7fd00e91850b0949de8ac0f66" title="ログ受信・表示タスクを開始する" alt="" coords="224,71,471,112"/>
+<area shape="rect" id="node3" href="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0" title="EV3Way_MonoBrick_RemoteConsole.\lMainClass.Main" alt="" coords="519,39,765,80"/>
+</map>

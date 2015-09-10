@@ -204,7 +204,7 @@ namespace ETRobocon.EV3
 			if (!File.Exists (LEJOS_HOSTNAME)) {
 				fs = File.Create (LEJOS_HOSTNAME);
 				sw = new StreamWriter (fs);
-				sw.WriteLine ("EV3");
+				sw.WriteLine ("ET175");
 				sw.Close ();
 				fs.Close ();
 			}

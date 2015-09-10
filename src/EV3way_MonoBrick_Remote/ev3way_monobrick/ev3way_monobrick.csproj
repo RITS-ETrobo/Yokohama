@@ -7,8 +7,7 @@
     <ProjectGuid>{D143CFF0-F2F5-474A-B631-698EC2E98A12}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
-    <AssemblyName>EV3Way</AssemblyName>
-    <ReleaseVersion>0.4.0</ReleaseVersion>
+    <ReleaseVersion>0.6.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +20,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>..\..\..\bin\Debug\EV3Way.xml</DocumentationFile>
+    <AssemblyName>EV3Way</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -30,6 +30,16 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>..\..\..\bin\Release\EV3Way.xml</DocumentationFile>
+    <AssemblyName>EV3Way</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '充電池|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\充電池</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>ev3way_monobrick</AssemblyName>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>RechargeableBattery</DefineConstants>
+    <DocumentationFile>bin\x86\充電池\EV3Way.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,9 +64,38 @@
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
     </Compile>
+    <Compile Include="StateMachine\StateMachine.cs" />
+    <Compile Include="StateMachine\State.cs" />
+    <Compile Include="StateMachine\TriggerID.cs" />
+    <Compile Include="StateMachine\StateID.cs" />
+    <Compile Include="StateMachine\States\ReadyState.cs" />
+    <Compile Include="StateMachine\States\CompleteState.cs" />
+    <Compile Include="StateMachine\States\StraightWithLineTraceState.cs" />
+    <Compile Include="Utils\LogTask.cs" />
+    <Compile Include="..\..\common\CommandID.cs">
+      <Link>Utils\CommandID.cs</Link>
+    </Compile>
+    <Compile Include="Utils\CommandTask.cs" />
+    <Compile Include="..\..\common\CommandFormat.cs">
+      <Link>Utils\CommandFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\CommandFormatManager.cs">
+      <Link>Utils\CommandFormatManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\Command.cs">
+      <Link>Utils\Command.cs</Link>
+    </Compile>
+    <Compile Include="Utils\CommandReceiveFlags.cs" />
+    <Compile Include="Odometry\Odometry.cs" />
+    <Compile Include="Odometry\Location.cs" />
+    <Compile Include="Motor\MotorTail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="StateMachine\" />
+    <Folder Include="StateMachine\States\" />
+    <Folder Include="Odometry\" />
+    <Folder Include="Motor\" />
   </ItemGroup>
 </Project>
