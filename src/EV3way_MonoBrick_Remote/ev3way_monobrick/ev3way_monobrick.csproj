@@ -89,6 +89,7 @@
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
     <Compile Include="Motor\MotorTail.cs" />
+    <Compile Include="StateMachine\States\StartState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
