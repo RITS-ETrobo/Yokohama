@@ -13,6 +13,7 @@ namespace ETRobocon.EV3
 		public const int TAIL_ANGLE_STAND_UP = 96;   //完全停止時の角度[deg]
 		public const int TAIL_ANGLE_DRIVE = 5;       //バランス走行時の角度[deg]
 		public const int TAIL_ANGLE_LOOKUPGATE = 70; //ルックアップゲート用角度[deg]. 調整済み.
+		public const int TAIL_ANGLE_START_DASH = TAIL_ANGLE_STAND_UP + 10; //走行開始時にバランスをとるための角度[deg].
 		private const int TAIL_ANGLE_MAX = 150;		 //尻尾の角度の最大. この角度を上回る制御はこの角度に収められる.
 		private const int TAIL_ANGLE_MIN = 0;		 //尻尾の角度の最小. この角度を下回る制御はこの角度に収められる
 
