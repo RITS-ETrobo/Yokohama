@@ -163,6 +163,6 @@ Global
 		$26.NamingStyle = PascalCase
 		$26.IncludeInstanceMembers = True
 		$26.IncludeStaticEntities = True
-		version = 0.3.0
+		version = 0.6.0
 	EndGlobalSection
 EndGlobal

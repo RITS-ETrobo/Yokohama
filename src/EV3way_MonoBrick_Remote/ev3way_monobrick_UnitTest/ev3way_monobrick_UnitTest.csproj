@@ -6,7 +6,7 @@
     <ProjectGuid>{9DC879A3-5681-4256-A1F6-03FF1B578E1E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Test</RootNamespace>
-    <ReleaseVersion>0.3.0</ReleaseVersion>
+    <ReleaseVersion>0.6.0</ReleaseVersion>
     <AssemblyName>ev3way_monobrick_UnitTest</AssemblyName>
     <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>

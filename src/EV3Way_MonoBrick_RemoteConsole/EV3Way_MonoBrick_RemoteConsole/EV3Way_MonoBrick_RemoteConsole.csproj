@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>EV3Way_MonoBrick_RemoteConsole</RootNamespace>
     <AssemblyName>EV3Way_MonoBrick_RemoteConsole</AssemblyName>
-    <ReleaseVersion>0.3.0</ReleaseVersion>
+    <ReleaseVersion>0.6.0</ReleaseVersion>
     <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -59,6 +59,20 @@
     </Compile>
     <Compile Include="..\..\common\PacketDataConverter.cs">
       <Link>Utils\PacketDataConverter.cs</Link>
+    </Compile>
+    <Compile Include="Utils\LogTask.cs" />
+    <Compile Include="..\..\common\CommandID.cs">
+      <Link>Utils\CommandID.cs</Link>
+    </Compile>
+    <Compile Include="Utils\CommandTask.cs" />
+    <Compile Include="..\..\common\CommandFormat.cs">
+      <Link>Utils\CommandFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\CommandFormatManager.cs">
+      <Link>Utils\CommandFormatManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\common\Command.cs">
+      <Link>Utils\Command.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
