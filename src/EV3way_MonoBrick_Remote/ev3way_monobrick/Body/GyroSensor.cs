@@ -14,7 +14,7 @@ namespace ETRobocon.Body
 		/// </summary>
 		private bool rapidChange;
 
-		/// <summary>正常値の上限(-1倍すれば下限)</summary>
+		/// <summary>正常と判断するジャイロセンサー値の大きさの上限</summary>
 		private const int BORDER_RAPID_CHANGE = 180;
 
 		public GyroSensor (SensorPort inport, GyroMode velocity )
@@ -29,7 +29,10 @@ namespace ETRobocon.Body
 			int sensorValue;
 			sensorValue = gyroSensor.Read ();
 
-			// 値が異常値を示したら, 急激な変化があったと判断する.
+			// ジャイロセンサー値が異常値を示したら, 急激な変化があったと判断する.
+			// ジャイロセンサー値が正：前方に回転する加速
+			// ジャイロセンサー値が負：後方に回転する加速
+			// 前方への加速の大きさと後方への加速の大きさは同一である.
 			if (sensorValue < -BORDER_RAPID_CHANGE || sensorValue > BORDER_RAPID_CHANGE) {
 				rapidChange = true;
 			} else {
