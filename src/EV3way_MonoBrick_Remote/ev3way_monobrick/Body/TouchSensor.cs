@@ -15,9 +15,11 @@ namespace ETRobocon.Body
 		/// <summary>前回測定時の, 押下状態</summary>
 		private bool _previousTouchState;
 
-		public TouchSensor()
+		/// <summary>タッチセンサーインスタンスの作成</summary>
+		/// <param name="portSensorIn">タッチセンサーに対応する入力ポート</param>
+		public TouchSensor(SensorPort portSensorIn)
 		{
-			_ev3TouchSensor = new EV3TouchSensor(SensorPort.In1);
+			_ev3TouchSensor = new EV3TouchSensor(portSensorIn);
 			_previousTouchState = false;
 		}
 
