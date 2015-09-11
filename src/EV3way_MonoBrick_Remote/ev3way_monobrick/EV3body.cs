@@ -43,7 +43,7 @@ namespace ETRobocon.EV3
 			body.touch = new EV3TouchSensor (SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
 			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
-			body.gyro = new GyroSensor (SensorPort.In4,	GyroMode.AngularVelocity);
+			body.gyro = new GyroSensor (SensorPort.In4);
 
 			///自己位置推定インスタンス作成
 			body.odm = new ETRobocon.Odometry.Odometry();

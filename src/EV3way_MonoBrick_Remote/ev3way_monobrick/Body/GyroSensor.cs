@@ -17,9 +17,11 @@ namespace ETRobocon.Body
 		/// <summary>正常と判断するジャイロセンサー値の大きさの上限</summary>
 		private const int BORDER_RAPID_CHANGE = 180;
 
-		public GyroSensor (SensorPort inport, GyroMode velocity )
+		/// <summary>ジャイロセンサーに対応するポートを設定する.</summary>
+		/// <param name="portSensorIn">ジャイロセンサーに対応する入力ポート</param>
+		public GyroSensor (SensorPort portSensorIn)
 		{
-			gyroSensor = new EV3GyroSensor (inport, velocity);
+			gyroSensor = new EV3GyroSensor (portSensorIn, GyroMode.AngularVelocity);
 			rapidChange = false;
 		}
 
@@ -42,7 +44,12 @@ namespace ETRobocon.Body
 			return sensorValue;
 		}
 
-		/// <summary>センサーが取得した値が異常値かどうかを返す</summary>
+		/// <summary>
+		/// センサーが取得した値が異常値かどうかを返す.
+		/// 異常値であれば, 衝撃を検知したと判断できる.
+		/// </summary>
+		/// <returns><c>true</c>, 異常値を取得していた(衝撃検知),
+		///          <c>false</c> 正常値を取得していた(衝撃検知せず).</returns>
 		public bool GetRapidChange(){
 			return rapidChange;
 		}
