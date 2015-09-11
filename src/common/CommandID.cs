@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ETRobocon.Utils
 {
@@ -14,4 +14,3 @@ namespace ETRobocon.Utils
 		NumOfCommand
 	}
 }
-
