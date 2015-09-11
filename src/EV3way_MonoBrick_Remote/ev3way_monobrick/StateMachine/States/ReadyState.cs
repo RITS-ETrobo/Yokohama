@@ -52,19 +52,11 @@ namespace ETRobocon.StateMachine
 
 		public override void Exit()
 		{
-			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
-
-			// スイッチが離されるのを待つ
-			// TODO: "押されたときだけを検出する"ような機能をタッチセンサーに持たせ, ここの処理は削除する.
-			while (_body.touch.IsPressed ()) {
-				_body.motorTail.UpdateTailAngle ();
-				Thread.Sleep (4);
-			}
 		}
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
 			}
