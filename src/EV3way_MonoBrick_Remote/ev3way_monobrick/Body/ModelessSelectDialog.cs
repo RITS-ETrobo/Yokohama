@@ -54,7 +54,7 @@ namespace ETRobocon.Body
 			}
 		}
 
-		/// <summary>ダイアログを開く関数</summary>
+		/// <summary>ダイアログを開くメソッド</summary>
 		/// <remarks>
 		/// 本関数を非同期タスクとして呼び出した場合,
 		/// 開くダイアログはモーダレスダイアログになる.
