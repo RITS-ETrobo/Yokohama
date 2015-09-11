@@ -56,6 +56,9 @@ namespace ETRobocon.Body
 
 		private void Run()
 		{
+			// モーダルダイアログを開く.
+			// ダイアログは, ユーザによるボタン操作, もしくは
+			// ModelessSelectDialog<SelectionType>インスタンスのCancel()を呼び出すことで閉じられる.
 			base.Show(_cancellationTokenSource.Token);
 
 			IsShowing = false;
