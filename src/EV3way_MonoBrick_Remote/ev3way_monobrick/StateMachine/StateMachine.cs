@@ -22,10 +22,11 @@ namespace ETRobocon.StateMachine
 		{
 			_body = body;
 
-			currentState = StateID.Ready;
+			currentState = StateID.ModeSel;
 
 			_states = new State[(int)StateID.NumOfState]
 			{
+				new ModeSelectState(_body),	// ModeSel
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
 				new CompleteState(_body)	// Complete
@@ -36,6 +37,7 @@ namespace ETRobocon.StateMachine
 				// TouchSensor,                           RunCommand,                             StopCommand
 
 				// 走行準備
+				{ new Transition(StateID.Ready, Nop),     null,                                   null },
 				{ new Transition(StateID.Straight1, Nop), new Transition(StateID.Straight1, Nop), null },
 
 				// ゴールまで走行

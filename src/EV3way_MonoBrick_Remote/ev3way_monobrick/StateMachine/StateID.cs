@@ -5,6 +5,7 @@ namespace ETRobocon.StateMachine
 	public enum StateID
 	{
 		// 走行準備
+		ModeSel,	///< モード選択(最初の画面)
 		Ready,
 
 		// 走行
