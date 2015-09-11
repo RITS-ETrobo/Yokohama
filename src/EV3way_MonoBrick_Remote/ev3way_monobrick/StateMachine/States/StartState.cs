@@ -84,10 +84,6 @@ namespace ETRobocon.StateMachine
 			if (counter <= 0) {	// 既定のループ数に到達.
 				return TriggerID.TimeExpire;
 			}
-			else if (_body.touch.IsPressed())
-			{
-				return TriggerID.TouchSensor;
-			}
 			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
 			{
 				return TriggerID.StopCommand;
