@@ -1,5 +1,5 @@
 ﻿using System;
-using MonoBrickFirmware.Display.Dialogs;
+//using MonoBrickFirmware.Display.Dialogs;
 using ETRobocon.EV3;
 using ETRobocon.Utils;
 
@@ -18,10 +18,6 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
-			var dialogRun = new InfoDialog("Running", false);
-			dialogRun.Show();
-
-			LogTask.LogRemote("EV3 run.");
 
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
