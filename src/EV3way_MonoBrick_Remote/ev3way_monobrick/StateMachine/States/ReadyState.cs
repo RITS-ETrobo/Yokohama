@@ -54,13 +54,6 @@ namespace ETRobocon.StateMachine
 
 		public override void Exit()
 		{
-			// スイッチが離されるのを待つ
-			// TODO: "押されたときだけを検出する"ような機能をタッチセンサーに持たせ, ここの処理は削除する.
-			while (_body.touch.IsPressed ()) {
-				tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				Thread.Sleep (4);
-			}
-
 			_selectDialog.Cancel();
 		}
 
