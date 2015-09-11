@@ -33,22 +33,23 @@ namespace ETRobocon.StateMachine
 			_body.gyro.Read ();
 			_body.motorL.SetPower (0);
 			_body.motorR.SetPower (0);
-			_body.motorT.SetPower (0);
 
 			_body.motorL.ResetTacho ();
 			_body.motorR.ResetTacho ();
-			_body.motorT.ResetTacho ();
+
 			Balancer.init ();
 
 			_selectDialog = new Body.ModelessSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
 			_selectDialog.Show();
 
 			LogTask.LogRemote("EV3 is ready.");
+
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 		}
 
 		public override void Do()
 		{
-			tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+			_body.motorTail.UpdateTailAngle ();
 		}
 
 		public override void Exit()
@@ -65,7 +66,7 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
 			}

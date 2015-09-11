@@ -57,50 +57,6 @@ namespace ETRobocon.StateMachine
 
 		#endregion
 
-		#region とりあえず動かすために必要(後で尻尾モータクラスに移される予定)
-
-		///	完全停止用モータ制御比例係数
-		const float P_GAIN = 2.5F;
-
-		///	完全停止用モータ制御PWM絶対最大値
-		const int PWM_ABS_MAX = 60;
-
-		///	完全停止時の角度[deg]
-		protected const int TAIL_ANGLE_STAND_UP = 94;
-
-		///	バランス走行時の角度[deg]
-		protected const int TAIL_ANGLE_DRIVE = 3;
-
-		///	<summary>
-		///	走行体完全停止用モータの角度制御
-		///	</summary>
-		///	<returns>
-		/// なし
-		/// </returns>
-		/// <param name="body">
-		///	EV3bodyのインスタンス 
-		/// </param>
-		/// <param name="angle">
-		///	モータ目標角度[度] 
-		/// </param>
-		protected void tail_control(EV3body body, int angle)
-		{
-			float pwm = (float)(angle - body.motorT.GetTachoCount ()) * P_GAIN; // 比例制御
-			// PWM出力飽和処理
-			if (pwm > PWM_ABS_MAX) {
-				pwm = PWM_ABS_MAX;
-			} else if (pwm < -PWM_ABS_MAX) {
-				pwm = -PWM_ABS_MAX;
-			}
-			if ((sbyte)pwm == 0) {
-				body.motorT.Brake();
-			} else {
-				body.motorT.SetPower((sbyte)pwm);
-			}
-		}
-
-		#endregion
-
 		#region とりあえず動かすために必要(後で光センサクラスに移される予定)
 
 		///	白色の光センサ値
