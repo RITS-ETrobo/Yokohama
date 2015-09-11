@@ -12,7 +12,7 @@ namespace ETRobocon.StateMachine
 		private int _batteryLevel;
 
 		private const int START_COUNT = 5;	// 安定処理するまでのループ数
-		private int counter;	// ループ回数カウンター
+		private int counter;	// ループ回数カウンター. 既定値から0まで下がる.
 
 		public StartState(EV3body body) : base(body, 2)
 		{
