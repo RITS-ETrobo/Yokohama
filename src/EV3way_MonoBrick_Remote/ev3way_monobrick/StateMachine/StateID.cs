@@ -5,6 +5,7 @@ namespace ETRobocon.StateMachine
 	public enum StateID
 	{
 		// 走行準備
+		Calib,	///< キャリブレーションモード
 		Ready,
 
 		// 走行

@@ -26,6 +26,7 @@ namespace ETRobocon.StateMachine
 
 			_states = new State[(int)StateID.NumOfState]
 			{
+				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
 				new CompleteState(_body)	// Complete
@@ -36,6 +37,7 @@ namespace ETRobocon.StateMachine
 				// TouchSensor,                           RunCommand,                             StopCommand
 
 				// 走行準備
+				{ null,                                   null,                                   null },	// Calib (遷移は仮)
 				{ new Transition(StateID.Straight1, Nop), new Transition(StateID.Straight1, Nop), null },
 
 				// ゴールまで走行
