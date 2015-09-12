@@ -29,3 +29,7 @@ UpgradeLog*.htm
 
 # for Doxygen
 *.tmp
+
+# for Visual Studio Code
+Code
+.settings
