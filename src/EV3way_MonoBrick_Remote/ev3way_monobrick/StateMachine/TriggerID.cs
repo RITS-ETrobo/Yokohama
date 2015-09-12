@@ -9,6 +9,9 @@ namespace ETRobocon.StateMachine
 		RunCommand,
 		StopCommand,
 		TimeExpire,
+		Select1,
+		Select2,
+		Select3,
 
 		NumOfTrigger
 	}
