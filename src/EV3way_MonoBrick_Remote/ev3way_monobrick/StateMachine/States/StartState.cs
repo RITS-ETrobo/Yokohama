@@ -19,7 +19,7 @@ namespace ETRobocon.StateMachine
 		private int counter;	// ループ回数カウンター. 既定値から0まで下がる.
 
 		/// <summary>
-		/// SrartStateのメンバを初期化する.
+		/// StartStateのメンバを初期化する.
 		/// </summary>
 		/// <param name="body">Body.</param>
 		public StartState(EV3body body) : base(body, 2)
