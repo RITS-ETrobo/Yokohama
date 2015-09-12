@@ -4,6 +4,9 @@ using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
+	// 状態遷移表で, 文字数短縮のためのエイリアス
+	using S = StateID;
+
 	public class StateMachine
 	{
 		/// <summary>現在の状態</summary>
@@ -33,13 +36,13 @@ namespace ETRobocon.StateMachine
 
 			TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
 			{
-				// TouchSensor,                           RunCommand,                             StopCommand                            DetectShock                                 Select1                                 Select2                                Select3
+				// TouchSensor,        RunCommand,          StopCommand         DetectShock          Select1             Select2              Select3
 
 				// 走行準備
-				{ new Transition(StateID.Straight1, Nop), new Transition(StateID.Straight1, Nop), null,                                  new Transition(StateID.Complete, Nop),		new Transition(StateID.Straight1, Nop), new Transition(StateID.Complete, Nop), null },
+				{ T(S.Straight1, Nop), T(S.Straight1, Nop), null,               T(S.Complete, Nop),	 T(S.Straight1, Nop), T(S.Complete, Nop), null },
 
 				// ゴールまで走行
-				{ new Transition(StateID.Complete, Nop),  null,                                   new Transition(StateID.Complete, Nop), new Transition(StateID.Complete, Nop),		null,                                   null,                                  null },
+				{ T(S.Complete, Nop),  null,                T(S.Complete, Nop), T(S.Complete, Nop),	 null,               null,                null },
 
 				// ルックアップゲート用
 
@@ -48,7 +51,7 @@ namespace ETRobocon.StateMachine
 				// ...
 
 				// その他
-				{ null,                                   null,                                  null,                                  null,                                      null,                                    null,                                  null  }
+				{ null,                null,                null,               null,                null,               null,                null  }
 			};
 		}
 
@@ -109,6 +112,14 @@ namespace ETRobocon.StateMachine
 				NextState = nextState;
 				TransitionMethod = transitionMethod;
 			}
+		}
+
+		/// <summary>状態遷移表で, 文字数短縮のためのメソッド</summary>
+		/// <param name="nextState">次のステートのID</param>
+		/// <param name="transitionMethod">遷移メソッド</param>
+		private Transition T(StateID nextState, TransitionMethodDel transitionMethod)
+		{
+			return new Transition(nextState, transitionMethod);
 		}
 	}
 }
