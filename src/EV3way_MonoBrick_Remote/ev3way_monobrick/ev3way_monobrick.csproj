@@ -92,6 +92,8 @@
     <Compile Include="Body\ModelessSelectDialog.cs" />
     <Compile Include="Body\TouchSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
+    <Compile Include="LineDetector.cs" />
+    <Compile Include="IFilter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
