@@ -30,7 +30,7 @@ namespace ETRobocon.StateMachine
 			// センサーおよびモータに対して初回アクセスをしておく
 			_body.color.Read();
 			_body.sonar.Read();
-			_body.gyro.Read ();
+			_body.gyro.GetSensorValue ();
 			_body.motorL.SetPower (0);
 			_body.motorR.SetPower (0);
 
@@ -59,6 +59,9 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
+			if (_body.gyro.GetRapidChange ()) {
+				return TriggerID.DetectShock;
+			}
 			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
