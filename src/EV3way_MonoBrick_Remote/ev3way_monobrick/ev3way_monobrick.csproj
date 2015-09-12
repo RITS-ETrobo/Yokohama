@@ -90,6 +90,7 @@
     <Compile Include="Odometry\Location.cs" />
     <Compile Include="Body\TouchSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
+    <Compile Include="Body\ColorSensor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
