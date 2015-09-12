@@ -36,13 +36,13 @@ namespace ETRobocon.StateMachine
 
 			TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
 			{
-				// TouchSensor,        RunCommand,          StopCommand
+				// TouchSensor,        RunCommand,          StopCommand,        Select1,             Select2,            Select3
 
 				// 走行準備
-				{ T(S.Straight1, Nop), T(S.Straight1, Nop), null },
+				{ T(S.Straight1, Nop), T(S.Straight1, Nop), null,               T(S.Straight1, Nop), T(S.Complete, Nop), null },
 
 				// ゴールまで走行
-				{ T(S.Complete, Nop),  null,                T(S.Complete, Nop) },
+				{ T(S.Complete, Nop),  null,                T(S.Complete, Nop), null,                null,               null },
 
 				// ルックアップゲート用
 
@@ -51,7 +51,7 @@ namespace ETRobocon.StateMachine
 				// ...
 
 				// その他
-				{ null,                null,                null }
+				{ null,                null,                null,               null,                null,               null }
 			};
 		}
 

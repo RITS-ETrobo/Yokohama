@@ -8,6 +8,8 @@ namespace ETRobocon.StateMachine
 {
 	public class ReadyState : State
 	{
+		private Body.ModelessSelectDialog<string> _selectDialog;
+
 		public ReadyState(EV3body body) : base(body, 4)
 		{
 		}
@@ -31,43 +33,52 @@ namespace ETRobocon.StateMachine
 			_body.gyro.Read ();
 			_body.motorL.SetPower (0);
 			_body.motorR.SetPower (0);
-			_body.motorT.SetPower (0);
 
 			_body.motorL.ResetTacho ();
 			_body.motorR.ResetTacho ();
-			_body.motorT.ResetTacho ();
+
 			Balancer.init ();
 
-			var dialogSTART = new InfoDialog ("Touch to START", false);
-			dialogSTART.Show ();
+			_selectDialog = new Body.ModelessSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
+			_selectDialog.Show();
 
 			LogTask.LogRemote("EV3 is ready.");
+
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);	//完全停止用角度に制御
 		}
 
 		public override void Do()
 		{
-			tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
+			_body.motorTail.UpdateTailAngle ();
 		}
 
 		public override void Exit()
 		{
-			// スイッチが離されるのを待つ
-			// TODO: "押されたときだけを検出する"ような機能をタッチセンサーに持たせ, ここの処理は削除する.
-			while (_body.touch.IsPressed ()) {
-				tail_control(_body, TAIL_ANGLE_STAND_UP); //完全停止用角度に制御
-				Thread.Sleep (4);
-			}
+			_selectDialog.Cancel();
 		}
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
 			}
-			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Run))
+			if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Run))
 			{
 				return TriggerID.RunCommand;
+			}
+			if (!_selectDialog.IsShowing) {
+				switch (_selectDialog.GetSelectionIndex ()) {
+				case 0:
+					return TriggerID.Select1;
+
+				case 1:
+					return TriggerID.Select2;
+
+				default:
+					// 何もしない
+					break;
+				}
 			}
 
 			return TriggerID.NoTrigger;

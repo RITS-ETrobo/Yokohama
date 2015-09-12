@@ -25,6 +25,12 @@ namespace ETRobocon.StateMachine
 
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
+
+			// 走行開始前にタイヤが動いていると自己位置推定に誤差が出てくるのでTachoCountの値をリセットする]
+			//  - ココじゃなくてStateMachine.cs内の走行準備からの遷移であるnew Transition(StateID.Straight1, Nop)のNopのところでやるべき？
+			_body.motorL.ResetTacho ();
+			_body.motorR.ResetTacho ();
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_DRIVE);	//バランス走行用角度に制御
 		}
 
 		public override void Do()
@@ -32,7 +38,7 @@ namespace ETRobocon.StateMachine
 			sbyte forward;
 			sbyte turn;
 
-			tail_control(_body, TAIL_ANGLE_DRIVE); // バランス走行用角度に制御
+			_body.motorTail.UpdateTailAngle ();
 
 			if (++_counter >= 40/4) {
 				_alert = sonar_alert (_body);
@@ -76,11 +82,11 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.touch.IsPressed())
+			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
 			}
-			else if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
+			if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
 			{
 				return TriggerID.StopCommand;
 			}
