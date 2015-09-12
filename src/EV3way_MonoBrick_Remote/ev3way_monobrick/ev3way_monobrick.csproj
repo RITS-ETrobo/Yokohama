@@ -88,6 +88,7 @@
     <Compile Include="Utils\CommandReceiveFlags.cs" />
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
+    <Compile Include="Body\GyroSensor.cs" />
     <Compile Include="Body\ModelessSelectDialog.cs" />
     <Compile Include="Body\TouchSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
