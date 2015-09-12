@@ -5,6 +5,8 @@ using MonoBrickFirmware.Movement;
 using MonoBrickFirmware.Sensors;
 using ETRobocon.Body;
 
+using ETRobocon.Body;
+
 namespace ETRobocon.EV3
 {
 	/// <summary>機体</summary>
@@ -18,11 +20,11 @@ namespace ETRobocon.EV3
 		///	モータオブジェクト : 右
 		public  Motor motorR;
 
-		///	モータオブジェクト : ????
-		public  Motor motorT;
+		///	モータオブジェクト : 尻尾
+		public MotorTail motorTail;
 
 		///	センサーオブジェクト : タッチセンサー
-		public  EV3TouchSensor touch;
+		public  TouchSensor touch;
 
 		///	センサーオブジェクト : 超音波センサー
 		public  EV3UltrasonicSensor sonar;
@@ -39,14 +41,14 @@ namespace ETRobocon.EV3
 		public static void init(ref EV3body body){
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
-			body.motorT = new Motor (MotorPort.OutA);
-			body.touch = new EV3TouchSensor (SensorPort.In1); 
+			body.motorTail = new MotorTail ();
+			body.touch = new TouchSensor(SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
 			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
 			body.gyro = new GyroSensor (SensorPort.In4);
 
 			///自己位置推定インスタンス作成
-			body.odm = new ETRobocon.Odometry.Odometry();
+			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.AVAILABLE_LOG_FEATURE);
 		}
 	}
 }
