@@ -8,6 +8,7 @@ namespace ETRobocon.StateMachine
 		TouchSensor,
 		RunCommand,
 		StopCommand,
+		TimeExpire,
 		Select1,
 		Select2,
 		Select3,

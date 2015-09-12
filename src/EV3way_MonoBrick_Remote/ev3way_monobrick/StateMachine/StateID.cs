@@ -6,6 +6,7 @@ namespace ETRobocon.StateMachine
 	{
 		// 走行準備
 		Ready,
+		Start,
 
 		// 走行
 		Straight1,	///< 最初の直線区間
