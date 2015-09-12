@@ -32,4 +32,9 @@ UpgradeLog*.htm
 
 # for Visual Studio Code
 Code
+
+# - 0.7.x
 .settings
+
+# 0.8.x -
+.vscode
