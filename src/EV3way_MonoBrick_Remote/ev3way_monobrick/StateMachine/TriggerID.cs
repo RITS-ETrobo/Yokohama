@@ -4,7 +4,7 @@ namespace ETRobocon.StateMachine
 {
 	///	<summary>走行に関するTrigger</summary>
 	///	<remarks>
-	/// Triggerを変更した時は、同時に
+	///	Triggerを変更した時は、同時に
 	///	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateMachine.cs
 	///	の
 	///	TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
