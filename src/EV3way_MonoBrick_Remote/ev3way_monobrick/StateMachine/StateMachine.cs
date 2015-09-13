@@ -27,6 +27,8 @@ namespace ETRobocon.StateMachine
 
 			currentState = StateID.Ready;
 
+			//	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs
+			//	で管理している State が追加/変更/削除された場合は、以下を併せて変更する事
 			_states = new State[(int)StateID.NumOfState]
 			{
 				new ReadyState(_body),	// Ready
@@ -38,96 +40,101 @@ namespace ETRobocon.StateMachine
 			{
 #if	false	//	この部分は、コメントを含む説明の為に無効化しているので、削除しない事
 				{
-					//	State : Template
+					//	State : Template(StateIDに置き換える事)
 					//	説明 -->
 					//	次の場合に、本テーブルのデータを変更する事
 					//	1. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\TriggerID.cs で管理している Trigger が追加/変更/削除された
-					//	2. State を追加/変更/削除する
+					//	2. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs で管理している State が追加/変更/削除された
+					//	3. テーブル中のTriggerを変更する
+					//
 					//	テーブルの追加方法
-					//	1. Templateをコピーし、追加したい箇所へ貼り付ける
+					//	1. Templateをコピーし、StateIDと同じ位置へ挿入する
 					//	2. テーブルに関する説明を削除する
 					//	3. Stateを記載する
+					//
+					//	補足
+					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである
 					//	<-- 説明
-					/*	TouchSensor	*/	TOUCHSENSOR,
-					/*	RunCommand	*/	RUNCOMMAND,
-					/*	StopCommand	*/	STOPCOMMAND,
-					/*	DetectShock	*/	DETECTSHOCK,
-					/*	Select1 	*/	SELECT1,
-					/*	Select2 	*/	SELECT2,
-					/*	Select3 	*/	SELECT3
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
 				},
 #endif	//	false
 
 				{
-					//	State : 走行準備
-					/*	TouchSensor	*/	T(S.Straight1, Nop),
-					/*	RunCommand	*/	T(S.Straight1, Nop),
-					/*	StopCommand	*/	null,
-					/*	DetectShock	*/	T(S.Complete, Nop),
-					/*	Select1 	*/	T(S.Straight1, Nop),
-					/*	Select2 	*/	T(S.Complete, Nop),
-					/*	Select3 	*/	null
+					//	State	:	Ready
+					/*		Trigger	:	TouchSensor	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	RunCommand	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select3 	*/	null
 				},
 
 				{
-					//	State : ゴールまで走行
-					/*	TouchSensor	*/	T(S.Complete, Nop),
-					/*	RunCommand	*/	null,
-					/*	StopCommand	*/	T(S.Complete, Nop),
-					/*	DetectShock	*/	T(S.Complete, Nop),
-					/*	Select1 	*/	null,
-					/*	Select2 	*/	null,
-					/*	Select3 	*/	null
+					//	State	:	Straight1
+					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null
 				},
 
 #if	false
 				{
-					//	State : ルックアップゲート
-					/*	TouchSensor	*/	TOUCHSENSOR,
-					/*	RunCommand	*/	RUNCOMMAND,
-					/*	StopCommand	*/	STOPCOMMAND,
-					/*	DetectShock	*/	DETECTSHOCK,
-					/*	Select1 	*/	SELECT1,
-					/*	Select2 	*/	SELECT2,
-					/*	Select3 	*/	SELECT3
-				},
-#endif	//	false
-
-#if	false
-				{
-					//	State : フィギュアL用
-					/*	TouchSensor	*/	TOUCHSENSOR,
-					/*	RunCommand	*/	RUNCOMMAND,
-					/*	StopCommand	*/	STOPCOMMAND,
-					/*	DetectShock	*/	DETECTSHOCK,
-					/*	Select1 	*/	SELECT1,
-					/*	Select2 	*/	SELECT2,
-					/*	Select3 	*/	SELECT3
+					//	State	:	ルックアップゲート
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
 				},
 #endif	//	false
 
 #if	false
 				{
-					//	State : ...
-					/*	TouchSensor	*/	TOUCHSENSOR,
-					/*	RunCommand	*/	RUNCOMMAND,
-					/*	StopCommand	*/	STOPCOMMAND,
-					/*	DetectShock	*/	DETECTSHOCK,
-					/*	Select1 	*/	SELECT1,
-					/*	Select2 	*/	SELECT2,
-					/*	Select3 	*/	SELECT3
+					//	State	:	フィギュアL用
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
+				},
+#endif	//	false
+
+#if	false
+				{
+					//	State	:	...
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
 				},
 #endif	//	false
 
 				{
-					//	State : その他
-					/*	TouchSensor	*/	null,
-					/*	RunCommand	*/	null,
-					/*	StopCommand	*/	null,
-					/*	DetectShock	*/	null,
-					/*	Select1 	*/	null,
-					/*	Select2 	*/	null,
-					/*	Select3 	*/	null
+					//	State	:	Complete
+					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null
 				}
 			};
 		}
