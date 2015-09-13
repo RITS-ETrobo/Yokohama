@@ -44,8 +44,8 @@ namespace ETRobocon.StateMachine
 					//	説明 -->
 					//	次の場合に、本テーブルのデータを変更する事
 					//	1. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\TriggerID.cs で管理している Trigger が追加/変更/削除された
-					//	2. Trigger を追加/変更/削除する
-					//	3. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs で管理している State が追加/変更/削除された
+					//	2. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs で管理している State が追加/変更/削除された
+					//	3. テーブル中のStateを追加/変更/削除する
 					//
 					//	テーブルの追加方法
 					//	1. Templateをコピーし、StateIDと同じ位置へ挿入する
