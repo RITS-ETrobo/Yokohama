@@ -28,7 +28,7 @@ namespace ETRobocon.StateMachine
 			LogTask.Enable = true;
 
 			// センサーおよびモータに対して初回アクセスをしておく
-			_body.color.Read();
+			_body.color.ReadSensorValue();
 			_body.sonar.Read();
 			_body.gyro.GetSensorValue ();
 			_body.motorL.SetPower (0);

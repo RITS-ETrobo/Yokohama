@@ -30,7 +30,7 @@ namespace ETRobocon.EV3
 		public  EV3UltrasonicSensor sonar;
 
 		///	センサーオブジェクト : 色センサー
-		public  EV3ColorSensor color;
+		public  ColorSensor color;
 
 		///	センサーオブジェクト : ジャイロセンサー
 		public GyroSensor gyro;
@@ -44,7 +44,7 @@ namespace ETRobocon.EV3
 			body.motorTail = new MotorTail ();
 			body.touch = new TouchSensor(SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
-			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
+			body.color = new ColorSensor(SensorPort.In3);
 			body.gyro = new GyroSensor (SensorPort.In4);
 
 			///自己位置推定インスタンス作成

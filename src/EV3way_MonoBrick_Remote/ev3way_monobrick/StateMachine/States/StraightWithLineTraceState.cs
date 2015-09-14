@@ -52,7 +52,7 @@ namespace ETRobocon.StateMachine
 				turn = 0;
 			} else {
 				forward = 50;
-				turn = _ld.CalculateTurn(_body.color.Read());
+				turn = _ld.CalculateTurn(_body.color.ReadSensorValue());
 			}
 
 			int gyroNow = _body.gyro.GetSensorValue();
