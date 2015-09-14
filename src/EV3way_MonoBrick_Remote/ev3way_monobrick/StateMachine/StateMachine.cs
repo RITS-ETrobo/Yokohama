@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using ETRobocon.EV3;
 
@@ -25,12 +25,13 @@ namespace ETRobocon.StateMachine
 		{
 			_body = body;
 
-			currentState = StateID.Ready;
+			currentState = StateID.ModeSel;
 
 			//	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs
 			//	で管理している State が追加/変更/削除された場合は、以下を併せて変更する事
 			_states = new State[(int)StateID.NumOfState]
 			{
+				new ModeSelectState(_body),	// ModeSel
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
 				new CompleteState(_body)	// Complete
@@ -65,6 +66,16 @@ namespace ETRobocon.StateMachine
 				},
 #endif	//	false
 
+				{
+					//	State	:	ModeSel
+					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
+					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
+					/*		Trigger	:	Select3 	*/	null
+				},
 				{
 					//	State	:	Ready
 					/*		Trigger	:	TouchSensor	*/	T(S.Straight1, Nop),
