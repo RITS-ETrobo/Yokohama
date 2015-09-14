@@ -73,9 +73,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
-					/*		Trigger	:	Select1 	*/	T(S.Calib, Nop),
-					/*		Trigger	:	Select2 	*/	T(S.Calib, Nop),
-					/*		Trigger	:	Select3 	*/	T(S.Calib, Nop),
+					/*		Trigger	:	Select1 	*/	T(S.Calib, CalibWhite),
+					/*		Trigger	:	Select2 	*/	T(S.Calib, CalibBlack),
+					/*		Trigger	:	Select3 	*/	T(S.Calib, CalibGray),
 					/*		Trigger	:	Select4 	*/	T(S.Ready, Nop)	// モードセレクトステートはまだ無いので, 仮
 				},
 				{
@@ -195,6 +195,21 @@ namespace ETRobocon.StateMachine
 		private void Nop()
 		{
 			// Nothing to do
+		}
+
+		private void CalibWhite()
+		{
+			// TODO: calibrate white
+		}
+
+		private void CalibBlack()
+		{
+			// TODO: calibrate black
+		}
+
+		private void CalibGray()
+		{
+			// TODO: calibrate gray
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
