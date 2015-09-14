@@ -1,6 +1,5 @@
 <map id="ETRobocon.Utils.CommandTask.Loop" name="ETRobocon.Utils.CommandTask.Loop">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a4d2492d35ad25c22322f5afdd89c458e" title="通信相手からデータを受け取る." alt="" coords="324,5,495,47"/>
-<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_utils_1_1_command_format_manager.html#a65571710ab42f8fc652393548acef4c8" title="指定したIDに対応するコマンドのフォーマットを取得する" alt="" coords="298,71,521,112"/>
-<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_utils_1_1_command_receive_flags.html#a1e5131cd0de3c8879f5da9462f2e0149" title="コマンドを受信した" alt="" coords="296,136,523,177"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a23224473de8a6563b3b1f036807c7858" title="byte[] から データへの変換(デコード)を行う" alt="" coords="571,5,792,47"/>
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a4d2492d35ad25c22322f5afdd89c458e" title="通信相手からデータを受け取る." alt="" coords="322,5,493,47"/>
+<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_utils_1_1_command_format_manager.html#a65571710ab42f8fc652393548acef4c8" title="指定したIDに対応するコマンドのフォーマットを取得する" alt="" coords="296,71,519,112"/>
+<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a23224473de8a6563b3b1f036807c7858" title="byte[] から データへの変換(デコード)を行う" alt="" coords="567,5,788,47"/>
 </map>

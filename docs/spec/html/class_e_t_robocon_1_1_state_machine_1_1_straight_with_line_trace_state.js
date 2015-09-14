@@ -7,5 +7,6 @@ var class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state =
     [ "JudgeTransition", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#afc5cb64d8365cae852f6a92315a4271b", null ],
     [ "_alert", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#ac20403d00561147dc81ec39be0bd1331", null ],
     [ "_batteryLevel", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a121f9b3680fab6a326e4c2d2c9b70cb7", null ],
-    [ "_counter", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a3453e35ff0cebac284a14855b3c01cd7", null ]
+    [ "_counter", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a3453e35ff0cebac284a14855b3c01cd7", null ],
+    [ "_ld", "class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#ac02ab9bd2252e3438f35c92971e814cb", null ]
 ];

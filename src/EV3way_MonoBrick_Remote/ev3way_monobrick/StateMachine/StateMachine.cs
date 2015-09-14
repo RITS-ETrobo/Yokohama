@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using System.Threading;
 using ETRobocon.EV3;
 
 namespace ETRobocon.StateMachine
 {
+	// 状態遷移表で, 文字数短縮のためのエイリアス
+	using S = StateID;
+
 	public class StateMachine
 	{
 		/// <summary>現在の状態</summary>
@@ -24,6 +27,8 @@ namespace ETRobocon.StateMachine
 
 			currentState = StateID.ModeSel;
 
+			//	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs
+			//	で管理している State が追加/変更/削除された場合は、以下を併せて変更する事
 			_states = new State[(int)StateID.NumOfState]
 			{
 				new ModeSelectState(_body),	// ModeSel
@@ -34,23 +39,114 @@ namespace ETRobocon.StateMachine
 
 			TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
 			{
-				// TouchSensor,                           RunCommand,                             StopCommand
+#if	false	//	この部分は、コメントを含む説明の為に無効化しているので、削除しない事
+				{
+					//	State : Template(StateIDに置き換える事)
+					//	説明 -->
+					//	次の場合に、本テーブルのデータを変更する事
+					//	1. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\TriggerID.cs で管理している Trigger が追加/変更/削除された
+					//	2. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs で管理している State が追加/変更/削除された
+					//	3. テーブル中のTriggerを変更する
+					//
+					//	テーブルの追加方法
+					//	1. Templateをコピーし、StateIDと同じ位置へ挿入する
+					//	2. テーブルに関する説明を削除する
+					//	3. Stateを記載する
+					//
+					//	補足
+					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである
+					//	<-- 説明
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
+				},
+#endif	//	false
 
-				// 走行準備
-				{ new Transition(StateID.Ready, Nop),     null,                                   null },
-				{ new Transition(StateID.Straight1, Nop), new Transition(StateID.Straight1, Nop), null },
+				{
+					//	State	:	ModeSel
+					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
+					/*		Trigger	:	Select3 	*/	null
+				},
+				{
+					//	State	:	Ready
+					/*		Trigger	:	TouchSensor	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	RunCommand	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select3 	*/	null
+				},
 
-				// ゴールまで走行
-				{ new Transition(StateID.Complete, Nop),  null,                                   new Transition(StateID.Complete, Nop) },
+				{
+					//	State	:	Straight1
+					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null
+				},
 
-				// ルックアップゲート用
+#if	false
+				{
+					//	State	:	ルックアップゲート
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
+				},
+#endif	//	false
 
-				// フィギュアL用
+#if	false
+				{
+					//	State	:	フィギュアL用
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
+				},
+#endif	//	false
 
-				// ...
+#if	false
+				{
+					//	State	:	...
+					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 	*/	SELECT1,
+					/*		Trigger	:	Select2 	*/	SELECT2,
+					/*		Trigger	:	Select3 	*/	SELECT3
+				},
+#endif	//	false
 
-				// その他
-				{ null,                                   null,                                  null }
+				{
+					//	State	:	Complete
+					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null
+				}
 			};
 		}
 
@@ -111,6 +207,14 @@ namespace ETRobocon.StateMachine
 				NextState = nextState;
 				TransitionMethod = transitionMethod;
 			}
+		}
+
+		/// <summary>状態遷移表で, 文字数短縮のためのメソッド</summary>
+		/// <param name="nextState">次のステートのID</param>
+		/// <param name="transitionMethod">遷移メソッド</param>
+		private Transition T(StateID nextState, TransitionMethodDel transitionMethod)
+		{
+			return new Transition(nextState, transitionMethod);
 		}
 	}
 }
