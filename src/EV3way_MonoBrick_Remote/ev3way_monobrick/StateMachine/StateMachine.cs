@@ -72,7 +72,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
-					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
 					/*		Trigger	:	Select3 	*/	null
 				},
