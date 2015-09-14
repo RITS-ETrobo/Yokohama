@@ -46,7 +46,25 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			// TODO: return trigger for the selection
+			if (!_selectDialog.IsShowing) {
+				switch (_selectDialog.GetSelectionIndex ()) {
+				case 0:
+					return TriggerID.Select1;
+
+				case 1:
+					return TriggerID.Select2;
+
+				case 2:
+					return TriggerID.Select3;
+
+				case 3:
+					return TriggerID.Select4;
+
+				default:
+					// 何もしない
+					break;
+				}
+			}
 
 			return TriggerID.NoTrigger;
 		}
