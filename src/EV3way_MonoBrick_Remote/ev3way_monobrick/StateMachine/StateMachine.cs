@@ -200,16 +200,22 @@ namespace ETRobocon.StateMachine
 		private void CalibWhite()
 		{
 			_body.color.CalibrateWhite();
+			Utils.LogTask.LogRemote("Calib White :");
+			Utils.LogTask.LogRemote(_body.color.WhiteSensorValue);
 		}
 
 		private void CalibBlack()
 		{
 			_body.color.CalibrateBlack();
+			Utils.LogTask.LogRemote("Calib Black :");
+			Utils.LogTask.LogRemote(_body.color.BlackSensorValue);
 		}
 
 		private void CalibGray()
 		{
 			_body.color.CalibrateGray();
+			Utils.LogTask.LogRemote("Calib Gray :");
+			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
