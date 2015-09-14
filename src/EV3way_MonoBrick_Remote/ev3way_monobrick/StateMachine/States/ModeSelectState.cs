@@ -27,6 +27,17 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
+			// Bluetooth関係のETロボコン拡張機能を有効にする
+			Brick.InstallETRoboExt ();
+
+			// コマンドタスク開始 & ログタスク開始
+			// どちらも通信確立を行うが, どちらを先に呼び出しても良い.
+			// (一方で通信確立すると, もう一方の通信確立処理はスキップされる.)
+			// TODO: 今は起動時で接続を強制とするが, 通信確立のためのStateを作り, そちらでやらせる.
+			CommandTask.Run();
+			LogTask.Run();
+			LogTask.Enable = true;
+
 			_selectDialog = new Body.ModelessSelectDialog<string>(_dialogSelection, _dialogTitle, false);
 			_selectDialog.Show();
 		}
