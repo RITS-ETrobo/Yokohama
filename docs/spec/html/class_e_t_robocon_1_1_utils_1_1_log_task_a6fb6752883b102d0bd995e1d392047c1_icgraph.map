@@ -1,5 +1,7 @@
 <map id="ETRobocon.Utils.LogTask.LogRemote" name="ETRobocon.Utils.LogTask.LogRemote">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_state_machine_1_1_complete_state.html#a695a3389de4c15538ac8d0d37f80908b" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="229,5,461,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#ab634da136d005d6fccb8fedf71344865" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="238,71,453,112"/>
-<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a72ef2fd9ad1cf498128b7064a7fdf863" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="234,136,457,177"/>
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_odometry_1_1_odometry.html#ae3e81852fe2ea7e72a616fe85221247f" title="自己位置推定クラスのコンストラクタ ETRobocon.Odometry.Odometry " alt="" coords="247,5,462,47"/>
+<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_odometry_1_1_odometry.html#a187a7aff47bcec3c146d7f9a26333813" title="自己位置推定のログをログ機能が有効な時だけファイルに出力する. " alt="" coords="229,71,480,112"/>
+<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_state_machine_1_1_complete_state.html#a695a3389de4c15538ac8d0d37f80908b" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="239,136,471,177"/>
+<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#ab634da136d005d6fccb8fedf71344865" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="247,201,462,243"/>
+<area shape="rect" id="node6" href="$class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a72ef2fd9ad1cf498128b7064a7fdf863" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="243,267,466,308"/>
 </map>
