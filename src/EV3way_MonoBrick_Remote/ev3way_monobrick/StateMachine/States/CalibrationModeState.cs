@@ -1,10 +1,14 @@
 using System;
 using ETRobocon.EV3;
+using ETRobocon.Body;
 
 namespace ETRobocon.StateMachine
 {
 	public class CalibrationModeState : State
 	{
+		/// <summary>キャリブレーションステートで表示される選択ダイアログ</summary>
+		private ModelessSelectDialog<string> _selectDialog;
+
 		/// <summary>キャリブレーションステートで表示される選択ダイアログの選択肢</summary>
 		private string[] _selections;
 
@@ -26,7 +30,8 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
-			// TODO: show a modeless select dialog
+			_selectDialog = new ModelessSelectDialog<string>(_selections, _dialogTitle, false);
+			_selectDialog.Show();
 		}
 
 		public override void Do()
@@ -36,7 +41,7 @@ namespace ETRobocon.StateMachine
 
 		public override void Exit()
 		{
-			// Nothing to do
+			_selectDialog.Cancel();
 		}
 
 		public override TriggerID JudgeTransition()
