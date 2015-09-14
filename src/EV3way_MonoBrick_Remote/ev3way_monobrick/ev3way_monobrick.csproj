@@ -91,6 +91,7 @@
     <Compile Include="Body\GyroSensor.cs" />
     <Compile Include="Body\ModelessSelectDialog.cs" />
     <Compile Include="Body\TouchSensor.cs" />
+    <Compile Include="Body\ColorSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
     <Compile Include="StateMachine\States\CalibrationModeState.cs" />
     <Compile Include="LineDetector.cs" />
