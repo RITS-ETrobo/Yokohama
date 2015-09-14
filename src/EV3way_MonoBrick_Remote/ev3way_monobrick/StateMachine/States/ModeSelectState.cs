@@ -27,7 +27,8 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
-			// TODO: show a modeless selection dialog
+			_selectDialog = new Body.ModelessSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
+			_selectDialog.Show();
 		}
 
 		public override void Do()
@@ -37,7 +38,7 @@ namespace ETRobocon.StateMachine
 
 		public override void Exit()
 		{
-			// Nothing to do
+			_selectDialog.Cancel();
 		}
 
 		public override TriggerID JudgeTransition()
