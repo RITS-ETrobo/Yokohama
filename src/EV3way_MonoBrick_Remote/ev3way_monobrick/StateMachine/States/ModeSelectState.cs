@@ -47,8 +47,19 @@ namespace ETRobocon.StateMachine
 			{
 				return TriggerID.TouchSensor;
 			}
+			if (!_selectDialog.IsShowing) {
+				switch (_selectDialog.GetSelectionIndex ()) {
+				case 0:
+					return TriggerID.Select1;
 
-			// TODO: return trigger for the selection
+				case 1:
+					return TriggerID.Select2;
+
+				default:
+					// 何もしない
+					break;
+				}
+			}
 
 			return TriggerID.NoTrigger;
 		}
