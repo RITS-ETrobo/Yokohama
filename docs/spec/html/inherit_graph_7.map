@@ -1,6 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_e_t_robocon_1_1_state_machine_1_1_state.html" title="ETRobocon.StateMachine.State" alt="" coords="5,78,213,105"/>
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_state_machine_1_1_complete_state.html" title="ETRobocon.StateMachine.Complete\lState" alt="" coords="261,5,493,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_state_machine_1_1_ready_state.html" title="ETRobocon.StateMachine.Ready\lState" alt="" coords="270,71,485,112"/>
-<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html" title="ETRobocon.StateMachine.Straight\lWithLineTraceState" alt="" coords="266,136,489,177"/>
+<area shape="rect" id="node1" href="$interface_e_t_robocon_1_1_e_v3_1_1_i_filter.html" title="ETRobocon.EV3.IFilter" alt="" coords="5,13,160,39"/>
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_moving_average_filter.html" title="移動平均フィルタ " alt="" coords="208,5,416,47"/>
 </map>
