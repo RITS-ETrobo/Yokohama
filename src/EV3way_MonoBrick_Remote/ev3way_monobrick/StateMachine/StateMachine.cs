@@ -199,17 +199,17 @@ namespace ETRobocon.StateMachine
 
 		private void CalibWhite()
 		{
-			// TODO: calibrate white
+			_body.color.CalibrateWhite();
 		}
 
 		private void CalibBlack()
 		{
-			// TODO: calibrate black
+			_body.color.CalibrateBlack();
 		}
 
 		private void CalibGray()
 		{
-			// TODO: calibrate gray
+			_body.color.CalibrateGray();
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
