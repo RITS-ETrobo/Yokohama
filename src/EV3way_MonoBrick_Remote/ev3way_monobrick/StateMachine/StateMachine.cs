@@ -62,7 +62,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -74,7 +75,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	T(S.Calib, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Calib, Nop),
-					/*		Trigger	:	Select3 	*/	T(S.Ready, Nop)	// モードセレクトステートはまだ無いので, 仮
+					/*		Trigger	:	Select3 	*/	T(S.Calib, Nop),
+					/*		Trigger	:	Select4 	*/	T(S.Ready, Nop)	// モードセレクトステートはまだ無いので, 仮
 				},
 				{
 					//	State	:	Ready
@@ -84,7 +86,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				},
 
 				{
@@ -95,7 +98,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				},
 
 #if	false
@@ -107,7 +111,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -120,7 +125,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -133,7 +139,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -145,7 +152,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				}
 			};
 		}

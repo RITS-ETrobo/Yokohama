@@ -20,6 +20,7 @@ namespace ETRobocon.StateMachine
 		Select1,
 		Select2,
 		Select3,
+		Select4,
 
 		NumOfTrigger
 	}
