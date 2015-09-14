@@ -6,8 +6,23 @@ namespace ETRobocon.StateMachine
 {
 	public class ModeSelectState : State
 	{
+		/// <summary>このステートで表示する選択ダイアログ</summary>
+		private Body.ModelessSelectDialog<string> _selectDialog;
+
+		/// <summary>選択ダイアログのタイトル</summary>
+		private string _dialogTitle;
+
+		/// <summary>選択ダイアログの選択肢</summary>
+		private string[] _dialogSelection;
+
 		public ModeSelectState(EV3body body) : base(body, 4)
 		{
+			_dialogTitle = "welcome";
+			_dialogSelection = new string[]
+			{
+				"Ready",
+				"Calibrate"
+			};
 		}
 
 		public override void Enter()
