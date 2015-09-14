@@ -94,6 +94,7 @@
     <Compile Include="Body\ColorSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
     <Compile Include="StateMachine\States\CalibrationModeState.cs" />
+    <Compile Include="StateMachine\States\ModeSelectState.cs" />
     <Compile Include="LineDetector.cs" />
     <Compile Include="IFilter.cs" />
   </ItemGroup>
