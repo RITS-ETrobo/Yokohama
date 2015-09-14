@@ -38,7 +38,7 @@ namespace ETRobocon.Body
 		/// <param name="portSensorIn">カラーセンサーに対応する入力ポート</param>
 		public ColorSensor(SensorPort portSensorIn)
 		{
-			_ev3ColorSensor = new EV3ColorSensor(portSensorIn);
+			_ev3ColorSensor = new EV3ColorSensor(portSensorIn, ColorMode.Reflection);
 
 			// https://github.com/RITS-ETrobo/Yokohama/wiki/Report_ColorSensor_by_angle
 			// 上記URLを参考に, 初期値として設定.
