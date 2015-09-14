@@ -74,7 +74,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	T(S.Calib, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Calib, Nop),
-					/*		Trigger	:	Select3 	*/	T(S.Ready)	// モードセレクトステートはまだ無いので, 仮
+					/*		Trigger	:	Select3 	*/	T(S.Ready, Nop)	// モードセレクトステートはまだ無いので, 仮
 				},
 				{
 					//	State	:	Ready
