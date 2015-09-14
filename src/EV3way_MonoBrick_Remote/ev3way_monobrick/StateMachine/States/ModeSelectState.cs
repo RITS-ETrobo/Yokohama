@@ -27,7 +27,7 @@ namespace ETRobocon.StateMachine
 
 		public override void Enter()
 		{
-			_selectDialog = new Body.ModelessSelectDialog<string>(new string[]{"run", "go to CompleteState"}, "test", false);
+			_selectDialog = new Body.ModelessSelectDialog<string>(_dialogSelection, _dialogTitle, false);
 			_selectDialog.Show();
 		}
 
