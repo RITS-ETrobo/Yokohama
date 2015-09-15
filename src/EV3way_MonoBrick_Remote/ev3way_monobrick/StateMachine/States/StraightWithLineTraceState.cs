@@ -14,7 +14,13 @@ namespace ETRobocon.StateMachine
 
 		private LineDetector _ld;
 
-		public StraightWithLineTraceState(EV3body body) : base(body, 2)
+		/// <summary>
+		/// ループ時間調整用定数
+		/// 1ループの中で行うダミーループ数を示す.
+		/// </summary>
+		private const int LOOP_DELAY = 9;
+
+		public StraightWithLineTraceState(EV3body body) : base(body, 1)
 		{
 			_ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
@@ -77,6 +83,15 @@ namespace ETRobocon.StateMachine
 
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
+
+			// ループ時間の調整
+			for (int i = 0; i < LOOP_DELAY; i++) {
+				//何の意味も無い処理
+				double dummy;
+				dummy = i / 100.1F;
+				dummy = dummy * 0.0F;
+				i = i + (int)dummy;
+			}
 		}
 
 		public override void Exit()
