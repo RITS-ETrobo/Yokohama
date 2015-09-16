@@ -5,45 +5,38 @@ using ETRobocon.Utils;
 
 namespace ETRobocon.StateMachine
 {
-	public class LookUpStraightState : State
+	public class LookUpReadyState : State
 	{
 
 		//-必要に応じてプライベートフィールドや定数を追加-
 		//-メソッドは追加しないでほしい(追加する必要ないはず)-
 		private int _batteryLevel;
 
-		//スタート時の総移動距離
-		private double distanceOfStart;
-
-		//目標走行距離だけ走ったかどうかのフラグ
-		private bool isRunningTargetDistance = false;
-
-		//目標走行距離[mm]
-		private const double TARGET_DISTANCE = 300;
-
-
-		public LookUpStraightState(EV3body body /*, -必要に応じて引数を追加-*/) : base(body, 2)
+		public LookUpReadyState(EV3body body /*, -必要に応じて引数を追加-*/) : base(body, 2)
 		{
 			//-コンストラクタを実装する-
 		}
 
 		public override void Enter()
 		{
-			LogTask.LogRemote ("LookUp Straight");
-//			distanceOfStart = _body.odm.TotalMoveDistanceMM;
+			LogTask.LogRemote("LookUp Ready.");
+
+			// 電圧を取得
+			_batteryLevel = Brick.GetVoltageMilliVolt();
+
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);
 		}
 
 		public override void Do()
 		{
-			//直進させる
-//			sbyte forward = 50;
-//			sbyte turn = 0;
+			sbyte forward = 0;
+			sbyte turn = 0;
 
 			_body.motorTail.UpdateTailAngle ();
 
-//			int gyroNow = _body.gyro.GetSensorValue();
-//			int thetaL = _body.motorL.GetTachoCount();
-//			int theTaR = _body.motorR.GetTachoCount();
+			int gyroNow = _body.gyro.GetSensorValue();
+			int thetaL = _body.motorL.GetTachoCount();
+			int theTaR = _body.motorR.GetTachoCount();
 //			sbyte pwmL, pwmR;
 //			Balancer.control (
 //				(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)_batteryLevel,
@@ -61,29 +54,26 @@ namespace ETRobocon.StateMachine
 //				_body.motorR.SetPower(pwmR);
 //			}
 
+			_body.motorL.SetPower (0);
+			_body.motorR.SetPower (0);
+
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
-
-			//30センチ走行したら
-//			if((_body.odm.TotalMoveDistanceMM - distanceOfStart) >= TARGET_DISTANCE){
-//				isRunningTargetDistance = true;
-//			}
 		}
 
 		public override void Exit()
 		{
-			//-Exit()を実装する-
+
 		}
 
 		public override TriggerID JudgeTransition()
 		{
-//			if (_body.gyro.GetRapidChange ()) {
-//				LogTask.LogRemote ("?");
-//				return TriggerID.DetectShock;
+			if (_body.gyro.GetRapidChange ()) {
+				return TriggerID.DetectShock;
+			}
+//			if(_body.motorTail.IsReachedSubTargetAngle(MotorTail.TAIL_ANGLE_LOOKUPGATE)){
+//				return TriggerID.LookUpAngle;
 //			}
-
-
-
 			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
@@ -97,3 +87,4 @@ namespace ETRobocon.StateMachine
 		}
 	}
 }
+

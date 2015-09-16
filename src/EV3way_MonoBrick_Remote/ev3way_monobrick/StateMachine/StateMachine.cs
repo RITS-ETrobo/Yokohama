@@ -34,6 +34,8 @@ namespace ETRobocon.StateMachine
 				new ModeSelectState(_body),	// ModeSel
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
+				new LookUpReadyState(_body), //LookUpReady
+				new LookUpStraightState(_body), //LookUpStaright
 				new CompleteState(_body)	// Complete
 			};
 
@@ -63,7 +65,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Sonar	 	*/	Sonar
+					/*		Trigger	:	Sonar	 	*/	Sonar,
+					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
+					/*		Trigger :	Distance	*/	Distance
 				},
 #endif	//	false
 
@@ -76,7 +80,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
 					/*		Trigger	:	Select3 	*/	null,
-					/*		Trigger	:	Sonar	 	*/	null
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null
 				},
 				{
 					//	State	:	Ready
@@ -87,7 +93,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select3 	*/	null,
-					/*		Trigger	:	Sonar	 	*/	null
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null
 				},
 
 				{
@@ -99,22 +107,39 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
-					/*		Trigger	:	Sonar	 	*/	T(S.Complete, setTailAngleForLookUpGate)
+					/*		Trigger	:	Sonar	 	*/	T(S.LookUpReady, Nop),
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null
 				},
 
-#if	false
+
 				{
-					//	State	:	ルックアップゲート
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Sonar	 	*/	Sonar
+					//	State	:	LookUpReady
+					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	T(S.LookUpStraight1, Nop),
+					/*		Trigger :	Distance	*/	null
 				},
-#endif	//	false
+
+				{
+					//	State	:	LookUpStraight1
+					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	T(S.Complete, Nop)
+				},
 
 #if	false
 				{
@@ -126,7 +151,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Sonar	 	*/	Sonar
+					/*		Trigger	:	Sonar	 	*/	Sonar,
+					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
+					/*		Trigger :	Distance	*/	Distance
 				},
 #endif	//	false
 
@@ -140,7 +167,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Sonar	 	*/	Sonar
+					/*		Trigger	:	Sonar	 	*/	Sonar,
+					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
+					/*		Trigger :	Distance	*/	Distance
 				},
 #endif	//	false
 
@@ -153,7 +182,9 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
-					/*		Trigger	:	Sonar	 	*/	null
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null
 				}
 			};
 		}

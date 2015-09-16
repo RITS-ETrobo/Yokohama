@@ -96,6 +96,7 @@
     <Compile Include="LineDetector.cs" />
     <Compile Include="IFilter.cs" />
     <Compile Include="StateMachine\States\LookUpStraightState.cs" />
+    <Compile Include="StateMachine\States\LookUpReadyState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

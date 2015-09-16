@@ -150,7 +150,7 @@ namespace ETRobocon.EV3
 		/// </summary>
 		/// <returns><c>true</c> 現在の尻尾角度が, 段階目標角度に到達している; それ以外は,<c>false</c>.</returns>
 		/// <param name="currentAngle">現在の尻尾角度</param>
-		private bool IsReachedSubTargetAngle(int currentAngle){
+		public bool IsReachedSubTargetAngle(int currentAngle){
 			return (startAngle - targetAngle) * (currentAngle - subTargetAngle) <= 0;
 		}
 	}

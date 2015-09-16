@@ -21,6 +21,8 @@ namespace ETRobocon.StateMachine
 		Select2,
 		Select3,
 		Sonar,
+		LookUpAngle,
+		Distance,
 
 		NumOfTrigger
 	}

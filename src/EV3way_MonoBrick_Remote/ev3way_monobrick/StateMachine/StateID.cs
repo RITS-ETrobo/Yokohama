@@ -20,6 +20,8 @@ namespace ETRobocon.StateMachine
 		Straight1,	///< 最初の直線区間
 
 		// ルックアップゲート用
+		LookUpReady,
+		LookUpStraight1,
 
 		// フィギュアL用
 
