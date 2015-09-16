@@ -18,7 +18,7 @@ namespace ETRobocon.StateMachine
 		/// ループ時間調整用定数
 		/// 1ループの中で行うダミーループ数を示す.
 		/// </summary>
-		private const int LOOP_DELAY = 9;
+		private const int LOOP_DELAY = 29;
 
 		public StraightWithLineTraceState(EV3body body) : base(body, 1)
 		{
