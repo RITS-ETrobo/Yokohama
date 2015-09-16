@@ -88,6 +88,9 @@ namespace ETRobocon.StateMachine
 			if (_body.gyro.GetRapidChange ()) {
 				return TriggerID.DetectShock;
 			}
+			if (sonar_alert (_body)) {
+				return TriggerID.Sonar;
+			}
 			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;

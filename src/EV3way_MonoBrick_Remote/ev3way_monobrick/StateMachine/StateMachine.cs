@@ -62,7 +62,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Sonar	 	*/	Sonar
 				},
 #endif	//	false
 
@@ -74,7 +75,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null
 				},
 				{
 					//	State	:	Ready
@@ -84,7 +86,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null
 				},
 
 				{
@@ -95,7 +98,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	T(S.Complete, setTailAngleForLookUpGate)
 				},
 
 #if	false
@@ -107,7 +111,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Sonar	 	*/	Sonar
 				},
 #endif	//	false
 
@@ -120,7 +125,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Sonar	 	*/	Sonar
 				},
 #endif	//	false
 
@@ -133,7 +139,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Sonar	 	*/	Sonar
 				},
 #endif	//	false
 
@@ -145,7 +152,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null
 				}
 			};
 		}
@@ -187,6 +195,14 @@ namespace ETRobocon.StateMachine
 		private void Nop()
 		{
 			// Nothing to do
+		}
+
+		/// <summary>
+		/// ルックアップゲート攻略のために尻尾の角度を設定する
+		/// </summary>
+		private void setTailAngleForLookUpGate(){
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE);
+			_body.motorTail.UpdateTailAngle ();
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
