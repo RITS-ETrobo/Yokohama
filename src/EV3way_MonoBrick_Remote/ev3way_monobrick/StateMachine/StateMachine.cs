@@ -32,6 +32,7 @@ namespace ETRobocon.StateMachine
 			_states = new State[(int)StateID.NumOfState]
 			{
 				new ModeSelectState(_body),	// ModeSel
+				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
 				new CompleteState(_body)	// Complete
@@ -62,10 +63,12 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
+				#region 走行準備
 				{
 					//	State	:	ModeSel
 					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
@@ -73,8 +76,20 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
-					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select2 	*/	T(S.Calib, Nop),
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
+				},
+				{
+					//	State	:	Calib
+					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	T(S.Calib, CalibWhite),
+					/*		Trigger	:	Select2 	*/	T(S.Calib, CalibBlack),
+					/*		Trigger	:	Select3 	*/	T(S.Calib, CalibGray),
+					/*		Trigger	:	Select4 	*/	T(S.ModeSel, Nop)
 				},
 				{
 					//	State	:	Ready
@@ -84,8 +99,10 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				},
+				#endregion
 
 				{
 					//	State	:	Straight1
@@ -95,7 +112,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				},
 
 #if	false
@@ -107,7 +125,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -120,7 +139,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -133,7 +153,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4
 				},
 #endif	//	false
 
@@ -145,7 +166,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null
 				}
 			};
 		}
@@ -187,6 +209,27 @@ namespace ETRobocon.StateMachine
 		private void Nop()
 		{
 			// Nothing to do
+		}
+
+		private void CalibWhite()
+		{
+			_body.color.CalibrateWhite();
+			Utils.LogTask.LogRemote("Calib White :");
+			Utils.LogTask.LogRemote(_body.color.WhiteSensorValue);
+		}
+
+		private void CalibBlack()
+		{
+			_body.color.CalibrateBlack();
+			Utils.LogTask.LogRemote("Calib Black :");
+			Utils.LogTask.LogRemote(_body.color.BlackSensorValue);
+		}
+
+		private void CalibGray()
+		{
+			_body.color.CalibrateGray();
+			Utils.LogTask.LogRemote("Calib Gray :");
+			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
