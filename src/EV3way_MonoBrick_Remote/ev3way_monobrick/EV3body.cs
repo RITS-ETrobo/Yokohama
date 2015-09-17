@@ -52,6 +52,8 @@ namespace ETRobocon.EV3
 
 			///自己位置推定インスタンス作成
 			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.AVAILABLE_LOG_FEATURE);
+
+			body.ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 	}
 }

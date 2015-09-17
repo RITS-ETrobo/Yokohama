@@ -12,11 +12,8 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
-		private LineDetector _ld;
-
 		public StraightWithLineTraceState(EV3body body) : base(body, 2)
 		{
-			_ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 
 		public override void Enter()
@@ -52,7 +49,7 @@ namespace ETRobocon.StateMachine
 				turn = 0;
 			} else {
 				forward = 50;
-				turn = _ld.CalculateTurn(_body.color.ReadSensorValue());
+				turn = _body.ld.CalculateTurn(_body.color.ReadSensorValue());
 			}
 
 			int gyroNow = _body.gyro.GetSensorValue();
