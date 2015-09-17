@@ -12,6 +12,10 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
+		private const double DISTANCE_DIFFERENCE = 7500;
+		private double _startDistance;
+		private double _targetDistance;
+
 		private LineDetector _ld;
 
 		public StraightWithLineTraceState(EV3body body) : base(body, 2)
@@ -34,6 +38,9 @@ namespace ETRobocon.StateMachine
 			_body.motorL.ResetTacho ();
 			_body.motorR.ResetTacho ();
 			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_DRIVE);	//バランス走行用角度に制御
+
+			_startDistance = _body.odm.TotalMoveDistanceMM;
+			_targetDistance = _startDistance + DISTANCE_DIFFERENCE;
 		}
 
 		public override void Do()
@@ -95,6 +102,10 @@ namespace ETRobocon.StateMachine
 			if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
 			{
 				return TriggerID.StopCommand;
+			}
+			if (_body.odm.TotalMoveDistanceMM >= _targetDistance)
+			{
+				return TriggerID.ReachDistance;
 			}
 
 			return TriggerID.NoTrigger;
