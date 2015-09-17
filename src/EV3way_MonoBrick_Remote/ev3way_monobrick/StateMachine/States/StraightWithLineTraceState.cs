@@ -23,6 +23,9 @@ namespace ETRobocon.StateMachine
 
 			LogTask.LogRemote("EV3 run.");
 
+			// キャリブ値を, LineDetectorに設定する.
+			_body.ld.SetEachColorValue (_body.color.WhiteSensorValue, _body.color.BlackSensorValue);
+
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
 
