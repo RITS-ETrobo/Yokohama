@@ -15,7 +15,7 @@ namespace ETRobocon.StateMachine
 
 		public GrayLineState(EV3body body) : base(body, 2)
 		{
-			_ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f );
+			_ld = new LineDetectorOld (18, 45, LineDetector.LineEdge.Left, 25.0f, 0, 55.0f );
 		}
 
 		public override void Enter()
@@ -39,7 +39,7 @@ namespace ETRobocon.StateMachine
 				forward = 0;
 				turn = 0;
 			} else {
-				forward = 50;
+				forward = 25;
 				turn = _ld.CalculateTurn(_body.color.ReadSensorValue());
 			}
 
