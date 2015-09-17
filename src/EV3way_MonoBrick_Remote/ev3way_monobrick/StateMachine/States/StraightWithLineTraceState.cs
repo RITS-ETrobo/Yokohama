@@ -12,11 +12,18 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
+		private const double DISTANCE_DIFFERENCE = 4000;
+		private double _startDistance;
+		private double _targetDistance;
+
 		private LineDetector _ld;
 
 		public StraightWithLineTraceState(EV3body body) : base(body, 2)
 		{
 			_ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
+
+			_startDistance = _body.odm.TotalMoveDistanceMM;
+			_targetDistance = _startDistance + DISTANCE_DIFFERENCE;
 		}
 
 		public override void Enter()
@@ -95,6 +102,10 @@ namespace ETRobocon.StateMachine
 			if (CommandReceiveFlags.Instance.CheckCommandReceived(CommandID.Stop))
 			{
 				return TriggerID.StopCommand;
+			}
+			if (_body.odm.TotalMoveDistanceMM >= _targetDistance)
+			{
+				return TriggerID.ReachDistance;
 			}
 
 			return TriggerID.NoTrigger;
