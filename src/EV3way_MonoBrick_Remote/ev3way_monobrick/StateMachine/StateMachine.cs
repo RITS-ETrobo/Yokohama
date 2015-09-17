@@ -35,6 +35,7 @@ namespace ETRobocon.StateMachine
 				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
+				new GrayLineState(_body),	// GrayL1
 				new CompleteState(_body)	// Complete
 			};
 
@@ -110,6 +111,18 @@ namespace ETRobocon.StateMachine
 
 				{
 					//	State	:	Straight1
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.GrayL1, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
+				{
+					//	State	:	GrayL1
 					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
 					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand		*/	null,
