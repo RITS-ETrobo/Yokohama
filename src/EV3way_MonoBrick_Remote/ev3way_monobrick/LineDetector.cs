@@ -134,6 +134,18 @@ namespace ETRobocon.EV3
 		}
 
 		/// <summary>
+		/// mKp, mKi, mKd の値をセットする.
+		/// </summary>
+		/// <param name="Kp">新しく設定するKp値</param>
+		/// <param name="Ki">新しく設定するKi値</param>
+		/// <param name="Kd">新しく設定するKd値</param>
+		public void SetPIDValue(float Kp, float Ki, float Kd){
+			this.mKp = Kp;
+			this.mKi = Ki;
+			this.mKd = Kd;
+		}
+
+		/// <summary>
 		/// 正規化した光センサの値を取得する
 		/// </summary>
 		/// <returns>正規化した光センサの値</returns>
