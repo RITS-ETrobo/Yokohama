@@ -34,6 +34,7 @@ namespace ETRobocon.StateMachine
 				new ModeSelectState(_body),	// ModeSel
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
+				new CurveLeftWithLineTraceState(_body),	// CurveL1
 				new CompleteState(_body)	// Complete
 			};
 
@@ -94,6 +95,17 @@ namespace ETRobocon.StateMachine
 					//	State	:	Straight1
 					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
 					/*		Trigger	:	ReachDistance	*/	T(S.CurveL1, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null
+				},
+				{
+					//	State	:	Curve1
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand		*/	null,
 					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),

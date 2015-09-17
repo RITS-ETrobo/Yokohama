@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ETRobocon.StateMachine
 {
@@ -18,6 +18,7 @@ namespace ETRobocon.StateMachine
 
 		// 走行
 		Straight1,	///< 最初の直線区間
+		CurveL1,	///< 最初の左カーブ
 
 		// ルックアップゲート用
 
