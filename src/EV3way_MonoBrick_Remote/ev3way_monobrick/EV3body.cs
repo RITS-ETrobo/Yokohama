@@ -38,6 +38,9 @@ namespace ETRobocon.EV3
 		/// <summary>自己位置</summary>
 		public  ETRobocon.Odometry.Odometry odm;
 
+		/// <summary>PID制御</summary>
+		public	LineDetector ld;
+
 		public static void init(ref EV3body body){
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
