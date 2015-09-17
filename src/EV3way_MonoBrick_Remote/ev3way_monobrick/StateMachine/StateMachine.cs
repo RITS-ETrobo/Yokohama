@@ -36,6 +36,7 @@ namespace ETRobocon.StateMachine
 				new StraightWithLineTraceState(_body),	// Straight1
 				new LookUpReadyState(_body), //LookUpReady
 				new LookUpStraightState(_body), //LookUpStaright
+				new LookUpTurnState(_body),	//LookUpTurn
 				new CompleteState(_body)	// Complete
 			};
 
@@ -67,7 +68,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	SELECT3,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
-					/*		Trigger :	Distance	*/	Distance
+					/*		Trigger :	Distance	*/	Distance,
+					/*		Trigger :	Turn		*/	Turn
 				},
 #endif	//	false
 
@@ -82,7 +84,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
-					/*		Trigger :	Distance	*/	null
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
 				},
 				{
 					//	State	:	Ready
@@ -95,7 +98,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
-					/*		Trigger :	Distance	*/	null
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
 				},
 
 				{
@@ -109,7 +113,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	T(S.LookUpReady, Nop),
 					/*		Trigger : 	LookUpAngle	*/	null,
-					/*		Trigger :	Distance	*/	null
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
 				},
 
 
@@ -124,7 +129,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	T(S.LookUpStraight1, Nop),
-					/*		Trigger :	Distance	*/	null
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
 				},
 
 				{
@@ -138,9 +144,24 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
-					/*		Trigger :	Distance	*/	T(S.Complete, Nop)
+					/*		Trigger :	Distance	*/	T(S.Complete, Nop),
+					/*		Trigger :	Turn		*/	null
 				},
 
+				{
+					//	State	:	LookUpTurn
+					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 	*/	null,
+					/*		Trigger	:	Select2 	*/	null,
+					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
+				},
 #if	false
 				{
 					//	State	:	フィギュアL用
@@ -153,7 +174,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	SELECT3,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
-					/*		Trigger :	Distance	*/	Distance
+					/*		Trigger :	Distance	*/	Distance,
+					/*		Trigger :	Turn		*/	Turn
 				},
 #endif	//	false
 
@@ -169,7 +191,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	SELECT3,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
-					/*		Trigger :	Distance	*/	Distance
+					/*		Trigger :	Distance	*/	Distance,
+					/*		Trigger :	Turn		*/	Turn
 				},
 #endif	//	false
 
@@ -184,7 +207,8 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
-					/*		Trigger :	Distance	*/	null
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
 				}
 			};
 		}

@@ -154,6 +154,15 @@ namespace ETRobocon.Odometry
 		}
 
 		/// <summary>
+		/// 弧度法[radian]から度数法[度]へ変換する.
+		/// </summary>
+		/// <returns>度数法の値[度].</returns>
+		/// <param name="radian">弧度法の値[radian].</param>
+		public double radianToDegreeByCeiling(double radian){
+			return 180.0 * radian / Math.PI;
+		}
+
+		/// <summary>
 		/// sinc関数の近似解をテイラー展開で求める.
 		/// </summary>
 		/// <returns>The approx.</returns>

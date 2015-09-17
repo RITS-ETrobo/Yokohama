@@ -23,6 +23,7 @@ namespace ETRobocon.StateMachine
 		Sonar,
 		LookUpAngle,
 		Distance,
+		Turn,
 
 		NumOfTrigger
 	}
