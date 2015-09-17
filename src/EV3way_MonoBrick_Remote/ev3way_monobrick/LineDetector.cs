@@ -124,6 +124,15 @@ namespace ETRobocon.EV3
 			this.mKd = Kd;
 		}
 
+		/// <summary>LineDetectorクラスが持つwhite, black, lineThresholdの値を, キャリブした値に変更する</summary>
+		/// <param name="CalibratedWhite">キャリブ済みの白の値</param>
+		/// <param name="CalibratedBlack">キャリブ済みの黒の値</param>
+		public void SetEachColorValue(int CalibratedWhite, int CalibratedBlack){
+			this.White = CalibratedWhite;
+			this.Black = CalibratedBlack;
+			this.lineThreshold = this.Black + ((3 * (this.White - this.Black)) / 4);
+		}
+
 		/// <summary>
 		/// 正規化した光センサの値を取得する
 		/// </summary>
