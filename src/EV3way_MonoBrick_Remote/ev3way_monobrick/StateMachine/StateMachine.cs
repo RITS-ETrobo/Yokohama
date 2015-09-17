@@ -68,6 +68,7 @@ namespace ETRobocon.StateMachine
 				},
 #endif	//	false
 
+				#region 走行準備
 				{
 					//	State	:	ModeSel
 					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
@@ -101,6 +102,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Select4 	*/	null
 				},
+				#endregion
 
 				{
 					//	State	:	Straight1
