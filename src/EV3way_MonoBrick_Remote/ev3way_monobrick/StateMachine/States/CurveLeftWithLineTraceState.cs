@@ -15,7 +15,7 @@ namespace ETRobocon.StateMachine
 
 		public CurveLeftWithLineTraceState(EV3body body) : base(body, 2)
 		{
-			_ld = new LineDetectorOld(0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
+			_ld = new LineDetectorOld(0, 60, LineDetector.LineEdge.Left, 50.0f, 0, 55.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 
 		public override void Enter()
