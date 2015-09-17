@@ -56,96 +56,104 @@ namespace ETRobocon.StateMachine
 					//	補足
 					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである
 					//	<-- 説明
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3
 				},
 #endif	//	false
 
 				{
 					//	State	:	ModeSel
-					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
-					/*		Trigger	:	RunCommand	*/	null,
-					/*		Trigger	:	StopCommand	*/	null,
-					/*		Trigger	:	DetectShock	*/	null,
-					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
-					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	TouchSensor		*/	T(S.Ready, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	null,
+					/*		Trigger	:	Select1 		*/	T(S.Ready, Nop),
+					/*		Trigger	:	Select2 		*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
+					/*		Trigger	:	Select3 		*/	null
 				},
 				{
 					//	State	:	Ready
-					/*		Trigger	:	TouchSensor	*/	T(S.Straight1, Nop),
-					/*		Trigger	:	RunCommand	*/	T(S.Straight1, Nop),
-					/*		Trigger	:	StopCommand	*/	null,
-					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
-					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	TouchSensor		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select2 		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select3 		*/	null
 				},
 
 				{
 					//	State	:	Straight1
-					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
-					/*		Trigger	:	RunCommand	*/	null,
-					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
-					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select1 	*/	null,
-					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.CurveL1, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null
 				},
 
 #if	false
 				{
 					//	State	:	ルックアップゲート
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3
 				},
 #endif	//	false
 
 #if	false
 				{
 					//	State	:	フィギュアL用
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3
 				},
 #endif	//	false
 
 #if	false
 				{
 					//	State	:	...
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3
 				},
 #endif	//	false
 
 				{
 					//	State	:	Complete
-					/*		Trigger	:	TouchSensor	*/	null,
-					/*		Trigger	:	RunCommand	*/	null,
-					/*		Trigger	:	StopCommand	*/	null,
-					/*		Trigger	:	DetectShock	*/	null,
-					/*		Trigger	:	Select1 	*/	null,
-					/*		Trigger	:	Select2 	*/	null,
-					/*		Trigger	:	Select3 	*/	null
+					/*		Trigger	:	TouchSensor		*/	null,
+					/*		Trigger :	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	null,
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null
 				}
 			};
 		}

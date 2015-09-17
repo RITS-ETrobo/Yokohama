@@ -14,6 +14,7 @@ namespace ETRobocon.StateMachine
 	{
 		NoTrigger = -1,
 		TouchSensor,
+		ReachDistance,
 		RunCommand,
 		StopCommand,
 		DetectShock,
