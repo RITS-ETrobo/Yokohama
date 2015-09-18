@@ -11,12 +11,17 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
+		/// <summary>次のステートに移るまでの走行距離[mm]</summary>
 		private readonly double TargetDistance;
+		/// <summary>このステートの開始時点の累計走行距離[mm]</summary>
 		private double _startDistance;
+		/// <summary>このステートの終了時点の累計走行距離[mm]</summary>
 		private double _endDistance;
 
 		private LineDetector _ld;
 
+		/// <summary>灰色線走行ステート</summary>
+		/// <param name="targetDistance">次のステートに移るまでの走行距離[mm]</param>
 		public GrayLineState(EV3body body, double targetDistance) : base(body, 2)
 		{
 			TargetDistance = targetDistance;
