@@ -103,9 +103,9 @@ namespace ETRobocon.EV3
 		float lineThreshold;
 		float[] ringBuffer = new float[BufferSize];
 
-		public const float InitKp = 60.0f;
+		public const float InitKp = 20.0f;
 		public const float InitKi = 0.0f;
-		public const float InitKd = 180.0f;
+		public const float InitKd = 80.0f;
 		float mKp = InitKp;
 		float mKi = InitKi;
 		float mKd = InitKd;
