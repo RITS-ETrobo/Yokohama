@@ -39,7 +39,7 @@ namespace ETRobocon.StateMachine
 //			sbyte forward = 50;
 //			sbyte turn = 0;
 
-			_body.motorTail.UpdateTailAngle ();
+			_body.motorTail.SetBrake ();
 
 //			int gyroNow = _body.gyro.GetSensorValue();
 //			int thetaL = _body.motorL.GetTachoCount();

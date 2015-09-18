@@ -18,9 +18,22 @@ namespace ETRobocon.StateMachine
 
 		int count = 0;
 
-		int nowAngle;
+//		int targetAngle = MotorTail.TAIL_ANGLE_LOOKUPGATE;
+		int targetAngle = 90;
+
 
 		sbyte pwmBorder = 0;
+
+		enum state{
+			Balance = 0,
+			Foward,
+			Sit,
+			Done
+		}
+		state currentState = state.Balance;
+
+
+
 
 		public LookUpReadyState(EV3body body /*, -必要に応じて引数を追加-*/) : base(body, 2)
 		{
@@ -34,71 +47,98 @@ namespace ETRobocon.StateMachine
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
 
-//			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP);
-			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE);
+//			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_STAND_UP - 5, 10);
+			_body.motorTail.SetMotorAngle (targetAngle,10);
 		}
 
 		public override void Do()
 		{
+			sbyte forward;
+			sbyte turn;
+			int gyroNow = _body.gyro.GetSensorValue();
+			int thetaL = _body.motorL.GetTachoCount ();
+			int thetaR = _body.motorR.GetTachoCount ();
+		
+			if (currentState == state.Balance) {
 
-			_body.motorTail.UpdateTailAngle ();
+				//その場に止まってバランス制御を行う
+				forward = 0;
+				turn = 0;
 
-//			if (!isTailAngleStandUp) {
-				
-				LogTask.LogRemote ("#### 1 ####");
-
-				sbyte forward = 10;
-				sbyte turn = 0;
-
-				int gyroNow = -1 * _body.gyro.GetSensorValue ();
-				int thetaL = _body.motorL.GetTachoCount ();
-				int theTaR = _body.motorR.GetTachoCount ();
+				//しっぽの角度を90度まで10段階を経て設定する
+				_body.motorTail.UpdateTailAngle ();
 
 				Balancer.control (
-					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)_batteryLevel,
+					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)thetaR, (float)_batteryLevel,
 					out pwmL, out pwmR
 				);
-					
-//			}
-//
-//
-//			if (_body.motorTail.IsReachedSubTargetAngle (MotorTail.TAIL_ANGLE_STAND_UP)) {
-//
-//				LogTask.LogRemote ("#### 2 ####");
-//
-////				if (count % 2 == 0) {
-//									
-//					pwmL -= 1;
-//					if (pwmL <= pwmBorder) {
-//						pwmL = pwmBorder;
+
+				//4msecループ×500回=2秒間ほどバランス制御
+				if (count++ >= 500) {
+					currentState = state.Foward;
+					LogTask.LogRemote ("### forward ###");
+					count = 0;
+				}
+
+			} else if (currentState == state.Foward) {
+
+				//ジャイロセンサの値をひっくり返すことで後ろにこかす
+				forward = 20;
+//				forward = 10;
+				turn = 0;
+
+				gyroNow = -1 * _body.gyro.GetSensorValue();
+
+				//UpdateTailAngle()だとしっかりと固定されず
+				//こけた衝撃でしっぽが曲がり支えきれないことがあるため
+				//Brake()メソッドを呼び出す
+				_body.motorTail.SetBrake ();
+
+				Balancer.control (
+					(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)thetaR, (float)_batteryLevel,
+					out pwmL, out pwmR
+				);
+			
+				currentState = state.Sit;
+				LogTask.LogRemote ("## Sit ##");
+
+			} else if (currentState == state.Sit) {
+
+				//TODO うまく角度を減らせてない
+
+				//バランス制御をなくしてタイヤの回転も止める
+				pwmL = 0;
+				pwmR = 0;
+
+				//4msec×500回=2秒間ごとに角度を減らす
+				if (count++ >= 500) {
+
+					//徐々に目標の角度に調整する
+					LogTask.LogRemote(_body.motorTail.GetCurrentAngle());
+//					targetAngle = _body.motorTail.GetCurrentAngle();
+//					if (targetAngle < MotorTail.TAIL_ANGLE_LOOKUPGATE) {
+//						targetAngle = MotorTail.TAIL_ANGLE_LOOKUPGATE;//最低値はルックアップゲート用角度
+//						LogTask.LogRemote("## Target angle ##");
 //					}
-//					pwmR -= 1;
-//					if (pwmR <= pwmBorder) {
-//						pwmR = pwmBorder;
-//					}
-////				}
-//			
-//				nowAngle = MotorTail.TAIL_ANGLE_STAND_UP;
-//				isTailAngleStandUp = true;
-//
-////				count++;
-//			}
-//
-//			if (pwmL == pwmBorder && pwmR == pwmBorder) {
-//				LogTask.LogRemote ("#### 3 ####");
-//			
-//				nowAngle -= 10;
-//				if (nowAngle <= MotorTail.TAIL_ANGLE_LOOKUPGATE) {
-//					nowAngle = MotorTail.TAIL_ANGLE_LOOKUPGATE;
-//				}
-//				_body.motorTail.SetMotorAngle (nowAngle);
-//			}
+
+//					_body.motorTail.moveTail (targetAngle);
+					_body.motorTail.moveTail (MotorTail.TAIL_ANGLE_LOOKUPGATE);
+					_body.motorTail.SetBrake ();
+
+					if (_body.motorTail.IsReachedSubTargetAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE)) {
+//						currentState = state.Done;
+						LogTask.LogRemote("## Done ##");
+					}
+					count = 0;
+				}
+			}
 
 			_body.motorL.SetPower (pwmL);
 			_body.motorR.SetPower (pwmR);
 
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
+
 		}
 
 		public override void Exit()
@@ -109,11 +149,12 @@ namespace ETRobocon.StateMachine
 
 		public override TriggerID JudgeTransition()
 		{
-			if (_body.gyro.GetRapidChange ()) {
-				return TriggerID.DetectShock;
-			}
-			if(_body.motorTail.IsReachedSubTargetAngle(MotorTail.TAIL_ANGLE_LOOKUPGATE)){
-				return TriggerID.LookUpAngle;
+			//ジャイロがあると後ろにこかした時に引っかかる恐れがあるのでコメントアウト
+//			if (_body.gyro.GetRapidChange ()) {
+//				return TriggerID.DetectShock;
+//			}
+			if (currentState == state.Done) {
+				return TriggerID.LookUpAngle;				
 			}
 			if (_body.touch.DetectReleased())
 			{

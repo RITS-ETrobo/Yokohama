@@ -153,6 +153,40 @@ namespace ETRobocon.EV3
 		public bool IsReachedSubTargetAngle(int currentAngle){
 			return (startAngle - targetAngle) * (currentAngle - subTargetAngle) <= 0;
 		}
+
+		/// <summary>
+		/// Gets the current angle.
+		/// </summary>
+		/// <returns>The current angle.</returns>
+		public int GetCurrentAngle(){
+			return motorTail.GetTachoCount ();
+		}
+			
+		/// <summary>
+		/// Moves the tail.
+		/// </summary>
+		/// <param name="angle">Angle.</param>
+		public void moveTail(int angle){
+			float pwm = (float)(angle - motorTail.GetTachoCount ()) * P_GAIN;
+
+			// PWM出力飽和処理
+			if (pwm > PWM_ABS_MAX) {
+				pwm = PWM_ABS_MAX;
+			} else if (pwm < -PWM_ABS_MAX) {
+				pwm = -PWM_ABS_MAX;
+			}
+
+			motorTail.SetPower ((sbyte)pwm);
+		}
+
+		/// <summary>
+		/// Sets the brake.
+		/// </summary>
+		public void SetBrake(){
+			motorTail.Brake ();
+		}
+
+
 	}
 }
 
