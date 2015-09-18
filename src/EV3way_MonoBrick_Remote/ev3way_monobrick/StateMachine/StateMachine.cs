@@ -36,9 +36,9 @@ namespace ETRobocon.StateMachine
 				new ModeSelectState(_body),	// ModeSel
 				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
-				new StraightWithLineTraceState(_body),	// Straight1
-				new GrayLineState(_body),	// GrayL1
-				new StraightWithLineTraceState(_body),	// StraightL2
+				new StraightWithLineTraceState(_body, 7500),	// Straight1
+				new GrayLineState(_body, 500),	// GrayL1
+				new StraightWithLineTraceState(_body, 10000),	// StraightL2
 				new CompleteState(_body)	// Complete
 			};
 

@@ -11,14 +11,15 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
-		private const double DISTANCE_DIFFERENCE = 500;
+		private readonly double TargetDistance;
 		private double _startDistance;
-		private double _targetDistance;
+		private double _endDistance;
 
 		private LineDetector _ld;
 
-		public GrayLineState(EV3body body) : base(body, 2)
+		public GrayLineState(EV3body body, double targetDistance) : base(body, 2)
 		{
+			TargetDistance = targetDistance;
 			_ld = new LineDetectorOld (18, 45, LineDetector.LineEdge.Left, 25.0f, 0, 55.0f );
 		}
 
@@ -28,7 +29,7 @@ namespace ETRobocon.StateMachine
 			_batteryLevel = Brick.GetVoltageMilliVolt();
 
 			_startDistance = _body.odm.TotalMoveDistanceMM;
-			_targetDistance = _startDistance + DISTANCE_DIFFERENCE;
+			_endDistance = _startDistance + TargetDistance;
 		}
 
 		public override void Do()
@@ -91,7 +92,7 @@ namespace ETRobocon.StateMachine
 			{
 				return TriggerID.StopCommand;
 			}
-			if (_body.odm.TotalMoveDistanceMM >= _targetDistance)
+			if (_body.odm.TotalMoveDistanceMM >= _endDistance)
 			{
 				return TriggerID.ReachDistance;
 			}
