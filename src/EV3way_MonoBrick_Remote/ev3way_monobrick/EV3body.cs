@@ -30,7 +30,7 @@ namespace ETRobocon.EV3
 		public  EV3UltrasonicSensor sonar;
 
 		///	センサーオブジェクト : 色センサー
-		public  EV3ColorSensor color;
+		public  ColorSensor color;
 
 		///	センサーオブジェクト : ジャイロセンサー
 		public GyroSensor gyro;
@@ -38,17 +38,26 @@ namespace ETRobocon.EV3
 		/// <summary>自己位置</summary>
 		public  ETRobocon.Odometry.Odometry odm;
 
+		/// <summary>PID制御</summary>
+		public	LineDetectorOld ld;
+
 		public static void init(ref EV3body body){
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
 			body.motorTail = new MotorTail ();
 			body.touch = new TouchSensor(SensorPort.In1); 
 			body.sonar = new EV3UltrasonicSensor (SensorPort.In2, UltraSonicMode.Centimeter); // return [mm]
-			body.color = new EV3ColorSensor (SensorPort.In3, ColorMode.Reflection);
+			body.color = new ColorSensor(SensorPort.In3);
 			body.gyro = new GyroSensor (SensorPort.In4);
 
 			///自己位置推定インスタンス作成
 			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.AVAILABLE_LOG_FEATURE);
+
+			// PID制御インスタンス作成
+			body.ld = new LineDetectorOld (
+				LineDetector.InitBlack, LineDetector.InitWhite, LineDetector.InitEdge,
+				LineDetectorOld.InitKp, LineDetectorOld.InitKi, LineDetectorOld.InitKd
+			); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 	}
 }

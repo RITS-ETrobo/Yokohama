@@ -17,6 +17,10 @@ namespace ETRobocon.EV3
 			Right = 1
 		}
 
+		public const int InitWhite = 44;
+		public const int InitBlack = 2;
+		public const LineEdge InitEdge = LineEdge.Left;
+
 		/// ロボットがコース上の白色を検知したときのカラーセンサの値
 		protected int White;
 
@@ -38,8 +42,8 @@ namespace ETRobocon.EV3
 		/// <param name="MaxTurnAbs">Turn値の最大、最小値の絶対値</param>
 		public LineDetector( int White, int Black, LineEdge edge, sbyte MaxTurnAbs )
 		{
-			this.White = White;
-			this.Black = Black;
+			this.White = (White>100)?100:((White<0)?0:White);
+			this.Black = (Black>100)?100:((Black<0)?0:Black);
 			this.edge = edge;
 			this.MaxTurnAbs = MaxTurnAbs;
 		}
@@ -71,8 +75,11 @@ namespace ETRobocon.EV3
 		public PLineDetector ( int White, int Black, LineEdge edge, sbyte MaxTurnAbs)
 			: base (White, Black, edge, MaxTurnAbs)
 		{
-			half = (White + Black) / 2;
-			gradient = (float)((2 * MaxTurnAbs) / (White - Black));
+			this.White = (White>100)?100:((White<0)?0:White);
+			this.Black = (Black>100)?100:((Black<0)?0:Black);
+
+			half = (this.White + this.Black) / 2;
+			gradient = (float)((2 * MaxTurnAbs) / (this.White - this.Black));
 		}
 
 		int half = 0;
@@ -99,9 +106,9 @@ namespace ETRobocon.EV3
 		float lineThreshold;
 		float[] ringBuffer = new float[BufferSize];
 
-		const float InitKp = 60.0f;
-		const float InitKi = 0.0f;
-		const float InitKd = 180.0f;
+		public const float InitKp = 20.0f;
+		public const float InitKi = 0.0f;
+		public const float InitKd = 80.0f;
 		float mKp = InitKp;
 		float mKi = InitKi;
 		float mKd = InitKd;
@@ -119,6 +126,27 @@ namespace ETRobocon.EV3
 		{
 			lineThreshold = Black + ((3 * (White - Black)) / 4);
 			InitBuffer ();
+			this.mKp = Kp;
+			this.mKi = Ki;
+			this.mKd = Kd;
+		}
+
+		/// <summary>LineDetectorクラスが持つwhite, black, lineThresholdの値を, キャリブした値に変更する</summary>
+		/// <param name="CalibratedWhite">キャリブ済みの白の値</param>
+		/// <param name="CalibratedBlack">キャリブ済みの黒の値</param>
+		public void SetEachColorValue(int CalibratedWhite, int CalibratedBlack){
+			this.White = (CalibratedWhite>100)?100:((CalibratedWhite<0)?0:CalibratedWhite);
+			this.Black = (CalibratedBlack>100)?100:((CalibratedBlack<0)?0:CalibratedBlack);
+			this.lineThreshold = this.Black + ((3 * (this.White - this.Black)) / 4);
+		}
+
+		/// <summary>
+		/// mKp, mKi, mKd の値をセットする.
+		/// </summary>
+		/// <param name="Kp">新しく設定するKp値</param>
+		/// <param name="Ki">新しく設定するKi値</param>
+		/// <param name="Kd">新しく設定するKd値</param>
+		public void SetPIDValue(float Kp, float Ki, float Kd){
 			this.mKp = Kp;
 			this.mKi = Ki;
 			this.mKd = Kd;
