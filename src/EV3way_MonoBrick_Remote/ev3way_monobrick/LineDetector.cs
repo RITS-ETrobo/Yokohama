@@ -42,8 +42,8 @@ namespace ETRobocon.EV3
 		/// <param name="MaxTurnAbs">Turn値の最大、最小値の絶対値</param>
 		public LineDetector( int White, int Black, LineEdge edge, sbyte MaxTurnAbs )
 		{
-			this.White = White;
-			this.Black = Black;
+			this.White = (White>100)?100:((White<0)?0:White);
+			this.Black = (Black>100)?100:((Black<0)?0:Black);
 			this.edge = edge;
 			this.MaxTurnAbs = MaxTurnAbs;
 		}
@@ -75,8 +75,11 @@ namespace ETRobocon.EV3
 		public PLineDetector ( int White, int Black, LineEdge edge, sbyte MaxTurnAbs)
 			: base (White, Black, edge, MaxTurnAbs)
 		{
-			half = (White + Black) / 2;
-			gradient = (float)((2 * MaxTurnAbs) / (White - Black));
+			this.White = (White>100)?100:((White<0)?0:White);
+			this.Black = (Black>100)?100:((Black<0)?0:Black);
+
+			half = (this.White + this.Black) / 2;
+			gradient = (float)((2 * MaxTurnAbs) / (this.White - this.Black));
 		}
 
 		int half = 0;
@@ -132,8 +135,8 @@ namespace ETRobocon.EV3
 		/// <param name="CalibratedWhite">キャリブ済みの白の値</param>
 		/// <param name="CalibratedBlack">キャリブ済みの黒の値</param>
 		public void SetEachColorValue(int CalibratedWhite, int CalibratedBlack){
-			this.White = CalibratedWhite;
-			this.Black = CalibratedBlack;
+			this.White = (CalibratedWhite>100)?100:((CalibratedWhite<0)?0:CalibratedWhite);
+			this.Black = (CalibratedBlack>100)?100:((CalibratedBlack<0)?0:CalibratedBlack);
 			this.lineThreshold = this.Black + ((3 * (this.White - this.Black)) / 4);
 		}
 
