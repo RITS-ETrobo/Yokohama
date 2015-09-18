@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using ETRobocon.EV3;
+using ETRobocon.Utils;
+using MonoBrickFirmware.Display.Dialogs;
 
 namespace ETRobocon.StateMachine
 {
@@ -97,12 +99,12 @@ namespace ETRobocon.StateMachine
 				},
 				{
 					//	State	:	Ready
-					/*		Trigger	:	TouchSensor		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	TouchSensor		*/	T(S.Straight1, TransReadyToRun),
 					/*		Trigger	:	ReachDistance	*/	null,
-					/*		Trigger	:	RunCommand		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	RunCommand		*/	T(S.Straight1, TransReadyToRun),
 					/*		Trigger	:	StopCommand		*/	null,
 					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
-					/*		Trigger	:	Select1 		*/	T(S.Straight1, Nop),
+					/*		Trigger	:	Select1 		*/	T(S.Straight1, TransReadyToRun),
 					/*		Trigger	:	Select2 		*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select3 		*/	null,
 					/*		Trigger	:	Select4 		*/	null
@@ -252,6 +254,20 @@ namespace ETRobocon.StateMachine
 			_body.color.CalibrateGray();
 			Utils.LogTask.LogRemote("Calib Gray :");
 			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
+		}
+
+		/// <summary>準備状態から走行状態へ遷移するときの処理</summary>
+		private void TransReadyToRun()
+		{
+			var dialogRun = new InfoDialog("Running", false);
+			dialogRun.Show();
+
+			LogTask.LogRemote("EV3 run.");
+
+			// 走行開始前にタイヤが動いていると自己位置推定に誤差が出てくるのでTachoCountの値をリセットする
+			_body.motorL.ResetTacho ();
+			_body.motorR.ResetTacho ();
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_DRIVE);	//バランス走行用角度に制御
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
