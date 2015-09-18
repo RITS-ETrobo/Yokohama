@@ -38,6 +38,9 @@ namespace ETRobocon.EV3
 		/// <summary>自己位置</summary>
 		public  ETRobocon.Odometry.Odometry odm;
 
+		/// <summary>PID制御</summary>
+		public	LineDetectorOld ld;
+
 		public static void init(ref EV3body body){
 			body.motorL = new Motor (MotorPort.OutC);
 			body.motorR = new Motor (MotorPort.OutB);
@@ -49,6 +52,12 @@ namespace ETRobocon.EV3
 
 			///自己位置推定インスタンス作成
 			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.UNAVAILABLE_LOG_FEATURE);
+
+			// PID制御インスタンス作成
+			body.ld = new LineDetectorOld (
+				LineDetector.InitBlack, LineDetector.InitWhite, LineDetector.InitEdge,
+				LineDetectorOld.InitKp, LineDetectorOld.InitKi, LineDetectorOld.InitKd
+			); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 	}
 }
