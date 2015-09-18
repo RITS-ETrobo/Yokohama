@@ -86,7 +86,6 @@ namespace ETRobocon.StateMachine
 
 			// ループ時間の調整
 			for (int i = 0; i < LOOP_DELAY; i++) {
-				//何の意味も無い処理
 				double dummy;
 				dummy = i / 100.1F;
 				dummy = dummy * 0.0F;
