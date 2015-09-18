@@ -48,7 +48,7 @@ namespace ETRobocon.EV3
 			body.gyro = new GyroSensor (SensorPort.In4);
 
 			///自己位置推定インスタンス作成
-			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.AVAILABLE_LOG_FEATURE);
+			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.UNAVAILABLE_LOG_FEATURE);
 		}
 	}
 }
