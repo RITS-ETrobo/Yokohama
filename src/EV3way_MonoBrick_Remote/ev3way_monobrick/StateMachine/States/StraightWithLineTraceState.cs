@@ -12,7 +12,13 @@ namespace ETRobocon.StateMachine
 		private int _counter = 0;
 		private bool _alert = false;
 
-		public StraightWithLineTraceState(EV3body body) : base(body, 2)
+		/// <summary>
+		/// ループ時間調整用定数
+		/// 1ループの中で行うダミーループ数を示す.
+		/// </summary>
+		private const int LOOP_DELAY = 29;
+
+		public StraightWithLineTraceState(EV3body body) : base(body, 1)
 		{
 		}
 
@@ -77,6 +83,14 @@ namespace ETRobocon.StateMachine
 
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
+
+			// ループ時間の調整
+			for (int i = 0; i < LOOP_DELAY; i++) {
+				double dummy;
+				dummy = i / 100.1F;
+				dummy = dummy * 0.0F;
+				i = i + (int)dummy;
+			}
 		}
 
 		public override void Exit()
