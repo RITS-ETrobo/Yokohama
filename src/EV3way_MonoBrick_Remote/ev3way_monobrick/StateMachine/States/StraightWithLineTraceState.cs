@@ -19,18 +19,24 @@ namespace ETRobocon.StateMachine
 		/// <summary>このステートの終了時点の累計走行距離[mm]</summary>
 		private double _endDistance;
 
-		private LineDetector _ld;
+		/// <summary>
+		/// ループ時間調整用定数
+		/// 1ループの中で行うダミーループ数を示す.
+		/// </summary>
+		private const int LOOP_DELAY = 29;
 
 		/// <summary>ライントレースありの直線走行ステート</summary>
 		/// <param name="targetDistance">次のステートに移るまでの走行距離[mm]</param>
-		public StraightWithLineTraceState(EV3body body, double targetDistance) : base(body, 2)
+		public StraightWithLineTraceState(EV3body body, double targetDistance) : base(body, 1)
 		{
 			TargetDistance = targetDistance;
-			_ld = new LineDetectorOld (0, 45, LineDetector.LineEdge.Left, 50.0f, 0, 55.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 
 		public override void Enter()
 		{
+			// キャリブ値を, LineDetectorに設定する.
+			_body.ld.SetEachColorValue (_body.color.BlackSensorValue, _body.color.WhiteSensorValue);
+
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
 
@@ -54,7 +60,7 @@ namespace ETRobocon.StateMachine
 				turn = 0;
 			} else {
 				forward = 50;
-				turn = _ld.CalculateTurn(_body.color.ReadSensorValue());
+				turn = _body.ld.CalculateTurn(_body.color.ReadSensorValue());
 			}
 
 			int gyroNow = _body.gyro.GetSensorValue();
@@ -79,6 +85,14 @@ namespace ETRobocon.StateMachine
 
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
+
+			// ループ時間の調整
+			for (int i = 0; i < LOOP_DELAY; i++) {
+				double dummy;
+				dummy = i / 100.1F;
+				dummy = dummy * 0.0F;
+				i = i + (int)dummy;
+			}
 		}
 
 		public override void Exit()
