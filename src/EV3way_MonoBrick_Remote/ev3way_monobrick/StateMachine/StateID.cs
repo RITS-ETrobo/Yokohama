@@ -20,6 +20,7 @@ namespace ETRobocon.StateMachine
 		// 走行
 		Straight1,	///< 最初の直線区間
 		GrayL1,	///< Lコース最初の灰色線
+		StraightL2,	///< Lコースゴール前の直線
 
 		// ルックアップゲート用
 
