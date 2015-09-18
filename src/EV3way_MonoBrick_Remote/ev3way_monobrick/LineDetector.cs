@@ -17,6 +17,10 @@ namespace ETRobocon.EV3
 			Right = 1
 		}
 
+		public const int InitWhite = 44;
+		public const int InitBlack = 2;
+		public const LineEdge InitEdge = LineEdge.Left;
+
 		/// ロボットがコース上の白色を検知したときのカラーセンサの値
 		protected int White;
 
@@ -99,9 +103,9 @@ namespace ETRobocon.EV3
 		float lineThreshold;
 		float[] ringBuffer = new float[BufferSize];
 
-		const float InitKp = 60.0f;
-		const float InitKi = 0.0f;
-		const float InitKd = 180.0f;
+		public const float InitKp = 60.0f;
+		public const float InitKi = 0.0f;
+		public const float InitKd = 180.0f;
 		float mKp = InitKp;
 		float mKi = InitKi;
 		float mKd = InitKd;

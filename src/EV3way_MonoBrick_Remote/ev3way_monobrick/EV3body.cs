@@ -54,7 +54,10 @@ namespace ETRobocon.EV3
 			body.odm = new ETRobocon.Odometry.Odometry( ETRobocon.Odometry.Odometry.AVAILABLE_LOG_FEATURE);
 
 			// PID制御インスタンス作成
-			body.ld = new LineDetectorOld (0, 60, LineDetector.LineEdge.Left, 20.0f, 0, 80.0f ); // TODO: kp, ki, kdの値を変えて調査してください。
+			body.ld = new LineDetectorOld (
+				LineDetector.InitBlack, LineDetector.InitWhite, LineDetector.InitEdge,
+				LineDetectorOld.InitKp, LineDetectorOld.InitKi, LineDetectorOld.InitKd
+			); // TODO: kp, ki, kdの値を変えて調査してください。
 		}
 	}
 }
