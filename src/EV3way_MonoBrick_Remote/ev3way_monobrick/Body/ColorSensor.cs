@@ -43,8 +43,8 @@ namespace ETRobocon.Body
 			// https://github.com/RITS-ETrobo/Yokohama/wiki/Report_ColorSensor_by_angle
 			// 上記URLを参考に, 初期値として設定.
 			BlackSensorValue = 2;
-			WhiteSensorValue = 37;
-			GraySensorValue = 16;
+			WhiteSensorValue = 44;
+			GraySensorValue = 18;
 
 		}
 
