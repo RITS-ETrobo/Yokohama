@@ -101,6 +101,7 @@
     <Compile Include="StateMachine\States\LookUpReadyState.cs" />
     <Compile Include="StateMachine\States\LookUpTurnState.cs" />
     <Compile Include="StateMachine\States\LookUpReadySetTailLUGState.cs" />
+    <Compile Include="StateMachine\States\GrayLineState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,11 +1,10 @@
-﻿using System;
-using MonoBrickFirmware.Display.Dialogs;
+using System;
 using ETRobocon.EV3;
 using ETRobocon.Utils;
 
 namespace ETRobocon.StateMachine
 {
-	public class StraightWithLineTraceState : State
+	public class GrayLineState : State
 	{
 		// MainClassのrun()より移してきた
 		private int _batteryLevel;
@@ -25,9 +24,9 @@ namespace ETRobocon.StateMachine
 		/// </summary>
 		private const int LOOP_DELAY = 29;
 
-		/// <summary>ライントレースありの直線走行ステート</summary>
+		/// <summary>灰色線走行ステート</summary>
 		/// <param name="targetDistance">次のステートに移るまでの走行距離[mm]</param>
-		public StraightWithLineTraceState(EV3body body, double targetDistance) : base(body, 1)
+		public GrayLineState(EV3body body, double targetDistance) : base(body, 1)
 		{
 			TargetDistance = targetDistance;
 		}
@@ -35,7 +34,7 @@ namespace ETRobocon.StateMachine
 		public override void Enter()
 		{
 			// キャリブ値を, LineDetectorに設定する.
-			_body.ld.SetEachColorValue (_body.color.BlackSensorValue, _body.color.WhiteSensorValue);
+			_body.ld.SetEachColorValue (_body.color.GraySensorValue, _body.color.WhiteSensorValue);
 
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
@@ -59,7 +58,7 @@ namespace ETRobocon.StateMachine
 				forward = 0;
 				turn = 0;
 			} else {
-				forward = 50;
+				forward = 25;
 				turn = _body.ld.CalculateTurn(_body.color.ReadSensorValue());
 			}
 
@@ -104,9 +103,6 @@ namespace ETRobocon.StateMachine
 			if (_body.gyro.GetRapidChange ()) {
 				return TriggerID.DetectShock;
 			}
-			if (sonar_alert (_body)) {
-				return TriggerID.Sonar;
-			}
 			if (_body.touch.DetectReleased())
 			{
 				return TriggerID.TouchSensor;
@@ -124,4 +120,3 @@ namespace ETRobocon.StateMachine
 		}
 	}
 }
-

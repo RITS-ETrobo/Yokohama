@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using ETRobocon.EV3;
+using ETRobocon.Utils;
+using MonoBrickFirmware.Display.Dialogs;
 
 namespace ETRobocon.StateMachine
 {
@@ -34,11 +36,13 @@ namespace ETRobocon.StateMachine
 				new ModeSelectState(_body),	// ModeSel
 				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
-				new StraightWithLineTraceState(_body),	// Straight1
+				new StraightWithLineTraceState(_body, 7500),	// Straight1
+				new GrayLineState(_body, 500),	// GrayL1
+				new StraightWithLineTraceState(_body, 10000),	// StraightL2
 				new LookUpReadyState(_body), //LookUpReady
-				new LookUpReadySetTailLUGState(_body), //LookUpReady
-				new LookUpStraightState(_body), //LookUpStaright
-				new LookUpTurnState(_body),	//LookUpTurn
+				new LookUpReadySetTailLUGState(_body), //LookUpReadySetLUG
+				new LookUpStraightState(_body), //LookUpStaright1
+				new LookUpTurnState(_body),	//LookUpTurn1
 				new CompleteState(_body)	// Complete
 			};
 
@@ -61,19 +65,20 @@ namespace ETRobocon.StateMachine
 					//	補足
 					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである
 					//	<-- 説明
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Select4 	*/	SELECT4,
-					/*		Trigger	:	Sonar	 	*/	Sonar,
-					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
-					/*		Trigger :	Distance	*/	Distance,
-					/*		Trigger :	Turn		*/	Turn,
-					/*		Trigger :	TimeExpire	*/	TimeExpire
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3			*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4,
+					/*		Trigger	:	Sonar	 		*/	SONAR,
+					/*		Trigger : 	LookUpAngle		*/	LOOKUPANGLE,
+					/*		Trigger :	Distance		*/	DISTANCE,
+					/*		Trigger :	Turn			*/	TURN,
+					/*		Trigger :	TimeExpire		*/	TimeExpire
 				},
 #endif	//	false
 
@@ -81,6 +86,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	ModeSel
 					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
@@ -97,6 +103,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	Calib
 					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
@@ -113,6 +120,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	Ready
 					/*		Trigger	:	TouchSensor	*/	T(S.Straight1, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -131,6 +139,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	Straight1
 					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.GrayL1, Nop),
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -144,11 +153,46 @@ namespace ETRobocon.StateMachine
 					/*		Trigger :	Turn		*/	null,
 					/*		Trigger :	TimeExpire	*/	null
 				},
+				{
+					//	State	:	GrayL1
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.StraightL2, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null,
+					/*		Trigger	:	Sonar			*/	T(S.LookUpReady, Nop),
+					/*		Trigger : 	LookUpAngle		*/	null,
+					/*		Trigger :	Distance		*/	null,
+					/*		Trigger :	Turn			*/	null,
+					/*		Trigger :	TimeExpire	*/	null
+				},
+				{
+					//	State	:	StraightL2
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null,
+					/*		Trigger	:	Sonar			*/	T(S.LookUpReady, Nop),
+					/*		Trigger : 	LookUpAngle		*/	null,
+					/*		Trigger :	Distance		*/	null,
+					/*		Trigger :	Turn			*/	null,
+					/*		Trigger :	TimeExpire	*/	null
+				},
 
 				#region ルックアップゲート
 				{
 					//	State	:	LookUpReady
 					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -166,6 +210,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	LookUpReadySetTailLUG
 					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -183,6 +228,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	LookUpStraight1
 					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -198,8 +244,9 @@ namespace ETRobocon.StateMachine
 				},
 
 				{
-					//	State	:	LookUpTurn
+					//	State	:	LookUpTurn1
 					/*		Trigger	:	TouchSensor	*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	T(S.Complete, Nop),
 					/*		Trigger	:	DetectShock	*/	T(S.Complete, Nop),
@@ -218,19 +265,20 @@ namespace ETRobocon.StateMachine
 #if	false
 				{
 					//	State	:	フィギュアL用
-					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
-					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
-					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
-					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
-					/*		Trigger	:	Select1 	*/	SELECT1,
-					/*		Trigger	:	Select2 	*/	SELECT2,
-					/*		Trigger	:	Select3 	*/	SELECT3,
-					/*		Trigger	:	Select4 	*/	SELECT4,
-					/*		Trigger	:	Sonar	 	*/	Sonar,
-					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
-					/*		Trigger :	Distance	*/	Distance,
-					/*		Trigger :	Turn		*/	Turn,
-					/*		Trigger :	TimeExpire	*/	TimeExpire
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1			*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4,
+					/*		Trigger	:	Sonar		 	*/	SONAR,
+					/*		Trigger : 	LookUpAngle		*/	LOOKUPANGLE,
+					/*		Trigger :	Distance		*/	DISTANCE,
+					/*		Trigger :	Turn			*/	TURN,
+					/*		Trigger :	TimeExpire		*/	TimeExpire
 				},
 #endif	//	false
 
@@ -238,6 +286,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	...
 					/*		Trigger	:	TouchSensor	*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
 					/*		Trigger	:	RunCommand	*/	RUNCOMMAND,
 					/*		Trigger	:	StopCommand	*/	STOPCOMMAND,
 					/*		Trigger	:	DetectShock	*/	DETECTSHOCK,
@@ -256,6 +305,7 @@ namespace ETRobocon.StateMachine
 				{
 					//	State	:	Complete
 					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	ReachDistance	*/	null,
 					/*		Trigger	:	RunCommand	*/	null,
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
@@ -330,6 +380,20 @@ namespace ETRobocon.StateMachine
 			_body.color.CalibrateGray();
 			Utils.LogTask.LogRemote("Calib Gray :");
 			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
+		}
+
+		/// <summary>準備状態から走行状態へ遷移するときの処理</summary>
+		private void TransReadyToRun()
+		{
+			var dialogRun = new InfoDialog("Running", false);
+			dialogRun.Show();
+
+			LogTask.LogRemote("EV3 run.");
+
+			// 走行開始前にタイヤが動いていると自己位置推定に誤差が出てくるのでTachoCountの値をリセットする
+			_body.motorL.ResetTacho ();
+			_body.motorR.ResetTacho ();
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_DRIVE);	//バランス走行用角度に制御
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
