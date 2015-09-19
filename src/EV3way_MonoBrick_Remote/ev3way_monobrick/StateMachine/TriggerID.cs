@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ETRobocon.StateMachine
 {
@@ -20,6 +20,7 @@ namespace ETRobocon.StateMachine
 		Select1,
 		Select2,
 		Select3,
+		Select4,
 		Sonar,
 		LookUpAngle,
 		Distance,

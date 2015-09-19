@@ -32,6 +32,7 @@ namespace ETRobocon.StateMachine
 			_states = new State[(int)StateID.NumOfState]
 			{
 				new ModeSelectState(_body),	// ModeSel
+				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
 				new StraightWithLineTraceState(_body),	// Straight1
 				new LookUpReadyState(_body), //LookUpReady
@@ -66,6 +67,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
 					/*		Trigger :	Distance	*/	Distance,
@@ -73,6 +75,7 @@ namespace ETRobocon.StateMachine
 				},
 #endif	//	false
 
+				#region 走行準備
 				{
 					//	State	:	ModeSel
 					/*		Trigger	:	TouchSensor	*/	T(S.Ready, Nop),
@@ -80,8 +83,24 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	StopCommand	*/	null,
 					/*		Trigger	:	DetectShock	*/	null,
 					/*		Trigger	:	Select1 	*/	T(S.Ready, Nop),
-					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),	// キャリブレートステートはまだ無いので, 仮
+					/*		Trigger	:	Select2 	*/	T(S.Calib, Nop),
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
+					/*		Trigger	:	Sonar	 	*/	null,
+					/*		Trigger : 	LookUpAngle	*/	null,
+					/*		Trigger :	Distance	*/	null,
+					/*		Trigger :	Turn		*/	null
+				},
+				{
+					//	State	:	Calib
+					/*		Trigger	:	TouchSensor	*/	null,
+					/*		Trigger	:	RunCommand	*/	null,
+					/*		Trigger	:	StopCommand	*/	null,
+					/*		Trigger	:	DetectShock	*/	null,
+					/*		Trigger	:	Select1 	*/	T(S.Calib, CalibWhite),
+					/*		Trigger	:	Select2 	*/	T(S.Calib, CalibBlack),
+					/*		Trigger	:	Select3 	*/	T(S.Calib, CalibGray),
+					/*		Trigger	:	Select4 	*/	T(S.ModeSel, Nop),
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	null,
@@ -96,11 +115,13 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	T(S.Straight1, Nop),
 					/*		Trigger	:	Select2 	*/	T(S.Complete, Nop),
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	null,
 					/*		Trigger :	Turn		*/	null
 				},
+				#endregion
 
 				{
 					//	State	:	Straight1
@@ -111,12 +132,12 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	T(S.LookUpReady, Nop),
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	null,
 					/*		Trigger :	Turn		*/	null
 				},
-
 
 				{
 					//	State	:	LookUpReady
@@ -127,6 +148,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	T(S.LookUpStraight1, Nop),
 					/*		Trigger :	Distance	*/	null,
@@ -142,6 +164,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	T(S.Complete, Nop),
@@ -157,6 +180,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	null,
@@ -172,6 +196,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
 					/*		Trigger :	Distance	*/	Distance,
@@ -189,6 +214,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	SELECT1,
 					/*		Trigger	:	Select2 	*/	SELECT2,
 					/*		Trigger	:	Select3 	*/	SELECT3,
+					/*		Trigger	:	Select4 	*/	SELECT4,
 					/*		Trigger	:	Sonar	 	*/	Sonar,
 					/*		Trigger : 	LookUpAngle	*/	LookUpAngle,
 					/*		Trigger :	Distance	*/	Distance,
@@ -205,6 +231,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select1 	*/	null,
 					/*		Trigger	:	Select2 	*/	null,
 					/*		Trigger	:	Select3 	*/	null,
+					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
 					/*		Trigger : 	LookUpAngle	*/	null,
 					/*		Trigger :	Distance	*/	null,
@@ -252,12 +279,25 @@ namespace ETRobocon.StateMachine
 			// Nothing to do
 		}
 
-		/// <summary>
-		/// ルックアップゲート攻略のために尻尾の角度を設定する
-		/// </summary>
-		private void setTailAngleForLookUpGate(){
-			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE);
-			_body.motorTail.UpdateTailAngle ();
+		private void CalibWhite()
+		{
+			_body.color.CalibrateWhite();
+			Utils.LogTask.LogRemote("Calib White :");
+			Utils.LogTask.LogRemote(_body.color.WhiteSensorValue);
+		}
+
+		private void CalibBlack()
+		{
+			_body.color.CalibrateBlack();
+			Utils.LogTask.LogRemote("Calib Black :");
+			Utils.LogTask.LogRemote(_body.color.BlackSensorValue);
+		}
+
+		private void CalibGray()
+		{
+			_body.color.CalibrateGray();
+			Utils.LogTask.LogRemote("Calib Gray :");
+			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
 		}
 
 		/// <summary>遷移メソッドのDelegate</summary>
