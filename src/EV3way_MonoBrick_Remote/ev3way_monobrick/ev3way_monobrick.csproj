@@ -97,6 +97,7 @@
     <Compile Include="StateMachine\States\ModeSelectState.cs" />
     <Compile Include="LineDetector.cs" />
     <Compile Include="IFilter.cs" />
+    <Compile Include="StateMachine\States\GrayLineState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
