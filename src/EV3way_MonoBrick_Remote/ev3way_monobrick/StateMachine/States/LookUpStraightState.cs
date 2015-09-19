@@ -10,17 +10,21 @@ namespace ETRobocon.StateMachine
 
 		//-必要に応じてプライベートフィールドや定数を追加-
 		//-メソッドは追加しないでほしい(追加する必要ないはず)-
-		private int _batteryLevel;
+		//private int _batteryLevel;
 
 		//スタート時の総移動距離
-		private double distanceOfStart;
+		//private double distanceOfStart;
 
 		//目標走行距離だけ走ったかどうかのフラグ
-		private bool isRunningTargetDistance = false;
+		//private bool isRunningTargetDistance = false;
 
 		//目標走行距離[mm]
-		private const double TARGET_DISTANCE = 300;
+		//private const double TARGET_DISTANCE = 300;
 
+
+		const int BORDER_STOP_COUNT = 600;
+
+		int counter;
 
 		public LookUpStraightState(EV3body body /*, -必要に応じて引数を追加-*/) : base(body, 2)
 		{
@@ -30,6 +34,9 @@ namespace ETRobocon.StateMachine
 		public override void Enter()
 		{
 			LogTask.LogRemote ("LookUp Straight");
+
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE);
+
 //			distanceOfStart = _body.odm.TotalMoveDistanceMM;
 		}
 
@@ -39,30 +46,32 @@ namespace ETRobocon.StateMachine
 //			sbyte forward = 50;
 //			sbyte turn = 0;
 
-			_body.motorTail.SetBrake ();
+			sbyte pwmL, pwmR;
 
-//			int gyroNow = _body.gyro.GetSensorValue();
-//			int thetaL = _body.motorL.GetTachoCount();
-//			int theTaR = _body.motorR.GetTachoCount();
-//			sbyte pwmL, pwmR;
-//			Balancer.control (
-//				(float)forward, (float)turn, (float)gyroNow, (float)GYRO_OFFSET, (float)thetaL, (float)theTaR, (float)_batteryLevel,
-//				out pwmL, out pwmR
-//			);
-//
-//			if (pwmL == 0) {
-//				_body.motorL.Brake();
-//			} else {
-//				_body.motorL.SetPower(pwmL);
-//			}
-//			if (pwmR == 0) {
-//				_body.motorR.Brake();
-//			} else {
-//				_body.motorR.SetPower(pwmR);
-//			}
+			if (counter > BORDER_STOP_COUNT) {
+				pwmL = 0;
+				pwmR = 0;
+			} else {
+				pwmL = 40;
+				pwmR = 40;
+			}
+
+			if (pwmL == 0) {
+				_body.motorL.Brake();
+			} else {
+				_body.motorL.SetPower(pwmL);
+			}
+
+			if (pwmR == 0) {
+				_body.motorR.Brake();
+			} else {
+				_body.motorR.SetPower(pwmR);
+			}
 
 			// 自己位置の更新
 			_body.odm.update(_body.motorL.GetTachoCount(), _body.motorR.GetTachoCount());
+
+			counter++;
 
 			//30センチ走行したら
 //			if((_body.odm.TotalMoveDistanceMM - distanceOfStart) >= TARGET_DISTANCE){
