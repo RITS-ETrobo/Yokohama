@@ -35,6 +35,7 @@ namespace ETRobocon.StateMachine
 		{
 			// キャリブ値を, LineDetectorに設定する.
 			_body.ld.SetEachColorValue (_body.color.GraySensorValue, _body.color.WhiteSensorValue);
+			_body.ld.SetPIDValue (25,0,55);
 
 			// 電圧を取得
 			_batteryLevel = Brick.GetVoltageMilliVolt();
