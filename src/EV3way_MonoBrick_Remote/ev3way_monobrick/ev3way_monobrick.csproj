@@ -100,6 +100,7 @@
     <Compile Include="StateMachine\States\LookUpStraightState.cs" />
     <Compile Include="StateMachine\States\LookUpReadyState.cs" />
     <Compile Include="StateMachine\States\LookUpTurnState.cs" />
+    <Compile Include="StateMachine\States\LookUpReadySetTailLUGState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

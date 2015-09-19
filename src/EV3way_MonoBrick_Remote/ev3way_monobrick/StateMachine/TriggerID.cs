@@ -25,6 +25,7 @@ namespace ETRobocon.StateMachine
 		LookUpAngle,
 		Distance,
 		Turn,
+		TimeExpire,
 
 		NumOfTrigger
 	}

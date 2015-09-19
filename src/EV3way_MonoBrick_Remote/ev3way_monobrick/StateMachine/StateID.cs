@@ -22,6 +22,7 @@ namespace ETRobocon.StateMachine
 
 		// ルックアップゲート用
 		LookUpReady,
+		LookUpReadySetLUG,
 		LookUpStraight1,
 		LookUpTurn1,
 
