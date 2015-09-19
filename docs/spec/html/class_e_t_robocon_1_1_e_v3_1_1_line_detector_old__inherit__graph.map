@@ -1,0 +1,3 @@
+<map id="ETRobocon.EV3.LineDetectorOld" name="ETRobocon.EV3.LineDetectorOld">
+<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_line_detector.html" title="線を検知して、左右の回転係数(どちらにどれくらいの速度で回転すればよいか)を生成するクラスです。 これは、一番シンプルなもので、黒を検知したら " alt="" coords="65,5,160,32"/>
+</map>
