@@ -201,7 +201,7 @@ namespace ETRobocon.StateMachine
 					/*		Trigger	:	Select3 	*/	null,
 					/*		Trigger	:	Select4 	*/	null,
 					/*		Trigger	:	Sonar	 	*/	null,
-					/*		Trigger : 	LookUpAngle	*/	T(S.LookUpStraight1, Nop),
+					/*		Trigger : 	LookUpAngle	*/	T(S.LookUpReadySetLUG, Nop),
 					/*		Trigger :	Distance	*/	null,
 					/*		Trigger :	Turn		*/	null,
 					/*		Trigger :	TimeExpire	*/	null

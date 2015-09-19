@@ -102,35 +102,35 @@ namespace ETRobocon.StateMachine
 				currentState = state.Sit;
 				LogTask.LogRemote ("## Sit ##");
 
-			} else if (currentState == state.Sit) {
-
-				//TODO うまく角度を減らせてない
-
-				//バランス制御をなくしてタイヤの回転も止める
-				pwmL = 0;
-				pwmR = 0;
-
-				//4msec×500回=2秒間ごとに角度を減らす
-				if (count++ >= 500) {
-
-					//徐々に目標の角度に調整する
-					LogTask.LogRemote(_body.motorTail.GetCurrentAngle());
-//					targetAngle = _body.motorTail.GetCurrentAngle();
-//					if (targetAngle < MotorTail.TAIL_ANGLE_LOOKUPGATE) {
-//						targetAngle = MotorTail.TAIL_ANGLE_LOOKUPGATE;//最低値はルックアップゲート用角度
-//						LogTask.LogRemote("## Target angle ##");
+//			} else if (currentState == state.Sit) {
+//
+//				//TODO うまく角度を減らせてない
+//
+//				//バランス制御をなくしてタイヤの回転も止める
+//				pwmL = 0;
+//				pwmR = 0;
+//
+//				//4msec×500回=2秒間ごとに角度を減らす
+//				if (count++ >= 500) {
+//
+//					//徐々に目標の角度に調整する
+//					LogTask.LogRemote(_body.motorTail.GetCurrentAngle());
+////					targetAngle = _body.motorTail.GetCurrentAngle();
+////					if (targetAngle < MotorTail.TAIL_ANGLE_LOOKUPGATE) {
+////						targetAngle = MotorTail.TAIL_ANGLE_LOOKUPGATE;//最低値はルックアップゲート用角度
+////						LogTask.LogRemote("## Target angle ##");
+////					}
+//
+////					_body.motorTail.moveTail (targetAngle);
+//					_body.motorTail.moveTail (MotorTail.TAIL_ANGLE_LOOKUPGATE);
+//					_body.motorTail.SetBrake ();
+//
+//					if (_body.motorTail.IsReachedSubTargetAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE)) {
+////						currentState = state.Done;
+//						LogTask.LogRemote("## Done ##");
 //					}
-
-//					_body.motorTail.moveTail (targetAngle);
-					_body.motorTail.moveTail (MotorTail.TAIL_ANGLE_LOOKUPGATE);
-					_body.motorTail.SetBrake ();
-
-					if (_body.motorTail.IsReachedSubTargetAngle (MotorTail.TAIL_ANGLE_LOOKUPGATE)) {
-//						currentState = state.Done;
-						LogTask.LogRemote("## Done ##");
-					}
-					count = 0;
-				}
+//					count = 0;
+//				}
 			}
 
 			_body.motorL.SetPower (pwmL);
@@ -153,8 +153,11 @@ namespace ETRobocon.StateMachine
 //			if (_body.gyro.GetRapidChange ()) {
 //				return TriggerID.DetectShock;
 //			}
-			if (currentState == state.Done) {
-				return TriggerID.LookUpAngle;				
+//			if (currentState == state.Done) {
+//				return TriggerID.LookUpAngle;				
+//			}
+			if (currentState == state.Sit) {
+				return TriggerID.LookUpAngle;
 			}
 			if (_body.touch.DetectReleased())
 			{
