@@ -31,6 +31,10 @@ namespace ETRobocon.StateMachine
 
 			//	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs
 			//	で管理している State が追加/変更/削除された場合は、以下を併せて変更する事
+			//
+			//	なお、詳細な説明は、
+			//	$\docs\HowToMakeStates.md
+			//	を参照する事
 			_states = new State[(int)StateID.NumOfState]
 			{
 				new ModeSelectState(_body),	// ModeSel
@@ -57,6 +61,10 @@ namespace ETRobocon.StateMachine
 					//	1. Templateをコピーし、StateIDと同じ位置へ挿入する
 					//	2. テーブルに関する説明を削除する
 					//	3. Stateを記載する
+					//
+					//	なお、詳細な説明は、
+					//	$\docs\HowToMakeStates.md
+					//	を参照する事
 					//
 					//	補足
 					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである

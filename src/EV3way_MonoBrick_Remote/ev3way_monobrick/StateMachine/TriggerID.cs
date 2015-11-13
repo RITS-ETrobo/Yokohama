@@ -9,6 +9,10 @@ namespace ETRobocon.StateMachine
 	///	の
 	///	TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
 	///	を変更する必要がある
+	///
+	///	なお、詳細な説明は、
+	///	$\docs\HowToMakeStates.md
+	///	を参照する事
 	///	</remarks>
 	public enum TriggerID
 	{
