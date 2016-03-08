@@ -1,8 +1,0 @@
-<map id="C:/Projects/ETrobocon/Yokohama_merge/src/EV3way_MonoBrick_Remote/ev3way_monobrick" name="C:/Projects/ETrobocon/Yokohama_merge/src/EV3way_MonoBrick_Remote/ev3way_monobrick">
-<area shape="rect" id="node2" href="dir_9c4ab47ed0d1e4b1ec3dff384324c790.html" title="EV3" alt="" coords="364,63,436,111"/>
-<area shape="rect" id="node3" href="dir_9f7c89e670d5eb1cc8c4b7a2d5442f05.html" title="Odometry" alt="" coords="261,63,339,111"/>
-<area shape="rect" id="node4" href="dir_3f926f544633f8728e00e65620381ea2.html" title="StateMachine" alt="" coords="134,63,237,111"/>
-<area shape="rect" id="node5" href="dir_baad7f33539620d7430401f59aba7a8a.html" title="Utils" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="clust2" href="dir_f2ae27d51468883ce8d30bf80af020cb.html" alt="" coords="27,52,601,121"/>
-<area shape="rect" id="clust1" href="dir_8c45d8bd8e7e3c590360944e61d1eeaa.html" title="EV3way_MonoBrick_Remote" alt="" coords="16,16,612,132"/>
-</map>

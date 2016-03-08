@@ -7,7 +7,7 @@
     <ProjectGuid>{D143CFF0-F2F5-474A-B631-698EC2E98A12}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ETRobocon.EV3</RootNamespace>
-    <ReleaseVersion>0.6.0</ReleaseVersion>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,14 +32,14 @@
     <DocumentationFile>..\..\..\bin\Release\EV3Way.xml</DocumentationFile>
     <AssemblyName>EV3Way</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '充電池|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_RechargeableBattery|x86' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\x86\充電池</OutputPath>
+    <OutputPath>..\..\..\bin\Release_RechargeableBattery</OutputPath>
     <WarningLevel>4</WarningLevel>
     <AssemblyName>ev3way_monobrick</AssemblyName>
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>RechargeableBattery</DefineConstants>
-    <DocumentationFile>bin\x86\充電池\EV3Way.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\bin\Release_RechargeableBattery\EV3Way.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -89,8 +89,16 @@
     <Compile Include="Utils\CommandReceiveFlags.cs" />
     <Compile Include="Odometry\Odometry.cs" />
     <Compile Include="Odometry\Location.cs" />
+    <Compile Include="Body\GyroSensor.cs" />
+    <Compile Include="Body\ModelessSelectDialog.cs" />
     <Compile Include="Body\TouchSensor.cs" />
+    <Compile Include="Body\ColorSensor.cs" />
     <Compile Include="Motor\MotorTail.cs" />
+    <Compile Include="StateMachine\States\CalibrationModeState.cs" />
+    <Compile Include="StateMachine\States\ModeSelectState.cs" />
+    <Compile Include="LineDetector.cs" />
+    <Compile Include="IFilter.cs" />
+    <Compile Include="StateMachine\States\GrayLineState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

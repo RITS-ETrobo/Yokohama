@@ -14,6 +14,7 @@ x86
 obj
 Debug
 UnitTest
+Release_RechargeableBattery
 *.pdb
 *.mdb
 
@@ -30,3 +31,12 @@ UpgradeLog*.htm
 
 # for Doxygen
 *.tmp
+
+# for Visual Studio Code
+Code
+
+# - 0.7.x
+.settings
+
+# 0.8.x -
+.vscode

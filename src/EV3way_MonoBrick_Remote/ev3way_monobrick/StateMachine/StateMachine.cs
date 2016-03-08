@@ -1,9 +1,14 @@
-﻿using System;
+using System;
 using System.Threading;
 using ETRobocon.EV3;
+using ETRobocon.Utils;
+using MonoBrickFirmware.Display.Dialogs;
 
 namespace ETRobocon.StateMachine
 {
+	// 状態遷移表で, 文字数短縮のためのエイリアス
+	using S = StateID;
+
 	public class StateMachine
 	{
 		/// <summary>現在の状態</summary>
@@ -22,33 +27,193 @@ namespace ETRobocon.StateMachine
 		{
 			_body = body;
 
-			currentState = StateID.Ready;
+			currentState = StateID.ModeSel;
 
+			//	$\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs
+			//	で管理している State が追加/変更/削除された場合は、以下を併せて変更する事
+			//
+			//	なお、詳細な説明は、
+			//	$\docs\HowToMakeStates.md
+			//	を参照する事
 			_states = new State[(int)StateID.NumOfState]
 			{
+				new ModeSelectState(_body),	// ModeSel
+				new CalibrationModeState(_body),	// Calib
 				new ReadyState(_body),	// Ready
-				new StraightWithLineTraceState(_body),	// Straight1
+				new StraightWithLineTraceState(_body, 7500),	// Straight1
+				new GrayLineState(_body, 500),	// GrayL1
+				new StraightWithLineTraceState(_body, 10000),	// StraightL2
 				new CompleteState(_body)	// Complete
 			};
 
 			TransitionMatrix = new Transition?[(int)StateID.NumOfState, (int)TriggerID.NumOfTrigger]
 			{
-				// TouchSensor,                           RunCommand,                             StopCommand
+#if	false	//	この部分は、コメントを含む説明の為に無効化しているので、削除しない事
+				{
+					//	State : Template(StateIDに置き換える事)
+					//	説明 -->
+					//	次の場合に、本テーブルのデータを変更する事
+					//	1. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\TriggerID.cs で管理している Trigger が追加/変更/削除された
+					//	2. $\src\EV3way_MonoBrick_Remote\ev3way_monobrick\StateMachine\StateID.cs で管理している State が追加/変更/削除された
+					//	3. テーブル中のTriggerを変更する
+					//
+					//	テーブルの追加方法
+					//	1. Templateをコピーし、StateIDと同じ位置へ挿入する
+					//	2. テーブルに関する説明を削除する
+					//	3. Stateを記載する
+					//
+					//	なお、詳細な説明は、
+					//	$\docs\HowToMakeStates.md
+					//	を参照する事
+					//
+					//	補足
+					//	コメント中のタブによるインデントは、StateとTriggerを区別しやすくする為の意図したモノである
+					//	<-- 説明
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4
+				},
+#endif	//	false
 
-				// 走行準備
-				{ new Transition(StateID.Straight1, Nop), new Transition(StateID.Straight1, Nop), null },
+				#region 走行準備
+				{
+					//	State	:	ModeSel
+					/*		Trigger	:	TouchSensor		*/	T(S.Ready, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	null,
+					/*		Trigger	:	Select1 		*/	T(S.Ready, Nop),
+					/*		Trigger	:	Select2 		*/	T(S.Calib, Nop),
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
+				{
+					//	State	:	Calib
+					/*		Trigger	:	TouchSensor		*/	null,
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	null,
+					/*		Trigger	:	Select1 		*/	T(S.Calib, CalibWhite),
+					/*		Trigger	:	Select2 		*/	T(S.Calib, CalibBlack),
+					/*		Trigger	:	Select3 		*/	T(S.Calib, CalibGray),
+					/*		Trigger	:	Select4 		*/	T(S.ModeSel, Nop)
+				},
+				{
+					//	State	:	Ready
+					/*		Trigger	:	TouchSensor		*/	T(S.Straight1, TransReadyToRun),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	T(S.Straight1, TransReadyToRun),
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	T(S.Straight1, TransReadyToRun),
+					/*		Trigger	:	Select2 		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
+				#endregion
 
-				// ゴールまで走行
-				{ new Transition(StateID.Complete, Nop),  null,                                   new Transition(StateID.Complete, Nop) },
+				{
+					//	State	:	Straight1
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.GrayL1, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
+				{
+					//	State	:	GrayL1
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	T(S.StraightL2, Nop),
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
+				{
+					//	State	:	StraightL2
+					/*		Trigger	:	TouchSensor		*/	T(S.Complete, Nop),
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	T(S.Complete, Nop),
+					/*		Trigger	:	DetectShock		*/	T(S.Complete, Nop),
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				},
 
-				// ルックアップゲート用
+#if	false
+				{
+					//	State	:	ルックアップゲート
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4
+				},
+#endif	//	false
 
-				// フィギュアL用
+#if	false
+				{
+					//	State	:	フィギュアL用
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4
+				},
+#endif	//	false
 
-				// ...
+#if	false
+				{
+					//	State	:	...
+					/*		Trigger	:	TouchSensor		*/	TOUCHSENSOR,
+					/*		Trigger	:	ReachDistance	*/	REACHDISTANCE,
+					/*		Trigger	:	RunCommand		*/	RUNCOMMAND,
+					/*		Trigger	:	StopCommand		*/	STOPCOMMAND,
+					/*		Trigger	:	DetectShock		*/	DETECTSHOCK,
+					/*		Trigger	:	Select1 		*/	SELECT1,
+					/*		Trigger	:	Select2 		*/	SELECT2,
+					/*		Trigger	:	Select3 		*/	SELECT3,
+					/*		Trigger	:	Select4 		*/	SELECT4
+				},
+#endif	//	false
 
-				// その他
-				{ null,                                   null,                                  null }
+				{
+					//	State	:	Complete
+					/*		Trigger	:	TouchSensor		*/	null,
+					/*		Trigger	:	ReachDistance	*/	null,
+					/*		Trigger	:	RunCommand		*/	null,
+					/*		Trigger	:	StopCommand		*/	null,
+					/*		Trigger	:	DetectShock		*/	null,
+					/*		Trigger	:	Select1 		*/	null,
+					/*		Trigger	:	Select2 		*/	null,
+					/*		Trigger	:	Select3 		*/	null,
+					/*		Trigger	:	Select4 		*/	null
+				}
 			};
 		}
 
@@ -91,6 +256,41 @@ namespace ETRobocon.StateMachine
 			// Nothing to do
 		}
 
+		private void CalibWhite()
+		{
+			_body.color.CalibrateWhite();
+			Utils.LogTask.LogRemote("Calib White :");
+			Utils.LogTask.LogRemote(_body.color.WhiteSensorValue);
+		}
+
+		private void CalibBlack()
+		{
+			_body.color.CalibrateBlack();
+			Utils.LogTask.LogRemote("Calib Black :");
+			Utils.LogTask.LogRemote(_body.color.BlackSensorValue);
+		}
+
+		private void CalibGray()
+		{
+			_body.color.CalibrateGray();
+			Utils.LogTask.LogRemote("Calib Gray :");
+			Utils.LogTask.LogRemote(_body.color.GraySensorValue);
+		}
+
+		/// <summary>準備状態から走行状態へ遷移するときの処理</summary>
+		private void TransReadyToRun()
+		{
+			var dialogRun = new InfoDialog("Running", false);
+			dialogRun.Show();
+
+			LogTask.LogRemote("EV3 run.");
+
+			// 走行開始前にタイヤが動いていると自己位置推定に誤差が出てくるのでTachoCountの値をリセットする
+			_body.motorL.ResetTacho ();
+			_body.motorR.ResetTacho ();
+			_body.motorTail.SetMotorAngle (MotorTail.TAIL_ANGLE_DRIVE);	//バランス走行用角度に制御
+		}
+
 		/// <summary>遷移メソッドのDelegate</summary>
 		public delegate void TransitionMethodDel();
 
@@ -109,6 +309,14 @@ namespace ETRobocon.StateMachine
 				NextState = nextState;
 				TransitionMethod = transitionMethod;
 			}
+		}
+
+		/// <summary>状態遷移表で, 文字数短縮のためのメソッド</summary>
+		/// <param name="nextState">次のステートのID</param>
+		/// <param name="transitionMethod">遷移メソッド</param>
+		private Transition T(StateID nextState, TransitionMethodDel transitionMethod)
+		{
+			return new Transition(nextState, transitionMethod);
 		}
 	}
 }

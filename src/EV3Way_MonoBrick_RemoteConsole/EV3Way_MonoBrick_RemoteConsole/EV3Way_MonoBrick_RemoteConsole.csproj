@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>EV3Way_MonoBrick_RemoteConsole</RootNamespace>
     <AssemblyName>EV3Way_MonoBrick_RemoteConsole</AssemblyName>
-    <ReleaseVersion>0.6.0</ReleaseVersion>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
     <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -30,6 +30,11 @@
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
     <DocumentationFile>..\..\..\bin\Release\EV3Way_MonoBrick_RemoteConsole.xml</DocumentationFile>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="xcopy /y /i &quot;${TargetFile}&quot; &quot;${TargetDir}\..\Release_RechargeableBattery&quot;" workingdir="" externalConsole="True" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UnitTest|x86' ">
     <Optimize>false</Optimize>
