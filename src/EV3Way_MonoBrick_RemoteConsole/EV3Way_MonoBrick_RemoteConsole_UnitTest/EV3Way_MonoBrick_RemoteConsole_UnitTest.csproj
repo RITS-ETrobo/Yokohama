@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">UnitTest</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5D742A3D-5410-40BE-B54F-9460FB75048C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>EV3Way_MonoBrick_RemoteConsole_UnitTest</RootNamespace>
+    <AssemblyName>EV3Way_MonoBrick_RemoteConsole_UnitTest</AssemblyName>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UnitTest|x86' ">
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\UnitTest</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>..\..\..\bin\UnitTest\EV3Way_MonoBrick_RemoteConsole_UnitTest.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.2.0\lib\net40\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Test.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\EV3Way_MonoBrick_RemoteConsole\EV3Way_MonoBrick_RemoteConsole.csproj">
+      <Project>{AB83B8CF-0437-4CFF-A152-EDA758F67193}</Project>
+      <Name>EV3Way_MonoBrick_RemoteConsole</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

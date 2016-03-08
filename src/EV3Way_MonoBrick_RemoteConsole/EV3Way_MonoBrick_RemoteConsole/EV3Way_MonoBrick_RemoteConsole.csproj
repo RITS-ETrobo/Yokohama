@@ -36,6 +36,15 @@
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UnitTest|x86' ">
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\UnitTest</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DocumentationFile>..\..\..\bin\UnitTest\EV3Way_MonoBrick_RemoteConsole.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
