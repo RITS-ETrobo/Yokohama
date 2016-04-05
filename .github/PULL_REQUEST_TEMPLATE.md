@@ -1,4 +1,11 @@
-(不要な項目は、消す事)
+# 発行時に消す項目
+1. 以下のLabelsを設定する事
+* [review](../Labels/review) : 常に
+* [Status : Waiting for Operation check](../Labels/Status%20%3A%20Waiting%20for%20Operation%20check) : 実機評価が必要な場合
+1. 作成中のコードの場合は、タイトルを`WIP`で始める事
+1. なお、不要な項目は、消す事
+
+`発行時に消す項目(ここまで)`
 
 # 関連Issue : Must
 (基になったIssueを記載する)
