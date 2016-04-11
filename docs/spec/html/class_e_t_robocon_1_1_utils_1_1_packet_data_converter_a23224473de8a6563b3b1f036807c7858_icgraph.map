@@ -1,9 +1,0 @@
-<map id="ETRobocon.Utils.PacketDataConverter.ConvertFromPacketData" name="ETRobocon.Utils.PacketDataConverter.ConvertFromPacketData">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#a4d2492d35ad25c22322f5afdd89c458e" title="通信相手からデータを受け取る." alt="" coords="275,39,445,80"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_command_task.html#af54b02282c28236d3a07f1ee626afd86" title="コマンドタスクのメインループ" alt="" coords="495,15,738,42"/>
-<area shape="rect" id="node6" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#aaebfc16331c32ab3729de2b28a034c05" title="タスクのメインループ" alt="" coords="493,68,740,109"/>
-<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_utils_1_1_command_task.html#a40ad92804bcd9d52dd8167567a8efdfa" title="コマンドタスクの開始" alt="" coords="793,14,1030,41"/>
-<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#ab634da136d005d6fccb8fedf71344865" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="1099,5,1313,47"/>
-<area shape="rect" id="node7" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_log_task.html#a4455d6a7fd00e91850b0949de8ac0f66" title="ログ受信・表示タスクを開始する" alt="" coords="788,68,1035,109"/>
-<area shape="rect" id="node8" href="$class_e_v3_way___mono_brick___remote_console_1_1_main_class.html#a2c51db8e299ab68eb54b74c6c9d487f0" title="EV3Way_MonoBrick_RemoteConsole.\lMainClass.Main" alt="" coords="1083,71,1329,112"/>
-</map>

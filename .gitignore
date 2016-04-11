@@ -1,3 +1,33 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+OBJ
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
 # for emacs:
 *~
 \#*
@@ -31,6 +61,8 @@ UpgradeLog*.htm
 
 # for Doxygen
 *.tmp
+~$$*.*
+*.~*
 
 # for Visual Studio Code
 Code
@@ -40,3 +72,26 @@ Code
 
 # 0.8.x -
 .vscode
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

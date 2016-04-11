@@ -1,4 +1,0 @@
-<map id="ETRobocon.Utils.CommandReceiveFlags.CheckCommandReceived" name="ETRobocon.Utils.CommandReceiveFlags.CheckCommandReceived">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_state_machine_1_1_ready_state.html#a8cf00742f38e600f65607abed0321dae" title="遷移条件の判定" alt="" coords="288,5,503,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#afc5cb64d8365cae852f6a92315a4271b" title="遷移条件の判定" alt="" coords="280,71,511,112"/>
-</map>

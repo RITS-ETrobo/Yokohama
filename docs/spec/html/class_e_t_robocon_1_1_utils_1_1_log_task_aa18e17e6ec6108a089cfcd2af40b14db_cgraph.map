@@ -1,6 +1,0 @@
-<map id="ETRobocon.Utils.LogTask.Run" name="ETRobocon.Utils.LogTask.Run">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_e_v3.html#aa5650d3bbcf2b673f06c3fe40b439a42" title="PCと通信を確立する" alt="" coords="265,5,443,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_log_task.html#aea303f5d3bcc60bd1262fab8607c52de" title="タスクのメインループ" alt="" coords="252,71,456,98"/>
-<area shape="rect" id="node4" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#ac03cc47d73136256e1ae5d3dfd092229" title="通信相手へデータを送る" alt="" coords="504,64,675,105"/>
-<area shape="rect" id="node5" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a2942678b4736581f89dd5e6c73785599" title="データ から byte[] への変換(エンコード)を行う" alt="" coords="723,64,928,105"/>
-</map>

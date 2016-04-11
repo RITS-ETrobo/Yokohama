@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html" title="EV3&#45;PC間通信プロトコルに従って, EV3&#45;PCの通信を行うためのクラス." alt="" coords="5,39,176,80"/>
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_e_v3.html" title="EV3&#45;PC間通信プロトコルに従って, EV3&#45;PCの通信を行うための機能のうち, EV3側を担当するクラス. " alt="" coords="224,5,395,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor_for_p_c.html" title="EV3&#45;PC間通信プロトコルに従って, EV3&#45;PCの通信を行うための機能のうち, PC側を担当するクラス. " alt="" coords="224,71,395,112"/>
-</map>

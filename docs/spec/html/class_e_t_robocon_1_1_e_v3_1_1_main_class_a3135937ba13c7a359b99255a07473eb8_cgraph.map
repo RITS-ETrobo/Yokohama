@@ -1,4 +1,0 @@
-<map id="ETRobocon.EV3.MainClass.Main" name="ETRobocon.EV3.MainClass.Main">
-<area shape="rect" id="node2" href="$struct_e_t_robocon_1_1_e_v3_1_1_e_v3body.html#a8e2dbb0c123ec1de0b56176cd1bdb084" title="ETRobocon.EV3.EV3body.init" alt="" coords="274,5,470,32"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_state_machine_1_1_state_machine.html#ac62e29ad66cd05be32f7249042852bc8" title="ETRobocon.StateMachine.State\lMachine.StateMachine" alt="" coords="268,57,476,98"/>
-</map>

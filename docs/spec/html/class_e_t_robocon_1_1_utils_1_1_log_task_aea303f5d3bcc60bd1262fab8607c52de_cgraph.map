@@ -1,4 +1,0 @@
-<map id="ETRobocon.Utils.LogTask.Loop" name="ETRobocon.Utils.LogTask.Loop">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_protocol_processor.html#ac03cc47d73136256e1ae5d3dfd092229" title="通信相手へデータを送る" alt="" coords="257,5,428,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_utils_1_1_packet_data_converter.html#a2942678b4736581f89dd5e6c73785599" title="データ から byte[] への変換(エンコード)を行う" alt="" coords="476,5,681,47"/>
-</map>

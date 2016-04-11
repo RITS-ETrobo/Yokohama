@@ -1,4 +1,0 @@
-<map id="ETRobocon.StateMachine.CompleteState.Enter" name="ETRobocon.StateMachine.CompleteState.Enter">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_log_task.html#a6fb6752883b102d0bd995e1d392047c1" title="ログをリモートで送信する" alt="" coords="287,5,463,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#a64c7c311a8b71cf36ce13efdc3b1f24d" title="ユーザアプリを終了し、MonoBrickメインメニューへ戻る " alt="" coords="285,71,464,112"/>
-</map>

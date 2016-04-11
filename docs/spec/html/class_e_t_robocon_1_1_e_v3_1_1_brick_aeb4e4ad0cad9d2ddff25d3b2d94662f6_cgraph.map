@@ -1,4 +1,0 @@
-<map id="ETRobocon.EV3.Brick.GetVoltage" name="ETRobocon.EV3.Brick.GetVoltage">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab786cf5a0f0a4aa06160a5d5acd0298c" title="ETRobocon.EV3.Brick.getBattery\lCurrentRaw" alt="" coords="275,5,491,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#ab3dcbc11c957d26bf1294be3c718b276" title="ETRobocon.EV3.Brick.getBattery\lVoltageRaw" alt="" coords="275,71,491,112"/>
-</map>

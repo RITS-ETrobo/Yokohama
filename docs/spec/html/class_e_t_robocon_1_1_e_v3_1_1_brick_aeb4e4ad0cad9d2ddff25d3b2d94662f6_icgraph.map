@@ -1,4 +1,0 @@
-<map id="ETRobocon.EV3.Brick.GetVoltage" name="ETRobocon.EV3.Brick.GetVoltage">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_e_v3_1_1_brick.html#a04d80e12070f8a1ec2a8a096082c9921" title="バッテリの電源電圧をミリボルト単位で取得する " alt="" coords="275,5,496,47"/>
-<area shape="rect" id="node3" href="$class_e_t_robocon_1_1_state_machine_1_1_straight_with_line_trace_state.html#a72ef2fd9ad1cf498128b7064a7fdf863" title="任意のStateからこのStateに遷移するときに実行される処理" alt="" coords="544,5,767,47"/>
-</map>

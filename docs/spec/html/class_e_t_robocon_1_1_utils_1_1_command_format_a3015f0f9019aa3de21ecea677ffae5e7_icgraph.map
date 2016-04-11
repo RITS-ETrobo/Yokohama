@@ -1,4 +1,0 @@
-<map id="ETRobocon.Utils.CommandFormat.ParseStringWithType" name="ETRobocon.Utils.CommandFormat.ParseStringWithType">
-<area shape="rect" id="node2" href="$class_e_t_robocon_1_1_utils_1_1_command_format.html#ad2df08e8401b9e225f1a19a267eb53b4" title="文字列の配列から, このコマンドのフォーマットに従ってCommandを作成する." alt="" coords="280,5,507,47"/>
-<area shape="rect" id="node3" href="$class_e_v3_way___mono_brick___remote_console_1_1_utils_1_1_command_task.html#a5c5535ed9931fe649c718f76e3765063" title="ユーザーが入力した文字列からコマンドへ変換する" alt="" coords="555,5,801,47"/>
-</map>
