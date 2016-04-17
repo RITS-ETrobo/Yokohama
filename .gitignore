@@ -27,6 +27,8 @@ OBJ
 *.exe
 *.out
 *.app
+hrp2/cfg/cfg/cfg
+hrp2/workspace/app
 
 # for emacs:
 *~
