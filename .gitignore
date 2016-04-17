@@ -55,6 +55,7 @@ bin/Release/*.xml
 # for Visual Studio
 *.suo
 UpgradeLog*.htm
+browse.VC.db
 
 # for common
 *.bak
