@@ -2,7 +2,7 @@
 
 if [ $# -ne 2 ]; then
     echo "Counts of entered argument is $#." 1>&2
-    echo "For executing this script, need 1 argument" 1>&2
+    echo "For executing this script, need 2 argument" 1>&2
     exit 1
 fi
 
