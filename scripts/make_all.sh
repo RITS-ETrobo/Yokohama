@@ -2,12 +2,12 @@
 
 if [ $# -ne 1 ]; then
     echo "Counts of entered argument is $#." 1>&2
-    echo "For executing this script, need 1 argument" 1>&2
+    echo "For executing this script, need 2 argument" 1>&2
     exit 1
 fi
 
 echo "Entered argument is $1."
-if [ "${buildOption}" = "app" ]; then
+if [ "$1" == "app" ]; then
     buildOption="app"
 else
     buildOption="mod"
@@ -17,16 +17,17 @@ echo "buildOption is ${buildOption}"
 
 set currentPath = pwd
 cd hrp2/workspace
-make ${buildOption}=ev3way-cpp
-make ${buildOption}=gyrobody
-make ${buildOption}=helloev3
-make ${buildOption}=hwbrickbench
-make ${buildOption}=linetrace
-make ${buildOption}=loader
-make ${buildOption}=sample_c4
-make ${buildOption}=test-cpp
-make ${buildOption}=test-cyc
-make ${buildOption}=trike
+
+../../scripts/make_project.sh ev3way-cpp ${buildOption}
+../../scripts/make_project.sh gyrobody ${buildOption}
+../../scripts/make_project.sh helloev3 ${buildOption}
+../../scripts/make_project.sh hwbrickbench ${buildOption}
+../../scripts/make_project.sh linetrace ${buildOption}
+../../scripts/make_project.sh loader ${buildOption}
+../../scripts/make_project.sh sample_c4 ${buildOption}
+../../scripts/make_project.sh test-cpp ${buildOption}
+../../scripts/make_project.sh test-cyc ${buildOption}
+../../scripts/make_project.sh trike ${buildOption}
 
 cd $currentPath
-
+exit 0
