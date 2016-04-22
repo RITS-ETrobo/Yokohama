@@ -1,0 +1,6 @@
+<map id="ev3api::Sensor" name="ev3api::Sensor">
+<area shape="rect" id="node2" href="$d3/d7f/classev3api_1_1_color_sensor.html" title="ev3api::ColorSensor" alt="" coords="5,80,144,107"/>
+<area shape="rect" id="node3" href="$dc/d08/classev3api_1_1_gyro_sensor.html" title="ev3api::GyroSensor" alt="" coords="169,80,305,107"/>
+<area shape="rect" id="node4" href="$d9/dcc/classev3api_1_1_sonar_sensor.html" title="ev3api::SonarSensor" alt="" coords="330,80,472,107"/>
+<area shape="rect" id="node5" href="$d5/dad/classev3api_1_1_touch_sensor.html" title="ev3api::TouchSensor" alt="" coords="497,80,641,107"/>
+</map>
