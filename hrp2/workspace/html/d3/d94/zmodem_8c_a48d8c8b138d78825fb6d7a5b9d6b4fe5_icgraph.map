@@ -1,0 +1,5 @@
+<map id="zmodem_data_waiting" name="zmodem_data_waiting">
+<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a87a91a540f77830fc38f3e71349afbf9" title="zmodem_recv_crc" alt="" coords="207,5,337,32"/>
+<area shape="rect" id="node4" href="$db/dc9/zmodem_8h.html#abcd73172cdde6174821a4365c16b9d5e" title="zmodem_get_zrinit" alt="" coords="206,56,338,83"/>
+<area shape="rect" id="node3" href="$db/dc9/zmodem_8h.html#a8f4b7f04c115217e66c4be0624bec53c" title="zmodem_get_crc" alt="" coords="387,5,509,32"/>
+</map>
