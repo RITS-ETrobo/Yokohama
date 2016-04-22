@@ -1,0 +1,12 @@
+<map id="zmodem_recv_header_raw" name="zmodem_recv_header_raw">
+<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a75bf683c5cae13bb3c8a5936cd97f59d" title="zmodem_recv_header" alt="" coords="233,132,383,159"/>
+<area shape="rect" id="node11" href="$db/dc9/zmodem_8h.html#acdf614e76323b6f69ab0f1ace0a60a65" title="zmodem_recv_header\l_and_check" alt="" coords="233,205,383,246"/>
+<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#a87a91a540f77830fc38f3e71349afbf9" title="zmodem_recv_crc" alt="" coords="451,5,581,32"/>
+<area shape="rect" id="node5" href="$db/dc9/zmodem_8h.html#abcd73172cdde6174821a4365c16b9d5e" title="zmodem_get_zrinit" alt="" coords="450,56,582,83"/>
+<area shape="rect" id="node6" href="$db/dc9/zmodem_8h.html#ae7f4627521c6720044ff45192f06468d" title="zmodem_get_zfin" alt="" coords="453,107,579,133"/>
+<area shape="rect" id="node7" href="$db/dc9/zmodem_8h.html#a5799f41f00923d2ba13c9828f2f43bf1" title="zmodem_recv_init" alt="" coords="664,157,792,184"/>
+<area shape="rect" id="node9" href="$db/dc9/zmodem_8h.html#afa9a43093d38c9b51159c5b07e4cd241" title="zmodem_recv_file_frame" alt="" coords="432,208,600,235"/>
+<area shape="rect" id="node4" href="$db/dc9/zmodem_8h.html#a8f4b7f04c115217e66c4be0624bec53c" title="zmodem_get_crc" alt="" coords="667,5,789,32"/>
+<area shape="rect" id="node8" href="$d8/da2/zmodem-toppers_8c.html#a52151a327bbce33186c924ee6ca721e3" title="zmodem_recv_task" alt="" coords="856,183,992,209"/>
+<area shape="rect" id="node10" href="$db/dc9/zmodem_8h.html#aa9b0cbe86cdc8ebcd4941bfc9253dc6f" title="zmodem_recv_file_data" alt="" coords="648,208,808,235"/>
+</map>
