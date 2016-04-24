@@ -19,7 +19,6 @@ OBJ
 *.la
 
 # Executables
-*.exe
 *.out
 hrp2/cfg/cfg/cfg
 hrp2/workspace/
@@ -65,9 +64,6 @@ browse.VC.db
 
 # for Visual Studio Code
 Code
-
-# - 0.7.x
-.settings
 
 # 0.8.x -
 .vscode
