@@ -7,10 +7,11 @@ if [ $# -ne 2 ]; then
 fi
 
 TARGET_PROJECT=$1
-make $2=${TARGET_PROJECT}
+make $2=${TARGET_PROJECT} 1>build.log 2>&1
 TARGET_PATH=bin/$2/$1
 rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
+mv build.log ${TARGET_PATH}/${TARGET_PROJECT}.$2.log
 mv app ${TARGET_PATH}/${TARGET_PROJECT}.$2
 mv OBJ/ ${TARGET_PATH}
 
