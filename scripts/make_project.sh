@@ -10,10 +10,11 @@ TARGET_PROJECT=$1
 rm app
 rm hrp2
 rm uImage
-make $2=${TARGET_PROJECT}
+make $2=${TARGET_PROJECT} 1>build.log 2>&1
 TARGET_PATH=bin/$2/$1
 rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
+mv build.log ${TARGET_PATH}/${TARGET_PROJECT}.$2.log
 mv app ${TARGET_PATH}/${TARGET_PROJECT}.$2
 mv hrp2 ${TARGET_PATH}
 mv uImage ${TARGET_PATH}
