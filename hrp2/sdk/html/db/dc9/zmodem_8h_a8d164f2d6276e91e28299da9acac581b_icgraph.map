@@ -1,0 +1,15 @@
+<map id="zmodem_send_ack" name="zmodem_send_ack">
+<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#ae07e6915e49ba1bd2b2d0b97a5dd0860" title="zmodem_recv_data" alt="" coords="189,232,325,259"/>
+<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#ab13f83fd2f4cfe57be77443f4d3f19e4" title="zmodem_recv_subpacket" alt="" coords="373,204,544,231"/>
+<area shape="rect" id="node12" href="$db/dc9/zmodem_8h.html#afa9a43093d38c9b51159c5b07e4cd241" title="zmodem_recv_file_frame" alt="" coords="1019,259,1187,285"/>
+<area shape="rect" id="node4" href="$d3/d94/zmodem_8c.html#adadfc090d0c2132e364d91bdaf840492" title="zmodem_recv_header_raw" alt="" coords="592,200,771,227"/>
+<area shape="rect" id="node5" href="$d3/d94/zmodem_8c.html#a75bf683c5cae13bb3c8a5936cd97f59d" title="zmodem_recv_header" alt="" coords="819,124,970,151"/>
+<area shape="rect" id="node14" href="$db/dc9/zmodem_8h.html#acdf614e76323b6f69ab0f1ace0a60a65" title="zmodem_recv_header\l_and_check" alt="" coords="819,193,970,234"/>
+<area shape="rect" id="node6" href="$d3/d94/zmodem_8c.html#a87a91a540f77830fc38f3e71349afbf9" title="zmodem_recv_crc" alt="" coords="1038,5,1167,32"/>
+<area shape="rect" id="node8" href="$db/dc9/zmodem_8h.html#abcd73172cdde6174821a4365c16b9d5e" title="zmodem_get_zrinit" alt="" coords="1037,157,1169,184"/>
+<area shape="rect" id="node9" href="$db/dc9/zmodem_8h.html#ae7f4627521c6720044ff45192f06468d" title="zmodem_get_zfin" alt="" coords="1040,107,1165,133"/>
+<area shape="rect" id="node10" href="$db/dc9/zmodem_8h.html#a5799f41f00923d2ba13c9828f2f43bf1" title="zmodem_recv_init" alt="" coords="1251,107,1379,133"/>
+<area shape="rect" id="node7" href="$db/dc9/zmodem_8h.html#a8f4b7f04c115217e66c4be0624bec53c" title="zmodem_get_crc" alt="" coords="1253,5,1376,32"/>
+<area shape="rect" id="node11" href="$d8/da2/zmodem-toppers_8c.html#a52151a327bbce33186c924ee6ca721e3" title="zmodem_recv_task" alt="" coords="1443,157,1579,184"/>
+<area shape="rect" id="node13" href="$db/dc9/zmodem_8h.html#aa9b0cbe86cdc8ebcd4941bfc9253dc6f" title="zmodem_recv_file_data" alt="" coords="1235,208,1395,235"/>
+</map>

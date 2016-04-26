@@ -1,0 +1,10 @@
+<map id="xmodem_init" name="xmodem_init">
+<area shape="rect" id="node2" href="$db/d94/sexyz_8c.html#a5da42de1f8f6330eb859644f5b15afbf" title="send_byte" alt="" coords="157,5,240,32"/>
+<area shape="rect" id="node3" href="$db/d94/sexyz_8c.html#ae7b2ce04b06770528b19456d983a17a8" title="recv_byte" alt="" coords="159,56,238,83"/>
+<area shape="rect" id="node8" href="$db/d94/sexyz_8c.html#aa6e7650a0b138854ab4eb1ec09466612" title="is_connected" alt="" coords="149,107,248,133"/>
+<area shape="rect" id="node9" href="$db/d94/sexyz_8c.html#a01191133180e1afd3c515113cb1b65b9" title="flush" alt="" coords="173,157,224,184"/>
+<area shape="rect" id="node4" href="$d6/d8c/telnet_8c.html#a437f8cfdbdfffa6dc3020dbc6f924007" title="telnet_cmd_desc" alt="" coords="467,5,589,32"/>
+<area shape="rect" id="node5" href="$d6/d8c/telnet_8c.html#a8e4203a8e0f0c6d7c7d039262c7f5e49" title="telnet_opt_desc" alt="" coords="471,107,585,133"/>
+<area shape="rect" id="node6" href="$db/d94/sexyz_8c.html#a50ef2a3b592c5eaae53864305a964a6f" title="send_telnet_cmd" alt="" coords="297,56,418,83"/>
+<area shape="rect" id="node7" href="$db/d94/sexyz_8c.html#a2203b296422ec182c9ed3c4dc3bf4cb4" title="sendbuf" alt="" coords="494,56,562,83"/>
+</map>

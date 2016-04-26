@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['randm',['randM',['../d9/d80/bin_2mod_2hwbrickbench_2_o_b_j_2app_8c.html#a60df0907c46d79156a0b9ec38941c38f',1,'randM(void):&#160;app.c'],['../d6/d4c/hwbrickbench_2app_8c.html#a60df0907c46d79156a0b9ec38941c38f',1,'randM(void):&#160;app.c']]],
+  ['realloc',['REALLOC',['../d7/dc0/gen__defs_8h.html#a2e501a3b49991d5e526b5c52c1522df4',1,'gen_defs.h']]],
+  ['receive_5f32bit_5fdata',['receive_32bit_data',['../da/d5f/structzmodem__t.html#a2567024fd5c27e9d8fb1a088541c4e4a',1,'zmodem_t']]],
+  ['rectout',['RectOut',['../d9/d80/bin_2mod_2hwbrickbench_2_o_b_j_2app_8c.html#a4f62e80a6ad4a114d0926fbbc5e9930a',1,'RectOut(int x, int y, int width, int height):&#160;app.c'],['../d6/d4c/hwbrickbench_2app_8c.html#a4f62e80a6ad4a114d0926fbbc5e9930a',1,'RectOut(int x, int y, int width, int height):&#160;app.c']]],
+  ['recv',['RECV',['../d7/d55/sexyz_8h.html#a5c3976553336476b6fea4108b844ecf2',1,'sexyz.h']]],
+  ['recv_5fbufsize',['recv_bufsize',['../da/d5f/structzmodem__t.html#aa670cf0609b6fe1b5e72cba62dd695de',1,'zmodem_t']]],
+  ['recv_5fbyte',['recv_byte',['../d8/d21/structxmodem__t.html#aeef456033e6fb5b8436462557a977116',1,'xmodem_t::recv_byte()'],['../da/d5f/structzmodem__t.html#a506d86e5e524f776c3a503bad0d8f16b',1,'zmodem_t::recv_byte()'],['../db/d94/sexyz_8c.html#ae7b2ce04b06770528b19456d983a17a8',1,'recv_byte():&#160;sexyz.c']]],
+  ['recv_5ftimeout',['recv_timeout',['../d8/d21/structxmodem__t.html#a10803a7194eaa7647fd0063b8f53ead8',1,'xmodem_t::recv_timeout()'],['../da/d5f/structzmodem__t.html#a9720501bf2100f85e20bbaa184b40016',1,'zmodem_t::recv_timeout()']]],
+  ['recvdir',['RECVDIR',['../d7/d55/sexyz_8h.html#ab0e0cb6198940fe7614a1c70f42577f3',1,'sexyz.h']]],
+  ['replace_5fchars',['REPLACE_CHARS',['../d7/dc0/gen__defs_8h.html#ab8b5206dc2ba684e4733073db304cae0',1,'gen_defs.h']]],
+  ['reset',['reset',['../d4/d87/classev3api_1_1_clock.html#ae68ba47fe6d8f4a7f515001c10547ac4',1,'ev3api::Clock::reset()'],['../dc/d08/classev3api_1_1_gyro_sensor.html#a97b505d902fb927c2b15c5d28e9c1533',1,'ev3api::GyroSensor::reset()'],['../da/d61/classev3api_1_1_motor.html#ad523541d8a7319ae905dc17ff7c2ffad',1,'ev3api::Motor::reset()']]],
+  ['revision',['revision',['../db/d94/sexyz_8c.html#aea1657db9c13ca71f0df9fb9fd97b507',1,'sexyz.c']]],
+  ['right_5fmotor',['right_motor',['../d1/d65/bin_2mod_2linetrace_2_o_b_j_2app_8c.html#a7293e2eefab0b4a7242a90ccf5a6a03a',1,'right_motor():&#160;app.c'],['../d5/d97/bin_2mod_2trike_2_o_b_j_2app_8c.html#a7293e2eefab0b4a7242a90ccf5a6a03a',1,'right_motor():&#160;app.c'],['../d7/d4f/gyroboy_2app_8c.html#a7293e2eefab0b4a7242a90ccf5a6a03a',1,'right_motor():&#160;app.c'],['../d0/d2a/linetrace_2app_8c.html#a7293e2eefab0b4a7242a90ccf5a6a03a',1,'right_motor():&#160;app.c'],['../db/d68/trike_2app_8c.html#a7293e2eefab0b4a7242a90ccf5a6a03a',1,'right_motor():&#160;app.c'],['../dd/d1b/nxtrike_8h.html#ac9564ecabfd6f53bee9dc0742d63e19d',1,'RIGHT_MOTOR():&#160;nxtrike.h']]],
+  ['rightmotor',['rightMotor',['../de/d79/bin_2mod_2ev3way-cpp_2_o_b_j_2app_8cpp.html#aaa35b8be84047c4d3e3582e4fd5b3137',1,'rightMotor():&#160;app.cpp'],['../d9/d51/ev3way-cpp_2app_8cpp.html#aaa35b8be84047c4d3e3582e4fd5b3137',1,'rightMotor():&#160;app.cpp']]],
+  ['rt_5fsaturate',['rt_SATURATE',['../de/d01/ev3way-cpp_2balancer_8c.html#a1862f02acd113fc69031250e7e706738',1,'rt_SATURATE():&#160;balancer.c'],['../dc/d91/sample__c4_2balancer_8c.html#a1862f02acd113fc69031250e7e706738',1,'rt_SATURATE():&#160;balancer.c']]],
+  ['rtmgeterrorstatus',['rtmGetErrorStatus',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#a557d264325c9e243515f06d77552c662',1,'rtmGetErrorStatus():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#a557d264325c9e243515f06d77552c662',1,'rtmGetErrorStatus():&#160;balancer.h']]],
+  ['rtmgetstoprequested',['rtmGetStopRequested',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#ad3dd022f9e5d9877f7de2d6371718f7f',1,'rtmGetStopRequested():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#ad3dd022f9e5d9877f7de2d6371718f7f',1,'rtmGetStopRequested():&#160;balancer.h']]],
+  ['rtmseterrorstatus',['rtmSetErrorStatus',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#a068bf11f899627a85b3c169391608c78',1,'rtmSetErrorStatus():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#a068bf11f899627a85b3c169391608c78',1,'rtmSetErrorStatus():&#160;balancer.h']]],
+  ['runtime',['runtime',['../d9/d80/bin_2mod_2hwbrickbench_2_o_b_j_2app_8c.html#abb68ef5e514321fca2b73e0b4c050ec4',1,'runtime():&#160;app.c'],['../d6/d4c/hwbrickbench_2app_8c.html#abb68ef5e514321fca2b73e0b4c050ec4',1,'runtime():&#160;app.c']]],
+  ['rx_5fdata_5fsubpacket',['rx_data_subpacket',['../da/d5f/structzmodem__t.html#a621f671fa7660d728fe95896dc94bef2',1,'zmodem_t']]],
+  ['rxd_5fheader',['rxd_header',['../da/d5f/structzmodem__t.html#ae889c10531744b9f83c1c9c66fd2341e',1,'zmodem_t']]],
+  ['rxd_5fheader_5flen',['rxd_header_len',['../da/d5f/structzmodem__t.html#ad6403982973587a37b044dc22b0a22c5',1,'zmodem_t']]],
+  ['rxd_5fheader_5fpos',['rxd_header_pos',['../da/d5f/structzmodem__t.html#a01127e1e4d2f38091a1237a9c357c3dd',1,'zmodem_t']]]
+];
