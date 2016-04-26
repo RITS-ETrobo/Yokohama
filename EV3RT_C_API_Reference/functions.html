@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.7"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>EV3RT C API Reference: データフィールド</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">EV3RT C API Reference
-   &#160;<span id="projectnumber">Beta 5</span>
+   &#160;<span id="projectnumber">Beta 6</span>
    </div>
    <div id="projectbrief">An RTOS-based development platform for LEGO Mindstorms EV3.</div>
   </td>
@@ -54,7 +56,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.8.7 -->
+<!-- 構築: Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'検索');
 </script>
@@ -78,7 +80,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>データ構造</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>列挙型</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>列挙値</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>グループ</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,6 +91,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <div class="contents">
 <div class="textblock">構造体・共用体の詳解ありフィールド一覧です。各フィールド詳解へのリンクがあります。</div><ul>
+<li>b
+: <a class="el" href="structrgb__raw__t.html#a7976cd62f9b61a65e8104a3cf7c15099">rgb_raw_t</a>
+</li>
 <li>buffer
 : <a class="el" href="structmemfile__t.html#a368f7094dc38acca20612bbb392552f4">memfile_t</a>
 </li>
@@ -100,6 +105,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>filesz
 : <a class="el" href="structmemfile__t.html#a523b3798dc64d2e36483e66196110e82">memfile_t</a>
+</li>
+<li>g
+: <a class="el" href="structrgb__raw__t.html#ad2c8d7f21feee0ce670c72acadf51074">rgb_raw_t</a>
 </li>
 <li>is_dir
 : <a class="el" href="structfileinfo__t.html#afdc3e9e0bf6660afb965e323b7a31747">fileinfo_t</a>
@@ -113,6 +121,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>name
 : <a class="el" href="structfileinfo__t.html#a71708dbcdba7461a977328afab955e42">fileinfo_t</a>
 </li>
+<li>r
+: <a class="el" href="structrgb__raw__t.html#acfb1795eb860b37ae4a0cf5007525b11">rgb_raw_t</a>
+</li>
 <li>size
 : <a class="el" href="structfileinfo__t.html#ab2c6b258f02add8fdf4cfc7c371dd772">fileinfo_t</a>
 </li>
@@ -125,9 +136,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">2015年12月04日(金) 13時50分30秒作成 - EV3RT C API Reference / 構成: 
+    <li class="footer">2016年03月17日(木) 08時45分28秒作成 - EV3RT C API Reference / 構成: 
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
   </ul>
 </div>
 </body>

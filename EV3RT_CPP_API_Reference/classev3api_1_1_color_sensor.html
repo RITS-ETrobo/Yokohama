@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.7"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>EV3RT C++ API Reference: ColorSensor クラス</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">EV3RT C++ API Reference
-   &#160;<span id="projectnumber">Beta 5</span>
+   &#160;<span id="projectnumber">Beta 6</span>
    </div>
    <div id="projectbrief">An RTOS-based development platform for LEGO Mindstorms EV3.</div>
   </td>
@@ -54,7 +56,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.8.7 -->
+<!-- 構築: Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'検索');
 </script>
@@ -78,7 +80,7 @@ $(document).ready(function(){initNavTree('classev3api_1_1_color_sensor.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>データ構造</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>列挙型</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>列挙値</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,10 +114,14 @@ ColorSensor の継承関係図</div>
 <tr class="separator:aa04568c513529526d82dab6be9d78f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf93ee90a67ca04c75c5ea13a8ebf1cf"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classev3api_1_1_color_sensor.html#aaf93ee90a67ca04c75c5ea13a8ebf1cf">~ColorSensor</a> (void)</td></tr>
 <tr class="separator:aaf93ee90a67ca04c75c5ea13a8ebf1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc44e85bdec1f461287848f422c7d178"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classev3api_1_1_color_sensor.html#acc44e85bdec1f461287848f422c7d178">getAmbient</a> (void) const </td></tr>
+<tr class="separator:acc44e85bdec1f461287848f422c7d178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69a29c6b39fce66d1add48f98bd7f4f1"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classev3api_1_1_color_sensor.html#a69a29c6b39fce66d1add48f98bd7f4f1">getBrightness</a> (void) const </td></tr>
 <tr class="separator:a69a29c6b39fce66d1add48f98bd7f4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cb1d918ddc51976152befd4cb7576aa"><td class="memItemLeft" align="right" valign="top">colorid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classev3api_1_1_color_sensor.html#a0cb1d918ddc51976152befd4cb7576aa">getColorNumber</a> (void) const </td></tr>
 <tr class="separator:a0cb1d918ddc51976152befd4cb7576aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3847793cb8f59fdd82b0e2862585c548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classev3api_1_1_color_sensor.html#a3847793cb8f59fdd82b0e2862585c548">getRawColor</a> (rgb_raw_t &amp;rgb) const </td></tr>
+<tr class="separator:a3847793cb8f59fdd82b0e2862585c548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 その他の継承メンバ</h2></td></tr>
@@ -193,6 +199,29 @@ ColorSensor の継承関係図</div>
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="acc44e85bdec1f461287848f422c7d178"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t getAmbient </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>環境光の強さを測定する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>環境光の強さ（0〜100） </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a69a29c6b39fce66d1add48f98bd7f4f1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -239,15 +268,41 @@ ColorSensor の継承関係図</div>
 
 </div>
 </div>
+<a class="anchor" id="a3847793cb8f59fdd82b0e2862585c548"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getRawColor </td>
+          <td>(</td>
+          <td class="paramtype">rgb_raw_t &amp;&#160;</td>
+          <td class="paramname"><em>rgb</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>RGB Raw値を測定する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rgb</td><td>取得した値を格納する変数のポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>- </dd></dl>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>include/<a class="el" href="_color_sensor_8h_source.html">ColorSensor.h</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ev3api</b></li><li class="navelem"><a class="el" href="classev3api_1_1_color_sensor.html">ColorSensor</a></li>
-    <li class="footer">2015年12月04日(金) 13時50分30秒作成 - EV3RT C++ API Reference / 構成: 
+    <li class="footer">2016年03月17日(木) 08時45分28秒作成 - EV3RT C++ API Reference / 構成: 
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
   </ul>
 </div>
 </body>

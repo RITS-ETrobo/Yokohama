@@ -10,14 +10,10 @@
 #include "t_syslog.h"
 #include "tl16c550.h"
 #include "kernel_cfg.h"
-#include "driver_common.h"
+#include "csl.h"
 #include "string.h"
-#include "btstack/btstack.h"
-#include "../btstack/src/btstack_memory.h"
-#include "../btstack/src/bt_control_cc256x.h"
-#include "../btstack/src/hci.h"
-#include "../btstack/src/remote_device_db.h"
-#include "platform.h"
+#include "minIni.h"
+#include "syssvc/serial.h"
 
 //#define DEBUG
 //#define LOG_DEBUG LOG_ERROR
@@ -65,11 +61,20 @@ static void hardware_initialize() {
     gpio_direction_output(BT_SHUTDOWN_PIN, 1);
 }
 
+#define LINK_KEY_FILE ("/ev3rt/etc/bt_link_keys")
+
+static inline
+int import_bt_key(const mTCHAR *Section, const mTCHAR *Key, const mTCHAR *Value, const void *UserData) {
+    if (!strcasecmp("LinkKey", Section)) btstack_db_cache_put(Key, Value);
+    return 1;
+}
+
 static void initialize(intptr_t unused) {
-	btstack_memory_init();
     hardware_initialize();
+    extern void btstack_memory_init(); // TODO: extern from BTstack module
+	btstack_memory_init();
+    ini_browse(import_bt_key, NULL, LINK_KEY_FILE);
     SVC_PERROR(act_tsk(BT_TSK));
-    SVC_PERROR(act_tsk(BT_QOS_TSK));
 #if defined(DEBUG) || 1
     syslog(LOG_NOTICE, "bluetooth_dri initialized.");
 #endif
@@ -81,39 +86,6 @@ void initialize_bluetooth_dri(intptr_t unused) {
 	driver.init_func = initialize;
 	driver.softreset_func = NULL;
 	SVC_PERROR(platform_register_driver(&driver));
-}
-
-void bluetooth_task(intptr_t unused) {
-#ifdef DEBUG
-	syslog(LOG_DEBUG, "[bluetooth] Start main task.");
-#endif
-
-    run_loop_init(RUN_LOOP_EMBEDDED);
-
-    // Initialize HCI
-    bt_control_t             *control   = bt_control_cc256x_instance();
-	hci_transport_t          *transport = hci_transport_h4_dma_instance();
-	hci_uart_config_t        *config    = hci_uart_config_cc256x_instance();
-	const remote_device_db_t *db        = &remote_device_db_memory;
-	hci_init(transport, config, control, db);
-
-    // Initialize SPP (Serial Port Profile)
-    bluetooth_spp_initialize();
-
-	// Power on
-	bt_control_cc256x_enable_ehcill(false);
-	hci_power_control(HCI_POWER_ON);
-
-    run_loop_execute();
-#if 0 // Code for debugging
-        while(1) {
-//        	bluetooth_uart_isr();
-        	embedded_execute_once();
-//        			if(rx_size > 0 && (UART2.IIR_FCR & 0x4)) // TODO: dirty hack
-//        				AINTC.SISR = UART2_INT;
-        	tslp_tsk(1); // TODO: Use interrupt instead of sleeping. -- ertl-liyixiao
-        }
-#endif
 }
 
 void hal_uart_dma_init() {
@@ -189,10 +161,10 @@ int hal_uart_dma_set_baud(uint32_t baud_rate) {
 }
 
 void hal_uart_dma_send_block(const uint8_t *data, uint16_t len) {
-#ifdef DEBUG
+#if defined(DEBUG_BLUETOOTH)
     assert(tx_size == 0);
     assert(len > 0);
-    syslog(LOG_DEBUG, "[bluetooth] Prepare to send a block with %d bytes.", len);
+    syslog(LOG_NOTICE, "[bluetooth] Prepare to send a block with %d bytes.", len);
 #endif
     tx_ptr = data;
     tx_size = len;
@@ -200,10 +172,10 @@ void hal_uart_dma_send_block(const uint8_t *data, uint16_t len) {
 }
 
 void hal_uart_dma_receive_block(uint8_t *buffer, uint16_t len) {
-#if defined(DEBUG) || 1
+#if defined(DEBUG_BLUETOOTH)
     assert(rx_size == 0);
     assert(len > 0);
-    syslog(LOG_DEBUG, "[bluetooth] Prepare to receive a block with %d bytes.", len);
+    syslog(LOG_NOTICE, "[bluetooth] Prepare to receive a block with %d bytes.", len);
 #endif
     rx_ptr = buffer;
     rx_size = len;
@@ -221,9 +193,16 @@ void hal_uart_dma_set_block_sent(void (*the_block_handler)(void)){
 }
 
 void bluetooth_uart_isr() {
-//#ifdef DEBUG
-//    printf("[bluetooth] Enter ISR.");
-//#endif
+#if defined(DEBUG_BLUETOOTH)
+    printf("[bluetooth] Enter ISR.");
+#endif
+
+#if 0
+    uint32_t iir = UART2.IIR_FCR;
+    if (iir & 0x1) {
+        syslog(LOG_NOTICE, "iir at return: 0x%08x", iir);
+    }
+#endif
 
     // RX
 	if(rx_size > 0) {
@@ -236,8 +215,8 @@ void bluetooth_uart_isr() {
 			rx_size--;
 		}
 		if (rx_size == 0) {
-#ifdef DEBUG
-			syslog(LOG_DEBUG, "[bluetooth] Finished receiving a block.");
+#if defined(DEBUG_BLUETOOTH)
+			syslog(LOG_NOTICE, "[bluetooth] Finished receiving a block.");
 #endif
 			rx_cb();
 		}
@@ -246,15 +225,16 @@ void bluetooth_uart_isr() {
 	}
 
     // TX
-    while(tx_size > 0 && uart_putready(p_uart)) {
-#ifdef DEBUG
-        assert(tx_size > 0);
+    if (tx_size > 0 && uart_putready(p_uart)) {
+#if defined(DEBUG_BLUETOOTH)
         assert(tx_cb != NULL);
 #endif
-        p_uart->RBR_THR = *tx_ptr++;
-        if(--tx_size == 0) {
-#ifdef DEBUG
-        	syslog(LOG_DEBUG, "[bluetooth] Finished sending a block.");
+        int tx_bytes = (tx_size < 16 /* TODO: UART_TX_FIFO_LENGTH transmitter FIFO size */ ? tx_size : 16);
+        for (int i = 0; i < tx_bytes; i++) p_uart->RBR_THR = *tx_ptr++;
+        tx_size -= tx_bytes;
+        if (tx_size == 0) {
+#if defined(DEBUG_BLUETOOTH)
+        	syslog(LOG_NOTICE, "[bluetooth] Finished sending a block.");
 #endif
             p_uart->IER &= ~0x2;
             tx_cb();
@@ -274,10 +254,88 @@ void bluetooth_qos_task(intptr_t unused) {
 		dly_tsk(BT_LOW_PRI_TIME_SLICE);
 
 //		tslp_tsk(500);
-//		syslog(LOG_ERROR, "UART2.LSR: 0x%x", UART2.LSR);
+//		syslog(LOG_NOTICE, "UART2.LSR: 0x%x", UART2.LSR);
 //		syslog(LOG_ERROR, "UART2.IER: 0x%x", UART2.IER);
 //		syslog(LOG_ERROR, "UART2.IIR: 0x%x", UART2.IIR_FCR);
 //		syslog(LOG_ERROR, "UART2.MSR: 0x%x", UART2.MSR);
 //		syslog(LOG_ERROR, "rx_size: %d", rx_size);
 	}
 }
+
+void bluetooth_qos_set_enable(bool_t enable) {
+    if (enable) {
+        act_tsk(BT_QOS_TSK);
+    } else {
+        ter_tsk(BT_QOS_TSK);
+		chg_pri(BT_TSK, TPRI_BLUETOOTH_HIGH);
+    }
+}
+
+/**
+ * BTstack interface implementation
+ */
+
+const int btstack_rfcomm_mtu = BT_SND_BUF_SIZE;
+
+inline uint32_t btstack_get_time() {
+    SYSTIM systim;
+    get_tim(&systim);
+    return systim;
+}
+
+inline void btstack_runloop_sleep(uint32_t time) {
+    tslp_tsk(time);
+}
+
+inline void rfcomm_channel_open_callback() {
+	/**
+	 * Open Bluetooth SIO port
+	 */
+    SVC_PERROR(serial_opn_por(SIO_PORT_BT));
+    SVC_PERROR(serial_ctl_por(SIO_PORT_BT, (IOCTL_NULL)));
+}
+
+inline void rfcomm_channel_close_callback() {
+	/**
+	 * Close Bluetooth SIO port
+	 */
+	SVC_PERROR(serial_cls_por(SIO_PORT_BT));
+}
+
+inline void btstack_db_lock() {
+    ER ercd = loc_mtx(BT_DB_MTX);
+    assert(ercd == E_OK);
+}
+
+inline void btstack_db_unlock() {
+    ER ercd = unl_mtx(BT_DB_MTX);
+    assert(ercd == E_OK);
+}
+
+inline void btstack_db_append(const char *addr, const char *link_key) {
+#if defined(DEBUG_BLUETOOTH)
+        SYSTIM tim1, tim2;
+        get_tim(&tim1);
+	    //ini_puts("LinkKey", addr, link_key, LINK_KEY_FILE);
+#endif
+    static FIL dbfile;
+    if (addr) {
+        assert(link_key != NULL);
+        f_open(&dbfile, LINK_KEY_FILE, FA_WRITE | FA_OPEN_ALWAYS);
+        f_lseek(&dbfile, f_size(&dbfile));
+        f_printf(&dbfile, "%s=%s\r\n", addr, link_key);
+        f_close(&dbfile);
+    } else {
+        const char *section = "[LinkKey]\r\n";
+        UINT bw;
+        f_open(&dbfile, LINK_KEY_FILE, FA_WRITE | FA_OPEN_ALWAYS);
+        f_write(&dbfile, section, strlen(section), &bw);
+        f_truncate(&dbfile);
+        f_close(&dbfile);
+    }
+#if defined(DEBUG_BLUETOOTH)
+        get_tim(&tim2);
+        syslog(LOG_NOTICE, "%s(addr%c=NULL) costs %d ms", __FUNCTION__, (addr ? '!' : '='), tim2 - tim1);
+#endif
+}
+
