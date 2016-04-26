@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Remove old files and directories
-OUTPUT_PATH=hrp2/workspace/html/
+OUTPUT_PATH=hrp2/sdk/workspace/html/
 rm -rf ${OUTPUT_PATH}
 
 # Execute doxygen

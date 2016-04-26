@@ -16,8 +16,8 @@ fi
 echo "buildOption is ${buildOption}"
 
 set currentPath = pwd
-WORKSPACE_PATH=hrp2/workspace
-SCRIPT_PATH=../../scripts/make_project.sh
+WORKSPACE_PATH=hrp2/sdk/workspace
+SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
 
 ${SCRIPT_PATH} ev3way-cpp ${buildOption}

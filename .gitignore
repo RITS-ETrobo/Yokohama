@@ -21,7 +21,7 @@ OBJ
 # Executables
 *.out
 hrp2/cfg/cfg/cfg
-hrp2/workspace/bin
+hrp2/sdk/workspace/bin
 
 # for emacs:
 *~
