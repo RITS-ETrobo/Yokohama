@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['realloc',['REALLOC',['../d7/dc0/gen__defs_8h.html#a2e501a3b49991d5e526b5c52c1522df4',1,'gen_defs.h']]],
-  ['recv',['RECV',['../d7/d55/sexyz_8h.html#a5c3976553336476b6fea4108b844ecf2',1,'sexyz.h']]],
-  ['recvdir',['RECVDIR',['../d7/d55/sexyz_8h.html#ab0e0cb6198940fe7614a1c70f42577f3',1,'sexyz.h']]],
-  ['replace_5fchars',['REPLACE_CHARS',['../d7/dc0/gen__defs_8h.html#ab8b5206dc2ba684e4733073db304cae0',1,'gen_defs.h']]],
-  ['right_5fmotor',['RIGHT_MOTOR',['../dd/d1b/nxtrike_8h.html#ac9564ecabfd6f53bee9dc0742d63e19d',1,'nxtrike.h']]],
-  ['rt_5fsaturate',['rt_SATURATE',['../de/d01/ev3way-cpp_2balancer_8c.html#a1862f02acd113fc69031250e7e706738',1,'rt_SATURATE():&#160;balancer.c'],['../dc/d91/sample__c4_2balancer_8c.html#a1862f02acd113fc69031250e7e706738',1,'rt_SATURATE():&#160;balancer.c']]],
-  ['rtmgeterrorstatus',['rtmGetErrorStatus',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#a557d264325c9e243515f06d77552c662',1,'rtmGetErrorStatus():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#a557d264325c9e243515f06d77552c662',1,'rtmGetErrorStatus():&#160;balancer.h']]],
-  ['rtmgetstoprequested',['rtmGetStopRequested',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#ad3dd022f9e5d9877f7de2d6371718f7f',1,'rtmGetStopRequested():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#ad3dd022f9e5d9877f7de2d6371718f7f',1,'rtmGetStopRequested():&#160;balancer.h']]],
-  ['rtmseterrorstatus',['rtmSetErrorStatus',['../d1/d00/common_2lib_2libcpp-ev3_2include_2balancer_8h.html#a068bf11f899627a85b3c169391608c78',1,'rtmSetErrorStatus():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#a068bf11f899627a85b3c169391608c78',1,'rtmSetErrorStatus():&#160;balancer.h']]]
+  ['tail_5fangle_5fdrive',['TAIL_ANGLE_DRIVE',['../d9/d51/ev3way-cpp_2app_8cpp.html#a94c0df55596dd3c4eba1acf4d770fb40',1,'app.cpp']]],
+  ['tail_5fangle_5fstand_5fup',['TAIL_ANGLE_STAND_UP',['../d9/d51/ev3way-cpp_2app_8cpp.html#a18f2a31468d31ace5887ab28c52ce3d7',1,'app.cpp']]],
+  ['task_5fportid',['TASK_PORTID',['../d4/d27/ev3way-cpp_2app_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;app.h'],['../df/d17/old_2main__task_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;main_task.h']]],
+  ['tmax_5ffile_5fnum',['TMAX_FILE_NUM',['../dd/d4a/cli__main_8c.html#a4d456d1dad9ea83aed13174353062036',1,'cli_main.c']]],
+  ['touch_5foff',['TOUCH_OFF',['../dd/d1b/nxtrike_8h.html#acf21d0be54437ae62a1607fd826d44bd',1,'TOUCH_OFF():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#acf21d0be54437ae62a1607fd826d44bd',1,'TOUCH_OFF():&#160;nxtrike.h']]],
+  ['touch_5fon',['TOUCH_ON',['../dd/d1b/nxtrike_8h.html#a8bd0706c4c687f912c8f3b835147e625',1,'TOUCH_ON():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#a8bd0706c4c687f912c8f3b835147e625',1,'TOUCH_ON():&#160;nxtrike.h']]],
+  ['touch_5fsensor',['touch_sensor',['../dd/d1b/nxtrike_8h.html#a478d8e66dfc57398cf8fe62106990364',1,'touch_sensor():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#a478d8e66dfc57398cf8fe62106990364',1,'touch_sensor():&#160;nxtrike.h']]],
+  ['true',['TRUE',['../dd/d1b/nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;nxtrike.h']]]
 ];

@@ -1,25 +1,7 @@
 var searchData=
 [
-  ['c_2dsouce_2dfile_2d1_2ec',['c-souce-file-1.c',['../d5/db5/lib2_2src_2c-souce-file-1_8c.html',1,'']]],
-  ['c_2dsouce_2dfile_2d1_2ec',['c-souce-file-1.c',['../dc/d80/libcpp-test_2src_2c-souce-file-1_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../d7/d35/linetrace_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../d1/d9f/helloev3_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../de/d8d/test-cpp_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../da/d31/hwbrickbench_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../d7/d55/test-cyc_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cfg1_5fout_2ec',['cfg1_out.c',['../d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html',1,'']]],
-  ['cli_5fmain_2ec',['cli_main.c',['../d1/d1e/loader_2cli__main_8c.html',1,'']]],
-  ['cli_5fmain_2ec',['cli_main.c',['../d9/da0/helloev3_2cli__main_8c.html',1,'']]],
+  ['cli_5f_5fmain_5f8c_2ejs',['cli__main_8c.js',['../db/d29/cli____main__8c_8js.html',1,'']]],
+  ['cli_5fmain_2ec',['cli_main.c',['../dd/d4a/cli__main_8c.html',1,'']]],
   ['cli_5fmotor_2ec',['cli_motor.c',['../d9/de5/cli__motor_8c.html',1,'']]],
-  ['cli_5fsensor_2ec',['cli_sensor.c',['../de/d68/cli__sensor_8c.html',1,'']]],
-  ['clock_2ecpp',['Clock.cpp',['../d1/de1/_clock_8cpp.html',1,'']]],
-  ['clock_2eh',['Clock.h',['../dd/dba/_clock_8h.html',1,'']]],
-  ['colorsensor_2ecpp',['ColorSensor.cpp',['../d8/d8c/_color_sensor_8cpp.html',1,'']]],
-  ['colorsensor_2eh',['ColorSensor.h',['../de/d0d/_color_sensor_8h.html',1,'']]],
-  ['cpp_2dsouce_2dfile_2d1_2ecpp',['cpp-souce-file-1.cpp',['../d4/d89/cpp-souce-file-1_8cpp.html',1,'']]],
-  ['crc16_2ec',['crc16.c',['../d4/d4f/crc16_8c.html',1,'']]],
-  ['crc16_2eh',['crc16.h',['../d5/d7c/crc16_8h.html',1,'']]],
-  ['crc32_2ec',['crc32.c',['../d7/d44/crc32_8c.html',1,'']]],
-  ['crc32_2eh',['crc32.h',['../dc/d24/crc32_8h.html',1,'']]]
+  ['cli_5fsensor_2ec',['cli_sensor.c',['../de/d68/cli__sensor_8c.html',1,'']]]
 ];

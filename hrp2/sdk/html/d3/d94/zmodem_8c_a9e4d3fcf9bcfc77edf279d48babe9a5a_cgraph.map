@@ -1,5 +1,0 @@
-<map id="zmodem_recv_nibble" name="zmodem_recv_nibble">
-<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a96ac6337af5d187cb827e1d513d12553" title="zmodem_rx" alt="" coords="200,5,291,32"/>
-<area shape="rect" id="node3" href="$db/d94/sexyz_8c.html#aa6e7650a0b138854ab4eb1ec09466612" title="is_connected" alt="" coords="520,5,619,32"/>
-<area shape="rect" id="node4" href="$d3/d94/zmodem_8c.html#a37fe3e824a16f997e3f7364d3715c2e6" title="zmodem_recv_raw" alt="" coords="339,31,471,57"/>
-</map>

@@ -19,7 +19,6 @@ var main__task_8h =
     [ "LOOP_REF", "da/d98/main__task_8h.html#aa0b32dad5e61d061383d7c3c6e3d69f3", null ],
     [ "MAIN_PRIORITY", "da/d98/main__task_8h.html#a0fc58460f052686e9a3987fe7f606d17", null ],
     [ "STACK_SIZE", "da/d98/main__task_8h.html#a6423a880df59733d2d9b509c7718d3a9", null ],
-    [ "TASK_PORTID", "da/d98/main__task_8h.html#a74680d4506184e9c8aa9f24ca07ccbae", null ],
     [ "alarm_handler", "da/d98/main__task_8h.html#a7444482be7428e4eda92a878b9a1ceb8", null ],
     [ "check_NXT_buttons", "da/d98/main__task_8h.html#aba3a6efabb922210a6c2e40b3bb280a0", null ],
     [ "cpuexc_handler", "da/d98/main__task_8h.html#a20dd3677a3d7d5dc1dda75503b77c531", null ],

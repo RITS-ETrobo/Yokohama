@@ -1,7 +1,0 @@
-<map id="telnet_cmd_desc" name="telnet_cmd_desc">
-<area shape="rect" id="node2" href="$db/d94/sexyz_8c.html#a50ef2a3b592c5eaae53864305a964a6f" title="send_telnet_cmd" alt="" coords="177,5,298,32"/>
-<area shape="rect" id="node3" href="$db/d94/sexyz_8c.html#ae7b2ce04b06770528b19456d983a17a8" title="recv_byte" alt="" coords="347,31,426,57"/>
-<area shape="rect" id="node4" href="$db/d94/sexyz_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="619,31,669,57"/>
-<area shape="rect" id="node5" href="$d3/d9d/xmodem_8h.html#a0b282337ad6b143c6de5d999d09fd9c0" title="xmodem_init" alt="" coords="475,31,571,57"/>
-<area shape="rect" id="node6" href="$d3/d94/zmodem_8c.html#adc21ca4577aa1478a603950d67def4e5" title="zmodem_init" alt="" coords="475,81,571,108"/>
-</map>

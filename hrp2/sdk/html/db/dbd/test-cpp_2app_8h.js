@@ -6,7 +6,6 @@ var test_cpp_2app_8h =
     [ "MAIN_PRIORITY", "db/dbd/test-cpp_2app_8h.html#a0fc58460f052686e9a3987fe7f606d17", null ],
     [ "MID_PRIORITY", "db/dbd/test-cpp_2app_8h.html#a1557e73ce1cc3b8e9aa283a0f5a766cb", null ],
     [ "STACK_SIZE", "db/dbd/test-cpp_2app_8h.html#a6423a880df59733d2d9b509c7718d3a9", null ],
-    [ "TASK_PORTID", "db/dbd/test-cpp_2app_8h.html#a74680d4506184e9c8aa9f24ca07ccbae", null ],
     [ "balance_task", "db/dbd/test-cpp_2app_8h.html#ade1c8a49dc22597c63721de9d61e390d", null ],
     [ "gpio_irq_dispatcher", "db/dbd/test-cpp_2app_8h.html#a7af671454805e666c8e88744a2856514", null ],
     [ "idle_task", "db/dbd/test-cpp_2app_8h.html#adf1ca31adffac652fc532aaf03857119", null ],

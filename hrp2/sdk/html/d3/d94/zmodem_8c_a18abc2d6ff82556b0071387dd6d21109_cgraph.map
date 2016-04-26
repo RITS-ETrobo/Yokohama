@@ -1,7 +1,0 @@
-<map id="zmodem_send_zfin" name="zmodem_send_zfin">
-<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#af244e70a5bf210b3ba1e1ac25cc36fab" title="zmodem_send_hex_header" alt="" coords="189,81,371,108"/>
-<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#a0db7f107959a89e5824ac948ef151262" title="zmodem_send_padded_zdle" alt="" coords="419,5,605,32"/>
-<area shape="rect" id="node4" href="$d3/d94/zmodem_8c.html#a8f04da25c4786d83b800be67178b33d2" title="zmodem_send_raw" alt="" coords="654,56,789,83"/>
-<area shape="rect" id="node5" href="$d3/d94/zmodem_8c.html#a2efba4e9f71f94bebf5c58a7c3e6f49b" title="zmodem_send_hex" alt="" coords="445,107,579,133"/>
-<area shape="rect" id="node6" href="$d3/d94/zmodem_8c.html#a67e08a7cdbf37c7cac0626f951980542" title="zmodem_flush" alt="" coords="459,157,565,184"/>
-</map>

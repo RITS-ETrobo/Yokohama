@@ -1,8 +1,0 @@
-<map id="xmodem_send_file" name="xmodem_send_file">
-<area shape="rect" id="node2" href="$d0/d80/xmodem_8c.html#a02081be7708632cd26bda921f2f64392" title="xmodem_get_mode" alt="" coords="357,5,493,32"/>
-<area shape="rect" id="node3" href="$db/d94/sexyz_8c.html#aa6e7650a0b138854ab4eb1ec09466612" title="is_connected" alt="" coords="541,132,640,159"/>
-<area shape="rect" id="node4" href="$d0/d80/xmodem_8c.html#a8b0b0c49be736af2a9f5245dcd58ccf8" title="xmodem_put_block" alt="" coords="358,107,493,133"/>
-<area shape="rect" id="node5" href="$d0/d80/xmodem_8c.html#ae28a07cbea7561c11c8119cc023b859e" title="xmodem_get_ack" alt="" coords="184,157,309,184"/>
-<area shape="rect" id="node6" href="$d0/d80/xmodem_8c.html#a542c8a02e75d754df95fcade3d6fc3d1" title="xmodem_cancel" alt="" coords="367,208,484,235"/>
-<area shape="rect" id="node7" href="$d0/d80/xmodem_8c.html#aa8ec4b783b3f0cd16c54af7badffa706" title="xmodem_put_eot" alt="" coords="185,259,308,285"/>
-</map>

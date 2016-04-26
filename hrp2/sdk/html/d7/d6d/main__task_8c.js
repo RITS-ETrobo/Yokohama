@@ -5,6 +5,9 @@ var main__task_8c =
     [ "State", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8", [
       [ "INIT_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8a214c9e7fe443ca99f79a7a00b745a734", null ],
       [ "PID_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8aa1f758ee9c9bcb900a8f94c3981f32e6", null ],
+      [ "STOP_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8a53de990677d992d9cefb22394f297812", null ],
+      [ "INIT_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8a214c9e7fe443ca99f79a7a00b745a734", null ],
+      [ "PID_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8aa1f758ee9c9bcb900a8f94c3981f32e6", null ],
       [ "STOP_STATE", "d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8a53de990677d992d9cefb22394f297812", null ]
     ] ],
     [ "display_state", "d7/d6d/main__task_8c.html#a975941ac76bc5350bb98d37d142e0c17", null ],

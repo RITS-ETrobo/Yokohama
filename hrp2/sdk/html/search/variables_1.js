@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['a',['a',['../d9/d80/bin_2mod_2hwbrickbench_2_o_b_j_2app_8c.html#a4225929c58e8979a8ddd1a60030638f0',1,'a():&#160;app.c'],['../d6/d4c/hwbrickbench_2app_8c.html#a4225929c58e8979a8ddd1a60030638f0',1,'a():&#160;app.c']]],
-  ['a_5fd',['A_D',['../dc/d53/common_2lib_2libcpp-ev3_2include_2balancer__private_8h.html#aa94509c8176c09180b5820a45e3b0154',1,'A_D():&#160;balancer_param.c'],['../d1/d43/ev3way-cpp_2balancer__param_8c.html#aa94509c8176c09180b5820a45e3b0154',1,'A_D():&#160;balancer_param.c'],['../d5/d3c/sample__c4_2balancer__param_8c.html#aa94509c8176c09180b5820a45e3b0154',1,'A_D():&#160;balancer_param.c'],['../de/d6e/sample__c4_2balancer__private_8h.html#aa94509c8176c09180b5820a45e3b0154',1,'A_D():&#160;balancer_param.c']]],
-  ['a_5fr',['A_R',['../dc/d53/common_2lib_2libcpp-ev3_2include_2balancer__private_8h.html#ac338ef1033362a503aa8cebae7131a21',1,'A_R():&#160;balancer_param.c'],['../d1/d43/ev3way-cpp_2balancer__param_8c.html#ac338ef1033362a503aa8cebae7131a21',1,'A_R():&#160;balancer_param.c'],['../d5/d3c/sample__c4_2balancer__param_8c.html#ac338ef1033362a503aa8cebae7131a21',1,'A_R():&#160;balancer_param.c'],['../de/d6e/sample__c4_2balancer__private_8h.html#ac338ef1033362a503aa8cebae7131a21',1,'A_R():&#160;balancer_param.c']]],
-  ['ack_5ffile_5fpos',['ack_file_pos',['../da/d5f/structzmodem__t.html#a613d7bfd79a1644dab02a7a3abf62252',1,'zmodem_t']]],
-  ['ack_5ftimeout',['ack_timeout',['../d8/d21/structxmodem__t.html#acd5172a7b4e8bc7221ecb29bf76e9945',1,'xmodem_t']]],
-  ['allocated',['allocated',['../de/da1/structmemfile__cookie.html#a05fd815dcb8af2c86001f45e9f5a7c50',1,'memfile_cookie']]]
+  ['b',['b',['../d6/d4c/hwbrickbench_2app_8c.html#a385d1e45344dc4dbc61ecb75a17a0d50',1,'app.c']]],
+  ['balancer_5f8c',['balancer_8c',['../d5/d0b/balancer__8c_8js.html#a5c06ffda83c8ba8c313028251c0f4635',1,'balancer_8c.js']]],
+  ['balancer_5f8h',['balancer_8h',['../d9/d2b/balancer__8h_8js.html#ae3d2718c868c47ae39e775c38a3f3dec',1,'balancer_8h.js']]],
+  ['balancer_5f_5fparam_5f8c',['balancer__param_8c',['../d5/ddc/balancer____param__8c_8js.html#ac1bfafd104795c9a1224687de550645f',1,'balancer__param_8c.js']]],
+  ['balancer_5f_5fprivate_5f8h',['balancer__private_8h',['../d6/df7/balancer____private__8h_8js.html#aee8bf0bd9b86ae90fbdb0468f7708fec',1,'balancer__private_8h.js']]],
+  ['battery_5fgain',['BATTERY_GAIN',['../d7/d33/balancer__param_8c.html#ac9a83fbf484ccc187c70692c9fbfb5a9',1,'BATTERY_GAIN():&#160;balancer_param.c'],['../de/d32/balancer__private_8h.html#ac9a83fbf484ccc187c70692c9fbfb5a9',1,'BATTERY_GAIN():&#160;balancer_param.c']]],
+  ['battery_5foffset',['BATTERY_OFFSET',['../d7/d33/balancer__param_8c.html#ac9f60d8c879cc59cb6f59e66ceff980c',1,'BATTERY_OFFSET():&#160;balancer_param.c'],['../de/d32/balancer__private_8h.html#ac9f60d8c879cc59cb6f59e66ceff980c',1,'BATTERY_OFFSET():&#160;balancer_param.c']]]
 ];

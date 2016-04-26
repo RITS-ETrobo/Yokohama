@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['management_5fclobber',['management_clobber',['../da/d5f/structzmodem__t.html#a9bdc639aa0c14ac8d5bb2c8a8450fdab',1,'zmodem_t']]],
-  ['management_5fnewer',['management_newer',['../da/d5f/structzmodem__t.html#a7a6527e1abdc13538711ca12fcd7fc45',1,'zmodem_t']]],
-  ['management_5fprotect',['management_protect',['../da/d5f/structzmodem__t.html#a233a6418c4eb49f1a238c1eee266afc9',1,'zmodem_t']]],
-  ['max_5fblock_5fsize',['max_block_size',['../d8/d21/structxmodem__t.html#ac3bd10ccf604896690a9a0adebc12a2c',1,'xmodem_t::max_block_size()'],['../da/d5f/structzmodem__t.html#a7b64b3169d91636c4039a0e57a5d70a7',1,'zmodem_t::max_block_size()']]],
-  ['max_5ferrors',['max_errors',['../d8/d21/structxmodem__t.html#aca4b54b882e7979f7544e441c03e0198',1,'xmodem_t::max_errors()'],['../da/d5f/structzmodem__t.html#aa317f2243b5da6cfaecf7c6e30a77c2f',1,'zmodem_t::max_errors()']]],
-  ['max_5ffile_5fsize',['max_file_size',['../da/d5f/structzmodem__t.html#a7d0e10907e300b54040169413caf2439',1,'zmodem_t::max_file_size()'],['../db/d94/sexyz_8c.html#a4a6aee9597a03760af53935603128c00',1,'max_file_size():&#160;sexyz.c']]],
-  ['mode',['mode',['../d8/d21/structxmodem__t.html#a9553f470595b91e2c56bd802ab624862',1,'xmodem_t::mode()'],['../db/d94/sexyz_8c.html#abfe7b6cfb1b5022f0b7e1a39c322cd8d',1,'mode():&#160;sexyz.c']]],
-  ['msg',['msg',['../db/d57/struct_cli_menu.html#a46992f4507b40c95ef6f192d2d20dfa9',1,'CliMenu']]]
+  ['obj2',['obj2',['../d7/d09/test-cpp_2app_8cpp.html#ae833b632ab8988c1bd4d2171da47fd2e',1,'app.cpp']]],
+  ['old_5f2main_5f_5ftask_5f8c',['old_2main__task_8c',['../de/d6f/old__2main____task__8c_8js.html#a3e9ec78e614572845aeb971ac2c76e03',1,'old_2main__task_8c.js']]],
+  ['old_5f2main_5f_5ftask_5f8h',['old_2main__task_8h',['../d7/df2/old__2main____task__8h_8js.html#a64ea64f8df6a3ceaa27c1f7a31dbe104',1,'old_2main__task_8h.js']]],
+  ['old_5f2nxtrike_5f8c',['old_2nxtrike_8c',['../d6/ddd/old__2nxtrike__8c_8js.html#a1bbac1200ccc3ffe48821a016c12963b',1,'old_2nxtrike_8c.js']]],
+  ['old_5f2nxtrike_5f8h',['old_2nxtrike_8h',['../d4/dec/old__2nxtrike__8h_8js.html#a63adf6a44ba4552d534a397af31a0db7',1,'old_2nxtrike_8h.js']]]
 ];

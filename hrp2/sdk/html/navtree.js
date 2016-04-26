@@ -1,13 +1,9 @@
 var NAVTREE =
 [
   [ "ev3RT Workspace", "index.html", [
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ]
-    ] ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
@@ -18,12 +14,12 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", "globals_vars" ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -32,42 +28,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/d9f/helloev3_2_o_b_j_2cfg1__out_8c.html#a1f9a9dc717598bbe06f17e17c4704dd0",
-"d1/d9f/helloev3_2_o_b_j_2cfg1__out_8c.html#a6548915d3f90035127fab2d6edbb2fa5",
-"d1/d9f/helloev3_2_o_b_j_2cfg1__out_8c.html#aa5cee373ec27d0cb148595b2f1ffd128",
-"d1/d9f/helloev3_2_o_b_j_2cfg1__out_8c.html#adbdd9f51525cbcb61f42297a8c871cd8",
-"d3/d94/zmodem_8c.html#a2ad077e9b2fa75553da2b097dea64e7d",
-"d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a00af1ee79a872a85eb94073f799c53af",
-"d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a412139ebea881431108312c27aadc9ab",
-"d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a8469d5e428ab4b97e5aba8fca3141b88",
-"d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#ac30b043729a5c5d188c387d218aaac4d",
-"d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#af6f28ffe59c60b12887f101adecf092c",
-"d7/d2e/telnet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7abfbe3254572ed1bbfa24ddda61f60d9d",
-"d7/d35/linetrace_2_o_b_j_2cfg1__out_8c.html#a3d631702512097475adbd755e7019411",
-"d7/d35/linetrace_2_o_b_j_2cfg1__out_8c.html#a839e53847496dd7e8fdfada6df79a585",
-"d7/d35/linetrace_2_o_b_j_2cfg1__out_8c.html#ac31853d2e5d0e4628810a5a209f53dfa",
-"d7/d35/linetrace_2_o_b_j_2cfg1__out_8c.html#af7e8e12b6c613e62bc48a771649c1b1b",
-"d7/d55/test-cyc_2_o_b_j_2cfg1__out_8c.html#a29682df5159229747e876858a9671213",
-"d7/d55/test-cyc_2_o_b_j_2cfg1__out_8c.html#a6b163f2cb214ee89f426151e225b68ab",
-"d7/d55/test-cyc_2_o_b_j_2cfg1__out_8c.html#aac10bd450c0b85fab596594a2fca1757",
-"d7/d55/test-cyc_2_o_b_j_2cfg1__out_8c.html#ae13b8067333c37b5c9f809cf6820b44b",
-"d7/dc0/gen__defs_8h.html#a9a8e700d56e7d858108b755ad3edb52e",
-"d9/dd5/helloev3_2app_8h.html#af59c49cebdc1b3b091659518f2cdf44b",
-"da/d31/hwbrickbench_2_o_b_j_2cfg1__out_8c.html#a3ebba0831d6b75163064b59b7bffac2d",
-"da/d31/hwbrickbench_2_o_b_j_2cfg1__out_8c.html#a83fcc8bf6c22ed8580ec2eef4cfd5af2",
-"da/d31/hwbrickbench_2_o_b_j_2cfg1__out_8c.html#ac3fd20e8b9e3271637b6e702b533850b",
-"da/d31/hwbrickbench_2_o_b_j_2cfg1__out_8c.html#af830f284536c4ecc36494e4496bd59f5",
-"db/d94/sexyz_8c.html#aec2333c8cba2f5b8b41278e6743071c3",
-"dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html#a03592bc8468e3f9bbf9bfafcaa0e2690",
-"dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html#a46e70491ee00f9ce61a07a744f488860",
-"dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html#a870e33568eca9d9008696e4af4f919ec",
-"dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html#ac7149ba782ab91a42cb535037a2eb74f",
-"dd/d9a/ev3way-cpp_2_o_b_j_2cfg1__out_8c.html#afc843e62488619cefbb0c7c09ec0a248",
-"de/d8d/test-cpp_2_o_b_j_2cfg1__out_8c.html#a25f9d9c2d143e74716e01cf436ca08c3",
-"de/d8d/test-cpp_2_o_b_j_2cfg1__out_8c.html#a69a63025b34a5522f2f2fc6fb586e6e8",
-"de/d8d/test-cpp_2_o_b_j_2cfg1__out_8c.html#aae1e6e4541505232ee34a1e5a5135fb1",
-"de/d8d/test-cpp_2_o_b_j_2cfg1__out_8c.html#ae3484be78bb2999c46fbda57521f7447",
-"globals_func_b.html"
+"d6/df6/nxtrike_8c.html#a823bdf2fd2216e54d5fa54843fb6c3b3",
+"dd/d1b/nxtrike_8h.html#a56111be1e8dfc8b1cac86b7e67fc4b44"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

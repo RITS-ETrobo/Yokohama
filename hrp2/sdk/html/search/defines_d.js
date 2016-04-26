@@ -1,22 +1,9 @@
 var searchData=
 [
-  ['nak',['NAK',['../db/dc9/zmodem_8h.html#a7ff3e502ffb5d509612c6c6741de45cc',1,'zmodem.h']]],
-  ['noinp',['NOINP',['../d7/d55/sexyz_8h.html#ac90609aa5b6133759d5f64dfa8dbcb34',1,'sexyz.h']]],
-  ['not_5fxmodem',['NOT_XMODEM',['../d7/d55/sexyz_8h.html#a0c61045796c5988598e67d436ede80cc',1,'sexyz.h']]],
-  ['not_5fymodem',['NOT_YMODEM',['../d7/d55/sexyz_8h.html#a2d9078b103aca2f3ca6e2e3c6e48d6c3',1,'sexyz.h']]],
-  ['num_5fport_5fm',['NUM_PORT_M',['../d3/d42/_port_8h.html#ad870f87bcd263c596e77c3d0269cdcf4',1,'Port.h']]],
-  ['num_5fport_5fs',['NUM_PORT_S',['../d3/d42/_port_8h.html#ae00f304b02f73a4d31c5bd8a275e74a8',1,'Port.h']]],
-  ['nxtrike_5fdrive_5fhandler_5ft',['NXTRIKE_DRIVE_HANDLER_T',['../dd/d1b/nxtrike_8h.html#ad973f6096f1a0e857951cad0c9bda18c',1,'nxtrike.h']]],
-  ['nxtrike_5fdrive_5fhdr_5ftask',['NXTRIKE_DRIVE_HDR_TASK',['../d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a30694ce6b6f800a1f80e91765853bde2',1,'NXTRIKE_DRIVE_HDR_TASK():&#160;cfg1_out.c'],['../d2/d26/trike_2_o_b_j_2module__cfg_8h.html#a30694ce6b6f800a1f80e91765853bde2',1,'NXTRIKE_DRIVE_HDR_TASK():&#160;module_cfg.h']]],
-  ['nxtrike_5fdrive_5ftask',['NXTRIKE_DRIVE_TASK',['../d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a1cf02eb591f3785bbf1783a1b29e77ef',1,'NXTRIKE_DRIVE_TASK():&#160;cfg1_out.c'],['../d2/d26/trike_2_o_b_j_2module__cfg_8h.html#a1cf02eb591f3785bbf1783a1b29e77ef',1,'NXTRIKE_DRIVE_TASK():&#160;module_cfg.h']]],
-  ['nxtrike_5fdrive_5ftask_5fpriority',['NXTRIKE_DRIVE_TASK_PRIORITY',['../dd/d1b/nxtrike_8h.html#a7ff2c9ff636dd4b95cfaeb1c7470b7e3',1,'nxtrike.h']]],
-  ['nxtrike_5fdrive_5ftask_5fstack_5fsize',['NXTRIKE_DRIVE_TASK_STACK_SIZE',['../dd/d1b/nxtrike_8h.html#ab25341d9931f8af0887d47f2ac6e07a6',1,'nxtrike.h']]],
-  ['nxtrike_5ferror',['NXTRIKE_ERROR',['../dd/d1b/nxtrike_8h.html#abb3149f486e505e196ef173b299cb693',1,'nxtrike.h']]],
-  ['nxtrike_5fok',['NXTRIKE_OK',['../dd/d1b/nxtrike_8h.html#a581d984d47b7fefdb4fc9f493ec0fb3c',1,'nxtrike.h']]],
-  ['nxtrike_5fspeed_5fmax',['NXTRIKE_SPEED_MAX',['../d6/df6/nxtrike_8c.html#a6719d7cb7c92ac8a6e83a310189fba48',1,'nxtrike.c']]],
-  ['nxtrike_5fsteer_5fdegree_5fmax',['NXTRIKE_STEER_DEGREE_MAX',['../d6/df6/nxtrike_8c.html#a5abeb99aff47ca29bb46646322a18a5a',1,'nxtrike.c']]],
-  ['nxtrike_5fsteer_5fspeed_5fmax',['NXTRIKE_STEER_SPEED_MAX',['../d6/df6/nxtrike_8c.html#aee84af8be69de0f4edfd84ff613eeabc',1,'nxtrike.c']]],
-  ['nxtrike_5fsteer_5fspeed_5fmin',['NXTRIKE_STEER_SPEED_MIN',['../d6/df6/nxtrike_8c.html#a1b8c8d5956e15216aa8cdd0fb66442bf',1,'nxtrike.c']]],
-  ['nxtrike_5ftouch_5fsensor_5fhandler_5ft',['NXTRIKE_TOUCH_SENSOR_HANDLER_T',['../dd/d1b/nxtrike_8h.html#a27266ef806ddc1d43a99694e18a4b9a1',1,'nxtrike.h']]],
-  ['nxtrike_5ftouch_5fsensor_5fhdr_5ftask',['NXTRIKE_TOUCH_SENSOR_HDR_TASK',['../d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html#a23e7d55b6c8d9d3844173601d688de81',1,'NXTRIKE_TOUCH_SENSOR_HDR_TASK():&#160;cfg1_out.c'],['../d2/d26/trike_2_o_b_j_2module__cfg_8h.html#a23e7d55b6c8d9d3844173601d688de81',1,'NXTRIKE_TOUCH_SENSOR_HDR_TASK():&#160;module_cfg.h']]]
+  ['p_5fgain',['P_GAIN',['../d9/d51/ev3way-cpp_2app_8cpp.html#a50efaeb0380deed26b8c63b0f4cbfabe',1,'app.cpp']]],
+  ['pi',['PI',['../d6/d4c/hwbrickbench_2app_8c.html#a598a3330b3c21701223ee0ca14316eca',1,'app.c']]],
+  ['pid_5ftarget',['PID_TARGET',['../d7/d6d/main__task_8c.html#a560aca3b1a889aafc44544c48aa89e7f',1,'PID_TARGET():&#160;main_task.c'],['../dd/dd4/old_2main__task_8c.html#a560aca3b1a889aafc44544c48aa89e7f',1,'PID_TARGET():&#160;main_task.c']]],
+  ['power_5foff',['POWER_OFF',['../dd/d1b/nxtrike_8h.html#ae8131694b06a62416e7b799b129de381',1,'POWER_OFF():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#ae8131694b06a62416e7b799b129de381',1,'POWER_OFF():&#160;nxtrike.h']]],
+  ['power_5fon',['POWER_ON',['../dd/d1b/nxtrike_8h.html#a14cdc4396ca692461b59fb937003115b',1,'POWER_ON():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#a14cdc4396ca692461b59fb937003115b',1,'POWER_ON():&#160;nxtrike.h']]],
+  ['pwm_5fabs_5fmax',['PWM_ABS_MAX',['../d9/d51/ev3way-cpp_2app_8cpp.html#a6babf6dbdc97636ceda1532ee33fda2d',1,'app.cpp']]]
 ];

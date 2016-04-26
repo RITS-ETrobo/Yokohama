@@ -1,7 +1,4 @@
-<map id="hrp2/workspace/trike/nxtrike.h" name="hrp2/workspace/trike/nxtrike.h">
-<area shape="rect" id="node2" href="$d5/dbe/trike_2_o_b_j_2cfg1__out_8c.html" title="hrp2/workspace/bin\l/mod/trike/OBJ/cfg1_out.c" alt="" coords="5,97,179,138"/>
-<area shape="rect" id="node3" href="$db/d19/trike_2_o_b_j_2ev3api__cfg_8c.html" title="hrp2/workspace/bin\l/mod/trike/OBJ/ev3api_cfg.c" alt="" coords="203,97,391,138"/>
-<area shape="rect" id="node4" href="$d8/de3/trike_2_o_b_j_2module__cfg_8c.html" title="hrp2/workspace/bin\l/mod/trike/OBJ/module_cfg.c" alt="" coords="416,97,608,138"/>
-<area shape="rect" id="node5" href="$d7/d6d/main__task_8c.html" title="hrp2/workspace/trike\l/main_task.c" alt="" coords="633,97,775,138"/>
-<area shape="rect" id="node6" href="$d6/df6/nxtrike_8c.html" title="hrp2/workspace/trike\l/nxtrike.c" alt="" coords="799,97,941,138"/>
+<map id="hrp2/sdk/workspace/trike/nxtrike.h" name="hrp2/sdk/workspace/trike/nxtrike.h">
+<area shape="rect" id="node2" href="$d7/d6d/main__task_8c.html" title="hrp2/sdk/workspace\l/trike/main_task.c" alt="" coords="5,97,144,138"/>
+<area shape="rect" id="node3" href="$d6/df6/nxtrike_8c.html" title="hrp2/sdk/workspace\l/trike/nxtrike.c" alt="" coords="168,97,307,138"/>
 </map>
