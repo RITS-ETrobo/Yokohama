@@ -6,14 +6,11 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-echo "Entered argument is $1."
 if [ "$1" == "app" ]; then
     buildOption="app"
 else
-    buildOption="mod"
+    buildOption="img"
 fi
-
-echo "buildOption is ${buildOption}"
 
 set currentPath = pwd
 WORKSPACE_PATH=hrp2/sdk/workspace
@@ -21,15 +18,14 @@ SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
 
 ${SCRIPT_PATH} ev3way-cpp ${buildOption}
-${SCRIPT_PATH} gyrobody ${buildOption}
+${SCRIPT_PATH} gyroboy ${buildOption}
 ${SCRIPT_PATH} helloev3 ${buildOption}
 ${SCRIPT_PATH} hwbrickbench ${buildOption}
 ${SCRIPT_PATH} linetrace ${buildOption}
-${SCRIPT_PATH} loader ${buildOption}
-${SCRIPT_PATH} sample_c4 ${buildOption}
 ${SCRIPT_PATH} test-cpp ${buildOption}
 ${SCRIPT_PATH} test-cyc ${buildOption}
 ${SCRIPT_PATH} trike ${buildOption}
+${SCRIPT_PATH} "trike-old" ${buildOption}
 
 cd $currentPath
 exit 0
