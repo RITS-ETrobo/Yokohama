@@ -14,21 +14,15 @@ OBJ
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
 
 # Executables
-*.exe
 *.out
-*.app
 hrp2/cfg/cfg/cfg
-hrp2/workspace/app
+hrp2/workspace/
+
 hrp2/workspace/bin
 
 # for emacs:
@@ -70,9 +64,6 @@ browse.VC.db
 
 # for Visual Studio Code
 Code
-
-# - 0.7.x
-.settings
 
 # 0.8.x -
 .vscode
