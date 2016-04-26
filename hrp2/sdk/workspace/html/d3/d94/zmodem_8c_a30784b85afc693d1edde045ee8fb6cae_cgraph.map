@@ -1,8 +1,0 @@
-<map id="zmodem_send_data_subpkt" name="zmodem_send_data_subpkt">
-<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a2f6daf10d7112cc0acd931d568dee988" title="zmodem_send_data32" alt="" coords="241,36,394,63"/>
-<area shape="rect" id="node5" href="$d3/d94/zmodem_8c.html#a8f04da25c4786d83b800be67178b33d2" title="zmodem_send_raw" alt="" coords="766,87,901,114"/>
-<area shape="rect" id="node6" href="$d3/d94/zmodem_8c.html#a7dd778bb5ce6de8e03ad80497c93af0b" title="zmodem_send_data16" alt="" coords="241,87,394,114"/>
-<area shape="rect" id="node7" href="$d3/d94/zmodem_8c.html#a67e08a7cdbf37c7cac0626f951980542" title="zmodem_flush" alt="" coords="264,138,371,164"/>
-<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#a47269650cd868a549db8a7e19745f64a" title="zmodem_tx" alt="" coords="443,87,533,114"/>
-<area shape="rect" id="node4" href="$d3/d94/zmodem_8c.html#a2d7fa61ce659c8c107cf42428e0f3c5d" title="zmodem_send_esc" alt="" coords="582,138,717,164"/>
-</map>
