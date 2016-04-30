@@ -18,9 +18,11 @@
 
 # 関連項目
 ## [Issues](../issues)
-* 親 : (本Issueの親Issueを列挙する)
-* 前 : (本Issueを実施する前におこなうべきIssueを列挙する)
-* 後 : (本Issueの後におこなうべきIssueを列挙する)
+* 親   : (本Issueの親Issueを列挙する)
+* 子   : (本Issueの子Issueを列挙する)
+* 前   : (本Issueを実施する前におこなうべきIssueを列挙する)
+* 後   : (本Issueの後におこなうべきIssueを列挙する)
+* 関連 : (本Issueの上記以外の関連Issueを列挙する)
 
 ## 資料
 (本Issueを実施するに当たり、必要な情報を列挙する)
