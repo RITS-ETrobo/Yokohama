@@ -1,11 +1,11 @@
 var searchData=
 [
   ['t',['t',['../d6/d4c/hwbrickbench_2app_8c.html#a55000c9c7e77ffddf57b048aa76b50bf',1,'app.c']]],
-  ['tail_5fangle_5fdrive',['TAIL_ANGLE_DRIVE',['../d9/d51/ev3way-cpp_2app_8cpp.html#a94c0df55596dd3c4eba1acf4d770fb40',1,'app.cpp']]],
-  ['tail_5fangle_5fstand_5fup',['TAIL_ANGLE_STAND_UP',['../d9/d51/ev3way-cpp_2app_8cpp.html#a18f2a31468d31ace5887ab28c52ce3d7',1,'app.cpp']]],
+  ['tail_5fangle_5fdrive',['TAIL_ANGLE_DRIVE',['../d9/d51/ev3way-cpp_2app_8cpp.html#a94c0df55596dd3c4eba1acf4d770fb40',1,'TAIL_ANGLE_DRIVE():&#160;app.cpp'],['../dd/d96/sample__c4_2app_8c.html#a94c0df55596dd3c4eba1acf4d770fb40',1,'TAIL_ANGLE_DRIVE():&#160;app.c']]],
+  ['tail_5fangle_5fstand_5fup',['TAIL_ANGLE_STAND_UP',['../d9/d51/ev3way-cpp_2app_8cpp.html#a18f2a31468d31ace5887ab28c52ce3d7',1,'TAIL_ANGLE_STAND_UP():&#160;app.cpp'],['../dd/d96/sample__c4_2app_8c.html#a18f2a31468d31ace5887ab28c52ce3d7',1,'TAIL_ANGLE_STAND_UP():&#160;app.c']]],
   ['tailmotor',['tailMotor',['../d9/d51/ev3way-cpp_2app_8cpp.html#aa2370366e60cc1eb49e9e41d55979c65',1,'app.cpp']]],
   ['task',['task',['../df/dbb/gyroboy_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../d6/d6e/hwbrickbench_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../d6/d97/linetrace_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../db/dbd/test-cpp_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../d1/df4/test-cyc_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../d4/de5/trike_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../da/d98/main__task_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;main_task.h'],['../d0/d1e/trike-old_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;app.h'],['../df/d17/old_2main__task_8h.html#aac40c9754da64fb47691ccc068b0ec7a',1,'task(intptr_t exinf):&#160;main_task.h']]],
-  ['task_5fportid',['TASK_PORTID',['../d4/d27/ev3way-cpp_2app_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;app.h'],['../df/d17/old_2main__task_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;main_task.h']]],
+  ['task_5fportid',['TASK_PORTID',['../d4/d27/ev3way-cpp_2app_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;app.h'],['../da/d72/sample__c4_2app_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;app.h'],['../df/d17/old_2main__task_8h.html#a74680d4506184e9c8aa9f24ca07ccbae',1,'TASK_PORTID():&#160;main_task.h']]],
   ['test_5fev3_5fcychdr',['test_ev3_cychdr',['../d7/d6f/test-cyc_2app_8c.html#a8ffff260fd014932fc086ec79299e045',1,'test_ev3_cychdr(intptr_t idx):&#160;app.c'],['../d1/df4/test-cyc_2app_8h.html#a07f7a4d3e385c1d4bcff13acba5ae092',1,'test_ev3_cychdr(intptr_t exinf):&#160;app.c']]],
   ['test_5ffloat_5fmath',['test_float_math',['../d6/d4c/hwbrickbench_2app_8c.html#a71e9fc61ce2941d8b24f1e6d22bd2e28',1,'app.c']]],
   ['test_5fgraphics',['test_graphics',['../d6/d4c/hwbrickbench_2app_8c.html#a11de865969c6b342fde2cbbab13ec2c8',1,'app.c']]],
@@ -27,9 +27,5 @@ var searchData=
   ['touch_5fon',['TOUCH_ON',['../dd/d1b/nxtrike_8h.html#a8bd0706c4c687f912c8f3b835147e625',1,'TOUCH_ON():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#a8bd0706c4c687f912c8f3b835147e625',1,'TOUCH_ON():&#160;nxtrike.h']]],
   ['touch_5fsensor',['touch_sensor',['../dd/d1b/nxtrike_8h.html#a478d8e66dfc57398cf8fe62106990364',1,'touch_sensor():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#a478d8e66dfc57398cf8fe62106990364',1,'touch_sensor():&#160;nxtrike.h'],['../d0/d2a/linetrace_2app_8c.html#a4d06df0d7966a359417f6224ee5663fa',1,'touch_sensor():&#160;app.c']]],
   ['touchsensor',['touchSensor',['../d9/d51/ev3way-cpp_2app_8cpp.html#a92ad04f141e1c96162dbaaafa408e12e',1,'app.cpp']]],
-  ['trike_2dold_5f2app_5f8c_2ejs',['trike-old_2app_8c.js',['../d8/df6/trike-old__2app__8c_8js.html',1,'']]],
-  ['trike_2dold_5f2app_5f8h_2ejs',['trike-old_2app_8h.js',['../d4/dfc/trike-old__2app__8h_8js.html',1,'']]],
-  ['trike_5fold_5f2app_5f8c',['trike_old_2app_8c',['../d8/df6/trike-old__2app__8c_8js.html#ad8262147809a2976560000f7d423e36d',1,'trike-old_2app_8c.js']]],
-  ['trike_5fold_5f2app_5f8h',['trike_old_2app_8h',['../d4/dfc/trike-old__2app__8h_8js.html#ac40cf309a453749b0ff44cee376d28a6',1,'trike-old_2app_8h.js']]],
   ['true',['TRUE',['../dd/d1b/nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;nxtrike.h'],['../d5/dc3/old_2nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'TRUE():&#160;nxtrike.h']]]
 ];

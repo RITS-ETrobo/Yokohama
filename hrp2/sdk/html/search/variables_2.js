@@ -1,7 +1,6 @@
 var searchData=
 [
   ['c',['c',['../d6/d4c/hwbrickbench_2app_8c.html#ab7ba62c18a8d39e23d8bfa8884510098',1,'app.c']]],
-  ['cli_5f_5fmain_5f8c',['cli__main_8c',['../db/d29/cli____main__8c_8js.html#a29a3b94b5d2c90da286795375f5577c7',1,'cli__main_8c.js']]],
   ['climenu_5fmain',['climenu_main',['../d9/dd5/helloev3_2app_8h.html#a964ea445db9b825834061f406d96da1e',1,'climenu_main():&#160;cli_main.c'],['../dd/d4a/cli__main_8c.html#a964ea445db9b825834061f406d96da1e',1,'climenu_main():&#160;cli_main.c']]],
   ['clock',['clock',['../d9/d51/ev3way-cpp_2app_8cpp.html#a0dd222dfa33d8eb027b52db6f9cd6c88',1,'app.cpp']]],
   ['color_5fsensor',['color_sensor',['../d0/d2a/linetrace_2app_8c.html#adf9b48d82b2e3944898fb27fded96662',1,'app.c']]],

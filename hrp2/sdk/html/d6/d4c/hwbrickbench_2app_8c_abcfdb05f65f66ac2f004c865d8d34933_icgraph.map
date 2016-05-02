@@ -1,0 +1,6 @@
+<map id="LcdClearDisplay" name="LcdClearDisplay">
+<area shape="rect" id="node2" href="$d6/d4c/hwbrickbench_2app_8c.html#a020fc6b7144981a1023142b315122209" title="test_TextOut" alt="" coords="175,5,273,32"/>
+<area shape="rect" id="node3" href="$d6/d4c/hwbrickbench_2app_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="323,56,373,83"/>
+<area shape="rect" id="node5" href="$d6/d4c/hwbrickbench_2app_8c.html#a11de865969c6b342fde2cbbab13ec2c8" title="test_graphics" alt="" coords="174,107,274,133"/>
+<area shape="rect" id="node4" href="$d6/d4c/hwbrickbench_2app_8c.html#a4754344fc3fec0a802660bb5dcdefad9" title="main_task" alt="" coords="421,56,504,83"/>
+</map>
