@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    echo "Enter branch name" 1>&2
+    exit 1
+fi
+
+./scripts/remove_local_branch.sh $1
+./scripts/remove_remote_branch.sh $1
+
+exit 0
