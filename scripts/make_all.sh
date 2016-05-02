@@ -16,18 +16,20 @@ fi
 echo "buildOption is ${buildOption}"
 
 set currentPath = pwd
-cd hrp2/workspace
+WORKSPACE_PATH=hrp2/workspace
+SCRIPT_PATH=../../scripts/make_project.sh
+cd ${WORKSPACE_PATH}
 
-../../scripts/make_project.sh ev3way-cpp ${buildOption}
-../../scripts/make_project.sh gyrobody ${buildOption}
-../../scripts/make_project.sh helloev3 ${buildOption}
-../../scripts/make_project.sh hwbrickbench ${buildOption}
-../../scripts/make_project.sh linetrace ${buildOption}
-../../scripts/make_project.sh loader ${buildOption}
-../../scripts/make_project.sh sample_c4 ${buildOption}
-../../scripts/make_project.sh test-cpp ${buildOption}
-../../scripts/make_project.sh test-cyc ${buildOption}
-../../scripts/make_project.sh trike ${buildOption}
+${SCRIPT_PATH} ev3way-cpp ${buildOption}
+${SCRIPT_PATH} gyrobody ${buildOption}
+${SCRIPT_PATH} helloev3 ${buildOption}
+${SCRIPT_PATH} hwbrickbench ${buildOption}
+${SCRIPT_PATH} linetrace ${buildOption}
+${SCRIPT_PATH} loader ${buildOption}
+${SCRIPT_PATH} sample_c4 ${buildOption}
+${SCRIPT_PATH} test-cpp ${buildOption}
+${SCRIPT_PATH} test-cyc ${buildOption}
+${SCRIPT_PATH} trike ${buildOption}
 
 cd $currentPath
 exit 0
