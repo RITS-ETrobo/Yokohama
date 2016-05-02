@@ -6,9 +6,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # update branch to up-to-date.
-git checkout -b $1 origin/$1
-git checkout $1
-git pull
+./scripts/renew_branch.sh $1
 
 if [ $# -ne 2 ]; then
     exit 0
@@ -16,4 +14,5 @@ fi
 
 git merge $2
 git push origin $1:$1
+
 exit 0
