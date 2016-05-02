@@ -20,6 +20,7 @@ cd ${WORKSPACE_PATH}
 ${SCRIPT_PATH} ev3way-cpp ${buildOption}
 ${SCRIPT_PATH} gyroboy ${buildOption}
 ${SCRIPT_PATH} helloev3 ${buildOption}
+${SCRIPT_PATH} hackEV ${buildOption}
 ${SCRIPT_PATH} hwbrickbench ${buildOption}
 ${SCRIPT_PATH} linetrace ${buildOption}
 ${SCRIPT_PATH} sample_c4 ${buildOption}
