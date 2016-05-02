@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['image_5ft',['image_t',['../structimage__t.html',1,'']]],
-  ['is_5fdir',['is_dir',['../structfileinfo__t.html#afdc3e9e0bf6660afb965e323b7a31747',1,'fileinfo_t']]],
-  ['is_5fhidden',['is_hidden',['../structfileinfo__t.html#a5822d4f2e6eb806f147423fc1a56ae6f',1,'fileinfo_t']]],
-  ['is_5freadonly',['is_readonly',['../structfileinfo__t.html#a820dd1e6bad249e10bb3d237a40d86cd',1,'fileinfo_t']]]
+  ['ht_5fnxt_5faccel_5fsensor',['HT_NXT_ACCEL_SENSOR',['../group__ev3sensor.html#gga089f166159fb19f10d81c65c1d8793a2a63ab9a8a461c070a5947da1df1e2d59e',1,'ev3api_sensor.h']]],
+  ['ht_5fnxt_5faccel_5fsensor_5fmeasure',['ht_nxt_accel_sensor_measure',['../group__ev3sensor.html#gab7a4ea002540a5a757fd6916fa200302',1,'ht_nxt_accel_sensor_measure(sensor_port_t port, int16_t axes[3]):&#160;ev3api_sensor.c'],['../group__ev3sensor.html#gab7a4ea002540a5a757fd6916fa200302',1,'ht_nxt_accel_sensor_measure(sensor_port_t port, int16_t axes[3]):&#160;ev3api_sensor.c']]]
 ];

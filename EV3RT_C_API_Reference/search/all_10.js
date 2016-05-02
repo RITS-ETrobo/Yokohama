@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['拡張rtos機能',['拡張RTOS機能',['../group__ev3api-rtos.html',1,'']]]
+  ['各種センサ',['各種センサ',['../group__ev3sensor.html',1,'']]]
 ];

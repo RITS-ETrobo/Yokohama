@@ -7,5 +7,6 @@ var hierarchy =
       [ "GyroSensor", "classev3api_1_1_gyro_sensor.html", null ],
       [ "SonarSensor", "classev3api_1_1_sonar_sensor.html", null ],
       [ "TouchSensor", "classev3api_1_1_touch_sensor.html", null ]
-    ] ]
+    ] ],
+    [ "Steering", "classev3api_1_1_steering.html", null ]
 ];

@@ -1,6 +1,0 @@
-<map id="zmodem_recv_hex" name="zmodem_recv_hex">
-<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a9e4d3fcf9bcfc77edf279d48babe9a5a" title="zmodem_recv_nibble" alt="" coords="187,5,333,32"/>
-<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#a96ac6337af5d187cb827e1d513d12553" title="zmodem_rx" alt="" coords="381,5,472,32"/>
-<area shape="rect" id="node4" href="$db/d94/sexyz_8c.html#aa6e7650a0b138854ab4eb1ec09466612" title="is_connected" alt="" coords="701,5,800,32"/>
-<area shape="rect" id="node5" href="$d3/d94/zmodem_8c.html#a37fe3e824a16f997e3f7364d3715c2e6" title="zmodem_recv_raw" alt="" coords="521,31,653,57"/>
-</map>

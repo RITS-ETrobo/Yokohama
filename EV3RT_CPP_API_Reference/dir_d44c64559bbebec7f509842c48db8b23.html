@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.7"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>EV3RT C++ API Reference: include ディレクトリリファレンス</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">EV3RT C++ API Reference
-   &#160;<span id="projectnumber">Beta 5</span>
+   &#160;<span id="projectnumber">Beta 6</span>
    </div>
    <div id="projectbrief">An RTOS-based development platform for LEGO Mindstorms EV3.</div>
   </td>
@@ -54,7 +56,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.8.7 -->
+<!-- 構築: Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'検索');
 </script>
@@ -78,7 +80,7 @@ $(document).ready(function(){initNavTree('dir_d44c64559bbebec7f509842c48db8b23.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>データ構造</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>列挙型</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>列挙値</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,12 +97,6 @@ $(document).ready(function(){initNavTree('dir_d44c64559bbebec7f509842c48db8b23.h
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 ファイル</h2></td></tr>
-<tr class="memitem:app_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>app.h</b> <a href="app_8h_source.html">[コード]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:balancer_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>balancer.h</b> <a href="balancer_8h_source.html">[コード]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:balancer__private_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>balancer_private.h</b> <a href="balancer__private_8h_source.html">[コード]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_clock_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>Clock.h</b> <a href="_clock_8h_source.html">[コード]</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_color_sensor_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>ColorSensor.h</b> <a href="_color_sensor_8h_source.html">[コード]</a></td></tr>
@@ -116,6 +112,8 @@ $(document).ready(function(){initNavTree('dir_d44c64559bbebec7f509842c48db8b23.h
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_sonar_sensor_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>SonarSensor.h</b> <a href="_sonar_sensor_8h_source.html">[コード]</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_steering_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>Steering.h</b> <a href="_steering_8h_source.html">[コード]</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_touch_sensor_8h"><td class="memItemLeft" align="right" valign="top">ファイル &#160;</td><td class="memItemRight" valign="bottom"><b>TouchSensor.h</b> <a href="_touch_sensor_8h_source.html">[コード]</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -125,9 +123,9 @@ $(document).ready(function(){initNavTree('dir_d44c64559bbebec7f509842c48db8b23.h
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>
-    <li class="footer">2015年12月04日(金) 13時50分31秒作成 - EV3RT C++ API Reference / 構成: 
+    <li class="footer">2016年03月17日(木) 08時45分29秒作成 - EV3RT C++ API Reference / 構成: 
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
   </ul>
 </div>
 </body>

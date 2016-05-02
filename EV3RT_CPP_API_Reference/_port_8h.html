@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.7"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>EV3RT C++ API Reference: include/Port.h ファイル</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">EV3RT C++ API Reference
-   &#160;<span id="projectnumber">Beta 5</span>
+   &#160;<span id="projectnumber">Beta 6</span>
    </div>
    <div id="projectbrief">An RTOS-based development platform for LEGO Mindstorms EV3.</div>
   </td>
@@ -54,7 +56,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.8.7 -->
+<!-- 構築: Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'検索');
 </script>
@@ -78,7 +80,7 @@ $(document).ready(function(){initNavTree('_port_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>データ構造</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>列挙型</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>列挙値</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,8 +121,8 @@ $(document).ready(function(){initNavTree('_port_8h.html','');});
 <br />
 &#160;&#160;<a class="el" href="_port_8h.html#a8d17f8fabb486d5815d626610983e82dad883f3fd0cfe73362b8abf3e33f518a6">PORT_4</a>
 <br />
- }</td></tr>
-<tr class="separator:a8d17f8fabb486d5815d626610983e82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ }<tr class="separator:a8d17f8fabb486d5815d626610983e82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
 <tr class="memitem:a01d16e2109729e564c90cd6d211c0938"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_port_8h.html#a01d16e2109729e564c90cd6d211c0938">ePortM</a> { <br />
 &#160;&#160;<a class="el" href="_port_8h.html#a01d16e2109729e564c90cd6d211c0938aeb6782d9dfedf3c6a78ffdb1624fa454">PORT_A</a> = 0, 
 <br />
@@ -130,8 +132,8 @@ $(document).ready(function(){initNavTree('_port_8h.html','');});
 <br />
 &#160;&#160;<a class="el" href="_port_8h.html#a01d16e2109729e564c90cd6d211c0938af7242fe75227a46a190645663f91ce69">PORT_D</a>
 <br />
- }</td></tr>
-<tr class="separator:a01d16e2109729e564c90cd6d211c0938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ }<tr class="separator:a01d16e2109729e564c90cd6d211c0938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
 <tr class="memitem:a0de7742117569a1ace9ea7cc1448e2db"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_port_8h.html#a0de7742117569a1ace9ea7cc1448e2db">ePower</a> { <br />
 &#160;&#160;<a class="el" href="_port_8h.html#a0de7742117569a1ace9ea7cc1448e2dba4a0682c6762857d83fd5d8cb36f9c94e">POWER_OFF</a> = 0, 
 <br />
@@ -139,8 +141,8 @@ $(document).ready(function(){initNavTree('_port_8h.html','');});
 <br />
 &#160;&#160;<a class="el" href="_port_8h.html#a0de7742117569a1ace9ea7cc1448e2dba87c314914b4c9bc1ada20ae5ceed9737">POWER_LOWSPEED</a> = 2
 <br />
- }</td></tr>
-<tr class="separator:a0de7742117569a1ace9ea7cc1448e2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ }<tr class="separator:a0de7742117569a1ace9ea7cc1448e2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>モータ/センサポート関連定義 </p>
@@ -256,9 +258,9 @@ $(document).ready(function(){initNavTree('_port_8h.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_port_8h.html">Port.h</a></li>
-    <li class="footer">2015年12月04日(金) 13時50分30秒作成 - EV3RT C++ API Reference / 構成: 
+    <li class="footer">2016年03月17日(木) 08時45分28秒作成 - EV3RT C++ API Reference / 構成: 
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
   </ul>
 </div>
 </body>

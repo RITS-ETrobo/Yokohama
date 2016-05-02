@@ -9,5 +9,7 @@ var classev3api_1_1_motor =
     [ "reset", "classev3api_1_1_motor.html#a3aea9deb2a0bfea9ff05a898f4822e31", null ],
     [ "setBrake", "classev3api_1_1_motor.html#ac05161f4f0a54f9011e96afc0b36f1e1", null ],
     [ "setCount", "classev3api_1_1_motor.html#af317f15fc5efec2c0bbe275efba894d5", null ],
-    [ "setPWM", "classev3api_1_1_motor.html#a281e8e0218f0d852eef90208a778efb9", null ]
+    [ "setPWM", "classev3api_1_1_motor.html#a281e8e0218f0d852eef90208a778efb9", null ],
+    [ "stop", "classev3api_1_1_motor.html#a8c528baf37154d347366083f0f816846", null ],
+    [ "Steering", "classev3api_1_1_motor.html#a91e39e597cbab2759d4dba76655e7ba1", null ]
 ];

@@ -1,5 +1,0 @@
-<map id="send_telnet_cmd" name="send_telnet_cmd">
-<area shape="rect" id="node2" href="$d6/d8c/telnet_8c.html#a437f8cfdbdfffa6dc3020dbc6f924007" title="telnet_cmd_desc" alt="" coords="177,5,298,32"/>
-<area shape="rect" id="node3" href="$d6/d8c/telnet_8c.html#a8e4203a8e0f0c6d7c7d039262c7f5e49" title="telnet_opt_desc" alt="" coords="180,56,295,83"/>
-<area shape="rect" id="node4" href="$db/d94/sexyz_8c.html#a2203b296422ec182c9ed3c4dc3bf4cb4" title="sendbuf" alt="" coords="203,107,271,133"/>
-</map>

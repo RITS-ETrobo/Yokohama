@@ -1,5 +1,0 @@
-<map id="zmodem_send_data32" name="zmodem_send_data32">
-<area shape="rect" id="node2" href="$d3/d94/zmodem_8c.html#a47269650cd868a549db8a7e19745f64a" title="zmodem_tx" alt="" coords="208,56,299,83"/>
-<area shape="rect" id="node4" href="$d3/d94/zmodem_8c.html#a8f04da25c4786d83b800be67178b33d2" title="zmodem_send_raw" alt="" coords="531,56,666,83"/>
-<area shape="rect" id="node3" href="$d3/d94/zmodem_8c.html#a2d7fa61ce659c8c107cf42428e0f3c5d" title="zmodem_send_esc" alt="" coords="347,5,482,32"/>
-</map>

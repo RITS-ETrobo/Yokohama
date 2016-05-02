@@ -1,3 +1,59 @@
+2016-03-16 Version Beta 6-2
+* Sensors
+  - Configuring analog sensor with ev3_sensor_config() will wait 2ms to ensure that sensor value is updated
+* Miscellaneous
+  - SIO_PORT_DEFAULT can be set to LCD, BT or UART in rc.conf.ini now
+  - Optimize BTstack database cache flush overhead, and this can also speed up USB eject handling
+  - PIL (Platform Interface Layer) version is upated to 5
+  - Remove some legacy code
+
+2016-03-14 Version Beta 6-1
+* Sensors
+  - Fix a bug that analog sensors won't work until port is configured as UART sensor port
+* SD card
+  - Fix a bug that causes unformatted SD card error in USB mode with some SD card >= 8 GiB
+  - Optimize performance by supporting multiple block operations
+* Bluetooth
+  - Working in USB mode is supported by caching database in memory
+  - Improve stability by handling TX interrupt more properly
+* Experimental USB support
+  - Unplugging the cable physically is no longer needed for app loader
+  - Shutdown now requires USB to be ejected for preventing filesystem corruption
+  - Optimize USB I/O performance by using data buffers
+* Development in C++
+  - Imported the newest C++ API library from 
+    https://github.com/ETrobocon/etroboEV3/tree/master/Library
+* Miscellaneous
+  - Support compilation with GCC 5.2.1 (gcc-arm-none-eabi-5_2-2015q4)
+  - Optimize application load time
+  - Print EV3RT version and Bluetooth chip information in boot messages
+  - Add Bluetooth test in HelloEV3
+  - ev3api.h includes configuration header (module_cfg.h/kernel_cfg.h) now
+
+2016-02-28 Version Beta 6
+* Sensors
+  - Support RGB-RAW mode of EV3 color sensor
+  - Support I2C sensors
+	- Add API for HiTechnic NXT Acceleration Sensor
+	- Add API for NXT Temperature Sensor (9749)
+* Application Loader
+  - CRE_DTQ/CRE_PDQ/CRE_MTX are supported in dynamic loading mode
+* Bluetooth
+  - Support chip CC2560A used by recent EV3 models
+* Experimental USB support
+  - EV3 brick can act as SD card reader by connecting the PC port (mini USB)
+  - Application will be terminated if USB is connected
+  - Note 1: Bluetooth may not work when USB is connected
+  - Note 2: Unplugging the USB cable without ejecting the SD card may prevent
+    USB function from working until EV3 is restarted. (especially in OS X)
+* Miscellaneous
+  - Boot much faster by optimizing initialize_sections()
+  - Source code in GitHub is used from this release, some changes including:
+    - workspace is located in 'hrp2/sdk/workspace' now
+	- 'make app=<app_dir_name>' is used to build app module for dynamic loading mode now
+	- 'make img=<app_dir_name>' is used to build uImage for standalone mode now
+  - Updated NGKI specification to release 1.7.1 from release 1.7.0.
+
 2015-12-04 Version Beta 5-2
 * Application Loader
   - Fixed a bug that flags and semaphores can't be accessed (E_OACV) in dynamic loading mode.

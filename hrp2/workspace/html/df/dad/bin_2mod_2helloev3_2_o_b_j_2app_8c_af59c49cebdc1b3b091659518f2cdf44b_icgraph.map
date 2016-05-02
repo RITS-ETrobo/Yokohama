@@ -1,6 +1,0 @@
-<map id="show_cli_menu" name="show_cli_menu">
-<area shape="rect" id="node2" href="$df/dad/bin_2mod_2helloev3_2_o_b_j_2app_8c.html#a4754344fc3fec0a802660bb5dcdefad9" title="main_task" alt="" coords="201,5,284,32"/>
-<area shape="rect" id="node3" href="$d1/d1e/loader_2cli__main_8c.html#ad8859fe0f898d1098677ef57a2da51f6" title="application_load_menu" alt="" coords="165,56,320,83"/>
-<area shape="rect" id="node4" href="$d9/de5/cli__motor_8c.html#a3982b058ec734da42f1f0f8bfb707e56" title="connect_motor" alt="" coords="189,107,297,133"/>
-<area shape="rect" id="node5" href="$de/d68/cli__sensor_8c.html#ae80a4c94db89f766cfec0ee314f78c7f" title="connect_sensor" alt="" coords="185,157,300,184"/>
-</map>

@@ -11,7 +11,6 @@ OBJ
 
 # Compiled Dynamic libraries
 *.so
-*.dylib
 *.dll
 
 # Compiled Static libraries
@@ -21,9 +20,12 @@ OBJ
 # Executables
 *.out
 hrp2/cfg/cfg/cfg
-hrp2/workspace/
-
-hrp2/workspace/bin
+hrp2/sdk/bin
+hrp2/sdk/OBJ
+hrp2/sdk/build.log
+hrp2/sdk/app
+hrp2/sdk/hrp2
+hrp2/sdk/uImage
 
 # for emacs:
 *~
