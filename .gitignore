@@ -46,14 +46,7 @@ UnitTest
 Release_RechargeableBattery
 *.pdb
 *.mdb
-
-## for ETrobo libraries
-hrp2/cfg/toppers/itronx/libitronx.a
-hrp2/cfg/toppers/libtoppers.a
-hrp2/cfg/toppers/oil/liboil.a
-hrp2/sdk/common/library/libcpp-ev3/libcpp-ev3-loadable.a
-hrp2/sdk/common/library/libcpp-ev3/libcpp-ev3-standalone.a
-hrp2/sdk/common/library/libkernel.a
+*.a
 
 # for Xamarin Studio
 *.userprefs
