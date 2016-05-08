@@ -3,7 +3,7 @@
 if [ $# -ne 2 ]; then
     echo "Counts of entered argument is $#." 1>&2
     echo "For executing this script, need 2 arguments" 1>&2
-exit 1
+    exit 1
 fi
 
 SCRIPT_REMOVE=../../../scripts/remove_file.sh
@@ -27,4 +27,23 @@ ${SCRIPT_MOVE} hrp2 ${TARGET_PATH}
 ${SCRIPT_MOVE} uImage ${TARGET_PATH}
 ${SCRIPT_MOVE} ../OBJ ${TARGET_PATH}
 
+# Check result
+if [ "$2" == "app" ]; then
+    if [ ! -e ${TARGET_PATH}/${TARGET_PROJECT}.$2 ]; then
+        echo "    FAILED"
+        exit 2
+    fi
+else
+    if [ ! -e ${TARGET_PATH}/hrp2 ]; then
+        echo "    FAILED"
+        exit 2
+    fi
+
+    if [ ! -e ${TARGET_PATH}/uImage ]; then
+        echo "    FAILED"
+        exit 2
+    fi
+fi
+
+echo "    SUCCEEDED"
 exit 0
