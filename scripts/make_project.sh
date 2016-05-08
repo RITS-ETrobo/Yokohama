@@ -20,10 +20,11 @@ TARGET_PATH=../bin/$2/$1
 ${SCRIPT_REMOVE} ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
 
-mv build.log ${TARGET_PATH}/${TARGET_PROJECT}.$2.log
-mv app ${TARGET_PATH}/${TARGET_PROJECT}.$2
-mv hrp2 ${TARGET_PATH}
-mv uImage ${TARGET_PATH}
-mv ../OBJ ${TARGET_PATH}
+SCRIPT_MOVE=../../../scripts/move_file.sh
+${SCRIPT_MOVE} build.log ${TARGET_PATH}/${TARGET_PROJECT}.$2.log
+${SCRIPT_MOVE} app ${TARGET_PATH}/${TARGET_PROJECT}.$2
+${SCRIPT_MOVE} hrp2 ${TARGET_PATH}
+${SCRIPT_MOVE} uImage ${TARGET_PATH}
+${SCRIPT_MOVE} ../OBJ ${TARGET_PATH}
 
 exit 0
