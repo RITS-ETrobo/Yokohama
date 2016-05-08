@@ -3,20 +3,21 @@
 if [ $# -ne 2 ]; then
     echo "Counts of entered argument is $#." 1>&2
     echo "For executing this script, need 2 argument" 1>&2
-    exit 1
+exit 1
 fi
 
-TARGET_PROJECT=$1
-rm -rf ../OBJ
-rm app
-rm hrp2
-rm uImage
+SCRIPT_REMOVE=../../../scripts/remove_file.sh
+${SCRIPT_REMOVE} ../OBJ
+${SCRIPT_REMOVE} app
+${SCRIPT_REMOVE} hrp2
+${SCRIPT_REMOVE} uImage
 
+TARGET_PROJECT=$1
 echo "make $2=${TARGET_PROJECT}"
 make $2=${TARGET_PROJECT} 1>build.log 2>&1
 
 TARGET_PATH=../bin/$2/$1
-rm -rf ${TARGET_PATH}
+${SCRIPT_REMOVE} ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
 
 mv build.log ${TARGET_PATH}/${TARGET_PROJECT}.$2.log
