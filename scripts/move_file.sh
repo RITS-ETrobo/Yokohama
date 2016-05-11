@@ -6,8 +6,8 @@ if [ $# -ne 2 ]; then
     echo "Illegal parameter" 1>&2
     echo "Counts of entered argument is $#." 1>&2
     echo "For executing this script, need 2 arguments." 1>&2
-    echo "The meaning of 1st parameter is the the target file or directory." 1>&2
-    echo "The meaning of 2nd parameter is the the source path." 1>&2
+    echo "The meaning of 1st parameter is the target file or directory." 1>&2
+    echo "The meaning of 2nd parameter is the source path." 1>&2
     exit 1
 fi
 
