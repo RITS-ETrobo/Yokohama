@@ -4,6 +4,7 @@
 
 set currentPath = pwd
 
+# Create development environment
 cd hrp2/cfg
 make
 

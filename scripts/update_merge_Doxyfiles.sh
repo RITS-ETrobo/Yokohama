@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+# This script is for updating result of Doxygen and merging all branches.
+
 git fetch --prune origin
 git config --global push.default upstream
 
