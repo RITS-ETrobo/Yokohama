@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
+
+# This script is for merging all branches.
+
+# Set Git configurations
 git fetch --prune origin
 git config --global push.default upstream
 
-# Merge all branches
+# Merge all branches to `hackev/cpp/release` branch
 ./scripts/merge_branch.sh hackev/cpp/release
 ./scripts/merge_branch.sh hackev/cpp/develop hackev/cpp/release
 ./scripts/merge_branch.sh hackev/cpp/master hackev/cpp/release
