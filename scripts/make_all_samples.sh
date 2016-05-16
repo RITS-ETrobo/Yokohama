@@ -24,6 +24,10 @@ cd ${WORKSPACE_PATH}
 
 # Execute make command for all target directories
 ${SCRIPT_PATH} sample_c4 ${buildOption}
+${SCRIPT_PATH} etrobo_tr ${buildOption}
+${SCRIPT_PATH} etrobo_tr_ex1 ${buildOption}
+${SCRIPT_PATH} etrobo_tr_ex2 ${buildOption}
+${SCRIPT_PATH} etrobo_tr_ex3 ${buildOption}
 
 cd $currentPath
 exit 0
