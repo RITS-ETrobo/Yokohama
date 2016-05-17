@@ -24,7 +24,7 @@ cd ${WORKSPACE_PATH}
 
 # Execute the make command for all target directories
 ${SCRIPT_PATH} sample_c4 ${buildOption}
-${SCRIPT_PATH} sample_cpp ${buildOption}
+${SCRIPT_PATH} sample_cpp4 ${buildOption}
 ${SCRIPT_PATH} sample00 ${buildOption}
 ${SCRIPT_PATH} sample01 ${buildOption}
 ${SCRIPT_PATH} sample02 ${buildOption}
