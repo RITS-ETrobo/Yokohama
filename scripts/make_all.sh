@@ -17,7 +17,8 @@ else
     buildOption="img"
 fi
 
-set currentPath = pwd
+projectRoot=`pwd`
+
 WORKSPACE_PATH=hrp2/sdk/workspace
 SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
@@ -33,5 +34,10 @@ ${SCRIPT_PATH} test-cyc ${buildOption}
 ${SCRIPT_PATH} trike ${buildOption}
 ${SCRIPT_PATH} "trike-old" ${buildOption}
 
-cd $currentPath
+cd ${projectRoot}
+
+# Cancel modifications the following *.a
+git checkout -- ./hrp2/sdk/common/library/lib2/lib2-standalone.a
+git checkout -- ./hrp2/sdk/common/library/libcpp-test/libcpp-test-standalone.a
+
 exit 0
