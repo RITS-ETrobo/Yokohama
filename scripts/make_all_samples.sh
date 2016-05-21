@@ -17,7 +17,8 @@ else
     buildOption="img"
 fi
 
-set currentPath = pwd
+projectRoot=`pwd`
+
 WORKSPACE_PATH=hrp2/sdk/workspace_samples
 SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
@@ -32,5 +33,10 @@ ${SCRIPT_PATH} sample03 ${buildOption}
 ${SCRIPT_PATH} sample04 ${buildOption}
 ${SCRIPT_PATH} sample05 ${buildOption}
 
-cd $currentPath
+cd ${projectRoot}
+
+# Cancel modifications the following *.a
+git checkout -- ./hrp2/sdk/common/library/lib2/lib2-standalone.a
+git checkout -- ./hrp2/sdk/common/library/libcpp-test/libcpp-test-standalone.a
+
 exit 0
