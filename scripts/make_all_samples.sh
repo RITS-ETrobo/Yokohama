@@ -23,8 +23,15 @@ WORKSPACE_PATH=hrp2/sdk/workspace_samples
 SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
 
-# Execute make command for all target directories
+# Execute the make command for all target directories
 ${SCRIPT_PATH} sample_c4 ${buildOption}
+${SCRIPT_PATH} sample_cpp4 ${buildOption}
+${SCRIPT_PATH} sample00 ${buildOption}
+${SCRIPT_PATH} sample01 ${buildOption}
+${SCRIPT_PATH} sample02 ${buildOption}
+${SCRIPT_PATH} sample03 ${buildOption}
+${SCRIPT_PATH} sample04 ${buildOption}
+${SCRIPT_PATH} sample05 ${buildOption}
 
 cd ${projectRoot}
 
