@@ -12,6 +12,9 @@
 #include "app.h"
 
 #define DEBUG
+#define KP 0.07
+#define KI 0.3
+#define KD 1
 
 #ifdef DEBUG
 #define _debug(x) (x)
@@ -78,15 +81,23 @@ void main_task(intptr_t unused) {
     int black = ev3_color_sensor_get_reflect(color_sensor);
     printf("BLACK light intensity: %d.\n", black);
 
-    /**
-     * PID controller
-     */
+    pid_controller(white,black);//PID制御
+
+}
+
+/**
+* PID制御を行う
+*/
+void pid_controller(int white,int black){
     float lasterror = 0, integral = 0;
     float midpoint = (white - black) / 2 + black;
     while (1) {
-        float error = midpoint - ev3_color_sensor_get_reflect(color_sensor);
-        integral = error + integral * 0.5;
-        float steer = 0.07 * error + 0.3 * integral + 1 * (error - lasterror);
+        float error = midpoint - ev3_color_sensor_get_reflect(color_sensor);//光量の偏差
+        integral = error + integral * 0.5;//偏差の積分
+		float p = KP * error;//P値
+		float i = KI * integral;//I値
+		float d = KD * (error - lasterror);//D値
+        float steer = p + i + d;//操作量
         ev3_motor_steer(left_motor, right_motor, 10, steer);
         lasterror = error;
         tslp_tsk(1);
