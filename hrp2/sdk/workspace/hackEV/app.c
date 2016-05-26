@@ -31,11 +31,13 @@ const int touch_sensor = EV3_PORT_2, color_sensor = EV3_PORT_3, left_motor = EV3
 /**
  * PID制御で用いる定数
  *
- * - KP:比例項の定数
- * - KI:積分項の定数
- * - KD:微分項の定数
+ * - KP : 比例項の定数
+ * - KI : 積分項の定数
+ * - KD : 微分項の定数
  */
-const float KP=0.07F,KI=0.3F,KD=1.0F;
+const float KP = 0.07F;
+const float KI = 0.3F;
+const float KD = 1.0F;
 
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
@@ -96,7 +98,7 @@ void main_task(intptr_t unused) {
 * 滑らかで安定したライントレースを行うためにPID制御を用いる\n
 * PIDの各制御項（比例項、積分項、微分項）を求め、
 * それらを足し合わせたものを操作量として、モーターを回転させる\n
-* PIDの参考資料：http://monoist.atmarkit.co.jp/mn/articles/1007/26/news083.html
+* PIDの参考資料 : http://monoist.atmarkit.co.jp/mn/articles/1007/26/news083.html
 *
 * @param [in] white 白の光量値
 * @param [in] black 黒の光量値
