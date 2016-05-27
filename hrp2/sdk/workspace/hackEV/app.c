@@ -19,14 +19,17 @@
 #endif
 
 /**
- * Define the connection ports of the sensors and motors.
- * By default, this application uses the following ports:
- * Touch sensor: Port 2
- * Color sensor: Port 3
- * Left motor:   Port B
- * Right motor:  Port C
+ * ポートの設定
+ * 
+ * - Touch sensor: Port 1
+ * - Color sensor: Port 2
+ * - Left motor:   Port C
+ * - Right motor:  Port B
  */
-const int touch_sensor = EV3_PORT_2, color_sensor = EV3_PORT_3, left_motor = EV3_PORT_B, right_motor = EV3_PORT_C;
+const int touch_sensor = EV3_PORT_1;
+const int color_sensor = EV3_PORT_2;
+const int left_motor = EV3_PORT_C;
+const int right_motor = EV3_PORT_B;
 
 /**
  * PID制御で用いる定数
