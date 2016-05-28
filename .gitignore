@@ -26,6 +26,7 @@ hrp2/sdk/build.log
 hrp2/sdk/app
 hrp2/sdk/hrp2
 hrp2/sdk/uImage
+doxygen.log
 
 # for emacs:
 *~
