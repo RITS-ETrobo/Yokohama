@@ -14,7 +14,7 @@ echo "START: Updating the documents by Doxygen and Graphviz."
 echo ""
 
 doxygen ./scripts/workspace.Doxyfile 1>${logPath} 2>&1
-if [ ! -e ${logPath} ]; then
+if [ ! -e ${projectRoot}/${OUTPUT_PATH} ]; then
     echo "ERROR: Perhaps, Doxygen and/or Graphviz are not installed."
     cd ${projectRoot}
     exit 2
