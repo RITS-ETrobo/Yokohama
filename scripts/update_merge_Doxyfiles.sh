@@ -15,13 +15,10 @@ git config --global push.default upstream
 ./scripts/updateDoxyfiles.sh Commit
 git push origin hackev/cpp/tasks/412:hackev/cpp/tasks/412
 
-# Merge branch into `hackev/cpp/release` from `hackev/cpp/tasks/412`
-./scripts/merge_branch.sh hackev/cpp/release hackev/cpp/tasks/412
+# Merge branch into `hackev/cpp/develop` from `hackev/cpp/tasks/412`
+./scripts/merge_branch.sh hackev/cpp/develop hackev/cpp/tasks/412
 
 # Remove `hackev/cpp/tasks/412` branch
 ./scripts/remove_branch.sh hackev/cpp/tasks/412
-
-# Merge all branches
-./scripts/merge_all.sh
 
 exit 0
