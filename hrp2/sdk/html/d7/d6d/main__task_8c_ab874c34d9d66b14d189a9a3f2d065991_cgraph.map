@@ -1,0 +1,10 @@
+<map id="main_task" name="main_task">
+<area shape="rect" id="node2" href="$d7/d6d/main__task_8c.html#af34282846809db90a5104c9263e4221c" title="initialization" alt="" coords="176,5,267,32"/>
+<area shape="rect" id="node3" href="$d7/d6d/main__task_8c.html#a975941ac76bc5350bb98d37d142e0c17" title="display_state" alt="" coords="172,56,271,83"/>
+<area shape="rect" id="node4" href="$d6/df6/nxtrike_8c.html#a1980c81e11265cc368e341ac231d98c6" title="nxtrike_get_touch_sensor" alt="" coords="136,107,307,133"/>
+<area shape="rect" id="node5" href="$d6/df6/nxtrike_8c.html#a8486b09cd2fe4b8008fceec40843b658" title="nxtrike_get_light_sensor" alt="" coords="140,157,303,184"/>
+<area shape="rect" id="node6" href="$d7/d6d/main__task_8c.html#a75406a32e700e6694eeb17f673c4926f" title="get_steer_pid" alt="" coords="171,208,271,235"/>
+<area shape="rect" id="node7" href="$d6/df6/nxtrike_8c.html#a56111be1e8dfc8b1cac86b7e67fc4b44" title="nxtrike_sound" alt="" coords="170,259,273,285"/>
+<area shape="rect" id="node8" href="$d6/df6/nxtrike_8c.html#a5f27a2d7f13ab8f5e172f5ee8eaf835a" title="nxtrike_set_steer" alt="" coords="160,309,283,336"/>
+<area shape="rect" id="node9" href="$d6/df6/nxtrike_8c.html#abe6710dd5f76d146c81edf51a345d69b" title="nxtrike_set_speed" alt="" coords="157,360,285,387"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="test_graphics" name="test_graphics">
+<area shape="rect" id="node2" href="$d6/d4c/hwbrickbench_2app_8c.html#abcfdb05f65f66ac2f004c865d8d34933" title="LcdClearDisplay" alt="" coords="155,5,274,32"/>
+<area shape="rect" id="node3" href="$d6/d4c/hwbrickbench_2app_8c.html#a45efe3ecb30d858423d2d5ad5fadb638" title="CircleOut" alt="" coords="176,56,253,83"/>
+<area shape="rect" id="node4" href="$d6/d4c/hwbrickbench_2app_8c.html#a1f339f78ffed56bfaf9692419f88f9ed" title="LineOut" alt="" coords="181,107,248,133"/>
+<area shape="rect" id="node5" href="$d6/d4c/hwbrickbench_2app_8c.html#a4f62e80a6ad4a114d0926fbbc5e9930a" title="RectOut" alt="" coords="179,157,250,184"/>
+<area shape="rect" id="node6" href="$d6/d4c/hwbrickbench_2app_8c.html#a0d4a277e6126eaed657cba5fe7631d88" title="EllipseOut" alt="" coords="173,208,256,235"/>
+</map>
