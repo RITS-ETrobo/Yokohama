@@ -6,7 +6,7 @@
 OUTPUT_PATH=hrp2/sdk/html
 ./scripts/remove_file.sh ${OUTPUT_PATH}
 projectRoot=`pwd`
-logPath=${projectRoot}/${OUTPUT_PATH}/../doxygen.log
+logPath=${projectRoot}/hrp2/sdk/doxygen.log
 ./scripts/remove_file.sh ${logPath}
 
 # Execute doxygen
