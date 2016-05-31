@@ -5,6 +5,7 @@
 # Remove old files and directories
 OUTPUT_PATH=hrp2/sdk/html
 rm -rf ${OUTPUT_PATH}
+rm ${OUTPUT_PATH}/../doxygen.log
 
 # Execute doxygen
 echo "START: Updating the documents by Doxygen and Graphviz."
