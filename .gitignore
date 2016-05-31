@@ -27,6 +27,7 @@ hrp2/sdk/app
 hrp2/sdk/hrp2
 hrp2/sdk/uImage
 doxygen.log
+update_merge_Doxyfiles.log
 
 # for emacs:
 *~

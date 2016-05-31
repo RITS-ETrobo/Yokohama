@@ -13,6 +13,10 @@ git config --global push.default upstream
 
 # Update docs
 ./scripts/updateDoxyfiles.sh Commit
+if [ $? -ne 0 ]; then
+    exit $2
+fi
+
 git push origin hackev/cpp/tasks/412:hackev/cpp/tasks/412
 
 # Merge branch into `hackev/cpp/develop` from `hackev/cpp/tasks/412`

@@ -11,6 +11,11 @@ echo "START: Updating the documents by Doxygen and Graphviz."
 echo ""
 
 doxygen ./scripts/workspace.Doxyfile 1>doxygen.log 2>&1
+if [ ! -e doxygen.log ]; then
+    echo "ERROR: Perhaps, Doxygen and/or Graphviz are not installed."
+    exit 2
+fi
+
 ./scripts/move_file.sh doxygen.log ${OUTPUT_PATH}/..
 
 echo "END  : Updated the documents."
