@@ -4,17 +4,17 @@
 
 # Remove old files and directories
 OUTPUT_PATH=hrp2/sdk/html
-rm -rf ${OUTPUT_PATH}
-rm ${OUTPUT_PATH}/../doxygen.log
-
+./scripts/remove_file.sh ${OUTPUT_PATH}
 projectRoot=`pwd`
+logPath=${projectRoot}/${OUTPUT_PATH}/../doxygen.log
+./scripts/remove_file.sh ${logPath}
 
 # Execute doxygen
 echo "START: Updating the documents by Doxygen and Graphviz."
 echo ""
 
-doxygen ./scripts/workspace.Doxyfile 1>doxygen.log 2>&1
-if [ ! -e ${projectRoot}/${OUTPUT_PATH}/../doxygen.log ]; then
+doxygen ./scripts/workspace.Doxyfile 1>${logPath} 2>&1
+if [ ! -e ${logPath} ]; then
     echo "ERROR: Perhaps, Doxygen and/or Graphviz are not installed."
     cd ${projectRoot}
     exit 2
