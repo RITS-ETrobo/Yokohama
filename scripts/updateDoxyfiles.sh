@@ -14,7 +14,7 @@ doxygen ./scripts/workspace.Doxyfile 1>doxygen.log 2>&1
 mv doxygen.log ${OUTPUT_PATH}/..
 
 echo "END  : Updated the documents."
-echo "       Please open \"hrp/sdk/html/index.html\" in Web browser."
+echo "       Please open \"hrp2/sdk/html/index.html\" in Web browser."
 echo ""
 
 if [ "${1}" = "Commit" ]
