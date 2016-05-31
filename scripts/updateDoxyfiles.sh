@@ -16,6 +16,11 @@ echo ""
 doxygen ./scripts/workspace.Doxyfile 1>${logPath} 2>&1
 if [ ! -e ${projectRoot}/${OUTPUT_PATH} ]; then
     echo "ERROR: Perhaps, Doxygen and/or Graphviz are not installed."
+    echo ""
+    echo "Please EXECUTE following command to INSTALL Doxygen and Graphviz"
+    echo ""
+    echo "'sudo apt-get install -y doxygen doxygen-gui graphviz'"
+    echo ""
     cd ${projectRoot}
     exit 2
 fi
