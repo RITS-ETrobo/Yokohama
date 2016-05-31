@@ -1,6 +1,0 @@
-<map id="LcdText" name="LcdText">
-<area shape="rect" id="node2" href="$d6/d4c/hwbrickbench_2app_8c.html#a020fc6b7144981a1023142b315122209" title="test_TextOut" alt="" coords="125,5,224,32"/>
-<area shape="rect" id="node3" href="$d6/d4c/hwbrickbench_2app_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="275,56,325,83"/>
-<area shape="rect" id="node5" href="$d6/d4c/hwbrickbench_2app_8c.html#a9c9b0c8af126cee4f429e2f3ac60289f" title="displayValues" alt="" coords="123,107,226,133"/>
-<area shape="rect" id="node4" href="$d6/d4c/hwbrickbench_2app_8c.html#a4754344fc3fec0a802660bb5dcdefad9" title="main_task" alt="" coords="373,56,456,83"/>
-</map>
