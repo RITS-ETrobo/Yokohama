@@ -72,7 +72,6 @@
 #ifndef TOPPERS_MACRO_ONLY
     extern void	task(intptr_t exinf);
     extern void	main_task(intptr_t exinf);
-    extern void	pid_controller(int white,int black);
     extern void balance_task(intptr_t exinf);
     extern void idle_task(intptr_t exinf);
     //extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
@@ -94,4 +93,3 @@
     //
     //extern void initialize_ev3(intptr_t exinf);
 #endif /* TOPPERS_MACRO_ONLY */
-//@}
