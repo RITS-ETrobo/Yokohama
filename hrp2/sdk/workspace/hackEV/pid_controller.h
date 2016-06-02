@@ -1,3 +1,8 @@
+/**
+ * @file    pid_controller.h
+ * @brief   This file has the declarations of PID contoller functions and defines.
+ */
+
 #pragma once
 
 //! ターゲット依存の定義
