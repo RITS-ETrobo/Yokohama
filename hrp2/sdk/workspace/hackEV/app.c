@@ -12,14 +12,6 @@
 #include "pid_controller.h"
 #include "app.h"
 
-//! DEBUG実行しない場合は、コメントにする事
-#define DEBUG
-
-#ifdef DEBUG
-    #define _debug(x) (x)
-#else
-    #define _debug(x)
-#endif  //  DEBUG
 
 /**
  * @brief   クリックしたボタンの情報を、ログへ出力する
@@ -36,8 +28,18 @@ static void button_clicked_handler(intptr_t button) {
         syslog(LOG_NOTICE, "Back button clicked.");
 #endif
         break;
+        
+    case LEFT_BUTTON:
+#if !defined(BUILD_MODULE)
+    	syslog(LOG_NOTICE, "Left button clicked.");
+#endif
+        break;
+        
+    default:
+        break;
     }
 }
+
 
 /**
  * @brief   メインタスク
@@ -48,6 +50,8 @@ static void button_clicked_handler(intptr_t button) {
 void main_task(intptr_t unused) {
     //! Register button handlers
     ev3_button_set_on_clicked(BACK_BUTTON, button_clicked_handler, BACK_BUTTON);
+    ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
+    ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
 
     //! Configure motors
     configure_motors();
