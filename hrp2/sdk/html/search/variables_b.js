@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['next',['next',['../d6/dda/struct_scene.html#a7651492c34bc60f1e79b9341388cb90c',1,'Scene']]],
+  ['normal',['NORMAL',['../de/d2b/class_balancing_walker.html#ad7b8b507853caff9b007d50c621dad2e',1,'BalancingWalker']]],
   ['nxtrike_5fbase_5fspeed',['nxtrike_base_speed',['../d6/df6/nxtrike_8c.html#a60fc1c69064fc4c7909513661647c341',1,'nxtrike_base_speed():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a60fc1c69064fc4c7909513661647c341',1,'nxtrike_base_speed():&#160;nxtrike.c']]],
   ['nxtrike_5fdistance',['nxtrike_distance',['../d6/df6/nxtrike_8c.html#a119494f4ee1bc8a92b217d74b5372097',1,'nxtrike_distance():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a119494f4ee1bc8a92b217d74b5372097',1,'nxtrike_distance():&#160;nxtrike.c']]],
   ['nxtrike_5flight_5factivated',['nxtrike_light_activated',['../d6/df6/nxtrike_8c.html#a45a77a37d9cb0cdf708475ae2b8f3b13',1,'nxtrike_light_activated():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a45a77a37d9cb0cdf708475ae2b8f3b13',1,'nxtrike_light_activated():&#160;nxtrike.c']]],

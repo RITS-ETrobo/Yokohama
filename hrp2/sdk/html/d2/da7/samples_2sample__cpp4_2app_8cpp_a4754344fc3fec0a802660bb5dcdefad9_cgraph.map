@@ -1,0 +1,9 @@
+<map id="main_task" name="main_task">
+<area shape="rect" id="node2" href="$de/d01/ev3way-cpp_2balancer_8c.html#a66306dbf7411fbb67f1127126de95f9a" title="balance_init" alt="" coords="356,16,447,43"/>
+<area shape="rect" id="node3" href="$de/d01/ev3way-cpp_2balancer_8c.html#a01b407ed9226c89392a29ae1c2148a07" title="balance_control" alt="" coords="345,118,458,144"/>
+<area shape="rect" id="node4" href="$df/de1/class_balancer.html#ac525763d0503de6e032f44a82422580b" title="Balancer::init" alt="" coords="167,42,265,68"/>
+<area shape="rect" id="node5" href="$df/de1/class_balancer.html#af3af50e0d486516c24610a49a6c6ae68" title="Balancer::setCommand" alt="" coords="137,143,295,170"/>
+<area shape="rect" id="node6" href="$df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463" title="Balancer::update" alt="" coords="156,194,276,220"/>
+<area shape="rect" id="node7" href="$df/de1/class_balancer.html#a87d7886caa0ae8060461916b1924ac2f" title="Balancer::getPwmRight" alt="" coords="136,244,296,271"/>
+<area shape="rect" id="node8" href="$df/de1/class_balancer.html#ad4a936088f8271e1ab1c2b71fbbb453d" title="Balancer::getPwmLeft" alt="" coords="141,295,291,322"/>
+</map>
