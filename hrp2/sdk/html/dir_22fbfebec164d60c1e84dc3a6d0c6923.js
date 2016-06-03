@@ -5,7 +5,6 @@ var dir_22fbfebec164d60c1e84dc3a6d0c6923 =
     [ "hackEV", "dir_7502d0546512cf6b46f51cc6d3292bba.html", "dir_7502d0546512cf6b46f51cc6d3292bba" ],
     [ "helloev3", "dir_62419765c7ec48b1b8d32722ccf5417c.html", "dir_62419765c7ec48b1b8d32722ccf5417c" ],
     [ "hwbrickbench", "dir_4506c7a31241de25e54637cdbb95b692.html", "dir_4506c7a31241de25e54637cdbb95b692" ],
-    [ "linetrace", "dir_9d5622b8ac5a21943045d67555bb2aba.html", "dir_9d5622b8ac5a21943045d67555bb2aba" ],
     [ "test-cpp", "dir_7bafdc10941f3a83dbe275d3ed5d132c.html", "dir_7bafdc10941f3a83dbe275d3ed5d132c" ],
     [ "test-cyc", "dir_9d2548f7977b0525f113b192ba3063ea.html", "dir_9d2548f7977b0525f113b192ba3063ea" ],
     [ "trike", "dir_897db820bda6cfcd27c4b950685c1548.html", "dir_897db820bda6cfcd27c4b950685c1548" ],

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['go_5fstraight',['GO_STRAIGHT',['../d6/d3d/etrobo__tr__ex2_2app_2_scene_8h.html#a74eb135ea70c0c2b7648cd7df3cabf6aa57a5db462a8b5374344f65f3769b47db',1,'GO_STRAIGHT():&#160;Scene.h'],['../dd/d61/etrobo__tr__ex3_2app_2_scene_8h.html#a74eb135ea70c0c2b7648cd7df3cabf6aa57a5db462a8b5374344f65f3769b47db',1,'GO_STRAIGHT():&#160;Scene.h']]],
   ['gyro_5fang',['GYRO_ANG',['../de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890a9a651b5f7af58223822cdd69204b5a09',1,'cli_sensor.c']]],
   ['gyro_5fcal',['GYRO_CAL',['../de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890aa52503e6d5861d326a70b24394710b75',1,'cli_sensor.c']]],
   ['gyro_5fgna',['GYRO_GnA',['../de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890adf5dc0f948dfbc4728574c4afb7c4e53',1,'cli_sensor.c']]],
