@@ -25,7 +25,6 @@ cd ${WORKSPACE_PATH}
 
 # Execute make command for all target directories
 ${SCRIPT_PATH} ev3way-cpp ${buildOption}
-${SCRIPT_PATH} gyroboy ${buildOption}
 ${SCRIPT_PATH} helloev3 ${buildOption}
 ${SCRIPT_PATH} hackEV ${buildOption}
 ${SCRIPT_PATH} hwbrickbench ${buildOption}
