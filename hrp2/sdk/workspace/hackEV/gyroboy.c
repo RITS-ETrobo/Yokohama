@@ -1,16 +1,15 @@
 /**
- * This sample program balances a two-wheeled Segway type robot such as Gyroboy in EV3 core set.
+ * @file    gyroboy.c
+ * @brief   This file has the gyro controll feature.
  *
  * References:
  * http://www.hitechnic.com/blog/gyro-sensor/htway/
  * http://www.cs.bgu.ac.il/~ami/teaching/Lejos-2013/classes/src/lejos/robotics/navigation/Segoway.java
- */
+*/
 
 #include "ev3api.h"
 #include "utilities.h"
 #include "gyroboy.h"
-
-
 
 //! \addtogroup Constants for the self-balance control algorithm.
 //@{
@@ -28,7 +27,6 @@ const float INIT_GYROANGLE = -0.25;
 const float INIT_INTERVAL_TIME = 0.014;
 //@}
 
-
 #if 0
 /**
  * Constants for the self-balance control algorithm. (Gyroboy Version)
@@ -40,7 +38,6 @@ const float INIT_INTERVAL_TIME = 0.014;
 //const float INIT_GYROANGLE = -0.25;
 //const float INIT_INTERVAL_TIME = 0.014;
 #endif
-
 
 //! \addtogroup Global variables used by the self-balance control algorithm.
 //@{
@@ -62,8 +59,7 @@ static float gyro_angle = 0;
 static float interval_time = 0;
 static float motor_pos, motor_speed = 0;
 //@}
- 
- 
+
 /**
  * @brief   Calculate the initial gyro offset for calibration.
  * @par Refer
@@ -76,20 +72,25 @@ static ER calibrate_gyro_sensor() {
     for (int i = 0; i < 200; ++i) {
         int gyro = ev3_gyro_sensor_get_rate(gyro_sensor);
         gSum += gyro;
-        if (gyro > gMx)
+        if (gyro > gMx) {
             gMx = gyro;
-        if (gyro < gMn)
+        }
+
+        if (gyro < gMn) {
             gMn = gyro;
+        }
+
         tslp_tsk(4);
     }
+
     if(!(gMx - gMn < 2)) { // TODO: recheck the condition, '!(gMx - gMn < 2)' or '(gMx - gMn < 2)'
         gyro_offset = gSum / 200.0f;
         return E_OK;
-    } else {
-        return E_OBJ;
     }
+
+    return E_OBJ;
 }
- 
+
 /**
  * @brief Calculate the average interval time of the main loop for the self-balance control algorithm by seconds(Units).
  *
@@ -103,7 +104,8 @@ static ER calibrate_gyro_sensor() {
 static void update_interval_time() {
     static SYSTIM start_time;
 
-    if(loop_count++ == 0) { // Interval time for the first time (use 6ms as a magic number)
+    if(loop_count++ == 0) {
+        // Interval time for the first time (use 6ms as a magic number)
         //interval_time = 0.006;
         interval_time = INIT_INTERVAL_TIME;
         ER ercd = get_tim(&start_time);
@@ -116,7 +118,6 @@ static void update_interval_time() {
     }
 }
 
- 
 /**
  * @brief Update data of the gyro sensor.
  *
@@ -135,7 +136,6 @@ static void update_gyro_data() {
     gyro_angle += gyro_speed * interval_time;
 }
 
-
 /**
  * @brief Update data of the motors
  *
@@ -150,7 +150,8 @@ static void update_gyro_data() {
 static void update_motor_data() {
     static int32_t prev_motor_cnt_sum, motor_cnt_deltas[4];
 
-    if(loop_count == 1) { // Reset
+    if (loop_count == 1) {
+        // Reset
         motor_pos = 0;
         prev_motor_cnt_sum = 0;
         motor_cnt_deltas[0] = motor_cnt_deltas[1] = motor_cnt_deltas[2] = motor_cnt_deltas[3] = 0;
@@ -168,7 +169,6 @@ static void update_motor_data() {
     motor_speed = (motor_cnt_deltas[0] + motor_cnt_deltas[1] + motor_cnt_deltas[2] + motor_cnt_deltas[3]) / 4.0f / interval_time;
 }
 
- 
 /**
  * @brief Control the power to keep balance.
  *
@@ -187,13 +187,16 @@ static void update_motor_data() {
  *  - 参照する変数 gyro_angle
  *  - 参照する変数 motor_speed
  *
- * @return false when the robot has fallen.
+ * @return  false   when the robot has fallen.
+ * @return  true    succeed
 */
 static bool_t keep_balance() {
     static SYSTIM ok_time;
 
-    if(loop_count == 1) // Reset ok_time
+    if (loop_count == 1) {
+        // Reset ok_time
         get_tim(&ok_time);
+    }
 
     float ratio_wheel = WHEEL_DIAMETER / 5.6;
 
@@ -210,10 +213,12 @@ static bool_t keep_balance() {
     // Check fallen
     SYSTIM time;
     get_tim(&time);
-    if(power > -100 && power < 100)
+    if (power > -100 && power < 100) {
         ok_time = time;
-    else if(time - ok_time >= FALL_TIME_MS)
+    }
+    else if (time - ok_time >= FALL_TIME_MS) {
         return false;
+    }
 
     // Steering control
     motor_diff_target += motor_control_steer * interval_time;
@@ -224,14 +229,21 @@ static bool_t keep_balance() {
     int power_steer = (int)(KSTEER * (motor_diff_target - motor_diff));
     left_power = power + power_steer;
     right_power = power - power_steer;
-    if(left_power > 100)
+    if (left_power > 100) {
         left_power = 100;
-    if(left_power < -100)
+    }
+
+    if (left_power < -100) {
         left_power = -100;
-    if(right_power > 100)
+    }
+
+    if (right_power > 100) {
         right_power = 100;
-    if(right_power < -100)
+    }
+
+    if (right_power < -100) {
         right_power = -100;
+    }
 
     ev3_motor_set_power(left_motor, (int)left_power);
     ev3_motor_set_power(right_motor, (int)right_power);
@@ -259,8 +271,9 @@ void balance_task(intptr_t unused) {
     for(int i = 10; i > 0; --i) { // Max retries: 10 times.
         ercd = calibrate_gyro_sensor();
         if(ercd == E_OK) break;
-        if(i != 1)
+        if (i != 1) {
             syslog(LOG_ERROR, "Calibration failed, retry.");
+        }
         else {
             syslog(LOG_ERROR, "Max retries for calibration exceeded, exit.");
             return;
@@ -295,8 +308,6 @@ void balance_task(intptr_t unused) {
         tslp_tsk(WAIT_TIME_MS);
     }
 }
-
-
 
 static FILE *bt = NULL;
 
