@@ -14,6 +14,9 @@ const int touch_sensor = EV3_PORT_1;
 //! Color sensor    :   Port 2
 const int color_sensor = EV3_PORT_2;
 
+//! Gyro sensor     :   Port 4
+const int gyro_sensor = EV3_PORT_4;
+
 //! Left motor  :   Port C
 const int left_motor = EV3_PORT_C;
 
@@ -39,6 +42,7 @@ void configure_sensors()
 {
     ev3_sensor_config(touch_sensor, TOUCH_SENSOR);
     ev3_sensor_config(color_sensor, COLOR_SENSOR);
+    ev3_sensor_config(gyro_sensor, GYRO_SENSOR);
 }
 
 /**

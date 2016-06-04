@@ -1,1 +1,1 @@
-APPL_COBJS += pid_controller.o utilities.o
+APPL_COBJS += pid_controller.o gyroboy.o utilities.o

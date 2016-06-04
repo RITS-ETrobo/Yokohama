@@ -8,6 +8,15 @@
 //! ターゲット依存の定義
 #include "target_test.h"
 
+//! DEBUG実行しない場合は、コメントにする事
+#define DEBUG
+
+#ifdef DEBUG
+    #define _debug(x) (x)
+#else
+    #define _debug(x)
+#endif  //  DEBUG
+
 //! \addtogroup ポートの設定
 //@{
 //! Touch sensor
@@ -15,6 +24,9 @@ extern const int touch_sensor;
 
 //! Color sensor
 extern const int color_sensor;
+
+//! Gyro sensor
+extern const int gyro_sensor;
 
 //! Left motor
 extern const int left_motor;
