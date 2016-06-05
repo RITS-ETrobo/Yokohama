@@ -111,32 +111,32 @@ $(document).ready(function(){initNavTree('d7/d9d/ev3way-cpp_2balancer__private_8
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">                                        * Referenced by blocks:</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">                                        * &#39;&lt;S11&gt;/Constant1&#39;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">                                        * &#39;&lt;S11&gt;/Gain2&#39;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">                                        * ���[�p�X�t�B���^�W��(���E�ԗւ̕��ω�]�p�x�p)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">                                        * ローパスフィルタ係数(左右車輪の平均回転角度用)</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">                                        */</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#ac338ef1033362a503aa8cebae7131a21">A_R</a>;                   <span class="comment">/* Variable: A_R</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">                                        * Referenced by blocks:</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">                                        * &#39;&lt;S8&gt;/Constant1&#39;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">                                        * &#39;&lt;S8&gt;/Gain2&#39;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">                                        * ���[�p�X�t�B���^�W��(���E�ԗւ̖ڕW���ω�]�p�x�p)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">                                        * ローパスフィルタ係数(左右車輪の目標平均回転角度用)</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">                                        */</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#afcef5e071a84c0210c13bab2be5b061e">K_F</a>[4];                <span class="comment">/* Variable: K_F</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">                                        * &#39;&lt;S1&gt;/FeedbackGain&#39;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">                                        * �T�[�{����p��ԃt�B�[�h�o�b�N�W��</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">                                        * サーボ制御用状態フィードバック係数</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">                                        */</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#a5c4fa6fc05c5c961b22321c556b05b46">K_I</a>;                   <span class="comment">/* Variable: K_I</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">                                        * &#39;&lt;S1&gt;/IntegralGain&#39;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">                                        * �T�[�{����p�ϕ��W��</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">                                        * サーボ制御用積分係数</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">                                        */</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#aca1e856409f5f21664ad3b054b11c36a">K_PHIDOT</a>;              <span class="comment">/* Variable: K_PHIDOT</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">                                        * &#39;&lt;S3&gt;/Gain2&#39;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">                                        * �ԑ̖̂ڕW���ʉ�]���x(d��/dt)�W��</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">                                        * 車体の目標平面回転速度(dφ/dt)係数</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">                                        */</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#a0a15d43c3a8132989be36d9a7a5c702d">K_THETADOT</a>;            <span class="comment">/* Variable: K_THETADOT</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">                                        * &#39;&lt;S3&gt;/Gain1&#39;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">                                        * ���E�ԗւ̕��ω�]���x(d��/dt)�W��</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">                                        * 左右車輪の平均回転速度(dθ/dt)係数</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">                                        */</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#ac9a83fbf484ccc187c70692c9fbfb5a9">BATTERY_GAIN</a>;    <span class="comment">/* PWM�o�͎Z�o�p�o�b�e���d���␳�W�� */</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#ac9f60d8c879cc59cb6f59e66ceff980c">BATTERY_OFFSET</a>;  <span class="comment">/* PWM�o�͎Z�o�p�o�b�e���d���␳�I�t�Z�b�g */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#ac9a83fbf484ccc187c70692c9fbfb5a9">BATTERY_GAIN</a>;    <span class="comment">/* PWM出力算出用バッテリ電圧補正係数 */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html#ac9f60d8c879cc59cb6f59e66ceff980c">BATTERY_OFFSET</a>;  <span class="comment">/* PWM出力算出用バッテリ電圧補正オフセット */</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*======================== TOOL VERSION INFORMATION ==========================*</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * MATLAB 7.7 (R2008b)30-Jun-2008                                             *</span></div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('d7/d9d/ev3way-cpp_2balancer__private_8
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_c0b3cc58e5089f4761f0f86939d480df.html">ev3way-cpp</a></li><li class="navelem"><a class="el" href="../../d7/d9d/ev3way-cpp_2balancer__private_8h.html">balancer_private.h</a></li>
-    <li class="footer">Generated on Sun Jun 5 2016 03:28:09 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jun 5 2016 04:48:02 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
