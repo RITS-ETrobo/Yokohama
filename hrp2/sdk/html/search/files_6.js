@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['randomwalker_2ecpp',['RandomWalker.cpp',['../de/db3/_random_walker_8cpp.html',1,'']]],
-  ['randomwalker_2eh',['RandomWalker.h',['../d6/d99/_random_walker_8h.html',1,'']]]
+  ['nxtrike_2ec',['nxtrike.c',['../d6/df6/nxtrike_8c.html',1,'']]],
+  ['nxtrike_2ec',['nxtrike.c',['../d3/dce/old_2nxtrike_8c.html',1,'']]],
+  ['nxtrike_2eh',['nxtrike.h',['../dd/d1b/nxtrike_8h.html',1,'']]],
+  ['nxtrike_2eh',['nxtrike.h',['../d5/dc3/old_2nxtrike_8h.html',1,'']]]
 ];
