@@ -24,14 +24,7 @@ SCRIPT_PATH=../../../scripts/make_project.sh
 cd ${WORKSPACE_PATH}
 
 # Execute make command for all target directories
-${SCRIPT_PATH} ev3way-cpp ${buildOption}
-${SCRIPT_PATH} helloev3 ${buildOption}
 ${SCRIPT_PATH} hackEV ${buildOption}
-${SCRIPT_PATH} hwbrickbench ${buildOption}
-${SCRIPT_PATH} test-cpp ${buildOption}
-${SCRIPT_PATH} test-cyc ${buildOption}
-${SCRIPT_PATH} trike ${buildOption}
-${SCRIPT_PATH} "trike-old" ${buildOption}
 
 cd ${projectRoot}
 
