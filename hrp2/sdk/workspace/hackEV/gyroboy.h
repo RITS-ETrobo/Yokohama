@@ -3,6 +3,12 @@
  * @brief   This file has the gyro controll feature.
 */
 
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! ターゲット依存の定義
 #include "target_test.h"
 
@@ -12,3 +18,7 @@
     extern void idle_task(intptr_t exinf);
     extern void drive_controller_task(intptr_t exinf);
 #endif  //  TOPPERS_MACRO_ONLY
+
+#ifdef __cplusplus
+}
+#endif
