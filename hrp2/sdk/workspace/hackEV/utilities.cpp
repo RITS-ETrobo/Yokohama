@@ -1,5 +1,5 @@
 /**
- * @file    utilities.c
+ * @file    utilities.cpp
  * @brief   This file has the utilitiy functions.
  */
 
@@ -9,19 +9,19 @@
 //! \addtogroup ポートの設定
 //@{
 //! Touch sensor    :   Port 1
-const int touch_sensor = EV3_PORT_1;
+const sensor_port_t touch_sensor = EV3_PORT_1;
 
 //! Color sensor    :   Port 2
-const int color_sensor = EV3_PORT_2;
+const sensor_port_t color_sensor = EV3_PORT_2;
 
 //! Gyro sensor     :   Port 4
-const int gyro_sensor = EV3_PORT_4;
+const sensor_port_t gyro_sensor = EV3_PORT_4;
 
 //! Left motor  :   Port C
-const int left_motor = EV3_PORT_C;
+const motor_port_t left_motor = EV3_PORT_C;
 
 //! Right motor :   Port B
-const int right_motor = EV3_PORT_B;
+const motor_port_t right_motor = EV3_PORT_B;
 //@}
 
 /**

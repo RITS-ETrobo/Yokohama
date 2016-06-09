@@ -1,5 +1,5 @@
 /**
- * @file    app.c
+ * @file    app.cpp
  * @brief   This file has the main task.
  *          This program will be optimized for HackEV. EV means Educator Vehicle, Robot construction.
  *          - References

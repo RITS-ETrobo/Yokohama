@@ -5,6 +5,10 @@
 
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! ターゲット依存の定義
 #include "target_test.h"
 
@@ -20,19 +24,19 @@
 //! \addtogroup ポートの設定
 //@{
 //! Touch sensor
-extern const int touch_sensor;
+extern const sensor_port_t touch_sensor;
 
 //! Color sensor
-extern const int color_sensor;
+extern const sensor_port_t color_sensor;
 
 //! Gyro sensor
-extern const int gyro_sensor;
+extern const sensor_port_t gyro_sensor;
 
 //! Left motor
-extern const int left_motor;
+extern const motor_port_t left_motor;
 
 //! Right motor
-extern const int right_motor;
+extern const motor_port_t right_motor;
 //@}
 
 //  関数のプロトタイプ宣言
@@ -41,3 +45,7 @@ extern const int right_motor;
     extern void configure_sensors();
     extern int calibrate_light_intensity();
 #endif  //  TOPPERS_MACRO_ONLY
+
+#ifdef __cplusplus
+}
+#endif

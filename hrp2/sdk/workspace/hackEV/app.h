@@ -41,6 +41,10 @@
  */
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! ターゲット依存の定義
 #include "target_test.h"
 
@@ -93,3 +97,7 @@
     //
     //extern void initialize_ev3(intptr_t exinf);
 #endif /* TOPPERS_MACRO_ONLY */
+
+#ifdef __cplusplus
+}
+#endif

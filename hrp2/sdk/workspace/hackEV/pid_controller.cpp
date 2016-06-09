@@ -1,5 +1,5 @@
 /**
- * @file    pid_controller.c
+ * @file    pid_controller.cpp
  * @brief   This file has the PID contoller task.
  *          This program will be optimized for HackEV. EV means Educator Vehicle, Robot construction.
  */

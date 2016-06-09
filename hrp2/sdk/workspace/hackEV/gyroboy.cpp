@@ -1,5 +1,5 @@
 /**
- * @file    gyroboy.c
+ * @file    gyroboy.cpp
  * @brief   This file has the gyro controll feature.
  *
  * References:
