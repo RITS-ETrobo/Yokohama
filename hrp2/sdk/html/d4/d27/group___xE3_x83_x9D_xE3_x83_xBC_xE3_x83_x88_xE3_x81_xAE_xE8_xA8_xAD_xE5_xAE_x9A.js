@@ -1,13 +1,13 @@
 var group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A =
 [
-    [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gadf9b48d82b2e3944898fb27fded96662", null ],
-    [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gadf9b48d82b2e3944898fb27fded96662", null ],
-    [ "gyro_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaecf6ebdb08ff86571eb8ef5e75fc19cc", null ],
-    [ "gyro_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaecf6ebdb08ff86571eb8ef5e75fc19cc", null ],
-    [ "left_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gadecfe2be7776c77c29170e946f38b16e", null ],
-    [ "left_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gadecfe2be7776c77c29170e946f38b16e", null ],
-    [ "right_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga7293e2eefab0b4a7242a90ccf5a6a03a", null ],
-    [ "right_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga7293e2eefab0b4a7242a90ccf5a6a03a", null ],
-    [ "touch_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga4d06df0d7966a359417f6224ee5663fa", null ],
-    [ "touch_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga4d06df0d7966a359417f6224ee5663fa", null ]
+    [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717", null ],
+    [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717", null ],
+    [ "gyro_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8", null ],
+    [ "gyro_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8", null ],
+    [ "left_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185", null ],
+    [ "left_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185", null ],
+    [ "right_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga7d79eebc4c78a3d1b45426c7d88daaa2", null ],
+    [ "right_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga7d79eebc4c78a3d1b45426c7d88daaa2", null ],
+    [ "touch_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga9761c157cdef940e66243df975c97a39", null ],
+    [ "touch_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga9761c157cdef940e66243df975c97a39", null ]
 ];

@@ -6,7 +6,7 @@ var trike_old_2app_8c =
     [ "idle_task", "d7/d32/trike-old_2app_8c.html#aca19bf03e7dd21a3a6e07fce0f741d2e", null ],
     [ "EMAOFFSET", "d7/d32/trike-old_2app_8c.html#aaf58abd98fc6f4e0351fcb8d69c1ab97", null ],
     [ "FALL_TIME_MS", "d7/d32/trike-old_2app_8c.html#a37dbfd3312ec3ca9fd68d2c27f8f5bbb", null ],
-    [ "gyro_sensor", "d7/d32/trike-old_2app_8c.html#gaecf6ebdb08ff86571eb8ef5e75fc19cc", null ],
+    [ "gyro_sensor", "d7/d32/trike-old_2app_8c.html#ga1cb4642e5493ad942de34a1983c119a8", null ],
     [ "INIT_GYROANGLE", "d7/d32/trike-old_2app_8c.html#a20489b91d1c7288e1a7dbc704d0d6f04", null ],
     [ "INIT_INTERVAL_TIME", "d7/d32/trike-old_2app_8c.html#a4be42f90b6aacf3adf15472225ca95b5", null ],
     [ "KDRIVE", "d7/d32/trike-old_2app_8c.html#a953e8b1663c7ea8772f5e36a1e51c0ad", null ],
@@ -15,8 +15,8 @@ var trike_old_2app_8c =
     [ "KPOS", "d7/d32/trike-old_2app_8c.html#a263160e987297c44d3448def3934b786", null ],
     [ "KSPEED", "d7/d32/trike-old_2app_8c.html#acd51bdcdd6176979bac74eed7783172f", null ],
     [ "KSTEER", "d7/d32/trike-old_2app_8c.html#ac44a788cc7f54b5712b8ca18de61a4e5", null ],
-    [ "left_motor", "d7/d32/trike-old_2app_8c.html#gadecfe2be7776c77c29170e946f38b16e", null ],
-    [ "right_motor", "d7/d32/trike-old_2app_8c.html#ga7293e2eefab0b4a7242a90ccf5a6a03a", null ],
+    [ "left_motor", "d7/d32/trike-old_2app_8c.html#gaff6547d3480326dc007d945cdc634185", null ],
+    [ "right_motor", "d7/d32/trike-old_2app_8c.html#ga7d79eebc4c78a3d1b45426c7d88daaa2", null ],
     [ "WAIT_TIME_MS", "d7/d32/trike-old_2app_8c.html#aaf0eadb29293fe2cbdb9ff7060c75537", null ],
     [ "WHEEL_DIAMETER", "d7/d32/trike-old_2app_8c.html#a8f307256fa2a407634b97cf749a54a6c", null ]
 ];
