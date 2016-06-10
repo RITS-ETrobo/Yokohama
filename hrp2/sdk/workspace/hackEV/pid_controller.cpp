@@ -11,13 +11,13 @@
 //! \addtogroup PID制御で用いる定数
 //@{
 //! 比例項の定数
-const float KP = 0.07F;
+const float KP = 0.775F;
 
 //! 積分項の定数
-const float KI = 0.3F;
+const float KI = 0.65F;
 
 //! 微分項の定数
-const float KD = 1.0F;
+const float KD = 0.375F;
 //@}
 
 //! \addtogroup PID制御で用いる変数
