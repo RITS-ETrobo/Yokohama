@@ -11,6 +11,7 @@
 #include "utilities.h"
 #include "pid_controller.h"
 #include "app.h"
+#include "UltrasonicController.h"
 
 
 /**
@@ -58,6 +59,12 @@ void main_task(intptr_t unused) {
 
     //! Configure sensors
     configure_sensors();
+
+    //! 超音波センサの初期化
+    initialize_ultrasonic();
+    
+    //! 超音波センサの発振
+    control_ultrasonic();
 
     //! PID制御の初期化
     initialize_pid_controller();
