@@ -25,15 +25,28 @@
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
     case BACK_BUTTON:
-#if !defined(BUILD_MODULE)
+
         syslog(LOG_NOTICE, "Back button clicked.");
-#endif
+
         break;
         
     case LEFT_BUTTON:
-#if !defined(BUILD_MODULE)
+
     	syslog(LOG_NOTICE, "Left button clicked.");
-#endif
+        //! PID制御の初期化
+        initialize_pid_controller();
+
+        //! PID制御のタスク登録と開始
+        act_tsk(PID_CONTROLLER_TASK);
+
+        break;
+        
+    case RIGHT_BUTTON:
+
+        syslog(LOG_NOTICE, "RIGHT button clicked.");
+        //! 超音波センサの発振
+        control_sonarsensor();
+        
         break;
         
     default:
@@ -53,6 +66,7 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(BACK_BUTTON, button_clicked_handler, BACK_BUTTON);
     ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
     ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
+    ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
 
     //! Configure motors
     configure_motors();
@@ -63,12 +77,8 @@ void main_task(intptr_t unused) {
     //! 超音波センサの初期化
     initialize_sonarsensor();
     
-    //! 超音波センサの発振
-    control_sonarsensor();
-
-    //! PID制御の初期化
-    initialize_pid_controller();
-
-    //! PID制御のタスク登録と開始
-    act_tsk(PID_CONTROLLER_TASK);
+    ev3_speaker_play_tone(NOTE_C4, 300);
+    
+    //! キー入力待ち
+    while(1){}    
 }
