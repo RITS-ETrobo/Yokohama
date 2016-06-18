@@ -66,12 +66,6 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
-    //! Register button handlers
-    ev3_button_set_on_clicked(BACK_BUTTON, button_clicked_handler, BACK_BUTTON);
-    ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
-    ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
-    ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
-
     //! Configure motors
     configure_motors();
 
@@ -83,6 +77,12 @@ void main_task(intptr_t unused) {
     
     //! 初期化が終わった時点で音を一回鳴らす（キー入力待ちを知らせる）
     ev3_speaker_play_tone(NOTE_C4, 300);
+    
+    //! Register button handlers
+    ev3_button_set_on_clicked(BACK_BUTTON, button_clicked_handler, BACK_BUTTON);
+    ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
+    ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
+    ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     
     //! キー入力待ち
     while(1){}    
