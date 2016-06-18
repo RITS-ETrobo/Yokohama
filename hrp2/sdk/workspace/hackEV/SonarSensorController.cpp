@@ -88,6 +88,4 @@ void control_sonarsensor() {
     while(1){
         sensing_sonar();
     }
-
-    ev3_led_set_color(LED_OFF);
 }
