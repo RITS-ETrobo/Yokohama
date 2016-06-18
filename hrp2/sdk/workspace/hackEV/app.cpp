@@ -32,7 +32,9 @@ static void button_clicked_handler(intptr_t button) {
         
     case LEFT_BUTTON:
 
+        //! 本体の左ボタンで走行モード
     	syslog(LOG_NOTICE, "Left button clicked.");
+        
         //! PID制御の初期化
         initialize_pid_controller();
 
@@ -42,9 +44,11 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case RIGHT_BUTTON:
-
+        
+        //! 本体の右ボタンで超音波モード
         syslog(LOG_NOTICE, "RIGHT button clicked.");
-        //! 超音波センサの発振
+        
+        //! 超音波制御
         control_sonarsensor();
         
         break;
@@ -77,6 +81,7 @@ void main_task(intptr_t unused) {
     //! 超音波センサの初期化
     initialize_sonarsensor();
     
+    //! 初期化が終わった時点で音を一回鳴らす（キー入力待ちを知らせる）
     ev3_speaker_play_tone(NOTE_C4, 300);
     
     //! キー入力待ち
