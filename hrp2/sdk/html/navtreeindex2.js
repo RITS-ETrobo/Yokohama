@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"d6/d4c/hwbrickbench_2app_8c.html#a385d1e45344dc4dbc61ecb75a17a0d50":[2,0,0,0,0,3,0,35],
+"d6/d4c/hwbrickbench_2app_8c.html#a40e79033092c4d9ed023639ac4e856f6":[2,0,0,0,0,3,0,11],
+"d6/d4c/hwbrickbench_2app_8c.html#a4225929c58e8979a8ddd1a60030638f0":[2,0,0,0,0,3,0,34],
 "d6/d4c/hwbrickbench_2app_8c.html#a45efe3ecb30d858423d2d5ad5fadb638":[2,0,0,0,0,3,0,10],
 "d6/d4c/hwbrickbench_2app_8c.html#a4754344fc3fec0a802660bb5dcdefad9":[2,0,0,0,0,3,0,19],
 "d6/d4c/hwbrickbench_2app_8c.html#a4f62e80a6ad4a114d0926fbbc5e9930a":[2,0,0,0,0,3,0,23],
@@ -98,12 +101,12 @@ var NAVTREEINDEX2 =
 "d7/d09/test-cpp_2app_8cpp.html#ae833b632ab8988c1bd4d2171da47fd2e":[2,0,0,0,0,4,0,4],
 "d7/d1b/sample05_2app_2_tracer_8cpp.html":[2,0,0,0,1,9,0,0],
 "d7/d2e/class_starter.html":[1,0,13],
+"d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,4],
 "d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,3],
 "d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,5],
-"d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,4],
 "d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,2],
-"d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,1],
 "d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,0],
+"d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,1],
 "d7/d32/trike-old_2app_8c.html":[2,0,0,0,0,7,0],
 "d7/d32/trike-old_2app_8c.html#a139ac72ddede5fdd466b42ac7393f16d":[2,0,0,0,0,7,0,11],
 "d7/d32/trike-old_2app_8c.html#a1c3529aa23ecd4f82f3a23d3a7da7523":[2,0,0,0,0,7,0,0],
@@ -130,8 +133,8 @@ var NAVTREEINDEX2 =
 "d7/d53/class_scenario_tracer.html":[1,0,9],
 "d7/d53/class_scenario_tracer.html#a54273fb3f3b1a2abf8a85a80ff81b8cc":[1,0,9,2],
 "d7/d53/class_scenario_tracer.html#a54273fb3f3b1a2abf8a85a80ff81b8cc":[1,0,9,3],
-"d7/d53/class_scenario_tracer.html#a5f6f38e370bf2bac670482cc34a298a4":[1,0,9,0],
 "d7/d53/class_scenario_tracer.html#a5f6f38e370bf2bac670482cc34a298a4":[1,0,9,1],
+"d7/d53/class_scenario_tracer.html#a5f6f38e370bf2bac670482cc34a298a4":[1,0,9,0],
 "d7/d6d/main__task_8c.html":[2,0,0,0,0,6,2],
 "d7/d6d/main__task_8c.html#a3c89b4d1b0f6ab659d46d6cf6df0f5c3":[2,0,0,0,0,6,2,8],
 "d7/d6d/main__task_8c.html#a4bfd7b27b6a04ea8c57312a676e7d6fa":[2,0,0,0,0,6,2,7],
@@ -246,8 +249,5 @@ var NAVTREEINDEX2 =
 "d9/d51/ev3way-cpp_2app_8cpp.html#a50efaeb0380deed26b8c63b0f4cbfabe":[2,0,0,0,0,0,0,9],
 "d9/d51/ev3way-cpp_2app_8cpp.html#a6babf6dbdc97636ceda1532ee33fda2d":[2,0,0,0,0,0,0,10],
 "d9/d51/ev3way-cpp_2app_8cpp.html#a726af388e87ef25ffe8a24cda2285737":[2,0,0,0,0,0,0,2],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a7a1984ed413358042cd26ce668de1069":[2,0,0,0,0,0,0,3],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a8acfff21b683329658182112636b3e57":[2,0,0,0,0,0,0,14],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a8c4e41d3bcb2727afc255c23ba067bcf":[2,0,0,0,0,0,0,21],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a91c81f6814869c39fa1175adbdaa7fee":[2,0,0,0,0,0,0,19]
+"d9/d51/ev3way-cpp_2app_8cpp.html#a7a1984ed413358042cd26ce668de1069":[2,0,0,0,0,0,0,3]
 };
