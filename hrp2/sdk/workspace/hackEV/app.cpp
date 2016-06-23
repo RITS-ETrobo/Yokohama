@@ -14,6 +14,13 @@
 #include "SonarSensorController.h"
 #include "RunningModule.h"
 
+void stop_emergency(){
+    ev3_motor_stop(left_motor,false);
+    ev3_motor_stop(right_motor,false);
+    setEnabledSonarSensor(false);
+    //! モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する
+}
+
 /**
  * @brief   クリックしたボタンの情報を、ログへ出力する
  *
@@ -23,6 +30,8 @@
  * @return  なし
 */
 static void button_clicked_handler(intptr_t button) {
+    ev3_speaker_play_tone(NOTE_C4, 200);
+    
     switch(button) {
     case BACK_BUTTON:
 
@@ -66,7 +75,14 @@ static void button_clicked_handler(intptr_t button) {
         start_run(80,25);
         
         break;
-    
+
+    case ENTER_BUTTON:
+        
+        //! 緊急停止
+        stop_emergency();
+        
+        break;
+
     default:
         break;
     }

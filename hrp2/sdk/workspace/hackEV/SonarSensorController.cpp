@@ -18,8 +18,11 @@ const sensor_port_t sonar_sensor = EV3_PORT_3;
 
 //@}
 
+static bool enabledSonarSensor = true;
 
-
+void setEnabledSonarSensor(bool _enabledSonarSensor){
+    enabledSonarSensor = _enabledSonarSensor;
+}
 
 /**
  * @brief   超音波センサの初期化処理
@@ -85,7 +88,8 @@ void control_sonarsensor() {
     tslp_tsk(200);
     ev3_speaker_play_tone(NOTE_C4, 100);
 
-    while(1){
+    while(enabledSonarSensor){
         sensing_sonar();
     }
+    setEnabledSonarSensor(true);
 }
