@@ -12,7 +12,7 @@
 #include "pid_controller.h"
 #include "app.h"
 #include "SonarSensorController.h"
-
+#include "RunningModule.h"
 
 /**
  * @brief   クリックしたボタンの情報を、ログへ出力する
@@ -53,6 +53,20 @@ static void button_clicked_handler(intptr_t button) {
         
         break;
         
+    case UP_BUTTON:
+        
+        //! 直線を走行
+        start_run(100,0);
+        
+        break;
+        
+    case DOWN_BUTTON:
+        
+        //! カーブを走行
+        start_run(80,25);
+        
+        break;
+    
     default:
         break;
     }
@@ -83,6 +97,8 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
     ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
+    ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
+    ev3_button_set_on_clicked(DOWN_BUTTON, button_clicked_handler, DOWN_BUTTON);
     
     //! キー入力待ち
     while(1){}    
