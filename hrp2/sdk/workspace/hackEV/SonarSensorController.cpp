@@ -90,6 +90,9 @@ void control_sonarsensor() {
 
     while(enabledSonarSensor){
         sensing_sonar();
+        if(ev3_button_is_pressed(ENTER_BUTTON)){
+            stop_emergency();
+        }
     }
     setEnabledSonarSensor(true);
 }

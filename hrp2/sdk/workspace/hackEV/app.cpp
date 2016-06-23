@@ -14,6 +14,11 @@
 #include "SonarSensorController.h"
 #include "RunningModule.h"
 
+/**
+ * @brief   緊急停止
+ *
+ * @return  なし
+*/
 void stop_emergency(){
     ev3_motor_stop(left_motor,false);
     ev3_motor_stop(right_motor,false);
@@ -30,8 +35,6 @@ void stop_emergency(){
  * @return  なし
 */
 static void button_clicked_handler(intptr_t button) {
-    ev3_speaker_play_tone(NOTE_C4, 200);
-    
     switch(button) {
     case BACK_BUTTON:
 
@@ -73,13 +76,6 @@ static void button_clicked_handler(intptr_t button) {
         
         //! カーブを走行
         start_run(80,25);
-        
-        break;
-
-    case ENTER_BUTTON:
-        
-        //! 緊急停止
-        stop_emergency();
         
         break;
 
