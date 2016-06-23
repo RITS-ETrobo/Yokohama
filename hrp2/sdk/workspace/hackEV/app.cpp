@@ -15,6 +15,18 @@
 #include "RunningModule.h"
 
 /**
+ * @brief   緊急停止
+ *
+ * @return  なし
+*/
+void stop_emergency(){
+    ev3_motor_stop(left_motor,false);
+    ev3_motor_stop(right_motor,false);
+    setEnabledSonarSensor(false);
+    //! モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する
+}
+
+/**
  * @brief   クリックしたボタンの情報を、ログへ出力する
  *
  * 準備 : ev3_button_set_on_clicked関数で、ボタンをこのハンドラー関数に登録する
@@ -66,7 +78,7 @@ static void button_clicked_handler(intptr_t button) {
         start_run(80,25);
         
         break;
-    
+
     default:
         break;
     }

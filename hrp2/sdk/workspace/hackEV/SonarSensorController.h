@@ -22,8 +22,9 @@ extern const sensor_port_t sonar_sensor;
 #ifndef TOPPERS_MACRO_ONLY
     extern void	initialize_sonarsensor();
     extern void control_sonarsensor();
-
 #endif /* TOPPERS_MACRO_ONLY */
+
+extern void setEnabledSonarSensor(bool _enabledSonarSensor);
 
 #ifdef __cplusplus
 }
