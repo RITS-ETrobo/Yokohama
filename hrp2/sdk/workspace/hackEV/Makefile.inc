@@ -2,7 +2,7 @@
 APPL_COBJS += 
 
 # Add objects that are generated from *.cpp
-APPL_CXXOBJS += pid_controller.o gyroboy.o utilities.o SonarSensorController.o
+APPL_CXXOBJS += pid_controller.o gyroboy.o utilities.o SonarSensorController.o RunPattern.o
 
 SRCLANG := c++
 

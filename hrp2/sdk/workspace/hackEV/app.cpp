@@ -12,6 +12,7 @@
 #include "pid_controller.h"
 #include "app.h"
 #include "SonarSensorController.h"
+#include "RunPattern.h"
 
 
 /**
@@ -53,6 +54,20 @@ static void button_clicked_handler(intptr_t button) {
         
         break;
         
+    case UP_BUTTON:
+        
+        //! 直線を走行
+        straight_run(100);
+        
+        break;
+        
+    case DOWN_BUTTON:
+        
+        //! カーブを走行
+        curve_run(80,25);
+        
+        break;
+    
     default:
         break;
     }
