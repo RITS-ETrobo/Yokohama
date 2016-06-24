@@ -30,10 +30,10 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d3/d7d/class_line_monitor.html#a8633acc267501feaa8534147efb1cae2",
-"d6/d4c/hwbrickbench_2app_8c.html#a385d1e45344dc4dbc61ecb75a17a0d50",
-"d9/d51/ev3way-cpp_2app_8cpp.html#a8acfff21b683329658182112636b3e57",
-"db/dbd/test-cpp_2app_8h.html#a7af671454805e666c8e88744a2856514",
-"de/dc4/etrobo__tr__ex1_2unit_2_balancer_cpp_8h.html"
+"d6/d4c/hwbrickbench_2app_8c.html#a1c3529aa23ecd4f82f3a23d3a7da7523",
+"d9/d51/ev3way-cpp_2app_8cpp.html#a4d0b1edefbe73af7a89313c11fa48ced",
+"db/db7/samples_2sample02_2app_8h.html#a4c42091448ea07ca667fb5af31d6b50b",
+"de/da5/utilities_8cpp.html#gaff6547d3480326dc007d945cdc634185"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

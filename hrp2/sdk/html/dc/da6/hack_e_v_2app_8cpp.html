@@ -112,16 +112,20 @@ $(document).ready(function(){initNavTree('dc/da6/hack_e_v_2app_8cpp.html','../..
 <code>#include &quot;<a class="el" href="../../de/dc3/pid__controller_8h_source.html">pid_controller.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../dc/db6/hack_e_v_2app_8h_source.html">app.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/db5/_sonar_sensor_controller_8h_source.html">SonarSensorController.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d2f/_running_module_8h_source.html">RunningModule.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d94/hack_e_v_2app_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2app_8cpp" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2app_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2app_8cpp">
-<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="100,96,173,123"/><area shape="rect" id="node5" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="199,96,309,123"/><area shape="rect" id="node6" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="334,96,388,123"/><area shape="rect" id="node7" href="../../de/db5/_sonar_sensor_controller_8h.html" title="SonarSensorController.h" alt="" coords="413,96,576,123"/></map>
+<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="100,96,173,123"/><area shape="rect" id="node5" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="199,96,309,123"/><area shape="rect" id="node6" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="334,96,388,123"/><area shape="rect" id="node7" href="../../de/db5/_sonar_sensor_controller_8h.html" title="SonarSensorController.h" alt="" coords="413,96,576,123"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html" title="This file has RunningModule. " alt="" coords="601,96,724,123"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a27869433979701bc6bd15b516e098e68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/da6/hack_e_v_2app_8cpp.html#a27869433979701bc6bd15b516e098e68">stop_emergency</a> ()</td></tr>
+<tr class="memdesc:a27869433979701bc6bd15b516e098e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">緊急停止  <a href="#a27869433979701bc6bd15b516e098e68">More...</a><br/></td></tr>
+<tr class="separator:a27869433979701bc6bd15b516e098e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4754344fc3fec0a802660bb5dcdefad9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/da6/hack_e_v_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9">main_task</a> (intptr_t unused)</td></tr>
 <tr class="memdesc:a4754344fc3fec0a802660bb5dcdefad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">メインタスク  <a href="#a4754344fc3fec0a802660bb5dcdefad9">More...</a><br/></td></tr>
 <tr class="separator:a4754344fc3fec0a802660bb5dcdefad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,13 +171,50 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a27869433979701bc6bd15b516e098e68"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop_emergency </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>緊急停止 </p>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<p>モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_cgraph.png" border="0" usemap="#dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_cgraph" alt=""/></div>
+<map name="dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_cgraph" id="dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_cgraph">
+<area shape="rect" id="node2" href="../../da/df2/_sonar_sensor_controller_8cpp.html#aa0e8eec831480be7f8ba3bafc5b5312c" title="setEnabledSonarSensor" alt="" coords="173,5,336,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_icgraph.png" border="0" usemap="#dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_icgraph" alt=""/></div>
+<map name="dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_icgraph" id="dc/da6/hack_e_v_2app_8cpp_a27869433979701bc6bd15b516e098e68_icgraph">
+<area shape="rect" id="node2" href="../../de/db5/_sonar_sensor_controller_8h.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 " alt="" coords="173,5,312,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../dc/da6/hack_e_v_2app_8cpp.html">app.cpp</a></li>
-    <li class="footer">Generated on Sat Jun 18 2016 13:27:21 for ev3RT Workspace by
+    <li class="footer">Generated on Fri Jun 24 2016 20:50:08 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

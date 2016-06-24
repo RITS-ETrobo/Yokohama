@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"d6/d4c/hwbrickbench_2app_8c.html#a1c3529aa23ecd4f82f3a23d3a7da7523":[2,0,0,0,0,3,0,0],
+"d6/d4c/hwbrickbench_2app_8c.html#a1f339f78ffed56bfaf9692419f88f9ed":[2,0,0,0,0,3,0,17],
+"d6/d4c/hwbrickbench_2app_8c.html#a2232c8f8bc06c1833b456c6cbf2dcfad":[2,0,0,0,0,3,0,30],
+"d6/d4c/hwbrickbench_2app_8c.html#a29f7b419a6560ed845169696ad354f1f":[2,0,0,0,0,3,0,2],
+"d6/d4c/hwbrickbench_2app_8c.html#a37666e1ec218a1b351333f88d205e458":[2,0,0,0,0,3,0,29],
 "d6/d4c/hwbrickbench_2app_8c.html#a385d1e45344dc4dbc61ecb75a17a0d50":[2,0,0,0,0,3,0,35],
 "d6/d4c/hwbrickbench_2app_8c.html#a40e79033092c4d9ed023639ac4e856f6":[2,0,0,0,0,3,0,11],
 "d6/d4c/hwbrickbench_2app_8c.html#a4225929c58e8979a8ddd1a60030638f0":[2,0,0,0,0,3,0,34],
@@ -101,11 +106,11 @@ var NAVTREEINDEX2 =
 "d7/d09/test-cpp_2app_8cpp.html#ae833b632ab8988c1bd4d2171da47fd2e":[2,0,0,0,0,4,0,4],
 "d7/d1b/sample05_2app_2_tracer_8cpp.html":[2,0,0,0,1,9,0,0],
 "d7/d2e/class_starter.html":[1,0,13],
-"d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,4],
 "d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,3],
+"d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,4],
 "d7/d2e/class_starter.html#a1e836f839894705b3c166a7abf91b064":[1,0,13,5],
-"d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,2],
 "d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,0],
+"d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,2],
 "d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec":[1,0,13,1],
 "d7/d32/trike-old_2app_8c.html":[2,0,0,0,0,7,0],
 "d7/d32/trike-old_2app_8c.html#a139ac72ddede5fdd466b42ac7393f16d":[2,0,0,0,0,7,0,11],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "d9/d51/ev3way-cpp_2app_8cpp.html#a1c3529aa23ecd4f82f3a23d3a7da7523":[2,0,0,0,0,0,0,0],
 "d9/d51/ev3way-cpp_2app_8cpp.html#a1cfd3fae2e2b2b1c07a342c6e5bff950":[2,0,0,0,0,0,0,6],
 "d9/d51/ev3way-cpp_2app_8cpp.html#a2ecba8f807ca6bead8d387fc405a991a":[2,0,0,0,0,0,0,7],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9":[2,0,0,0,0,0,0,15],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a4d0b1edefbe73af7a89313c11fa48ced":[2,0,0,0,0,0,0,17],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a50efaeb0380deed26b8c63b0f4cbfabe":[2,0,0,0,0,0,0,9],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a6babf6dbdc97636ceda1532ee33fda2d":[2,0,0,0,0,0,0,10],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a726af388e87ef25ffe8a24cda2285737":[2,0,0,0,0,0,0,2],
-"d9/d51/ev3way-cpp_2app_8cpp.html#a7a1984ed413358042cd26ce668de1069":[2,0,0,0,0,0,0,3]
+"d9/d51/ev3way-cpp_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9":[2,0,0,0,0,0,0,15]
 };
