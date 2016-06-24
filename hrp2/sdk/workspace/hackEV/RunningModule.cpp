@@ -41,7 +41,11 @@ void start_run(int power,int corveAngle){
         }
     }
     //! 走行処理（注意：走行中断ができない）
-    ev3_motor_steer(left_motor, right_motor, power, corveAngle);
+    //ev3_motor_steer(left_motor, right_motor, power, corveAngle);
+    
+    int degrees = 720;
+    ev3_motor_rotate(left_motor,degrees,50,false);
+    ev3_motor_rotate(right_motor,degrees,50-corveAngle,false);
 }
 
 /**
