@@ -112,6 +112,6 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
     ev3_button_set_on_clicked(DOWN_BUTTON, button_clicked_handler, DOWN_BUTTON);
     
-    //! キー入力待ち
-    while(1){}    
+    //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
+    //while(1){}    
 }
