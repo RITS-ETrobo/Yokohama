@@ -7,6 +7,7 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "pid_controller.h"
+#include "LCDController.h"
 
 //! \addtogroup PID制御で用いる定数
 //@{
@@ -52,6 +53,15 @@ void initialize_pid_controller()
     black = calibrate_light_intensity();
     printf("BLACK light intensity: %d.\n", black);
 
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "WHITE : %03d", white);
+    writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "BLACK : %03d", black);
+    writeStringLCD(message);
+
     lasterror = 0.0F;
     integral = 0.0F;
     midpoint = (white - black) / 2 + black;
@@ -96,6 +106,19 @@ void pid_controller()
 
     //! 操作量を求める
     float steer = p + i + d;
+
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "p : %02.04f", p);
+    writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "i : %02.04f", p);
+    writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "d : %02.04f", p);
+    writeStringLCD(message);
 
     ev3_motor_steer(left_motor, right_motor, 10, steer);
     lasterror = error;
