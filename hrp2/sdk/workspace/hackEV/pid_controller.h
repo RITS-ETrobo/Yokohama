@@ -13,10 +13,8 @@ extern "C" {
 #include "target_test.h"
 
 //  関数のプロトタイプ宣言
-#ifndef TOPPERS_MACRO_ONLY
-    extern void initialize_pid_controller();
-    extern void pid_controller_task(intptr_t exinf);
-#endif /* TOPPERS_MACRO_ONLY */
+extern void initialize_pid_controller();
+extern void pid_controller_task(intptr_t exinf);
 
 #ifdef __cplusplus
 }
