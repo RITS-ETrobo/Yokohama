@@ -10,6 +10,6 @@
 //  関数のプロトタイプ宣言
 #ifndef TOPPERS_MACRO_ONLY
     extern void	initialize_run();
-    extern void start_run(int power,int corveAngle);
+    extern void start_run();
     extern void run_withPID();
 #endif /* TOPPERS_MACRO_ONLY */

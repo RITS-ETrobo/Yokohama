@@ -67,18 +67,24 @@ static void button_clicked_handler(intptr_t button) {
         
     case UP_BUTTON:
         
-        //! 直線を走行
-        start_run(100,0);
+        //! 直進モードの準備ができたら音が3回鳴る
+        ev3_speaker_play_tone(NOTE_C4, 100);
+        tslp_tsk(200);
+        ev3_speaker_play_tone(NOTE_C4, 100);
+        tslp_tsk(200);
+        ev3_speaker_play_tone(NOTE_C4, 100);
+    
+        while(1){
+            if(ev3_touch_sensor_is_pressed(touch_sensor)){
+                break;
+            }
+        }
+        
+        //! 走行開始
+        start_run();
         
         break;
-        
-    case DOWN_BUTTON:
-        
-        //! カーブを走行
-        start_run(80,25);
-        
-        break;
-
+       
     default:
         break;
     }
@@ -110,8 +116,7 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
-    ev3_button_set_on_clicked(DOWN_BUTTON, button_clicked_handler, DOWN_BUTTON);
     
-    //! キー入力待ち
-    while(1){}    
+    //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
+    //while(1){}    
 }
