@@ -2,6 +2,7 @@
 <area shape="rect" id="node2" href="$dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,97,144,138"/>
 <area shape="rect" id="node3" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="168,97,315,138"/>
 <area shape="rect" id="node4" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="339,97,517,138"/>
-<area shape="rect" id="node5" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="541,97,773,138"/>
-<area shape="rect" id="node6" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="798,97,940,138"/>
+<area shape="rect" id="node5" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="542,97,732,138"/>
+<area shape="rect" id="node6" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="757,97,989,138"/>
+<area shape="rect" id="node7" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1014,97,1156,138"/>
 </map>

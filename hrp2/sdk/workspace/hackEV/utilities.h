@@ -40,11 +40,9 @@ extern const motor_port_t right_motor;
 //@}
 
 //  関数のプロトタイプ宣言
-#ifndef TOPPERS_MACRO_ONLY
-    extern void configure_motors();
-    extern void configure_sensors();
-    extern int calibrate_light_intensity();
-#endif  //  TOPPERS_MACRO_ONLY
+extern void configure_motors();
+extern void configure_sensors();
+extern int calibrate_light_intensity();
 
 #ifdef __cplusplus
 }

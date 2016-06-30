@@ -13,6 +13,7 @@
 #include "app.h"
 #include "SonarSensorController.h"
 #include "RunningModule.h"
+#include "LCDController.h"
 
 /**
  * @brief   緊急停止
@@ -37,54 +38,52 @@ void stop_emergency(){
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
     case BACK_BUTTON:
-
+        writeStringLCD("BACK button click");
         syslog(LOG_NOTICE, "Back button clicked.");
-
         break;
         
     case LEFT_BUTTON:
-
         //! 本体の左ボタンで走行モード
+        writeStringLCD("LEFT button click");
     	syslog(LOG_NOTICE, "Left button clicked.");
         
         //! PID制御の初期化
         initialize_pid_controller();
 
+        //! タッチセンサーが押されたら、処理を継続する
+        while(!ev3_touch_sensor_is_pressed(touch_sensor));
+
         //! PID制御のタスク登録と開始
         act_tsk(PID_CONTROLLER_TASK);
-
         break;
         
     case RIGHT_BUTTON:
-        
         //! 本体の右ボタンで超音波モード
+        writeStringLCD("RIGHT button click");
         syslog(LOG_NOTICE, "RIGHT button clicked.");
         
         //! 超音波制御
-        control_sonarsensor();
-        
+        control_sonarsensor();        
         break;
-        
+
     case UP_BUTTON:
-        
         //! 直進モードの準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_C4, 100);
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
-    
+
         while(1){
             if(ev3_touch_sensor_is_pressed(touch_sensor)){
                 break;
             }
         }
-        
+
         //! 走行開始
         start_run();
-        
         break;
-       
+
     default:
         break;
     }
@@ -98,6 +97,9 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
+    setFontSize(EV3_FONT_MEDIUM);
+    writeStringLCD("Start Initializing");
+
     //! Configure motors
     configure_motors();
 
@@ -116,7 +118,13 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
-    
+
+    writeStringLCD("End Initializing");
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%04d mA %04d mV", ev3_battery_current_mA(), ev3_battery_voltage_mV()); 
+    writeStringLCD(message);
+
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
 }

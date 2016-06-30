@@ -10,5 +10,6 @@ var hack_e_v_2app_8h =
     [ "gpio_irq_dispatcher", "dc/db6/hack_e_v_2app_8h.html#a7af671454805e666c8e88744a2856514", null ],
     [ "idle_task", "dc/db6/hack_e_v_2app_8h.html#adf1ca31adffac652fc532aaf03857119", null ],
     [ "main_task", "dc/db6/hack_e_v_2app_8h.html#ab874c34d9d66b14d189a9a3f2d065991", null ],
+    [ "stop_emergency", "dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68", null ],
     [ "task", "dc/db6/hack_e_v_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a", null ]
 ];

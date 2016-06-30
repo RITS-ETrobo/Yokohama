@@ -1,6 +1,6 @@
 /**
- * @file    UltrasonicController.h
- * @brief   This file has UltrasonicController
+ * @file    SonarSensorController.h
+ * @brief   This file has SonarSensorController
  */
 #pragma once
 
@@ -19,10 +19,8 @@ extern const sensor_port_t sonar_sensor;
 //@}
 
 //  関数のプロトタイプ宣言
-#ifndef TOPPERS_MACRO_ONLY
-    extern void	initialize_sonarsensor();
-    extern void control_sonarsensor();
-#endif /* TOPPERS_MACRO_ONLY */
+extern void	initialize_sonarsensor();
+extern void control_sonarsensor();
 
 extern void setEnabledSonarSensor(bool _enabledSonarSensor);
 

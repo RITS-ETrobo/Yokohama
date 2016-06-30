@@ -7,6 +7,8 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
     [ "Makefile.inc", "da/de0/hack_e_v_2_makefile_8inc.html", null ],
     [ "pid_controller.cpp", "dd/d0a/pid__controller_8cpp.html", "dd/d0a/pid__controller_8cpp" ],
     [ "pid_controller.h", "de/dc3/pid__controller_8h.html", "de/dc3/pid__controller_8h" ],
+    [ "RunningModule.cpp", "da/d2f/_running_module_8cpp.html", "da/d2f/_running_module_8cpp" ],
+    [ "RunningModule.h", "d6/d2f/_running_module_8h.html", "d6/d2f/_running_module_8h" ],
     [ "SonarSensorController.cpp", "da/df2/_sonar_sensor_controller_8cpp.html", "da/df2/_sonar_sensor_controller_8cpp" ],
     [ "SonarSensorController.h", "de/db5/_sonar_sensor_controller_8h.html", "de/db5/_sonar_sensor_controller_8h" ],
     [ "utilities.cpp", "de/da5/utilities_8cpp.html", "de/da5/utilities_8cpp" ],
