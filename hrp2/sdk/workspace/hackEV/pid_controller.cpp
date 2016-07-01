@@ -75,19 +75,18 @@ void initialize_pid_controller()
  *
  * PIDの参考資料 : http://monoist.atmarkit.co.jp/mn/articles/1007/26/news083.html
  *
+ * @param pidParameter PIDの係数
+ * 
  * @par Refer
- *  - 参照する定数 KP
- *  - 参照する定数 KI
- *  - 参照する定数 KD
  *  - 参照する変数 white
  *  - 参照する変数 black
  *  - 参照する変数 lasterror
  *  - 参照する変数 integral
  *  - 参照する変数 midpoint
  *
- * @return  なし
+ * @return  操作量
 */
-void pid_controller()
+float pid_controller(PID_PARAMETER pidParameter)
 {
     //! カラーセンサーによって取得された値を基に、偏差を算出する
     float error = midpoint - ev3_color_sensor_get_reflect(color_sensor);
@@ -96,13 +95,13 @@ void pid_controller()
     integral = error + integral * 0.5;
 
     //! P値を求める
-    float p = KP * error;
+    float p = pidParameter.kP * error;
 
     //! I値を求める
-    float i = KI * integral;
+    float i = pidParameter.kI * integral;
 
     //! D値を求める
-    float d = KD * (error - lasterror);
+    float d = pidParameter.kD * (error - lasterror);
 
     //! 操作量を求める
     float steer = p + i + d;
@@ -120,9 +119,9 @@ void pid_controller()
     sprintf(message, "d : %02.04f", p);
     writeStringLCD(message);
 
-    ev3_motor_steer(left_motor, right_motor, 10, steer);
     lasterror = error;
-    tslp_tsk(1);
+    
+    return  steer;
 }
 
 /**
@@ -137,7 +136,13 @@ void pid_controller()
 */
 void pid_controller_task(intptr_t unused)
 {
+    PID_PARAMETER   pidParameter;
+    pidParameter.kP = KP;
+    pidParameter.kD = KD;
+    pidParameter.kI = KI;
+    
     while (1) {
-        pid_controller();
+        ev3_motor_steer(left_motor, right_motor, 10, pid_controller(pidParameter));
+        tslp_tsk(1);   
     }
 }
