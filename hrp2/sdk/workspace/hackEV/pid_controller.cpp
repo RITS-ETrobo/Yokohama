@@ -56,11 +56,15 @@ void initialize_pid_controller()
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "WHITE : %03d", white);
-    writeStringLCD(message);
+    if (logger) {
+        logger->addLog(message);
+    }
 
     memset(message, '\0', sizeof(message));
     sprintf(message, "BLACK : %03d", black);
-    writeStringLCD(message);
+    if (logger) {
+        logger->addLog(message);
+    }
 
     lasterror = 0.0F;
     integral = 0.0F;
