@@ -50,6 +50,7 @@ Release_RechargeableBattery
 *.pdb
 *.mdb
 *.a
+sdcard/ev3rt/apps/*
 
 # for Xamarin Studio
 *.userprefs
