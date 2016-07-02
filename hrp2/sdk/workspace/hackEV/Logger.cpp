@@ -63,6 +63,8 @@ void Logger::closeLog()
 
 /**
  * @brief   ログを追加する
+ * @param   message 追加するログ
+ * @param   displayLCD  trueの場合、すぐにLCDにメッセージを出力する
  * @return  true    ログ追加成功
  * @return  false   ログ追加失敗
 */
@@ -77,6 +79,7 @@ bool Logger::addLog(const char* message, bool displayLCD)
 
 /**
  * @brief   ログをファイルに出力する
+ * @param   message ファイルに出力するログ
  * @return  true    ログ出力成功
  * @return  false   ログ出力失敗
 */
