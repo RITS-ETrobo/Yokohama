@@ -107,6 +107,10 @@ static void button_clicked_handler(intptr_t button) {
     default:
         break;
     }
+
+    if (logger) {
+        logger->closeLog();
+    }
 }
 
 /**

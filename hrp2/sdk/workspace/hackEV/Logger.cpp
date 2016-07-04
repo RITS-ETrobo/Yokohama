@@ -37,6 +37,10 @@ bool Logger::initialize()
 */
 bool Logger::openLog()
 {
+    if (fpLog) {
+        return  true;
+    }
+
     char    path[256];
     memset(path, '\0', sizeof(path));
     sprintf(path, "%s/%s", LOGDIRECTORY_PATH, LOGFILE_NAME);
@@ -59,6 +63,7 @@ void Logger::closeLog()
     }
 
     fclose(fpLog);
+    fpLog = NULL;
 }
 
 /**
@@ -85,8 +90,12 @@ bool Logger::addLog(const char* message, bool displayLCD)
 */
 bool Logger::outputLog(const char* message)
 {
-    if ((fpLog == NULL) ||
-        (message == NULL)) {
+    if (message == NULL) {
+        return  false;
+    }
+
+    openLog();
+    if (fpLog == NULL) {
         return  false;
     }
 
