@@ -44,20 +44,14 @@ void stop_emergency(){
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
     case BACK_BUTTON:
-        if (logger) {
-            logger->addLog("BACK button click");
-        }
-
+        OUTPUT_LOG("BACK button click", OUTPUT_TYPE_LCD);
         syslog(LOG_NOTICE, "Back button clicked.");
         break;
         
     case LEFT_BUTTON:
         //! 本体の左ボタンで走行モード
-        if (logger) {
-            logger->addLog("LEFT button click");
-        }
-
-    	syslog(LOG_NOTICE, "Left button clicked.");
+        OUTPUT_LOG("LEFT button click", OUTPUT_TYPE_LCD);
+        syslog(LOG_NOTICE, "Left button clicked.");
         
         //! PID制御の初期化
         initialize_pid_controller();
@@ -71,10 +65,7 @@ static void button_clicked_handler(intptr_t button) {
         
     case RIGHT_BUTTON:
         //! 本体の右ボタンで超音波モード
-        if (logger) {
-            logger->addLog("RIGHT button click");
-        }
-
+        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
         syslog(LOG_NOTICE, "RIGHT button clicked.");
         
         //! 超音波制御
@@ -83,9 +74,7 @@ static void button_clicked_handler(intptr_t button) {
 
     case UP_BUTTON:
         //! 本体の上ボタンでシナリオに沿って走行するモード
-        if (logger) {
-            logger->addLog("RIGHT button click");
-        }
+        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
 
         //! 準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_C4, 100);
@@ -132,11 +121,9 @@ void main_task(intptr_t unused) {
 
     if (logger) {
         logger->initialize();
-        logger->addLog("Start Initializing");
-    } else {
-        //! ログ生成失敗
-        writeStringLCD("Fail to create log");
     }
+
+    OUTPUT_LOG("Start Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
     //! Configure motors
     configure_motors();
@@ -157,16 +144,12 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
 
-    if (logger) {
-        logger->addLog("End Initializing");
-    }
+    OUTPUT_LOG("End Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%04d mA %04d mV", ev3_battery_current_mA(), ev3_battery_voltage_mV()); 
-    if (logger) {
-        logger->addLog(message);
-    }
+    OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    

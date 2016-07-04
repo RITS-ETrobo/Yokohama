@@ -73,12 +73,8 @@ void Logger::closeLog()
  * @return  true    ログ追加成功
  * @return  false   ログ追加失敗
 */
-bool Logger::addLog(const char* message, bool displayLCD)
+bool Logger::addLog(const char* message)
 {
-    if (displayLCD) {
-        writeStringLCD(message);
-    }
-
     return  outputLog(message);
 }
 
@@ -106,7 +102,7 @@ bool Logger::outputLog(const char* message)
         duration = clock->now();
     }
 
-    sprintf(log, "%d,%s\r\n", duration, message);
+    sprintf(log, "%u,%s\r\n", duration, message);
     if (fputs(log, fpLog) == EOF) {
         return  false;
     }

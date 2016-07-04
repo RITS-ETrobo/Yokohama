@@ -5,10 +5,14 @@
 #pragma once
 
 #include <stdio.h>
+#include <string.h>
 #include "Clock.h"
-#include "LCDController.h"
 
 using namespace ev3api;
+
+static const uint8_t OUTPUT_TYPE_NONE = 0;
+static const uint8_t OUTPUT_TYPE_FILE = (1 << 0);
+static const uint8_t OUTPUT_TYPE_LCD = (1 << 1);
 
 //! Class for logging
 class Logger
@@ -17,7 +21,7 @@ public:
     explicit Logger();
     bool initialize();
     void closeLog();
-    bool addLog(const char* message, bool displayLCD = true);
+    bool addLog(const char* message);
 
 private:
     bool openLog();
