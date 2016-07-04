@@ -45,6 +45,11 @@ if [ "$2" == "app" ]; then
         echo "    FAILED"
         exit 2
     fi
+
+    COPY_APP_PATH=../../../sdcard/ev3rt/apps/
+    mkdir -p ${COPY_APP_PATH}
+    ${SCRIPT_REMOVE} ${COPY_APP_PATH}${TARGET_PROJECT}.$2
+    cp ${TARGET_PATH}/${TARGET_PROJECT}.$2 ${COPY_APP_PATH}
 else
     if [ ! -e ${TARGET_PATH}/hrp2 ]; then
         echo "    FAILED"
