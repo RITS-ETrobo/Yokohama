@@ -91,3 +91,12 @@ ER writeStringLCD(const char* message)
 
     return  result;
 }
+
+/**
+ * @brief   LCDの表示を消す
+ * @return  ev3_lcd_fill_rect()参照
+*/
+ER clearLCD()
+{
+    return  ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, EV3_LCD_HEIGHT, getLCDColor());
+}
