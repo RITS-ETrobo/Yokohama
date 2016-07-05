@@ -80,9 +80,13 @@ ER writeStringLCD(const char* message)
 {
     unsigned int lineHeight = getLineheight();
     if (currentAreaHeight + lineHeight > EV3_LCD_HEIGHT) {
-        ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, lineHeight, getLCDColor());
+        //! 次のページに書く場合は、先に前ページの残りを塗りつぶす
+        ev3_lcd_fill_rect(0, currentAreaHeight, EV3_LCD_WIDTH, EV3_LCD_HEIGHT - currentAreaHeight, getLCDColor());
         currentAreaHeight = 0;
     }
+
+    //! これから書く領域を塗りつぶす
+    ev3_lcd_fill_rect(0, currentAreaHeight, EV3_LCD_WIDTH, lineHeight, getLCDColor());
 
     ER  result = ev3_lcd_draw_string(message, 0, currentAreaHeight);
     if (result == E_OK) {
