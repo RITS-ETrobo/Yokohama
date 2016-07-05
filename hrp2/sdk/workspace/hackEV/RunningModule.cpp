@@ -9,14 +9,36 @@
 #include "pid_controller.h"
 #include "app.h"
 #include "RunningModule.h"
+#include "LCDController.h"
 
 //! \addtogroup 距離計算要素
 //@{
-//! タイヤの直径[cm]※注意：推定した仮の値！！！
-const float DiameterWheel = 7.8F;
+//! タイヤの直径[cm]
+const float DiameterWheel = 8.2F;
 
 //! 円周率
 const float Pi = 3.14159265359F;
+//@}
+
+//! \addtogroup 方向計算要素
+//@{
+//! 左モーターの回転数の合計
+float sumLeftMotorRotate = 0.0F;
+
+//! 右モーターの回転数の合計
+float sumRightMotorRotate = 0.0F;
+
+//! 左右のタイヤ間のトレッド[cm]
+const float TREAD = 10.9F;
+
+//! 前回の右モーターの距離
+float lastRightDistance = 0.0F;
+
+//! 前回の左モーターの距離
+float lastLeftDistance = 0.0F;
+
+//! 向きの累積
+float directionSum = 0.0F;
 //@}
 
 /**
@@ -43,14 +65,33 @@ const scenario_running run_scenario[] = {
  };
 
 /**
- * @brief   左モータの走行距離を計算
+ * @brief   リセットしてからのタイヤの走行距離を計算
  * 
+ * @param port 計測するタイヤのモーターポート
  * @return  走行距離
 */
-float distance_running(){
-    float rotate = ev3_motor_get_counts(left_motor);
-    float distance = 2 * Pi * DiameterWheel * rotate / 360 ;
+float distance_running(motor_port_t port){
+    float rotate = ev3_motor_get_counts(port);
+    float distance = Pi * DiameterWheel * rotate / 360 ;
     return distance;
+}
+
+/**
+ * @brief   瞬間の走行体の向きを取得
+ * 前回測定した位置から今回の移動までに変化した向き
+ * 
+ * @return  瞬間の向き
+*/
+float getDirectionDelta(float rightDistance, float leftDistance){
+    
+    float rightDistanceDelta = rightDistance - lastRightDistance;
+    float leftDistanceDelta = leftDistance - lastLeftDistance;
+    lastRightDistance = rightDistance;
+    lastLeftDistance = leftDistance;
+
+    //! 走行体の向き
+    float direction = (leftDistanceDelta - rightDistanceDelta) / TREAD ;
+    return direction;
 }
 
 /**
@@ -60,16 +101,33 @@ float distance_running(){
  * @return  なし
 */
 void run(scenario_running scenario) {
-    //! 左モーターの角位置をリセット
+    //! モーターの角位置、向きの累積をリセット
     ev3_motor_reset_counts(left_motor);
+    ev3_motor_reset_counts(right_motor);
+    lastRightDistance = 0.0F;
+    lastLeftDistance = 0.0F;
+    directionSum = 0.0F;
     
     //! ストップ監視しつつ、走行
     for(;;){
         ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
         tslp_tsk(1);//この行の必要性については要検証
         
+        //! 現在の左と右のモーターの走行距離を取得
+        float leftDistance = distance_running(left_motor);
+        float rightDistance = distance_running(right_motor);
+        
+        //! 瞬間の向きを取得し、累積する
+        directionSum += getDirectionDelta(rightDistance, leftDistance);
+        
+        //! 向きの累積をLCDに表示
+        char message[16];
+        memset(message, '\0', sizeof(message));
+        sprintf(message, "%03.03f", directionSum); 
+        writeStringLCD(message);
+        
         //! 左モーターが指定距離走行したらストップ
-        if(distance_running() >= scenario.distance){
+        if(leftDistance >= scenario.distance){
             if(scenario.stop){
                 ev3_motor_stop(left_motor,false);
                 ev3_motor_stop(right_motor,false);
