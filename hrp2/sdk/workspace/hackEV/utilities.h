@@ -42,19 +42,14 @@ extern const motor_port_t right_motor;
 extern Logger*  logger;
 
 #define OUTPUT_LOG(message, type) \
-    if (type == OUTPUT_TYPE_NONE) { \
-        return; \
-    } \
-    \
-    if (type & OUTPUT_TYPE_FILE) { \
-        writeStringLCD(message); \
-    } \
-    \
-    if (logger && (type & OUTPUT_TYPE_FILE)) { \
-        logger->addLog(message); \
-    } \
-    \
-    return;
+    if (type != OUTPUT_TYPE_NONE) { \
+        if (type & OUTPUT_TYPE_LCD) { \
+            writeStringLCD(message); \
+        } \
+        if (logger && (type & OUTPUT_TYPE_FILE)) { \
+            logger->addLog(message); \
+        } \
+    }
 
 //  関数のプロトタイプ宣言
 extern void configure_motors();
