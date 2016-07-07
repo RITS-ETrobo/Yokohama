@@ -41,6 +41,7 @@ bool Logger::openLog()
         return  true;
     }
 
+    return  true;
     fpLog = fopen(LOGFILE_NAME, "w+");
     if (fpLog == NULL) {
         return  false;
