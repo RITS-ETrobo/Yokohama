@@ -41,10 +41,7 @@ bool Logger::openLog()
         return  true;
     }
 
-    char    path[256];
-    memset(path, '\0', sizeof(path));
-    sprintf(path, "%s/%s", LOGDIRECTORY_PATH, LOGFILE_NAME);
-    fpLog = fopen(path, "w+");
+    fpLog = fopen(LOGFILE_NAME, "w+");
     if (fpLog == NULL) {
         return  false;
     }
