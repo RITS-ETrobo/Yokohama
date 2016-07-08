@@ -10,6 +10,7 @@
 #include "app.h"
 #include "RunningModule.h"
 #include "LCDController.h"
+#include <stdlib.h>
 
 //! \addtogroup 距離計算要素
 //@{
@@ -52,23 +53,27 @@ void initialize_run() {
 
 
 typedef struct{
-    int power;
+    signed int power;
     float distance;
-    float direction;
+    signed int direction;
+    bool pinwheel;
     bool stop;
     PID_PARAMETER pidParameter;
 } scenario_running;
 
 const scenario_running run_scenario[] = {
-    {30, 100.0F, 90.0F, false, {0.775F, 0.0F, 0.375F}},
-    {30, 100.0F, 90.0F, false, {0.775F, 0.65F, 0.375F}},
-    {30, 100.0F, 90.0F, true, {0.775F, 0.65F, 0.375F}}
+    {30, 100.0F, 90, false, false, {0.775F, 0.0F, 0.375F}},
+    {30, 100.0F, 90, false, false, {0.775F, 0.65F, 0.375F}},
+    {30, 100.0F, 90, false, true, {0.775F, 0.65F, 0.375F}}
  };
  
- const scenario_running run_scenario_test[] = {
-    {30, 42.0F, 90.0F, false, {0.775F, 0.0F, 0.375F}},
-    {30, 42.0F, 90.0F, false, {0.775F, 0.65F, 0.375F}},
-    {30, 42.0F, 30.0F, true, {0.775F, 0.65F, 0.375F}}
+const scenario_running run_scenario_test[] = {
+    {30, 42.0F, 180, true, false, {0.775F, 0.0F, 0.375F}},
+    {-30, 42.0F, -180, true, false, {0.775F, 0.65F, 0.375F}},
+    {30, 42.0F, 180, false, false, {0.775F, 0.90F, 0.375F}},
+    {30, 42.0F, 200, true, false, {0.775F, 0.65F, 0.375F}},
+    {30, 42.0F, 180, false, false, {0.775F, 0.90F, 0.375F}},
+    {30, 42.0F, 400, true, true, {0.775F, 0.65F, 0.375F}}
  };
 
 /**
@@ -155,8 +160,15 @@ void run(scenario_running scenario) {
     
     //! ストップ監視しつつ、走行
     for(;;){
-        ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
-        //ev3_motor_steer(left_motor, right_motor, scenario.power, 0);//検証用角度指定
+        if(scenario.pinwheel){
+            //! その場回転
+            ev3_motor_set_power(left_motor, (-scenario.power));
+            ev3_motor_set_power(right_motor, scenario.power);
+        }else{
+            //! PIDを用いた走行
+            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
+        }
+        
         tslp_tsk(1);//この行の必要性については要検証
         
         //! 現在の左と右のモーターの走行距離を取得
@@ -180,9 +192,9 @@ void run(scenario_running scenario) {
 
             break;
         }
-        
+    
          //! 走行体が指定した向きになったらストップ
-        if(directionSum >= scenario.direction){
+        if(abs(directionSum) >= abs(scenario.direction)){
             if(scenario.stop){
                 stop_run();
                 
@@ -218,6 +230,17 @@ void start_run(){
 */
 void start_run_test(){
     initialize_pid_controller();
+    
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    while(1){
+        if(ev3_touch_sensor_is_pressed(touch_sensor)){
+            break;
+        }
+    }
     
     for(int index = 0; index < sizeof(run_scenario_test) / sizeof(run_scenario_test[0]); index++ ){
         //! シナリオが変わるたびに音を鳴らす

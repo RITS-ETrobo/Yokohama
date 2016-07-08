@@ -74,12 +74,6 @@ static void button_clicked_handler(intptr_t button) {
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
 
-        while(1){
-            if(ev3_touch_sensor_is_pressed(touch_sensor)){
-                break;
-            }
-        }
-
         //! 走行開始
         start_run();
         break;
