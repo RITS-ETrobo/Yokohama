@@ -60,9 +60,15 @@ typedef struct{
 } scenario_running;
 
 const scenario_running run_scenario[] = {
-    //{30, 100.0F, 90.0F, false, {0.775F, 0.0F, 0.375F}},
-    //{30, 100.0F, 90.0F, false, {0.775F, 0.65F, 0.375F}},
-    {30, 100.0F, 30.0F, true, {0.775F, 0.65F, 0.375F}}
+    {30, 100.0F, 90.0F, false, {0.775F, 0.0F, 0.375F}},
+    {30, 100.0F, 90.0F, false, {0.775F, 0.65F, 0.375F}},
+    {30, 100.0F, 90.0F, true, {0.775F, 0.65F, 0.375F}}
+ };
+ 
+ const scenario_running run_scenario_test[] = {
+    {30, 42.0F, 90.0F, false, {0.775F, 0.0F, 0.375F}},
+    {30, 42.0F, 90.0F, false, {0.775F, 0.65F, 0.375F}},
+    {30, 42.0F, 30.0F, true, {0.775F, 0.65F, 0.375F}}
  };
 
 /**
@@ -123,6 +129,17 @@ float viewLCD(float value){
 }
 
 /**
+ * @brief   ストップ処理
+ * 
+ * @return  なし
+*/
+void stop_run(){
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    ev3_motor_stop(left_motor,true);
+    ev3_motor_stop(right_motor,true); 
+}
+
+/**
  * @brief   シナリオに従って走る
  *
  * @param   [in] scenario 走行パラメータ
@@ -146,18 +163,13 @@ void run(scenario_running scenario) {
         float leftDistance = distance_running(left_motor);
         float rightDistance = distance_running(right_motor);
         
-        //! 瞬間の向きを取得し、累積する
-        directionSum += getDirectionDelta(rightDistance, leftDistance);
-        
-        //! 向きの累積をLCDに表示
-        viewLCD(directionSum);
+        //! 瞬間の向きを取得、累積して走行体の向きを計測
+        directionSum += getDirectionDelta(rightDistance, leftDistance);   
         
         //! 走行体が指定距離走行したらストップ
         if(getDistance(rightDistance, leftDistance) >= scenario.distance){
             if(scenario.stop){
-                ev3_speaker_play_tone(NOTE_E6, 100);
-                ev3_motor_stop(left_motor,true);
-                ev3_motor_stop(right_motor,true);
+                stop_run();
                 
                 //! 左モーターの移動距離結果をLCDに表示
                 viewLCD(leftDistance);
@@ -172,8 +184,10 @@ void run(scenario_running scenario) {
          //! 走行体が指定した向きになったらストップ
         if(directionSum >= scenario.direction){
             if(scenario.stop){
-                ev3_motor_stop(left_motor,true);
-                ev3_motor_stop(right_motor,true);
+                stop_run();
+                
+                //! 走行体の向きをLCDに表示
+                viewLCD(directionSum);                
             }
 
             break;
@@ -191,20 +205,24 @@ void start_run(){
     
     for(int index = 0; index < sizeof(run_scenario) / sizeof(run_scenario[0]); index++ ){
         //! シナリオが変わるたびに音を鳴らす
-        ev3_speaker_play_tone(NOTE_C4, 100);
+        ev3_speaker_play_tone(NOTE_E4, 100);
         run(run_scenario[index]);
     }
 }
 
 /**
- * @brief   補正しながら走行
- * 
- * PID係数を調節しながら走行する
+ * @brief   検証用の走行
  *
  * @param   なし    
  * @return  なし
 */
-void run_withPID(){
+void start_run_test(){
+    initialize_pid_controller();
     
+    for(int index = 0; index < sizeof(run_scenario_test) / sizeof(run_scenario_test[0]); index++ ){
+        //! シナリオが変わるたびに音を鳴らす
+        ev3_speaker_play_tone(NOTE_E4, 100);
+        run(run_scenario_test[index]);
+    }
 
 }

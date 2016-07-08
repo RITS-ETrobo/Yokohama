@@ -43,7 +43,7 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case LEFT_BUTTON:
-        //! 本体の左ボタンで走行モード
+        //! 本体の左ボタンでPIDモード
         writeStringLCD("LEFT button click");
     	syslog(LOG_NOTICE, "Left button clicked.");
         
@@ -67,7 +67,7 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case UP_BUTTON:
-        //! 直進モードの準備ができたら音が3回鳴る
+        //! シナリオ走行モード
         ev3_speaker_play_tone(NOTE_C4, 100);
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
@@ -82,6 +82,15 @@ static void button_clicked_handler(intptr_t button) {
 
         //! 走行開始
         start_run();
+        break;
+     
+    case ENTER_BUTTON:
+        //! シナリオ走行モードの検証用
+        ev3_speaker_play_tone(NOTE_E6, 300);
+        tslp_tsk(300);
+
+        //! テスト走行開始
+        start_run_test();
         break;
 
     default:
