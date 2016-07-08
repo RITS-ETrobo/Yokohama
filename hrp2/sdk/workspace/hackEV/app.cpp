@@ -13,7 +13,13 @@
 #include "app.h"
 #include "SonarSensorController.h"
 #include "RunningModule.h"
-#include "LCDController.h"
+#include "Logger.h"
+
+//! ログクラスのインスタンス
+Logger *logger = NULL;
+
+//! インスタンス作成のリトライ上限
+const unsigned char RETRY_CREATE_INSTANCE = 3;
 
 /**
  * @brief   緊急停止
@@ -38,7 +44,7 @@ void stop_emergency(){
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
     case BACK_BUTTON:
-        writeStringLCD("BACK button click");
+        OUTPUT_LOG("BACK button click", OUTPUT_TYPE_LCD);
         syslog(LOG_NOTICE, "Back button clicked.");
         break;
         
@@ -59,7 +65,7 @@ static void button_clicked_handler(intptr_t button) {
         
     case RIGHT_BUTTON:
         //! 本体の右ボタンで超音波モード
-        writeStringLCD("RIGHT button click");
+        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
         syslog(LOG_NOTICE, "RIGHT button clicked.");
         
         //! 超音波制御
@@ -68,6 +74,9 @@ static void button_clicked_handler(intptr_t button) {
 
     case UP_BUTTON:
         //! シナリオ走行モード
+        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
+
+        //! 準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_C4, 100);
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
@@ -90,8 +99,11 @@ static void button_clicked_handler(intptr_t button) {
     default:
         break;
     }
-}
 
+    if (logger) {
+        logger->closeLog();
+    }
+}
 
 /**
  * @brief   メインタスク
@@ -101,7 +113,20 @@ static void button_clicked_handler(intptr_t button) {
 */
 void main_task(intptr_t unused) {
     setFontSize(EV3_FONT_MEDIUM);
-    writeStringLCD("Start Initializing");
+
+    //! ログは重要機能の為、3回リトライする
+    for (int retry = 0; retry < RETRY_CREATE_INSTANCE; retry++) {
+        logger = new Logger();
+        if (logger != NULL) {
+            break;
+        }
+    }
+
+    if (logger) {
+        logger->initialize();
+    }
+
+    OUTPUT_LOG("Start Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
     //! Configure motors
     configure_motors();
@@ -122,11 +147,12 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
 
-    writeStringLCD("End Initializing");
+    OUTPUT_LOG("End Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%04d mA %04d mV", ev3_battery_current_mA(), ev3_battery_voltage_mV()); 
-    writeStringLCD(message);
+    OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
