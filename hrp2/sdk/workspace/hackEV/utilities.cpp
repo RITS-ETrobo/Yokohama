@@ -25,6 +25,19 @@ const motor_port_t right_motor = EV3_PORT_B;
 //@}
 
 /**
+ * @brief   LCDに数値を表示させる
+ * 
+ * @param value 表示させる値
+ * @return  なし
+*/
+void writeFloatLCD(float value){
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%03.03f", value); 
+    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+}
+
+/**
  * @brief   モーターの設定を行う
  * @return  なし
 */

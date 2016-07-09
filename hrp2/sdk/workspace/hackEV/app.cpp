@@ -49,9 +49,9 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case LEFT_BUTTON:
-        //! 本体の左ボタンで走行モード
+        //! 本体の左ボタンでPIDモード
         OUTPUT_LOG("LEFT button click", OUTPUT_TYPE_LCD);
-        syslog(LOG_NOTICE, "Left button clicked.");
+    	syslog(LOG_NOTICE, "Left button clicked.");
         
         //! PID制御の初期化
         initialize_pid_controller();
@@ -73,7 +73,7 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case UP_BUTTON:
-        //! 本体の上ボタンでシナリオに沿って走行するモード
+        //! シナリオ走行モード
         OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
 
         //! 準備ができたら音が3回鳴る
@@ -83,14 +83,17 @@ static void button_clicked_handler(intptr_t button) {
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
 
-        while(1){
-            if(ev3_touch_sensor_is_pressed(touch_sensor)){
-                break;
-            }
-        }
-
         //! 走行開始
         start_run();
+        break;
+     
+    case ENTER_BUTTON:
+        //! シナリオ走行モードの検証用
+        ev3_speaker_play_tone(NOTE_E6, 300);
+        tslp_tsk(300);
+
+        //! テスト走行開始
+        start_run_test();
         break;
 
     default:
