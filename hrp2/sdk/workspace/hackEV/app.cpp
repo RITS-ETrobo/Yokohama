@@ -50,7 +50,7 @@ static void button_clicked_handler(intptr_t button) {
         
     case LEFT_BUTTON:
         //! 本体の左ボタンでPIDモード
-        writeStringLCD("LEFT button click");
+        OUTPUT_LOG("LEFT button click", OUTPUT_TYPE_LCD);
     	syslog(LOG_NOTICE, "Left button clicked.");
         
         //! PID制御の初期化
