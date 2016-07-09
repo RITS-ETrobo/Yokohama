@@ -55,3 +55,4 @@ extern Logger*  logger;
 extern void configure_motors();
 extern void configure_sensors();
 extern int calibrate_light_intensity();
+extern void writeFloatLCD(float value);

@@ -53,9 +53,9 @@ void initialize_run() {
 
 
 typedef struct{
-    signed int power;
+    int power;
     float distance;
-    signed int direction;
+    int direction;
     bool pinwheel;
     bool stop;
     PID_PARAMETER pidParameter;
@@ -100,12 +100,9 @@ float getDirectionDelta(float rightDistance, float leftDistance){
     float leftDistanceDelta = leftDistance - lastLeftDistance;
     lastRightDistance = rightDistance;
     lastLeftDistance = leftDistance;
-
-    //! 走行体の向き[rad]
-    float directionRadian = (rightDistanceDelta - leftDistanceDelta) / TREAD ;
     
-    //! ラジアンを度へ変換[度]
-    float direction = directionRadian * 180 / Pi;
+    //! 走行体の向き[度]
+    float direction = ((rightDistanceDelta - leftDistanceDelta) / TREAD) * 180 / Pi;
     
     return direction;
 }
@@ -113,24 +110,11 @@ float getDirectionDelta(float rightDistance, float leftDistance){
 /**
  * @brief   リセットしてからの走行体中心の移動距離を計算
  * 
- * @return  走行距離
+ * @return  走行距離[cm]
 */
 float getDistance(float rightDistance, float leftDistance){
     float distance = (rightDistance + leftDistance) / 2.0F;
     return distance;
-}
-
-/**
- * @brief   LCDに数値を表示させる
- * 
- * @param value 表示させる値
- * @return  なし
-*/
-float viewLCD(float value){
-    char message[16];
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "%03.03f", value); 
-    writeStringLCD(message);
 }
 
 /**
@@ -184,10 +168,10 @@ void run(scenario_running scenario) {
                 stop_run();
                 
                 //! 左モーターの移動距離結果をLCDに表示
-                viewLCD(leftDistance);
+                writeFloatLCD(leftDistance);
                 
                 //! 右モーターの移動距離結果をLCDに表示
-                viewLCD(rightDistance);
+                writeFloatLCD(rightDistance);
             }
 
             break;
@@ -199,7 +183,7 @@ void run(scenario_running scenario) {
                 stop_run();
                 
                 //! 走行体の向きをLCDに表示
-                viewLCD(directionSum);                
+                writeFloatLCD(directionSum);                
             }
 
             break;

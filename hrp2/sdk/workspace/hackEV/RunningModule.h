@@ -8,8 +8,6 @@
 #include "target_test.h"
 
 //  関数のプロトタイプ宣言
-#ifndef TOPPERS_MACRO_ONLY
-    extern void	initialize_run();
-    extern void start_run();
-    extern void start_run_test();
-#endif /* TOPPERS_MACRO_ONLY */
+extern void	initialize_run();
+extern void start_run();
+extern void start_run_test();
