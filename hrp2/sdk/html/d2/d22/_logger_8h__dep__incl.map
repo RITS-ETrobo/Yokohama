@@ -1,0 +1,10 @@
+<map id="hrp2/sdk/workspace/hackEV/Logger.h" name="hrp2/sdk/workspace/hackEV/Logger.h">
+<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="359,97,497,138"/>
+<area shape="rect" id="node3" href="$dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,187,144,229"/>
+<area shape="rect" id="node9" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="522,97,661,138"/>
+<area shape="rect" id="node4" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="168,187,315,229"/>
+<area shape="rect" id="node5" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="339,187,517,229"/>
+<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="542,187,732,229"/>
+<area shape="rect" id="node7" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="757,187,989,229"/>
+<area shape="rect" id="node8" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1014,187,1156,229"/>
+</map>

@@ -712,12 +712,13 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 <p>Main loop for the self-balance control algorithm</p>
+<p>ログは重要機能の為、3回リトライする</p>
 <p>Configure motors</p>
 <p>Configure sensors</p>
 <p>超音波センサの初期化</p>
 <p>初期化が終わった時点で音を一回鳴らす（キー入力待ちを知らせる）</p>
 <p>Register button handlers</p>
-<p>キー入力待ち</p>
+<p>キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト</p>
 <p>TODO: test file operations</p>
 
 <p><div class="dynheader">
@@ -1262,7 +1263,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_4506c7a31241de25e54637cdbb95b692.html">hwbrickbench</a></li><li class="navelem"><a class="el" href="../../d6/d4c/hwbrickbench_2app_8c.html">app.c</a></li>
-    <li class="footer">Generated on Fri Jun 24 2016 20:50:08 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Jul 11 2016 17:45:57 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

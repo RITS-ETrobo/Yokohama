@@ -1,3 +1,6 @@
 <map id="pid_controller_task" name="pid_controller_task">
-<area shape="rect" id="node2" href="$dd/d0a/pid__controller_8cpp.html#a63d4c9dff1632ebbdcb4f3e99f508ba3" title="PID制御を行う " alt="" coords="184,5,283,32"/>
+<area shape="rect" id="node2" href="$dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="184,31,283,57"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="331,31,442,57"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="491,5,589,32"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="491,56,589,83"/>
 </map>

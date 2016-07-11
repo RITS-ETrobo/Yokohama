@@ -1,7 +1,7 @@
 var pid__controller_8cpp =
 [
     [ "initialize_pid_controller", "dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98", null ],
-    [ "pid_controller", "dd/d0a/pid__controller_8cpp.html#a63d4c9dff1632ebbdcb4f3e99f508ba3", null ],
+    [ "pid_controller", "dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6", null ],
     [ "pid_controller_task", "dd/d0a/pid__controller_8cpp.html#ad4cc59d26b453542605de6a3b7dc2b5b", null ],
     [ "black", "dd/d0a/pid__controller_8cpp.html#ga8784d4f8ed73cff78355d2ed8e0c3a3b", null ],
     [ "integral", "dd/d0a/pid__controller_8cpp.html#ga1174af01b8a329a6d465ea6e0951b3e5", null ],

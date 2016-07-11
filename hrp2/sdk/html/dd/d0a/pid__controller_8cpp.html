@@ -114,12 +114,13 @@ $(document).ready(function(){initNavTree('dd/d0a/pid__controller_8cpp.html','../
 <div class="textblock"><code>#include &quot;ev3api.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/df0/utilities_8h_source.html">utilities.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/dc3/pid__controller_8h_source.html">pid_controller.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/d3c/_l_c_d_controller_8h_source.html">LCDController.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pid_controller.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d39/pid__controller_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8cpp" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8cpp">
-<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="100,96,173,123"/><area shape="rect" id="node5" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="199,96,309,123"/></map>
+<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="143,96,216,123"/><area shape="rect" id="node9" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="70,171,185,197"/><area shape="rect" id="node10" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="242,96,352,123"/><area shape="rect" id="node5" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="312,171,384,197"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -127,9 +128,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3cb8f8d1ee8f91ca87e443eaf86d9b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98">initialize_pid_controller</a> ()</td></tr>
 <tr class="memdesc:a3cb8f8d1ee8f91ca87e443eaf86d9b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID contollerの初期化処理  <a href="#a3cb8f8d1ee8f91ca87e443eaf86d9b98">More...</a><br/></td></tr>
 <tr class="separator:a3cb8f8d1ee8f91ca87e443eaf86d9b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63d4c9dff1632ebbdcb4f3e99f508ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0a/pid__controller_8cpp.html#a63d4c9dff1632ebbdcb4f3e99f508ba3">pid_controller</a> ()</td></tr>
-<tr class="memdesc:a63d4c9dff1632ebbdcb4f3e99f508ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID制御を行う  <a href="#a63d4c9dff1632ebbdcb4f3e99f508ba3">More...</a><br/></td></tr>
-<tr class="separator:a63d4c9dff1632ebbdcb4f3e99f508ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc50124153c91f022cf309508b0d4ea6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6">pid_controller</a> (<a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a> pidParameter)</td></tr>
+<tr class="memdesc:adc50124153c91f022cf309508b0d4ea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID制御を行う  <a href="#adc50124153c91f022cf309508b0d4ea6">More...</a><br/></td></tr>
+<tr class="separator:adc50124153c91f022cf309508b0d4ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4cc59d26b453542605de6a3b7dc2b5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0a/pid__controller_8cpp.html#ad4cc59d26b453542605de6a3b7dc2b5b">pid_controller_task</a> (intptr_t unused)</td></tr>
 <tr class="memdesc:ad4cc59d26b453542605de6a3b7dc2b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">[タスク]PID制御を行う  <a href="#ad4cc59d26b453542605de6a3b7dc2b5b">More...</a><br/></td></tr>
 <tr class="separator:ad4cc59d26b453542605de6a3b7dc2b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,7 +179,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>PID contollerの初期化処理 </p>
-<p>ターゲット依存の定義</p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 <p>Calibrate for light intensity of WHITE</p>
 <p>Calibrate for light intensity of BLACK </p>
@@ -192,16 +192,26 @@ Here is the call graph for this function:</div>
 </div>
 </p>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/d0a/pid__controller_8cpp_a3cb8f8d1ee8f91ca87e443eaf86d9b98_icgraph.png" border="0" usemap="#dd/d0a/pid__controller_8cpp_a3cb8f8d1ee8f91ca87e443eaf86d9b98_icgraph" alt=""/></div>
+<map name="dd/d0a/pid__controller_8cpp_a3cb8f8d1ee8f91ca87e443eaf86d9b98_icgraph" id="dd/d0a/pid__controller_8cpp_a3cb8f8d1ee8f91ca87e443eaf86d9b98_icgraph">
+<area shape="rect" id="node2" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="223,5,297,32"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="209,56,311,83"/></map>
+</div>
+</p>
+
 </div>
 </div>
-<a class="anchor" id="a63d4c9dff1632ebbdcb4f3e99f508ba3"></a>
+<a class="anchor" id="adc50124153c91f022cf309508b0d4ea6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pid_controller </td>
+          <td class="memname">float pid_controller </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a>&#160;</td>
+          <td class="paramname"><em>pidParameter</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -211,10 +221,13 @@ Here is the call graph for this function:</div>
 <p>「滑らかで安定したライントレースを行う」ためにPID制御を用いる。<br/>
 PIDの各制御項(比例項、積分項、微分項)を求め、各制御項を足し合わせたものを操作量として、モーターを回転させる。</p>
 <p>PIDの参考資料 : <a href="http://monoist.atmarkit.co.jp/mn/articles/1007/26/news083.html">http://monoist.atmarkit.co.jp/mn/articles/1007/26/news083.html</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pidParameter</td><td>PIDの係数</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Refer</dt><dd><ul>
-<li>参照する定数 KP</li>
-<li>参照する定数 KI</li>
-<li>参照する定数 KD</li>
 <li>参照する変数 white</li>
 <li>参照する変数 black</li>
 <li>参照する変数 lasterror</li>
@@ -222,7 +235,7 @@ PIDの各制御項(比例項、積分項、微分項)を求め、各制御項を
 <li>参照する変数 midpoint</li>
 </ul>
 </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>操作量 </dd></dl>
 <p>カラーセンサーによって取得された値を基に、偏差を算出する</p>
 <p>偏差を積分した値を求める</p>
 <p>P値を求める</p>
@@ -231,11 +244,20 @@ PIDの各制御項(比例項、積分項、微分項)を求め、各制御項を
 <p>操作量を求める </p>
 
 <p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_cgraph.png" border="0" usemap="#dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_cgraph" alt=""/></div>
+<map name="dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_cgraph" id="dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_cgraph">
+<area shape="rect" id="node2" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="153,31,263,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="312,5,411,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="312,56,411,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dd/d0a/pid__controller_8cpp_a63d4c9dff1632ebbdcb4f3e99f508ba3_icgraph.png" border="0" usemap="#dd/d0a/pid__controller_8cpp_a63d4c9dff1632ebbdcb4f3e99f508ba3_icgraph" alt=""/></div>
-<map name="dd/d0a/pid__controller_8cpp_a63d4c9dff1632ebbdcb4f3e99f508ba3_icgraph" id="dd/d0a/pid__controller_8cpp_a63d4c9dff1632ebbdcb4f3e99f508ba3_icgraph">
-<area shape="rect" id="node2" href="../../de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="152,5,283,32"/></map>
+<div class="center"><img src="../../dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_icgraph.png" border="0" usemap="#dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_icgraph" alt=""/></div>
+<map name="dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_icgraph" id="dd/d0a/pid__controller_8cpp_adc50124153c91f022cf309508b0d4ea6_icgraph">
+<area shape="rect" id="node2" href="../../de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="152,5,283,32"/><area shape="rect" id="node3" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="197,56,237,83"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="346,31,419,57"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="331,81,434,108"/></map>
 </div>
 </p>
 
@@ -272,7 +294,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d0a/pid__controller_8cpp_ad4cc59d26b453542605de6a3b7dc2b5b_cgraph.png" border="0" usemap="#dd/d0a/pid__controller_8cpp_ad4cc59d26b453542605de6a3b7dc2b5b_cgraph" alt=""/></div>
 <map name="dd/d0a/pid__controller_8cpp_ad4cc59d26b453542605de6a3b7dc2b5b_cgraph" id="dd/d0a/pid__controller_8cpp_ad4cc59d26b453542605de6a3b7dc2b5b_cgraph">
-<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a63d4c9dff1632ebbdcb4f3e99f508ba3" title="PID制御を行う " alt="" coords="184,5,283,32"/></map>
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="184,31,283,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="331,31,442,57"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="491,5,589,32"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="491,56,589,83"/></map>
 </div>
 </p>
 
@@ -284,7 +306,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../dd/d0a/pid__controller_8cpp.html">pid_controller.cpp</a></li>
-    <li class="footer">Generated on Fri Jun 24 2016 20:50:08 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Jul 11 2016 17:45:57 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

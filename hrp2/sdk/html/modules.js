@@ -5,6 +5,8 @@ var modules =
     [ "variables used by the self-balance control algorithm.", "d8/d4b/group___global.html", null ],
     [ "PID制御で用いる定数", "d4/d06/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xAE_x9A_xE6_x95_xB0.html", "d4/d06/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xAE_x9A_xE6_x95_xB0" ],
     [ "PID制御で用いる変数", "d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html", "d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0" ],
+    [ "距離計算要素", "d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html", "d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0" ],
+    [ "方向計算要素", "dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html", "dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0" ],
     [ "超音波センサのポート", "d2/d58/group___xE8_xB6_x85_xE9_x9F_xB3_xE6_xB3_xA2_xE3_x82_xBB_xE3_x83_xB3_xE3_x82_xB5_xE3_x81_xAE_xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88.html", "d2/d58/group___xE8_xB6_x85_xE9_x9F_xB3_xE6_xB3_xA2_xE3_x82_xBB_xE3_x83_xB3_xE3_x82_xB5_xE3_x81_xAE_xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88" ],
     [ "ポートの設定", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A" ]
 ];

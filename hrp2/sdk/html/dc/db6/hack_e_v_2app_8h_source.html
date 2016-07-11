@@ -154,57 +154,59 @@ $(document).ready(function(){initNavTree('dc/db6/hack_e_v_2app_8h_source.html','
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;target_test.h&quot;</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define MAIN_PRIORITY   5</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#gaed801c122c559efe4677d351d07747b4">   57</a></span>&#160;<span class="preprocessor">#define HIGH_PRIORITY   9</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#ga1557e73ce1cc3b8e9aa283a0f5a766cb">   59</a></span>&#160;<span class="preprocessor">#define MID_PRIORITY    10</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#ga9b470dff68ba3321209a33edc4638bd8">   61</a></span>&#160;<span class="preprocessor">#define LOW_PRIORITY    11</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifdef TOPPERS_MACRO_ONLY</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #error TOPPERS_MACRO_ONLY is defined.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif  //  TOPPERS_MACRO_ONLY</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define MAIN_PRIORITY   5</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#gaed801c122c559efe4677d351d07747b4">   61</a></span>&#160;<span class="preprocessor">#define HIGH_PRIORITY   9</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifndef STACK_SIZE</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define STACK_SIZE      4096</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* STACK_SIZE */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifndef LOOP_REF</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define LOOP_REF        ULONG_C(1000000)</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* LOOP_REF */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">//  関数のプロトタイプ宣言</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifndef TOPPERS_MACRO_ONLY</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a">task</a>(intptr_t exinf);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../d4/d27/ev3way-cpp_2app_8h.html#ab874c34d9d66b14d189a9a3f2d065991">main_task</a>(intptr_t exinf);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#ade1c8a49dc22597c63721de9d61e390d">balance_task</a>(intptr_t exinf);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#adf1ca31adffac652fc532aaf03857119">idle_task</a>(intptr_t exinf);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68">stop_emergency</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//extern void   tex_routine(TEXPTN texptn, intptr_t exinf);</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">//#ifdef CPUEXC1</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">//  extern void cpuexc_handler(void *p_excinf);</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">//#endif /* CPUEXC1 */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">//extern void   cyclic_handler(intptr_t exinf);</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">//extern void   alarm_handler(intptr_t exinf);</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">//</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//extern void   gpio_handler_initialize(intptr_t exinf);</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">//extern void   gpio_handler(void);</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#a7af671454805e666c8e88744a2856514">gpio_irq_dispatcher</a>(intptr_t exinf);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">//</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">//extern void   uart_sensor_monitor(intptr_t exinf);</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">//</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">//extern void   ev3_uart_cyclic_handler(intptr_t exinf);</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">//extern void   ev3_uart_daemon(intptr_t exinf);</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//extern void   ev3_uart_port2_irq(void);</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//extern void initialize_ev3(intptr_t exinf);</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TOPPERS_MACRO_ONLY */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#ga1557e73ce1cc3b8e9aa283a0f5a766cb">   63</a></span>&#160;<span class="preprocessor">#define MID_PRIORITY    10</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d8/d68/group___xE5_x90_x84_xE3_x82_xBF_xE3_x82_xB9_xE3_x82_xAF_xE3_x81_xAE_xE5_x84_xAA_xE5_x85_x88_xE5_9a6ff95c9bac9b20c6369928c6da8545.html#ga9b470dff68ba3321209a33edc4638bd8">   65</a></span>&#160;<span class="preprocessor">#define LOW_PRIORITY    11</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifndef STACK_SIZE</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define STACK_SIZE      4096</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* STACK_SIZE */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifndef LOOP_REF</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define LOOP_REF        ULONG_C(1000000)</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* LOOP_REF */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//  関数のプロトタイプ宣言</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a">task</a>(intptr_t exinf);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../d4/d27/ev3way-cpp_2app_8h.html#ab874c34d9d66b14d189a9a3f2d065991">main_task</a>(intptr_t exinf);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#ade1c8a49dc22597c63721de9d61e390d">balance_task</a>(intptr_t exinf);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#adf1ca31adffac652fc532aaf03857119">idle_task</a>(intptr_t exinf);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68">stop_emergency</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//extern void   tex_routine(TEXPTN texptn, intptr_t exinf);</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//#ifdef CPUEXC1</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//  extern void cpuexc_handler(void *p_excinf);</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//#endif /* CPUEXC1 */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//extern void   cyclic_handler(intptr_t exinf);</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//extern void   alarm_handler(intptr_t exinf);</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//extern void   gpio_handler_initialize(intptr_t exinf);</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//extern void   gpio_handler(void);</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/db6/hack_e_v_2app_8h.html#a7af671454805e666c8e88744a2856514">gpio_irq_dispatcher</a>(intptr_t exinf);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//extern void   uart_sensor_monitor(intptr_t exinf);</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//extern void   ev3_uart_cyclic_handler(intptr_t exinf);</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//extern void   ev3_uart_daemon(intptr_t exinf);</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">//extern void   ev3_uart_port2_irq(void);</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">//extern void initialize_ev3(intptr_t exinf);</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="hack_e_v_2app_8h_html_adf1ca31adffac652fc532aaf03857119"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#adf1ca31adffac652fc532aaf03857119">idle_task</a></div><div class="ttdeci">void idle_task(intptr_t exinf)</div><div class="ttdef"><b>Definition:</b> gyroboy.cpp:314</div></div>
 <div class="ttc" id="hack_e_v_2app_8h_html_ade1c8a49dc22597c63721de9d61e390d"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#ade1c8a49dc22597c63721de9d61e390d">balance_task</a></div><div class="ttdeci">void balance_task(intptr_t exinf)</div><div class="ttdef"><b>Definition:</b> gyroboy.cpp:254</div></div>
-<div class="ttc" id="hack_e_v_2app_8h_html_a27869433979701bc6bd15b516e098e68"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68">stop_emergency</a></div><div class="ttdeci">void stop_emergency()</div><div class="ttdoc">緊急停止 </div><div class="ttdef"><b>Definition:</b> app.cpp:22</div></div>
+<div class="ttc" id="hack_e_v_2app_8h_html_a27869433979701bc6bd15b516e098e68"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68">stop_emergency</a></div><div class="ttdeci">void stop_emergency()</div><div class="ttdoc">緊急停止 </div><div class="ttdef"><b>Definition:</b> app.cpp:29</div></div>
 <div class="ttc" id="hack_e_v_2app_8h_html_aac40c9754da64fb47691ccc068b0ec7a"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#aac40c9754da64fb47691ccc068b0ec7a">task</a></div><div class="ttdeci">void task(intptr_t exinf)</div></div>
 <div class="ttc" id="ev3way-cpp_2app_8h_html_ab874c34d9d66b14d189a9a3f2d065991"><div class="ttname"><a href="../../d4/d27/ev3way-cpp_2app_8h.html#ab874c34d9d66b14d189a9a3f2d065991">main_task</a></div><div class="ttdeci">void main_task(intptr_t exinf)</div><div class="ttdoc">メインタスク </div><div class="ttdef"><b>Definition:</b> app.cpp:68</div></div>
 <div class="ttc" id="hack_e_v_2app_8h_html_a7af671454805e666c8e88744a2856514"><div class="ttname"><a href="../../dc/db6/hack_e_v_2app_8h.html#a7af671454805e666c8e88744a2856514">gpio_irq_dispatcher</a></div><div class="ttdeci">void gpio_irq_dispatcher(intptr_t exinf)</div></div>
@@ -214,7 +216,7 @@ $(document).ready(function(){initNavTree('dc/db6/hack_e_v_2app_8h_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../dc/db6/hack_e_v_2app_8h.html">app.h</a></li>
-    <li class="footer">Generated on Fri Jun 24 2016 20:50:08 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Jul 11 2016 17:45:57 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

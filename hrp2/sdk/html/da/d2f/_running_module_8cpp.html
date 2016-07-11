@@ -102,7 +102,9 @@ $(document).ready(function(){initNavTree('da/d2f/_running_module_8cpp.html','../
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">RunningModule.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -115,29 +117,193 @@ $(document).ready(function(){initNavTree('da/d2f/_running_module_8cpp.html','../
 <code>#include &quot;<a class="el" href="../../de/dc3/pid__controller_8h_source.html">pid_controller.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../dc/db6/hack_e_v_2app_8h_source.html">app.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d6/d2f/_running_module_8h_source.html">RunningModule.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/d3c/_l_c_d_controller_8h_source.html">LCDController.h</a>&quot;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for RunningModule.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d3d/_running_module_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp">
-<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="100,96,173,123"/><area shape="rect" id="node5" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="199,96,309,123"/><area shape="rect" id="node6" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="334,96,388,123"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html" title="This file has RunningModule. " alt="" coords="413,96,536,123"/></map>
+<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="236,96,309,123"/><area shape="rect" id="node9" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="74,171,189,197"/><area shape="rect" id="node10" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="362,171,472,197"/><area shape="rect" id="node11" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="497,171,551,197"/><area shape="rect" id="node12" href="../../d6/d2f/_running_module_8h.html" title="This file has RunningModule. " alt="" coords="481,96,604,123"/><area shape="rect" id="node5" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="215,171,287,197"/></map>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa1257cf90111aec1c47057d3bc893111"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#aa1257cf90111aec1c47057d3bc893111">initialize_run</a> ()</td></tr>
 <tr class="memdesc:aa1257cf90111aec1c47057d3bc893111"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化処理  <a href="#aa1257cf90111aec1c47057d3bc893111">More...</a><br/></td></tr>
 <tr class="separator:aa1257cf90111aec1c47057d3bc893111"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2c055f028be174636fe6a90721d5bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#aee2c055f028be174636fe6a90721d5bf">start_run</a> (int power, int corveAngle)</td></tr>
-<tr class="memdesc:aee2c055f028be174636fe6a90721d5bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">走る処理  <a href="#aee2c055f028be174636fe6a90721d5bf">More...</a><br/></td></tr>
-<tr class="separator:aee2c055f028be174636fe6a90721d5bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61d3d9ee0546a7c1d895f64276f227ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a61d3d9ee0546a7c1d895f64276f227ac">run_withPID</a> ()</td></tr>
-<tr class="memdesc:a61d3d9ee0546a7c1d895f64276f227ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">補正しながら走行  <a href="#a61d3d9ee0546a7c1d895f64276f227ac">More...</a><br/></td></tr>
-<tr class="separator:a61d3d9ee0546a7c1d895f64276f227ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379f21b9fd5698f0249445ca7f8a0330"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330">distance_running</a> (motor_port_t port)</td></tr>
+<tr class="memdesc:a379f21b9fd5698f0249445ca7f8a0330"><td class="mdescLeft">&#160;</td><td class="mdescRight">リセットしてからの指定したタイヤの走行距離を計算  <a href="#a379f21b9fd5698f0249445ca7f8a0330">More...</a><br/></td></tr>
+<tr class="separator:a379f21b9fd5698f0249445ca7f8a0330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc16369059bea11a028f7f479e1c0270"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270">getDirectionDelta</a> (float rightDistance, float leftDistance)</td></tr>
+<tr class="memdesc:abc16369059bea11a028f7f479e1c0270"><td class="mdescLeft">&#160;</td><td class="mdescRight">瞬間の走行体の向きを取得 前回測定した位置から今回の移動までに変化した向き  <a href="#abc16369059bea11a028f7f479e1c0270">More...</a><br/></td></tr>
+<tr class="separator:abc16369059bea11a028f7f479e1c0270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2644a870e4c9546d6d61a80b71d7c6e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e">getDistance</a> (float rightDistance, float leftDistance)</td></tr>
+<tr class="memdesc:ad2644a870e4c9546d6d61a80b71d7c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">リセットしてからの走行体中心の移動距離を計算  <a href="#ad2644a870e4c9546d6d61a80b71d7c6e">More...</a><br/></td></tr>
+<tr class="separator:ad2644a870e4c9546d6d61a80b71d7c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a673d0217d3d339e76d662475c181371a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a">stop_run</a> ()</td></tr>
+<tr class="memdesc:a673d0217d3d339e76d662475c181371a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストップ処理  <a href="#a673d0217d3d339e76d662475c181371a">More...</a><br/></td></tr>
+<tr class="separator:a673d0217d3d339e76d662475c181371a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a080cda2584e6b5ef0bdcdf060208bd89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89">run</a> (<a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> scenario)</td></tr>
+<tr class="memdesc:a080cda2584e6b5ef0bdcdf060208bd89"><td class="mdescLeft">&#160;</td><td class="mdescRight">シナリオに従って走る  <a href="#a080cda2584e6b5ef0bdcdf060208bd89">More...</a><br/></td></tr>
+<tr class="separator:a080cda2584e6b5ef0bdcdf060208bd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fed49bdf464977f8c337f0aa89b5dbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a4fed49bdf464977f8c337f0aa89b5dbc">start_run</a> ()</td></tr>
+<tr class="memdesc:a4fed49bdf464977f8c337f0aa89b5dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">走る処理  <a href="#a4fed49bdf464977f8c337f0aa89b5dbc">More...</a><br/></td></tr>
+<tr class="separator:a4fed49bdf464977f8c337f0aa89b5dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06efab33f16fb6a1d6e5948027c1bfe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a06efab33f16fb6a1d6e5948027c1bfe9">start_run_test</a> ()</td></tr>
+<tr class="memdesc:a06efab33f16fb6a1d6e5948027c1bfe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">検証用の走行  <a href="#a06efab33f16fb6a1d6e5948027c1bfe9">More...</a><br/></td></tr>
+<tr class="separator:a06efab33f16fb6a1d6e5948027c1bfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gae81e28fe574f66eb62240e2213eb5f71"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gae81e28fe574f66eb62240e2213eb5f71">DiameterWheel</a> = 8.2F</td></tr>
+<tr class="memdesc:gae81e28fe574f66eb62240e2213eb5f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">タイヤの直径[cm]  <a href="../../d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gae81e28fe574f66eb62240e2213eb5f71">More...</a><br/></td></tr>
+<tr class="separator:gae81e28fe574f66eb62240e2213eb5f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga26722c3df2ea3f0f62eef1a57cf05016"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga26722c3df2ea3f0f62eef1a57cf05016">Pi</a> = 3.14159265359F</td></tr>
+<tr class="memdesc:ga26722c3df2ea3f0f62eef1a57cf05016"><td class="mdescLeft">&#160;</td><td class="mdescRight">円周率  <a href="../../d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga26722c3df2ea3f0f62eef1a57cf05016">More...</a><br/></td></tr>
+<tr class="separator:ga26722c3df2ea3f0f62eef1a57cf05016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f2a261748f0062a29996bc13965efa1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga6f2a261748f0062a29996bc13965efa1">sumLeftMotorRotate</a> = 0.0F</td></tr>
+<tr class="memdesc:ga6f2a261748f0062a29996bc13965efa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">左モーターの回転数の合計  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga6f2a261748f0062a29996bc13965efa1">More...</a><br/></td></tr>
+<tr class="separator:ga6f2a261748f0062a29996bc13965efa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad001c45ae3d2891654b3589174896b95"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gad001c45ae3d2891654b3589174896b95">sumRightMotorRotate</a> = 0.0F</td></tr>
+<tr class="memdesc:gad001c45ae3d2891654b3589174896b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">右モーターの回転数の合計  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gad001c45ae3d2891654b3589174896b95">More...</a><br/></td></tr>
+<tr class="separator:gad001c45ae3d2891654b3589174896b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76a56dd78246f4464f8db8a80000b017"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga76a56dd78246f4464f8db8a80000b017">TREAD</a> = 12.7F</td></tr>
+<tr class="memdesc:ga76a56dd78246f4464f8db8a80000b017"><td class="mdescLeft">&#160;</td><td class="mdescRight">左右のタイヤ間のトレッド[cm]  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga76a56dd78246f4464f8db8a80000b017">More...</a><br/></td></tr>
+<tr class="separator:ga76a56dd78246f4464f8db8a80000b017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f2d809b4ac45156ec392a48e2584354"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga7f2d809b4ac45156ec392a48e2584354">lastRightDistance</a> = 0.0F</td></tr>
+<tr class="memdesc:ga7f2d809b4ac45156ec392a48e2584354"><td class="mdescLeft">&#160;</td><td class="mdescRight">前回の右モーターの距離  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga7f2d809b4ac45156ec392a48e2584354">More...</a><br/></td></tr>
+<tr class="separator:ga7f2d809b4ac45156ec392a48e2584354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga80791f6af23c7d8c8cce45af4fe77dae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga80791f6af23c7d8c8cce45af4fe77dae">lastLeftDistance</a> = 0.0F</td></tr>
+<tr class="memdesc:ga80791f6af23c7d8c8cce45af4fe77dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">前回の左モーターの距離  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga80791f6af23c7d8c8cce45af4fe77dae">More...</a><br/></td></tr>
+<tr class="separator:ga80791f6af23c7d8c8cce45af4fe77dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaccfe8aea6a7f061c77fae89e3659f97"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gaaccfe8aea6a7f061c77fae89e3659f97">directionSum</a> = 0.0F</td></tr>
+<tr class="memdesc:gaaccfe8aea6a7f061c77fae89e3659f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">向きの累積  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gaaccfe8aea6a7f061c77fae89e3659f97">More...</a><br/></td></tr>
+<tr class="separator:gaaccfe8aea6a7f061c77fae89e3659f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa895dc5a777d6c448ad49eb9a2033243"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#aa895dc5a777d6c448ad49eb9a2033243">run_scenario</a> []</td></tr>
+<tr class="separator:aa895dc5a777d6c448ad49eb9a2033243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac948acd8a8791a3c88f1703da8fd7d22"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#ac948acd8a8791a3c88f1703da8fd7d22">run_scenario_test</a> []</td></tr>
+<tr class="separator:ac948acd8a8791a3c88f1703da8fd7d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file has RunningModule. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a379f21b9fd5698f0249445ca7f8a0330"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float distance_running </td>
+          <td>(</td>
+          <td class="paramtype">motor_port_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>リセットしてからの指定したタイヤの走行距離を計算 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>計測するタイヤのモーターポート </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>走行距離 </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a379f21b9fd5698f0249445ca7f8a0330_icgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a379f21b9fd5698f0249445ca7f8a0330_icgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a379f21b9fd5698f0249445ca7f8a0330_icgraph" id="da/d2f/_running_module_8cpp_a379f21b9fd5698f0249445ca7f8a0330_icgraph">
+<area shape="rect" id="node2" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="173,31,213,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="277,5,350,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="262,56,365,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abc16369059bea11a028f7f479e1c0270"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getDirectionDelta </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightDistance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftDistance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>瞬間の走行体の向きを取得 前回測定した位置から今回の移動までに変化した向き </p>
+<dl class="section return"><dt>Returns</dt><dd>瞬間の向き[度] </dd></dl>
+<p>走行体の向き[度] </p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_abc16369059bea11a028f7f479e1c0270_icgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_abc16369059bea11a028f7f479e1c0270_icgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_abc16369059bea11a028f7f479e1c0270_icgraph" id="da/d2f/_running_module_8cpp_abc16369059bea11a028f7f479e1c0270_icgraph">
+<area shape="rect" id="node2" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="176,31,216,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="279,5,353,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="265,56,367,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad2644a870e4c9546d6d61a80b71d7c6e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getDistance </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightDistance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftDistance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>リセットしてからの走行体中心の移動距離を計算 </p>
+<dl class="section return"><dt>Returns</dt><dd>走行距離[cm] </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_ad2644a870e4c9546d6d61a80b71d7c6e_icgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_ad2644a870e4c9546d6d61a80b71d7c6e_icgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_ad2644a870e4c9546d6d61a80b71d7c6e_icgraph" id="da/d2f/_running_module_8cpp_ad2644a870e4c9546d6d61a80b71d7c6e_icgraph">
+<area shape="rect" id="node2" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="147,31,187,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="250,5,323,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="235,56,338,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="aa1257cf90111aec1c47057d3bc893111"></a>
 <div class="memitem">
 <div class="memproto">
@@ -157,12 +323,66 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a61d3d9ee0546a7c1d895f64276f227ac"></a>
+<a class="anchor" id="a080cda2584e6b5ef0bdcdf060208bd89"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void run_withPID </td>
+          <td class="memname">void run </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td>
+          <td class="paramname"><em>scenario</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>シナリオに従って走る </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">scenario</td><td>走行パラメータ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<p>モーターの角位置、向きの累積をリセット</p>
+<p>ストップ監視しつつ、走行</p>
+<p>その場回転</p>
+<p>PIDを用いた走行</p>
+<p>現在の左と右のモーターの走行距離を取得</p>
+<p>瞬間の向きを取得、累積して走行体の向きを計測</p>
+<p>走行体が指定距離走行したらストップ</p>
+<p>左モーターの移動距離結果をLCDに表示</p>
+<p>右モーターの移動距離結果をLCDに表示</p>
+<p>走行体が指定した向きになったらストップ</p>
+<p>走行体の向きをLCDに表示 </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph" id="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph">
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="105,31,204,57"/><area shape="rect" id="node6" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算 " alt="" coords="95,81,215,108"/><area shape="rect" id="node7" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得 前回測定した位置から今回の移動までに変化した向き " alt="" coords="93,132,216,159"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="109,183,201,209"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="119,233,191,260"/><area shape="rect" id="node10" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="101,284,208,311"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="265,31,375,57"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="424,5,523,32"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="424,56,523,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_icgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_icgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_icgraph" id="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_icgraph">
+<area shape="rect" id="node2" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="109,5,182,32"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="94,56,197,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4fed49bdf464977f8c337f0aa89b5dbc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void start_run </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -170,8 +390,35 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>補正しながら走行 </p>
-<p>PID係数を調節しながら走行する</p>
+<p>走る処理 </p>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<p>シナリオが変わるたびに音を鳴らす </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph" id="da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph">
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="129,56,282,83"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="185,157,225,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="331,5,490,32"/><area shape="rect" id="node5" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="361,56,460,83"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算 " alt="" coords="351,107,471,133"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得 前回測定した位置から今回の移動までに変化した向き " alt="" coords="349,157,472,184"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="365,208,457,235"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="375,259,447,285"/><area shape="rect" id="node13" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="357,309,464,336"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="539,56,650,83"/><area shape="rect" id="node7" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="699,31,797,57"/><area shape="rect" id="node8" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="699,81,797,108"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a06efab33f16fb6a1d6e5948027c1bfe9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void start_run_test </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>検証用の走行 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">なし</td><td></td></tr>
@@ -179,45 +426,83 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<p>PIDの準備を終えたらタッチセンサーが押されるまで待機</p>
+<p>シナリオが変わるたびに音を鳴らす </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph" id="da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph">
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="158,56,311,83"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="215,157,255,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="361,5,519,32"/><area shape="rect" id="node5" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="391,56,489,83"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算 " alt="" coords="380,107,500,133"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得 前回測定した位置から今回の移動までに変化した向き " alt="" coords="379,157,501,184"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="394,208,486,235"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="404,259,476,285"/><area shape="rect" id="node13" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="387,309,493,336"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="569,56,679,83"/><area shape="rect" id="node7" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="728,31,827,57"/><area shape="rect" id="node8" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="728,81,827,108"/></map>
+</div>
+</p>
 
 </div>
 </div>
-<a class="anchor" id="aee2c055f028be174636fe6a90721d5bf"></a>
+<a class="anchor" id="a673d0217d3d339e76d662475c181371a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void start_run </td>
+          <td class="memname">void stop_run </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>power</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>corveAngle</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>走る処理 </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">power</td><td>走行出力 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">corveAngle</td><td>カーブの角度 </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>ストップ処理 </p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
-<p>直進モードの準備ができたら音が3回鳴る</p>
-<p>走行処理（注意：走行中断ができない） </p>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d2f/_running_module_8cpp_a673d0217d3d339e76d662475c181371a_icgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a673d0217d3d339e76d662475c181371a_icgraph" alt=""/></div>
+<map name="da/d2f/_running_module_8cpp_a673d0217d3d339e76d662475c181371a_icgraph" id="da/d2f/_running_module_8cpp_a673d0217d3d339e76d662475c181371a_icgraph">
+<area shape="rect" id="node2" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="125,31,165,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="229,5,302,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="214,56,317,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="aa895dc5a777d6c448ad49eb9a2033243"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> run_scenario[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {30, 100.0F, 90, <span class="keyword">false</span>, <span class="keyword">false</span>, {0.775F, 0.0F, 0.375F}},</div>
+<div class="line">    {30, 100.0F, 90, <span class="keyword">false</span>, <span class="keyword">false</span>, {0.775F, 0.65F, 0.375F}},</div>
+<div class="line">    {30, 100.0F, 90, <span class="keyword">false</span>, <span class="keyword">true</span>, {0.775F, 0.65F, 0.375F}}</div>
+<div class="line"> }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac948acd8a8791a3c88f1703da8fd7d22"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> run_scenario_test[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {30, 42.0F, 180, <span class="keyword">true</span>, <span class="keyword">false</span>, {0.775F, 0.0F, 0.375F}},</div>
+<div class="line">    {-30, 42.0F, -180, <span class="keyword">true</span>, <span class="keyword">false</span>, {0.775F, 0.65F, 0.375F}},</div>
+<div class="line">    {30, 42.0F, 180, <span class="keyword">false</span>, <span class="keyword">false</span>, {0.775F, 0.90F, 0.375F}},</div>
+<div class="line">    {30, 42.0F, 200, <span class="keyword">true</span>, <span class="keyword">false</span>, {0.775F, 0.65F, 0.375F}},</div>
+<div class="line">    {30, 42.0F, 180, <span class="keyword">false</span>, <span class="keyword">false</span>, {0.775F, 0.90F, 0.375F}},</div>
+<div class="line">    {30, 42.0F, 400, <span class="keyword">true</span>, <span class="keyword">true</span>, {0.775F, 0.65F, 0.375F}}</div>
+<div class="line"> }</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -226,7 +511,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../da/d2f/_running_module_8cpp.html">RunningModule.cpp</a></li>
-    <li class="footer">Generated on Fri Jun 24 2016 20:50:08 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Jul 11 2016 17:45:57 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
