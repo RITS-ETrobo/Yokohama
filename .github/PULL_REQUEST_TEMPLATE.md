@@ -8,12 +8,7 @@
 `発行時に消す項目(ここまで)`
 
 # 関連Issue : Must
-(関連するIssueだけを記載する)
-* 親   : (本Issueの親Issueを列挙する)
-* 子   : (本Issueの子Issueを列挙する)
-* 前   : (本Issueを実施する前におこなうべきIssueを列挙する)
-* 後   : (本Issueの後におこなうべきIssueを列挙する)
-* 関連 : (本Issueの上記以外の関連Issueを列挙する)
+(関連するIssueだけを記載する。対象となるIssueを閉じる場合は、1 issueごとに`closes #issue_id`という形式で書いていくと、マージした時に関連付けられたIssueがCloseされる)
 
 # 目的 : Must
 (一連の変更で、達成する{事 | 機能})
