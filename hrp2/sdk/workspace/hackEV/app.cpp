@@ -15,6 +15,10 @@
 #include "RunningModule.h"
 #include "Logger.h"
 
+//! デストラクタでの問題回避
+//! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
+void *__dso_handle=0;
+
 //! ログクラスのインスタンス
 Logger *logger = NULL;
 
