@@ -9,7 +9,8 @@ APPL_CXXOBJS += \
     gyroboy.o \
     utilities.o \
     SonarSensorController.o \
-    RunningModule.o
+    RunningModule.o \
+    ArmModule.o
 
 SRCLANG := c++
 

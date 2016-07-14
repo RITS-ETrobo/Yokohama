@@ -22,6 +22,9 @@ const motor_port_t left_motor = EV3_PORT_C;
 
 //! Right motor :   Port B
 const motor_port_t right_motor = EV3_PORT_B;
+
+//! Arm motor :   Port A
+const motor_port_t arm_motor = EV3_PORT_A;
 //@}
 
 /**
@@ -45,6 +48,7 @@ void configure_motors()
 {
     ev3_motor_config(left_motor, LARGE_MOTOR);
     ev3_motor_config(right_motor, LARGE_MOTOR);
+    ev3_motor_config(arm_motor, LARGE_MOTOR);//MEDIUMとどちらがいいか要検証
 }
 
 /**

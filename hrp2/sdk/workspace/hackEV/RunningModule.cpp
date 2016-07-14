@@ -11,6 +11,7 @@
 #include "RunningModule.h"
 #include "LCDController.h"
 #include <stdlib.h>
+#include "ArmModule.h"
 
 //! \addtogroup 距離計算要素
 //@{
