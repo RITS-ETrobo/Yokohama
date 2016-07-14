@@ -42,7 +42,10 @@ void initialize_arm() {
 void stop_arm(){
     ev3_speaker_stop();
     ev3_speaker_play_tone(NOTE_A4, 100);
-    ev3_motor_stop(arm_motor,true);
+    ER er = ev3_motor_stop(arm_motor,true);
+    if(er != E_OK){    
+        return;
+    }
 }
 
 /**
@@ -57,7 +60,10 @@ void move_arm(int power, int direction, bool bloking) {
     int armDirection = ev3_motor_get_counts(arm_motor);
     ev3_speaker_play_tone(NOTE_A4, 100);
     
-    ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
+    ER er = ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
+    if(er != E_OK){
+        return;
+    }
     
     writeFloatLCD(ev3_motor_get_counts(arm_motor));
     ev3_speaker_play_tone(NOTE_A4, 100);
