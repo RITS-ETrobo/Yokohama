@@ -36,6 +36,9 @@ extern const motor_port_t left_motor;
 
 //! Right motor
 extern const motor_port_t right_motor;
+
+//! Arm motor
+extern const motor_port_t arm_motor;
 //@}
 
 //! ログクラスのインスタンス
