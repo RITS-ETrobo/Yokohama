@@ -14,6 +14,7 @@
 #include "SonarSensorController.h"
 #include "RunningModule.h"
 #include "Logger.h"
+#include "ArmModule.h"
 
 //! ログクラスのインスタンス
 Logger *logger = NULL;
@@ -27,9 +28,10 @@ const unsigned char RETRY_CREATE_INSTANCE = 3;
  * @return  なし
 */
 void stop_emergency(){
-    ev3_motor_stop(left_motor,false);
-    ev3_motor_stop(right_motor,false);
+    ev3_motor_stop(left_motor,true);
+    ev3_motor_stop(right_motor,true);
     setEnabledSonarSensor(false);
+    ev3_motor_stop(arm_motor,true);
     //! モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する
 }
 
@@ -49,18 +51,17 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case LEFT_BUTTON:
-        //! 本体の左ボタンでPIDモード
-        OUTPUT_LOG("LEFT button click", OUTPUT_TYPE_LCD);
-    	syslog(LOG_NOTICE, "Left button clicked.");
+        //! アーム動作モード
+        initialize_arm();
         
-        //! PID制御の初期化
-        initialize_pid_controller();
-
-        //! タッチセンサーが押されたら、処理を継続する
-        while(!ev3_touch_sensor_is_pressed(touch_sensor));
-
-        //! PID制御のタスク登録と開始
-        act_tsk(PID_CONTROLLER_TASK);
+        //! アームを上げる
+        move_arm(3, 45, true);
+       
+        tslp_tsk(400);
+        
+        //!アームを下げる
+        move_arm(3, 0, true);
+        
         break;
         
     case RIGHT_BUTTON:

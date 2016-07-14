@@ -34,27 +34,30 @@ void initialize_arm() {
 }
 
 /**
+ * @brief   アームモーターを止める
+ * 
+ * @return  なし
+*/
+void stop_arm(){
+    ev3_speaker_stop();
+    ev3_speaker_play_tone(NOTE_A4, 100);
+    ev3_motor_stop(arm_motor,true);
+}
+
+/**
  * @brief   アームを動かす
  * 
  * @param アームを動かすスピード
  * @param 動かす角度
  * @return  なし
 */
-void move_arm(int power, int direction) {
-    ev3_motor_set_power(arm_motor, power);
+void move_arm(int power, int direction, bool bloking) {
+    int armDirection = ev3_motor_get_counts(arm_motor);
+    ev3_speaker_play_tone(NOTE_A4, 100);
     
-    while(ev3_motor_get_counts(arm_motor)>=direction){
-        stop_arm();
-        break;
-    }
+    ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
+    
+    writeFloatLCD(ev3_motor_get_counts(arm_motor));
+    ev3_speaker_play_tone(NOTE_A4, 100);
 }
 
-/**
- * @brief   アームモーターを止める
- * 
- * @return  なし
-*/
-void stop_arm(){
-    ev3_speaker_play_tone(NOTE_E6, 100);
-    ev3_motor_stop(arm_motor,true);
-}

@@ -8,7 +8,7 @@
 #include "target_test.h"
 
 //  関数のプロトタイプ宣言
-extern void	initialize_arm();
-extern void	move_arm(int power, int direction);
+extern void initialize_arm();
+extern void	move_arm(int power, int direction, bool bloking);
 extern void	stop_arm();
 
