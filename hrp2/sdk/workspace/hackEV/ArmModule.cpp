@@ -46,9 +46,10 @@ void stop_arm(){
 
 /**
  * @brief   アームを動かす
- * 
+ * 0から60までの位置なら安全に動作する 
+ *
  * @param アームを動かすスピード
- * @param 動かす角度
+ * @param 角位置
  * @return  なし
 */
 void move_arm(int power, int direction, bool bloking) {
