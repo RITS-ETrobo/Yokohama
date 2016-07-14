@@ -37,15 +37,12 @@ void initialize_arm() {
 /**
  * @brief   アームモーターを止める
  * 
- * @return  なし
+ * @return  戻り値はサーボモーターAPI仕様を参照
 */
-void stop_arm(){
+ER stop_arm(){
     ev3_speaker_stop();
     ev3_speaker_play_tone(NOTE_A4, 100);
-    ER er = ev3_motor_stop(arm_motor,true);
-    if(er != E_OK){    
-        return;
-    }
+    return ev3_motor_stop(arm_motor,true);
 }
 
 /**
@@ -60,8 +57,8 @@ void move_arm(int power, int direction, bool bloking) {
     int armDirection = ev3_motor_get_counts(arm_motor);
     ev3_speaker_play_tone(NOTE_A4, 100);
     
-    ER er = ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
-    if(er != E_OK){
+    ER result = ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
+    if(result != E_OK){
         return;
     }
     
