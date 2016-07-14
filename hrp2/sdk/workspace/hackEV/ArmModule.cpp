@@ -22,6 +22,7 @@ float sumArmMotorRotate = 0.0F;
 
 /**
  * @brief   アームの初期化
+ * 条件：アームが真下を向いている状態で呼び出さなければならない
  * 
  * @return  なし
 */
