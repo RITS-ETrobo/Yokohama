@@ -22,24 +22,26 @@ float sumArmMotorRotate = 0.0F;
 
 /**
  * @brief   アームの初期化
- * 条件：アームが真下を向いている状態で呼び出さなければならない
- * 
+ * 条件 : アームが真下を向いている状態で呼び出さなければならない
+ *
  * @return  なし
 */
-void initialize_arm() {
+void initialize_arm()
+{
     //! アームの基準点を設定
-    sumArmMotorRotate=0.0F;
-    
+    sumArmMotorRotate = 0.0F;
+
     //! アームモーターの回転角をリセット
     ev3_motor_reset_counts(arm_motor);
 }
 
 /**
  * @brief   アームモーターを止める
- * 
- * @return  戻り値はサーボモーターAPI仕様を参照
+ *
+ * @return  ev3_motor_stop()参照
 */
-ER stop_arm(){
+ER stop_arm()
+{
     ev3_speaker_stop();
     ev3_speaker_play_tone(NOTE_A4, 100);
     return ev3_motor_stop(arm_motor,true);
@@ -47,22 +49,24 @@ ER stop_arm(){
 
 /**
  * @brief   アームを動かす
- * 0から60までの位置なら安全に動作する 
+ * degreesが0～60の範囲なら安全に動作する 
  *
- * @param アームを動かすスピード
- * @param 角位置
- * @return  なし
+ * @param   degrees	回転角度，マイナスの値でモータを逆方向に回転させることができる
+ * @param   speed_abs	回転速度，モータポートのフルスピードのパーセント値．範囲：0から+100．
+ * @param   blocking    true (関数は回転が完了してからリターン)，false (関数は回転操作を待たずにリターン)
+ *
+ * @return  ev3_motor_rotate()参照
 */
-void move_arm(int power, int direction, bool bloking) {
-    int armDirection = ev3_motor_get_counts(arm_motor);
+ER move_arm(int degrees, uint32_t speed_abs, bool_t blocking)
+{
+    int armDegrees = ev3_motor_get_counts(arm_motor);
     ev3_speaker_play_tone(NOTE_A4, 100);
     
-    ER result = ev3_motor_rotate(arm_motor, (direction-armDirection), power, bloking);
-    if(result != E_OK){
-        return;
+    ER result = ev3_motor_rotate(arm_motor, (degrees - armDegrees), speed_abs, blocking);
+    if (result == E_OK) {
+        writeFloatLCD(ev3_motor_get_counts(arm_motor));
+        ev3_speaker_play_tone(NOTE_A4, 100);
     }
-    
-    writeFloatLCD(ev3_motor_get_counts(arm_motor));
-    ev3_speaker_play_tone(NOTE_A4, 100);
-}
 
+    return  result;
+}
