@@ -9,6 +9,5 @@
 
 //  関数のプロトタイプ宣言
 extern void initialize_arm();
-extern void	move_arm(int power, int direction, bool bloking);
-extern void	stop_arm();
-
+extern ER move_arm(int degrees, uint32_t speed_abs, bool_t blocking);
+extern ER stop_arm();

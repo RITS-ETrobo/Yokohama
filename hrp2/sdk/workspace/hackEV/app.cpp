@@ -59,12 +59,12 @@ static void button_clicked_handler(intptr_t button) {
         initialize_arm();
         
         //! アームを上げる
-        move_arm(3, 45, true);
+        move_arm(45, 3, true);
        
         tslp_tsk(400);
         
         //!アームを下げる
-        move_arm(3, 0, true);
+        move_arm(0, 3, true);
         
         break;
         
