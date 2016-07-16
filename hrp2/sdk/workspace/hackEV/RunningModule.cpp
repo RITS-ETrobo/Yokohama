@@ -33,13 +33,13 @@ float sumRightMotorRotate = 0.0F;
 //! 左右のタイヤ間のトレッド[cm]
 const float TREAD = 13.25F;
 
-//! 前回の右モーターの距離
+//! 前回の右モーターの距離[cm]
 float lastRightDistance = 0.0F;
 
-//! 前回の左モーターの距離
+//! 前回の左モーターの距離[cm]
 float lastLeftDistance = 0.0F;
 
-//! 向きの累積
+//! 向きの累積[度]
 float directionSum = 0.0F;
 //@}
 
@@ -57,7 +57,7 @@ void initialize_run() {
  * 走行パターン
  */
 enum runPattern {
-    //!  ライントレースしつつ、直進する
+    //! ライントレースしつつ、直進する
     TRACE_STRAIGHT, 
 
     //! ライントレースしつつ、カーブを走る
@@ -82,12 +82,27 @@ const PID_PARAMETER pidParameterList[] = {
     {0.775F, 0.65F, 0.375F}
 };
 
-typedef struct{
+/**
+ * @enum scenario_running
+ * 走行シナリオ
+ */
+typedef struct {
+    //! 出力(-100～+100)
     int power;
+
+    //! 走行距離[cm]
     float distance;
+
+    //! 向き。使わない場合は、-1。使う場合は、-360～360
     int direction;
+
+    //! 走行パターン
     enum runPattern pattern;
+
+    //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
+
+    //! 走行シナリオで従うPID値
     PID_PARAMETER pidParameter;
 } scenario_running;
 
@@ -165,25 +180,26 @@ const scenario_running run_scenario_test[] = {
 };
 
 /**
- * @brief   リセットしてからの指定したタイヤの走行距離を計算
+ * @brief   リセットしてからの指定したタイヤの走行距離を計算する
  * 
- * @param port 計測するタイヤのモーターポート
- * @return  走行距離
+ * @param   port    計測するタイヤのモーターポート
+ * @return  走行距離[cm]
 */
-float distance_running(motor_port_t port){
-    float rotate = ev3_motor_get_counts(port);
-    float distance = Pi * DiameterWheel * rotate / 360 ;
+float distance_running(motor_port_t port)
+{
+    float distance = Pi * DiameterWheel * ev3_motor_get_counts(port) / 360;
     return distance;
 }
 
 /**
- * @brief   瞬間の走行体の向きを取得
- * 前回測定した位置から今回の移動までに変化した向き
- * 
+ * @brief   瞬間の走行体の向きを取得する
+ * 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである
+ * @param rightDistance 右タイヤの走行距離[cm]
+ * @param leftDistance  左タイヤの走行距離[cm]
  * @return  瞬間の向き[度]
 */
-float getDirectionDelta(float rightDistance, float leftDistance){
-    
+float getDirectionDelta(float rightDistance, float leftDistance)
+{
     float rightDistanceDelta = rightDistance - lastRightDistance;
     float leftDistanceDelta = leftDistance - lastLeftDistance;
     lastRightDistance = rightDistance;
@@ -191,7 +207,6 @@ float getDirectionDelta(float rightDistance, float leftDistance){
     
     //! 走行体の向き[度]
     float direction = ((rightDistanceDelta - leftDistanceDelta) / TREAD) * 180 / Pi;
-    
     return direction;
 }
 
@@ -200,7 +215,8 @@ float getDirectionDelta(float rightDistance, float leftDistance){
  * 
  * @return  走行距離[cm]
 */
-float getDistance(float rightDistance, float leftDistance){
+float getDistance(float rightDistance, float leftDistance)
+{
     float distance = (rightDistance + leftDistance) / 2.0F;
     return distance;
 }
@@ -210,7 +226,8 @@ float getDistance(float rightDistance, float leftDistance){
  * 
  * @return  なし
 */
-void stop_run(){
+void stop_run()
+{
     ev3_speaker_play_tone(NOTE_E6, 100);
     ev3_motor_stop(left_motor,true);
     ev3_motor_stop(right_motor,true); 
@@ -222,7 +239,8 @@ void stop_run(){
  * @param   [in] scenario 走行パラメータ
  * @return  なし
 */
-void run(scenario_running scenario) {
+void run(scenario_running scenario)
+{
     //! モーターの角位置、向きの累積をリセット
     ev3_motor_reset_counts(left_motor);
     ev3_motor_reset_counts(right_motor);
@@ -295,7 +313,8 @@ void run(scenario_running scenario) {
  *
  * @return  なし
 */
-void start_run(){
+void start_run()
+{
     initialize_pid_controller();
     
     ev3_speaker_play_tone(NOTE_E6, 100);
@@ -319,10 +338,10 @@ void start_run(){
 /**
  * @brief   検証用の走行
  *
- * @param   なし    
  * @return  なし
 */
-void start_run_test(){
+void start_run_test()
+{
     initialize_pid_controller();
     
     ev3_speaker_play_tone(NOTE_E6, 100);
@@ -341,5 +360,4 @@ void start_run_test(){
         ev3_speaker_play_tone(NOTE_E4, 100);
         run(run_scenario_test[index]);
     }
-
 }
