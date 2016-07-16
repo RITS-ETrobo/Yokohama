@@ -178,7 +178,7 @@ const scenario_running R_Start_enterGameArea_scenario[] = {
 
 //! Rコース(難所入口～ゲームエリア入口)
 const scenario_running L_enterGameArea_GameArea_scenario[] = {
-    {30, 37.6F, -1, NOTRACE_STRAIGHT, false, pidParameterList[1}
+    {30, 37.6F, -1, NOTRACE_STRAIGHT, false, pidParameterList[1]}
 };
 
 //! Rコース(ゲームエリア出口～LAP)
