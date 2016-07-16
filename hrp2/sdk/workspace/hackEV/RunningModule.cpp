@@ -250,7 +250,7 @@ void run(scenario_running scenario)
     
     //! ストップ監視しつつ、走行
     for (;;) {
-        //! 走行パターンの判定
+        //! 走行
         switch (scenario.pattern) {
 	    case PINWHEEL:
             //! その場回転
