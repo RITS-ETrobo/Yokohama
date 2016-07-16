@@ -170,6 +170,39 @@ const scenario_running L_kensho_Goal_scenario[] = {
     {30, 250.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
 };
 
+//! Rコース(スタート～難所入口)
+const scenario_running R_Start_enterGameArea_scenario[] = {
+    {30, 44.8F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 24.8F, -1, TRACE_CURVE, false, pidParameterList[1]}
+};
+
+//! Rコース(難所入口～ゲームエリア入口)
+const scenario_running L_enterGameArea_GameArea_scenario[] = {
+    {30, 37.6F, -1, NOTRACE_STRAIGHT, false, pidParameterList[1}
+};
+
+//! Rコース(ゲームエリア出口～LAP)
+const scenario_running R_exitGameArea_LAP_scenario[] = {
+    {30, 30.4F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 25.8F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 36.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
+};
+
+//! Rコース(LAP～GOAL)
+const scenario_running R_LAP_GOAL_scenario[] = {
+    {30, 81.1F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 103.9F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 47.7F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 48.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 131.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 3.8F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 47.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 4.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 190.1F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 32.8F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 297.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+};
+
 //! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
     {10, 14.0F, -1, NOTRACE_STRAIGHT, false, NULL},
