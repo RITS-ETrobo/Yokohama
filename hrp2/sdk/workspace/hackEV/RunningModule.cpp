@@ -31,7 +31,7 @@ float sumLeftMotorRotate = 0.0F;
 float sumRightMotorRotate = 0.0F;
 
 //! 左右のタイヤ間のトレッド[cm]
-const float TREAD = 12.7F;
+const float TREAD = 13.25F;
 
 //! 前回の右モーターの距離
 float lastRightDistance = 0.0F;
