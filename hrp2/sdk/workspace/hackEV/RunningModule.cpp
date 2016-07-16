@@ -52,20 +52,22 @@ void initialize_run() {
     
 }
 
-
-//! 走行パターン
+/**
+ * @enum runPattern
+ * 走行パターン
+ */
 enum runPattern {
-    //!  ライントレース直進
-    LINE_TRACE, 
-    
-    //! ライントレースカーブ
-    TRACE_CURVE, 
-    
+    //!  ライントレースしつつ、直進する
+    TRACE_STRAIGHT, 
+
+    //! ライントレースしつつ、カーブを走る
+    TRACE_CURVE,
+
     //! その場回転
     PINWHEEL, 
-    
-    //! ライントレースせずに直進走行
-    STRAIGHT
+
+    //! ライントレースせずに、直進走行する
+    NOTRACE_STRAIGHT
 };
 
 //! PIDパラメータのリスト
@@ -89,78 +91,78 @@ typedef struct{
     PID_PARAMETER pidParameter;
 } scenario_running;
 
-//! Lコース（スタート～懸賞入り口まで）
+//! Lコース（スタート～懸賞入口）
 const scenario_running L_Start_Sweepstakes_scenario[] = {
-    {30, 246.0F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 64.5F, -1, LINE_TRACE, true, pidParameterList[1]}
- };
+    {30, 246.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 64.5F, -1, TRACE_CURVE, true, pidParameterList[1]}
+};
  
- //! Lコース（懸賞入り口～星取り入り口まで）
+//! Lコース（懸賞入口～星取り入口）
 const scenario_running L_Sweepstakes_starUP_scenario[] = {
-    {30, 127.5F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 63.5F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 25.0F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 54.6F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 32.5F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 26.7F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 24.0F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 118.5F, -1, LINE_TRACE, true, pidParameterList[0]}
- };
+    {30, 127.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 63.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 25.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 54.6F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 32.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 26.7F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 24.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 118.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+};
  
- //! Lコース（星取り）
+//! Lコース（星取り）
 const scenario_running L_StarUP_scenario[] = {
-    {30, 20.8F, -1, STRAIGHT, false, NULL},
-    {30, 15.2F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 3.0F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {-30, 39.0F, -1, STRAIGHT, true, NULL}
- };
+    {30, 20.8F, -1, NOTRACE_STRAIGHT, false, NULL},
+    {30, 15.2F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 3.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {-30, 39.0F, -1, NOTRACE_STRAIGHT, false, NULL}
+};
  
- //! Lコース（星取り入口～ET相撲）
+//! Lコース（星取り入口～ET相撲）
 const scenario_running L_StarUP_Sumo_scenario[] = {
-    {30, 16.4F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 21.2F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 6.5F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 46.0F, -1, LINE_TRACE, false, pidParameterList[0]},
-    {30, 12.1F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 10.5F, -1, LINE_TRACE, true, pidParameterList[1]}
- };
- 
+    {30, 16.4F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 21.2F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 6.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 46.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 12.1F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 10.5F, -1, TRACE_CURVE, false, pidParameterList[1]}
+};
+
 //! Lコース（ET相撲）※この間にゲーム
 const scenario_running L_Sumo_scenario[] = {
-    {30, 134.2F, -1, LINE_TRACE, true, pidParameterList[0]}
- };
- 
-//! Lコース（ET相撲後～懸賞運び入り口）
+    {30, 134.2F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+};
+
+//! Lコース（ET相撲後～懸賞運び入口）
 const scenario_running L_Sumo_kensho_scenario[] = {
-    {30, 26.5F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 24.9F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 17.0F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 67.0F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {30, 127.5F, -1, LINE_TRACE, true, pidParameterList[0]}
- };
- 
+    {30, 26.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 24.9F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 17.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 67.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 127.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+};
+
 //! Lコース（懸賞運び）
 const scenario_running L_kensho_scenario[] = {
-    {30, 22.0F, -1, STRAIGHT, false, NULL},
-    {30, 11.5F, -1, STRAIGHT, false, NULL},
-    {-30, 11.5F, -1, STRAIGHT, false, NULL},
-    {-30, 22.0F, -1, STRAIGHT, true, NULL}
- };
- 
+    {30, 22.0F, -1, NOTRACE_STRAIGHT, false, NULL},
+    {30, 11.5F, -1, TRACE_STRAIGHT, false, NULL},
+    {-30, 11.5F, -1, TRACE_STRAIGHT, false, NULL},
+    {-30, 22.0F, -1, NOTRACE_STRAIGHT, true, NULL}
+};
+
 //! Lコース（懸賞運び～ゴール）
 const scenario_running L_kensho_Goal_scenario[] = {
-    {30, 64.5F, -1, LINE_TRACE, false, pidParameterList[1]},
-    {-30, 250.0F, -1, LINE_TRACE, true, pidParameterList[0]}
- };
- 
- //! 検証用シナリオ
+    {30, 64.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 250.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+};
+
+//! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
-    {10, 14.0F, -1, STRAIGHT, false, NULL},
-    {10, 14.0F, -1, STRAIGHT, false, NULL},
+    {10, 14.0F, -1, NOTRACE_STRAIGHT, false, NULL},
+    {10, 14.0F, -1, NOTRACE_STRAIGHT, false, NULL},
     {10, 0.0F, 45, PINWHEEL, false, NULL},
-    {10, 19.76F, -1, STRAIGHT, false, NULL},
+    {10, 19.76F, -1, NOTRACE_STRAIGHT, false, NULL},
     {-10, 0.0F, 45, PINWHEEL, true, NULL}
- };
+};
 
 /**
  * @brief   リセットしてからの指定したタイヤの走行距離を計算
@@ -236,10 +238,10 @@ void run(scenario_running scenario) {
             //! その場回転
             ev3_motor_set_power(left_motor, (-scenario.power));
             ev3_motor_set_power(right_motor, scenario.power);
-        }else if(scenario.pattern == LINE_TRACE){
+        }else if(scenario.pattern == TRACE_STRAIGHT){
             //! PIDを用いた走行
             ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
-        }else if(scenario.pattern == STRAIGHT){
+        }else if(scenario.pattern == NOTRACE_STRAIGHT){
             ev3_motor_set_power(left_motor, scenario.power);
             ev3_motor_set_power(right_motor, scenario.power);
         }
