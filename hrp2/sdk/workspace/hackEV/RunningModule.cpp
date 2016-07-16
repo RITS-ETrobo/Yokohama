@@ -249,19 +249,24 @@ void run(scenario_running scenario)
     directionSum = 0.0F;
     
     //! ストップ監視しつつ、走行
-    for(;;){
-        
+    for (;;) {
         //! 走行パターンの判定
-        if(scenario.pattern == PINWHEEL){
+        switch (scenario.pattern) {
+	    case PINWHEEL:
             //! その場回転
             ev3_motor_set_power(left_motor, (-scenario.power));
             ev3_motor_set_power(right_motor, scenario.power);
-        }else if(scenario.pattern == TRACE_STRAIGHT){
-            //! PIDを用いた走行
-            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
-        }else if(scenario.pattern == NOTRACE_STRAIGHT){
+            break;
+
+        case NOTRACE_STRAIGHT:
             ev3_motor_set_power(left_motor, scenario.power);
             ev3_motor_set_power(right_motor, scenario.power);
+            break;
+
+        default:
+            //! PIDを用いた走行
+            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
+            break;
         }
         
         tslp_tsk(1);//この行の必要性については要検証
@@ -274,7 +279,7 @@ void run(scenario_running scenario)
         directionSum += getDirectionDelta(rightDistance, leftDistance);   
         
         //! 距離判定の必要性判断
-        if(scenario.distance != 0){
+        if (scenario.distance != 0) {
             //! 走行体が指定距離走行したらストップ
             if(abs(getDistance(rightDistance, leftDistance)) >= abs(scenario.distance)){
                 if(scenario.stop){
@@ -292,7 +297,7 @@ void run(scenario_running scenario)
         }
         
         //! 方向判定の必要性判断
-        if(scenario.direction != -1){
+        if (scenario.direction != -1) {
             //! 走行体が指定した向きになったらストップ
             if(abs(directionSum) >= abs(scenario.direction)){
                 if(scenario.stop){
@@ -322,13 +327,13 @@ void start_run()
     ev3_speaker_play_tone(NOTE_E6, 100);
     
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
-    while(1){
+    for (;;) {
         if(ev3_touch_sensor_is_pressed(touch_sensor)){
             break;
         }
     }
-    
-    for(int index = 0; index < sizeof(L_Start_Sweepstakes_scenario) / sizeof(L_Start_Sweepstakes_scenario[0]); index++ ){
+
+    for (int index = 0; index < sizeof(L_Start_Sweepstakes_scenario) / sizeof(L_Start_Sweepstakes_scenario[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
         run(L_Start_Sweepstakes_scenario[index]);
@@ -349,13 +354,13 @@ void start_run_test()
     ev3_speaker_play_tone(NOTE_E6, 100);
     
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
-    while(1){
-        if(ev3_touch_sensor_is_pressed(touch_sensor)){
+    for (;;)) {
+        if (ev3_touch_sensor_is_pressed(touch_sensor)) {
             break;
         }
     }
     
-    for(int index = 0; index < sizeof(run_scenario_test) / sizeof(run_scenario_test[0]); index++ ){
+    for (int index = 0; index < sizeof(run_scenario_test) / sizeof(run_scenario_test[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
         run(run_scenario_test[index]);
