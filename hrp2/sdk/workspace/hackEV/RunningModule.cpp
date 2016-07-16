@@ -259,6 +259,7 @@ void run(scenario_running scenario)
             break;
 
         case NOTRACE_STRAIGHT:
+            //! ライントレースせずに、直進走行する
             ev3_motor_set_power(left_motor, scenario.power);
             ev3_motor_set_power(right_motor, scenario.power);
             break;
