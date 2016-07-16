@@ -354,7 +354,7 @@ void start_run_test()
     ev3_speaker_play_tone(NOTE_E6, 100);
     
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
-    for (;;)) {
+    for (;;) {
         if (ev3_touch_sensor_is_pressed(touch_sensor)) {
             break;
         }
