@@ -31,7 +31,7 @@ float sumLeftMotorRotate = 0.0F;
 float sumRightMotorRotate = 0.0F;
 
 //! 左右のタイヤ間のトレッド[cm]
-const float TREAD = 12.7F;
+const float TREAD = 13.25F;
 
 //! 前回の右モーターの距離
 float lastRightDistance = 0.0F;
@@ -53,28 +53,113 @@ void initialize_run() {
 }
 
 
+//! 走行パターン
+enum runPattern {
+    //!  ライントレース直進
+    LINE_TRACE, 
+    
+    //! ライントレースカーブ
+    TRACE_CURVE, 
+    
+    //! その場回転
+    PINWHEEL, 
+    
+    //! ライントレースせずに直進走行
+    STRAIGHT
+};
+
+//! PIDパラメータのリスト
+const PID_PARAMETER pidParameterList[] = {
+    //! 直進用PIDパラメータ（仮）
+    {0.775F, 0.0F, 0.375F},
+    
+    //! 曲線用PIDパラメータ（仮）
+    {0.775F, 0.90F, 0.375F},
+    
+    //! 汎用PIDパラメータ（仮）
+    {0.775F, 0.65F, 0.375F}
+};
+
 typedef struct{
     int power;
     float distance;
     int direction;
-    bool pinwheel;
+    enum runPattern pattern;
     bool stop;
     PID_PARAMETER pidParameter;
 } scenario_running;
 
-const scenario_running run_scenario[] = {
-    {30, 100.0F, 90, false, false, {0.775F, 0.0F, 0.375F}},
-    {30, 100.0F, 90, false, false, {0.775F, 0.65F, 0.375F}},
-    {30, 100.0F, 90, false, true, {0.775F, 0.65F, 0.375F}}
+//! Lコース（スタート～懸賞入り口まで）
+const scenario_running L_Start_Sweepstakes_scenario[] = {
+    {30, 246.0F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 64.5F, -1, LINE_TRACE, true, pidParameterList[1]}
  };
  
+ //! Lコース（懸賞入り口～星取り入り口まで）
+const scenario_running L_Sweepstakes_starUP_scenario[] = {
+    {30, 127.5F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 63.5F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 25.0F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 54.6F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 32.5F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 26.7F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 24.0F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 118.5F, -1, LINE_TRACE, true, pidParameterList[0]}
+ };
+ 
+ //! Lコース（星取り）
+const scenario_running L_StarUP_scenario[] = {
+    {30, 20.8F, -1, STRAIGHT, false, NULL},
+    {30, 15.2F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 3.0F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {-30, 39.0F, -1, STRAIGHT, true, NULL}
+ };
+ 
+ //! Lコース（星取り入口～ET相撲）
+const scenario_running L_StarUP_Sumo_scenario[] = {
+    {30, 16.4F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 21.2F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 6.5F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 46.0F, -1, LINE_TRACE, false, pidParameterList[0]},
+    {30, 12.1F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 10.5F, -1, LINE_TRACE, true, pidParameterList[1]}
+ };
+ 
+//! Lコース（ET相撲）※この間にゲーム
+const scenario_running L_Sumo_scenario[] = {
+    {30, 134.2F, -1, LINE_TRACE, true, pidParameterList[0]}
+ };
+ 
+//! Lコース（ET相撲後～懸賞運び入り口）
+const scenario_running L_Sumo_kensho_scenario[] = {
+    {30, 26.5F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 24.9F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 17.0F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 67.0F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {30, 127.5F, -1, LINE_TRACE, true, pidParameterList[0]}
+ };
+ 
+//! Lコース（懸賞運び）
+const scenario_running L_kensho_scenario[] = {
+    {30, 22.0F, -1, STRAIGHT, false, NULL},
+    {30, 11.5F, -1, STRAIGHT, false, NULL},
+    {-30, 11.5F, -1, STRAIGHT, false, NULL},
+    {-30, 22.0F, -1, STRAIGHT, true, NULL}
+ };
+ 
+//! Lコース（懸賞運び～ゴール）
+const scenario_running L_kensho_Goal_scenario[] = {
+    {30, 64.5F, -1, LINE_TRACE, false, pidParameterList[1]},
+    {-30, 250.0F, -1, LINE_TRACE, true, pidParameterList[0]}
+ };
+ 
+ //! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
-    {30, 42.0F, 180, true, false, {0.775F, 0.0F, 0.375F}},
-    {-30, 42.0F, -180, true, false, {0.775F, 0.65F, 0.375F}},
-    {30, 42.0F, 180, false, false, {0.775F, 0.90F, 0.375F}},
-    {30, 42.0F, 200, true, false, {0.775F, 0.65F, 0.375F}},
-    {30, 42.0F, 180, false, false, {0.775F, 0.90F, 0.375F}},
-    {30, 42.0F, 400, true, true, {0.775F, 0.65F, 0.375F}}
+    {10, 14.0F, -1, STRAIGHT, false, NULL},
+    {10, 14.0F, -1, STRAIGHT, false, NULL},
+    {10, 0.0F, 45, PINWHEEL, false, NULL},
+    {10, 19.76F, -1, STRAIGHT, false, NULL},
+    {-10, 0.0F, 45, PINWHEEL, true, NULL}
  };
 
 /**
@@ -145,13 +230,18 @@ void run(scenario_running scenario) {
     
     //! ストップ監視しつつ、走行
     for(;;){
-        if(scenario.pinwheel){
+        
+        //! 走行パターンの判定
+        if(scenario.pattern == PINWHEEL){
             //! その場回転
             ev3_motor_set_power(left_motor, (-scenario.power));
             ev3_motor_set_power(right_motor, scenario.power);
-        }else{
+        }else if(scenario.pattern == LINE_TRACE){
             //! PIDを用いた走行
             ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
+        }else if(scenario.pattern == STRAIGHT){
+            ev3_motor_set_power(left_motor, scenario.power);
+            ev3_motor_set_power(right_motor, scenario.power);
         }
         
         tslp_tsk(1);//この行の必要性については要検証
@@ -163,31 +253,37 @@ void run(scenario_running scenario) {
         //! 瞬間の向きを取得、累積して走行体の向きを計測
         directionSum += getDirectionDelta(rightDistance, leftDistance);   
         
-        //! 走行体が指定距離走行したらストップ
-        if(getDistance(rightDistance, leftDistance) >= scenario.distance){
-            if(scenario.stop){
-                stop_run();
-                
-                //! 左モーターの移動距離結果をLCDに表示
-                writeFloatLCD(leftDistance);
-                
-                //! 右モーターの移動距離結果をLCDに表示
-                writeFloatLCD(rightDistance);
-            }
+        //! 距離判定の必要性判断
+        if(scenario.distance != 0){
+            //! 走行体が指定距離走行したらストップ
+            if(abs(getDistance(rightDistance, leftDistance)) >= abs(scenario.distance)){
+                if(scenario.stop){
+                    stop_run();
+                    
+                    //! 左モーターの移動距離結果をLCDに表示
+                    writeFloatLCD(leftDistance);
+                    
+                    //! 右モーターの移動距離結果をLCDに表示
+                    writeFloatLCD(rightDistance);
+                }
 
-            break;
+                break;
+            }
         }
-    
-         //! 走行体が指定した向きになったらストップ
-        if(abs(directionSum) >= abs(scenario.direction)){
-            if(scenario.stop){
-                stop_run();
-                
-                //! 走行体の向きをLCDに表示
-                writeFloatLCD(directionSum);                
-            }
+        
+        //! 方向判定の必要性判断
+        if(scenario.direction != -1){
+            //! 走行体が指定した向きになったらストップ
+            if(abs(directionSum) >= abs(scenario.direction)){
+                if(scenario.stop){
+                    stop_run();
+                    
+                    //! 走行体の向きをLCDに表示
+                    writeFloatLCD(directionSum);                
+                }
 
-            break;
+                break;
+            }
         }
     }
 }
@@ -200,10 +296,21 @@ void run(scenario_running scenario) {
 void start_run(){
     initialize_pid_controller();
     
-    for(int index = 0; index < sizeof(run_scenario) / sizeof(run_scenario[0]); index++ ){
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    while(1){
+        if(ev3_touch_sensor_is_pressed(touch_sensor)){
+            break;
+        }
+    }
+    
+    for(int index = 0; index < sizeof(L_Start_Sweepstakes_scenario) / sizeof(L_Start_Sweepstakes_scenario[0]); index++ ){
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario[index]);
+        run(L_Start_Sweepstakes_scenario[index]);
     }
 }
 
