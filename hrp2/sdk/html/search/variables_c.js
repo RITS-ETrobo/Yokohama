@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['next',['next',['../d6/dda/struct_scene.html#a7651492c34bc60f1e79b9341388cb90c',1,'Scene']]],
-  ['normal',['NORMAL',['../de/d2b/class_balancing_walker.html#ad7b8b507853caff9b007d50c621dad2e',1,'BalancingWalker']]],
-  ['nxtrike_5fbase_5fspeed',['nxtrike_base_speed',['../d6/df6/nxtrike_8c.html#a60fc1c69064fc4c7909513661647c341',1,'nxtrike_base_speed():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a60fc1c69064fc4c7909513661647c341',1,'nxtrike_base_speed():&#160;nxtrike.c']]],
-  ['nxtrike_5fdistance',['nxtrike_distance',['../d6/df6/nxtrike_8c.html#a119494f4ee1bc8a92b217d74b5372097',1,'nxtrike_distance():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a119494f4ee1bc8a92b217d74b5372097',1,'nxtrike_distance():&#160;nxtrike.c']]],
-  ['nxtrike_5flight_5factivated',['nxtrike_light_activated',['../d6/df6/nxtrike_8c.html#a45a77a37d9cb0cdf708475ae2b8f3b13',1,'nxtrike_light_activated():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#a45a77a37d9cb0cdf708475ae2b8f3b13',1,'nxtrike_light_activated():&#160;nxtrike.c']]],
-  ['nxtrike_5fsonic_5factivated',['nxtrike_sonic_activated',['../d6/df6/nxtrike_8c.html#aa287bd8934afec9743be6cc511b16cd7',1,'nxtrike_sonic_activated():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#aa287bd8934afec9743be6cc511b16cd7',1,'nxtrike_sonic_activated():&#160;nxtrike.c']]],
-  ['nxtrike_5fsteer_5fdegree',['nxtrike_steer_degree',['../d6/df6/nxtrike_8c.html#ab4da8d35adbae5eb8cadf4fab96e5f10',1,'nxtrike_steer_degree():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#ab4da8d35adbae5eb8cadf4fab96e5f10',1,'nxtrike_steer_degree():&#160;nxtrike.c']]],
-  ['nxtrike_5ftouch_5fsensor_5fvalue',['nxtrike_touch_sensor_value',['../d6/df6/nxtrike_8c.html#ae2664764f9756b748b9d3be08cbc7bc9',1,'nxtrike_touch_sensor_value():&#160;nxtrike.c'],['../d3/dce/old_2nxtrike_8c.html#ae2664764f9756b748b9d3be08cbc7bc9',1,'nxtrike_touch_sensor_value():&#160;nxtrike.c']]]
+  ['midpoint',['midpoint',['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#ga400d0ac7f0ebe4a880709dc3bb39417f',1,'pid_controller.cpp']]]
 ];

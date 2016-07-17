@@ -20,6 +20,7 @@ var searchData=
   ['start_5frun_5ftest',['start_run_test',['../da/d2f/_running_module_8cpp.html#a06efab33f16fb6a1d6e5948027c1bfe9',1,'start_run_test():&#160;RunningModule.cpp'],['../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9',1,'start_run_test():&#160;RunningModule.cpp']]],
   ['starter',['Starter',['../d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec',1,'Starter::Starter(const ev3api::TouchSensor &amp;touchSensor)'],['../d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec',1,'Starter::Starter(const ev3api::TouchSensor &amp;touchSensor)'],['../d7/d2e/class_starter.html#a3cd75c0f144baa2f43a099a439f1feec',1,'Starter::Starter(const ev3api::TouchSensor &amp;touchSensor)']]],
   ['stop',['stop',['../df/d7d/class_simple_timer.html#a07a7dbb801e7f805f7777fdf8f3ef108',1,'SimpleTimer::stop()'],['../df/d7d/class_simple_timer.html#a07a7dbb801e7f805f7777fdf8f3ef108',1,'SimpleTimer::stop()']]],
+  ['stop_5farm',['stop_arm',['../d3/d68/_arm_module_8cpp.html#a7fd20f34a997d4db85cee9d48fd5df57',1,'stop_arm():&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a7fd20f34a997d4db85cee9d48fd5df57',1,'stop_arm():&#160;ArmModule.cpp']]],
   ['stop_5femergency',['stop_emergency',['../dc/da6/hack_e_v_2app_8cpp.html#a27869433979701bc6bd15b516e098e68',1,'stop_emergency():&#160;app.cpp'],['../dc/db6/hack_e_v_2app_8h.html#a27869433979701bc6bd15b516e098e68',1,'stop_emergency():&#160;app.cpp']]],
   ['stop_5frun',['stop_run',['../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a',1,'RunningModule.cpp']]]
 ];

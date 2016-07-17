@@ -1,5 +1,7 @@
 var group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A =
 [
+    [ "arm_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaac4043cb7d0bc74ebedc467a4b587c0f", null ],
+    [ "arm_motor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaac4043cb7d0bc74ebedc467a4b587c0f", null ],
     [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717", null ],
     [ "color_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717", null ],
     [ "gyro_sensor", "d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8", null ],

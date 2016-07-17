@@ -1,10 +1,11 @@
 <map id="hrp2/sdk/workspace/hackEV/LCDController.h" name="hrp2/sdk/workspace/hackEV/LCDController.h">
-<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="481,97,620,138"/>
-<area shape="rect" id="node5" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="5,187,184,229"/>
-<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="965,187,1155,229"/>
-<area shape="rect" id="node9" href="$df/d88/_l_c_d_controller_8cpp.html" title="This file has LCDController. " alt="" coords="695,97,879,138"/>
-<area shape="rect" id="node3" href="$dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="208,187,347,229"/>
-<area shape="rect" id="node4" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="371,187,517,229"/>
-<area shape="rect" id="node7" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="541,187,773,229"/>
-<area shape="rect" id="node8" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="798,187,940,229"/>
+<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="719,97,867,138"/>
+<area shape="rect" id="node4" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="5,187,181,229"/>
+<area shape="rect" id="node6" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="1001,187,1191,229"/>
+<area shape="rect" id="node7" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1215,187,1413,229"/>
+<area shape="rect" id="node10" href="$df/d88/_l_c_d_controller_8cpp.html" title="This file has LCDController. " alt="" coords="1121,97,1311,138"/>
+<area shape="rect" id="node3" href="$dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="829,187,976,229"/>
+<area shape="rect" id="node5" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="206,187,359,229"/>
+<area shape="rect" id="node8" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="383,187,629,229"/>
+<area shape="rect" id="node9" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="655,187,803,229"/>
 </map>

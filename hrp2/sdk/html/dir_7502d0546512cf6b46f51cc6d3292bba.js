@@ -2,6 +2,8 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
 [
     [ "app.cpp", "dc/da6/hack_e_v_2app_8cpp.html", "dc/da6/hack_e_v_2app_8cpp" ],
     [ "app.h", "dc/db6/hack_e_v_2app_8h.html", "dc/db6/hack_e_v_2app_8h" ],
+    [ "ArmModule.cpp", "d3/d68/_arm_module_8cpp.html", "d3/d68/_arm_module_8cpp" ],
+    [ "ArmModule.h", "d4/d64/_arm_module_8h.html", "d4/d64/_arm_module_8h" ],
     [ "gyroboy.cpp", "db/d35/gyroboy_8cpp.html", "db/d35/gyroboy_8cpp" ],
     [ "gyroboy.h", "dc/d58/gyroboy_8h.html", "dc/d58/gyroboy_8h" ],
     [ "LCDController.cpp", "df/d88/_l_c_d_controller_8cpp.html", "df/d88/_l_c_d_controller_8cpp" ],

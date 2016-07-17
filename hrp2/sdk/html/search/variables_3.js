@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['default_5fmenu_5ffont_5fheight',['default_menu_font_height',['../d8/dcb/helloev3_2app_8c.html#a3e11298eaa48f8a0c31dfd0eb51e7026',1,'default_menu_font_height():&#160;app.c'],['../d9/dd5/helloev3_2app_8h.html#a3e11298eaa48f8a0c31dfd0eb51e7026',1,'default_menu_font_height():&#160;app.c']]],
-  ['default_5fmenu_5ffont_5fwidth',['default_menu_font_width',['../d8/dcb/helloev3_2app_8c.html#aabeda3141c38e40492bc11340495255c',1,'default_menu_font_width():&#160;app.c'],['../d9/dd5/helloev3_2app_8h.html#aabeda3141c38e40492bc11340495255c',1,'default_menu_font_width():&#160;app.c']]],
-  ['diameterwheel',['DiameterWheel',['../d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gae81e28fe574f66eb62240e2213eb5f71',1,'RunningModule.cpp']]],
-  ['direction',['direction',['../d4/d30/structscenario__running.html#a79dc733b141cf996004969d2d960e43c',1,'scenario_running']]],
-  ['directionsum',['directionSum',['../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gaaccfe8aea6a7f061c77fae89e3659f97',1,'RunningModule.cpp']]],
-  ['distance',['distance',['../d4/d30/structscenario__running.html#a54d14e0c19510be31ffd499d89889d15',1,'scenario_running']]]
+  ['c',['c',['../d6/d4c/hwbrickbench_2app_8c.html#ab7ba62c18a8d39e23d8bfa8884510098',1,'app.c']]],
+  ['climenu_5fmain',['climenu_main',['../d9/dd5/helloev3_2app_8h.html#a964ea445db9b825834061f406d96da1e',1,'climenu_main():&#160;cli_main.c'],['../dd/d4a/cli__main_8c.html#a964ea445db9b825834061f406d96da1e',1,'climenu_main():&#160;cli_main.c']]],
+  ['clock',['clock',['../d9/d51/ev3way-cpp_2app_8cpp.html#a0dd222dfa33d8eb027b52db6f9cd6c88',1,'app.cpp']]],
+  ['color_5fsensor',['color_sensor',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717',1,'color_sensor():&#160;utilities.cpp'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gac003bf2052165be5400ba4a85237c717',1,'color_sensor():&#160;utilities.cpp']]],
+  ['colorsensor',['colorSensor',['../d9/d51/ev3way-cpp_2app_8cpp.html#a4d0b1edefbe73af7a89313c11fa48ced',1,'app.cpp']]],
+  ['command',['command',['../d6/dda/struct_scene.html#afdbab62a752fea9e3f61a0834efa34ad',1,'Scene']]],
+  ['currentareaheight',['currentAreaHeight',['../df/d88/_l_c_d_controller_8cpp.html#a2656e1a65734d72b43c465feb0c925d6',1,'LCDController.cpp']]],
+  ['currentlineheight',['currentLineHeight',['../df/d88/_l_c_d_controller_8cpp.html#aa1d66eb8ec186886329de7a3654c7201',1,'LCDController.cpp']]]
 ];
