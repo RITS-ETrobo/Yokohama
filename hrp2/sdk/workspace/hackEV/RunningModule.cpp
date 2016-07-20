@@ -12,6 +12,7 @@
 #include "LCDController.h"
 #include <stdlib.h>
 #include "ArmModule.h"
+#include <map>
 
 //! \addtogroup 距離計算要素
 //@{
@@ -44,15 +45,6 @@ float directionSum = 0.0F;
 //@}
 
 /**
- * @brief   初期化処理
- * 
- * @return  なし
-*/
-void initialize_run() {
-    
-}
-
-/**
  * @enum runPattern
  * 走行パターン
  */
@@ -82,6 +74,20 @@ const PID_PARAMETER pidParameterList[] = {
     {0.775F, 0.65F, 0.375F}
 };
 
+std::map<runPattern, PID_PARAMETER> PID_MAP;
+
+
+/**
+ * @brief   初期化処理
+ * 
+ * @return  なし
+*/
+void initialize_run() {
+    PID_MAP.insert( std::map<runPattern, PID_PARAMETER>::value_type( TRACE_STRAIGHT, pidParameterList[0] ));
+    PID_MAP.insert( std::map<runPattern, PID_PARAMETER>::value_type( TRACE_CURVE, pidParameterList[1] ));
+}
+
+
 /**
  * @enum scenario_running
  * 走行シナリオ
@@ -101,115 +107,112 @@ typedef struct {
 
     //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
-
-    //! 走行シナリオで従うPID値
-    PID_PARAMETER pidParameter;
+    
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
 const scenario_running L_Start_Sweepstakes_scenario[] = {
-    {30, 246.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 64.5F, -1, TRACE_CURVE, true, pidParameterList[1]}
+    {30, 246.0F, -1, TRACE_STRAIGHT, false },
+    {30, 64.5F, -1, TRACE_CURVE, true }
 };
  
 //! Lコース（懸賞入口～星取り入口）
 const scenario_running L_Sweepstakes_starUP_scenario[] = {
-    {30, 127.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 63.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 25.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 54.6F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 32.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 26.7F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 24.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 118.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+    {30, 127.5F, -1, TRACE_STRAIGHT, false},
+    {30, 63.5F, -1, TRACE_CURVE, false},
+    {30, 25.0F, -1, TRACE_STRAIGHT, false},
+    {30, 32.5F, -1, TRACE_CURVE, false},
+    {30, 26.7F, -1, TRACE_CURVE, false},
+    {30, 24.0F, -1, TRACE_CURVE, false},
+    {30, 118.5F, -1, TRACE_STRAIGHT, false}
 };
  
 //! Lコース（星取り）
 const scenario_running L_StarUP_scenario[] = {
-    {30, 20.8F, -1, NOTRACE_STRAIGHT, false, NULL},
-    {30, 15.2F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 3.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {-30, 39.0F, -1, NOTRACE_STRAIGHT, false, NULL}
+    {30, 20.8F, -1, NOTRACE_STRAIGHT, false},
+    {30, 15.2F, -1, TRACE_STRAIGHT, false},
+    {30, 3.0F, -1, TRACE_STRAIGHT, false},
+    {-30, 39.0F, -1, NOTRACE_STRAIGHT, false}
 };
  
 //! Lコース（星取り入口～ET相撲）
 const scenario_running L_StarUP_Sumo_scenario[] = {
-    {30, 16.4F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 21.2F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 6.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 46.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 12.1F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 10.5F, -1, TRACE_CURVE, false, pidParameterList[1]}
+    {30, 16.4F, -1, TRACE_CURVE, false},
+    {30, 21.2F, -1, TRACE_CURVE, false},
+    {30, 6.5F, -1, TRACE_CURVE, false},
+    {30, 46.0F, -1, TRACE_STRAIGHT, false},
+    {30, 12.1F, -1, TRACE_CURVE, false},
+    {30, 10.5F, -1, TRACE_CURVE, false}
 };
 
 //! Lコース（ET相撲）※この間にゲーム
 const scenario_running L_Sumo_scenario[] = {
-    {30, 134.2F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+    {30, 134.2F, -1, TRACE_STRAIGHT, false}
 };
 
 //! Lコース（ET相撲後～懸賞運び入口）
 const scenario_running L_Sumo_kensho_scenario[] = {
-    {30, 26.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 24.9F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 17.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 67.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 127.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+    {30, 26.5F, -1, TRACE_CURVE, false},
+    {30, 24.9F, -1, TRACE_CURVE, false},
+    {30, 17.0F, -1, TRACE_CURVE, false},
+    {30, 67.0F, -1, TRACE_CURVE, false},
+    {30, 127.5F, -1, TRACE_STRAIGHT, false}
 };
 
 //! Lコース（懸賞運び）
 const scenario_running L_kensho_scenario[] = {
-    {30, 22.0F, -1, NOTRACE_STRAIGHT, false, NULL},
-    {30, 11.5F, -1, TRACE_STRAIGHT, false, NULL},
-    {-30, 11.5F, -1, TRACE_STRAIGHT, false, NULL},
-    {-30, 22.0F, -1, NOTRACE_STRAIGHT, true, NULL}
+    {30, 22.0F, -1, NOTRACE_STRAIGHT, false},
+    {30, 11.5F, -1, TRACE_STRAIGHT, false},
+    {-30, 11.5F, -1, TRACE_STRAIGHT, false},
+    {-30, 22.0F, -1, NOTRACE_STRAIGHT, true}
 };
 
 //! Lコース（懸賞運び～ゴール）
 const scenario_running L_kensho_Goal_scenario[] = {
-    {30, 64.5F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 250.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]}
+    {30, 64.5F, -1, TRACE_CURVE, false},
+    {30, 250.0F, -1, TRACE_STRAIGHT, false}
 };
 
 //! Rコース(スタート～難所入口)
 const scenario_running R_Start_enterGameArea_scenario[] = {
-    {30, 44.8F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 24.8F, -1, TRACE_CURVE, false, pidParameterList[1]}
+    {30, 44.8F, -1, TRACE_STRAIGHT, false},
+    {30, 24.8F, -1, TRACE_CURVE, false}
 };
 
 //! Rコース(難所入口～ゲームエリア入口)
 const scenario_running L_enterGameArea_GameArea_scenario[] = {
-    {30, 37.6F, -1, NOTRACE_STRAIGHT, false, pidParameterList[1]}
+    {30, 37.6F, -1, NOTRACE_STRAIGHT, false}
 };
 
 //! Rコース(ゲームエリア出口～LAP)
 const scenario_running R_exitGameArea_LAP_scenario[] = {
-    {30, 30.4F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 25.8F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 36.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
+    {30, 30.4F, -1, TRACE_STRAIGHT, false},
+    {30, 25.8F, -1, TRACE_STRAIGHT, false},
+    {30, 36.6F, -1, TRACE_CURVE, false},
 };
 
 //! Rコース(LAP～GOAL)
 const scenario_running R_LAP_GOAL_scenario[] = {
-    {30, 81.1F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 103.9F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 47.7F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 48.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 131.5F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 3.8F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 47.6F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 4.0F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 190.1F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
-    {30, 32.8F, -1, TRACE_CURVE, false, pidParameterList[1]},
-    {30, 297.0F, -1, TRACE_STRAIGHT, false, pidParameterList[0]},
+    {30, 81.1F, -1, TRACE_STRAIGHT, false},
+    {30, 103.9F, -1, TRACE_STRAIGHT, false},
+    {30, 47.7F, -1, TRACE_CURVE, false},
+    {30, 48.6F, -1, TRACE_CURVE, false},
+    {30, 131.5F, -1, TRACE_STRAIGHT, false},
+    {30, 3.8F, -1, TRACE_CURVE, false},
+    {30, 47.6F, -1, TRACE_CURVE, false},
+    {30, 4.0F, -1, TRACE_CURVE, false},
+    {30, 190.1F, -1, TRACE_STRAIGHT, false},
+    {30, 32.8F, -1, TRACE_CURVE, false},
+    {30, 297.0F, -1, TRACE_STRAIGHT, false},
 };
 
 //! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
-    {10, 14.0F, -1, NOTRACE_STRAIGHT, false, NULL},
-    {10, 14.0F, -1, NOTRACE_STRAIGHT, false, NULL},
-    {10, 0.0F, 45, PINWHEEL, false, NULL},
-    {10, 19.76F, -1, NOTRACE_STRAIGHT, false, NULL},
-    {-10, 0.0F, 45, PINWHEEL, true, NULL}
+    {10, 14.0F, -1, NOTRACE_STRAIGHT, false},
+    {10, 14.0F, -1, NOTRACE_STRAIGHT, false},
+    {10, 0.0F, 45, PINWHEEL, false},
+    {10, 19.76F, -1, NOTRACE_STRAIGHT, false},
+    {-10, 0.0F, 45, PINWHEEL, true}
 };
 
 /**
@@ -299,7 +302,7 @@ void run(scenario_running scenario)
 
         default:
             //! PIDを用いた走行
-            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(scenario.pidParameter));
+            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(PID_MAP[scenario.pattern]));
             break;
         }
         
