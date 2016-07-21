@@ -78,6 +78,10 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case UP_BUTTON:
+    
+        //シナリオ走行モードの初期化処理
+        initialize_run();
+        
         //! シナリオ走行モード
         OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
 
@@ -93,7 +97,11 @@ static void button_clicked_handler(intptr_t button) {
         break;
      
     case ENTER_BUTTON:
-        //! シナリオ走行モードの検証用
+    
+        //シナリオ走行モードの初期化処理
+        initialize_run();
+        
+        //! 準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_E6, 300);
         tslp_tsk(300);
 
