@@ -208,11 +208,11 @@ const scenario_running R_LAP_GOAL_scenario[] = {
 
 //! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
-    {10, 14.0F, -1, NOTRACE_STRAIGHT, false},
-    {10, 14.0F, -1, NOTRACE_STRAIGHT, false},
-    {10, 0.0F, 45, PINWHEEL, false},
-    {10, 19.76F, -1, NOTRACE_STRAIGHT, false},
-    {-10, 0.0F, 45, PINWHEEL, true}
+    {40, 41.0F, -1, TRACE_STRAIGHT, false},
+    {40, 43.0F, -1, TRACE_CURVE, false},
+    {40, 40.0F, -1, TRACE_STRAIGHT, false},
+    {40, 195.0F, -1, TRACE_CURVE, false},
+    {40, 0.0F, 360, PINWHEEL, true}
 };
 
 /**
