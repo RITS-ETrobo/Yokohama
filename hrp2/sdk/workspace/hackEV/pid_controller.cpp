@@ -19,6 +19,9 @@ const float KI = 0.65F;
 
 //! 微分項の定数
 const float KD = 0.375F;
+
+//! I制御の過去値を保持する最大値
+const int HOLD_MAX=5;
 //@}
 
 //! \addtogroup PID制御で用いる変数
@@ -30,13 +33,19 @@ int white = 0;
 int black = 0;
 
 //! 前回の偏差
-float lasterror = 0.0F;
+float lastValue = 0.0F;
 
 //! 前回の偏差を積分した値
 float integral = 0.0F;
 
 //! 白と黒の光量値の平均値
 float midpoint = 0.0F;
+
+//! 過去の計測値を保持する配列
+int valueHolder[HOLD_MAX] = {0, 0, 0, 0, 0};
+
+//! 過去の計測値を保持する配列のインデックス
+int holderIndex = -1;
 //@}
 
 /**
@@ -62,8 +71,9 @@ void initialize_pid_controller()
     sprintf(message, "BLACK : %03d", black);
     OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
-    lasterror = 0.0F;
+    lastValue = 0.0F;
     integral = 0.0F;
+    holderIndex = -1;
     midpoint = (white - black) / 2 + black;
 }
 
@@ -80,7 +90,7 @@ void initialize_pid_controller()
  * @par Refer
  *  - 参照する変数 white
  *  - 参照する変数 black
- *  - 参照する変数 lasterror
+ *  - 参照する変数 lastValue
  *  - 参照する変数 integral
  *  - 参照する変数 midpoint
  *
@@ -88,20 +98,36 @@ void initialize_pid_controller()
 */
 float pid_controller(PID_PARAMETER pidParameter)
 {
+    //! 一つ前の値を取得
+    if (holderIndex >= 0) {
+        lastValue = valueHolder[holderIndex];
+    }else{
+        lastValue = 0;
+    }
+    
+    //! 現在の値を格納するインデックスを決定
+    holderIndex = (holderIndex + 1) % HOLD_MAX;
+    
     //! カラーセンサーによって取得された値を基に、偏差を算出する
-    float error = midpoint - ev3_color_sensor_get_reflect(color_sensor);
-
-    //! 偏差を積分した値を求める
-    integral = error + integral * 0.5;
+    float value = midpoint - ev3_color_sensor_get_reflect(color_sensor);
+    
+    //! 現在の値を格納
+    valueHolder[holderIndex] = value;
+    
+    int integral = 0;
+    //! これまでに保持している値の合計を求める
+    for( int i = 0; i < HOLD_MAX; i++){
+        integral += valueHolder[i];
+    }
 
     //! P値を求める
-    float p = pidParameter.kP * error;
+    float p = pidParameter.kP * value;
 
     //! I値を求める
     float i = pidParameter.kI * integral;
 
     //! D値を求める
-    float d = pidParameter.kD * (error - lasterror);
+    float d = pidParameter.kD * (value - lastValue);
 
     //! 操作量を求める
     float steer = p + i + d;
@@ -109,17 +135,15 @@ float pid_controller(PID_PARAMETER pidParameter)
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "p : %02.04f", p);
-    writeStringLCD(message);
+    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
 
     memset(message, '\0', sizeof(message));
     sprintf(message, "i : %02.04f", p);
-    writeStringLCD(message);
+    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
 
     memset(message, '\0', sizeof(message));
     sprintf(message, "d : %02.04f", p);
-    writeStringLCD(message);
-
-    lasterror = error;
+    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
     
     return  steer;
 }
