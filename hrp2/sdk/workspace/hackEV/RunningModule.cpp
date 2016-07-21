@@ -68,7 +68,7 @@ const PID_PARAMETER pidParameterList[] = {
     {0.775F, 0.0F, 0.375F},
     
     //! 曲線用PIDパラメータ（仮）
-    {0.775F, 0.90F, 0.375F},
+    {0.775F, 0.2F, 0.375F},
     
     //! 汎用PIDパラメータ（仮）
     {0.775F, 0.65F, 0.375F}
@@ -208,11 +208,11 @@ const scenario_running R_LAP_GOAL_scenario[] = {
 
 //! 検証用シナリオ
 const scenario_running run_scenario_test[] = {
-    {70, 41.0F, -1, TRACE_STRAIGHT, false},
-    {40, 43.0F, -1, TRACE_CURVE, false},
-    {70, 40.0F, -1, TRACE_STRAIGHT, false},
+    {60, 41.0F, -1, TRACE_STRAIGHT, false},
+    {30, 43.0F, -1, TRACE_CURVE, false},
+    {60, 40.0F, -1, TRACE_STRAIGHT, false},
     {30, 195.0F, -1, TRACE_CURVE, false},
-    {40, 0.0F, 360, PINWHEEL, true}
+    {60, 0.0F, 360, PINWHEEL, true}
 };
 
 /**
