@@ -49,11 +49,17 @@ float directionSum = 0.0F;
  * 走行パターン
  */
 enum runPattern {
-    //! ライントレースしつつ、直進する
+    //! ライントレースしつつ、直進する（左側走行）
     TRACE_STRAIGHT, 
 
-    //! ライントレースしつつ、カーブを走る
+    //! ライントレースしつつ、カーブを走る（左側走行）
     TRACE_CURVE,
+    
+    //! ライントレースしつつ、直進する（右側走行）
+    TRACE_STRAIGHT_RIGHTSIDE,
+    
+    //! ライントレースしつつ、カーブを走る（右側走行）
+    TRACE_CURVE_RIGHTSIDE,
 
     //! その場回転
     PINWHEEL, 
@@ -83,8 +89,11 @@ std::map<runPattern, PID_PARAMETER> PID_MAP;
  * @return  なし
 */
 void initialize_run() {
-    PID_MAP.insert( std::map<runPattern, PID_PARAMETER>::value_type( TRACE_STRAIGHT, pidParameterList[0] ));
-    PID_MAP.insert( std::map<runPattern, PID_PARAMETER>::value_type( TRACE_CURVE, pidParameterList[1] ));
+    //! 走行パターンとPID係数のマッピング
+    PID_MAP[TRACE_STRAIGHT]=pidParameterList[0];
+    PID_MAP[TRACE_CURVE]=pidParameterList[1];
+    PID_MAP[TRACE_STRAIGHT_RIGHTSIDE]=pidParameterList[0];
+    PID_MAP[TRACE_CURVE_RIGHTSIDE]=pidParameterList[1];
 }
 
 
@@ -215,6 +224,12 @@ const scenario_running run_scenario_test[] = {
     {60, 0.0F, 360, PINWHEEL, true}
 };
 
+//! 検証用シナリオ(右側走行)
+const scenario_running run_scenario_test_right[] = {
+    {60, 41.0F, -1, TRACE_STRAIGHT_RIGHTSIDE, false},
+    {30, 43.0F, -1, TRACE_CURVE_RIGHTSIDE, true}
+};
+
 /**
  * @brief   リセットしてからの指定したタイヤの走行距離を計算する
  * 
@@ -299,9 +314,18 @@ void run(scenario_running scenario)
             ev3_motor_set_power(left_motor, scenario.power);
             ev3_motor_set_power(right_motor, scenario.power);
             break;
+            
+        case TRACE_STRAIGHT_RIGHTSIDE:
+        case TRACE_CURVE_RIGHTSIDE:
+        {
+            //! ライン右側をトレース
+            float pidValueForRight = (-pid_controller(PID_MAP[scenario.pattern]));
+            ev3_motor_steer(left_motor, right_motor, scenario.power, pidValueForRight);
+        }
+        break;
 
         default:
-            //! PIDを用いた走行
+            //! ライン左側をトレース
             ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(PID_MAP[scenario.pattern]));
             break;
         }
@@ -397,9 +421,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test) / sizeof(run_scenario_test[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_right) / sizeof(run_scenario_test_right[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test[index]);
+        run(run_scenario_test_right[index]);
     }
 }
