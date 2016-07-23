@@ -48,7 +48,7 @@ void viewColor()
     
     memset(message, '\0', sizeof(message));
     sprintf(message, " Push Touch Sensor!");
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
     
     //! タッチセンサーが押されるまで待機
     for (;;) {
@@ -66,18 +66,20 @@ void viewColor()
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
     sprintf(message, "%s", COLOR_NAME_MAP[colorName]);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
     
     //! 取得したRGB値をLCDに表示させる
     memset(message, '\0', sizeof(message));
     sprintf(message, "R: %d", colorRGB.r);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
+
     memset(message, '\0', sizeof(message));
     sprintf(message, "G: %d", colorRGB.g);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
+
     memset(message, '\0', sizeof(message));
     sprintf(message, "B: %d", colorRGB.b);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
 }
 
 /**

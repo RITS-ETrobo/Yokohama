@@ -16,7 +16,7 @@ void writeFloatLCD(float value){
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%03.03f", value); 
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
+    writeStringLCD(message);
 }
 
 /**
