@@ -56,20 +56,22 @@ void initialize_pid_controller()
 {
     //! Calibrate for light intensity of WHITE
     white = calibrate_light_intensity();
-    printf("WHITE light intensity: %d.\n", white);
 
     //! Calibrate for light intensity of BLACK
     black = calibrate_light_intensity();
-    printf("BLACK light intensity: %d.\n", black);
 
     char message[16];
     memset(message, '\0', sizeof(message));
-    sprintf(message, "WHITE : %03d", white);
-    OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+    sprintf(message, "WHITE %03d", white);
+    writeStringLCD(message);
+    sprintf(message, "BLACK %03d", black);
+    writeStringLCD(message);
 
     memset(message, '\0', sizeof(message));
-    sprintf(message, "BLACK : %03d", black);
-    OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+    sprintf(message, "%03d, %03d", white, black);
+    if (logger) {
+        logger->addLog(message);
+    }
 
     lastValue = 0.0F;
     integral = 0.0F;
@@ -132,19 +134,12 @@ float pid_controller(PID_PARAMETER pidParameter)
     //! 操作量を求める
     float steer = p + i + d;
 
-    char message[16];
+    char message[32];
     memset(message, '\0', sizeof(message));
-    sprintf(message, "p : %02.04f", p);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
-
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "i : %02.04f", p);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
-
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "d : %02.04f", p);
-    OUTPUT_LOG(message, OUTPUT_TYPE_LCD);
-    
+    sprintf(message, "%02.04f, %02.04f, %02.04f", p, i, d);
+    if (logger) {
+        logger->addLog(message);
+    }
     return  steer;
 }
 

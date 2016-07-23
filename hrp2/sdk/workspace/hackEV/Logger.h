@@ -6,26 +6,32 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <vector>
+
 #include "Clock.h"
 
+using namespace std;
 using namespace ev3api;
 
 static const uint8_t OUTPUT_TYPE_NONE = 0;
 static const uint8_t OUTPUT_TYPE_FILE = (1 << 0);
 static const uint8_t OUTPUT_TYPE_LCD = (1 << 1);
 
+typedef struct {
+    uint32_t    duration;
+    char    log[32];
+} LOGGER_INFO;
+
 //! Class for logging
 class Logger
 {
 public:
     explicit Logger();
-    bool initialize();
-    void closeLog();
-    bool addLog(const char* message);
+    void initialize();
+    void addLog(const char* message);
+    void outputLog();
 
 private:
-    bool openLog();
-    bool outputLog(const char* message);
 
     //! ログファイルを収めるディレクトリ
     const char*  LOGDIRECTORY_PATH = "/ev3rt/logs";
@@ -33,9 +39,9 @@ private:
     //! ログファイルのファイル名
     const char*  LOGFILE_NAME = "hackEV_log.csv";
 
-    //! ログファイルのファイルポインター
-    FILE*   fpLog;
-
     //! Clockクラスのインスタンス
     Clock*  clock;
+
+    //! 蓄積するログ情報
+    vector<LOGGER_INFO> loggerInfo;
 };

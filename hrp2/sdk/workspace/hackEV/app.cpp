@@ -50,40 +50,38 @@ void stop_emergency(){
 static void button_clicked_handler(intptr_t button) {
     switch(button) {
     case BACK_BUTTON:
-        OUTPUT_LOG("BACK button click", OUTPUT_TYPE_LCD);
+        writeStringLCD("BACK button click");
         syslog(LOG_NOTICE, "Back button clicked.");
         break;
-        
+
     case LEFT_BUTTON:
         //! アーム動作モード
         initialize_arm();
-        
+
         //! アームを上げる
         move_arm(45, 3, true);
-       
+
         tslp_tsk(400);
-        
+
         //!アームを下げる
         move_arm(0, 3, true);
-        
         break;
-        
+
     case RIGHT_BUTTON:
         //! 本体の右ボタンで超音波モード
-        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
+        writeStringLCD("RIGHT button click");
         syslog(LOG_NOTICE, "RIGHT button clicked.");
-        
+
         //! 超音波制御
         control_sonarsensor();        
         break;
 
     case UP_BUTTON:
-    
         //シナリオ走行モードの初期化処理
         initialize_run();
-        
+
         //! シナリオ走行モード
-        OUTPUT_LOG("RIGHT button click", OUTPUT_TYPE_LCD);
+        writeStringLCD("UP button click");
 
         //! 準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_C4, 100);
@@ -95,12 +93,13 @@ static void button_clicked_handler(intptr_t button) {
         //! 走行開始
         start_run();
         break;
-     
+
     case ENTER_BUTTON:
-    
+        writeStringLCD("ENTER button click");
+
         //シナリオ走行モードの初期化処理
         initialize_run();
-        
+
         //! 準備ができたら音が3回鳴る
         ev3_speaker_play_tone(NOTE_E6, 300);
         tslp_tsk(300);
@@ -114,7 +113,7 @@ static void button_clicked_handler(intptr_t button) {
     }
 
     if (logger) {
-        logger->closeLog();
+        logger->outputLog();
     }
 }
 
@@ -127,19 +126,15 @@ static void button_clicked_handler(intptr_t button) {
 void main_task(intptr_t unused) {
     setFontSize(EV3_FONT_MEDIUM);
 
-    //! ログは重要機能の為、3回リトライする
-    for (int retry = 0; retry < RETRY_CREATE_INSTANCE; retry++) {
-        logger = new Logger();
-        if (logger != NULL) {
-            break;
-        }
-    }
-
+    logger = new Logger();
     if (logger) {
         logger->initialize();
     }
 
-    OUTPUT_LOG("Start Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+    writeStringLCD("Start Initializing");
+    if (logger) {
+        logger->addLog("Start Initializing");
+    }
 
     //! Configure motors
     configure_motors();
@@ -149,10 +144,10 @@ void main_task(intptr_t unused) {
 
     //! 超音波センサの初期化
     initialize_sonarsensor();
-    
+
     //! 初期化が終わった時点で音を一回鳴らす（キー入力待ちを知らせる）
     ev3_speaker_play_tone(NOTE_C4, 300);
-    
+
     //! Register button handlers
     ev3_button_set_on_clicked(BACK_BUTTON, button_clicked_handler, BACK_BUTTON);
     ev3_button_set_on_clicked(ENTER_BUTTON, button_clicked_handler, ENTER_BUTTON);
@@ -160,12 +155,19 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
 
-    OUTPUT_LOG("End Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+    writeStringLCD("End Initializing");
+    if (logger) {
+        logger->addLog("End Initializing");
+    }
 
     char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%04d mA %04d mV", ev3_battery_current_mA(), ev3_battery_voltage_mV()); 
-    OUTPUT_LOG(message, OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
+
+    writeStringLCD(message);
+    if (logger) {
+        logger->addLog(message);
+    }
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    

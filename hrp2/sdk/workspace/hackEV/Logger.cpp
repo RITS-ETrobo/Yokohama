@@ -10,8 +10,8 @@
  * @return  なし
 */
 Logger::Logger()
-    : fpLog(NULL)
-    , clock(NULL)
+    : clock(NULL)
+    , loggerInfo(NULL)
 {
 }
 
@@ -20,48 +20,12 @@ Logger::Logger()
  * @return  true    初期化成功
  * @return  false   初期化失敗
 */
-bool Logger::initialize()
+void Logger::initialize()
 {
     clock = new Clock();
     if (clock) {
         clock->reset();
     }
-
-    return  openLog();
-}
-
-/**
- * @brief   ログファイルを開く
- * @return  true    ログファイル作成成功
- * @return  false   ログファイル作成失敗
-*/
-bool Logger::openLog()
-{
-    if (fpLog) {
-        return  true;
-    }
-
-    return  true;
-    fpLog = fopen(LOGFILE_NAME, "w+");
-    if (fpLog == NULL) {
-        return  false;
-    }
-
-    return  true;
-}
-
-/**
- * @brief   ログファイルを閉じる
- * @return  なし
-*/
-void Logger::closeLog()
-{
-    if (fpLog == NULL) {
-        return;
-    }
-
-    fclose(fpLog);
-    fpLog = NULL;
 }
 
 /**
@@ -71,39 +35,37 @@ void Logger::closeLog()
  * @return  true    ログ追加成功
  * @return  false   ログ追加失敗
 */
-bool Logger::addLog(const char* message)
+void Logger::addLog(const char* message)
 {
-    return  outputLog(message);
+    LOGGER_INFO info;
+    info.duration = 0;
+    if (clock) {
+        info.duration = clock->now();
+    }
+
+    strcpy(info.log, message);
+    loggerInfo.push_back(info);
 }
 
 /**
  * @brief   ログをファイルに出力する
- * @param   message ファイルに出力するログ
- * @return  true    ログ出力成功
- * @return  false   ログ出力失敗
+ * @return  なし
 */
-bool Logger::outputLog(const char* message)
+void Logger::outputLog()
 {
-    if (message == NULL) {
-        return  false;
-    }
-
-    openLog();
+    FILE    *fpLog = fopen(LOGFILE_NAME, "w+");
     if (fpLog == NULL) {
-        return  false;
+        return;
     }
 
-    char    log[512];
-    memset(log, '\0', sizeof(log));
-    uint32_t    duration = 0;
-    if (clock) {
-        duration = clock->now();
+    for (vector<LOGGER_INFO>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
+        char    logLine[64];
+        sprintf(logLine, "%d, %s\r\n", it->duration, it->log);
+        if (fputs(logLine, fpLog) == EOF) {
+            break;
+        }
     }
 
-    sprintf(log, "%u,%s\r\n", duration, message);
-    if (fputs(log, fpLog) == EOF) {
-        return  false;
-    }
-
-    return  true;
+    loggerInfo.clear();
+    fclose(fpLog);
 }
