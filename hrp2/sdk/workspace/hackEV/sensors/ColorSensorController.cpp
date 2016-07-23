@@ -83,6 +83,7 @@ void viewColor()
 /**
  * @brief カラーセンサーで検知した色の名前を取得
  *
+ * カラー名判定の種類：http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
  * @return  取得したカラーの名前
 */
 colorid_t getColorName()
