@@ -46,7 +46,8 @@ float directionSum = 0.0F;
 
 /**
  * @enum runPattern
- * 走行パターン
+ * 走行パターン 
+ * TRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでpidParameterListのindexと対応する
  *
  * - 左側走行 : [走行体] [//線//]
  * - 右側走行 :          [//線//] [走行体]
@@ -55,22 +56,22 @@ enum runPattern {
     //! トレースする走行パターン(開始)
     TRACE_RUN_PATTARN_START = 0,
 
-    //! ライントレースしつつ、直進する pidParameterListの0番目に対応
+    //! ライントレースしつつ、直進する
     TRACE_STRAIGHT = TRACE_RUN_PATTARN_START,
     
-    //! ライントレースしつつ、直進する（ラインの左側を走行） pidParameterListの0番目に対応
+    //! ライントレースしつつ、直進する（ラインの左側を走行）
     TRACE_STRAIGHT_LEFT = TRACE_STRAIGHT,
 
-    //! ライントレースしつつ、直進する（ラインの右側を走行） pidParameterListの1番目に対応
+    //! ライントレースしつつ、直進する（ラインの右側を走行）
     TRACE_STRAIGHT_RIGHT,
 
-    //! ライントレースしつつ、カーブを走る pidParameterListの2番目に対応
+    //! ライントレースしつつ、カーブを走る
     TRACE_CURVE,
     
-    //! //! ライントレースしつつ、カーブを走る（ラインの左側を走行） pidParameterListの2番目に対応
+    //! ライントレースしつつ、カーブを走る（ラインの左側を走行）
     TRACE_CURVE_LEFT = TRACE_CURVE,
     
-    //! ライントレースしつつ、カーブを走る（ラインの右側を走行） pidParameterListの3番目に対応
+    //! ライントレースしつつ、カーブを走る（ラインの右側を走行）
     TRACE_CURVE_RIGHT,
 
     //! トレースする走行パターン(終了)
@@ -83,7 +84,11 @@ enum runPattern {
     NOTRACE_STRAIGHT
 };
 
-//! PIDパラメータのリスト
+
+/**
+ * PIDパラメータのリスト
+ * この配列は、runPatternのTRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでと対応する
+ */
 const PID_PARAMETER pidParameterList[] = {
     //! 直進用PIDパラメータ（左側走行）
     {0.775F, 0.0F, 0.375F},
