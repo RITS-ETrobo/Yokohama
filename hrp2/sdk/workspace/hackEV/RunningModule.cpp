@@ -47,19 +47,34 @@ float directionSum = 0.0F;
 /**
  * @enum runPattern
  * 走行パターン
+ *
+ * - 左側走行 : [走行体] [//線//]
+ * - 右側走行 :          [//線//] [走行体]
  */
 enum runPattern {
-    //! ライントレースしつつ、直進する（左側走行）
-    TRACE_STRAIGHT, 
+    //! トレースする走行パターン(開始)
+    TRACE_RUN_PATTARN_START = 0,
 
-    //! ライントレースしつつ、カーブを走る（左側走行）
+    //! ライントレースしつつ、直進する pidParameterListの0番目に対応
+    TRACE_STRAIGHT = TRACE_RUN_PATTARN_START,
+    
+    //! ライントレースしつつ、直進する（ラインの左側を走行） pidParameterListの0番目に対応
+    TRACE_STRAIGHT_LEFT = TRACE_STRAIGHT,
+
+    //! ライントレースしつつ、直進する（ラインの右側を走行） pidParameterListの1番目に対応
+    TRACE_STRAIGHT_RIGHT,
+
+    //! ライントレースしつつ、カーブを走る pidParameterListの2番目に対応
     TRACE_CURVE,
     
-    //! ライントレースしつつ、直進する（右側走行）
-    TRACE_STRAIGHT_RIGHTSIDE,
+    //! //! ライントレースしつつ、カーブを走る（ラインの左側を走行） pidParameterListの2番目に対応
+    TRACE_CURVE_LEFT = TRACE_CURVE,
     
-    //! ライントレースしつつ、カーブを走る（右側走行）
-    TRACE_CURVE_RIGHTSIDE,
+    //! ライントレースしつつ、カーブを走る（ラインの右側を走行） pidParameterListの3番目に対応
+    TRACE_CURVE_RIGHT,
+
+    //! トレースする走行パターン(終了)
+    TRACE_RUN_PATTARN_END = TRACE_CURVE_RIGHT,
 
     //! その場回転
     PINWHEEL, 
@@ -70,10 +85,16 @@ enum runPattern {
 
 //! PIDパラメータのリスト
 const PID_PARAMETER pidParameterList[] = {
-    //! 直進用PIDパラメータ（仮）
+    //! 直進用PIDパラメータ（左側走行）
     {0.775F, 0.0F, 0.375F},
     
-    //! 曲線用PIDパラメータ（仮）
+    //! 曲線用PIDパラメータ（左側走行）
+    {0.775F, 0.2F, 0.375F},
+    
+    //! 直進用PIDパラメータ（右側走行）
+    {0.775F, 0.0F, 0.375F},
+    
+    //! 直進用PIDパラメータ（右側走行）
     {0.775F, 0.2F, 0.375F},
     
     //! 汎用PIDパラメータ（仮）
@@ -82,7 +103,6 @@ const PID_PARAMETER pidParameterList[] = {
 
 std::map<runPattern, PID_PARAMETER> PID_MAP;
 
-
 /**
  * @brief   初期化処理
  * 
@@ -90,10 +110,9 @@ std::map<runPattern, PID_PARAMETER> PID_MAP;
 */
 void initialize_run() {
     //! 走行パターンとPID係数のマッピング
-    PID_MAP[TRACE_STRAIGHT]=pidParameterList[0];
-    PID_MAP[TRACE_CURVE]=pidParameterList[1];
-    PID_MAP[TRACE_STRAIGHT_RIGHTSIDE]=pidParameterList[0];
-    PID_MAP[TRACE_CURVE_RIGHTSIDE]=pidParameterList[1];
+    for (int i = TRACE_RUN_PATTARN_START; i <= TRACE_RUN_PATTARN_END; i++) {
+        PID_MAP[(runPattern)i] = pidParameterList[i];
+    }
 }
 
 
@@ -226,8 +245,8 @@ const scenario_running run_scenario_test[] = {
 
 //! 検証用シナリオ(右側走行)
 const scenario_running run_scenario_test_right[] = {
-    {60, 41.0F, -1, TRACE_STRAIGHT_RIGHTSIDE, false},
-    {30, 43.0F, -1, TRACE_CURVE_RIGHTSIDE, true}
+    {60, 41.0F, -1, TRACE_STRAIGHT_RIGHT, false},
+    {30, 43.0F, -1, TRACE_CURVE_RIGHT, true}
 };
 
 /**
@@ -315,8 +334,8 @@ void run(scenario_running scenario)
             ev3_motor_set_power(right_motor, scenario.power);
             break;
             
-        case TRACE_STRAIGHT_RIGHTSIDE:
-        case TRACE_CURVE_RIGHTSIDE:
+        case TRACE_STRAIGHT_RIGHT:
+        case TRACE_CURVE_RIGHT:
         {
             //! ライン右側をトレース
             float pidValueForRight = (-pid_controller(PID_MAP[scenario.pattern]));
