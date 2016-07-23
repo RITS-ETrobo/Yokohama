@@ -15,6 +15,7 @@ APPL_CXXOBJS += \
     Logger.o \
     SonarSensorController.o \
     gyroboy.o \
+    ColorSensorController.o \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \
