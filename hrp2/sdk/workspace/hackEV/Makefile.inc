@@ -3,6 +3,7 @@ APPL_COBJS +=
 
 # Add objects that are generated from *.cpp
 APPL_CXXOBJS += \
+    defines.o \
     Logger.o \
     LCDController.o \
     pid_controller.o \

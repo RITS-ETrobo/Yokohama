@@ -11,13 +11,6 @@
 #include "SonarSensorController.h"
 
 
-//! \addtogroup 超音波センサのポート
-//@{
-//! Sonar sensor    :   Port 3
-const sensor_port_t sonar_sensor = EV3_PORT_3;
-
-//@}
-
 static bool enabledSonarSensor = true;
 
 void setEnabledSonarSensor(bool _enabledSonarSensor){
