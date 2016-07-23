@@ -15,6 +15,7 @@
 #include "RunningModule.h"
 #include "Logger.h"
 #include "ArmModule.h"
+#include "ColorSensorController.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -108,6 +109,13 @@ static void button_clicked_handler(intptr_t button) {
         //! テスト走行開始
         start_run_test();
         break;
+        
+    case DOWN_BUTTON:
+    
+        //! カラー名とRGBの表示
+        viewColor();
+        
+        break;
 
     default:
         break;
@@ -159,6 +167,7 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(LEFT_BUTTON, button_clicked_handler, LEFT_BUTTON);
     ev3_button_set_on_clicked(RIGHT_BUTTON, button_clicked_handler, RIGHT_BUTTON);
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
+    ev3_button_set_on_clicked(DOWN_BUTTON, button_clicked_handler, DOWN_BUTTON);
 
     OUTPUT_LOG("End Initializing", OUTPUT_TYPE_FILE + OUTPUT_TYPE_LCD);
 
