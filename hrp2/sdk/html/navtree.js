@@ -29,12 +29,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d68/_arm_module_8cpp.html#ga08103159ff9fd4ea39e06da0ab58547c",
-"d6/d17/samples_2etrobo__tr_2balancer_8h.html",
-"d8/d81/samples_2sample__c4_2balancer__private_8h.html#ac9f60d8c879cc59cb6f59e66ceff980c",
-"db/d35/gyroboy_8cpp.html#ga4be42f90b6aacf3adf15472225ca95b5",
-"dd/da3/samples_2sample04_2app_8cpp.html",
-"dir_7bafdc10941f3a83dbe275d3ed5d132c.html"
+"d3/d42/class_logger.html#abc41bfb031d896170c7675fa96a6b30c",
+"d5/dc3/old_2nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d",
+"d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga26722c3df2ea3f0f62eef1a57cf05016",
+"da/d9a/samples_2etrobo__tr__ex2_2balancer_8c.html#a66306dbf7411fbb67f1127126de95f9a",
+"dd/d4b/etrobo__tr__ex2_2app_2_scenario_8h.html",
+"df/de1/class_balancer.html#af3af50e0d486516c24610a49a6c6ae68"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

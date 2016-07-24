@@ -121,12 +121,13 @@ $(document).ready(function(){initNavTree('da/d2f/_running_module_8cpp.html','../
 <code>#include &quot;<a class="el" href="../../d5/d3c/_l_c_d_controller_8h_source.html">LCDController.h</a>&quot;</code><br/>
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="../../d4/d64/_arm_module_8h_source.html">ArmModule.h</a>&quot;</code><br/>
+<code>#include &lt;map&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for RunningModule.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d3d/_running_module_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2_running_module_8cpp">
-<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="177,96,255,123"/><area shape="rect" id="node9" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="78,171,199,197"/><area shape="rect" id="node10" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="478,171,596,197"/><area shape="rect" id="node11" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="620,171,677,197"/><area shape="rect" id="node12" href="../../d6/d2f/_running_module_8h.html" title="This file has RunningModule. " alt="" coords="280,96,409,123"/><area shape="rect" id="node14" href="../../d4/d64/_arm_module_8h.html" title="This file has ArmModule. " alt="" coords="435,96,541,123"/><area shape="rect" id="node5" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="224,171,300,197"/></map>
+<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="302,96,380,123"/><area shape="rect" id="node11" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="81,171,201,197"/><area shape="rect" id="node12" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="534,171,652,197"/><area shape="rect" id="node13" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="676,171,733,197"/><area shape="rect" id="node14" href="../../d6/d2f/_running_module_8h.html" title="This file has RunningModule. " alt="" coords="675,96,804,123"/><area shape="rect" id="node16" href="../../d4/d64/_arm_module_8h.html" title="This file has ArmModule. " alt="" coords="443,96,549,123"/><area shape="rect" id="node5" href="../../d8/db0/defines_8h.html" title="This file has the definitions related to EV3. " alt="" coords="379,171,457,197"/><area shape="rect" id="node6" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="227,171,303,197"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -136,10 +137,20 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a37b4634eac030ffb8287731c88374ab2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a> { <a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, 
-<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, 
-<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a>, 
+<tr class="memitem:a37b4634eac030ffb8287731c88374ab2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a> { <br/>
+&#160;&#160;<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a09d7184656193837ae720bce2c2b2fd7">TRACE_RUN_PATTARN_START</a> = 0, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a> = TRACE_RUN_PATTARN_START, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aadd7c6b3d34835de529f912552fe9cae">TRACE_STRAIGHT_LEFT</a> = TRACE_STRAIGHT, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a1ad5d42ea2f0bb7936e6945f6a9da9d5">TRACE_STRAIGHT_RIGHT</a>, 
+<br/>
+&#160;&#160;<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2ad6568da355b02e1567d04344b8343e1d">TRACE_CURVE_LEFT</a> = TRACE_CURVE, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383">TRACE_CURVE_RIGHT</a>, 
+<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2ab2474dada51d58b9374a9b98ce1b1891">TRACE_RUN_PATTARN_END</a> = TRACE_CURVE_RIGHT, 
+<br/>
+&#160;&#160;<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a>, 
 <a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>
+<br/>
  }</td></tr>
 <tr class="separator:a37b4634eac030ffb8287731c88374ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -197,8 +208,10 @@ Variables</h2></td></tr>
 <tr class="memdesc:gaaccfe8aea6a7f061c77fae89e3659f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">向きの累積[度]  <a href="../../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#gaaccfe8aea6a7f061c77fae89e3659f97">More...</a><br/></td></tr>
 <tr class="separator:gaaccfe8aea6a7f061c77fae89e3659f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad0553d661d919fa603953d4385130c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a> []</td></tr>
-<tr class="memdesc:a0ad0553d661d919fa603953d4385130c"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIDパラメータのリスト  <a href="#a0ad0553d661d919fa603953d4385130c">More...</a><br/></td></tr>
 <tr class="separator:a0ad0553d661d919fa603953d4385130c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1247d51cadf9b80b90378ce5badf3b07"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a>, <br class="typebreak"/>
+<a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a1247d51cadf9b80b90378ce5badf3b07">PID_MAP</a></td></tr>
+<tr class="separator:a1247d51cadf9b80b90378ce5badf3b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfda6c8add78a89677f2ec2e143dbf30"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#adfda6c8add78a89677f2ec2e143dbf30">L_Start_Sweepstakes_scenario</a> []</td></tr>
 <tr class="memdesc:adfda6c8add78a89677f2ec2e143dbf30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lコース（スタート～懸賞入口）  <a href="#adfda6c8add78a89677f2ec2e143dbf30">More...</a><br/></td></tr>
 <tr class="separator:adfda6c8add78a89677f2ec2e143dbf30"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,6 +251,9 @@ Variables</h2></td></tr>
 <tr class="memitem:ac948acd8a8791a3c88f1703da8fd7d22"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#ac948acd8a8791a3c88f1703da8fd7d22">run_scenario_test</a> []</td></tr>
 <tr class="memdesc:ac948acd8a8791a3c88f1703da8fd7d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">検証用シナリオ  <a href="#ac948acd8a8791a3c88f1703da8fd7d22">More...</a><br/></td></tr>
 <tr class="separator:ac948acd8a8791a3c88f1703da8fd7d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1469ba88f01b9f998cd89b98e8b9c2cd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2f/_running_module_8cpp.html#a1469ba88f01b9f998cd89b98e8b9c2cd">run_scenario_test_right</a> []</td></tr>
+<tr class="memdesc:a1469ba88f01b9f998cd89b98e8b9c2cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">検証用シナリオ(右側走行)  <a href="#a1469ba88f01b9f998cd89b98e8b9c2cd">More...</a><br/></td></tr>
+<tr class="separator:a1469ba88f01b9f998cd89b98e8b9c2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file has RunningModule. </p>
@@ -251,13 +267,35 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>走行パターン </p>
+<p>走行パターン TRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでpidParameterListのindexと対応する</p>
+<ul>
+<li>左側走行 : [走行体] [//線//]</li>
+<li>右側走行 : [//線//] [走行体] </li>
+</ul>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"></a>TRACE_STRAIGHT</em>&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2a09d7184656193837ae720bce2c2b2fd7"></a>TRACE_RUN_PATTARN_START</em>&#160;</td><td class="fielddoc">
+<p>トレースする走行パターン(開始) </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"></a>TRACE_STRAIGHT</em>&#160;</td><td class="fielddoc">
 <p>ライントレースしつつ、直進する </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2aadd7c6b3d34835de529f912552fe9cae"></a>TRACE_STRAIGHT_LEFT</em>&#160;</td><td class="fielddoc">
+<p>ライントレースしつつ、直進する（ラインの左側を走行） </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2a1ad5d42ea2f0bb7936e6945f6a9da9d5"></a>TRACE_STRAIGHT_RIGHT</em>&#160;</td><td class="fielddoc">
+<p>ライントレースしつつ、直進する（ラインの右側を走行） </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"></a>TRACE_CURVE</em>&#160;</td><td class="fielddoc">
 <p>ライントレースしつつ、カーブを走る </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2ad6568da355b02e1567d04344b8343e1d"></a>TRACE_CURVE_LEFT</em>&#160;</td><td class="fielddoc">
+<p>ライントレースしつつ、カーブを走る（ラインの左側を走行） </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383"></a>TRACE_CURVE_RIGHT</em>&#160;</td><td class="fielddoc">
+<p>ライントレースしつつ、カーブを走る（ラインの右側を走行） </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2ab2474dada51d58b9374a9b98ce1b1891"></a>TRACE_RUN_PATTARN_END</em>&#160;</td><td class="fielddoc">
+<p>トレースする走行パターン(終了) </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044"></a>PINWHEEL</em>&#160;</td><td class="fielddoc">
 <p>その場回転 </p>
@@ -404,6 +442,7 @@ Here is the caller graph for this function:</div>
 <p>初期化処理 </p>
 <p>ターゲット依存の定義</p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+<p>走行パターンとPID係数のマッピング </p>
 
 </div>
 </div>
@@ -434,7 +473,8 @@ Here is the caller graph for this function:</div>
 <p>走行</p>
 <p>その場回転</p>
 <p>ライントレースせずに、直進走行する</p>
-<p>PIDを用いた走行</p>
+<p>ライン右側をトレース</p>
+<p>ライン左側をトレース</p>
 <p>現在の左と右のモーターの走行距離を取得</p>
 <p>瞬間の向きを取得、累積して走行体の向きを計測</p>
 <p>距離判定の必要性判断</p>
@@ -450,7 +490,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph" alt=""/></div>
 <map name="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph" id="da/d2f/_running_module_8cpp_a080cda2584e6b5ef0bdcdf060208bd89_cgraph">
-<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="110,31,218,57"/><area shape="rect" id="node6" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="99,81,229,108"/><area shape="rect" id="node7" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="97,132,231,159"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="115,183,213,209"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="125,233,203,260"/><area shape="rect" id="node10" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="109,284,219,311"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="281,31,397,57"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="445,5,555,32"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="449,56,551,83"/></map>
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="110,5,218,32"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="99,56,229,83"/><area shape="rect" id="node5" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="97,107,231,133"/><area shape="rect" id="node6" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="115,157,213,184"/><area shape="rect" id="node7" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="125,208,203,235"/><area shape="rect" id="node8" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="109,259,219,285"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="281,5,402,32"/><area shape="rect" id="node9" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="283,259,399,285"/><area shape="rect" id="node10" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="451,233,560,260"/><area shape="rect" id="node11" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="454,284,557,311"/></map>
 </div>
 </p>
 
@@ -488,7 +528,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph" alt=""/></div>
 <map name="da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph" id="da/d2f/_running_module_8cpp_a4fed49bdf464977f8c337f0aa89b5dbc_cgraph">
-<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="134,56,301,83"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="196,157,239,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="350,5,522,32"/><area shape="rect" id="node5" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="382,56,490,83"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="371,107,501,133"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="369,157,503,184"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="387,208,485,235"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="397,259,475,285"/><area shape="rect" id="node13" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="381,309,491,336"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="571,56,687,83"/><area shape="rect" id="node7" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="736,31,845,57"/><area shape="rect" id="node8" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="739,81,842,108"/></map>
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="225,5,391,32"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="133,157,176,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="441,5,613,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="469,56,585,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="466,183,587,209"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="661,31,771,57"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="665,81,767,108"/><area shape="rect" id="node9" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="254,259,362,285"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="243,309,373,336"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="241,107,375,133"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="259,157,357,184"/><area shape="rect" id="node13" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="269,208,347,235"/><area shape="rect" id="node14" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="253,56,363,83"/></map>
 </div>
 </p>
 
@@ -517,7 +557,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph.png" border="0" usemap="#da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph" alt=""/></div>
 <map name="da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph" id="da/d2f/_running_module_8cpp_a06efab33f16fb6a1d6e5948027c1bfe9_cgraph">
-<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="166,56,333,83"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="228,157,271,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="382,5,554,32"/><area shape="rect" id="node5" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="414,56,522,83"/><area shape="rect" id="node9" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="403,107,533,133"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="401,157,535,184"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="419,208,517,235"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="429,259,507,285"/><area shape="rect" id="node13" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="413,309,523,336"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="603,56,719,83"/><area shape="rect" id="node7" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="768,31,877,57"/><area shape="rect" id="node8" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="771,81,874,108"/></map>
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="257,5,423,32"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="165,157,208,184"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="473,5,645,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="501,56,617,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="498,183,619,209"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="693,31,803,57"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="697,81,799,108"/><area shape="rect" id="node9" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="286,259,394,285"/><area shape="rect" id="node10" href="../../da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="275,309,405,336"/><area shape="rect" id="node11" href="../../da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="273,107,407,133"/><area shape="rect" id="node12" href="../../da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="291,157,389,184"/><area shape="rect" id="node13" href="../../da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="301,208,379,235"/><area shape="rect" id="node14" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="285,56,395,83"/></map>
 </div>
 </p>
 
@@ -561,10 +601,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 37.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1}</div>
+<div class="line">    {30, 37.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:70</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:84</div></div>
 </div><!-- fragment -->
 <p>Rコース(難所入口～ゲームエリア入口) </p>
 
@@ -580,12 +619,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 64.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 250.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]}</div>
+<div class="line">    {30, 64.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 250.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（懸賞運び～ゴール） </p>
 
@@ -601,13 +639,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 22.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {30, 11.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {-30, 11.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {-30, 22.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">true</span>, NULL}</div>
+<div class="line">    {30, 22.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 11.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {-30, 11.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {-30, 22.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">true</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:70</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:84</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（懸賞運び） </p>
 
@@ -623,12 +661,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 246.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 64.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">true</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]}</div>
+<div class="line">    {30, 246.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span> },</div>
+<div class="line">    {30, 64.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">true</span> }</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（スタート～懸賞入口） </p>
 
@@ -644,14 +681,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 20.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {30, 15.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 3.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {-30, 39.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL}</div>
+<div class="line">    {30, 20.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 15.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 3.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {-30, 39.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:70</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:84</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（星取り） </p>
 
@@ -667,16 +703,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 16.4F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 21.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 6.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 46.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 12.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 10.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]}</div>
+<div class="line">    {30, 16.4F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 21.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 6.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 46.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 12.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 10.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（星取り入口～ET相撲） </p>
 
@@ -692,15 +727,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 26.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 24.9F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 17.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 67.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 127.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]}</div>
+<div class="line">    {30, 26.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 24.9F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 17.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 67.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 127.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（ET相撲後～懸賞運び入口） </p>
 
@@ -716,10 +750,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 134.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]}</div>
+<div class="line">    {30, 134.2F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（ET相撲）※この間にゲーム </p>
 
@@ -735,20 +768,30 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 127.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 63.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 25.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 54.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 32.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 26.7F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 24.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 118.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]}</div>
+<div class="line">    {30, 127.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 63.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 25.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 32.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 26.7F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 24.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 118.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Lコース（懸賞入口～星取り入口） </p>
+
+</div>
+</div>
+<a class="anchor" id="a1247d51cadf9b80b90378ce5badf3b07"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a>, <a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a>&gt; PID_MAP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -766,13 +809,18 @@ Here is the caller graph for this function:</div>
 <div class="line">    {0.775F, 0.0F, 0.375F},</div>
 <div class="line">    </div>
 <div class="line">    </div>
-<div class="line">    {0.775F, 0.90F, 0.375F},</div>
+<div class="line">    {0.775F, 0.2F, 0.375F},</div>
+<div class="line">    </div>
+<div class="line">    </div>
+<div class="line">    {0.775F, 0.0F, 0.375F},</div>
+<div class="line">    </div>
+<div class="line">    </div>
+<div class="line">    {0.775F, 0.2F, 0.375F},</div>
 <div class="line">    </div>
 <div class="line">    </div>
 <div class="line">    {0.775F, 0.65F, 0.375F}</div>
 <div class="line">}</div>
-</div><!-- fragment -->
-<p>PIDパラメータのリスト </p>
+</div><!-- fragment --><p>PIDパラメータのリスト この配列は、runPatternのTRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでと対応する </p>
 
 </div>
 </div>
@@ -786,13 +834,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 30.4F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 25.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 36.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
+<div class="line">    {30, 30.4F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 25.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 36.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Rコース(ゲームエリア出口～LAP) </p>
 
@@ -808,21 +855,20 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 81.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 103.9F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 47.7F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 48.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 131.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 3.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 47.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 4.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 190.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 32.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]},</div>
-<div class="line">    {30, 297.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
+<div class="line">    {30, 81.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 103.9F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 47.7F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 48.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 131.5F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 3.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 47.6F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 4.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 190.1F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 32.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 297.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Rコース(LAP～GOAL) </p>
 
@@ -838,12 +884,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 44.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[0]},</div>
-<div class="line">    {30, 24.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a>[1]}</div>
+<div class="line">    {30, 44.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 24.8F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:64</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:61</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a0ad0553d661d919fa603953d4385130c"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a0ad0553d661d919fa603953d4385130c">pidParameterList</a></div><div class="ttdeci">const PID_PARAMETER pidParameterList[]</div><div class="ttdoc">PIDパラメータのリスト </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:74</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>Rコース(スタート～難所入口) </p>
 
@@ -859,16 +904,37 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {10, 14.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {10, 14.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {10, 0.0F, 45, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {10, 19.76F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a>, <span class="keyword">false</span>, NULL},</div>
-<div class="line">    {-10, 0.0F, 45, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a>, <span class="keyword">true</span>, NULL}</div>
+<div class="line">    {60, 41.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 43.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {60, 40.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 195.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {60, 0.0F, 360, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a>, <span class="keyword">true</span>}</div>
 <div class="line">}</div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86">NOTRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースせずに、直進走行する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:70</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a></div><div class="ttdoc">その場回転 </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:67</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a6ab1f179bdb887d85e58a05a75e58c27">TRACE_CURVE</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:69</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044">PINWHEEL</a></div><div class="ttdoc">その場回転 </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:81</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a39989e414d9c271474de8e65fa003500">TRACE_STRAIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:60</div></div>
 </div><!-- fragment -->
 <p>検証用シナリオ </p>
+
+</div>
+</div>
+<a class="anchor" id="a1469ba88f01b9f998cd89b98e8b9c2cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> run_scenario_test_right[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {60, 41.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a1ad5d42ea2f0bb7936e6945f6a9da9d5">TRACE_STRAIGHT_RIGHT</a>, <span class="keyword">false</span>},</div>
+<div class="line">    {30, 43.0F, -1, <a class="code" href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383">TRACE_CURVE_RIGHT</a>, <span class="keyword">true</span>}</div>
+<div class="line">}</div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383">TRACE_CURVE_RIGHT</a></div><div class="ttdoc">ライントレースしつつ、カーブを走る（ラインの右側を走行） </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:75</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a37b4634eac030ffb8287731c88374ab2a1ad5d42ea2f0bb7936e6945f6a9da9d5"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a1ad5d42ea2f0bb7936e6945f6a9da9d5">TRACE_STRAIGHT_RIGHT</a></div><div class="ttdoc">ライントレースしつつ、直進する（ラインの右側を走行） </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:66</div></div>
+</div><!-- fragment -->
+<p>検証用シナリオ(右側走行) </p>
 
 </div>
 </div>
@@ -878,7 +944,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../da/d2f/_running_module_8cpp.html">RunningModule.cpp</a></li>
-    <li class="footer">Generated on Sun Jul 17 2016 12:01:15 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

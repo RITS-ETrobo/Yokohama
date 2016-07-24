@@ -1,4 +1,5 @@
 <map id="hrp2/sdk/workspace/hackEV/utilities.h" name="hrp2/sdk/workspace/hackEV/utilities.h">
-<area shape="rect" id="node3" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="289,96,365,123"/>
-<area shape="rect" id="node7" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="111,96,232,123"/>
+<area shape="rect" id="node3" href="$d8/db0/defines_8h.html" title="This file has the definitions related to EV3. " alt="" coords="45,96,124,123"/>
+<area shape="rect" id="node4" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="323,96,399,123"/>
+<area shape="rect" id="node9" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="150,96,271,123"/>
 </map>

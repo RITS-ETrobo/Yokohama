@@ -1,0 +1,8 @@
+<map id="viewColor" name="viewColor">
+<area shape="rect" id="node2" href="$d6/da1/_color_sensor_controller_8cpp.html#ac5cafeb51eca3bb0781073edd4f44c59" title="初期化処理 " alt="" coords="142,5,255,32"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="141,56,257,83"/>
+<area shape="rect" id="node6" href="$d6/da1/_color_sensor_controller_8cpp.html#ab3efbcb68e53e386bdae658487251f01" title="カラーセンサーで検知した色の名前を取得 " alt="" coords="141,107,256,133"/>
+<area shape="rect" id="node7" href="$d6/da1/_color_sensor_controller_8cpp.html#af39331de596d4cdcbfce2c71ae9eaba4" title="カラーセンサーRGB値を取得 " alt="" coords="136,157,261,184"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="309,31,419,57"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="313,81,415,108"/>
+</map>

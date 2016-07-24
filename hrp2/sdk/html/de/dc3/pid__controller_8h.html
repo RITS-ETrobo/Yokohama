@@ -124,7 +124,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d36/pid__controller_8h__dep__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8hdep" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8hdep" id="hrp2_2sdk_2workspace_2hack_e_v_2pid__controller_8hdep">
-<area shape="rect" id="node2" href="../../dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,97,152,138"/><area shape="rect" id="node3" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,97,353,138"/><area shape="rect" id="node4" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="379,97,568,138"/><area shape="rect" id="node5" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="592,97,791,138"/><area shape="rect" id="node6" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="816,97,1063,138"/></map>
+<area shape="rect" id="node2" href="../../dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,103,152,145"/><area shape="rect" id="node3" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,103,353,145"/><area shape="rect" id="node4" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="379,103,568,145"/><area shape="rect" id="node5" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="592,103,791,145"/><area shape="rect" id="node6" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="817,96,1031,152"/></map>
 </div>
 </div>
 <p><a href="../../de/dc3/pid__controller_8h_source.html">Go to the source code of this file.</a></p>
@@ -173,7 +173,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dc3/pid__controller_8h_a3cb8f8d1ee8f91ca87e443eaf86d9b98_cgraph.png" border="0" usemap="#de/dc3/pid__controller_8h_a3cb8f8d1ee8f91ca87e443eaf86d9b98_cgraph" alt=""/></div>
 <map name="de/dc3/pid__controller_8h_a3cb8f8d1ee8f91ca87e443eaf86d9b98_cgraph" id="de/dc3/pid__controller_8h_a3cb8f8d1ee8f91ca87e443eaf86d9b98_cgraph">
-<area shape="rect" id="node2" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="222,5,394,32"/></map>
+<area shape="rect" id="node2" href="../../de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="222,5,394,32"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="250,56,366,83"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="247,107,369,133"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="443,31,552,57"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="446,81,549,108"/></map>
 </div>
 </p>
 
@@ -215,14 +215,17 @@ PIDの各制御項(比例項、積分項、微分項)を求め、各制御項を
 <dl class="section user"><dt>Refer</dt><dd><ul>
 <li>参照する変数 white</li>
 <li>参照する変数 black</li>
-<li>参照する変数 lasterror</li>
+<li>参照する変数 lastValue</li>
 <li>参照する変数 integral</li>
 <li>参照する変数 midpoint</li>
 </ul>
 </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>操作量 </dd></dl>
+<p>一つ前の値を取得</p>
+<p>現在の値を格納するインデックスを決定</p>
 <p>カラーセンサーによって取得された値を基に、偏差を算出する</p>
-<p>偏差を積分した値を求める</p>
+<p>現在の値を格納</p>
+<p>これまでに保持している値の合計を求める</p>
 <p>P値を求める</p>
 <p>I値を求める</p>
 <p>D値を求める</p>
@@ -233,7 +236,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dc3/pid__controller_8h_adc50124153c91f022cf309508b0d4ea6_cgraph.png" border="0" usemap="#de/dc3/pid__controller_8h_adc50124153c91f022cf309508b0d4ea6_cgraph" alt=""/></div>
 <map name="de/dc3/pid__controller_8h_adc50124153c91f022cf309508b0d4ea6_cgraph" id="de/dc3/pid__controller_8h_adc50124153c91f022cf309508b0d4ea6_cgraph">
-<area shape="rect" id="node2" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="163,31,279,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="328,5,437,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="331,56,434,83"/></map>
+<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="163,5,285,32"/></map>
 </div>
 </p>
 
@@ -279,7 +282,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dc3/pid__controller_8h_a84af7dba8546a0008f65d8ee078249d1_cgraph.png" border="0" usemap="#de/dc3/pid__controller_8h_a84af7dba8546a0008f65d8ee078249d1_cgraph" alt=""/></div>
 <map name="de/dc3/pid__controller_8h_a84af7dba8546a0008f65d8ee078249d1_cgraph" id="de/dc3/pid__controller_8h_a84af7dba8546a0008f65d8ee078249d1_cgraph">
-<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="198,31,306,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="355,31,471,57"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="520,5,629,32"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="523,56,626,83"/></map>
+<area shape="rect" id="node2" href="../../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="198,5,306,32"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="355,5,477,32"/></map>
 </div>
 </p>
 
@@ -291,7 +294,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../de/dc3/pid__controller_8h.html">pid_controller.h</a></li>
-    <li class="footer">Generated on Sun Jul 17 2016 12:01:15 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

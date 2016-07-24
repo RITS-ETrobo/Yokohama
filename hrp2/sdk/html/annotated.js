@@ -8,6 +8,7 @@ var annotated =
     [ "LineTracer", "da/dbb/class_line_tracer.html", "da/dbb/class_line_tracer" ],
     [ "LineTracerWithStarter", "d1/d41/class_line_tracer_with_starter.html", "d1/d41/class_line_tracer_with_starter" ],
     [ "Logger", "d3/d42/class_logger.html", "d3/d42/class_logger" ],
+    [ "LOGGER_INFO", "d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html", "d4/ddc/struct_l_o_g_g_e_r___i_n_f_o" ],
     [ "PID_PARAMETER", "d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html", "d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r" ],
     [ "RandomWalker", "dd/d87/class_random_walker.html", "dd/d87/class_random_walker" ],
     [ "Scenario", "d3/d8b/class_scenario.html", "d3/d8b/class_scenario" ],

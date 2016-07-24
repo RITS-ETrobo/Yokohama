@@ -112,6 +112,7 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h.html','../../');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 <code>#include &quot;Clock.h&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Logger.h:</div>
@@ -125,13 +126,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/d22/_logger_8h__dep__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2_logger_8hdep" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2_logger_8hdep" id="hrp2_2sdk_2workspace_2hack_e_v_2_logger_8hdep">
-<area shape="rect" id="node2" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="478,97,625,138"/><area shape="rect" id="node3" href="../../dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,187,152,229"/><area shape="rect" id="node10" href="../../de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="650,97,797,138"/><area shape="rect" id="node4" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,187,353,229"/><area shape="rect" id="node5" href="../../db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="378,187,531,229"/><area shape="rect" id="node6" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="556,187,745,229"/><area shape="rect" id="node7" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="769,187,968,229"/><area shape="rect" id="node8" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/SonarSensorController.cpp" alt="" coords="993,187,1240,229"/><area shape="rect" id="node9" href="../../de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1265,187,1413,229"/></map>
+<area shape="rect" id="node2" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="618,97,765,138"/><area shape="rect" id="node3" href="../../dc/da6/hack_e_v_2app_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/app.cpp" alt="" coords="5,194,152,235"/><area shape="rect" id="node11" href="../../de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="790,97,937,138"/><area shape="rect" id="node4" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,194,353,235"/><area shape="rect" id="node5" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="379,194,568,235"/><area shape="rect" id="node6" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="592,194,791,235"/><area shape="rect" id="node7" href="../../d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="817,187,1025,243"/><area shape="rect" id="node8" href="../../db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1050,194,1256,235"/><area shape="rect" id="node9" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1281,187,1495,243"/><area shape="rect" id="node10" href="../../de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1520,194,1668,235"/></map>
 </div>
 </div>
 <p><a href="../../d6/dec/_logger_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html">LOGGER_INFO</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html">Logger</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for logging.  <a href="../../d3/d42/class_logger.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +147,7 @@ Classes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../d6/dec/_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Sun Jul 17 2016 12:01:15 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

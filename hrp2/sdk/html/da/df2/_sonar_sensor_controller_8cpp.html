@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>ev3RT Workspace: hrp2/sdk/workspace/hackEV/SonarSensorController.cpp File Reference</title>
+<title>ev3RT Workspace: hrp2/sdk/workspace/hackEV/sensors/SonarSensorController.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -102,8 +102,7 @@ $(document).ready(function(){initNavTree('da/df2/_sonar_sensor_controller_8cpp.h
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">SonarSensorController.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -111,14 +110,14 @@ $(document).ready(function(){initNavTree('da/df2/_sonar_sensor_controller_8cpp.h
 <div class="textblock"><code>#include &quot;ev3api.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/df0/utilities_8h_source.html">utilities.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/dc3/pid__controller_8h_source.html">pid_controller.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../dc/db6/hack_e_v_2app_8h_source.html">app.h</a>&quot;</code><br/>
+<code>#include &quot;app.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/db5/_sonar_sensor_controller_8h_source.html">SonarSensorController.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SonarSensorController.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/d47/_sonar_sensor_controller_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2_sonar_sensor_controller_8cpp" alt=""/></div>
-<map name="hrp2_2sdk_2workspace_2hack_e_v_2_sonar_sensor_controller_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2_sonar_sensor_controller_8cpp">
-<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="271,96,349,123"/><area shape="rect" id="node10" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="502,171,620,197"/><area shape="rect" id="node11" href="../../dc/db6/hack_e_v_2app_8h.html" title="app.h" alt="" coords="628,96,685,123"/><area shape="rect" id="node12" href="../../de/db5/_sonar_sensor_controller_8h.html" title="This file has SonarSensorController. " alt="" coords="375,96,553,123"/><area shape="rect" id="node5" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="95,171,171,197"/><area shape="rect" id="node9" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="254,171,375,197"/></map>
+<div class="center"><img src="../../d3/d47/_sonar_sensor_controller_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2sensors_2_sonar_sensor_controller_8cpp" alt=""/></div>
+<map name="hrp2_2sdk_2workspace_2hack_e_v_2sensors_2_sonar_sensor_controller_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2sensors_2_sonar_sensor_controller_8cpp">
+<area shape="rect" id="node3" href="../../de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="358,109,436,136"/><area shape="rect" id="node12" href="../../de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="694,184,812,211"/><area shape="rect" id="node14" href="../../de/db5/_sonar_sensor_controller_8h.html" title="This file has SonarSensorController. " alt="" coords="461,109,640,136"/><area shape="rect" id="node5" href="../../d8/db0/defines_8h.html" title="This file has the definitions related to EV3. " alt="" coords="533,184,612,211"/><area shape="rect" id="node6" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="177,184,253,211"/><area shape="rect" id="node11" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="337,184,457,211"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -137,12 +136,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a5bdfa45dc696390cc933ecb726d52a83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df2/_sonar_sensor_controller_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83">control_sonarsensor</a> ()</td></tr>
 <tr class="memdesc:a5bdfa45dc696390cc933ecb726d52a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">超音波センサの制御  <a href="#a5bdfa45dc696390cc933ecb726d52a83">More...</a><br/></td></tr>
 <tr class="separator:a5bdfa45dc696390cc933ecb726d52a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga06249a54e2114ea741bbefed667eacb2"><td class="memItemLeft" align="right" valign="top">const sensor_port_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d58/group___xE8_xB6_x85_xE9_x9F_xB3_xE6_xB3_xA2_xE3_x82_xBB_xE3_x83_xB3_xE3_x82_xB5_xE3_x81_xAE_xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88.html#ga06249a54e2114ea741bbefed667eacb2">sonar_sensor</a> = EV3_PORT_3</td></tr>
-<tr class="memdesc:ga06249a54e2114ea741bbefed667eacb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sonar sensor : Port 3.  <a href="../../d2/d58/group___xE8_xB6_x85_xE9_x9F_xB3_xE6_xB3_xA2_xE3_x82_xBB_xE3_x83_xB3_xE3_x82_xB5_xE3_x81_xAE_xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88.html#ga06249a54e2114ea741bbefed667eacb2">More...</a><br/></td></tr>
-<tr class="separator:ga06249a54e2114ea741bbefed667eacb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a5bdfa45dc696390cc933ecb726d52a83"></a>
@@ -194,6 +187,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>超音波センサの初期化処理 </p>
+<p>ターゲット依存の定義</p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 
 <p><div class="dynheader">
@@ -313,8 +307,8 @@ Here is the caller graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../da/df2/_sonar_sensor_controller_8cpp.html">SonarSensorController.cpp</a></li>
-    <li class="footer">Generated on Sun Jul 17 2016 12:01:15 for ev3RT Workspace by
+    <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../dir_d11f1d065a93b4f229e87718d830fe83.html">sensors</a></li><li class="navelem"><a class="el" href="../../da/df2/_sonar_sensor_controller_8cpp.html">SonarSensorController.cpp</a></li>
+    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

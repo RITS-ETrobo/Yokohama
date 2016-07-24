@@ -5,7 +5,6 @@ var searchData=
   ['check_5fnxt_5fbuttons',['check_NXT_buttons',['../da/d98/main__task_8h.html#aba3a6efabb922210a6c2e40b3bb280a0',1,'check_NXT_buttons(intptr_t exinf):&#160;main_task.h'],['../df/d17/old_2main__task_8h.html#aba3a6efabb922210a6c2e40b3bb280a0',1,'check_NXT_buttons(intptr_t exinf):&#160;main_task.h']]],
   ['circleout',['CircleOut',['../d6/d4c/hwbrickbench_2app_8c.html#a45efe3ecb30d858423d2d5ad5fadb638',1,'app.c']]],
   ['clearlcd',['clearLCD',['../df/d88/_l_c_d_controller_8cpp.html#aa3449ab345699ba9b8b9274723d11a31',1,'clearLCD():&#160;LCDController.cpp'],['../d5/d3c/_l_c_d_controller_8h.html#aa3449ab345699ba9b8b9274723d11a31',1,'clearLCD():&#160;LCDController.cpp']]],
-  ['closelog',['closeLog',['../d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15',1,'Logger']]],
   ['compare_5fint',['compare_int',['../d6/d4c/hwbrickbench_2app_8c.html#a40e79033092c4d9ed023639ac4e856f6',1,'app.c']]],
   ['configure_5fmotors',['configure_motors',['../de/da5/utilities_8cpp.html#ab06cba26c220e9f1cb65ead703acf341',1,'configure_motors():&#160;utilities.cpp'],['../de/df0/utilities_8h.html#ab06cba26c220e9f1cb65ead703acf341',1,'configure_motors():&#160;utilities.cpp']]],
   ['configure_5fsensors',['configure_sensors',['../de/da5/utilities_8cpp.html#afed76cc72a0fba47a1627936acd10c2d',1,'configure_sensors():&#160;utilities.cpp'],['../de/df0/utilities_8h.html#afed76cc72a0fba47a1627936acd10c2d',1,'configure_sensors():&#160;utilities.cpp']]],

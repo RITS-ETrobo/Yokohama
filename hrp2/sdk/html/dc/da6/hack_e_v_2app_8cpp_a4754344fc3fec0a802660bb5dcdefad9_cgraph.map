@@ -1,7 +1,11 @@
 <map id="main_task" name="main_task">
 <area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#a2ec87919bf3de2d33ed3c5a711aec8da" title="フォントサイズを設定する " alt="" coords="173,5,270,32"/>
-<area shape="rect" id="node3" href="$d3/d42/class_logger.html#a1287de14553cab2d7fddb74a015cef63" title="初期化する " alt="" coords="159,56,284,83"/>
-<area shape="rect" id="node4" href="$de/da5/utilities_8cpp.html#ab06cba26c220e9f1cb65ead703acf341" title="モーターの設定を行う " alt="" coords="154,107,289,133"/>
-<area shape="rect" id="node5" href="$de/da5/utilities_8cpp.html#afed76cc72a0fba47a1627936acd10c2d" title="センサーの設定を行う " alt="" coords="152,157,291,184"/>
-<area shape="rect" id="node6" href="$da/df2/_sonar_sensor_controller_8cpp.html#a4b5fb0472c92ecac43dc5daebfeeef01" title="超音波センサの初期化処理 " alt="" coords="142,208,301,235"/>
+<area shape="rect" id="node3" href="$d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53" title="初期化する " alt="" coords="159,56,284,83"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="163,107,279,133"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de" title="ログを追加する " alt="" coords="161,157,282,184"/>
+<area shape="rect" id="node8" href="$de/da5/utilities_8cpp.html#ab06cba26c220e9f1cb65ead703acf341" title="モーターの設定を行う " alt="" coords="154,208,289,235"/>
+<area shape="rect" id="node9" href="$de/da5/utilities_8cpp.html#afed76cc72a0fba47a1627936acd10c2d" title="センサーの設定を行う " alt="" coords="152,259,291,285"/>
+<area shape="rect" id="node10" href="$da/df2/_sonar_sensor_controller_8cpp.html#a4b5fb0472c92ecac43dc5daebfeeef01" title="超音波センサの初期化処理 " alt="" coords="142,309,301,336"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="349,81,459,108"/>
+<area shape="rect" id="node6" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="353,132,455,159"/>
 </map>
