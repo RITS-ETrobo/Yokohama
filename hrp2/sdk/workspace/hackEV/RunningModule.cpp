@@ -81,9 +81,14 @@ enum runPattern {
     PINWHEEL, 
 
     //! ライントレースせずに、直進走行する
-    NOTRACE_STRAIGHT
+    NOTRACE_STRAIGHT,
+    
+    //! トレースするラインを変更する（ライン右側へ変更）
+    SWITCH_SIDE_RIGHT,
+    
+    //! トレースするライン縁を変更する（ライン左側へ変更）
+    SWITCH_SIDE_LEFT
 };
-
 
 /**
  * PIDパラメータのリスト
@@ -120,6 +125,17 @@ void initialize_run() {
     }
 }
 
+/**
+ * @enum LineSide
+ * ライントレースする縁
+ */
+enum LineSide {
+    //! ライン右側
+    RIGHT,
+    
+    //! ライン左側
+    LEFT
+};
 
 /**
  * @enum scenario_running
@@ -140,6 +156,7 @@ typedef struct {
 
     //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
+
     
 } scenario_running;
 
@@ -248,6 +265,11 @@ const scenario_running run_scenario_test[] = {
     {60, 0.0F, 360, PINWHEEL, true}
 };
 
+//! 検証用シナリオ（ラインの縁の変更）
+const scenario_running run_scenario_test_switch[] = {
+    {20, 30.0F, -1, SWITCH_SIDE_LEFT, true},  
+};
+
 //! 検証用シナリオ(右側走行)
 const scenario_running run_scenario_test_right[] = {
     {60, 41.0F, -1, TRACE_STRAIGHT_RIGHT, false},
@@ -309,6 +331,112 @@ void stop_run()
 }
 
 /**
+ * @brief   その場回転
+ * 
+ * @return  なし
+ */
+void pinWheel(int power){
+        ev3_motor_set_power(left_motor, (-power));
+        ev3_motor_set_power(right_motor, power);
+}
+
+/**
+ * @brief   モーターの回転角、距離、方向を0に戻す
+ *
+ * @return  なし
+*/
+void initialize_motor_dis_dir(){
+    //! モーターの角位置、向きの累積をリセット
+    ev3_motor_reset_counts(left_motor);
+    ev3_motor_reset_counts(right_motor);
+    lastRightDistance = 0.0F;
+    lastLeftDistance = 0.0F;
+    directionSum = 0.0F;
+}
+
+/**
+ * @brief   ラインの縁の変更処理
+ * 
+ * @enum LineSide targetSide 移動させたい縁
+ * @return  なし
+ */
+void change_LineSide(enum LineSide targetSide)
+{   
+    //! 最初に回転するタイヤ
+    motor_port_t firstMoveWheel;
+    
+    //! 次に回転するタイヤ
+    motor_port_t secondMoveWheel;
+    
+    switch (targetSide) {
+	    case LEFT:
+            //! 移動したい縁が左のときは最初に右タイヤ、次に左タイヤを旋回させて切り替え
+            firstMoveWheel = right_motor;
+            secondMoveWheel = left_motor;
+            break;
+	    case RIGHT:
+            //! 移動したい縁が右のときは最初に左タイヤ、次に右タイヤを旋回させて切り替え
+            firstMoveWheel = left_motor;
+            secondMoveWheel = right_motor;
+            break;
+        default:
+            break;
+        }
+    
+    //! ラインの黒線の上にいるフラグ（黒線をまたいで移動するため）
+    bool onBlack = false;
+    int power = 20;
+    
+    //! 片方だけのタイヤを反対側まで旋回
+    ev3_motor_set_power(firstMoveWheel, power);
+    float firstDirection = 0.0F;
+    for(;;){
+        //! 現在の左と右のモーターの走行距離を取得
+        float leftDistance = distance_running(left_motor);
+        float rightDistance = distance_running(right_motor);
+        
+        //! 動いた角度を記録
+        firstDirection += getDirectionDelta(rightDistance, leftDistance); 
+ 
+        int colorValue = ev3_color_sensor_get_reflect(color_sensor);       
+        if(colorValue < (black + 5) && colorValue > (black - 5)){
+            onBlack = true;
+        }
+        
+        if(colorValue < (white + 5) && colorValue > (white - 5) && onBlack){
+            ev3_motor_stop(firstMoveWheel,true);
+            writeFloatLCD((float)colorValue);
+            break;
+        }
+    }
+    
+    //! 回転角、距離、角度を初期化
+    initialize_motor_dis_dir();
+    
+    //! 目的の縁まで回転させたらその場回転で向きを戻す
+    //ev3_motor_set_power(firstMoveWheel, (power/2));
+    ev3_motor_set_power(secondMoveWheel, power);
+    float secondDirection=0.0F;
+    for(;;){
+        //! 現在の左と右のモーターの走行距離を取得
+        float leftDistance = distance_running(left_motor);
+        float rightDistance = distance_running(right_motor);
+        
+        //! 瞬間の向きを取得、累積して走行体の向きを計測
+        secondDirection += getDirectionDelta(rightDistance, leftDistance); 
+        
+        //! 走行体が最初に動いた角度分戻ったらストップ
+        if(abs(secondDirection) >= abs(firstDirection)){
+            //writeFloatLCD((float)colorValue);
+            stop_run();
+            break;
+        }
+    } 
+}
+
+
+
+/**
  * @brief   シナリオに従って走る
  *
  * @param   [in] scenario 走行パラメータ
@@ -316,12 +444,8 @@ void stop_run()
 */
 void run(scenario_running scenario)
 {
-    //! モーターの角位置、向きの累積をリセット
-    ev3_motor_reset_counts(left_motor);
-    ev3_motor_reset_counts(right_motor);
-    lastRightDistance = 0.0F;
-    lastLeftDistance = 0.0F;
-    directionSum = 0.0F;
+    //! 回転角、距離、角度を初期化
+    initialize_motor_dis_dir();
     
     //! ストップ監視しつつ、走行
     for (;;) {
@@ -329,14 +453,25 @@ void run(scenario_running scenario)
         switch (scenario.pattern) {
 	    case PINWHEEL:
             //! その場回転
-            ev3_motor_set_power(left_motor, (-scenario.power));
-            ev3_motor_set_power(right_motor, scenario.power);
+            pinWheel(scenario.power);
             break;
 
         case NOTRACE_STRAIGHT:
             //! ライントレースせずに、直進走行する
             ev3_motor_set_power(left_motor, scenario.power);
             ev3_motor_set_power(right_motor, scenario.power);
+            break;
+            
+        case SWITCH_SIDE_RIGHT:
+            //! ライントレースする縁を右側へ変更
+            change_LineSide(RIGHT);
+            return;
+            break;
+        
+        case SWITCH_SIDE_LEFT:
+            //! ライントレースする縁を左側へ変更
+            change_LineSide(LEFT);
+            return;
             break;
             
         case TRACE_STRAIGHT_RIGHT:
@@ -445,9 +580,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test_right) / sizeof(run_scenario_test_right[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_switch) / sizeof(run_scenario_test_switch[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test_right[index]);
+        run(run_scenario_test_switch[index]);
     }
 }

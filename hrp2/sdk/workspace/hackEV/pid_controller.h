@@ -12,6 +12,15 @@ extern "C" {
 //! ターゲット依存の定義
 #include "target_test.h"
 
+//! 白の光量値
+extern int white;
+
+//! 黒の光量値
+extern int black;
+
+//! 白と黒の光量値の平均値
+extern float midpoint;
+
 typedef struct{
     float kP;
     float kI;
