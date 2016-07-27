@@ -33,10 +33,10 @@ const unsigned char RETRY_CREATE_INSTANCE = 3;
  * @return  なし
 */
 void stop_emergency(){
-    ev3_motor_stop(left_motor,true);
-    ev3_motor_stop(right_motor,true);
+    ev3_motor_stop(EV3_MOTOR_LEFT,true);
+    ev3_motor_stop(EV3_MOTOR_RIGHT,true);
     setEnabledSonarSensor(false);
-    ev3_motor_stop(arm_motor,true);
+    ev3_motor_stop(EV3_MOTOR_ARM,true);
     //! モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する
 }
 

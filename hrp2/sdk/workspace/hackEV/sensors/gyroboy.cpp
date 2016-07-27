@@ -70,7 +70,7 @@ static float motor_pos, motor_speed = 0;
 static ER calibrate_gyro_sensor() {
     int gMn = 1000, gMx = -100, gSum = 0;
     for (int i = 0; i < 200; ++i) {
-        int gyro = ev3_gyro_sensor_get_rate(gyro_sensor);
+        int gyro = ev3_gyro_sensor_get_rate(EV3_SENSOR_GYRO);
         gSum += gyro;
         if (gyro > gMx) {
             gMx = gyro;
@@ -130,7 +130,7 @@ static void update_interval_time() {
  * @return  なし
 */
 static void update_gyro_data() {
-    int gyro = ev3_gyro_sensor_get_rate(gyro_sensor);
+    int gyro = ev3_gyro_sensor_get_rate(EV3_SENSOR_GYRO);
     gyro_offset = EMAOFFSET * gyro + (1 - EMAOFFSET) * gyro_offset;
     gyro_speed = gyro - gyro_offset;
     gyro_angle += gyro_speed * interval_time;
@@ -157,8 +157,8 @@ static void update_motor_data() {
         motor_cnt_deltas[0] = motor_cnt_deltas[1] = motor_cnt_deltas[2] = motor_cnt_deltas[3] = 0;
     }
 
-    int32_t left_cnt = ev3_motor_get_counts(left_motor);
-    int32_t right_cnt = ev3_motor_get_counts(right_motor);
+    int32_t left_cnt = ev3_motor_get_counts(EV3_MOTOR_LEFT);
+    int32_t right_cnt = ev3_motor_get_counts(EV3_MOTOR_RIGHT);
     int32_t motor_cnt_sum = left_cnt + right_cnt;
     motor_diff = right_cnt - left_cnt; // TODO: with diff
     int32_t motor_cnt_delta = motor_cnt_sum - prev_motor_cnt_sum;
@@ -245,8 +245,8 @@ static bool_t keep_balance() {
         right_power = -100;
     }
 
-    ev3_motor_set_power(left_motor, (int)left_power);
-    ev3_motor_set_power(right_motor, (int)right_power);
+    ev3_motor_set_power(EV3_MOTOR_LEFT, (int)left_power);
+    ev3_motor_set_power(EV3_MOTOR_RIGHT, (int)right_power);
 
     return true;
 }
@@ -259,10 +259,10 @@ void balance_task(intptr_t unused) {
      */
     loop_count = 0;
     motor_control_drive = 0;
-    ev3_motor_reset_counts(left_motor);
-    ev3_motor_reset_counts(right_motor);
+    ev3_motor_reset_counts(EV3_MOTOR_LEFT);
+    ev3_motor_reset_counts(EV3_MOTOR_RIGHT);
     //TODO: reset the gyro sensor
-    ev3_gyro_sensor_reset(gyro_sensor);
+    ev3_gyro_sensor_reset(EV3_SENSOR_GYRO);
 
     /**
      * Calibrate the gyro sensor and set the led to green if succeeded.
@@ -298,8 +298,8 @@ void balance_task(intptr_t unused) {
 
         // Keep balance
         if(!keep_balance()) {
-            ev3_motor_stop(left_motor, false);
-            ev3_motor_stop(right_motor, false);
+            ev3_motor_stop(EV3_MOTOR_LEFT, false);
+            ev3_motor_stop(EV3_MOTOR_RIGHT, false);
             ev3_led_set_color(LED_RED); // TODO: knock out
             syslog(LOG_NOTICE, "Knock out!");
             return;
@@ -392,11 +392,11 @@ void initialize_gyroboy(intptr_t unused) {
     ev3_font_get_size(font, &fontw, &fonth);
     char lcdstr[100];
     ev3_lcd_draw_string("App: Gyroboy", 0, 0);
-    sprintf(lcdstr, "Port%c:Gyro sensor", '1' + gyro_sensor);
+    sprintf(lcdstr, "Port%c:Gyro sensor", '1' + EV3_SENSOR_GYRO);
     ev3_lcd_draw_string(lcdstr, 0, fonth);
-    sprintf(lcdstr, "Port%c:Left motor", 'A' + left_motor);
+    sprintf(lcdstr, "Port%c:Left motor", 'A' + EV3_MOTOR_LEFT);
     ev3_lcd_draw_string(lcdstr, 0, fonth * 2);
-    sprintf(lcdstr, "Port%c:Right motor", 'A' + right_motor);
+    sprintf(lcdstr, "Port%c:Right motor", 'A' + EV3_MOTOR_RIGHT);
     ev3_lcd_draw_string(lcdstr, 0, fonth * 3);
 
     // Start task for self-balancing

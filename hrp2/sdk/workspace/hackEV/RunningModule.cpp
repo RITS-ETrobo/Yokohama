@@ -266,7 +266,7 @@ const scenario_running run_scenario_test_right[] = {
 */
 float distance_running(motor_port_t port)
 {
-    float distance = Pi * DiameterWheel * ev3_motor_get_counts(port) / 360;
+    float distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(port) / 360;
     return distance;
 }
 
@@ -285,7 +285,7 @@ float getDirectionDelta(float rightDistance, float leftDistance)
     lastLeftDistance = leftDistance;
     
     //! 走行体の向き[度]
-    float direction = ((rightDistanceDelta - leftDistanceDelta) / TREAD) * 180 / Pi;
+    float direction = ((rightDistanceDelta - leftDistanceDelta) / EV3_TREAD) * 180 / Pi;
     return direction;
 }
 

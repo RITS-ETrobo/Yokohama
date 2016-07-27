@@ -11,23 +11,23 @@
 //! \addtogroup ポートの設定
 //@{
 //! Touch sensor
-extern const sensor_port_t touch_sensor;
+extern const sensor_port_t EV3_SENSOR_TOUCH;
 
 //! Color sensor
-extern const sensor_port_t color_sensor;
+extern const sensor_port_t EV3_SENSOR_COLOR;
 
 //! Gyro sensor
-extern const sensor_port_t gyro_sensor;
+extern const sensor_port_t EV3_SENSOR_GYRO;
 
 //! Sonar sensor
-extern const sensor_port_t sonar_sensor;
+extern const sensor_port_t EV3_SENSOR_SONAR;
 
 //! Left motor
-extern const motor_port_t left_motor;
+extern const motor_port_t EV3_MOTOR_LEFT;
 
 //! Right motor
-extern const motor_port_t right_motor;
+extern const motor_port_t EV3_MOTOR_RIGHT;
 
 //! Arm motor
-extern const motor_port_t arm_motor;
+extern const motor_port_t EV3_MOTOR_ARM;
 //@}

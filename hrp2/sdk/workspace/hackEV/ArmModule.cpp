@@ -32,7 +32,7 @@ void initialize_arm()
     sumArmMotorRotate = 0.0F;
 
     //! アームモーターの回転角をリセット
-    ev3_motor_reset_counts(arm_motor);
+    ev3_motor_reset_counts(EV3_MOTOR_ARM);
 }
 
 /**
@@ -44,7 +44,7 @@ ER stop_arm()
 {
     ev3_speaker_stop();
     ev3_speaker_play_tone(NOTE_A4, 100);
-    return ev3_motor_stop(arm_motor,true);
+    return ev3_motor_stop(EV3_MOTOR_ARM,true);
 }
 
 /**
@@ -59,12 +59,12 @@ ER stop_arm()
 */
 ER move_arm(int degrees, uint32_t speed_abs, bool_t blocking)
 {
-    int armDegrees = ev3_motor_get_counts(arm_motor);
+    int armDegrees = ev3_motor_get_counts(EV3_MOTOR_ARM);
     ev3_speaker_play_tone(NOTE_A4, 100);
     
-    ER result = ev3_motor_rotate(arm_motor, (degrees - armDegrees), speed_abs, blocking);
+    ER result = ev3_motor_rotate(EV3_MOTOR_ARM, (degrees - armDegrees), speed_abs, blocking);
     if (result == E_OK) {
-        writeFloatLCD(ev3_motor_get_counts(arm_motor));
+        writeFloatLCD(ev3_motor_get_counts(EV3_MOTOR_ARM));
         ev3_speaker_play_tone(NOTE_A4, 100);
     }
 

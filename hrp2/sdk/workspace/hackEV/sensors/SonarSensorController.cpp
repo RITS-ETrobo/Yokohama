@@ -23,7 +23,7 @@ void setEnabledSonarSensor(bool _enabledSonarSensor){
  * @return  なし
 */
 void initialize_sonarsensor() {
-    ev3_sensor_config(sonar_sensor, ULTRASONIC_SENSOR);
+    ev3_sensor_config(EV3_SENSOR_SONAR, ULTRASONIC_SENSOR);
 }
 
 /**
@@ -48,8 +48,8 @@ void sensing_sonar(ledcolor_t color, TMO duration)
 */
 void sensing_sonar(){
     //! タッチセンサーを押すと超音波で距離を測定
-    if(ev3_touch_sensor_is_pressed(touch_sensor)){  
-        int16_t distance= ev3_ultrasonic_sensor_get_distance(sonar_sensor);
+    if(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)){  
+        int16_t distance= ev3_ultrasonic_sensor_get_distance(EV3_SENSOR_SONAR);
         
         //! 距離[cm]*10を点滅間隔とする（最大3秒)
         TMO duration = 10 * distance;
