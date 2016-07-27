@@ -8,19 +8,25 @@
 #include <string.h>
 #include <vector>
 
+#include "logSettings.h"
 #include "Clock.h"
 
 using namespace std;
 using namespace ev3api;
 
-static const uint8_t OUTPUT_TYPE_NONE = 0;
-static const uint8_t OUTPUT_TYPE_FILE = (1 << 0);
-static const uint8_t OUTPUT_TYPE_LCD = (1 << 1);
-
+/*! @struct USER_LOG
+    @brief  ログに出力する情報
+*/
 typedef struct {
-    uint32_t    duration;
+    //! ログ情報の種別
+	uint_t	    logtype;
+
+    //! ログ時刻
+	SYSTIM	    logtim;
+
+    //! ログに出力する文字列
     char    log[32];
-} LOGGER_INFO;
+} USER_LOG;
 
 //! Class for logging
 class Logger
@@ -28,7 +34,7 @@ class Logger
 public:
     explicit Logger();
     void initialize();
-    void addLog(const char* message);
+    void addLog(uint_t logtype, const char* message);
     void outputLog();
 
 private:
@@ -43,5 +49,5 @@ private:
     Clock*  clock;
 
     //! 蓄積するログ情報
-    vector<LOGGER_INFO> loggerInfo;
+    vector<USER_LOG> loggerInfo;
 };

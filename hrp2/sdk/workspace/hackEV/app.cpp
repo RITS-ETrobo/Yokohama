@@ -141,7 +141,7 @@ void main_task(intptr_t unused) {
 
     writeStringLCD("Start Initializing");
     if (logger) {
-        logger->addLog("Start Initializing");
+        logger->addLog(LOG_NOTICE, "Start Initializing");
     }
 
     //! Configure motors
@@ -166,7 +166,7 @@ void main_task(intptr_t unused) {
 
     writeStringLCD("End Initializing");
     if (logger) {
-        logger->addLog("End Initializing");
+        logger->addLog(LOG_NOTICE, "End Initializing");
     }
 
     char message[16];
@@ -175,7 +175,7 @@ void main_task(intptr_t unused) {
 
     writeStringLCD(message);
     if (logger) {
-        logger->addLog(message);
+        logger->addLog(LOG_NOTICE, message);
     }
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト

@@ -1,8 +1,7 @@
 /**
  * @file    Logger.cpp
  * @brief   This file has Logger class.
- *          
- */
+  */
 #include "Logger.h"
 
 /**
@@ -30,17 +29,17 @@ void Logger::initialize()
 
 /**
  * @brief   ログを追加する
- * @param   message 追加するログ
- * @param   displayLCD  trueの場合、すぐにLCDにメッセージを出力する
- * @return  true    ログ追加成功
- * @return  false   ログ追加失敗
+ * @param   logType ログの種類
+ * @param   message 出力するログ
+ * @return  なし
 */
-void Logger::addLog(const char* message)
+void Logger::addLog(uint_t logtype, const char* message)
 {
-    LOGGER_INFO info;
-    info.duration = 0;
+    USER_LOG    info;
+    info.logtype = logtype;
+    info.logtim = 0;
     if (clock) {
-        info.duration = clock->now();
+        info.logtim = clock->now();
     }
 
     strcpy(info.log, message);
@@ -58,9 +57,9 @@ void Logger::outputLog()
         return;
     }
 
-    for (vector<LOGGER_INFO>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
+    for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
         char    logLine[64];
-        sprintf(logLine, "%d, %s\r\n", it->duration, it->log);
+        sprintf(logLine, "%d, %d, %s\r\n", it->logType, it->logtim, it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
