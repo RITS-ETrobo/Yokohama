@@ -19,10 +19,10 @@ using namespace ev3api;
 */
 typedef struct {
     //! ログ情報の種別
-	uint_t	    logtype;
+    uint_t      logType;
 
     //! ログ時刻
-	SYSTIM	    logtim;
+    SYSTIM      logTime;
 
     //! ログに出力する文字列
     char    log[32];
@@ -34,11 +34,10 @@ class Logger
 public:
     explicit Logger();
     void initialize();
-    void addLog(uint_t logtype, const char* message);
+    void addLog(uint_t logType, const char* message);
     void outputLog();
 
 private:
-
     //! ログファイルを収めるディレクトリ
     const char*  LOGDIRECTORY_PATH = "/ev3rt/logs";
 

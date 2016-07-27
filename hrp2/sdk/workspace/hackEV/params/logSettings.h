@@ -4,6 +4,8 @@
  */
 #pragma once
 
+#include "t_stddef.h"
+
 //! \addtogroup ログ出力の設定
 //@{
 //! ログを出力しない

@@ -33,13 +33,13 @@ void Logger::initialize()
  * @param   message 出力するログ
  * @return  なし
 */
-void Logger::addLog(uint_t logtype, const char* message)
+void Logger::addLog(uint_t logType, const char* message)
 {
     USER_LOG    info;
-    info.logtype = logtype;
-    info.logtim = 0;
+    info.logType = logType;
+    info.logTime = 0;
     if (clock) {
-        info.logtim = clock->now();
+        info.logTime = clock->now();
     }
 
     strcpy(info.log, message);
@@ -59,7 +59,7 @@ void Logger::outputLog()
 
     for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
         char    logLine[64];
-        sprintf(logLine, "%d, %d, %s\r\n", it->logType, it->logtim, it->log);
+        sprintf(logLine, "%d, %d, %s\r\n", it->logType, it->logTime, it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
