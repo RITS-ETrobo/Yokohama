@@ -1,6 +1,6 @@
 /**
  * @file    defines.h
- * @brief   This file has the definitions related to EV3.
+ * @brief   This file has the settings for each port related to EV3.
  */
 #pragma once
 

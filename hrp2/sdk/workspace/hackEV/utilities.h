@@ -8,7 +8,7 @@
 //! ターゲット依存の定義
 #include "target_test.h"
 
-#include "defines.h"
+#include "portSettings.h"
 #include "Logger.h"
 #include "LCDController.h"
 
