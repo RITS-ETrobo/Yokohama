@@ -126,18 +126,6 @@ void initialize_run() {
 }
 
 /**
- * @enum LineSide
- * ライントレースする縁
- */
-enum LineSide {
-    //! ライン右側
-    RIGHT,
-    
-    //! ライン左側
-    LEFT
-};
-
-/**
  * @enum scenario_running
  * 走行シナリオ
  */
@@ -156,8 +144,6 @@ typedef struct {
 
     //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
-
-    
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
@@ -267,7 +253,9 @@ const scenario_running run_scenario_test[] = {
 
 //! 検証用シナリオ（ラインの縁の変更）
 const scenario_running run_scenario_test_switch[] = {
-    {20, 30.0F, -1, SWITCH_SIDE_LEFT, true},  
+    {20, 10.0F, -1, TRACE_STRAIGHT_RIGHT, false},
+    {20, 0.0F, -1, SWITCH_SIDE_LEFT, false},
+    {20, 15.0F, -1, TRACE_STRAIGHT, true}
 };
 
 //! 検証用シナリオ(右側走行)
@@ -336,8 +324,8 @@ void stop_run()
  * @return  なし
  */
 void pinWheel(int power){
-        ev3_motor_set_power(left_motor, (-power));
-        ev3_motor_set_power(right_motor, power);
+    ev3_motor_set_power(left_motor, (-power));
+    ev3_motor_set_power(right_motor, power);
 }
 
 /**
@@ -345,7 +333,7 @@ void pinWheel(int power){
  *
  * @return  なし
 */
-void initialize_motor_dis_dir(){
+void initialize_wheel(){
     //! モーターの角位置、向きの累積をリセット
     ev3_motor_reset_counts(left_motor);
     ev3_motor_reset_counts(right_motor);
@@ -360,50 +348,47 @@ void initialize_motor_dis_dir(){
  * @enum LineSide targetSide 移動させたい縁
  * @return  なし
  */
-void change_LineSide(enum LineSide targetSide)
+void change_LineSide(scenario_running scenario)
 {   
     //! 最初に回転するタイヤ
     motor_port_t firstMoveWheel;
-    
+
     //! 次に回転するタイヤ
     motor_port_t secondMoveWheel;
     
-    switch (targetSide) {
-	    case LEFT:
+    switch (scenario.pattern) {
+        case SWITCH_SIDE_LEFT:
             //! 移動したい縁が左のときは最初に右タイヤ、次に左タイヤを旋回させて切り替え
             firstMoveWheel = right_motor;
             secondMoveWheel = left_motor;
             break;
-	    case RIGHT:
+            
+        case SWITCH_SIDE_RIGHT:
             //! 移動したい縁が右のときは最初に左タイヤ、次に右タイヤを旋回させて切り替え
             firstMoveWheel = left_motor;
             secondMoveWheel = right_motor;
             break;
+            
         default:
             break;
-        }
+    }
     
     //! ラインの黒線の上にいるフラグ（黒線をまたいで移動するため）
     bool onBlack = false;
-    int power = 20;
     
     //! 片方だけのタイヤを反対側まで旋回
-    ev3_motor_set_power(firstMoveWheel, power);
+    ev3_motor_set_power(firstMoveWheel, scenario.power);
     float firstDirection = 0.0F;
     for(;;){
-        //! 現在の左と右のモーターの走行距離を取得
-        float leftDistance = distance_running(left_motor);
-        float rightDistance = distance_running(right_motor);
-        
         //! 動いた角度を記録
-        firstDirection += getDirectionDelta(rightDistance, leftDistance); 
+        firstDirection += getDirectionDelta(distance_running(left_motor), distance_running(right_motor)); 
  
         int colorValue = ev3_color_sensor_get_reflect(color_sensor);       
-        if(colorValue < (black + 5) && colorValue > (black - 5)){
+        if(colorValue < (black + 5)){
             onBlack = true;
         }
         
-        if(colorValue < (white + 5) && colorValue > (white - 5) && onBlack){
+        if(colorValue > (white - 5) && onBlack){
             ev3_motor_stop(firstMoveWheel,true);
             writeFloatLCD((float)colorValue);
             break;
@@ -411,19 +396,15 @@ void change_LineSide(enum LineSide targetSide)
     }
     
     //! 回転角、距離、角度を初期化
-    initialize_motor_dis_dir();
+    initialize_wheel();
     
     //! 目的の縁まで回転させたらその場回転で向きを戻す
     //ev3_motor_set_power(firstMoveWheel, (power/2));
-    ev3_motor_set_power(secondMoveWheel, power);
+    ev3_motor_set_power(secondMoveWheel, scenario.power);
     float secondDirection=0.0F;
     for(;;){
-        //! 現在の左と右のモーターの走行距離を取得
-        float leftDistance = distance_running(left_motor);
-        float rightDistance = distance_running(right_motor);
-        
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        secondDirection += getDirectionDelta(rightDistance, leftDistance); 
+        secondDirection += getDirectionDelta(distance_running(left_motor), distance_running(right_motor)); 
         
         //! 走行体が最初に動いた角度分戻ったらストップ
         if(abs(secondDirection) >= abs(firstDirection)){
@@ -434,8 +415,6 @@ void change_LineSide(enum LineSide targetSide)
     } 
 }
 
-
-
 /**
  * @brief   シナリオに従って走る
  *
@@ -445,7 +424,7 @@ void change_LineSide(enum LineSide targetSide)
 void run(scenario_running scenario)
 {
     //! 回転角、距離、角度を初期化
-    initialize_motor_dis_dir();
+    initialize_wheel();
     
     //! ストップ監視しつつ、走行
     for (;;) {
@@ -463,16 +442,10 @@ void run(scenario_running scenario)
             break;
             
         case SWITCH_SIDE_RIGHT:
-            //! ライントレースする縁を右側へ変更
-            change_LineSide(RIGHT);
-            return;
-            break;
-        
         case SWITCH_SIDE_LEFT:
-            //! ライントレースする縁を左側へ変更
-            change_LineSide(LEFT);
+            //! ライントレースする縁を変更
+            change_LineSide(scenario);
             return;
-            break;
             
         case TRACE_STRAIGHT_RIGHT:
         case TRACE_CURVE_RIGHT:
