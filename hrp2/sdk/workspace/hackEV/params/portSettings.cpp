@@ -1,10 +1,10 @@
 /**
- * @file    definess.cpp
- * @brief   This file has the utilitiy functions.
+ * @file    portSettings.cpp
+ * @brief   This file has the settings for each port related to EV3.
  */
 
 #include "ev3api.h"
-#include "defines.h"
+#include "portSettings.h"
 
 //! \addtogroup ポートの設定
 //@{

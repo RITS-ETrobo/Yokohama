@@ -10,7 +10,9 @@ APPL_COBJS +=
 # - Sensors
 # - Others
 APPL_CXXOBJS += \
-    defines.o \
+    portSettings.o \
+    wheelSettings.o \
+    lcdSettings.o \
     utilities.o \
     Logger.o \
     SonarSensorController.o \
@@ -31,7 +33,11 @@ include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
 endif
 
 APPL_DIR += \
-    $(mkfile_path)sensors
+    $(mkfile_path)sensors \
+    $(mkfile_path)params \
+    $(mkfile_path)params/machine
 
 INCLUDES += \
-    -I$(mkfile_path)sensors
+    -I$(mkfile_path)sensors \
+    -I$(mkfile_path)params \
+    -I$(mkfile_path)params/machine

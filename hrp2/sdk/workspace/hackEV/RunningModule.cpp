@@ -16,9 +16,6 @@
 
 //! \addtogroup 距離計算要素
 //@{
-//! タイヤの直径[cm]
-const float DiameterWheel = 8.2F;
-
 //! 円周率
 const float Pi = 3.14159265359F;
 //@}
@@ -30,9 +27,6 @@ float sumLeftMotorRotate = 0.0F;
 
 //! 右モーターの回転数の合計
 float sumRightMotorRotate = 0.0F;
-
-//! 左右のタイヤ間のトレッド[cm]
-const float TREAD = 13.25F;
 
 //! 前回の右モーターの距離[cm]
 float lastRightDistance = 0.0F;
