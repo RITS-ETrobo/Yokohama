@@ -12,6 +12,7 @@ APPL_COBJS +=
 APPL_CXXOBJS += \
     portSettings.o \
     wheelSettings.o \
+    lcdSettings.o \
     utilities.o \
     Logger.o \
     SonarSensorController.o \

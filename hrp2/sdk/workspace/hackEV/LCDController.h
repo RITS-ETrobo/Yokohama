@@ -7,6 +7,8 @@
 #include "ev3api.h"
 #include <string.h>
 
+#include "lcdSettings.h"
+
 //! ターゲット依存の定義
 #include "target_test.h"
 

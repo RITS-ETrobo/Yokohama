@@ -12,12 +12,6 @@ unsigned int    currentLineHeight = 0;
 //! 描画済みエリアの高さ
 unsigned int    currentAreaHeight = 0;
 
-//! 1行辺りの高さ : フォントMEDIUM
-const unsigned char fontHeightMedium = 16;
-
-//! 1行辺りの高さ : フォントSMALL
-const unsigned char fontHeightSmall = 8;
-
 //! 現在のフォントサイズ
 lcdfont_t   fontSize = EV3_FONT_MEDIUM;
 
