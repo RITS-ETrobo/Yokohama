@@ -1,5 +1,5 @@
 /**
- * @file    definess.cpp
+ * @file    portSettings.cpp
  * @brief   This file has the settings for each port related to EV3.
  */
 

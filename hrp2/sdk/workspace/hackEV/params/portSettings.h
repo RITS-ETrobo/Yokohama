@@ -1,10 +1,11 @@
 /**
- * @file    defines.h
+ * @file    portSettings.h
  * @brief   This file has the settings for each port related to EV3.
  */
 #pragma once
 
 //! ターゲット依存の定義
+#include "ev3api.h"
 #include "target_test.h"
 
 //! \addtogroup ポートの設定
