@@ -59,10 +59,10 @@ lcdcolor_t getLCDColor()
 unsigned char getLineheight()
 {
     if (fontSize == EV3_FONT_SMALL) {
-        return  LCD_FONT_HEIGHT_SMALL;
+        return  EV3_FONT_HEIGHT_SMALL;
     }
 
-    return  LCD_FONT_HEIGHT_MEDIUM;
+    return  EV3_FONT_HEIGHT_MEDIUM;
 }
 
 /**
