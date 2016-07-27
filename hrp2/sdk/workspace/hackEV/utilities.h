@@ -9,6 +9,8 @@
 #include "target_test.h"
 
 #include "portSettings.h"
+#include "wheelSettings.h"
+
 #include "Logger.h"
 #include "LCDController.h"
 

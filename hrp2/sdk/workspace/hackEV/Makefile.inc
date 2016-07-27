@@ -11,6 +11,7 @@ APPL_COBJS +=
 # - Others
 APPL_CXXOBJS += \
     portSettings.o \
+    wheelSettings.o \
     utilities.o \
     Logger.o \
     SonarSensorController.o \
@@ -32,8 +33,10 @@ endif
 
 APPL_DIR += \
     $(mkfile_path)sensors \
-    $(mkfile_path)params
+    $(mkfile_path)params \
+    $(mkfile_path)params/machine
 
 INCLUDES += \
     -I$(mkfile_path)sensors \
-    -I$(mkfile_path)params
+    -I$(mkfile_path)params \
+    -I$(mkfile_path)params/machine
