@@ -60,7 +60,7 @@ void Logger::outputLog()
 
     for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
         char    logLine[64];
-        sprintf(logLine, "%s, %d, %s\r\n", getLogName(it->logType), it->logTime, it->log);
+        sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
