@@ -3,6 +3,7 @@
  * @brief   This file has the settings for logging.
  */
 #include "logSettings.h"
+#include <map>
 
 //! \addtogroup ポートの設定
 //@{
