@@ -11,8 +11,8 @@
 //! \addtogroup 距離計算要素
 //@{
 //! タイヤの直径[単位 : cm]
-extern const float DiameterWheel;
+extern const float EV3_WHEEL_DIAMETER;
 
 //! 左右のタイヤ間のトレッド[単位 : cm]
-extern const float TREAD;
+extern const float EV3_TREAD;
 //@}

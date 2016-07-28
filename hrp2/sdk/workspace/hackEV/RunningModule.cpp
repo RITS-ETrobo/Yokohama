@@ -266,7 +266,7 @@ const scenario_running run_scenario_test_right[] = {
 */
 float distance_running(motor_port_t port)
 {
-    float distance = Pi * DiameterWheel * ev3_motor_get_counts(port) / 360;
+    float distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(port) / 360;
     return distance;
 }
 
@@ -285,7 +285,7 @@ float getDirectionDelta(float rightDistance, float leftDistance)
     lastLeftDistance = leftDistance;
     
     //! 走行体の向き[度]
-    float direction = ((rightDistanceDelta - leftDistanceDelta) / TREAD) * 180 / Pi;
+    float direction = ((rightDistanceDelta - leftDistanceDelta) / EV3_TREAD) * 180 / Pi;
     return direction;
 }
 
@@ -308,8 +308,8 @@ float getDistance(float rightDistance, float leftDistance)
 void stop_run()
 {
     ev3_speaker_play_tone(NOTE_E6, 100);
-    ev3_motor_stop(left_motor,true);
-    ev3_motor_stop(right_motor,true); 
+    ev3_motor_stop(EV3_MOTOR_LEFT,true);
+    ev3_motor_stop(EV3_MOTOR_RIGHT,true); 
 }
 
 /**
@@ -318,8 +318,8 @@ void stop_run()
  * @return  なし
  */
 void pinWheel(int power){
-    ev3_motor_set_power(left_motor, (-power));
-    ev3_motor_set_power(right_motor, power);
+    ev3_motor_set_power(EV3_MOTOR_LEFT, (-power));
+    ev3_motor_set_power(EV3_MOTOR_RIGHT, power);
 }
 
 /**
@@ -329,8 +329,8 @@ void pinWheel(int power){
 */
 void initialize_wheel(){
     //! モーターの角位置、向きの累積をリセット
-    ev3_motor_reset_counts(left_motor);
-    ev3_motor_reset_counts(right_motor);
+    ev3_motor_reset_counts(EV3_MOTOR_LEFT);
+    ev3_motor_reset_counts(EV3_MOTOR_RIGHT);
     lastRightDistance = 0.0F;
     lastLeftDistance = 0.0F;
     directionSum = 0.0F;
@@ -353,14 +353,14 @@ void change_LineSide(scenario_running scenario)
     switch (scenario.pattern) {
         case SWITCH_SIDE_LEFT:
             //! 移動したい縁が左のときは最初に右タイヤ、次に左タイヤを旋回させて切り替え
-            firstMoveWheel = right_motor;
-            secondMoveWheel = left_motor;
+            firstMoveWheel = EV3_MOTOR_RIGHT;
+            secondMoveWheel = EV3_MOTOR_LEFT;
             break;
             
         case SWITCH_SIDE_RIGHT:
             //! 移動したい縁が右のときは最初に左タイヤ、次に右タイヤを旋回させて切り替え
-            firstMoveWheel = left_motor;
-            secondMoveWheel = right_motor;
+            firstMoveWheel = EV3_MOTOR_LEFT;
+            secondMoveWheel = EV3_MOTOR_RIGHT;
             break;
             
         default:
@@ -375,9 +375,9 @@ void change_LineSide(scenario_running scenario)
     float firstDirection = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        firstDirection += getDirectionDelta(distance_running(left_motor), distance_running(right_motor)); 
+        firstDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT)); 
  
-        int colorValue = ev3_color_sensor_get_reflect(color_sensor);       
+        int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
         if(colorValue < (black + 5)){
             onBlack = true;
         }
@@ -398,7 +398,7 @@ void change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        secondDirection += getDirectionDelta(distance_running(left_motor), distance_running(right_motor)); 
+        secondDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT)); 
         
         //! 走行体が最初に動いた角度分戻ったらストップ
         if(abs(secondDirection) >= abs(firstDirection)){
@@ -431,8 +431,8 @@ void run(scenario_running scenario)
 
         case NOTRACE_STRAIGHT:
             //! ライントレースせずに、直進走行する
-            ev3_motor_set_power(left_motor, scenario.power);
-            ev3_motor_set_power(right_motor, scenario.power);
+            ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
+            ev3_motor_set_power(EV3_MOTOR_RIGHT, scenario.power);
             break;
             
         case SWITCH_SIDE_RIGHT:
@@ -446,21 +446,21 @@ void run(scenario_running scenario)
         {
             //! ライン右側をトレース
             float pidValueForRight = (-pid_controller(PID_MAP[scenario.pattern]));
-            ev3_motor_steer(left_motor, right_motor, scenario.power, pidValueForRight);
+            ev3_motor_steer(EV3_MOTOR_LEFT, EV3_MOTOR_RIGHT, scenario.power, pidValueForRight);
         }
         break;
 
         default:
             //! ライン左側をトレース
-            ev3_motor_steer(left_motor, right_motor, scenario.power, pid_controller(PID_MAP[scenario.pattern]));
+            ev3_motor_steer(EV3_MOTOR_LEFT, EV3_MOTOR_RIGHT, scenario.power, pid_controller(PID_MAP[scenario.pattern]));
             break;
         }
         
         tslp_tsk(1);//この行の必要性については要検証
         
         //! 現在の左と右のモーターの走行距離を取得
-        float leftDistance = distance_running(left_motor);
-        float rightDistance = distance_running(right_motor);
+        float leftDistance = distance_running(EV3_MOTOR_LEFT);
+        float rightDistance = distance_running(EV3_MOTOR_RIGHT);
         
         //! 瞬間の向きを取得、累積して走行体の向きを計測
         directionSum += getDirectionDelta(rightDistance, leftDistance);   
@@ -515,7 +515,7 @@ void start_run()
     
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
     for (;;) {
-        if(ev3_touch_sensor_is_pressed(touch_sensor)){
+        if(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)){
             break;
         }
     }
@@ -542,7 +542,7 @@ void start_run_test()
     
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
     for (;;) {
-        if (ev3_touch_sensor_is_pressed(touch_sensor)) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
             break;
         }
     }

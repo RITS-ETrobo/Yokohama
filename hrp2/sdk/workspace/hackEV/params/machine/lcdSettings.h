@@ -12,8 +12,8 @@
 //! \addtogroup LCDに関連した定義
 //@{
 //! 1行辺りの高さ : フォントMEDIUM
-extern const unsigned char fontHeightMedium;
+extern const unsigned char EV3_FONT_HEIGHT_MEDIUM;
 
 //! 1行辺りの高さ : フォントSMALL
-extern const unsigned char fontHeightSmall;
+extern const unsigned char EV3_FONT_HEIGHT_SMALL;
 //@}

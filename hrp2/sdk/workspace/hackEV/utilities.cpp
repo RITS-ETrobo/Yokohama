@@ -25,9 +25,9 @@ void writeFloatLCD(float value){
 */
 void configure_motors()
 {
-    ev3_motor_config(left_motor, LARGE_MOTOR);
-    ev3_motor_config(right_motor, LARGE_MOTOR);
-    ev3_motor_config(arm_motor, LARGE_MOTOR);//MEDIUMとどちらがいいか要検証
+    ev3_motor_config(EV3_MOTOR_LEFT, LARGE_MOTOR);
+    ev3_motor_config(EV3_MOTOR_RIGHT, LARGE_MOTOR);
+    ev3_motor_config(EV3_MOTOR_ARM, LARGE_MOTOR);//MEDIUMとどちらがいいか要検証
 }
 
 /**
@@ -36,9 +36,9 @@ void configure_motors()
 */
 void configure_sensors()
 {
-    ev3_sensor_config(touch_sensor, TOUCH_SENSOR);
-    ev3_sensor_config(color_sensor, COLOR_SENSOR);
-    ev3_sensor_config(gyro_sensor, GYRO_SENSOR);
+    ev3_sensor_config(EV3_SENSOR_TOUCH, TOUCH_SENSOR);
+    ev3_sensor_config(EV3_SENSOR_COLOR, COLOR_SENSOR);
+    ev3_sensor_config(EV3_SENSOR_GYRO, GYRO_SENSOR);
 }
 
 /**
@@ -53,8 +53,8 @@ int calibrate_light_intensity()
     // TODO: Calibrate using maximum mode => 100
     // TODO: Calibrate using minimum mode => 0
     printf("Press the touch sensor to measure light intensity.\n");
-    while(!ev3_touch_sensor_is_pressed(touch_sensor));
-    while(ev3_touch_sensor_is_pressed(touch_sensor));
-    int color = ev3_color_sensor_get_reflect(color_sensor);
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    int color = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
     return  color;
 }

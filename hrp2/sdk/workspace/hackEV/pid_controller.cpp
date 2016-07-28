@@ -111,7 +111,7 @@ float pid_controller(PID_PARAMETER pidParameter)
     holderIndex = (holderIndex + 1) % HOLD_MAX;
     
     //! カラーセンサーによって取得された値を基に、偏差を算出する
-    float value = midpoint - ev3_color_sensor_get_reflect(color_sensor);
+    float value = midpoint - ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
     
     //! 現在の値を格納
     valueHolder[holderIndex] = value;
@@ -161,7 +161,7 @@ void pid_controller_task(intptr_t unused)
     pidParameter.kI = KI;
     
     while (1) {
-        ev3_motor_steer(left_motor, right_motor, 10, pid_controller(pidParameter));
+        ev3_motor_steer(EV3_MOTOR_LEFT, EV3_MOTOR_RIGHT, 10, pid_controller(pidParameter));
         tslp_tsk(1);   
     }
 }

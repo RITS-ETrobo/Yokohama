@@ -52,7 +52,7 @@ void viewColor()
     
     //! タッチセンサーが押されるまで待機
     for (;;) {
-        if (ev3_touch_sensor_is_pressed(touch_sensor)) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
             break;
         }
     }
@@ -90,7 +90,7 @@ void viewColor()
 */
 colorid_t getColorName()
 {
-    return ev3_color_sensor_get_color(color_sensor);
+    return ev3_color_sensor_get_color(EV3_SENSOR_COLOR);
 }
 
 /**
@@ -101,6 +101,6 @@ colorid_t getColorName()
 rgb_raw_t getColorRGBraw()
 {
     rgb_raw_t colorRGB;
-    ev3_color_sensor_get_rgb_raw(color_sensor, &colorRGB);   
+    ev3_color_sensor_get_rgb_raw(EV3_SENSOR_COLOR, &colorRGB);   
     return colorRGB;
 }
