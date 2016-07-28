@@ -41,7 +41,7 @@ const uint_t LOG_TYPE_DIRECTION_STORED = 0x85;
 const uint_t LOG_TYPE_GYRO = 0x86;
 //@}
 
-std::map<uint_t logType, char* logName> LOG_TYPE_MAP;
+std::map<uint_t, char*> LOG_TYPE_MAP;
 
 /**
     @brief  logSettingsの初期化をおこなう
