@@ -5,6 +5,7 @@
 #pragma once
 
 #include "t_stddef.h"
+#include "t_syslog.h"
 
 //! \addtogroup ログ出力の設定
 //@{
@@ -41,3 +42,6 @@ extern const uint_t LOG_TYPE_DIRECTION_STORED;
 //! ジャイロ
 extern const uint_t LOG_TYPE_GYRO;
 //@}
+
+extern void initialize_logSetting();
+extern char* getLogName(uint_t logType);

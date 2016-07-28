@@ -40,3 +40,37 @@ const uint_t LOG_TYPE_DIRECTION_STORED = 0x85;
 const uint_t LOG_TYPE_GYRO = 0x86;
 //@}
 
+std::map<uint_t logType, char* logName> LOG_TYPE_MAP;
+
+/**
+    @brief  logSettingsの初期化をおこなう
+    @return なし
+*/
+void initialize_logSetting()
+{
+    LOG_TYPE_MAP[LOG_EMERG] = "Shutdown";
+    LOG_TYPE_MAP[LOG_ALERT] = "Alert";
+    LOG_TYPE_MAP[LOG_CRIT] = "CRITICAL";
+    LOG_TYPE_MAP[LOG_ERROR] = "Error";
+    LOG_TYPE_MAP[LOG_WARNING] = "Warning";
+    LOG_TYPE_MAP[LOG_NOTICE] = "Notice";
+    LOG_TYPE_MAP[LOG_INFO] = "Info";
+    LOG_TYPE_MAP[LOG_DEBUG] = "Debug";
+    LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
+    LOG_TYPE_MAP[LOG_TYPE_PID] = "PID";
+    LOG_TYPE_MAP[LOG_TYPE_COLOR] = "Color";
+    LOG_TYPE_MAP[LOG_TYPE_COLOR_BW] = "Color(B/W)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE] = "Distance";
+    LOG_TYPE_MAP[LOG_TYPE_DIRECTION] = "Direction";
+    LOG_TYPE_MAP[LOG_TYPE_DIRECTION_STORED] = "Direction(Stored)";
+    LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
+}
+
+/**
+    @brief  ログの種類の名前を取得する
+    @return ログの種類(文字列)
+*/
+char* getLogName(uint_t logType)
+{
+    return LOG_TYPE_MAP[logType];
+}

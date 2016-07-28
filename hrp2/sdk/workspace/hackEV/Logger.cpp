@@ -16,8 +16,7 @@ Logger::Logger()
 
 /**
  * @brief   初期化する
- * @return  true    初期化成功
- * @return  false   初期化失敗
+ * @return  なし
 */
 void Logger::initialize()
 {
@@ -25,6 +24,8 @@ void Logger::initialize()
     if (clock) {
         clock->reset();
     }
+
+    initialize_logSetting();
 }
 
 /**
@@ -59,7 +60,7 @@ void Logger::outputLog()
 
     for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
         char    logLine[64];
-        sprintf(logLine, "%d, %d, %s\r\n", it->logType, it->logTime, it->log);
+        sprintf(logLine, "%s, %d, %s\r\n", getLogName(it->logType), it->logTime, it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
