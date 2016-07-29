@@ -1,11 +1,11 @@
 /**
  * @file    ColorBase.h
- * @brief   ƒJƒ‰[ƒZƒ“ƒT[‚ğg‚Á‚ÄF‚ğæ“¾‚·‚éƒNƒ‰ƒX‚ÌŠî’êƒNƒ‰ƒX
+ * @brief   ã‚«ãƒ©ãƒ¼ã‚»ãƒ³ã‚µãƒ¼ã‚’ä½¿ã£ã¦è‰²ã‚’å–å¾—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹
  */
 #include "ColorBase.h"
 
 /**
-    @brief  ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    @brief  ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 */
 ColorBase::ColorBase(sensor_port_t portColor_)
     : portColor(portColor_)
@@ -13,32 +13,32 @@ ColorBase::ColorBase(sensor_port_t portColor_)
 }
 
 /**
-    @brief  F‚Ì¶‚Ì’l‚ğæ“¾‚·‚é(”’•)
-    @return F‚Ì¶‚Ì’l(”’•)
+    @brief  è‰²ã®ç”Ÿã®å€¤ã‚’å–å¾—ã™ã‚‹(ç™½é»’)
+    @return è‰²ã®ç”Ÿã®å€¤(ç™½é»’)
 */
 uint32_t ColorBase::getRGB_BW()
 {
 }
 
 /**
-    @brief  F‚ÌID‚ğæ“¾‚·‚é(”’/ŠD/•)
-    @return F‚ÌID(”’/ŠD/•)
+    @brief  è‰²ã®IDã‚’å–å¾—ã™ã‚‹(ç™½/ç°/é»’)
+    @return è‰²ã®ID(ç™½/ç°/é»’)
 */
 uint8_t ColorBase::getID_BW()
 {
 }
 
 /**
-    @brief  F‚Ì–¼‘O‚ğæ“¾‚·‚é(”’/ŠD/•)
-    @return F‚Ì–¼‘O(”’/ŠD/•)
+    @brief  è‰²ã®åå‰ã‚’å–å¾—ã™ã‚‹(ç™½/ç°/é»’)
+    @return è‰²ã®åå‰(ç™½/ç°/é»’)
 */
 char* ColorBase::getName_BW()
 {
 }
 
 /**
-    @brief  ƒJƒ‰[‚ğ”’•‚Å‚Ì’l‚É•ÏX‚·‚é
-@return F‚Ì¶‚Ì’l(”’•)
+    @brief  ã‚«ãƒ©ãƒ¼ã‚’ç™½é»’ã§ã®å€¤ã«å¤‰æ›´ã™ã‚‹
+@return è‰²ã®ç”Ÿã®å€¤(ç™½é»’)
 */
 uint8 ColorBase::color2BW(uint32_t color)
 {

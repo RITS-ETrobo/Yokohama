@@ -1,6 +1,6 @@
 /**
  * @file    ColorBase.h
- * @brief   カラーセンサーを使って色を取得するクラスの基底クラス
+ * @brief   繧ｫ繝ｩ繝ｼ繧ｻ繝ｳ繧ｵ繝ｼ繧剃ｽｿ縺｣縺ｦ濶ｲ繧貞叙蠕励☆繧九け繝ｩ繧ｹ縺ｮ蝓ｺ蠎輔け繝ｩ繧ｹ
  */
 #pragma once
 
@@ -8,9 +8,10 @@
 class ColorBase
 {
 public:
-    explicit ColorBase();
+    explicit ColorBase(sensor_port_t portColor_);
     virtual void initialize() = 0;
     virtual uint32_t getRGB(int colorCount = 2) = 0;
+    virtual struct rgb_raw_t* getRGBRaw(int colorCount = 2) = 0;
     virtual uint8_t getID(int colorCount = 2) = 0;
     virtual char* getName(int colorCount = 2) = 0;
 
@@ -20,5 +21,6 @@ protected:
     virtual char* getName_BW();
     virtual uint8 color2BW();
 
+private:
     sensor_port_t portColor;
 };
