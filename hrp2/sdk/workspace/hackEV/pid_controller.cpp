@@ -54,23 +54,23 @@ int holderIndex = -1;
 */
 void initialize_pid_controller()
 {
+    char message[16];
+
     //! Calibrate for light intensity of WHITE
     white = calibrate_light_intensity();
-
-    //! Calibrate for light intensity of BLACK
-    black = calibrate_light_intensity();
-
-    char message[16];
     memset(message, '\0', sizeof(message));
     sprintf(message, "WHITE %03d", white);
     writeStringLCD(message);
+
+    //! Calibrate for light intensity of BLACK
+    black = calibrate_light_intensity();
     sprintf(message, "BLACK %03d", black);
     writeStringLCD(message);
 
     memset(message, '\0', sizeof(message));
     sprintf(message, "%03d, %03d", white, black);
     if (logger) {
-        logger->addLog(message);
+        logger->addLog(LOG_TYPE_COLOR_BW, message);
     }
 
     lastValue = 0.0F;
@@ -138,7 +138,7 @@ float pid_controller(PID_PARAMETER pidParameter)
     memset(message, '\0', sizeof(message));
     sprintf(message, "%02.04f, %02.04f, %02.04f", p, i, d);
     if (logger) {
-        logger->addLog(message);
+        logger->addLog(LOG_TYPE_PID, message);
     }
     return  steer;
 }

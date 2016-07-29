@@ -10,6 +10,7 @@ APPL_COBJS +=
 # - Sensors
 # - Others
 APPL_CXXOBJS += \
+    logSettings.o \
     portSettings.o \
     wheelSettings.o \
     lcdSettings.o \

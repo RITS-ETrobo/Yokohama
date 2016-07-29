@@ -1,8 +1,7 @@
 /**
  * @file    Logger.cpp
  * @brief   This file has Logger class.
- *          
- */
+  */
 #include "Logger.h"
 
 /**
@@ -17,8 +16,7 @@ Logger::Logger()
 
 /**
  * @brief   初期化する
- * @return  true    初期化成功
- * @return  false   初期化失敗
+ * @return  なし
 */
 void Logger::initialize()
 {
@@ -26,21 +24,23 @@ void Logger::initialize()
     if (clock) {
         clock->reset();
     }
+
+    initialize_logSetting();
 }
 
 /**
  * @brief   ログを追加する
- * @param   message 追加するログ
- * @param   displayLCD  trueの場合、すぐにLCDにメッセージを出力する
- * @return  true    ログ追加成功
- * @return  false   ログ追加失敗
+ * @param   logType ログの種類
+ * @param   message 出力するログ
+ * @return  なし
 */
-void Logger::addLog(const char* message)
+void Logger::addLog(uint_t logType, const char* message)
 {
-    LOGGER_INFO info;
-    info.duration = 0;
+    USER_LOG    info;
+    info.logType = logType;
+    info.logTime = 0;
     if (clock) {
-        info.duration = clock->now();
+        info.logTime = clock->now();
     }
 
     strcpy(info.log, message);
@@ -58,9 +58,9 @@ void Logger::outputLog()
         return;
     }
 
-    for (vector<LOGGER_INFO>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
+    for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
         char    logLine[64];
-        sprintf(logLine, "%d, %s\r\n", it->duration, it->log);
+        sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
