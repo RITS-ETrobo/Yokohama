@@ -73,6 +73,12 @@ enum runPattern {
 
     //! その場回転
     PINWHEEL, 
+    
+    //! 片側モーター回転(右回転)
+    ONESIDE_PINWHEEL_RIGHT, 
+    
+    //! 片側モーター回転(左回転)
+    ONESIDE_PINWHEEL_LEFT, 
 
     //! ライントレースせずに、直進走行する
     NOTRACE_STRAIGHT,
@@ -90,7 +96,7 @@ enum runPattern {
  */
 const PID_PARAMETER pidParameterList[] = {
     //! 直進用PIDパラメータ（左側走行）
-    {0.775F, 0.0F, 0.375F},
+    {0.775F, 0.0F, 0.0F},
     
     //! 曲線用PIDパラメータ（左側走行）
     {0.775F, 0.2F, 0.375F},
@@ -142,8 +148,8 @@ typedef struct {
 
 //! Lコース（スタート～懸賞入口）
 const scenario_running L_Start_Sweepstakes_scenario[] = {
-    {30, 246.0F, -1, TRACE_STRAIGHT, false },
-    {30, 64.5F, -1, TRACE_CURVE, true }
+    {30, 246.0F, -1, TRACE_STRAIGHT_RIGHT, false },
+    {30, 64.5F, -1, TRACE_CURVE_RIGHT, true }
 };
  
 //! Lコース（懸賞入口～星取り入口）
@@ -249,13 +255,19 @@ const scenario_running run_scenario_test[] = {
 const scenario_running run_scenario_test_switch[] = {
     {20, 10.0F, -1, TRACE_STRAIGHT_RIGHT, false},
     {20, 0.0F, -1, SWITCH_SIDE_LEFT, false},
-    {20, 15.0F, -1, TRACE_STRAIGHT, true}
+    {20, 15.0F, -1, SWITCH_SIDE_LEFT, true}
+};
+
+//! 検証用シナリオ(片側回転でのUターン)
+const scenario_running run_scenario_test_UTern[] = {
+    {40, 0.0F, 180, ONESIDE_PINWHEEL_RIGHT, false},
+    {40, 100.0F, -1, NOTRACE_STRAIGHT, false},
+    {40, 100.0F, 180, ONESIDE_PINWHEEL_LEFT, true}
 };
 
 //! 検証用シナリオ(右側走行)
 const scenario_running run_scenario_test_right[] = {
-    {60, 41.0F, -1, TRACE_STRAIGHT_RIGHT, false},
-    {30, 43.0F, -1, TRACE_CURVE_RIGHT, true}
+    {20, 100.0F, -1, TRACE_STRAIGHT, true}
 };
 
 /**
@@ -441,6 +453,18 @@ void run(scenario_running scenario)
             change_LineSide(scenario);
             return;
             
+        case ONESIDE_PINWHEEL_RIGHT:
+            //! 右回転(左タイヤのみ回転)
+             ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
+             ev3_motor_stop(EV3_MOTOR_RIGHT,true);
+            break;
+            
+        case ONESIDE_PINWHEEL_LEFT:
+            //! 左回転(右タイヤのみ回転)
+            ev3_motor_set_power(EV3_MOTOR_RIGHT, scenario.power);
+            ev3_motor_stop(EV3_MOTOR_LEFT,true);
+            break;
+        
         case TRACE_STRAIGHT_RIGHT:
         case TRACE_CURVE_RIGHT:
         {
@@ -547,9 +571,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test_switch) / sizeof(run_scenario_test_switch[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_UTern) / sizeof(run_scenario_test_UTern[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test_switch[index]);
+        run(run_scenario_test_UTern[index]);
     }
 }
