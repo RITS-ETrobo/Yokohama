@@ -6,11 +6,11 @@
 <area shape="rect" id="node7" href="$de/d2b/class_balancing_walker.html#a5da14a4d26f2cad9c1cee44e046c80ab" title="BalancingWalker::setCommand" alt="" coords="313,107,533,133"/>
 <area shape="rect" id="node8" href="$de/d2b/class_balancing_walker.html#ac70975f2e5d47b9378214c104976ae78" title="BalancingWalker::run" alt="" coords="345,157,500,184"/>
 <area shape="rect" id="node4" href="$df/de1/class_balancer.html#ac525763d0503de6e032f44a82422580b" title="Balancer::init" alt="" coords="615,5,721,32"/>
-<area shape="rect" id="node5" href="$de/d01/ev3way-cpp_2balancer_8c.html#a66306dbf7411fbb67f1127126de95f9a" title="balance_init" alt="" coords="815,5,913,32"/>
+<area shape="rect" id="node5" href="$dc/dd5/etrobo__tr_2balancer_8c.html#a66306dbf7411fbb67f1127126de95f9a" title="balance_init" alt="" coords="815,5,913,32"/>
 <area shape="rect" id="node9" href="$df/de1/class_balancer.html#af3af50e0d486516c24610a49a6c6ae68" title="Balancer::setCommand" alt="" coords="581,81,755,108"/>
 <area shape="rect" id="node10" href="$df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463" title="Balancer::update" alt="" coords="603,132,733,159"/>
 <area shape="rect" id="node12" href="$df/de1/class_balancer.html#ad4a936088f8271e1ab1c2b71fbbb453d" title="Balancer::getPwmLeft" alt="" coords="587,183,749,209"/>
 <area shape="rect" id="node13" href="$df/de1/class_balancer.html#a87d7886caa0ae8060461916b1924ac2f" title="Balancer::getPwmRight" alt="" coords="583,233,753,260"/>
-<area shape="rect" id="node11" href="$de/d01/ev3way-cpp_2balancer_8c.html#a01b407ed9226c89392a29ae1c2148a07" title="balance_control" alt="" coords="803,132,925,159"/>
+<area shape="rect" id="node11" href="$dc/dd5/etrobo__tr_2balancer_8c.html#a01b407ed9226c89392a29ae1c2148a07" title="balance_control" alt="" coords="803,132,925,159"/>
 <area shape="rect" id="node15" href="$d7/d99/sample00_2util_8cpp.html#a0a6d184db0f324ec8dfdd059b9b526a8" title="msg_f" alt="" coords="392,208,453,235"/>
 </map>

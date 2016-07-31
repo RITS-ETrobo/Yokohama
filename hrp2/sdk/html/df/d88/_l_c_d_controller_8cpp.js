@@ -8,8 +8,6 @@ var _l_c_d_controller_8cpp =
     [ "writeStringLCD", "df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5", null ],
     [ "currentAreaHeight", "df/d88/_l_c_d_controller_8cpp.html#a2656e1a65734d72b43c465feb0c925d6", null ],
     [ "currentLineHeight", "df/d88/_l_c_d_controller_8cpp.html#aa1d66eb8ec186886329de7a3654c7201", null ],
-    [ "fontHeightMedium", "df/d88/_l_c_d_controller_8cpp.html#a43c80f728d7bf5ec37de38b63c052c14", null ],
-    [ "fontHeightSmall", "df/d88/_l_c_d_controller_8cpp.html#a3a74ce7adfa68bee380c8763e81a907e", null ],
     [ "fontSize", "df/d88/_l_c_d_controller_8cpp.html#a0ff889f8d5cc4fccaf8d7545201edcab", null ],
     [ "lcdColor", "df/d88/_l_c_d_controller_8cpp.html#a2175b97ea62830f817bf9de9e0a8cf35", null ]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['defines_2ecpp',['defines.cpp',['../d3/d20/defines_8cpp.html',1,'']]],
-  ['defines_2eh',['defines.h',['../d8/db0/defines_8h.html',1,'']]]
+  ['gyroboy_2ecpp',['gyroboy.cpp',['../db/d35/gyroboy_8cpp.html',1,'']]],
+  ['gyroboy_2eh',['gyroboy.h',['../dc/d58/gyroboy_8h.html',1,'']]]
 ];

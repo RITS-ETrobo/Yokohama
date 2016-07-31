@@ -76,7 +76,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
       <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
       <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
@@ -103,7 +102,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals_r.html#index_r"><span>r</span></a></li>
       <li><a href="globals_s.html#index_s"><span>s</span></a></li>
       <li><a href="globals_t.html#index_t"><span>t</span></a></li>
-      <li><a href="globals_u.html#index_u"><span>u</span></a></li>
       <li><a href="globals_v.html#index_v"><span>v</span></a></li>
       <li><a href="globals_w.html#index_w"><span>w</span></a></li>
     </ul>
@@ -128,7 +126,7 @@ $(document).ready(function(){initNavTree('globals_g.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -146,12 +144,6 @@ $(document).ready(function(){initNavTree('globals_g.html','');});
 </li>
 <li>gColorSensor()
 : <a class="el" href="d1/d0b/samples_2etrobo__tr__ex1_2app_8cpp.html#a8dfba3aa0b4946c3e5c4b32adaf850f4">app.cpp</a>
-</li>
-<li>get_steer_pid()
-: <a class="el" href="dd/dd4/old_2main__task_8c.html#a75406a32e700e6694eeb17f673c4926f">main_task.c</a>
-, <a class="el" href="df/d17/old_2main__task_8h.html#a75406a32e700e6694eeb17f673c4926f">main_task.h</a>
-, <a class="el" href="d7/d6d/main__task_8c.html#a75406a32e700e6694eeb17f673c4926f">main_task.c</a>
-, <a class="el" href="da/d98/main__task_8h.html#a75406a32e700e6694eeb17f673c4926f">main_task.h</a>
 </li>
 <li>getColorName()
 : <a class="el" href="d6/da1/_color_sensor_controller_8cpp.html#ab3efbcb68e53e386bdae658487251f01">ColorSensorController.cpp</a>
@@ -175,54 +167,31 @@ $(document).ready(function(){initNavTree('globals_g.html','');});
 : <a class="el" href="df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03">LCDController.cpp</a>
 , <a class="el" href="d5/d3c/_l_c_d_controller_8h.html#abe3c29415ed4f9f7d5462cc271f47d03">LCDController.h</a>
 </li>
+<li>getLogName()
+: <a class="el" href="d5/d0b/log_settings_8cpp.html#a099d44c80db0b4b26bfc6205e305725e">logSettings.cpp</a>
+, <a class="el" href="da/d9c/log_settings_8h.html#a099d44c80db0b4b26bfc6205e305725e">logSettings.h</a>
+</li>
 <li>gGyroSensor()
 : <a class="el" href="d4/dad/samples_2etrobo__tr_2app_8cpp.html#ae7dcc8ca505261046dfc3a92038ce20f">app.cpp</a>
 </li>
 <li>gLeftWheel()
-: <a class="el" href="d4/dad/samples_2etrobo__tr_2app_8cpp.html#a398ecf1417217643190dd9f69535985a">app.cpp</a>
+: <a class="el" href="d1/d0b/samples_2etrobo__tr__ex1_2app_8cpp.html#a398ecf1417217643190dd9f69535985a">app.cpp</a>
 </li>
 <li>GO_STRAIGHT
 : <a class="el" href="d6/d3d/etrobo__tr__ex2_2app_2_scene_8h.html#a74eb135ea70c0c2b7648cd7df3cabf6aa57a5db462a8b5374344f65f3769b47db">Scene.h</a>
 </li>
 <li>gpio_irq_dispatcher()
-: <a class="el" href="db/dbd/test-cpp_2app_8h.html#a7af671454805e666c8e88744a2856514">app.h</a>
+: <a class="el" href="dc/db6/hack_e_v_2app_8h.html#a7af671454805e666c8e88744a2856514">app.h</a>
 </li>
 <li>gRightWheel()
-: <a class="el" href="d4/dad/samples_2etrobo__tr_2app_8cpp.html#af13c9f1da3326381a3d1686a2fa5a802">app.cpp</a>
+: <a class="el" href="d0/de9/samples_2etrobo__tr__ex3_2app_8cpp.html#af13c9f1da3326381a3d1686a2fa5a802">app.cpp</a>
 </li>
 <li>gTouchSensor()
 : <a class="el" href="d4/dca/samples_2etrobo__tr__ex2_2app_8cpp.html#a43ec2a875f7e724f57f654c4a5038d57">app.cpp</a>
 </li>
-<li>GYRO_ANG
-: <a class="el" href="de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890a9a651b5f7af58223822cdd69204b5a09">cli_sensor.c</a>
-</li>
-<li>GYRO_CAL
-: <a class="el" href="de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890aa52503e6d5861d326a70b24394710b75">cli_sensor.c</a>
-</li>
-<li>GYRO_GnA
-: <a class="el" href="de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890adf5dc0f948dfbc4728574c4afb7c4e53">cli_sensor.c</a>
-</li>
 <li>GYRO_OFFSET
 : <a class="el" href="d2/da7/samples_2sample__cpp4_2app_8cpp.html#a1cfd3fae2e2b2b1c07a342c6e5bff950">app.cpp</a>
-, <a class="el" href="d9/df0/samples_2sample__c4_2app_8c.html#a1cfd3fae2e2b2b1c07a342c6e5bff950">app.c</a>
-, <a class="el" href="d9/d51/ev3way-cpp_2app_8cpp.html#a1cfd3fae2e2b2b1c07a342c6e5bff950">app.cpp</a>
-</li>
-<li>GYRO_RATE
-: <a class="el" href="de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890a34a9338ac01e848a918503ad8b4ffc8f">cli_sensor.c</a>
-</li>
-<li>gyro_sensor
-: <a class="el" href="d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8">defines.cpp</a>
-, <a class="el" href="d5/dc3/old_2nxtrike_8h.html#af7a982325cb2322a62c869f9cfe63d73">nxtrike.h</a>
-, <a class="el" href="d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8">app.c</a>
-, <a class="el" href="d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8">defines.h</a>
-, <a class="el" href="dd/d1b/nxtrike_8h.html#af7a982325cb2322a62c869f9cfe63d73">nxtrike.h</a>
-, <a class="el" href="d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8">app.c</a>
-</li>
-<li>GYRO_SENSOR_MODES
-: <a class="el" href="de/d68/cli__sensor_8c.html#a43d6ca83f9a08b7f8dd391756d439890">cli_sensor.c</a>
-</li>
-<li>gyroSensor
-: <a class="el" href="d9/d51/ev3way-cpp_2app_8cpp.html#ad979bc67039e528a302d06195f376265">app.cpp</a>
+, <a class="el" href="df/d7f/app_8c.html#a1cfd3fae2e2b2b1c07a342c6e5bff950">app.c</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -230,7 +199,7 @@ $(document).ready(function(){initNavTree('globals_g.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 31 2016 17:13:33 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

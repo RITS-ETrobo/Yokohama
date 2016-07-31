@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('db/d2a/sample05_2app_2_tracer_8h_sourc
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -122,20 +122,19 @@ $(document).ready(function(){initNavTree('db/d2a/sample05_2app_2_tracer_8h_sourc
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  Motor leftWheel;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  Motor rightWheel;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  ColorSensor <a class="code" href="../../d9/d51/ev3way-cpp_2app_8cpp.html#a4d0b1edefbe73af7a89313c11fa48ced">colorSensor</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  ColorSensor colorSensor;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">const</span> int8_t mThreshold = 20;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">const</span> int8_t pwm = (Motor::PWM_MAX) / 6;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; };</div>
 <div class="ttc" id="class_tracer_html"><div class="ttname"><a href="../../d9/da9/class_tracer.html">Tracer</a></div><div class="ttdef"><b>Definition:</b> Tracer.h:7</div></div>
-<div class="ttc" id="_running_module_8cpp_html_a080cda2584e6b5ef0bdcdf060208bd89"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89">run</a></div><div class="ttdeci">void run(scenario_running scenario)</div><div class="ttdoc">シナリオに従って走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:317</div></div>
-<div class="ttc" id="ev3way-cpp_2app_8cpp_html_a4d0b1edefbe73af7a89313c11fa48ced"><div class="ttname"><a href="../../d9/d51/ev3way-cpp_2app_8cpp.html#a4d0b1edefbe73af7a89313c11fa48ced">colorSensor</a></div><div class="ttdeci">ColorSensor * colorSensor</div><div class="ttdef"><b>Definition:</b> app.cpp:60</div></div>
+<div class="ttc" id="_running_module_8cpp_html_a080cda2584e6b5ef0bdcdf060208bd89"><div class="ttname"><a href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89">run</a></div><div class="ttdeci">void run(scenario_running scenario)</div><div class="ttdoc">シナリオに従って走る </div><div class="ttdef"><b>Definition:</b> RunningModule.cpp:430</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_42b5a45a5bc6e3c5769f8119ff4beafe.html">workspace_samples</a></li><li class="navelem"><a class="el" href="../../dir_f7323dd66ec81172adbc41d3f09e233e.html">sample05</a></li><li class="navelem"><a class="el" href="../../dir_effc1bb0e7294b6ac84accff964e65f6.html">app</a></li><li class="navelem"><a class="el" href="../../db/d2a/sample05_2app_2_tracer_8h.html">Tracer.h</a></li>
-    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 31 2016 17:13:32 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

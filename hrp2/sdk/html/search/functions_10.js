@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update',['update',['../df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463',1,'Balancer::update(int angle, int rwEnc, int lwEnc, int battery)'],['../df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463',1,'Balancer::update(int angle, int rwEnc, int lwEnc, int battery)'],['../df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463',1,'Balancer::update(int angle, int rwEnc, int lwEnc, int battery)'],['../df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463',1,'Balancer::update(int angle, int rwEnc, int lwEnc, int battery)'],['../df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463',1,'Balancer::update(int angle, int rwEnc, int lwEnc, int battery)']]]
+  ['viewcolor',['viewColor',['../d6/da1/_color_sensor_controller_8cpp.html#adc331d453215c393ae42328b2e7cde9f',1,'viewColor():&#160;ColorSensorController.cpp'],['../d2/de5/_color_sensor_controller_8h.html#adc331d453215c393ae42328b2e7cde9f',1,'viewColor():&#160;ColorSensorController.cpp']]]
 ];

@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('db/d81/etrobo__tr__ex3_2app_2_scenario
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('db/d81/etrobo__tr__ex3_2app_2_scenario
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d53/class_scenario_tracer.html#a54273fb3f3b1a2abf8a85a80ff81b8cc">run</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">enum</span> <a class="code" href="../../d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">enum</span> State {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        UNDEFINED,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        INITIAL,</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        WALKING</div>
@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('db/d81/etrobo__tr__ex3_2app_2_scenario
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../de/d2b/class_balancing_walker.html">BalancingWalker</a>* mBalancingWalker;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d3/d8b/class_scenario.html">Scenario</a>* mScenario;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../df/d7d/class_simple_timer.html">SimpleTimer</a>* mSimpleTimer;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> mState;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    State mState;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> initAction();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> setCommand(<a class="code" href="../../d6/d3d/etrobo__tr__ex2_2app_2_scene_8h.html#a74eb135ea70c0c2b7648cd7df3cabf6a">SceneCommands</a> command);</div>
@@ -150,7 +150,6 @@ $(document).ready(function(){initNavTree('db/d81/etrobo__tr__ex3_2app_2_scenario
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif  // EV3_APP_SCENARIOTRACER_H_</span></div>
 <div class="ttc" id="class_scenario_tracer_html_a5f6f38e370bf2bac670482cc34a298a4"><div class="ttname"><a href="../../d7/d53/class_scenario_tracer.html#a5f6f38e370bf2bac670482cc34a298a4">ScenarioTracer::ScenarioTracer</a></div><div class="ttdeci">ScenarioTracer(BalancingWalker *balancingWalker, Scenario *scenario, SimpleTimer *timer)</div><div class="ttdef"><b>Definition:</b> ScenarioTracer.cpp:17</div></div>
-<div class="ttc" id="main__task_8c_html_a5d74787dedbc4e11c1ab15bf487e61f8"><div class="ttname"><a href="../../d7/d6d/main__task_8c.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a></div><div class="ttdeci">State</div><div class="ttdef"><b>Definition:</b> main_task.c:26</div></div>
 <div class="ttc" id="etrobo__tr__ex3_2app_2_scenario_8h_html"><div class="ttname"><a href="../../d8/d54/etrobo__tr__ex3_2app_2_scenario_8h.html">Scenario.h</a></div></div>
 <div class="ttc" id="etrobo__tr__ex2_2app_2_scene_8h_html_a74eb135ea70c0c2b7648cd7df3cabf6a"><div class="ttname"><a href="../../d6/d3d/etrobo__tr__ex2_2app_2_scene_8h.html#a74eb135ea70c0c2b7648cd7df3cabf6a">SceneCommands</a></div><div class="ttdeci">SceneCommands</div><div class="ttdef"><b>Definition:</b> Scene.h:12</div></div>
 <div class="ttc" id="class_scenario_tracer_html_a54273fb3f3b1a2abf8a85a80ff81b8cc"><div class="ttname"><a href="../../d7/d53/class_scenario_tracer.html#a54273fb3f3b1a2abf8a85a80ff81b8cc">ScenarioTracer::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition:</b> ScenarioTracer.cpp:29</div></div>
@@ -164,7 +163,7 @@ $(document).ready(function(){initNavTree('db/d81/etrobo__tr__ex3_2app_2_scenario
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_42b5a45a5bc6e3c5769f8119ff4beafe.html">workspace_samples</a></li><li class="navelem"><a class="el" href="../../dir_50f7ff4d01c885d843d82d187c8d9721.html">etrobo_tr_ex3</a></li><li class="navelem"><a class="el" href="../../dir_0c26627d491a08e9d894caad4df75f39.html">app</a></li><li class="navelem"><a class="el" href="../../db/d81/etrobo__tr__ex3_2app_2_scenario_tracer_8h.html">ScenarioTracer.h</a></li>
-    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 31 2016 17:13:32 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

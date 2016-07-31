@@ -11,17 +11,23 @@ var _running_module_8cpp =
       [ "TRACE_CURVE_RIGHT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aa26c8d79a50bf23df29404fd1b35c383", null ],
       [ "TRACE_RUN_PATTARN_END", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2ab2474dada51d58b9374a9b98ce1b1891", null ],
       [ "PINWHEEL", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2af5f627c2bb5e60d96e434a513a382044", null ],
-      [ "NOTRACE_STRAIGHT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86", null ]
+      [ "ONESIDE_PINWHEEL_RIGHT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a17f42076331ccdfba865dc7b95842e6b", null ],
+      [ "ONESIDE_PINWHEEL_LEFT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2a3fee9a28f6bd06cf89258c1ff102a649", null ],
+      [ "NOTRACE_STRAIGHT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2abd1edb393fed6ae517c2618f38a5db86", null ],
+      [ "SWITCH_SIDE_RIGHT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aad4716ad9ef295c7330838a731f39558", null ],
+      [ "SWITCH_SIDE_LEFT", "da/d2f/_running_module_8cpp.html#a37b4634eac030ffb8287731c88374ab2aeb7d36a8622fde25475da63f1cf37422", null ]
     ] ],
+    [ "change_LineSide", "da/d2f/_running_module_8cpp.html#a7428a6e0fb9519bef0cba55a11633b37", null ],
     [ "distance_running", "da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330", null ],
     [ "getDirectionDelta", "da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270", null ],
     [ "getDistance", "da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e", null ],
     [ "initialize_run", "da/d2f/_running_module_8cpp.html#aa1257cf90111aec1c47057d3bc893111", null ],
+    [ "initialize_wheel", "da/d2f/_running_module_8cpp.html#a302f36c1b3ef0ea3c0149464a114fe00", null ],
+    [ "pinWheel", "da/d2f/_running_module_8cpp.html#aca349598cba3ffc333360ad32a6f4c3a", null ],
     [ "run", "da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89", null ],
     [ "start_run", "da/d2f/_running_module_8cpp.html#a4fed49bdf464977f8c337f0aa89b5dbc", null ],
     [ "start_run_test", "da/d2f/_running_module_8cpp.html#a06efab33f16fb6a1d6e5948027c1bfe9", null ],
     [ "stop_run", "da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a", null ],
-    [ "DiameterWheel", "da/d2f/_running_module_8cpp.html#gae81e28fe574f66eb62240e2213eb5f71", null ],
     [ "directionSum", "da/d2f/_running_module_8cpp.html#gaaccfe8aea6a7f061c77fae89e3659f97", null ],
     [ "L_enterGameArea_GameArea_scenario", "da/d2f/_running_module_8cpp.html#ae5334a28c138e02d00ac9f19d7718337", null ],
     [ "L_kensho_Goal_scenario", "da/d2f/_running_module_8cpp.html#a03528b31008042a90ea7e55b6c171885", null ],
@@ -42,7 +48,8 @@ var _running_module_8cpp =
     [ "R_Start_enterGameArea_scenario", "da/d2f/_running_module_8cpp.html#a290f7ee4c806ca3e522f745cf13b0c27", null ],
     [ "run_scenario_test", "da/d2f/_running_module_8cpp.html#ac948acd8a8791a3c88f1703da8fd7d22", null ],
     [ "run_scenario_test_right", "da/d2f/_running_module_8cpp.html#a1469ba88f01b9f998cd89b98e8b9c2cd", null ],
+    [ "run_scenario_test_switch", "da/d2f/_running_module_8cpp.html#a620f9152561057bda272b83c36b02e28", null ],
+    [ "run_scenario_test_UTern", "da/d2f/_running_module_8cpp.html#abf6aa28112365a09f52cf69d81218f06", null ],
     [ "sumLeftMotorRotate", "da/d2f/_running_module_8cpp.html#ga6f2a261748f0062a29996bc13965efa1", null ],
-    [ "sumRightMotorRotate", "da/d2f/_running_module_8cpp.html#gad001c45ae3d2891654b3589174896b95", null ],
-    [ "TREAD", "da/d2f/_running_module_8cpp.html#ga76a56dd78246f4464f8db8a80000b017", null ]
+    [ "sumRightMotorRotate", "da/d2f/_running_module_8cpp.html#gad001c45ae3d2891654b3589174896b95", null ]
 ];

@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,49 +112,49 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;Clock.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>ev3api;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> uint8_t OUTPUT_TYPE_NONE = 0;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> uint8_t OUTPUT_TYPE_FILE = (1 &lt;&lt; 0);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> uint8_t OUTPUT_TYPE_LCD = (1 &lt;&lt; 1);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html#a718801c86ea2fabba1fae67039a80d92">   21</a></span>&#160;    uint32_t    <a class="code" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html#a718801c86ea2fabba1fae67039a80d92">duration</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html#abfc6d1964c789ce6f0a56e104c2543f1">   22</a></span>&#160;    <span class="keywordtype">char</span>    log[32];</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <a class="code" href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html">LOGGER_INFO</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d3/d42/class_logger.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d3/d42/class_logger.html">Logger</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d3/d42/class_logger.html">Logger</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> addLog(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> outputLog();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGDIRECTORY_PATH = <span class="stringliteral">&quot;/ev3rt/logs&quot;</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME = <span class="stringliteral">&quot;hackEV_log.csv&quot;</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Clock*  <a class="code" href="../../d9/d51/ev3way-cpp_2app_8cpp.html#a0dd222dfa33d8eb027b52db6f9cd6c88">clock</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    vector&lt;LOGGER_INFO&gt; loggerInfo;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
-<div class="ttc" id="ev3way-cpp_2app_8cpp_html_a0dd222dfa33d8eb027b52db6f9cd6c88"><div class="ttname"><a href="../../d9/d51/ev3way-cpp_2app_8cpp.html#a0dd222dfa33d8eb027b52db6f9cd6c88">clock</a></div><div class="ttdeci">Clock * clock</div><div class="ttdef"><b>Definition:</b> app.cpp:65</div></div>
-<div class="ttc" id="class_logger_html"><div class="ttname"><a href="../../d3/d42/class_logger.html">Logger</a></div><div class="ttdoc">Class for logging. </div><div class="ttdef"><b>Definition:</b> Logger.h:26</div></div>
-<div class="ttc" id="struct_l_o_g_g_e_r___i_n_f_o_html_a718801c86ea2fabba1fae67039a80d92"><div class="ttname"><a href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html#a718801c86ea2fabba1fae67039a80d92">LOGGER_INFO::duration</a></div><div class="ttdeci">uint32_t duration</div><div class="ttdef"><b>Definition:</b> Logger.h:21</div></div>
-<div class="ttc" id="struct_l_o_g_g_e_r___i_n_f_o_html"><div class="ttname"><a href="../../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html">LOGGER_INFO</a></div><div class="ttdef"><b>Definition:</b> Logger.h:20</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d9c/log_settings_8h.html">logSettings.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;Clock.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>ev3api;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">   22</a></span>&#160;    uint_t      <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">logType</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">   25</a></span>&#160;    SYSTIM      <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">logTime</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a9724cec8ed3162e9ebcef798029d3bfb">   28</a></span>&#160;    <span class="keywordtype">char</span>    log[32];</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html">USER_LOG</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d3/d42/class_logger.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d3/d42/class_logger.html">Logger</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d3/d42/class_logger.html">Logger</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> addLog(uint_t logType, <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> outputLog();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGDIRECTORY_PATH = <span class="stringliteral">&quot;/ev3rt/logs&quot;</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME = <span class="stringliteral">&quot;hackEV_log.csv&quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Clock*  clock;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    vector&lt;USER_LOG&gt; loggerInfo;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="ttc" id="struct_u_s_e_r___l_o_g_html_ae234de4c1708a8643f64f494fcb5d27f"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">USER_LOG::logTime</a></div><div class="ttdeci">SYSTIM logTime</div><div class="ttdoc">ログ時刻 </div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
+<div class="ttc" id="class_logger_html"><div class="ttname"><a href="../../d3/d42/class_logger.html">Logger</a></div><div class="ttdoc">Class for logging. </div><div class="ttdef"><b>Definition:</b> Logger.h:32</div></div>
+<div class="ttc" id="struct_u_s_e_r___l_o_g_html"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html">USER_LOG</a></div><div class="ttdoc">ログに出力する情報 </div><div class="ttdef"><b>Definition:</b> Logger.h:20</div></div>
+<div class="ttc" id="struct_u_s_e_r___l_o_g_html_a41ce625efadb70fbb714af6ea4d028e4"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">USER_LOG::logType</a></div><div class="ttdeci">uint_t logType</div><div class="ttdoc">ログ情報の種別 </div><div class="ttdef"><b>Definition:</b> Logger.h:22</div></div>
+<div class="ttc" id="log_settings_8h_html"><div class="ttname"><a href="../../da/d9c/log_settings_8h.html">logSettings.h</a></div><div class="ttdoc">This file has the settings for logging. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../d6/dec/_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Jul 31 2016 17:13:32 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ポートの設定',['ポートの設定',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html',1,'']]]
+  ['variables_20used_20by_20the_20self_2dbalance_20control_20algorithm_2e',['variables used by the self-balance control algorithm.',['../d8/d4b/group___global.html',1,'']]]
 ];

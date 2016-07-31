@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['testclass',['TestClass',['../d2/d74/class_test_class.html',1,'']]],
-  ['tracer',['Tracer',['../d9/da9/class_tracer.html',1,'']]]
+  ['user_5flog',['USER_LOG',['../d2/dff/struct_u_s_e_r___l_o_g.html',1,'']]]
 ];
