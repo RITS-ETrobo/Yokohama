@@ -402,7 +402,7 @@ void adjust_position_ToLine(int power){
     for(;;){
         //! センサーがライン縁に当たるまで回転
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
-        if(colorValue < (black + 5)){
+        if(colorValue < (black + COLOR_BUFFER)){
             onBlack = true;
         }
         if(colorValue > midpoint && onBlack){
@@ -471,30 +471,6 @@ void find_Line(int power)
         adjust_position_ToLine(power);
         return;
     }
-    
-    // moveDirection = 0.0F;
-    // for(;;){
-    //     //! 動いた角度を記録
-    //     moveDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT));
-        
-    //     int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
-        
-    //     if(colorValue < (black + 5)){
-    //         //! ラインを見つけたら止まる
-    //         stop_run();
-            
-    //         //! 走行体の位置をライントレースできるように調整
-    //         adjust_position_ToLine(power, moveDirection);
-    //         findLine = true;
-    //         break;
-    //     }
-    //     else if(abs(moveDirection) >= 360){
-    //         //! 360度回転しても見つけられなかったら止まる
-    //         stop_run();
-    //         break;
-    //     }
-    // }
-    
 }
 
 /**
