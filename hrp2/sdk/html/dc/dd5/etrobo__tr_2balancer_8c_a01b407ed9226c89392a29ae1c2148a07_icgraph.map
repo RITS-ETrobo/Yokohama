@@ -1,8 +1,0 @@
-<map id="balance_control" name="balance_control">
-<area shape="rect" id="node2" href="$df/de1/class_balancer.html#ac1103ac48bfc7663bcfc7fe223fda463" title="Balancer::update" alt="" coords="176,31,307,57"/>
-<area shape="rect" id="node7" href="$df/d7f/app_8c.html#a4754344fc3fec0a802660bb5dcdefad9" title="メインタスク " alt="" coords="197,81,285,108"/>
-<area shape="rect" id="node3" href="$d2/da7/samples_2sample__cpp4_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9" title="メインタスク " alt="" coords="388,5,476,32"/>
-<area shape="rect" id="node4" href="$de/d2b/class_balancing_walker.html#ac70975f2e5d47b9378214c104976ae78" title="BalancingWalker::run" alt="" coords="355,56,509,83"/>
-<area shape="rect" id="node5" href="$da/dbb/class_line_tracer.html#a048fadcffd778b369df1e36c9634804f" title="LineTracer::run" alt="" coords="557,56,672,83"/>
-<area shape="rect" id="node6" href="$d6/d67/samples_2sample05_2app_8h.html#a181a0364685f6b005ebe8a67c79ac32f" title="tracer_task" alt="" coords="721,56,815,83"/>
-</map>

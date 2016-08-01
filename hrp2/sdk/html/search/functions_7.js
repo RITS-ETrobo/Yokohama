@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['linemonitor',['LineMonitor',['../d3/d7d/class_line_monitor.html#ae4584a1ca0fd27e658560132e8b26b7e',1,'LineMonitor::LineMonitor(const ev3api::ColorSensor &amp;colorSensor)'],['../d3/d7d/class_line_monitor.html#ae4584a1ca0fd27e658560132e8b26b7e',1,'LineMonitor::LineMonitor(const ev3api::ColorSensor &amp;colorSensor)'],['../d3/d7d/class_line_monitor.html#ae4584a1ca0fd27e658560132e8b26b7e',1,'LineMonitor::LineMonitor(const ev3api::ColorSensor &amp;colorSensor)']]],
-  ['linetracer',['LineTracer',['../da/dbb/class_line_tracer.html#a4317bfe03b288185f4c85fbd3dc7494f',1,'LineTracer::LineTracer(const LineMonitor *lineMonitor, BalancingWalker *balancingWalker)'],['../da/dbb/class_line_tracer.html#a4317bfe03b288185f4c85fbd3dc7494f',1,'LineTracer::LineTracer(const LineMonitor *lineMonitor, BalancingWalker *balancingWalker)'],['../da/dbb/class_line_tracer.html#a4317bfe03b288185f4c85fbd3dc7494f',1,'LineTracer::LineTracer(const LineMonitor *lineMonitor, BalancingWalker *balancingWalker)']]],
-  ['linetracerwithstarter',['LineTracerWithStarter',['../d1/d41/class_line_tracer_with_starter.html#ab4c49d7df4d4b12825a4bf3ec705030f',1,'LineTracerWithStarter']]],
-  ['logger',['Logger',['../d3/d42/class_logger.html#abc41bfb031d896170c7675fa96a6b30c',1,'Logger']]]
+  ['main_5ftask',['main_task',['../d5/df2/app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9',1,'main_task(intptr_t unused):&#160;app.cpp'],['../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991',1,'main_task(intptr_t exinf):&#160;app.cpp']]],
+  ['move_5farm',['move_arm',['../d3/d68/_arm_module_8cpp.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp']]]
 ];

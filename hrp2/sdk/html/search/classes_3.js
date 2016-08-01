@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomwalker',['RandomWalker',['../dd/d87/class_random_walker.html',1,'']]]
+  ['user_5flog',['USER_LOG',['../d2/dff/struct_u_s_e_r___l_o_g.html',1,'']]]
 ];

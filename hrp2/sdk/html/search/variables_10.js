@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['r_5fexitgamearea_5flap_5fscenario',['R_exitGameArea_LAP_scenario',['../da/d2f/_running_module_8cpp.html#aaf5f47df347a6e68ed6c98ed314cb8e8',1,'RunningModule.cpp']]],
-  ['r_5flap_5fgoal_5fscenario',['R_LAP_GOAL_scenario',['../da/d2f/_running_module_8cpp.html#ad1dc36f1eb6c593e829a9b74f1f3efbf',1,'RunningModule.cpp']]],
-  ['r_5fstart_5fentergamearea_5fscenario',['R_Start_enterGameArea_scenario',['../da/d2f/_running_module_8cpp.html#a290f7ee4c806ca3e522f745cf13b0c27',1,'RunningModule.cpp']]],
-  ['retry_5fcreate_5finstance',['RETRY_CREATE_INSTANCE',['../dc/da6/hack_e_v_2app_8cpp.html#acbd3ade8e097e6a6844af20ed6b7865d',1,'app.cpp']]],
-  ['run_5fscenario_5ftest',['run_scenario_test',['../da/d2f/_running_module_8cpp.html#ac948acd8a8791a3c88f1703da8fd7d22',1,'RunningModule.cpp']]],
-  ['run_5fscenario_5ftest_5fright',['run_scenario_test_right',['../da/d2f/_running_module_8cpp.html#a1469ba88f01b9f998cd89b98e8b9c2cd',1,'RunningModule.cpp']]],
-  ['run_5fscenario_5ftest_5fswitch',['run_scenario_test_switch',['../da/d2f/_running_module_8cpp.html#a620f9152561057bda272b83c36b02e28',1,'RunningModule.cpp']]],
-  ['run_5fscenario_5ftest_5futern',['run_scenario_test_UTern',['../da/d2f/_running_module_8cpp.html#abf6aa28112365a09f52cf69d81218f06',1,'RunningModule.cpp']]]
+  ['wait_5ftime_5fms',['WAIT_TIME_MS',['../d1/d19/group___constants.html#gaaf0eadb29293fe2cbdb9ff7060c75537',1,'gyroboy.cpp']]],
+  ['wheel_5fdiameter',['WHEEL_DIAMETER',['../d1/d19/group___constants.html#ga8f307256fa2a407634b97cf749a54a6c',1,'gyroboy.cpp']]],
+  ['white',['white',['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#ga52b8a1dc217164197e6e5ba60ec911bf',1,'white():&#160;pid_controller.cpp'],['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#ga52b8a1dc217164197e6e5ba60ec911bf',1,'white():&#160;pid_controller.cpp']]]
 ];

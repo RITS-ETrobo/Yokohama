@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['debug',['DEBUG',['../de/df0/utilities_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG():&#160;utilities.h'],['../df/d7f/app_8c.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG():&#160;app.c'],['../d2/da7/samples_2sample__cpp4_2app_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG():&#160;app.cpp']]],
-  ['deg2rad',['DEG2RAD',['../d1/dc1/etrobo__tr_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h'],['../d2/da3/etrobo__tr__ex1_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h'],['../d7/d06/etrobo__tr__ex2_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h'],['../d3/de3/etrobo__tr__ex3_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h'],['../d0/d3a/sample__cpp4_2balancer_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;balancer.h']]]
+  ['loop_5fref',['LOOP_REF',['../d2/d39/app_8h.html#aa0b32dad5e61d061383d7c3c6e3d69f3',1,'app.h']]]
 ];
