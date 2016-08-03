@@ -145,7 +145,7 @@ typedef struct {
     //! 走行距離[cm]
     float distance;
 
-    //! 向き。使わない場合は、-1。使う場合は、-360～360
+    //! 向き。使わない場合は、-1。使う場合は、0～360
     int direction;
 
     //! 走行パターン
@@ -377,9 +377,9 @@ void noTrace_Straight_Run(int power){
  * @brief   走行体を位置にライントレースできる調整する ※調整後はライン右側
  * 
  * @param 走行体が動いた向き （ここはスタートからの角度でラインに並行になる向きにする予定）
- * @return  なし
+ * @return  位置調整が完了したらtrue、位置調整ができなかったらfalse
  */
-void adjust_position_ToLine(int power){
+bool adjust_position_ToLine(int power, bool foundBack){
     //! 回転角、距離、角度を初期化
     initialize_wheel();
     
@@ -395,19 +395,36 @@ void adjust_position_ToLine(int power){
     
     //! 回転角、距離、角度を初期化
     initialize_wheel();
+    float moveDirection = 0.0F;
     
-    //! 走行体を反対方向にその場回転させ、動いた分だけ戻す
-    pinWheel(-power);
+    if(foundBack){
+        //! 走行体の後方で見つけた場合は、右回転でライン縁にあわせる（※捜索開始と同じ方向を向くようにするため）
+        pinWheel(power);
+    }
+    else{
+        //! 走行体を左回転させ、ライン縁にあわせる
+        pinWheel(-power);
+    }
+    
     bool onBlack = false;
     for(;;){
+        moveDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT));
         //! センサーがライン縁に当たるまで回転
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
+        
+        //! 黒の線をまたいで縁にたどり着いたら調整完了
         if(colorValue < (black + COLOR_BUFFER)){
             onBlack = true;
         }
-        if(colorValue > midpoint && onBlack){
+        if(colorValue > (midpoint - COLOR_BUFFER) && onBlack){
             stop_run();
-            break;
+            return true;
+        }
+        
+        //! 360度回転しても縁が見つけられなかったら止まる
+        if(abs(moveDirection) > 360.0F){   
+            stop_run();
+            return false;
         }
     }
 }
@@ -417,22 +434,33 @@ void adjust_position_ToLine(int power){
  * 
  * @return  ラインが見つかったらtrue、見つからなかったらfalse
  */
-bool rotate_for_findLine(int power){
+float rotate_for_findLine(int power){
     float moveDirection = 0.0F;
     for(;;){
         //! 動いた角度を記録
         moveDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT));
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
-        writeFloatLCD((float)colorValue);
+        
+        //! この行がないと360度回転しても止まらず、回り続ける。最終的に落ちる。なぜ？？
+        //writeFloatLCD((float)colorValue);
+
         if(colorValue < (black + COLOR_BUFFER)){
             //! ラインを見つけたら止まる
             stop_run();
-            return true;
+            //return true;
+            return moveDirection;
         }
-        else if(abs(moveDirection) >= 360){
+        
+        if(abs(moveDirection) > 360.0F){
             //! 360度回転しても見つけられなかったら止まる
+            char message[16];
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "notFoundLine"); 
+            writeStringLCD(message);
+            
             stop_run();
-            return false;
+            //return false;
+            return moveDirection;
         }
     }
 }
@@ -441,9 +469,9 @@ bool rotate_for_findLine(int power){
  * @brief   ラインを探す（走行体のTREDの2倍の範囲を探す)
  *  最初にその場回転して探す。それでも見つけれない場合は片側回転して探す
  * 
- * @return  なし
+ * @return  ラインを探して位置調整に成功したらtrue、失敗したらfalse
  */
-void find_Line(int power)
+bool find_Line(int power)
 {
     //! 回転角、距離、角度を初期化
     initialize_wheel();
@@ -451,25 +479,32 @@ void find_Line(int power)
     //! その場で360度回転して黒の線を見つける
     pinWheel(power);
     
-    bool findLine = false;
-    findLine = rotate_for_findLine(power);
+    float findDirection = false;
+    //findLine = rotate_for_findLine(power);
+    findDirection = rotate_for_findLine(power);
     
-    //! ラインを見つたら位置を調整して処理を終了
-    if(findLine){
-        //! 走行体の位置をライントレースできるように調整
-        adjust_position_ToLine(power);
-        return;
+    //! その場回転一周では見つけれなかった場合、
+    if(abs(findDirection) >= 360.0F){
+        //! 片側回転で探す(回転速度はその場回転の1.5倍)
+        ev3_motor_set_power(EV3_MOTOR_RIGHT, power*1.5);
+        //findLine = rotate_for_findLine(power);
+        findDirection = rotate_for_findLine(power);
     }
     
-    //! その場回転では見つけれなかった場合、片側回転だけ回転で見つける(回転速度はその場回転の1.5倍)
-    ev3_motor_set_power(EV3_MOTOR_RIGHT, power*1.5);
-    findLine = rotate_for_findLine(power);
-    
-    //! ラインを見つたら位置を調整して処理を終了
-    if(findLine){
+    //! その場回転または、片側回転一周以内で発見できた
+    if(abs(findDirection) <= 360.0F){
+        
+        //! 開始地点から見て後方で発見したかどうか
+        bool foundBack = false;
+        if(abs(findDirection) >= 90.0F && abs(findDirection) <= 270.0F){
+            foundBack = true;
+        }
+        
         //! 走行体の位置をライントレースできるように調整
-        adjust_position_ToLine(power);
-        return;
+        return adjust_position_ToLine(power, foundBack);
+    }else{
+        //! その場回転、片側回転両方でもラインを見つけられなかったらfalseを返す
+        return false;
     }
 }
 
@@ -592,7 +627,7 @@ void run(scenario_running scenario)
             break;
             
         case FIND_LINE:
-            //! ラインを探す
+            //! ラインを探す(成功true、失敗false)
             find_Line(scenario.power);
             return;
         
