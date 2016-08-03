@@ -12,6 +12,8 @@ APPL_COBJS +=
 APPL_CXXOBJS += \
     logSettings.o \
     portSettings.o \
+    parameterPID.o \
+    scenarioRunning.o \
     wheelSettings.o \
     lcdSettings.o \
     utilities.o \
