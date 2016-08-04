@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['calib_5ffont',['CALIB_FONT',['../df/d7f/app_8c.html#ab694ae852e331430e3b2fed005001244',1,'CALIB_FONT():&#160;app.c'],['../d2/da7/samples_2sample__cpp4_2app_8cpp.html#ab694ae852e331430e3b2fed005001244',1,'CALIB_FONT():&#160;app.cpp']]],
-  ['calib_5ffont_5fheight',['CALIB_FONT_HEIGHT',['../df/d7f/app_8c.html#a726af388e87ef25ffe8a24cda2285737',1,'CALIB_FONT_HEIGHT():&#160;app.c'],['../d2/da7/samples_2sample__cpp4_2app_8cpp.html#a726af388e87ef25ffe8a24cda2285737',1,'CALIB_FONT_HEIGHT():&#160;app.cpp']]],
-  ['calib_5ffont_5fwidth',['CALIB_FONT_WIDTH',['../df/d7f/app_8c.html#a7a1984ed413358042cd26ce668de1069',1,'CALIB_FONT_WIDTH():&#160;app.c'],['../d2/da7/samples_2sample__cpp4_2app_8cpp.html#a7a1984ed413358042cd26ce668de1069',1,'CALIB_FONT_WIDTH():&#160;app.cpp']]],
-  ['cmd_5fmax',['CMD_MAX',['../d1/dc1/etrobo__tr_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h'],['../d2/da3/etrobo__tr__ex1_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h'],['../d7/d06/etrobo__tr__ex2_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h'],['../d3/de3/etrobo__tr__ex3_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h'],['../de/d20/sample__c4_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h'],['../d0/d3a/sample__cpp4_2balancer_8h.html#aab1a0d6f90722c03ed6c8a9460d6e792',1,'CMD_MAX():&#160;balancer.h']]],
-  ['cmd_5fstart',['CMD_START',['../df/d7f/app_8c.html#ab905e6aff2332984df0552c6b50203f2',1,'CMD_START():&#160;app.c'],['../d2/da7/samples_2sample__cpp4_2app_8cpp.html#ab905e6aff2332984df0552c6b50203f2',1,'CMD_START():&#160;app.cpp']]]
+  ['debug',['DEBUG',['../de/df0/utilities_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'utilities.h']]]
 ];
