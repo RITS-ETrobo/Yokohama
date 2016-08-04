@@ -53,5 +53,8 @@ enum runPattern {
     SWITCH_SIDE_RIGHT,
 
     //! トレースするライン縁を変更する（ライン左側へ変更）
-    SWITCH_SIDE_LEFT
+    SWITCH_SIDE_LEFT,
+    
+    //! ライン復帰
+    FIND_LINE
 };
