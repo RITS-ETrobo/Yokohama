@@ -24,7 +24,7 @@ const float Pi = 3.14159265359F;
 const int COLOR_BUFFER = 5;
 
 //! カラーセンサーとタイヤの距離
-const float BETWEEN_COLOR_AND_WHEEL = 3.8F;
+const float BETWEEN_COLOR_AND_WHEEL = 3.0F;
 
 //! \addtogroup 方向計算要素
 //@{
@@ -376,7 +376,8 @@ void noTrace_Straight_Run(int power){
 /**
  * @brief   走行体を位置にライントレースできる調整する ※調整後はライン右側
  * 
- * @param 走行体が動いた向き （ここはスタートからの角度でラインに並行になる向きにする予定）
+ * @param[in] power 回転出力
+ * @param[in] foundBack 探す前の向きから後方で見つけたかどうか
  * @return  位置調整が完了したらtrue、位置調整ができなかったらfalse
  */
 bool adjust_position_ToLine(int power, bool foundBack){
@@ -399,7 +400,7 @@ bool adjust_position_ToLine(int power, bool foundBack){
     
     if(foundBack){
         //! 走行体の後方で見つけた場合は、右回転でライン縁にあわせる（※捜索開始と同じ方向を向くようにするため）
-        pinWheel(power);
+        pinWheel(-power);
     }
     else{
         //! 走行体を左回転させ、ライン縁にあわせる
@@ -421,8 +422,11 @@ bool adjust_position_ToLine(int power, bool foundBack){
             return true;
         }
         
+        //! 回転角度の絶対値
+        float absMoveDirection = abs(moveDirection);
+        
         //! 360度回転しても縁が見つけられなかったら止まる
-        if(abs(moveDirection) > 360.0F){   
+        if(absMoveDirection > 360.0F){   
             stop_run();
             return false;
         }
@@ -432,7 +436,8 @@ bool adjust_position_ToLine(int power, bool foundBack){
 /**
  * @brief   ラインを探す回転処理
  * 
- * @return  ラインが見つかったらtrue、見つからなかったらfalse
+ * @param[in] power 回転出力
+ * @return  スタート時からラインを見つけるまでの回転角度
  */
 float rotate_for_findLine(int power){
     float moveDirection = 0.0F;
@@ -451,7 +456,10 @@ float rotate_for_findLine(int power){
             return moveDirection;
         }
         
-        if(abs(moveDirection) > 360.0F){
+        //! 回転角度の絶対値
+        float absMoveDirection = abs(moveDirection);
+        
+        if(absMoveDirection > 360.0F){
             //! 360度回転しても見つけられなかったら止まる
             char message[16];
             memset(message, '\0', sizeof(message));
@@ -469,6 +477,7 @@ float rotate_for_findLine(int power){
  * @brief   ラインを探す（走行体のTREDの2倍の範囲を探す)
  *  最初にその場回転して探す。それでも見つけれない場合は片側回転して探す
  * 
+ * @param[in] power 回転出力
  * @return  ラインを探して位置調整に成功したらtrue、失敗したらfalse
  */
 bool find_Line(int power)
@@ -479,20 +488,24 @@ bool find_Line(int power)
     //! その場で360度回転して黒の線を見つける
     pinWheel(power);
     
-    float findDirection = false;
-    //findLine = rotate_for_findLine(power);
-    findDirection = rotate_for_findLine(power);
+    float findDirection = rotate_for_findLine(power);
     
-    //! その場回転一周では見つけれなかった場合、
+    //! 回転角度の絶対値
+    float absFindDirection = abs(findDirection);
+    
+    //! その場回転一周では見つけれなかった場合
     if(abs(findDirection) >= 360.0F){
-        //! 片側回転で探す(回転速度はその場回転の1.5倍)
-        ev3_motor_set_power(EV3_MOTOR_RIGHT, power*1.5);
+        //! 片側回転で探す(回転速度はその場回転と同時間で探せるように2倍にする)
+        ev3_motor_set_power(EV3_MOTOR_RIGHT, power*2);
         //findLine = rotate_for_findLine(power);
         findDirection = rotate_for_findLine(power);
     }
     
-    //! その場回転または、片側回転一周以内で発見できた
-    if(abs(findDirection) <= 360.0F){
+    //! 回転角度の絶対値
+    absFindDirection = abs(findDirection);
+    
+    //! その場回転または、片側回転一周以内で発見できた場合
+    if(absFindDirection <= 360.0F){
         
         //! 開始地点から見て後方で発見したかどうか
         bool foundBack = false;
