@@ -23,9 +23,6 @@
     #define _debug(x)
 #endif  //  DEBUG
 
-//! ログクラスのインスタンス
-extern Logger*  logger;
-
 //  関数のプロトタイプ宣言
 extern void configure_motors();
 extern void configure_sensors();
