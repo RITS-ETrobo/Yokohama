@@ -74,3 +74,9 @@ extern const scenario_running run_scenario_test_UTurn[3];
 
 //! 検証用シナリオ(右側走行)
 extern const scenario_running run_scenario_test_right[];
+
+//! 検証用シナリオ(その場360度回転・誤差検証用)
+extern const scenario_running run_scenario_test_pinWheel[1];
+
+//! 検証用シナリオ(1m直進トレース・誤差検証用)
+extern const scenario_running run_scenario_test_straght[1];
