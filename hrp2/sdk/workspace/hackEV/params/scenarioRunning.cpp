@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    scenarioRunning.cpp
  * @brief   This file has scenarios for running.
  */
@@ -128,4 +128,14 @@ const scenario_running run_scenario_test_UTurn[3] = {
 //! 検証用シナリオ(右側走行)
 const scenario_running run_scenario_test_right[] = {
     {20, 100.0F, -1, TRACE_STRAIGHT, true}
+};
+
+//! 検証用シナリオ(その場360度回転・誤差検証用)
+const scenario_running run_scenario_test_pinWheel[1] = {
+    {30, 0.0F, 360, PINWHEEL, true}
+};
+
+//! 検証用シナリオ(1m直進トレース・誤差検証用)
+const scenario_running run_scenario_test_straght[1] = {
+    {30, 100.0F, -1, TRACE_STRAIGHT, true}
 };
