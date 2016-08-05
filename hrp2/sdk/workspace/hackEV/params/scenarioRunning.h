@@ -80,3 +80,6 @@ extern const scenario_running run_scenario_test_pinWheel[1];
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
 extern const scenario_running run_scenario_test_straght[1];
+
+//! 検証用シナリオ(1m直進・誤差検証用)
+extern const scenario_running run_scenario_test_straght_NoTrace[1];
