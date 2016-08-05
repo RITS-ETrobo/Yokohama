@@ -267,17 +267,15 @@ void run(scenario_running scenario)
         
         //! 現在の左と右のモーターの走行距離を取得
         float leftDistance = distance_running(EV3_MOTOR_LEFT);
-        float rightDistance = distance_running(EV3_MOTOR_RIGHT);
+        float rightDistance = distance_running(EV3_MOTOR_RIGHT);      
         
-        //! 瞬間の向きを取得、累積して走行体の向きを計測
-        directionSum += getDirectionDelta(rightDistance, leftDistance);   
+        char message[16];
         
         //! 距離判定の必要性判断
         if (scenario.distance != 0) {
             float sumDistance = getDistance(rightDistance, leftDistance);
             
             //! 距離をログ出力
-            char message[16];
             memset(message, '\0', sizeof(message));
             sprintf(message, "%02.04f",sumDistance);
             if (logger) {
@@ -298,6 +296,22 @@ void run(scenario_running scenario)
 
                 break;
             }
+        }    
+        
+        //! 瞬間の向きを取得
+        float directionDelta = getDirectionDelta(rightDistance, leftDistance);
+        memset(message, '\0', sizeof(message));
+        sprintf(message, "%02.04f",directionDelta);
+        if (logger) {
+            logger->addLog(LOG_TYPE_DIRECTION, message);
+        }
+        
+        //! 累積して走行体の向きを計測
+        directionSum += directionDelta;
+        memset(message, '\0', sizeof(message));
+        sprintf(message, "%02.04f",directionSum);
+        if (logger) {
+            logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
         }
         
         //! 方向判定の必要性判断
@@ -364,9 +378,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_pinWheel) / sizeof(run_scenario_test_pinWheel[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test_straght_NoTrace[index]);
+        run(run_scenario_test_pinWheel[index]);
     }
 }
