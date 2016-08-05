@@ -76,4 +76,4 @@ extern const scenario_running run_scenario_test_UTurn[3];
 extern const scenario_running run_scenario_test_right[];
 
 //! 検証用シナリオ(ライン復帰)
-extern const scenario_running run_scenario_test_find_Line[];
+extern const scenario_running run_scenario_test_find_Line[1];

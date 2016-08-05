@@ -131,6 +131,6 @@ const scenario_running run_scenario_test_right[] = {
 };
 
 //! 検証用シナリオ(ライン復帰)
-const scenario_running run_scenario_test_find_Line[] = {
+const scenario_running run_scenario_test_find_Line[1] = {
     {30, 0.0F, -1, FIND_LINE, true}
 };
