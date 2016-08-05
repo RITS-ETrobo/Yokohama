@@ -354,9 +354,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test_UTurn) / sizeof(run_scenario_test_UTurn[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_pinWheel) / sizeof(run_scenario_test_pinWheel[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test_UTurn[index]);
+        run(run_scenario_test_pinWheel[index]);
     }
 }
