@@ -274,8 +274,18 @@ void run(scenario_running scenario)
         
         //! 距離判定の必要性判断
         if (scenario.distance != 0) {
+            float sumDistance = getDistance(rightDistance, leftDistance);
+            
+            //! 距離をログ出力
+            char message[16];
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",sumDistance);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DISTANCE, message);
+            }
+            
             //! 走行体が指定距離走行したらストップ
-            if(abs(getDistance(rightDistance, leftDistance)) >= abs(scenario.distance)){
+            if(abs(sumDistance) >= abs(scenario.distance)){
                 if(scenario.stop){
                     stop_run();
                     
