@@ -14,12 +14,6 @@
 #include "ArmModule.h"
 #include <map>
 
-//! \addtogroup 距離計算要素
-//@{
-//! 円周率
-const float Pi = 3.14159265359F;
-//@}
-
 //! \addtogroup 方向計算要素
 //@{
 //! 左モーターの回転数の合計
@@ -27,12 +21,6 @@ float sumLeftMotorRotate = 0.0F;
 
 //! 右モーターの回転数の合計
 float sumRightMotorRotate = 0.0F;
-
-//! 前回の右モーターの距離[cm]
-float lastRightDistance = 0.0F;
-
-//! 前回の左モーターの距離[cm]
-float lastLeftDistance = 0.0F;
 
 //! 向きの累積[度]
 float directionSum = 0.0F;
@@ -271,33 +259,14 @@ const scenario_running run_scenario_test_right[] = {
 };
 
 /**
- * @brief   リセットしてからの指定したタイヤの走行距離を計算する
- * 
- * @param   port    計測するタイヤのモーターポート
- * @return  走行距離[cm]
-*/
-float distance_running(motor_port_t port)
-{
-    float distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(port) / 360;
-    return distance;
-}
-
-/**
  * @brief   瞬間の走行体の向きを取得する
  * 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである
- * @param rightDistance 右タイヤの走行距離[cm]
- * @param leftDistance  左タイヤの走行距離[cm]
  * @return  瞬間の向き[度]
 */
-float getDirectionDelta(float rightDistance, float leftDistance)
+float getDirectionDelta()
 {
-    float rightDistanceDelta = rightDistance - lastRightDistance;
-    float leftDistanceDelta = leftDistance - lastLeftDistance;
-    lastRightDistance = rightDistance;
-    lastLeftDistance = leftDistance;
-    
     //! 走行体の向き[度]
-    float direction = ((rightDistanceDelta - leftDistanceDelta) / EV3_TREAD) * 180 / Pi;
+    float direction = ((motorWheelRight->getDistanceDelta() - motorWheelLeft->getDistanceDelta()) / EV3_TREAD) * 180 / Pi;
     return direction;
 }
 
@@ -320,8 +289,8 @@ float getDistance(float rightDistance, float leftDistance)
 void stop_run()
 {
     ev3_speaker_play_tone(NOTE_E6, 100);
-    ev3_motor_stop(EV3_MOTOR_LEFT,true);
-    ev3_motor_stop(EV3_MOTOR_RIGHT,true); 
+    motorWheelLeft->stop();
+    motorWheelRight->stop();
 }
 
 /**
@@ -339,13 +308,12 @@ void pinWheel(int power){
  *
  * @return  なし
 */
-void initialize_wheel(){
+void initialize_wheel()
+{
     //! モーターの角位置、向きの累積をリセット
-    ev3_motor_reset_counts(EV3_MOTOR_LEFT);
-    ev3_motor_reset_counts(EV3_MOTOR_RIGHT);
-    lastRightDistance = 0.0F;
-    lastLeftDistance = 0.0F;
     directionSum = 0.0F;
+    motorWheelLeft->initialize();
+    motorWheelRight->initialize();
 }
 
 /**
@@ -387,7 +355,7 @@ void change_LineSide(scenario_running scenario)
     float firstDirection = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        firstDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT)); 
+        firstDirection += getDirectionDelta(); 
  
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
         if(colorValue < (black + 5)){
@@ -410,7 +378,7 @@ void change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        secondDirection += getDirectionDelta(distance_running(EV3_MOTOR_LEFT), distance_running(EV3_MOTOR_RIGHT)); 
+        secondDirection += getDirectionDelta(); 
         
         //! 走行体が最初に動いた角度分戻ったらストップ
         if(abs(secondDirection) >= abs(firstDirection)){
@@ -455,14 +423,14 @@ void run(scenario_running scenario)
             
         case ONESIDE_PINWHEEL_RIGHT:
             //! 右回転(左タイヤのみ回転)
-             ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
-             ev3_motor_stop(EV3_MOTOR_RIGHT,true);
+            ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
+            wheelMotorRight->stop();
             break;
             
         case ONESIDE_PINWHEEL_LEFT:
             //! 左回転(右タイヤのみ回転)
             ev3_motor_set_power(EV3_MOTOR_RIGHT, scenario.power);
-            ev3_motor_stop(EV3_MOTOR_LEFT,true);
+            wheelMotorLeft->stop();
             break;
         
         case TRACE_STRAIGHT_RIGHT:
@@ -481,14 +449,10 @@ void run(scenario_running scenario)
         }
         
         tslp_tsk(1);//この行の必要性については要検証
-        
-        //! 現在の左と右のモーターの走行距離を取得
-        float leftDistance = distance_running(EV3_MOTOR_LEFT);
-        float rightDistance = distance_running(EV3_MOTOR_RIGHT);
-        
+
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        directionSum += getDirectionDelta(rightDistance, leftDistance);   
-        
+        directionSum += getDirectionDelta();   
+
         //! 距離判定の必要性判断
         if (scenario.distance != 0) {
             //! 走行体が指定距離走行したらストップ

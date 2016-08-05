@@ -11,6 +11,8 @@
 #include "portSettings.h"
 #include "wheelSettings.h"
 
+#include "MotorWheel.h"
+
 #include "Logger.h"
 #include "LCDController.h"
 
@@ -25,6 +27,12 @@
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
+
+//! 左ホイールクラスのインスタンス
+extern MotorWheel *motorWheelLeft;
+
+//! 右ホイールクラスのインスタンス
+extern MotorWheel *motorWheelRight;
 
 //  関数のプロトタイプ宣言
 extern void configure_motors();

@@ -24,6 +24,12 @@ void *__dso_handle=0;
 //! ログクラスのインスタンス
 Logger *logger = NULL;
 
+//! 左ホイールクラスのインスタンス
+MotorWheel *motorWheelLeft = NULL;
+
+//! 右ホイールクラスのインスタンス
+MotorWheel *motorWheelRight = NULL;
+
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
 
@@ -138,6 +144,9 @@ void main_task(intptr_t unused) {
     if (logger) {
         logger->initialize();
     }
+
+    motorWheelLeft = MotorWheel(EV3_MOTOR_LEFT);
+    motorWheelRight = MotorWheel(EV3_MOTOR_RIGHT);
 
     writeStringLCD("Start Initializing");
     if (logger) {
