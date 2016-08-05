@@ -83,3 +83,6 @@ extern const scenario_running run_scenario_test_straght[1];
 
 //! 検証用シナリオ(1m直進・誤差検証用)
 extern const scenario_running run_scenario_test_straght_NoTrace[1];
+
+//! 検証用シナリオ(1m後進・誤差検証用)
+extern const scenario_running run_scenario_test_straght_NoTrace_back[1];

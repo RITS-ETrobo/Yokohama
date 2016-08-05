@@ -384,3 +384,46 @@ void start_run_test()
         run(run_scenario_test_pinWheel[index]);
     }
 }
+
+/**
+ * @brief   新幹線まで走る
+ *
+ * @return  なし
+*/
+void start_run_test_foward()
+{
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    for (;;) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            break;
+        }
+    }
+    
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
+        //! シナリオが変わるたびに音を鳴らす
+        ev3_speaker_play_tone(NOTE_E4, 100);
+        run(run_scenario_test_straght_NoTrace[index]);
+    }
+}
+
+/**
+ * @brief   新幹線の位置からもどる
+ *
+ * @return  なし
+*/
+void start_run_test_back()
+{
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace_back) / sizeof(run_scenario_test_straght_NoTrace_back[0]); index++) {
+        //! シナリオが変わるたびに音を鳴らす
+        ev3_speaker_play_tone(NOTE_E4, 100);
+        run(run_scenario_test_straght_NoTrace_back[index]);
+    }
+}

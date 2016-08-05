@@ -41,6 +41,9 @@ extern const uint_t LOG_TYPE_DIRECTION_STORED;
 
 //! ジャイロ
 extern const uint_t LOG_TYPE_GYRO;
+
+//! 超音波
+extern const uint_t LOG_TYPE_SONAR;
 //@}
 
 extern void initialize_logSetting();
