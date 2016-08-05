@@ -93,8 +93,6 @@ void record_Sonar(){
  * @return  なし
 */
 void sensing_sonar_for_Time(int stayTime){
-
-
     for(int i = 0; i < (stayTime*10); i++){
         //! 超音波測定と記録
         record_Sonar();
@@ -103,6 +101,8 @@ void sensing_sonar_for_Time(int stayTime){
         tslp_tsk(100);
     }
 
+    //! 終了合図
+    ev3_speaker_play_tone(NOTE_E6, 100);
 }
 
 /**

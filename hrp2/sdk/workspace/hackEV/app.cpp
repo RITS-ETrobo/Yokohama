@@ -83,7 +83,7 @@ static void button_clicked_handler(intptr_t button) {
         sensing_sonar_for_Time(5);
 
         //! 新幹線の位置から後退
-        //start_run_test_back();
+        start_run_test_back();
 
         break;
 

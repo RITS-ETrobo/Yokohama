@@ -296,26 +296,26 @@ void run(scenario_running scenario)
 
                 break;
             }
-        }    
-        
-        //! 瞬間の向きを取得
-        float directionDelta = getDirectionDelta(rightDistance, leftDistance);
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionDelta);
-        if (logger) {
-            logger->addLog(LOG_TYPE_DIRECTION, message);
-        }
-        
-        //! 累積して走行体の向きを計測
-        directionSum += directionDelta;
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionSum);
-        if (logger) {
-            logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
         }
         
         //! 方向判定の必要性判断
         if (scenario.direction != -1) {
+            //! 瞬間の向きを取得
+            float directionDelta = getDirectionDelta(rightDistance, leftDistance);
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",directionDelta);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DIRECTION, message);
+            }
+            
+            //! 累積して走行体の向きを計測
+            directionSum += directionDelta;
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",directionSum);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
+            }
+
             //! 走行体が指定した向きになったらストップ
             if(abs(directionSum) >= abs(scenario.direction)){
                 if(scenario.stop){
