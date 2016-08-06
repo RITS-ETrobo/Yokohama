@@ -26,7 +26,6 @@ void Logger::initialize()
         clock->reset();
     }
 
-    openLog();
     initialize_logSetting();
 }
 
