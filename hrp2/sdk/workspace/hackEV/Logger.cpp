@@ -2,6 +2,7 @@
  * @file    Logger.cpp
  * @brief   This file has Logger class.
   */
+#include <utility>
 #include "Logger.h"
 
 /**
@@ -77,15 +78,14 @@ void Logger::outputLog()
         return;
     }
 
-    for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
+    vector<USER_LOG> loggerOutput = move(loggerInfo);
+    for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
         char    logLine[64];
         sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
     }
-
-    loggerInfo.clear();
 }
 
 /**
