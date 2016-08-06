@@ -11,6 +11,7 @@
 */
 Logger::Logger()
     : clock(NULL)
+    , fpLog(NULL)
     , loggerInfo(NULL)
 {
 }
@@ -49,13 +50,31 @@ void Logger::addLog(uint_t logType, const char* message)
 }
 
 /**
+ * @brief   ログファイルを開く
+ * @return  true : 成功
+ * @return  false : 失敗
+*/
+bool Logger::openLog()
+{
+    if (fpLog) {
+        return  true;
+    }
+
+    fpLog = fopen(LOGFILE_NAME, "w+");
+    if (!fpLog) {
+        return  false;
+    }
+
+    return  true;
+}
+
+/**
  * @brief   ログをファイルに出力する
  * @return  なし
 */
 void Logger::outputLog()
 {
-    FILE    *fpLog = fopen(LOGFILE_NAME, "w+");
-    if (fpLog == NULL) {
+    if (!openLog()) {
         return;
     }
 
@@ -67,6 +86,18 @@ void Logger::outputLog()
             break;
         }
     }
+}
+
+/**
+ * @brief   ログをファイルに出力する
+ * @return  なし
+*/
+void Logger::closeLog()
+{
+    if (!fpLog) {
+        return;
+    }
 
     fclose(fpLog);
+    fpLog = NULL;
 }
