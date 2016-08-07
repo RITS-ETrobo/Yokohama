@@ -182,3 +182,19 @@ void main_task(intptr_t unused) {
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
 }
+
+/**
+ * @brief   ログ監視タスク
+ * 
+ * @param   [in]    unused  未使用
+ * @return  なし
+ */
+void log_monitoring_task(intptr_t exinf)
+{
+    int monitoringInterval = 500;   //ログ監視間隔[ms]
+    while(1)
+    {
+        //logger->outputLog();
+        tslp_tsk(monitoringInterval);
+    }
+}

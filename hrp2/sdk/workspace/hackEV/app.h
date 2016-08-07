@@ -80,6 +80,7 @@ extern "C" {
 extern void	task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
 extern void balance_task(intptr_t exinf);
+void log_monitoring_task(intptr_t exinf);
 extern void idle_task(intptr_t exinf);
 extern void stop_emergency();
 //extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
