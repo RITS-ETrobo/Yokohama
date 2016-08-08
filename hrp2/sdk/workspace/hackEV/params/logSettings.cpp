@@ -28,17 +28,20 @@ const uint_t LOG_TYPE_COLOR = 0x82;
 //! 色(白黒)に関するログ
 const uint_t LOG_TYPE_COLOR_BW = 0x83;
 
-//! 距離
+//! 距離(瞬間)
 const uint_t LOG_TYPE_DISTANCE = 0x83;
 
+//! 距離(累積)
+const uint_t LOG_TYPE_DISTANCE_STORED = 0x84;
+
 //! 角度(瞬間)
-const uint_t LOG_TYPE_DIRECTION = 0x84;
+const uint_t LOG_TYPE_DIRECTION = 0x85;
 
 //! 角度(累積)
-const uint_t LOG_TYPE_DIRECTION_STORED = 0x85;
+const uint_t LOG_TYPE_DIRECTION_STORED = 0x86;
 
 //! ジャイロ
-const uint_t LOG_TYPE_GYRO = 0x86;
+const uint_t LOG_TYPE_GYRO = 0x87;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;

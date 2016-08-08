@@ -142,12 +142,12 @@ void main_task(intptr_t unused) {
     setFontSize(EV3_FONT_MEDIUM);
 
     logger = new Logger();
+    motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
+    motorWheelRight = new MotorWheel(EV3_MOTOR_RIGHT);
+
     if (logger) {
         logger->initialize();
     }
-
-    motorWheelLeft = MotorWheel(EV3_MOTOR_LEFT);
-    motorWheelRight = MotorWheel(EV3_MOTOR_RIGHT);
 
     writeStringLCD("Start Initializing");
     if (logger) {

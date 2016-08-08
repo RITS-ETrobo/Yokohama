@@ -12,4 +12,7 @@ const float EV3_WHEEL_DIAMETER = 8.2F;
 
 //! 左右のタイヤ間のトレッド[単位 : cm]
 const float EV3_TREAD = 13.25F;
+
+//! 円周率
+const float Pi = 3.14159265359F;
 //@}

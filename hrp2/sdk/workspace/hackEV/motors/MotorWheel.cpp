@@ -4,9 +4,7 @@
  */
 #include "MotorWheel.h"
 #include "wheelSettings.h"
-
-//! 円周率
-const float Pi = 3.14159265359F;
+#include "utilities.h"
 
 //! Class for logging
 MotorWheel::MotorWheel(motor_port_t portMotor_)
@@ -32,6 +30,7 @@ void MotorWheel::initialize()
  */
 ER MotorWheel::stop(bool_t brake /*= true*/)
 {
+    writeFloatLCD(distance);
     return  ev3_motor_stop(portMotor, brake);
 }
 
