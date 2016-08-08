@@ -1,12 +1,12 @@
 <map id="hrp2/sdk/workspace/hackEV/params/machine/wheelSettings.h" name="hrp2/sdk/workspace/hackEV/params/machine/wheelSettings.h">
-<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="733,117,880,158"/>
-<area shape="rect" id="node11" href="$d5/d30/wheel_settings_8cpp.html" title="This file has the settings related to wheel of EV3. " alt="" coords="905,109,1089,165"/>
-<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,221,152,262"/>
-<area shape="rect" id="node4" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,221,353,262"/>
-<area shape="rect" id="node5" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="379,221,568,262"/>
-<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="592,221,791,262"/>
-<area shape="rect" id="node7" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="817,213,1025,269"/>
-<area shape="rect" id="node8" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1050,221,1256,262"/>
-<area shape="rect" id="node9" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1281,213,1495,269"/>
-<area shape="rect" id="node10" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1520,221,1668,262"/>
+<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="699,117,837,158"/>
+<area shape="rect" id="node11" href="$d5/d30/wheel_settings_8cpp.html" title="This file has the settings related to wheel of EV3. " alt="" coords="862,109,1033,165"/>
+<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,221,144,262"/>
+<area shape="rect" id="node4" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="169,221,335,262"/>
+<area shape="rect" id="node5" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="360,221,539,262"/>
+<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="563,221,753,262"/>
+<area shape="rect" id="node7" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="778,213,976,269"/>
+<area shape="rect" id="node8" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1001,221,1199,262"/>
+<area shape="rect" id="node9" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1223,213,1424,269"/>
+<area shape="rect" id="node10" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1449,221,1591,262"/>
 </map>
