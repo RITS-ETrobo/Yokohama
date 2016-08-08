@@ -33,11 +33,16 @@ class Logger
 {
 public:
     explicit Logger();
-    void initialize();
-    void addLog(uint_t logType, const char* message);
-    void outputLog();
+    virtual void initialize();
+    virtual bool openLog();
+    virtual void addLog(uint_t logType, const char* message);
+    virtual void outputLog();
+    virtual void closeLog();
 
 private:
+    //! ログファイルのファイルポインタ
+    FILE    *fpLog;
+
     //! ログファイルを収めるディレクトリ
     const char*  LOGDIRECTORY_PATH = "/ev3rt/logs";
 

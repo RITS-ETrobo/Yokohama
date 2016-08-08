@@ -1,5 +1,5 @@
 <map id="writeFloatLCD" name="writeFloatLCD">
-<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="163,31,279,57"/>
-<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="328,5,437,32"/>
-<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="331,56,434,83"/>
+<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="161,31,271,57"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="320,5,419,32"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="320,56,419,83"/>
 </map>

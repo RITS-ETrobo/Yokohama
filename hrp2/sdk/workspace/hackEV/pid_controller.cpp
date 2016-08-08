@@ -6,6 +6,7 @@
 
 #include "ev3api.h"
 #include "utilities.h"
+#include "instances.h"
 #include "pid_controller.h"
 #include "LCDController.h"
 

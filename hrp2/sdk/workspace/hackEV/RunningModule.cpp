@@ -6,8 +6,10 @@
 
 #include "ev3api.h"
 #include "utilities.h"
+#include "instances.h"
 #include "pid_controller.h"
 #include "app.h"
+#include "scenarioRunning.h"
 #include "RunningModule.h"
 #include "LCDController.h"
 #include <stdlib.h>
@@ -26,79 +28,6 @@ float sumRightMotorRotate = 0.0F;
 float directionSum = 0.0F;
 //@}
 
-/**
- * @enum runPattern
- * 走行パターン 
- * TRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでpidParameterListのindexと対応する
- *
- * - 左側走行 : [走行体] [//線//]
- * - 右側走行 :          [//線//] [走行体]
- */
-enum runPattern {
-    //! トレースする走行パターン(開始)
-    TRACE_RUN_PATTARN_START = 0,
-
-    //! ライントレースしつつ、直進する
-    TRACE_STRAIGHT = TRACE_RUN_PATTARN_START,
-    
-    //! ライントレースしつつ、直進する（ラインの左側を走行）
-    TRACE_STRAIGHT_LEFT = TRACE_STRAIGHT,
-
-    //! ライントレースしつつ、直進する（ラインの右側を走行）
-    TRACE_STRAIGHT_RIGHT,
-
-    //! ライントレースしつつ、カーブを走る
-    TRACE_CURVE,
-    
-    //! ライントレースしつつ、カーブを走る（ラインの左側を走行）
-    TRACE_CURVE_LEFT = TRACE_CURVE,
-    
-    //! ライントレースしつつ、カーブを走る（ラインの右側を走行）
-    TRACE_CURVE_RIGHT,
-
-    //! トレースする走行パターン(終了)
-    TRACE_RUN_PATTARN_END = TRACE_CURVE_RIGHT,
-
-    //! その場回転
-    PINWHEEL, 
-    
-    //! 片側モーター回転(右回転)
-    ONESIDE_PINWHEEL_RIGHT, 
-    
-    //! 片側モーター回転(左回転)
-    ONESIDE_PINWHEEL_LEFT, 
-
-    //! ライントレースせずに、直進走行する
-    NOTRACE_STRAIGHT,
-    
-    //! トレースするラインを変更する（ライン右側へ変更）
-    SWITCH_SIDE_RIGHT,
-    
-    //! トレースするライン縁を変更する（ライン左側へ変更）
-    SWITCH_SIDE_LEFT
-};
-
-/**
- * PIDパラメータのリスト
- * この配列は、runPatternのTRACE_RUN_PATTARN_STARTからTRACE_RUN_PATTARN_ENDまでと対応する
- */
-const PID_PARAMETER pidParameterList[] = {
-    //! 直進用PIDパラメータ（左側走行）
-    {0.775F, 0.0F, 0.0F},
-    
-    //! 曲線用PIDパラメータ（左側走行）
-    {0.775F, 0.2F, 0.375F},
-    
-    //! 直進用PIDパラメータ（右側走行）
-    {0.775F, 0.0F, 0.375F},
-    
-    //! 直進用PIDパラメータ（右側走行）
-    {0.775F, 0.2F, 0.375F},
-    
-    //! 汎用PIDパラメータ（仮）
-    {0.775F, 0.65F, 0.375F}
-};
-
 std::map<runPattern, PID_PARAMETER> PID_MAP;
 
 /**
@@ -112,151 +41,6 @@ void initialize_run() {
         PID_MAP[(runPattern)i] = pidParameterList[i];
     }
 }
-
-/**
- * @enum scenario_running
- * 走行シナリオ
- */
-typedef struct {
-    //! 出力(-100～+100)
-    int power;
-
-    //! 走行距離[cm]
-    float distance;
-
-    //! 向き。使わない場合は、-1。使う場合は、-360～360
-    int direction;
-
-    //! 走行パターン
-    enum runPattern pattern;
-
-    //! 走行シナリオが完了した時に急停止するか(trueの場合)
-    bool stop;
-} scenario_running;
-
-//! Lコース（スタート～懸賞入口）
-const scenario_running L_Start_Sweepstakes_scenario[] = {
-    {30, 246.0F, -1, TRACE_STRAIGHT_RIGHT, false },
-    {30, 64.5F, -1, TRACE_CURVE_RIGHT, true }
-};
- 
-//! Lコース（懸賞入口～星取り入口）
-const scenario_running L_Sweepstakes_starUP_scenario[] = {
-    {30, 127.5F, -1, TRACE_STRAIGHT, false},
-    {30, 63.5F, -1, TRACE_CURVE, false},
-    {30, 25.0F, -1, TRACE_STRAIGHT, false},
-    {30, 32.5F, -1, TRACE_CURVE, false},
-    {30, 26.7F, -1, TRACE_CURVE, false},
-    {30, 24.0F, -1, TRACE_CURVE, false},
-    {30, 118.5F, -1, TRACE_STRAIGHT, false}
-};
- 
-//! Lコース（星取り）
-const scenario_running L_StarUP_scenario[] = {
-    {30, 20.8F, -1, NOTRACE_STRAIGHT, false},
-    {30, 15.2F, -1, TRACE_STRAIGHT, false},
-    {30, 3.0F, -1, TRACE_STRAIGHT, false},
-    {-30, 39.0F, -1, NOTRACE_STRAIGHT, false}
-};
- 
-//! Lコース（星取り入口～ET相撲）
-const scenario_running L_StarUP_Sumo_scenario[] = {
-    {30, 16.4F, -1, TRACE_CURVE, false},
-    {30, 21.2F, -1, TRACE_CURVE, false},
-    {30, 6.5F, -1, TRACE_CURVE, false},
-    {30, 46.0F, -1, TRACE_STRAIGHT, false},
-    {30, 12.1F, -1, TRACE_CURVE, false},
-    {30, 10.5F, -1, TRACE_CURVE, false}
-};
-
-//! Lコース（ET相撲）※この間にゲーム
-const scenario_running L_Sumo_scenario[] = {
-    {30, 134.2F, -1, TRACE_STRAIGHT, false}
-};
-
-//! Lコース（ET相撲後～懸賞運び入口）
-const scenario_running L_Sumo_kensho_scenario[] = {
-    {30, 26.5F, -1, TRACE_CURVE, false},
-    {30, 24.9F, -1, TRACE_CURVE, false},
-    {30, 17.0F, -1, TRACE_CURVE, false},
-    {30, 67.0F, -1, TRACE_CURVE, false},
-    {30, 127.5F, -1, TRACE_STRAIGHT, false}
-};
-
-//! Lコース（懸賞運び）
-const scenario_running L_kensho_scenario[] = {
-    {30, 22.0F, -1, NOTRACE_STRAIGHT, false},
-    {30, 11.5F, -1, TRACE_STRAIGHT, false},
-    {-30, 11.5F, -1, TRACE_STRAIGHT, false},
-    {-30, 22.0F, -1, NOTRACE_STRAIGHT, true}
-};
-
-//! Lコース（懸賞運び～ゴール）
-const scenario_running L_kensho_Goal_scenario[] = {
-    {30, 64.5F, -1, TRACE_CURVE, false},
-    {30, 250.0F, -1, TRACE_STRAIGHT, false}
-};
-
-//! Rコース(スタート～難所入口)
-const scenario_running R_Start_enterGameArea_scenario[] = {
-    {30, 44.8F, -1, TRACE_STRAIGHT, false},
-    {30, 24.8F, -1, TRACE_CURVE, false}
-};
-
-//! Rコース(難所入口～ゲームエリア入口)
-const scenario_running L_enterGameArea_GameArea_scenario[] = {
-    {30, 37.6F, -1, NOTRACE_STRAIGHT, false}
-};
-
-//! Rコース(ゲームエリア出口～LAP)
-const scenario_running R_exitGameArea_LAP_scenario[] = {
-    {30, 30.4F, -1, TRACE_STRAIGHT, false},
-    {30, 25.8F, -1, TRACE_STRAIGHT, false},
-    {30, 36.6F, -1, TRACE_CURVE, false},
-};
-
-//! Rコース(LAP～GOAL)
-const scenario_running R_LAP_GOAL_scenario[] = {
-    {30, 81.1F, -1, TRACE_STRAIGHT, false},
-    {30, 103.9F, -1, TRACE_STRAIGHT, false},
-    {30, 47.7F, -1, TRACE_CURVE, false},
-    {30, 48.6F, -1, TRACE_CURVE, false},
-    {30, 131.5F, -1, TRACE_STRAIGHT, false},
-    {30, 3.8F, -1, TRACE_CURVE, false},
-    {30, 47.6F, -1, TRACE_CURVE, false},
-    {30, 4.0F, -1, TRACE_CURVE, false},
-    {30, 190.1F, -1, TRACE_STRAIGHT, false},
-    {30, 32.8F, -1, TRACE_CURVE, false},
-    {30, 297.0F, -1, TRACE_STRAIGHT, false},
-};
-
-//! 検証用シナリオ
-const scenario_running run_scenario_test[] = {
-    {60, 41.0F, -1, TRACE_STRAIGHT, false},
-    {30, 43.0F, -1, TRACE_CURVE, false},
-    {60, 40.0F, -1, TRACE_STRAIGHT, false},
-    {30, 195.0F, -1, TRACE_CURVE, false},
-    {60, 0.0F, 360, PINWHEEL, true}
-};
-
-//! 検証用シナリオ（ラインの縁の変更）
-const scenario_running run_scenario_test_switch[] = {
-    {20, 10.0F, -1, TRACE_STRAIGHT_RIGHT, false},
-    {20, 0.0F, -1, SWITCH_SIDE_LEFT, false},
-    {20, 15.0F, -1, SWITCH_SIDE_LEFT, true}
-};
-
-//! 検証用シナリオ(片側回転でのUターン)
-const scenario_running run_scenario_test_UTern[] = {
-    {40, 0.0F, 180, ONESIDE_PINWHEEL_RIGHT, false},
-    {40, 100.0F, -1, NOTRACE_STRAIGHT, false},
-    {40, 100.0F, 180, ONESIDE_PINWHEEL_LEFT, true}
-};
-
-//! 検証用シナリオ(右側走行)
-const scenario_running run_scenario_test_right[] = {
-    {20, 100.0F, -1, TRACE_STRAIGHT, true}
-};
 
 /**
  * @brief   瞬間の走行体の向きを取得する
@@ -449,14 +233,33 @@ void run(scenario_running scenario)
         }
         
         tslp_tsk(1);//この行の必要性については要検証
+<<<<<<< HEAD
 
         //! 瞬間の向きを取得、累積して走行体の向きを計測
         directionSum += getDirectionDelta();   
 
+=======
+        
+        //! 現在の左と右のモーターの走行距離を取得
+        float leftDistance = distance_running(EV3_MOTOR_LEFT);
+        float rightDistance = distance_running(EV3_MOTOR_RIGHT);      
+        
+        char message[16];
+        
+>>>>>>> hackev/cpp/develop
         //! 距離判定の必要性判断
         if (scenario.distance != 0) {
+            float sumDistance = getDistance(rightDistance, leftDistance);
+            
+            //! 距離をログ出力
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",sumDistance);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DISTANCE, message);
+            }
+            
             //! 走行体が指定距離走行したらストップ
-            if(abs(getDistance(rightDistance, leftDistance)) >= abs(scenario.distance)){
+            if(abs(sumDistance) >= abs(scenario.distance)){
                 if(scenario.stop){
                     stop_run();
                     
@@ -469,6 +272,22 @@ void run(scenario_running scenario)
 
                 break;
             }
+        }    
+        
+        //! 瞬間の向きを取得
+        float directionDelta = getDirectionDelta(rightDistance, leftDistance);
+        memset(message, '\0', sizeof(message));
+        sprintf(message, "%02.04f",directionDelta);
+        if (logger) {
+            logger->addLog(LOG_TYPE_DIRECTION, message);
+        }
+        
+        //! 累積して走行体の向きを計測
+        directionSum += directionDelta;
+        memset(message, '\0', sizeof(message));
+        sprintf(message, "%02.04f",directionSum);
+        if (logger) {
+            logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
         }
         
         //! 方向判定の必要性判断
@@ -535,9 +354,9 @@ void start_run_test()
         }
     }
     
-    for (int index = 0; index < sizeof(run_scenario_test_UTern) / sizeof(run_scenario_test_UTern[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_pinWheel) / sizeof(run_scenario_test_pinWheel[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        run(run_scenario_test_UTern[index]);
+        run(run_scenario_test_pinWheel[index]);
     }
 }

@@ -6,6 +6,7 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
     [ "app.h", "d2/d39/app_8h.html", "d2/d39/app_8h" ],
     [ "ArmModule.cpp", "d3/d68/_arm_module_8cpp.html", "d3/d68/_arm_module_8cpp" ],
     [ "ArmModule.h", "d4/d64/_arm_module_8h.html", "d4/d64/_arm_module_8h" ],
+    [ "instances.h", "dd/d3f/instances_8h.html", "dd/d3f/instances_8h" ],
     [ "LCDController.cpp", "df/d88/_l_c_d_controller_8cpp.html", "df/d88/_l_c_d_controller_8cpp" ],
     [ "LCDController.h", "d5/d3c/_l_c_d_controller_8h.html", "d5/d3c/_l_c_d_controller_8h" ],
     [ "Logger.cpp", "de/d27/_logger_8cpp.html", null ],

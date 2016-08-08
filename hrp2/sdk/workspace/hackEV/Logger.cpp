@@ -2,6 +2,7 @@
  * @file    Logger.cpp
  * @brief   This file has Logger class.
   */
+#include <utility>
 #include "Logger.h"
 
 /**
@@ -10,6 +11,7 @@
 */
 Logger::Logger()
     : clock(NULL)
+    , fpLog(NULL)
     , loggerInfo(NULL)
 {
 }
@@ -48,24 +50,54 @@ void Logger::addLog(uint_t logType, const char* message)
 }
 
 /**
+ * @brief   ログファイルを開く
+ * @return  true : 成功
+ * @return  false : 失敗
+*/
+bool Logger::openLog()
+{
+    if (fpLog) {
+        return  true;
+    }
+
+    fpLog = fopen(LOGFILE_NAME, "w+");
+    if (!fpLog) {
+        return  false;
+    }
+
+    return  true;
+}
+
+/**
  * @brief   ログをファイルに出力する
  * @return  なし
 */
 void Logger::outputLog()
 {
-    FILE    *fpLog = fopen(LOGFILE_NAME, "w+");
-    if (fpLog == NULL) {
+    if (!openLog()) {
         return;
     }
 
-    for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
+    vector<USER_LOG> loggerOutput = move(loggerInfo);
+    for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
         char    logLine[64];
         sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
         if (fputs(logLine, fpLog) == EOF) {
             break;
         }
     }
+}
 
-    loggerInfo.clear();
+/**
+ * @brief   ログをファイルに出力する
+ * @return  なし
+*/
+void Logger::closeLog()
+{
+    if (!fpLog) {
+        return;
+    }
+
     fclose(fpLog);
+    fpLog = NULL;
 }

@@ -1,8 +1,8 @@
 <map id="hrp2/sdk/workspace/hackEV/utilities.h" name="hrp2/sdk/workspace/hackEV/utilities.h">
-<area shape="rect" id="node3" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="31,171,143,197"/>
-<area shape="rect" id="node5" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="169,171,291,197"/>
-<area shape="rect" id="node6" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="690,96,766,123"/>
-<area shape="rect" id="node14" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="359,96,479,123"/>
-<area shape="rect" id="node10" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="730,171,837,197"/>
-<area shape="rect" id="node15" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="367,171,471,197"/>
+<area shape="rect" id="node3" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="30,171,132,197"/>
+<area shape="rect" id="node5" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="157,171,272,197"/>
+<area shape="rect" id="node6" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="655,96,727,123"/>
+<area shape="rect" id="node14" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="338,96,453,123"/>
+<area shape="rect" id="node10" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="693,171,792,197"/>
+<area shape="rect" id="node15" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="347,171,445,197"/>
 </map>
