@@ -18,12 +18,6 @@
 
 //! \addtogroup 方向計算要素
 //@{
-//! 左モーターの回転数の合計
-float sumLeftMotorRotate = 0.0F;
-
-//! 右モーターの回転数の合計
-float sumRightMotorRotate = 0.0F;
-
 //! 向きの累積[単位 : 度]
 float directionSum = 0.0F;
 
