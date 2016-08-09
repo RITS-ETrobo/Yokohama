@@ -19,10 +19,10 @@
 //! \addtogroup 方向計算要素
 //@{
 //! 向きの累積[単位 : 度]
-float directionSum = 0.0F;
+float directionTotal = 0.0F;
 
 //! 距離の累積[単位 : cm]
-float distanceSum = 0.0F;
+float distanceTotal = 0.0F;
 //@}
 
 std::map<runPattern, PID_PARAMETER> PID_MAP;
@@ -61,17 +61,17 @@ void getDelta(float *directionDelta, float *distanceDelta)
 */
 float getDistance(float distanceDelta)
 {
-    distanceSum += distanceDelta;
+    distanceTotal += distanceDelta;
 
     if (logger) {
         //! 距離をログ出力
         char message[16];
         memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceSum);
-        logger->addLog(LOG_TYPE_DISTANCE_STORED, message);
+        sprintf(message, "%02.04f",distanceTotal);
+        logger->addLog(LOG_TYPE_DISTANCE_TOTAL, message);
     }
 
-    return  distanceSum;
+    return  distanceTotal;
 }
 
 /**
@@ -81,15 +81,15 @@ float getDistance(float distanceDelta)
 */
 float getDirection(float directionDelta)
 {
-    directionSum += directionDelta;
+    directionTotal += directionDelta;
     if (logger) {
         char message[16];
         memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionSum);
-        logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
+        sprintf(message, "%02.04f",directionTotal);
+        logger->addLog(LOG_TYPE_DIRECTION_TOTAL, message);
     }
 
-    return  directionSum;
+    return  directionTotal;
 }
 
 /**
@@ -122,8 +122,8 @@ void pinWheel(int power){
 void initialize_wheel()
 {
     //! モーターの角位置、向きの累積をリセット
-    directionSum = 0.0F;
-    distanceSum = 0.0F;
+    directionTotal = 0.0F;
+    distanceTotal = 0.0F;
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
 }
@@ -275,7 +275,7 @@ void run(scenario_running scenario)
             getDistance(distanceDelta);
 
             //! 走行体が指定距離走行したらストップ
-            if(abs(distanceSum) >= abs(scenario.distance)){
+            if(abs(distanceTotal) >= abs(scenario.distance)){
                 if(scenario.stop){
                     stop_run();
                 }
@@ -298,12 +298,12 @@ void run(scenario_running scenario)
         //! 方向判定の必要性判断
         if (scenario.direction != -1) {
             //! 走行体が指定した向きになったらストップ
-            if(abs(directionSum) >= abs(scenario.direction)){
+            if(abs(directionTotal) >= abs(scenario.direction)){
                 if(scenario.stop){
                     stop_run();
                     
                     //! 走行体の向きをLCDに表示
-                    writeFloatLCD(directionSum);                
+                    writeFloatLCD(directionTotal);                
                 }
 
                 break;
