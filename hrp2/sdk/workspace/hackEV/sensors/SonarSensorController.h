@@ -14,6 +14,8 @@ extern "C" {
 //  関数のプロトタイプ宣言
 extern void	initialize_sonarsensor();
 extern void control_sonarsensor();
+extern void record_Sonar();
+extern void sensing_sonar_for_Time(int stayTime);
 
 extern void setEnabledSonarSensor(bool _enabledSonarSensor);
 

@@ -39,6 +39,9 @@ const uint_t LOG_TYPE_DIRECTION_STORED = 0x85;
 
 //! ジャイロ
 const uint_t LOG_TYPE_GYRO = 0x86;
+
+//! 超音波
+const uint_t LOG_TYPE_SONAR = 0x87;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -65,6 +68,7 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_DIRECTION] = "Direction";
     LOG_TYPE_MAP[LOG_TYPE_DIRECTION_STORED] = "Direction(Stored)";
     LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
+    LOG_TYPE_MAP[LOG_TYPE_SONAR] = "Sonar";
 }
 
 /**

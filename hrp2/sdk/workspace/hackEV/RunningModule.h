@@ -11,3 +11,5 @@
 extern void	initialize_run();
 extern void start_run();
 extern void start_run_test();
+extern void start_run_test_foward();
+extern void start_run_test_back();

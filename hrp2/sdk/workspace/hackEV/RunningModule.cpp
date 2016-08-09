@@ -297,26 +297,26 @@ void run(scenario_running scenario)
 
                 break;
             }
-        }    
-        
-        //! 瞬間の向きを取得
-        float directionDelta = getDirectionDelta(rightDistance, leftDistance);
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionDelta);
-        if (logger) {
-            logger->addLog(LOG_TYPE_DIRECTION, message);
-        }
-        
-        //! 累積して走行体の向きを計測
-        directionSum += directionDelta;
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionSum);
-        if (logger) {
-            logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
         }
         
         //! 方向判定の必要性判断
         if (scenario.direction != -1) {
+            //! 瞬間の向きを取得
+            float directionDelta = getDirectionDelta(rightDistance, leftDistance);
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",directionDelta);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DIRECTION, message);
+            }
+            
+            //! 累積して走行体の向きを計測
+            directionSum += directionDelta;
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%02.04f",directionSum);
+            if (logger) {
+                logger->addLog(LOG_TYPE_DIRECTION_STORED, message);
+            }
+
             //! 走行体が指定した向きになったらストップ
             if(abs(directionSum) >= abs(scenario.direction)){
                 if(scenario.stop){
@@ -383,5 +383,48 @@ void start_run_test()
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
         run(run_scenario_test_pinWheel[index]);
+    }
+}
+
+/**
+ * @brief   新幹線まで走る
+ *
+ * @return  なし
+*/
+void start_run_test_foward()
+{
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    for (;;) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            break;
+        }
+    }
+    
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
+        //! シナリオが変わるたびに音を鳴らす
+        ev3_speaker_play_tone(NOTE_E4, 100);
+        run(run_scenario_test_straght_NoTrace[index]);
+    }
+}
+
+/**
+ * @brief   新幹線の位置からもどる
+ *
+ * @return  なし
+*/
+void start_run_test_back()
+{
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    tslp_tsk(100);
+    ev3_speaker_play_tone(NOTE_E6, 100);
+    
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace_back) / sizeof(run_scenario_test_straght_NoTrace_back[0]); index++) {
+        //! シナリオが変わるたびに音を鳴らす
+        ev3_speaker_play_tone(NOTE_E4, 100);
+        run(run_scenario_test_straght_NoTrace_back[index]);
     }
 }

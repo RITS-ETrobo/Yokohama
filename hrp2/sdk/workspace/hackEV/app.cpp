@@ -69,12 +69,22 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case RIGHT_BUTTON:
-        //! 本体の右ボタンで超音波モード
-        writeStringLCD("RIGHT button click");
-        syslog(LOG_NOTICE, "RIGHT button clicked.");
+        // //! 本体の右ボタンで超音波モード
+        // writeStringLCD("RIGHT button click");
+        // syslog(LOG_NOTICE, "RIGHT button clicked.");
 
-        //! 超音波制御
-        control_sonarsensor();        
+        // //! 超音波制御
+        // control_sonarsensor();
+
+        //! 新幹線の位置まで前進
+        start_run_test_foward();
+
+        //! 指定した時間超音波測定する(秒)
+        sensing_sonar_for_Time(5);
+
+        //! 新幹線の位置から後退
+        start_run_test_back();
+
         break;
 
     case UP_BUTTON:

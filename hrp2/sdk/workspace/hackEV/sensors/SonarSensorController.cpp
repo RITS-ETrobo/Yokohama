@@ -9,6 +9,10 @@
 #include "pid_controller.h"
 #include "app.h"
 #include "SonarSensorController.h"
+#include <time.h>
+#include <stdio.h>
+#include "Clock.h"
+#include <vector>
 
 
 static bool enabledSonarSensor = true;
@@ -64,6 +68,41 @@ void sensing_sonar(){
             sensing_sonar(LED_OFF, duration);
         }
     }
+}
+
+/**
+ * @brief   超音波による距離測定
+ *
+ * @return  なし
+*/
+void record_Sonar(){
+    int16_t distance= ev3_ultrasonic_sensor_get_distance(EV3_SENSOR_SONAR);
+
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%d",distance);
+    if (logger) {
+        logger->addLog(LOG_TYPE_SONAR, message);
+    }
+}
+
+/**
+ * @brief   指定した時間超音波センサで測定
+ *
+ * @param time 測定する時間[秒]
+ * @return  なし
+*/
+void sensing_sonar_for_Time(int stayTime){
+    for(int i = 0; i < (stayTime*10); i++){
+        //! 超音波測定と記録
+        record_Sonar();
+
+        //! 0.1秒間隔で取得
+        tslp_tsk(100);
+    }
+
+    //! 終了合図
+    ev3_speaker_play_tone(NOTE_E6, 100);
 }
 
 /**
