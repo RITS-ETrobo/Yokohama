@@ -10,7 +10,7 @@
 
 #include "portSettings.h"
 
-//! Class for logging
+//! Class for MotorWheel
 class MotorWheel
 {
 public:

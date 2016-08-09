@@ -6,7 +6,7 @@
 #include "wheelSettings.h"
 #include "utilities.h"
 
-//! Class for logging
+//! Class for MotorWheel
 MotorWheel::MotorWheel(motor_port_t portMotor_)
     : portMotor(portMotor_)
     , distance(0.0F)
