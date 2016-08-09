@@ -5,13 +5,10 @@
 #pragma once
 
 #include "Logger.h"
-#include "MotorWheel.h"
+#include "DriveController.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
 
-//! 左ホイールクラスのインスタンス
-extern MotorWheel *motorWheelLeft;
-
-//! 右ホイールクラスのインスタンス
-extern MotorWheel *motorWheelRight;
+//! DriveControllerクラスのインスタンス
+extern DriveController* driveController;

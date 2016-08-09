@@ -2,17 +2,19 @@
  * @file    utilities.h
  * @brief   This file has the declarations of utilitiy functions and defines.
  */
-
 #pragma once
+
+#include <map>
 
 //! ターゲット依存の定義
 #include "target_test.h"
 
 #include "portSettings.h"
 #include "wheelSettings.h"
+#include "runPattern.h"
+#include "parameterPID.h"
 
 #include "MotorWheel.h"
-
 #include "Logger.h"
 #include "LCDController.h"
 
@@ -30,3 +32,4 @@ extern void configure_motors();
 extern void configure_sensors();
 extern int calibrate_light_intensity();
 extern void writeFloatLCD(float value);
+extern std::map<runPattern, PID_PARAMETER> PID_MAP;
