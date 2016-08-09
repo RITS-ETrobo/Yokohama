@@ -30,14 +30,17 @@ extern const uint_t LOG_TYPE_COLOR;
 //! 色(白黒)に関するログ
 extern const uint_t LOG_TYPE_COLOR_BW;
 
-//! 距離
+//! 距離(瞬間)
 extern const uint_t LOG_TYPE_DISTANCE;
+
+//! 距離(累積)
+extern const uint_t LOG_TYPE_DISTANCE_TOTAL;
 
 //! 角度(瞬間)
 extern const uint_t LOG_TYPE_DIRECTION;
 
 //! 角度(累積)
-extern const uint_t LOG_TYPE_DIRECTION_STORED;
+extern const uint_t LOG_TYPE_DIRECTION_TOTAL;
 
 //! ジャイロ
 extern const uint_t LOG_TYPE_GYRO;
