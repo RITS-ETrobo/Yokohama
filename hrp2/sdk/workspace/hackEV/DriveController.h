@@ -19,7 +19,12 @@ public:
     explicit DriveController();
 
     virtual bool initialize();
+    virtual void run(scenario_running scenario);
     virtual ER stop(bool_t brake = true);
+
+protected:
+    virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
+    virtual bool stopByDirection(scenario_running scenario, float directionDelta);
     virtual void getDelta(float *directionDelta, float *distanceDelta);
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);

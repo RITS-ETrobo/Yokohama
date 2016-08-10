@@ -25,7 +25,6 @@ DriveController::DriveController()
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
 {
-
 }
 
 /**
@@ -58,6 +57,38 @@ bool DriveController::initialize()
 }
 
 /**
+ * @brief   シナリオに従って走る
+ * @param   [in] scenario 走行パラメータ
+ * @return  なし
+*/
+void DriveController::run(scenario_running scenario)
+{
+    //! モーターの回転角、距離、方向を0に戻す
+    initialize();
+
+    //! ストップ監視しつつ、走行
+    for (;;) {
+        //! 走行
+        if (runAsPattern(scenario)) {
+            return;
+        }
+
+        tslp_tsk(1);//この行の必要性については要検証
+
+        float   distanceDelta = 0.0F;
+        float   directionDelta = 0.0F;
+        getDelta(&directionDelta, &distanceDelta);
+        if (stopByDistance(scenario, distanceDelta)) {
+            return;
+        }
+
+        if (stopByDirection(scenario, distanceDelta)) {
+            return;
+        }
+    }
+}
+
+/**
  * @brief 	     モータを停止する
  * @param  brake ブレーキモードの指定，@a true （ブレーキモード）, @a false （フロートモード）
  * @retval E_OK  正常終了
@@ -66,6 +97,8 @@ bool DriveController::initialize()
  */
 ER DriveController::stop(bool_t brake /*= true*/)
 {
+    ev3_speaker_play_tone(NOTE_E6, 100);
+
     ER  resultLeft = motorWheelLeft->stop(brake);
     ER  resultRight = motorWheelRight->stop(brake);
 
@@ -76,6 +109,9 @@ ER DriveController::stop(bool_t brake /*= true*/)
     if (resultLeft == E_OK) {
         return  resultRight;
     }
+
+    writeFloatLCD(distanceTotal);
+    writeFloatLCD(directionTotal);
 
     return  resultLeft;
 }
@@ -149,8 +185,8 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     case NOTRACE_STRAIGHT:
         //! ライントレースせずに、直進走行する
-        ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
-        ev3_motor_set_power(EV3_MOTOR_RIGHT, scenario.power);
+        motorWheelLeft->run(scenario.power);
+        motorWheelRight->run(scenario.power);
         break;
 
     case SWITCH_SIDE_RIGHT:
@@ -161,13 +197,13 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     case ONESIDE_PINWHEEL_RIGHT:
         //! 右回転(左タイヤのみ回転)
-        ev3_motor_set_power(EV3_MOTOR_LEFT, scenario.power);
+        motorWheelLeft->run(scenario.power);
         motorWheelRight->stop();
         break;
 
     case ONESIDE_PINWHEEL_LEFT:
         //! 左回転(右タイヤのみ回転)
-        ev3_motor_set_power(EV3_MOTOR_RIGHT, scenario.power);
+        motorWheelRight->run(scenario.power);
         motorWheelLeft->stop();
         break;
 
@@ -191,23 +227,21 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
 /**
  * @brief   その場回転
- * 
  * @return  なし
  */
 void DriveController::pinWheel(int power)
 {
-    ev3_motor_set_power(EV3_MOTOR_LEFT, (-power));
-    ev3_motor_set_power(EV3_MOTOR_RIGHT, power);
+    motorWheelLeft->run((-power));
+    motorWheelRight->run(power);
 }
 
 /**
  * @brief   ラインの縁の変更処理
- * 
- * @enum LineSide targetSide 移動させたい縁
+ * @param   scenario    走行シナリオ
  * @return  なし
  */
 void DriveController::change_LineSide(scenario_running scenario)
-{   
+{
     //! 最初に回転するタイヤ
     motor_port_t firstMoveWheel;
 
@@ -275,4 +309,56 @@ void DriveController::change_LineSide(scenario_running scenario)
             break;
         }
     } 
+}
+
+/**
+ * @brief   指定した距離を走行していた場合、走行体を停止させる
+ * @param   scenario    走行シナリオ
+ * @param   distanceDelta   走行距離の増分
+ * @return  true : 停止可能
+ * @return  false : 停止不可能
+ */
+bool DriveController::stopByDistance(scenario_running scenario, float distanceDelta)
+{
+    if (scenario.distance <= 0) {
+        return  false;
+    }
+
+    //! 走行体が指定距離走行したらストップ
+    float   distanceTotal = getDistance(distanceDelta);
+    if (abs(distanceTotal) >= abs(scenario.distance)) {
+        if (scenario.stop) {
+            stop();
+        }
+
+        return  true;
+    }    
+
+    return  false;
+}
+
+/**
+ * @brief   指定した角度だった場合、走行体を停止させる
+ * @param   scenario    走行シナリオ
+ * @param   directionDelta   角度の増分
+ * @return  true : 停止可能
+ * @return  false : 停止不可能
+ */
+bool DriveController::stopByDirection(scenario_running scenario, float directionDelta)
+{
+    if (scenario.direction == -1) {
+        return  false;
+    }
+
+    //! 走行体が指定した向きになったらストップ
+    float   directionTotal = getDirection(directionDelta);
+    if (abs(directionTotal) >= abs(scenario.direction)) {
+        if(scenario.stop){
+            stop();
+        }
+
+        return  true;
+    }
+
+    return  false;
 }

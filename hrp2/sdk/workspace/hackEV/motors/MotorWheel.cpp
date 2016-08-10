@@ -28,6 +28,18 @@ void MotorWheel::initialize()
  * @retval E_ID  不正のモータポート番号
  * @retval E_OBJ モータ未接続
  */
+ER MotorWheel::run(int power)
+{
+    return  ev3_motor_set_power(portMotor, power);
+}
+
+/**
+ * @brief 	     モータを停止する
+ * @param  brake ブレーキモードの指定，@a true （ブレーキモード）, @a false （フロートモード）
+ * @retval E_OK  正常終了
+ * @retval E_ID  不正のモータポート番号
+ * @retval E_OBJ モータ未接続
+ */
 ER MotorWheel::stop(bool_t brake /*= true*/)
 {
     writeFloatLCD(distance);
