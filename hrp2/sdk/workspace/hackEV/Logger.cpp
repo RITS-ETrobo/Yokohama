@@ -84,7 +84,7 @@ void Logger::outputLog()
 }
 
 /**
- * @brief   ログをファイルに出力する
+ * @brief   ログファイルにクローズする
  * @return  なし
 */
 void Logger::closeLog()
