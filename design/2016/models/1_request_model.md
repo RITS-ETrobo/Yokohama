@@ -23,3 +23,4 @@
 ## 資料
 * [要求定義](http://e-words.jp/w/%E8%A6%81%E6%B1%82%E5%AE%9A%E7%BE%A9.html)
 * [エンタプライズ系事業/非機能要求グレード：IPA 独立行政法人 情報処理推進機構](http://www.ipa.go.jp/sec/softwareengineering/std/ent03-b.html)
+* [「SysMLを活用した要求分析」 | 株式会社オージス総研](http://www.ogis-ri.co.jp/rad/webmaga/rwm20101005.html)
