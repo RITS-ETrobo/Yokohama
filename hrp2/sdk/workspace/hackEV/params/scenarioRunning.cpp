@@ -144,3 +144,8 @@ const scenario_running run_scenario_test_straght[1] = {
 const scenario_running run_scenario_test_straght_NoTrace[1] = {
     {30, 100.0F, -1, NOTRACE_STRAIGHT, true}
 };
+
+//! 検証用シナリオ(30m直進・ログ監視タスク評価用)
+const scenario_running run_scenario_straight_30m[1] = {
+    {100, 3000.0F, -1, TRACE_STRAIGHT, true}
+};
