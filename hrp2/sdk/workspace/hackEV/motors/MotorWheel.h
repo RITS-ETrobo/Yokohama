@@ -17,6 +17,7 @@ public:
     explicit MotorWheel(motor_port_t portMotor);
 
     virtual void initialize();
+    virtual ER run(int power);
     virtual ER stop(bool_t brake = true);
 
     virtual void updateDistance(); 

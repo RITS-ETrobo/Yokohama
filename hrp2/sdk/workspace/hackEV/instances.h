@@ -5,17 +5,14 @@
 #pragma once
 
 #include "Logger.h"
-#include "MotorWheel.h"
+#include "DriveController.h"
 #include "Clock.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
 
+//! DriveControllerクラスのインスタンス
+extern DriveController* driveController;
+
 //! Clockクラスのインスタンス
 extern Clock    *clock;
-
-//! 左ホイールクラスのインスタンス
-extern MotorWheel   *motorWheelLeft;
-
-//! 右ホイールクラスのインスタンス
-extern MotorWheel   *motorWheelRight;

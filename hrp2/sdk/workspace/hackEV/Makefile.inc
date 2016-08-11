@@ -23,6 +23,7 @@ APPL_CXXOBJS += \
     gyroboy.o \
     ColorSensorController.o \
     MotorWheel.o \
+    DriveController.o \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \

@@ -13,6 +13,7 @@
 #include "SonarSensorController.h"
 #include "RunningModule.h"
 #include "Logger.h"
+#include "DriveController.h"
 #include "ArmModule.h"
 #include "ColorSensorController.h"
 
@@ -23,14 +24,11 @@ void *__dso_handle=0;
 //! ログクラスのインスタンス
 Logger *logger = NULL;
 
+//! DriveControllerクラスのインスタンス
+DriveController*    driveController = NULL;
+
 //! Clockクラスのインスタンス
 Clock   *clock = NULL;
-
-//! 左ホイールクラスのインスタンス
-MotorWheel  *motorWheelLeft = NULL;
-
-//! 右ホイールクラスのインスタンス
-MotorWheel  *motorWheelRight = NULL;
 
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
@@ -147,17 +145,20 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
-    setFontSize(EV3_FONT_MEDIUM);
-
     writeStringLCD("Start Initializing");
 
+    setFontSize(EV3_FONT_MEDIUM);
+
     logger = new Logger();
+    driveController = new DriveController();
     clock = new Clock();
-    motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
-    motorWheelRight = new MotorWheel(EV3_MOTOR_RIGHT);
 
     if (logger) {
         logger->initialize();
+    }
+
+    if (driveController) {
+        driveController->initialize();
     }
 
     if (clock) {

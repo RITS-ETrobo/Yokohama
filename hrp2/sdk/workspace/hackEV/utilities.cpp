@@ -6,6 +6,8 @@
 #include "ev3api.h"
 #include "utilities.h"
 
+std::map<runPattern, PID_PARAMETER> PID_MAP;
+
 /**
  * @brief   LCDに数値を表示させる
  * 
