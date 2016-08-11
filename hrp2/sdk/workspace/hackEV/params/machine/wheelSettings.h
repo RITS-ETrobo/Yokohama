@@ -15,4 +15,7 @@ extern const float EV3_WHEEL_DIAMETER;
 
 //! 左右のタイヤ間のトレッド[単位 : cm]
 extern const float EV3_TREAD;
+
+//! 円周率
+extern const float Pi;
 //@}

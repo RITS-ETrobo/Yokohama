@@ -11,6 +11,8 @@
 #include "portSettings.h"
 #include "wheelSettings.h"
 
+#include "MotorWheel.h"
+
 #include "Logger.h"
 #include "LCDController.h"
 

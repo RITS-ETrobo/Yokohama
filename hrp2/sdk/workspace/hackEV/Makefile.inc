@@ -8,6 +8,7 @@ APPL_COBJS +=
 # - 定義
 # - Utilities
 # - Sensors
+# - Motors
 # - Others
 APPL_CXXOBJS += \
     logSettings.o \
@@ -21,6 +22,7 @@ APPL_CXXOBJS += \
     SonarSensorController.o \
     gyroboy.o \
     ColorSensorController.o \
+    MotorWheel.o \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \
@@ -37,10 +39,12 @@ endif
 
 APPL_DIR += \
     $(mkfile_path)sensors \
+    $(mkfile_path)motors \
     $(mkfile_path)params \
     $(mkfile_path)params/machine
 
 INCLUDES += \
     -I$(mkfile_path)sensors \
+    -I$(mkfile_path)motors \
     -I$(mkfile_path)params \
     -I$(mkfile_path)params/machine

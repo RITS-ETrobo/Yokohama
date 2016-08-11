@@ -130,19 +130,23 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="../../d3/d42/class_logger.html">Logger</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> addLog(uint_t logType, <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> outputLog();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGDIRECTORY_PATH = <span class="stringliteral">&quot;/ev3rt/logs&quot;</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME = <span class="stringliteral">&quot;hackEV_log.csv&quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Clock*  clock;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    vector&lt;USER_LOG&gt; loggerInfo;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> initialize();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> openLog();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> addLog(uint_t logType, <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> outputLog();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> closeLog();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    FILE    *fpLog;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGDIRECTORY_PATH = <span class="stringliteral">&quot;/ev3rt/logs&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME = <span class="stringliteral">&quot;hackEV_log.csv&quot;</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Clock*  clock;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    vector&lt;USER_LOG&gt; loggerInfo;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
 <div class="ttc" id="struct_u_s_e_r___l_o_g_html_ae234de4c1708a8643f64f494fcb5d27f"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">USER_LOG::logTime</a></div><div class="ttdeci">SYSTIM logTime</div><div class="ttdoc">ログ時刻 </div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
 <div class="ttc" id="class_logger_html"><div class="ttname"><a href="../../d3/d42/class_logger.html">Logger</a></div><div class="ttdoc">Class for logging. </div><div class="ttdef"><b>Definition:</b> Logger.h:32</div></div>
 <div class="ttc" id="struct_u_s_e_r___l_o_g_html"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html">USER_LOG</a></div><div class="ttdoc">ログに出力する情報 </div><div class="ttdef"><b>Definition:</b> Logger.h:20</div></div>
@@ -154,7 +158,7 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../d6/dec/_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Mon Aug 1 2016 14:43:45 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Aug 8 2016 23:23:38 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
