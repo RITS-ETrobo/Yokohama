@@ -28,6 +28,9 @@ Logger *logger = NULL;
 //! DriveControllerクラスのインスタンス
 DriveController*    driveController = NULL;
 
+//! Clockクラスのインスタンス
+Clock   *clock = NULL;
+
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
 
@@ -137,10 +140,13 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
+    writeStringLCD("Start Initializing");
+
     setFontSize(EV3_FONT_MEDIUM);
 
     logger = new Logger();
     driveController = new DriveController();
+    clock = new Clock();
 
     if (logger) {
         logger->initialize();
@@ -150,7 +156,10 @@ void main_task(intptr_t unused) {
         driveController->initialize();
     }
 
-    writeStringLCD("Start Initializing");
+    if (clock) {
+        clock->reset();
+    }
+
     if (logger) {
         logger->addLog(LOG_NOTICE, "Start Initializing");
     }

@@ -3,6 +3,7 @@
  * @brief   This file has Logger class.
   */
 #include <utility>
+#include <instances.h>
 #include "Logger.h"
 
 /**
@@ -10,8 +11,7 @@
  * @return  なし
 */
 Logger::Logger()
-    : clock(NULL)
-    , fpLog(NULL)
+    : fpLog(NULL)
     , loggerInfo(NULL)
 {
 }
@@ -22,11 +22,6 @@ Logger::Logger()
 */
 void Logger::initialize()
 {
-    clock = new Clock();
-    if (clock) {
-        clock->reset();
-    }
-
     initialize_logSetting();
 }
 
