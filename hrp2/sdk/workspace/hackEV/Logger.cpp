@@ -13,6 +13,7 @@
 Logger::Logger()
     : fpLog(NULL)
     , loggerInfo(NULL)
+    , enabled(false)
 {
 }
 
@@ -23,6 +24,25 @@ Logger::Logger()
 void Logger::initialize()
 {
     initialize_logSetting();
+}
+
+/**
+ * @brief   ログを出力可能な状態かを更新する
+ * @param   enabled_    ログを出力するかどうか
+ * @return  なし
+*/
+void Logger::setEnabled(bool enabled_)
+{
+    enabled = enabled_;
+}
+
+/**
+ * @brief   ログを出力可能な状態かを取得する
+ * @return  true : ログ出力可能 false : ログ出力不可能
+*/
+bool Logger::isEnabled()
+{
+    return  enabled;
 }
 
 /**
@@ -69,6 +89,10 @@ bool Logger::openLog()
 */
 void Logger::outputLog()
 {
+    if (!isEnabled()) {
+        return;
+    }
+
     if (!openLog()) {
         return;
     }

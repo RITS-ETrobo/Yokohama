@@ -38,6 +38,8 @@ public:
     virtual void addLog(uint_t logType, const char* message);
     virtual void outputLog();
     virtual void closeLog();
+    virtual void setEnabled(bool enabled = true);
+    virtual bool isEnabled();
 
 private:
     //! ログファイルのファイルポインタ
@@ -51,4 +53,7 @@ private:
 
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;
+
+    //! ログを出力できるかどうか
+    bool enabled;
 };
