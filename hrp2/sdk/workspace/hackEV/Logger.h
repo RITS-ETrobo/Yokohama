@@ -51,4 +51,7 @@ private:
 
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;
+
+    //! ヘッダーを出力したかどうか
+    bool    outputHeader;
 };

@@ -13,6 +13,7 @@
 Logger::Logger()
     : fpLog(NULL)
     , loggerInfo(NULL)
+    , outputHeader(false)
 {
 }
 
@@ -75,6 +76,11 @@ void Logger::outputLog()
 
     vector<USER_LOG> loggerOutput = move(loggerInfo);
     for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
+        if (!outputHeader) {
+            fputs("Duration,Type,Value1,Value2,Value3", fpLog);
+            outputHeader = true;
+        }
+
         char    logLine[64];
         sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
         if (fputs(logLine, fpLog) == EOF) {
