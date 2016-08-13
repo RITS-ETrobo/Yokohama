@@ -77,7 +77,7 @@ void Logger::outputLog()
     vector<USER_LOG> loggerOutput = move(loggerInfo);
     for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
         if (!outputHeader) {
-            fputs("Duration,Type,Value1,Value2,Value3", fpLog);
+            fputs("Duration(ms),Type,Value1,Value2,Value3", fpLog);
             outputHeader = true;
         }
 
