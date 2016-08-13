@@ -31,7 +31,7 @@ void Logger::initialize()
  * @param   enabled_    ログを出力するかどうか
  * @return  なし
 */
-void Logger::setEnabled(bool enabled_)
+void Logger::setEnabled(bool enabled_ /*= true*/)
 {
     enabled = enabled_;
 }
@@ -87,23 +87,25 @@ bool Logger::openLog()
  * @brief   ログをファイルに出力する
  * @return  なし
 */
-void Logger::outputLog()
+void Logger::outputLog(bool doClosingLog /*= false*/)
 {
-    if (!isEnabled()) {
-        return;
-    }
-
-    if (!openLog()) {
-        return;
-    }
-
-    vector<USER_LOG> loggerOutput = move(loggerInfo);
-    for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
-        char    logLine[64];
-        sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
-        if (fputs(logLine, fpLog) == EOF) {
-            break;
+    if (isEnabled()) {
+        if (!openLog()) {
+            return;
         }
+
+        vector<USER_LOG> loggerOutput = move(loggerInfo);
+        for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
+            char    logLine[64];
+            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
+            if (fputs(logLine, fpLog) == EOF) {
+                break;
+            }
+        }
+    }
+
+    if (doClosingLog) {
+        closeLog();
     }
 }
 
@@ -119,4 +121,6 @@ void Logger::closeLog()
 
     fclose(fpLog);
     fpLog = NULL;
+
+    setEnabled(false);
 }

@@ -131,9 +131,7 @@ static void button_clicked_handler(intptr_t button) {
     }
 
     if (logger) {
-        logger->outputLog();
-        logger->closeLog();
-        logger->setEnabled(false);
+        logger->outputLog(true);
     }
 }
 
