@@ -142,9 +142,9 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
-    writeStringLCD("Start Initializing");
-
     setFontSize(EV3_FONT_MEDIUM);
+
+    writeStringLCD("Start Initializing");
 
     logger = new Logger();
     driveController = new DriveController();
