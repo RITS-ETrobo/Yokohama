@@ -82,7 +82,7 @@ void DriveController::run(scenario_running scenario)
             return;
         }
 
-        if (stopByDirection(scenario, distanceDelta)) {
+        if (stopByDirection(scenario, directionDelta)) {
             return;
         }
     }
