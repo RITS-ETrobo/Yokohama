@@ -82,7 +82,7 @@ void DriveController::run(scenario_running scenario)
             return;
         }
 
-        if (stopByDirection(scenario, distanceDelta)) {
+        if (stopByDirection(scenario, directionDelta)) {
             return;
         }
     }
@@ -183,12 +183,6 @@ bool DriveController::runAsPattern(scenario_running scenario)
         pinWheel(scenario.power);
         break;
 
-    case NOTRACE_STRAIGHT:
-        //! ライントレースせずに、直進走行する
-        motorWheelLeft->run(scenario.power);
-        motorWheelRight->run(scenario.power);
-        break;
-
     case SWITCH_SIDE_RIGHT:
     case SWITCH_SIDE_LEFT:
         //! ライントレースする縁を変更
@@ -207,18 +201,10 @@ bool DriveController::runAsPattern(scenario_running scenario)
         motorWheelLeft->stop();
         break;
 
-    case TRACE_STRAIGHT_RIGHT:
-    case TRACE_CURVE_RIGHT:
-        {
-            //! ライン右側をトレース
-            float pidValueForRight = (-pid_controller(PID_MAP[scenario.pattern]));
-            ev3_motor_steer(EV3_MOTOR_LEFT, EV3_MOTOR_RIGHT, scenario.power, pidValueForRight);
-        }
-        break;
-
     default:
-        //! ライン左側をトレース
-        ev3_motor_steer(EV3_MOTOR_LEFT, EV3_MOTOR_RIGHT, scenario.power, pid_controller(PID_MAP[scenario.pattern]));
+        //! ライントレースせずに、直進走行する
+        motorWheelLeft->run(scenario.power);
+        motorWheelRight->run(scenario.power);
         break;
     }
 
