@@ -13,6 +13,7 @@
 Logger::Logger()
     : fpLog(NULL)
     , loggerInfo(NULL)
+    , enabled(false)
     , outputHeader(false)
 {
 }
@@ -24,6 +25,25 @@ Logger::Logger()
 void Logger::initialize()
 {
     initialize_logSetting();
+}
+
+/**
+ * @brief   ログを出力可能な状態かを更新する
+ * @param   enabled_    ログを出力するかどうか
+ * @return  なし
+*/
+void Logger::setEnabled(bool enabled_ /*= true*/)
+{
+    enabled = enabled_;
+}
+
+/**
+ * @brief   ログを出力可能な状態かを取得する
+ * @return  true : ログ出力可能 false : ログ出力不可能
+*/
+bool Logger::isEnabled()
+{
+    return  enabled;
 }
 
 /**
@@ -56,7 +76,7 @@ bool Logger::openLog()
         return  true;
     }
 
-    fpLog = fopen(LOGFILE_NAME, "w+");
+    fpLog = fopen(LOGFILE_NAME, "a+");
     if (!fpLog) {
         return  false;
     }
@@ -68,24 +88,30 @@ bool Logger::openLog()
  * @brief   ログをファイルに出力する
  * @return  なし
 */
-void Logger::outputLog()
+void Logger::outputLog(bool doClosingLog /*= false*/)
 {
-    if (!openLog()) {
-        return;
+    if (isEnabled()) {
+        if (!openLog()) {
+            return;
+        }
+
+        vector<USER_LOG> loggerOutput = move(loggerInfo);
+        for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
+            if (!outputHeader) {
+                fputs("Duration(ms),Type,Value1,Value2,Value3\r\n", fpLog);
+                outputHeader = true;
+            }
+
+            char    logLine[64];
+            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
+            if (fputs(logLine, fpLog) == EOF) {
+                break;
+            }
+        }
     }
 
-    vector<USER_LOG> loggerOutput = move(loggerInfo);
-    for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
-        if (!outputHeader) {
-            fputs("Duration(ms),Type,Value1,Value2,Value3\r\n", fpLog);
-            outputHeader = true;
-        }
-
-        char    logLine[64];
-        sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
-        if (fputs(logLine, fpLog) == EOF) {
-            break;
-        }
+    if (doClosingLog) {
+        closeLog();
     }
 }
 
@@ -101,4 +127,6 @@ void Logger::closeLog()
 
     fclose(fpLog);
     fpLog = NULL;
+
+    setEnabled(false);
 }

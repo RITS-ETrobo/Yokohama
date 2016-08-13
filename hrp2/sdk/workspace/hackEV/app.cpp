@@ -33,9 +33,6 @@ Clock   *clock = NULL;
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
 
-//! ログタスク開始フラグ
-static bool permitOutputLog = false;
-
 /**
  * @brief   緊急停止
  *
@@ -58,7 +55,9 @@ void stop_emergency(){
  * @return  なし
 */
 static void button_clicked_handler(intptr_t button) {
-    permitOutputLog = true;
+    if (logger) {
+        logger->setEnabled();
+    }
 
     switch(button) {
     case BACK_BUTTON:
@@ -132,10 +131,8 @@ static void button_clicked_handler(intptr_t button) {
     }
 
     if (logger) {
-        logger->outputLog();
-        logger->closeLog();
+        logger->outputLog(true);
     }
-    permitOutputLog = false;
 }
 
 /**
@@ -145,9 +142,9 @@ static void button_clicked_handler(intptr_t button) {
  * @return  なし
 */
 void main_task(intptr_t unused) {
-    writeStringLCD("Start Initializing");
-
     setFontSize(EV3_FONT_MEDIUM);
+
+    writeStringLCD("Start Initializing");
 
     logger = new Logger();
     driveController = new DriveController();
@@ -216,10 +213,6 @@ void main_task(intptr_t unused) {
 void log_monitoring_task(intptr_t exinf)
 {
     if (logger == NULL) {
-        return;
-    }
-
-    if (permitOutputLog == false) {
         return;
     }
 

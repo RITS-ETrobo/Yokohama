@@ -36,7 +36,11 @@ public:
     virtual void initialize();
     virtual bool openLog();
     virtual void addLog(uint_t logType, const char* message);
-    virtual void outputLog();
+    virtual void outputLog(bool doClosingLog = false);
+    virtual void setEnabled(bool enabled_ = true);
+
+protected:
+    virtual bool isEnabled();
     virtual void closeLog();
 
 private:
@@ -51,6 +55,9 @@ private:
 
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;
+
+    //! ログを出力できるかどうか
+    bool enabled;
 
     //! ヘッダーを出力したかどうか
     bool    outputHeader;
