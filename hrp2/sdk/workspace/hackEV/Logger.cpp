@@ -75,7 +75,7 @@ bool Logger::openLog()
         return  true;
     }
 
-    fpLog = fopen(LOGFILE_NAME, "w+");
+    fpLog = fopen(LOGFILE_NAME, "a+");
     if (!fpLog) {
         return  false;
     }
