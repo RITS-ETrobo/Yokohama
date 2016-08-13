@@ -58,4 +58,7 @@ private:
 
     //! ログを出力できるかどうか
     bool enabled;
+
+    //! ヘッダーを出力したかどうか
+    bool    outputHeader;
 };
