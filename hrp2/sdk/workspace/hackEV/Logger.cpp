@@ -95,6 +95,11 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
             return;
         }
 
+        SYSTIM  start = 0;
+        if (clock) {
+            start = clock->now();
+        }
+
         vector<USER_LOG> loggerOutput = move(loggerInfo);
         for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
             if (!outputHeader) {
@@ -108,9 +113,17 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
                 break;
             }
         }
+
+        if (clock) {
+            char message[16];
+            memset(message, '\0', sizeof(message));
+            sprintf(message, "%d", clock->now() - start); 
+            addLog(LOG_TYPE_WRITE_PROCESSING, message);
+        }
     }
 
     if (doClosingLog) {
+        outputLog();
         closeLog();
     }
 }

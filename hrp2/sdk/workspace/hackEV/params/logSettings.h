@@ -44,6 +44,9 @@ extern const uint_t LOG_TYPE_DIRECTION_TOTAL;
 
 //! ジャイロ
 extern const uint_t LOG_TYPE_GYRO;
+
+//! ログを書き出している時間
+extern const uint_t LOG_TYPE_WRITE_PROCESSING;
 //@}
 
 extern void initialize_logSetting();
