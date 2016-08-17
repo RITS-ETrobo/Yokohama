@@ -83,6 +83,26 @@ void Logger::addLogFloat(uint_t logType, const float value)
 /**
  * @brief   ログを追加する
  * @param   logType ログの種類
+ * @param   value   出力する数値
+ * @param   format  書式指定子を含む文字列
+ * @return  なし
+*/
+void Logger::addLogFloatFormatted(uint_t logType, const float value, const char *format /*= NULL*/)
+{
+    if (format == NULL || format == "") {
+        addLogFloat(logType, value);
+        return;
+    }
+
+    char    message[32];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, format, value);
+    addLog(logType, message);
+}
+
+/**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
  * @param   value 出力する数値
  * @return  なし
 */
@@ -92,6 +112,26 @@ void Logger::addLogInt(uint_t logType, const int value)
     memset(message, '\0', sizeof(message));
     sprintf(message, "%d", value);
 
+    addLog(logType, message);
+}
+
+/**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
+ * @param   value   出力する数値
+ * @param   format  書式指定子を含む文字列
+ * @return  なし
+*/
+void Logger::addLogIntFormatted(uint_t logType, const int value, const char *format /*= NULL*/)
+{
+    if (format == NULL || format == "") {
+        addLogInt(logType, value);
+        return;
+    }
+
+    char    message[32];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, format, value);
     addLog(logType, message);
 }
 

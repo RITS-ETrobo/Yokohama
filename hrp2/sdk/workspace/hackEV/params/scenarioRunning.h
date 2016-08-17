@@ -17,7 +17,7 @@ typedef struct {
     //! 走行距離[cm]
     float distance;
 
-    //! 向き。使わない場合は、-1。使う場合は、-360～360
+    //! 向き。使わない場合は、-1。使う場合は、0～360
     int direction;
 
     //! 走行パターン
@@ -82,7 +82,7 @@ extern const scenario_running run_scenario_test_pinWheel[1];
 extern const scenario_running run_scenario_test_straght[1];
 
 //! 検証用シナリオ(1m直進・誤差検証用)
-extern const scenario_running run_scenario_test_straght_NoTrace[1];
+extern const scenario_running run_scenario_test_straght_NoTrace[10];
 
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)
 extern const scenario_running run_scenario_straight_30m[1];

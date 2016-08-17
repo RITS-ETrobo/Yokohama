@@ -34,6 +34,13 @@ DriveController::DriveController()
 */
 bool DriveController::initialize()
 {
+    ev3_speaker_play_tone(NOTE_E4, 100);
+
+    directionLast = 0.0F;
+    directionTotal = 0.0F;
+    distanceLast = 0.0F;
+    distanceTotal = 0.0F;
+
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
     }
@@ -48,10 +55,6 @@ bool DriveController::initialize()
 
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
 
     return  true;
 }
@@ -66,6 +69,14 @@ void DriveController::run(scenario_running scenario)
     //! モーターの回転角、距離、方向を0に戻す
     initialize();
 
+    if (logger) {
+        logger->addLogFloatFormatted(LOG_TYPE_SCENARIO, scenario.distance, (char*)"distance,%.03f");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.direction, (char*)"direction,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.power, (char*)"power,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.pattern, (char*)"pattern,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.stop, (char*)"stop,%d");
+    }
+
     //! ストップ監視しつつ、走行
     for (;;) {
         //! 走行
@@ -73,7 +84,8 @@ void DriveController::run(scenario_running scenario)
             return;
         }
 
-        tslp_tsk(1);//この行の必要性については要検証
+        //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
+        tslp_tsk(2);
 
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
@@ -140,8 +152,10 @@ float DriveController::getDistance(float distanceDelta)
 {
     distanceTotal += distanceDelta;
 
-    if (logger) {
-        //! 距離をログ出力
+    if (logger && (distanceDelta != 0)) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
+
         logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
     }
 
@@ -156,7 +170,7 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionTotal += directionDelta;
-    if (logger) {
+    if (logger && (directionDelta != 0)) {
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 

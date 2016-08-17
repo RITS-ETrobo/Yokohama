@@ -50,6 +50,21 @@ extern const uint_t LOG_TYPE_GYRO;
 
 //! ログを書き出している時間
 extern const uint_t LOG_TYPE_WRITE_PROCESSING;
+
+//! 距離(右瞬間)
+extern const uint_t LOG_TYPE_DISTANCE_RIGHT;
+
+//! 距離(右累積)
+extern const uint_t LOG_TYPE_DISTANCE_RIGHT_TOTAL;
+
+//! 距離(左瞬間)
+extern const uint_t LOG_TYPE_DISTANCE_LEFT;
+
+//! 距離(左累積)
+extern const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL;
+
+//! シナリオ情報
+extern const uint_t LOG_TYPE_SCENARIO;
 //@}
 
 extern void initialize_logSetting();
