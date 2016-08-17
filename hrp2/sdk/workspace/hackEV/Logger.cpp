@@ -66,6 +66,36 @@ void Logger::addLog(uint_t logType, const char* message)
 }
 
 /**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
+ * @param   value 出力する数値
+ * @return  なし
+*/
+void Logger::addLogFloat(uint_t logType, const float value)
+{
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%.04f", value);
+
+    addLog(logType, message);
+}
+
+/**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
+ * @param   value 出力する数値
+ * @return  なし
+*/
+void Logger::addLogInt(uint_t logType, const int value)
+{
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%d", value);
+
+    addLog(logType, message);
+}
+
+/**
  * @brief   ログファイルを開く
  * @return  true : 成功
  * @return  false : 失敗
@@ -115,10 +145,7 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
         }
 
         if (clock) {
-            char message[16];
-            memset(message, '\0', sizeof(message));
-            sprintf(message, "%d", clock->now() - start); 
-            addLog(LOG_TYPE_WRITE_PROCESSING, message);
+            addLogInt(LOG_TYPE_WRITE_PROCESSING, clock->now() - start);
         }
     }
 
