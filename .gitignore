@@ -30,6 +30,7 @@ doxygen.log
 update_merge_Doxyfiles.log
 ~*
 *.lock
+*.rej
 
 # for emacs:
 *~
