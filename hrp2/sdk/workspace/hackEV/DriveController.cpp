@@ -84,6 +84,7 @@ void DriveController::run(scenario_running scenario)
             return;
         }
 
+        //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
         float   distanceDelta = 0.0F;
