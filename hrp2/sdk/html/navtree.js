@@ -15,12 +15,11 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", "globals_vars" ],
-        [ "Typedefs", "globals_type.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -29,12 +28,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d42/class_logger.html#abc41bfb031d896170c7675fa96a6b30c",
-"d5/dc3/old_2nxtrike_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d",
-"d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga26722c3df2ea3f0f62eef1a57cf05016",
-"da/d9a/samples_2etrobo__tr__ex2_2balancer_8c.html#a66306dbf7411fbb67f1127126de95f9a",
-"dd/d4b/etrobo__tr__ex2_2app_2_scenario_8h.html",
-"df/de1/class_balancer.html#af3af50e0d486516c24610a49a6c6ae68"
+"da/d2f/_running_module_8cpp.html#a7428a6e0fb9519bef0cba55a11633b37"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

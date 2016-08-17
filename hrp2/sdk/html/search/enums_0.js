@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['color_5fsensor_5fmodes',['COLOR_SENSOR_MODES',['../de/d68/cli__sensor_8c.html#af6a297fb8530eb8e5e6d631d975cb08c',1,'cli_sensor.c']]]
+  ['runpattern',['runPattern',['../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2',1,'runPattern.h']]]
 ];

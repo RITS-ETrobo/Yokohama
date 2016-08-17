@@ -1,24 +1,6 @@
 var searchData=
 [
-  ['l_5fentergamearea_5fgamearea_5fscenario',['L_enterGameArea_GameArea_scenario',['../da/d2f/_running_module_8cpp.html#ae5334a28c138e02d00ac9f19d7718337',1,'RunningModule.cpp']]],
-  ['l_5fkensho_5fgoal_5fscenario',['L_kensho_Goal_scenario',['../da/d2f/_running_module_8cpp.html#a03528b31008042a90ea7e55b6c171885',1,'RunningModule.cpp']]],
-  ['l_5fkensho_5fscenario',['L_kensho_scenario',['../da/d2f/_running_module_8cpp.html#a8de3f02df562ffcf0c681f24f863defd',1,'RunningModule.cpp']]],
-  ['l_5fstart_5fsweepstakes_5fscenario',['L_Start_Sweepstakes_scenario',['../da/d2f/_running_module_8cpp.html#adfda6c8add78a89677f2ec2e143dbf30',1,'RunningModule.cpp']]],
-  ['l_5fstarup_5fscenario',['L_StarUP_scenario',['../da/d2f/_running_module_8cpp.html#a9729c3c723c0c72ede87213333cb6ca4',1,'RunningModule.cpp']]],
-  ['l_5fstarup_5fsumo_5fscenario',['L_StarUP_Sumo_scenario',['../da/d2f/_running_module_8cpp.html#ad4f24391879b36a556e23e152b45785a',1,'RunningModule.cpp']]],
-  ['l_5fsumo_5fkensho_5fscenario',['L_Sumo_kensho_scenario',['../da/d2f/_running_module_8cpp.html#a2b3bf506db35c5af2e45f00ab7272936',1,'RunningModule.cpp']]],
-  ['l_5fsumo_5fscenario',['L_Sumo_scenario',['../da/d2f/_running_module_8cpp.html#a0304100df23c563255d42154521f4f1e',1,'RunningModule.cpp']]],
-  ['l_5fsweepstakes_5fstarup_5fscenario',['L_Sweepstakes_starUP_scenario',['../da/d2f/_running_module_8cpp.html#a78cd1e032678cd9a23ec632c83c6cbb1',1,'RunningModule.cpp']]],
-  ['lastleftdistance',['lastLeftDistance',['../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga80791f6af23c7d8c8cce45af4fe77dae',1,'RunningModule.cpp']]],
-  ['lastrightdistance',['lastRightDistance',['../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga7f2d809b4ac45156ec392a48e2584354',1,'RunningModule.cpp']]],
-  ['lastvalue',['lastValue',['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#ga437b26536f3832d38c5d783076d310b1',1,'pid_controller.cpp']]],
-  ['lcdcolor',['lcdColor',['../df/d88/_l_c_d_controller_8cpp.html#a2175b97ea62830f817bf9de9e0a8cf35',1,'LCDController.cpp']]],
-  ['left_5fmotor',['left_motor',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185',1,'left_motor():&#160;defines.cpp'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185',1,'left_motor():&#160;defines.cpp'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185',1,'left_motor():&#160;app.c'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaff6547d3480326dc007d945cdc634185',1,'left_motor():&#160;app.c']]],
-  ['leftmotor',['leftMotor',['../d9/d51/ev3way-cpp_2app_8cpp.html#a91c81f6814869c39fa1175adbdaa7fee',1,'app.cpp']]],
-  ['light_5fintegra',['light_integra',['../d7/d6d/main__task_8c.html#a4bfd7b27b6a04ea8c57312a676e7d6fa',1,'light_integra():&#160;main_task.c'],['../dd/dd4/old_2main__task_8c.html#a4bfd7b27b6a04ea8c57312a676e7d6fa',1,'light_integra():&#160;main_task.c']]],
-  ['light_5flog',['light_log',['../d7/d6d/main__task_8c.html#a3c89b4d1b0f6ab659d46d6cf6df0f5c3',1,'light_log():&#160;main_task.c'],['../dd/dd4/old_2main__task_8c.html#a3c89b4d1b0f6ab659d46d6cf6df0f5c3',1,'light_log():&#160;main_task.c']]],
-  ['light_5flog_5findex',['light_log_index',['../d7/d6d/main__task_8c.html#a88a82cb6527d20d8f3705e2d559b8551',1,'light_log_index():&#160;main_task.c'],['../dd/dd4/old_2main__task_8c.html#a88a82cb6527d20d8f3705e2d559b8551',1,'light_log_index():&#160;main_task.c']]],
-  ['log',['log',['../d4/ddc/struct_l_o_g_g_e_r___i_n_f_o.html#abfc6d1964c789ce6f0a56e104c2543f1',1,'LOGGER_INFO']]],
-  ['logger',['logger',['../dc/da6/hack_e_v_2app_8cpp.html#a0009c186c3629201f6c24eded36605f4',1,'logger():&#160;app.cpp'],['../de/df0/utilities_8h.html#a0009c186c3629201f6c24eded36605f4',1,'logger():&#160;app.cpp']]],
-  ['low',['LOW',['../de/d2b/class_balancing_walker.html#a00a0a12b0319123b0a82dcb2d007ae3c',1,'BalancingWalker']]]
+  ['output_5ftype_5ffile',['OUTPUT_TYPE_FILE',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga2dfa456951540ff62006d9c9fb550402',1,'OUTPUT_TYPE_FILE():&#160;logSettings.cpp'],['../d5/db3/group___xE3_x83_xAD_xE3_x82_xB0_xE5_x87_xBA_xE5_x8A_x9B_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga2dfa456951540ff62006d9c9fb550402',1,'OUTPUT_TYPE_FILE():&#160;logSettings.cpp']]],
+  ['output_5ftype_5flcd',['OUTPUT_TYPE_LCD',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gae31e5344a9b75c86f828996b4166425f',1,'OUTPUT_TYPE_LCD():&#160;logSettings.cpp'],['../d5/db3/group___xE3_x83_xAD_xE3_x82_xB0_xE5_x87_xBA_xE5_x8A_x9B_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gae31e5344a9b75c86f828996b4166425f',1,'OUTPUT_TYPE_LCD():&#160;logSettings.cpp']]],
+  ['output_5ftype_5fnone',['OUTPUT_TYPE_NONE',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaeb8ef01c8751ac9633c33d1672454a54',1,'OUTPUT_TYPE_NONE():&#160;logSettings.cpp'],['../d5/db3/group___xE3_x83_xAD_xE3_x82_xB0_xE5_x87_xBA_xE5_x8A_x9B_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#gaeb8ef01c8751ac9633c33d1672454a54',1,'OUTPUT_TYPE_NONE():&#160;logSettings.cpp']]]
 ];

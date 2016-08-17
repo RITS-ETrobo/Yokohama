@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['exec_5fperiod',['EXEC_PERIOD',['../db/d96/ev3way-cpp_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../d6/d17/samples_2etrobo__tr_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../dc/d57/samples_2etrobo__tr__ex1_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../d1/db6/samples_2etrobo__tr__ex2_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../db/d29/samples_2etrobo__tr__ex3_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../d2/d53/samples_2sample__c4_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h'],['../d4/d33/samples_2sample__cpp4_2balancer_8h.html#afc9470cca81fa94cd6c5a40c249109bc',1,'EXEC_PERIOD():&#160;balancer.h']]]
-];

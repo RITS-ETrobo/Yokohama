@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['buttonledexit',['ButtonLedExit',['../d6/d4c/hwbrickbench_2app_8c.html#a0bc7b5d9184fdcc559c0af7d5f224227',1,'app.c']]],
-  ['buttonledinit',['ButtonLedInit',['../d6/d4c/hwbrickbench_2app_8c.html#a29f7b419a6560ed845169696ad354f1f',1,'app.c']]]
+  ['debug',['DEBUG',['../de/df0/utilities_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'utilities.h']]]
 ];

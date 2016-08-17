@@ -33,20 +33,34 @@ class Logger
 {
 public:
     explicit Logger();
-    void initialize();
-    void addLog(uint_t logType, const char* message);
-    void outputLog();
+    virtual void initialize();
+    virtual bool openLog();
+    virtual void addLog(uint_t logType, const char* message);
+    virtual void addLogFloat(uint_t logType, const float value);
+    virtual void addLogInt(uint_t logType, const int value);
+    virtual void outputLog(bool doClosingLog = false);
+    virtual void setEnabled(bool enabled_ = true);
+
+protected:
+    virtual bool isEnabled();
+    virtual void closeLog();
 
 private:
+    //! ログファイルのファイルポインタ
+    FILE    *fpLog;
+
     //! ログファイルを収めるディレクトリ
     const char*  LOGDIRECTORY_PATH = "/ev3rt/logs";
 
     //! ログファイルのファイル名
     const char*  LOGFILE_NAME = "hackEV_log.csv";
 
-    //! Clockクラスのインスタンス
-    Clock*  clock;
-
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;
+
+    //! ログを出力できるかどうか
+    bool enabled;
+
+    //! ヘッダーを出力したかどうか
+    bool    outputHeader;
 };

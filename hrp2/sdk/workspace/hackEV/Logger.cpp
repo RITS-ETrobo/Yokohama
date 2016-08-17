@@ -2,6 +2,8 @@
  * @file    Logger.cpp
  * @brief   This file has Logger class.
   */
+#include <utility>
+#include <instances.h>
 #include "Logger.h"
 
 /**
@@ -9,8 +11,10 @@
  * @return  なし
 */
 Logger::Logger()
-    : clock(NULL)
+    : fpLog(NULL)
     , loggerInfo(NULL)
+    , enabled(false)
+    , outputHeader(false)
 {
 }
 
@@ -20,12 +24,26 @@ Logger::Logger()
 */
 void Logger::initialize()
 {
-    clock = new Clock();
-    if (clock) {
-        clock->reset();
-    }
-
     initialize_logSetting();
+}
+
+/**
+ * @brief   ログを出力可能な状態かを更新する
+ * @param   enabled_    ログを出力するかどうか
+ * @return  なし
+*/
+void Logger::setEnabled(bool enabled_ /*= true*/)
+{
+    enabled = enabled_;
+}
+
+/**
+ * @brief   ログを出力可能な状態かを取得する
+ * @return  true : ログ出力可能 false : ログ出力不可能
+*/
+bool Logger::isEnabled()
+{
+    return  enabled;
 }
 
 /**
@@ -48,24 +66,107 @@ void Logger::addLog(uint_t logType, const char* message)
 }
 
 /**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
+ * @param   value 出力する数値
+ * @return  なし
+*/
+void Logger::addLogFloat(uint_t logType, const float value)
+{
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%.04f", value);
+
+    addLog(logType, message);
+}
+
+/**
+ * @brief   ログを追加する
+ * @param   logType ログの種類
+ * @param   value 出力する数値
+ * @return  なし
+*/
+void Logger::addLogInt(uint_t logType, const int value)
+{
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%d", value);
+
+    addLog(logType, message);
+}
+
+/**
+ * @brief   ログファイルを開く
+ * @return  true : 成功
+ * @return  false : 失敗
+*/
+bool Logger::openLog()
+{
+    if (fpLog) {
+        return  true;
+    }
+
+    fpLog = fopen(LOGFILE_NAME, "a+");
+    if (!fpLog) {
+        return  false;
+    }
+
+    return  true;
+}
+
+/**
  * @brief   ログをファイルに出力する
  * @return  なし
 */
-void Logger::outputLog()
+void Logger::outputLog(bool doClosingLog /*= false*/)
 {
-    FILE    *fpLog = fopen(LOGFILE_NAME, "w+");
-    if (fpLog == NULL) {
-        return;
-    }
+    if (isEnabled()) {
+        if (!openLog()) {
+            return;
+        }
 
-    for (vector<USER_LOG>::iterator it = loggerInfo.begin(); it != loggerInfo.end(); it ++ ) {
-        char    logLine[64];
-        sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
-        if (fputs(logLine, fpLog) == EOF) {
-            break;
+        SYSTIM  start = 0;
+        if (clock) {
+            start = clock->now();
+        }
+
+        vector<USER_LOG> loggerOutput = move(loggerInfo);
+        for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
+            if (!outputHeader) {
+                fputs("Duration(ms),Type,Value1,Value2,Value3\r\n", fpLog);
+                outputHeader = true;
+            }
+
+            char    logLine[64];
+            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
+            if (fputs(logLine, fpLog) == EOF) {
+                break;
+            }
+        }
+
+        if (clock) {
+            addLogInt(LOG_TYPE_WRITE_PROCESSING, clock->now() - start);
         }
     }
 
-    loggerInfo.clear();
+    if (doClosingLog) {
+        outputLog();
+        closeLog();
+    }
+}
+
+/**
+ * @brief   ログファイルにクローズする
+ * @return  なし
+*/
+void Logger::closeLog()
+{
+    if (!fpLog) {
+        return;
+    }
+
     fclose(fpLog);
+    fpLog = NULL;
+
+    setEnabled(false);
 }

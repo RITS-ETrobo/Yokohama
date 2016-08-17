@@ -6,7 +6,6 @@
  *            - EV3組み立て図 : http://robotsquare.com/wp-content/uploads/2013/10/45544_educator.pdf
  *            - HOWTO create a Line Following Robot using Mindstorms - LEGO Reviews & Videos : http://thetechnicgear.com/2014/03/howto-create-line-following-robot-using-mindstorms/
  */
-
 #include "ev3api.h"
 #include "utilities.h"
 #include "pid_controller.h"
@@ -14,6 +13,7 @@
 #include "SonarSensorController.h"
 #include "RunningModule.h"
 #include "Logger.h"
+#include "DriveController.h"
 #include "ArmModule.h"
 #include "ColorSensorController.h"
 
@@ -23,6 +23,12 @@ void *__dso_handle=0;
 
 //! ログクラスのインスタンス
 Logger *logger = NULL;
+
+//! DriveControllerクラスのインスタンス
+DriveController*    driveController = NULL;
+
+//! Clockクラスのインスタンス
+Clock   *clock = NULL;
 
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
@@ -49,6 +55,10 @@ void stop_emergency(){
  * @return  なし
 */
 static void button_clicked_handler(intptr_t button) {
+    if (logger) {
+        logger->setEnabled();
+    }
+
     switch(button) {
     case BACK_BUTTON:
         writeStringLCD("BACK button click");
@@ -121,7 +131,7 @@ static void button_clicked_handler(intptr_t button) {
     }
 
     if (logger) {
-        logger->outputLog();
+        logger->outputLog(true);
     }
 }
 
@@ -134,12 +144,24 @@ static void button_clicked_handler(intptr_t button) {
 void main_task(intptr_t unused) {
     setFontSize(EV3_FONT_MEDIUM);
 
+    writeStringLCD("Start Initializing");
+
     logger = new Logger();
+    driveController = new DriveController();
+    clock = new Clock();
+
     if (logger) {
         logger->initialize();
     }
 
-    writeStringLCD("Start Initializing");
+    if (driveController) {
+        driveController->initialize();
+    }
+
+    if (clock) {
+        clock->reset();
+    }
+
     if (logger) {
         logger->addLog(LOG_NOTICE, "Start Initializing");
     }
@@ -180,4 +202,19 @@ void main_task(intptr_t unused) {
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
+}
+
+/**
+ * @brief   ログ監視タスク
+ * 
+ * @param   [in]    exinf  未使用
+ * @return  なし
+ */
+void log_monitoring_task(intptr_t exinf)
+{
+    if (logger == NULL) {
+        return;
+    }
+
+    logger->outputLog();
 }

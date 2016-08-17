@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['add',['add',['../d3/d8b/class_scenario.html#ab18cb10fbaba7185164b84ce612f3720',1,'Scenario::add(Scene *scene)'],['../d3/d8b/class_scenario.html#ab18cb10fbaba7185164b84ce612f3720',1,'Scenario::add(Scene *scene)']]],
-  ['addlog',['addLog',['../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de',1,'Logger']]],
-  ['alarm_5fhandler',['alarm_handler',['../da/d98/main__task_8h.html#a7444482be7428e4eda92a878b9a1ceb8',1,'alarm_handler(intptr_t exinf):&#160;main_task.h'],['../df/d17/old_2main__task_8h.html#a7444482be7428e4eda92a878b9a1ceb8',1,'alarm_handler(intptr_t exinf):&#160;main_task.h']]]
+  ['addlog',['addLog',['../d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3',1,'Logger']]]
 ];

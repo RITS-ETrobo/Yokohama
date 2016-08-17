@@ -6,6 +6,7 @@
 
 #include "ev3api.h"
 #include "utilities.h"
+#include "instances.h"
 #include "pid_controller.h"
 #include "LCDController.h"
 
@@ -57,20 +58,21 @@ void initialize_pid_controller()
     char message[16];
 
     //! Calibrate for light intensity of WHITE
+    writeStringLCD("WHITE");
     white = calibrate_light_intensity();
     memset(message, '\0', sizeof(message));
-    sprintf(message, "WHITE %03d", white);
+    sprintf(message, "   %03d", white);
     writeStringLCD(message);
 
     //! Calibrate for light intensity of BLACK
+    writeStringLCD("BLACK");
     black = calibrate_light_intensity();
-    sprintf(message, "BLACK %03d", black);
+    sprintf(message, "   %03d", black);
     writeStringLCD(message);
 
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "%03d, %03d", white, black);
     if (logger) {
-        logger->addLog(LOG_TYPE_COLOR_BW, message);
+        logger->addLogInt(LOG_TYPE_COLOR_WHITE, white);
+        logger->addLogInt(LOG_TYPE_COLOR_BLACK, black);
     }
 
     lastValue = 0.0F;

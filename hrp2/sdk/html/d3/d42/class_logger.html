@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('d3/d42/class_logger.html','../../');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,15 +120,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abc41bfb031d896170c7675fa96a6b30c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#abc41bfb031d896170c7675fa96a6b30c">Logger</a> ()</td></tr>
 <tr class="memdesc:abc41bfb031d896170c7675fa96a6b30c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loggerクラスのコンストラクター  <a href="#abc41bfb031d896170c7675fa96a6b30c">More...</a><br/></td></tr>
 <tr class="separator:abc41bfb031d896170c7675fa96a6b30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae784283f1de7827b7e7049641eaf0a53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53">initialize</a> ()</td></tr>
+<tr class="memitem:ae784283f1de7827b7e7049641eaf0a53"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53">initialize</a> ()</td></tr>
 <tr class="memdesc:ae784283f1de7827b7e7049641eaf0a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化する  <a href="#ae784283f1de7827b7e7049641eaf0a53">More...</a><br/></td></tr>
 <tr class="separator:ae784283f1de7827b7e7049641eaf0a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a170ba3ffec07dae29c12094e27baa2de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#a170ba3ffec07dae29c12094e27baa2de">addLog</a> (const char *message)</td></tr>
-<tr class="memdesc:a170ba3ffec07dae29c12094e27baa2de"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログを追加する  <a href="#a170ba3ffec07dae29c12094e27baa2de">More...</a><br/></td></tr>
-<tr class="separator:a170ba3ffec07dae29c12094e27baa2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe904f7b1d667454c050742a0d2e2033"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#abe904f7b1d667454c050742a0d2e2033">outputLog</a> ()</td></tr>
+<tr class="memitem:a0c1044d954578a578ead45d10a28e521"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#a0c1044d954578a578ead45d10a28e521">openLog</a> ()</td></tr>
+<tr class="memdesc:a0c1044d954578a578ead45d10a28e521"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログファイルを開く  <a href="#a0c1044d954578a578ead45d10a28e521">More...</a><br/></td></tr>
+<tr class="separator:a0c1044d954578a578ead45d10a28e521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123f61303778fe8aedbe47b3a7c0eea3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3">addLog</a> (uint_t logType, const char *message)</td></tr>
+<tr class="memdesc:a123f61303778fe8aedbe47b3a7c0eea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログを追加する  <a href="#a123f61303778fe8aedbe47b3a7c0eea3">More...</a><br/></td></tr>
+<tr class="separator:a123f61303778fe8aedbe47b3a7c0eea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe904f7b1d667454c050742a0d2e2033"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#abe904f7b1d667454c050742a0d2e2033">outputLog</a> ()</td></tr>
 <tr class="memdesc:abe904f7b1d667454c050742a0d2e2033"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログをファイルに出力する  <a href="#abe904f7b1d667454c050742a0d2e2033">More...</a><br/></td></tr>
 <tr class="separator:abe904f7b1d667454c050742a0d2e2033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee38897c7bb4cd9fe325fa7c07678d15"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15">closeLog</a> ()</td></tr>
+<tr class="memdesc:aee38897c7bb4cd9fe325fa7c07678d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログをファイルに出力する  <a href="#aee38897c7bb4cd9fe325fa7c07678d15">More...</a><br/></td></tr>
+<tr class="separator:aee38897c7bb4cd9fe325fa7c07678d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for logging. </p>
@@ -160,46 +166,91 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a170ba3ffec07dae29c12094e27baa2de"></a>
+<a class="anchor" id="a123f61303778fe8aedbe47b3a7c0eea3"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Logger::addLog </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramtype">uint_t&#160;</td>
+          <td class="paramname"><em>logType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>ログを追加する </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>追加するログ </td></tr>
-    <tr><td class="paramname">displayLCD</td><td>trueの場合、すぐにLCDにメッセージを出力する </td></tr>
+    <tr><td class="paramname">logType</td><td>ログの種類 </td></tr>
+    <tr><td class="paramname">message</td><td>出力するログ </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true ログ追加成功 </dd>
-<dd>
-false ログ追加失敗 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/d42/class_logger_a170ba3ffec07dae29c12094e27baa2de_icgraph.png" border="0" usemap="#d3/d42/class_logger_a170ba3ffec07dae29c12094e27baa2de_icgraph" alt=""/></div>
-<map name="d3/d42/class_logger_a170ba3ffec07dae29c12094e27baa2de_icgraph" id="d3/d42/class_logger_a170ba3ffec07dae29c12094e27baa2de_icgraph">
-<area shape="rect" id="node2" href="../../dc/da6/hack_e_v_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9" title="メインタスク " alt="" coords="187,5,275,32"/><area shape="rect" id="node3" href="../../de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="334,107,501,133"/><area shape="rect" id="node6" href="../../de/dc3/pid__controller_8h.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="177,56,285,83"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="565,19,645,45"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="549,81,661,108"/><area shape="rect" id="node7" href="../../de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="346,56,489,83"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="396,5,439,32"/></map>
+<div class="center"><img src="../../d3/d42/class_logger_a123f61303778fe8aedbe47b3a7c0eea3_icgraph.png" border="0" usemap="#d3/d42/class_logger_a123f61303778fe8aedbe47b3a7c0eea3_icgraph" alt=""/></div>
+<map name="d3/d42/class_logger_a123f61303778fe8aedbe47b3a7c0eea3_icgraph" id="d3/d42/class_logger_a123f61303778fe8aedbe47b3a7c0eea3_icgraph">
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="173,5,256,32"/><area shape="rect" id="node3" href="../../de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="313,157,466,184"/><area shape="rect" id="node6" href="../../de/dc3/pid__controller_8h.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="165,107,264,133"/><area shape="rect" id="node8" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="369,56,409,83"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="530,69,603,96"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="515,132,618,159"/><area shape="rect" id="node7" href="../../de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="324,107,455,133"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<a class="anchor" id="aee38897c7bb4cd9fe325fa7c07678d15"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::closeLog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ログをファイルに出力する </p>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="ae784283f1de7827b7e7049641eaf0a53"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Logger::initialize </td>
@@ -208,19 +259,68 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>初期化する </p>
-<dl class="section return"><dt>Returns</dt><dd>true 初期化成功 </dd>
-<dd>
-false 初期化失敗 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_cgraph.png" border="0" usemap="#d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_cgraph" alt=""/></div>
+<map name="d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_cgraph" id="d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_cgraph">
+<area shape="rect" id="node2" href="../../d5/d0b/log_settings_8cpp.html#a1e4ebb461ee4d55e160fe1d7a06f9c5d" title="logSettingsの初期化をおこなう " alt="" coords="171,5,306,32"/></map>
+</div>
+</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_icgraph.png" border="0" usemap="#d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_icgraph" alt=""/></div>
 <map name="d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_icgraph" id="d3/d42/class_logger_ae784283f1de7827b7e7049641eaf0a53_icgraph">
-<area shape="rect" id="node2" href="../../dc/da6/hack_e_v_2app_8cpp.html#a4754344fc3fec0a802660bb5dcdefad9" title="メインタスク " alt="" coords="179,5,267,32"/></map>
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="171,5,253,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c1044d954578a578ead45d10a28e521"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Logger::openLog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ログファイルを開く </p>
+<dl class="section return"><dt>Returns</dt><dd>true : 成功 </dd>
+<dd>
+false : 失敗 </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d42/class_logger_a0c1044d954578a578ead45d10a28e521_icgraph.png" border="0" usemap="#d3/d42/class_logger_a0c1044d954578a578ead45d10a28e521_icgraph" alt=""/></div>
+<map name="d3/d42/class_logger_a0c1044d954578a578ead45d10a28e521_icgraph" id="d3/d42/class_logger_a0c1044d954578a578ead45d10a28e521_icgraph">
+<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#abe904f7b1d667454c050742a0d2e2033" title="ログをファイルに出力する " alt="" coords="174,5,301,32"/></map>
 </div>
 </p>
 
@@ -229,6 +329,9 @@ Here is the caller graph for this function:</div>
 <a class="anchor" id="abe904f7b1d667454c050742a0d2e2033"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Logger::outputLog </td>
@@ -237,10 +340,24 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>ログをファイルに出力する </p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d42/class_logger_abe904f7b1d667454c050742a0d2e2033_cgraph.png" border="0" usemap="#d3/d42/class_logger_abe904f7b1d667454c050742a0d2e2033_cgraph" alt=""/></div>
+<map name="d3/d42/class_logger_abe904f7b1d667454c050742a0d2e2033_cgraph" id="d3/d42/class_logger_abe904f7b1d667454c050742a0d2e2033_cgraph">
+<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#a0c1044d954578a578ead45d10a28e521" title="ログファイルを開く " alt="" coords="182,5,301,32"/><area shape="rect" id="node3" href="../../d5/d0b/log_settings_8cpp.html#a099d44c80db0b4b26bfc6205e305725e" title="ログの種類の名前を取得する " alt="" coords="193,56,289,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -254,7 +371,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d3/d42/class_logger.html">Logger</a></li>
-    <li class="footer">Generated on Sun Jul 24 2016 14:52:20 for ev3RT Workspace by
+    <li class="footer">Generated on Mon Aug 8 2016 23:23:38 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

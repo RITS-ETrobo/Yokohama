@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['nxtrike_2ec',['nxtrike.c',['../d6/df6/nxtrike_8c.html',1,'']]],
-  ['nxtrike_2ec',['nxtrike.c',['../d3/dce/old_2nxtrike_8c.html',1,'']]],
-  ['nxtrike_2eh',['nxtrike.h',['../dd/d1b/nxtrike_8h.html',1,'']]],
-  ['nxtrike_2eh',['nxtrike.h',['../d5/dc3/old_2nxtrike_8h.html',1,'']]]
+  ['runningmodule_2ecpp',['RunningModule.cpp',['../da/d2f/_running_module_8cpp.html',1,'']]],
+  ['runningmodule_2eh',['RunningModule.h',['../d6/d2f/_running_module_8h.html',1,'']]],
+  ['runpattern_2eh',['runPattern.h',['../dd/db5/run_pattern_8h.html',1,'']]]
 ];

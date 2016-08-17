@@ -1,0 +1,10 @@
+<map id="change_LineSide" name="change_LineSide">
+<area shape="rect" id="node2" href="$da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="176,5,299,32"/>
+<area shape="rect" id="node3" href="$da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="177,56,297,83"/>
+<area shape="rect" id="node4" href="$de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="184,107,291,133"/>
+<area shape="rect" id="node8" href="$da/d2f/_running_module_8cpp.html#a302f36c1b3ef0ea3c0149464a114fe00" title="モーターの回転角、距離、方向を0に戻す " alt="" coords="182,157,293,184"/>
+<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="201,208,273,235"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="347,107,458,133"/>
+<area shape="rect" id="node6" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="507,81,605,108"/>
+<area shape="rect" id="node7" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="507,132,605,159"/>
+</map>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gclock',['gClock',['../d4/dca/samples_2etrobo__tr__ex2_2app_8cpp.html#acc243321b3f7395b2a2c49cecc051743',1,'gClock():&#160;app.cpp'],['../d0/de9/samples_2etrobo__tr__ex3_2app_8cpp.html#acc243321b3f7395b2a2c49cecc051743',1,'gClock():&#160;app.cpp']]],
-  ['gyro_5fsensor',['gyro_sensor',['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8',1,'gyro_sensor():&#160;defines.cpp'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8',1,'gyro_sensor():&#160;defines.cpp'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8',1,'gyro_sensor():&#160;app.c'],['../d4/d27/group___xE3_x83_x9D_xE3_x83_xBC_xE3_x83_x88_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html#ga1cb4642e5493ad942de34a1983c119a8',1,'gyro_sensor():&#160;app.c']]],
-  ['gyrosensor',['gyroSensor',['../d9/d51/ev3way-cpp_2app_8cpp.html#ad979bc67039e528a302d06195f376265',1,'app.cpp']]]
+  ['init_5fgyroangle',['INIT_GYROANGLE',['../d1/d19/group___constants.html#ga20489b91d1c7288e1a7dbc704d0d6f04',1,'gyroboy.cpp']]],
+  ['init_5finterval_5ftime',['INIT_INTERVAL_TIME',['../d1/d19/group___constants.html#ga4be42f90b6aacf3adf15472225ca95b5',1,'gyroboy.cpp']]],
+  ['integral',['integral',['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#ga1174af01b8a329a6d465ea6e0951b3e5',1,'pid_controller.cpp']]]
 ];

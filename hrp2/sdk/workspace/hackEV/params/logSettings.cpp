@@ -25,20 +25,29 @@ const uint_t LOG_TYPE_PID = 0x81;
 //! 色(多色)に関するログ
 const uint_t LOG_TYPE_COLOR = 0x82;
 
-//! 色(白黒)に関するログ
-const uint_t LOG_TYPE_COLOR_BW = 0x83;
+//! 色(黒)に関するログ
+const uint_t LOG_TYPE_COLOR_BLACK = 0x89;
 
-//! 距離
+//! 色(白)に関するログ
+const uint_t LOG_TYPE_COLOR_WHITE = 0x8A;
+
+//! 距離(瞬間)
 const uint_t LOG_TYPE_DISTANCE = 0x83;
 
+//! 距離(累積)
+const uint_t LOG_TYPE_DISTANCE_TOTAL = 0x84;
+
 //! 角度(瞬間)
-const uint_t LOG_TYPE_DIRECTION = 0x84;
+const uint_t LOG_TYPE_DIRECTION = 0x85;
 
 //! 角度(累積)
-const uint_t LOG_TYPE_DIRECTION_STORED = 0x85;
+const uint_t LOG_TYPE_DIRECTION_TOTAL = 0x86;
 
 //! ジャイロ
-const uint_t LOG_TYPE_GYRO = 0x86;
+const uint_t LOG_TYPE_GYRO = 0x87;
+
+//! ログを書き出している時間
+const uint_t LOG_TYPE_WRITE_PROCESSING = 0x88;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -60,11 +69,14 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
     LOG_TYPE_MAP[LOG_TYPE_PID] = "PID";
     LOG_TYPE_MAP[LOG_TYPE_COLOR] = "Color";
-    LOG_TYPE_MAP[LOG_TYPE_COLOR_BW] = "Color(B/W)";
+    LOG_TYPE_MAP[LOG_TYPE_COLOR_BLACK] = "Color(Black)";
+    LOG_TYPE_MAP[LOG_TYPE_COLOR_WHITE] = "Color(White)";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE] = "Distance";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_TOTAL] = "Distance(Total)";
     LOG_TYPE_MAP[LOG_TYPE_DIRECTION] = "Direction";
-    LOG_TYPE_MAP[LOG_TYPE_DIRECTION_STORED] = "Direction(Stored)";
+    LOG_TYPE_MAP[LOG_TYPE_DIRECTION_TOTAL] = "Direction(Total)";
     LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
+    LOG_TYPE_MAP[LOG_TYPE_WRITE_PROCESSING] = "Writing Log";
 }
 
 /**

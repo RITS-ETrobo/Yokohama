@@ -27,20 +27,29 @@ extern const uint_t LOG_TYPE_PID;
 //! 色(多色)に関するログ
 extern const uint_t LOG_TYPE_COLOR;
 
-//! 色(白黒)に関するログ
-extern const uint_t LOG_TYPE_COLOR_BW;
+//! 色(黒)に関するログ
+extern const uint_t LOG_TYPE_COLOR_BLACK;
 
-//! 距離
+//! 色(白)に関するログ
+extern const uint_t LOG_TYPE_COLOR_WHITE;
+
+//! 距離(瞬間)
 extern const uint_t LOG_TYPE_DISTANCE;
+
+//! 距離(累積)
+extern const uint_t LOG_TYPE_DISTANCE_TOTAL;
 
 //! 角度(瞬間)
 extern const uint_t LOG_TYPE_DIRECTION;
 
 //! 角度(累積)
-extern const uint_t LOG_TYPE_DIRECTION_STORED;
+extern const uint_t LOG_TYPE_DIRECTION_TOTAL;
 
 //! ジャイロ
 extern const uint_t LOG_TYPE_GYRO;
+
+//! ログを書き出している時間
+extern const uint_t LOG_TYPE_WRITE_PROCESSING;
 //@}
 
 extern void initialize_logSetting();
