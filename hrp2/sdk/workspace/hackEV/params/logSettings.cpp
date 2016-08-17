@@ -50,16 +50,16 @@ const uint_t LOG_TYPE_GYRO = 0x87;
 const uint_t LOG_TYPE_WRITE_PROCESSING = 0x88;
 
 //! 距離(右瞬間)
-const uint_t LOG_TYPE_DISTANCE_RIGHT = 0x89;
+const uint_t LOG_TYPE_DISTANCE_RIGHT = 0x8B;
 
 //! 距離(右累積)
-const uint_t LOG_TYPE_DISTANCE_RIGHT_TOTAL = 0x8A;
+const uint_t LOG_TYPE_DISTANCE_RIGHT_TOTAL = 0x8C;
 
 //! 距離(左瞬間)
-const uint_t LOG_TYPE_DISTANCE_LEFT = 0x8B;
+const uint_t LOG_TYPE_DISTANCE_LEFT = 0x8D;
 
 //! 距離(左累積)
-const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL = 0x8C;
+const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL = 0x8E;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;

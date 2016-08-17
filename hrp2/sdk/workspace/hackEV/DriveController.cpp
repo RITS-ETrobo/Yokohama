@@ -24,8 +24,6 @@ DriveController::DriveController()
     , directionTotal(0.0F)
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
-    , distanceRightTotal(0.0F)
-    , distanceLeftTotal(0.0F)
 {
 }
 
@@ -54,9 +52,6 @@ bool DriveController::initialize()
     directionTotal = 0.0F;
     directionLast = 0.0F;
     directionTotal = 0.0F;
-    
-    distanceRightTotal = 0.0F;
-    distanceLeftTotal = 0.0F;
 
     return  true;
 }
@@ -115,29 +110,8 @@ ER DriveController::stop(bool_t brake /*= true*/)
         return  resultRight;
     }
 
-    // writeFloatLCD(distanceTotal);
-    // writeFloatLCD(directionTotal);
-    // writeFloatLCD(distanceLeftTotal);
-    writeFloatLCD(distanceRightTotal);
-    
-    //左右モーターのログ出力
-    if (logger) {
-        //! 中心距離をログ出力
-        char message[32];
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceTotal);
-        logger->addLog(LOG_TYPE_DISTANCE_TOTAL, message);
-        
-        //! 距離をログ出力
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceLeftTotal);
-        logger->addLog(LOG_TYPE_DISTANCE_LEFT_TOTAL, message);
-
-        //! 距離をログ出力
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceRightTotal);
-        logger->addLog(LOG_TYPE_DISTANCE_RIGHT_TOTAL, message);
-    }
+    writeFloatLCD(distanceTotal);
+    writeFloatLCD(directionTotal);
 
     return  resultLeft;
 }
@@ -155,24 +129,6 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
     *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
-    
-    distanceLeftTotal += distanceDeltaLeft;
-    distanceRightTotal += distanceDeltaRight;
-
-    return;
-     
-    if (logger) {
-        //! 距離をログ出力
-        char message[16];
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceLeftTotal);
-        logger->addLog(LOG_TYPE_DISTANCE_LEFT_TOTAL, message);
-
-        //! 距離をログ出力
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",distanceRightTotal);
-        logger->addLog(LOG_TYPE_DISTANCE_RIGHT_TOTAL, message);
-    }
 }
 
 /**
@@ -185,6 +141,7 @@ float DriveController::getDistance(float distanceDelta)
     distanceTotal += distanceDelta;
 
     if (logger) {
+        logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
         logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
     }
 

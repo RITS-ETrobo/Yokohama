@@ -78,7 +78,6 @@ void start_run_test()
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
         driveController->run(run_scenario_test_straght_NoTrace[index]);
-        //ev3_speaker_play_tone(NOTE_F4, 300);
-        tslp_tsk(100);
+        ev3_speaker_play_tone(NOTE_F4, 300);
     }
 }

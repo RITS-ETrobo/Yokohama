@@ -44,13 +44,16 @@ ER MotorWheel::run(int power)
  */
 ER MotorWheel::stop(bool_t brake /*= true*/)
 {
-    writeFloatLCD(distance);
+    if (logger) {
+        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT_TOTAL : LOG_TYPE_DISTANCE_RIGHT_TOTAL, distance);
+    }
+
     return  ev3_motor_stop(portMotor, brake);
 }
 
 void MotorWheel::updateDistance()
 {
-    distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(portMotor) / 360;
+    distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(portMotor) / (float)360;
 }
 
 float MotorWheel::getDistance()
@@ -61,16 +64,13 @@ float MotorWheel::getDistance()
 float MotorWheel::getDistanceDelta()
 {
     updateDistance();
-    float   distance = getDistance();
-    float   distanceDelta = distance - distanceLast;
-    distanceLast = distance;
+    float   distanceTotal = getDistance();
+    float   distanceDelta = distanceTotal - distanceLast;
 
-    // if (logger) {
-    //     char    message[16];
-    //     memset(message, '\0', sizeof(message));
-    //     sprintf(message, "%02.04f", distanceDelta);
-    //     logger->addLog((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, message);
-    // }
+    if (logger) {
+        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, distanceDelta);
+    }
 
+    distanceLast = distanceTotal;
     return  distanceDelta;
 }
