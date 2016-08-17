@@ -141,8 +141,17 @@ const scenario_running run_scenario_test_straght[1] = {
 };
 
 //! 検証用シナリオ(1m直進・誤差検証用)
-const scenario_running run_scenario_test_straght_NoTrace[1] = {
-    {30, 100.0F, -1, NOTRACE_STRAIGHT, true}
+const scenario_running run_scenario_test_straght_NoTrace[10] = {
+    {10, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {20, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {30, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {40, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {50, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {60, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {70, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {80, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {90, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {100, 30.0F, -1, NOTRACE_STRAIGHT, true}
 };
 
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)

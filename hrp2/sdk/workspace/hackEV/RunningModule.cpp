@@ -12,6 +12,7 @@
 #include "scenarioRunning.h"
 #include "RunningModule.h"
 #include "LCDController.h"
+#include "Logger.h"
 #include <stdlib.h>
 #include "ArmModule.h"
 
@@ -64,8 +65,6 @@ void start_run_test()
     initialize_pid_controller();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
-    tslp_tsk(100);
-    ev3_speaker_play_tone(NOTE_E6, 100);
 
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
     for (;;) {
@@ -74,9 +73,12 @@ void start_run_test()
         }
     }
 
-    for (int index = 0; index < sizeof(run_scenario_test_pinWheel) / sizeof(run_scenario_test_pinWheel[0]); index++) {
-        //! シナリオが変わるたびに音を鳴らす
-        ev3_speaker_play_tone(NOTE_E4, 100);
-        driveController->run(run_scenario_test_pinWheel[index]);
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
+        driveController->run(run_scenario_test_straght_NoTrace[index]);
+    }
+
+    ev3_speaker_play_tone(NOTE_F4, 300);
+    if (logger) {
+        logger->addLog(LOG_NOTICE, "Scenario End");
     }
 }
