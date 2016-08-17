@@ -60,6 +60,9 @@ const uint_t LOG_TYPE_DISTANCE_LEFT = 0x8D;
 
 //! 距離(左累積)
 const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL = 0x8E;
+
+//! シナリオ情報
+const uint_t LOG_TYPE_SCENARIO = 0x8F;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -93,6 +96,7 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT_TOTAL] = "Distance(Right/Total)";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT] = "Distance(Left)";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT_TOTAL] = "Distance(Left/Total)";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO] = "Scenario";
 }
 
 /**

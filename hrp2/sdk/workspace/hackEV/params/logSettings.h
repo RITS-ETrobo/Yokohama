@@ -62,6 +62,9 @@ extern const uint_t LOG_TYPE_DISTANCE_LEFT;
 
 //! 距離(左累積)
 extern const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL;
+
+//! シナリオ情報
+extern const uint_t LOG_TYPE_SCENARIO;
 //@}
 
 extern void initialize_logSetting();
