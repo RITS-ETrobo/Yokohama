@@ -45,6 +45,18 @@ const uint_t LOG_TYPE_GYRO = 0x87;
 
 //! ログを書き出している時間
 const uint_t LOG_TYPE_WRITE_PROCESSING = 0x88;
+
+//! 距離(右瞬間)
+const uint_t LOG_TYPE_DISTANCE_RIGHT = 0x89;
+
+//! 距離(右累積)
+const uint_t LOG_TYPE_DISTANCE_RIGHT_TOTAL = 0x8A;
+
+//! 距離(左瞬間)
+const uint_t LOG_TYPE_DISTANCE_LEFT = 0x8B;
+
+//! 距離(左累積)
+const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL = 0x8C;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -73,6 +85,10 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_DIRECTION_TOTAL] = "Direction(Total)";
     LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
     LOG_TYPE_MAP[LOG_TYPE_WRITE_PROCESSING] = "Writing Log";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT] = "Distance(Right)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT_TOTAL] = "Distance(Right,Total)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT] = "Distance(Left)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT_TOTAL] = "Distance(Left,Total)";
 }
 
 /**

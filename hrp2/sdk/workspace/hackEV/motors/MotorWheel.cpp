@@ -5,6 +5,8 @@
 #include "MotorWheel.h"
 #include "wheelSettings.h"
 #include "utilities.h"
+#include "Logger.h"
+#include "instances.h"
 
 //! Class for MotorWheel
 MotorWheel::MotorWheel(motor_port_t portMotor_)
@@ -62,6 +64,13 @@ float MotorWheel::getDistanceDelta()
     float   distance = getDistance();
     float   distanceDelta = distance - distanceLast;
     distanceLast = distance;
+
+    // if (logger) {
+    //     char    message[16];
+    //     memset(message, '\0', sizeof(message));
+    //     sprintf(message, "%02.04f", distanceDelta);
+    //     logger->addLog((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, message);
+    // }
 
     return  distanceDelta;
 }

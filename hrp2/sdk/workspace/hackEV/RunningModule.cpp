@@ -74,9 +74,11 @@ void start_run_test()
         }
     }
 
-    for (int index = 0; index < sizeof(run_scenario_test_pinWheel) / sizeof(run_scenario_test_pinWheel[0]); index++) {
+    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
-        driveController->run(run_scenario_test_pinWheel[index]);
+        driveController->run(run_scenario_test_straght_NoTrace[index]);
+        //ev3_speaker_play_tone(NOTE_F4, 300);
+        tslp_tsk(100);
     }
 }

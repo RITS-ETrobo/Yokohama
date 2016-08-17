@@ -51,5 +51,10 @@ private:
 
     //! 距離の累積[単位 : cm]
     float   distanceTotal = 0.0F;
-
+    
+    //! 右タイヤの距離累積
+    float   distanceRightTotal = 0.0F;
+    
+    //! 左タイヤの距離累積
+    float   distanceLeftTotal = 0.0F;
 };
