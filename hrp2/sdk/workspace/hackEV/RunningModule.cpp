@@ -12,6 +12,7 @@
 #include "scenarioRunning.h"
 #include "RunningModule.h"
 #include "LCDController.h"
+#include "Logger.h"
 #include <stdlib.h>
 #include "ArmModule.h"
 
@@ -77,4 +78,7 @@ void start_run_test()
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);
+    if (logger) {
+        logger->addLog(LOG_NOTICE, "Scenario End");
+    }
 }
