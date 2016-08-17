@@ -67,8 +67,11 @@ float MotorWheel::getDistanceDelta()
     float   distanceTotal = getDistance();
     float   distanceDelta = distanceTotal - distanceLast;
 
-    if (logger) {
-        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, distanceDelta);
+    if (logger && (distanceDelta > 0)) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, distanceDelta);
+
+        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT_TOTAL : LOG_TYPE_DISTANCE_RIGHT_TOTAL, distance);
     }
 
     distanceLast = distanceTotal;

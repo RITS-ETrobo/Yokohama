@@ -84,7 +84,7 @@ void DriveController::run(scenario_running scenario)
             return;
         }
 
-        tslp_tsk(1);//この行の必要性については要検証
+        tslp_tsk(2);
 
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
@@ -151,8 +151,10 @@ float DriveController::getDistance(float distanceDelta)
 {
     distanceTotal += distanceDelta;
 
-    if (logger) {
-        logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
+    if (logger && (distanceDelta != 0)) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
+
         logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
     }
 
@@ -167,7 +169,7 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionTotal += directionDelta;
-    if (logger) {
+    if (logger && (directionDelta != 0)) {
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 
