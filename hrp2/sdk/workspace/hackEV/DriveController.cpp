@@ -34,6 +34,13 @@ DriveController::DriveController()
 */
 bool DriveController::initialize()
 {
+    ev3_speaker_play_tone(NOTE_E4, 100);
+
+    directionLast = 0.0F;
+    directionTotal = 0.0F;
+    distanceLast = 0.0F;
+    distanceTotal = 0.0F;
+
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
     }
@@ -48,10 +55,6 @@ bool DriveController::initialize()
 
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
 
     return  true;
 }
@@ -65,6 +68,14 @@ void DriveController::run(scenario_running scenario)
 {
     //! モーターの回転角、距離、方向を0に戻す
     initialize();
+
+    if (logger) {
+        logger->addLogFloatFormatted(LOG_TYPE_SCENARIO, scenario.distance, (char*)"distance,%.03f");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.direction, (char*)"direction,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.power, (char*)"power,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.pattern, (char*)"pattern,%d");
+        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.stop, (char*)"stop,%d");
+    }
 
     //! ストップ監視しつつ、走行
     for (;;) {
