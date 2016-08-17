@@ -184,13 +184,9 @@ float DriveController::getDistance(float distanceDelta)
 {
     distanceTotal += distanceDelta;
 
-    // if (logger) {
-    //     //! 距離をログ出力
-    //     char message[16];
-    //     memset(message, '\0', sizeof(message));
-    //     sprintf(message, "%02.04f",distanceTotal);
-    //     logger->addLog(LOG_TYPE_DISTANCE_TOTAL, message);
-    // }
+    if (logger) {
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
+    }
 
     return  distanceTotal;
 }
@@ -204,10 +200,7 @@ float DriveController::getDirection(float directionDelta)
 {
     directionTotal += directionDelta;
     if (logger) {
-        char message[16];
-        memset(message, '\0', sizeof(message));
-        sprintf(message, "%02.04f",directionTotal);
-        logger->addLog(LOG_TYPE_DIRECTION_TOTAL, message);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 
     return  directionTotal;

@@ -27,8 +27,11 @@ extern const uint_t LOG_TYPE_PID;
 //! 色(多色)に関するログ
 extern const uint_t LOG_TYPE_COLOR;
 
-//! 色(白黒)に関するログ
-extern const uint_t LOG_TYPE_COLOR_BW;
+//! 色(黒)に関するログ
+extern const uint_t LOG_TYPE_COLOR_BLACK;
+
+//! 色(白)に関するログ
+extern const uint_t LOG_TYPE_COLOR_WHITE;
 
 //! 距離(瞬間)
 extern const uint_t LOG_TYPE_DISTANCE;
