@@ -86,9 +86,9 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_GYRO] = "Gyro";
     LOG_TYPE_MAP[LOG_TYPE_WRITE_PROCESSING] = "Writing Log";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT] = "Distance(Right)";
-    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT_TOTAL] = "Distance(Right,Total)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_RIGHT_TOTAL] = "Distance(Right/Total)";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT] = "Distance(Left)";
-    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT_TOTAL] = "Distance(Left,Total)";
+    LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT_TOTAL] = "Distance(Left/Total)";
 }
 
 /**
