@@ -36,6 +36,8 @@ public:
     virtual void initialize();
     virtual bool openLog();
     virtual void addLog(uint_t logType, const char* message);
+    virtual void addLogFloat(uint_t logType, const float value);
+    virtual void addLogInt(uint_t logType, const int value);
     virtual void outputLog(bool doClosingLog = false);
     virtual void setEnabled(bool enabled_ = true);
 
