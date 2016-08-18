@@ -1,7 +1,7 @@
 var searchData=
 [
   ['idle_5ftask',['idle_task',['../d2/d39/app_8h.html#adf1ca31adffac652fc532aaf03857119',1,'idle_task(intptr_t exinf):&#160;gyroboy.cpp'],['../db/d35/gyroboy_8cpp.html#aca19bf03e7dd21a3a6e07fce0f741d2e',1,'idle_task(intptr_t unused):&#160;gyroboy.cpp'],['../dc/d58/gyroboy_8h.html#adf1ca31adffac652fc532aaf03857119',1,'idle_task(intptr_t exinf):&#160;gyroboy.cpp']]],
-  ['initialize',['initialize',['../d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53',1,'Logger']]],
+  ['initialize',['initialize',['../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82',1,'DriveController::initialize()'],['../d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53',1,'Logger::initialize()'],['../db/d2f/class_motor_wheel.html#a10a341d60b0794744d0bf6c29906af2d',1,'MotorWheel::initialize()']]],
   ['initialize_5farm',['initialize_arm',['../d3/d68/_arm_module_8cpp.html#ac1cfcd9fada37d8521a1c1c3669ce6d8',1,'initialize_arm():&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#ac1cfcd9fada37d8521a1c1c3669ce6d8',1,'initialize_arm():&#160;ArmModule.cpp']]],
   ['initialize_5fcolor',['initialize_Color',['../d6/da1/_color_sensor_controller_8cpp.html#ac5cafeb51eca3bb0781073edd4f44c59',1,'ColorSensorController.cpp']]],
   ['initialize_5fgyroboy',['initialize_gyroboy',['../db/d35/gyroboy_8cpp.html#a3ba714d85d368a288920489dc6bf1828',1,'gyroboy.cpp']]],
@@ -9,5 +9,5 @@ var searchData=
   ['initialize_5fpid_5fcontroller',['initialize_pid_controller',['../dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98',1,'initialize_pid_controller():&#160;pid_controller.cpp'],['../de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98',1,'initialize_pid_controller():&#160;pid_controller.cpp']]],
   ['initialize_5frun',['initialize_run',['../da/d2f/_running_module_8cpp.html#aa1257cf90111aec1c47057d3bc893111',1,'initialize_run():&#160;RunningModule.cpp'],['../d6/d2f/_running_module_8h.html#aa1257cf90111aec1c47057d3bc893111',1,'initialize_run():&#160;RunningModule.cpp']]],
   ['initialize_5fsonarsensor',['initialize_sonarsensor',['../da/df2/_sonar_sensor_controller_8cpp.html#a4b5fb0472c92ecac43dc5daebfeeef01',1,'initialize_sonarsensor():&#160;SonarSensorController.cpp'],['../de/db5/_sonar_sensor_controller_8h.html#a4b5fb0472c92ecac43dc5daebfeeef01',1,'initialize_sonarsensor():&#160;SonarSensorController.cpp']]],
-  ['initialize_5fwheel',['initialize_wheel',['../da/d2f/_running_module_8cpp.html#a302f36c1b3ef0ea3c0149464a114fe00',1,'RunningModule.cpp']]]
+  ['isenabled',['isEnabled',['../d3/d42/class_logger.html#a8f64adcd6ad7e5cba216453f94bfdf00',1,'Logger']]]
 ];

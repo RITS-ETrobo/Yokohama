@@ -1,4 +1,9 @@
 <map id="hrp2/sdk/workspace/hackEV/instances.h" name="hrp2/sdk/workspace/hackEV/instances.h">
-<area shape="rect" id="node2" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="175,96,247,123"/>
-<area shape="rect" id="node6" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="264,171,363,197"/>
+<area shape="rect" id="node2" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="257,96,333,123"/>
+<area shape="rect" id="node10" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="556,96,684,123"/>
+<area shape="rect" id="node6" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="187,171,293,197"/>
+<area shape="rect" id="node13" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="551,171,689,197"/>
+<area shape="rect" id="node15" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="721,171,831,197"/>
+<area shape="rect" id="node14" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="551,245,652,272"/>
+<area shape="rect" id="node16" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="727,245,840,272"/>
 </map>

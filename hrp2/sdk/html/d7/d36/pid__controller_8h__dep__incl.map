@@ -1,7 +1,8 @@
 <map id="hrp2/sdk/workspace/hackEV/pid_controller.h" name="hrp2/sdk/workspace/hackEV/pid_controller.h">
-<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,103,144,145"/>
-<area shape="rect" id="node3" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="169,103,335,145"/>
-<area shape="rect" id="node4" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="360,103,539,145"/>
-<area shape="rect" id="node5" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="563,103,753,145"/>
-<area shape="rect" id="node6" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="778,96,979,152"/>
+<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,103,152,145"/>
+<area shape="rect" id="node3" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,103,353,145"/>
+<area shape="rect" id="node4" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="378,103,576,145"/>
+<area shape="rect" id="node5" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="601,103,791,145"/>
+<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="815,103,1013,145"/>
+<area shape="rect" id="node7" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1039,96,1253,152"/>
 </map>
