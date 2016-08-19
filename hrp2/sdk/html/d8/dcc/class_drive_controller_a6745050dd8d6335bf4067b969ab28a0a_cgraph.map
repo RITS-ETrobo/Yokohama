@@ -1,0 +1,6 @@
+<map id="DriveController::runAsPattern" name="DriveController::runAsPattern">
+<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータを停止する " alt="" coords="265,5,391,32"/>
+<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="261,56,395,83"/>
+<area shape="rect" id="node4" href="$d3/d42/class_logger.html#a553f56b37628724a5adf095b56b8d9cd" title="ログを追加する " alt="" coords="443,56,595,83"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3" title="ログを追加する " alt="" coords="643,56,765,83"/>
+</map>

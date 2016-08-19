@@ -1,18 +1,28 @@
 <map id="start_run" name="start_run">
-<area shape="rect" id="node2" href="$dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="217,31,370,57"/>
-<area shape="rect" id="node8" href="$da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="128,284,168,311"/>
-<area shape="rect" id="node3" href="$de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="419,5,578,32"/>
-<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="627,196,738,223"/>
-<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3" title="ログを追加する " alt="" coords="443,107,554,133"/>
-<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="787,171,885,197"/>
-<area shape="rect" id="node6" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="787,221,885,248"/>
-<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html#a302f36c1b3ef0ea3c0149464a114fe00" title="モーターの回転角、距離、方向を0に戻す " alt="" coords="443,392,554,419"/>
-<area shape="rect" id="node10" href="$da/d2f/_running_module_8cpp.html#aca349598cba3ffc333360ad32a6f4c3a" title="その場回転 " alt="" coords="255,132,331,159"/>
-<area shape="rect" id="node11" href="$da/d2f/_running_module_8cpp.html#a7428a6e0fb9519bef0cba55a11633b37" title="change_LineSide" alt="" coords="233,385,354,412"/>
-<area shape="rect" id="node12" href="$da/d2f/_running_module_8cpp.html#abc16369059bea11a028f7f479e1c0270" title="瞬間の走行体の向きを取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="437,468,560,495"/>
-<area shape="rect" id="node13" href="$da/d2f/_running_module_8cpp.html#a379f21b9fd5698f0249445ca7f8a0330" title="リセットしてからの指定したタイヤの走行距離を計算する " alt="" coords="439,531,559,557"/>
-<area shape="rect" id="node14" href="$de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="445,335,552,361"/>
-<area shape="rect" id="node15" href="$da/d2f/_running_module_8cpp.html#a673d0217d3d339e76d662475c181371a" title="ストップ処理 " alt="" coords="463,284,535,311"/>
-<area shape="rect" id="node16" href="$dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="244,81,343,108"/>
-<area shape="rect" id="node17" href="$da/d2f/_running_module_8cpp.html#ad2644a870e4c9546d6d61a80b71d7c6e" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="247,183,339,209"/>
+<area shape="rect" id="node2" href="$dd/d0a/pid__controller_8cpp.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="893,5,1059,32"/>
+<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="133,233,280,260"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="1162,81,1278,108"/>
+<area shape="rect" id="node6" href="$de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="1134,5,1306,32"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a727dbcf21b1a28bc486f3a7935342323" title="ログを追加する " alt="" coords="1151,157,1289,184"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1361,56,1471,83"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1365,107,1467,133"/>
+<area shape="rect" id="node8" href="$d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3" title="ログを追加する " alt="" coords="1355,233,1477,260"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="353,157,529,184"/>
+<area shape="rect" id="node12" href="$d3/d42/class_logger.html#acc8d48ba3ac805cf46b560b2233e4667" title="ログを追加する " alt="" coords="867,259,1085,285"/>
+<area shape="rect" id="node14" href="$d3/d42/class_logger.html#af4d1be11699ea2f2f3879344619c0c36" title="ログを追加する " alt="" coords="874,208,1078,235"/>
+<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="337,461,545,488"/>
+<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="351,107,531,133"/>
+<area shape="rect" id="node22" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="329,309,554,336"/>
+<area shape="rect" id="node26" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="328,360,555,387"/>
+<area shape="rect" id="node11" href="$db/d2f/class_motor_wheel.html#a10a341d60b0794744d0bf6c29906af2d" title="MotorWheel::initialize" alt="" coords="633,157,789,184"/>
+<area shape="rect" id="node13" href="$d3/d42/class_logger.html#a553f56b37628724a5adf095b56b8d9cd" title="ログを追加する " alt="" coords="1144,335,1296,361"/>
+<area shape="rect" id="node16" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータを停止する " alt="" coords="647,512,774,539"/>
+<area shape="rect" id="node17" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="909,411,1043,437"/>
+<area shape="rect" id="node19" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="603,107,819,133"/>
+<area shape="rect" id="node20" href="$db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="873,107,1079,133"/>
+<area shape="rect" id="node21" href="$db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="885,56,1067,83"/>
+<area shape="rect" id="node23" href="$d8/dcc/class_drive_controller.html#ab9d08c9ef1e6fa73914e848237103676" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="609,309,812,336"/>
+<area shape="rect" id="node24" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="634,360,787,387"/>
+<area shape="rect" id="node25" href="$de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="921,157,1031,184"/>
+<area shape="rect" id="node27" href="$d8/dcc/class_drive_controller.html#a88b1565e8487f806a8c618d4343ca3c5" title="リセットしてからの走行体の向きを取得する " alt="" coords="609,411,812,437"/>
 </map>

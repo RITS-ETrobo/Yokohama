@@ -1,0 +1,9 @@
+<map id="Logger::outputLog" name="Logger::outputLog">
+<area shape="rect" id="node2" href="$d3/d42/class_logger.html#a8f64adcd6ad7e5cba216453f94bfdf00" title="ログを出力可能な状態かを取得する " alt="" coords="194,5,329,32"/>
+<area shape="rect" id="node3" href="$d3/d42/class_logger.html#a0c1044d954578a578ead45d10a28e521" title="ログファイルを開く " alt="" coords="197,56,326,83"/>
+<area shape="rect" id="node4" href="$d5/d0b/log_settings_8cpp.html#a099d44c80db0b4b26bfc6205e305725e" title="ログの種類の名前を取得する " alt="" coords="209,107,314,133"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#a727dbcf21b1a28bc486f3a7935342323" title="ログを追加する " alt="" coords="193,157,330,184"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15" title="ログファイルにクローズする " alt="" coords="196,208,327,235"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#a123f61303778fe8aedbe47b3a7c0eea3" title="ログを追加する " alt="" coords="391,157,513,184"/>
+<area shape="rect" id="node8" href="$d3/d42/class_logger.html#ac77adddf6f7ca85381a77f000ccf802b" title="ログを出力可能な状態かを更新する " alt="" coords="379,208,525,235"/>
+</map>

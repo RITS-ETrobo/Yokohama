@@ -1,12 +1,16 @@
 <map id="hrp2/sdk/workspace/hackEV/pid_controller.cpp" name="hrp2/sdk/workspace/hackEV/pid_controller.cpp">
-<area shape="rect" id="node3" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="763,96,836,123"/>
-<area shape="rect" id="node15" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="614,171,729,197"/>
-<area shape="rect" id="node17" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="463,96,552,123"/>
-<area shape="rect" id="node18" href="$de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="1071,96,1181,123"/>
-<area shape="rect" id="node5" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="935,245,1037,272"/>
-<area shape="rect" id="node6" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="796,245,911,272"/>
-<area shape="rect" id="node7" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="391,171,463,197"/>
-<area shape="rect" id="node11" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="49,245,148,272"/>
-<area shape="rect" id="node16" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="623,245,721,272"/>
-<area shape="rect" id="node19" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="1164,171,1279,197"/>
+<area shape="rect" id="node3" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="827,171,905,197"/>
+<area shape="rect" id="node19" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="419,245,540,272"/>
+<area shape="rect" id="node21" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="950,96,1044,123"/>
+<area shape="rect" id="node24" href="$de/dc3/pid__controller_8h.html" title="This file has the declarations of PID contoller functions and defines. " alt="" coords="1281,171,1399,197"/>
+<area shape="rect" id="node6" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="145,320,257,347"/>
+<area shape="rect" id="node7" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="837,320,960,347"/>
+<area shape="rect" id="node8" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="616,320,717,347"/>
+<area shape="rect" id="node9" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="1107,245,1229,272"/>
+<area shape="rect" id="node10" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="235,245,344,272"/>
+<area shape="rect" id="node11" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="1005,245,1081,272"/>
+<area shape="rect" id="node15" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="1355,320,1461,347"/>
+<area shape="rect" id="node20" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="334,320,439,347"/>
+<area shape="rect" id="node22" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="517,171,645,197"/>
+<area shape="rect" id="node23" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="616,245,755,272"/>
 </map>

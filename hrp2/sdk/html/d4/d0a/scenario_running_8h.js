@@ -13,11 +13,12 @@ var scenario_running_8h =
     [ "R_exitGameArea_LAP_scenario", "d4/d0a/scenario_running_8h.html#aaf5f47df347a6e68ed6c98ed314cb8e8", null ],
     [ "R_LAP_GOAL_scenario", "d4/d0a/scenario_running_8h.html#ad1dc36f1eb6c593e829a9b74f1f3efbf", null ],
     [ "R_Start_enterGameArea_scenario", "d4/d0a/scenario_running_8h.html#a290f7ee4c806ca3e522f745cf13b0c27", null ],
+    [ "run_scenario_straight_30m", "d4/d0a/scenario_running_8h.html#a981accab833971e0d868a22bab948a08", null ],
     [ "run_scenario_test", "d4/d0a/scenario_running_8h.html#ac948acd8a8791a3c88f1703da8fd7d22", null ],
     [ "run_scenario_test_pinWheel", "d4/d0a/scenario_running_8h.html#afb7a409f4d14c24cb3a40e4ce204e035", null ],
     [ "run_scenario_test_right", "d4/d0a/scenario_running_8h.html#a1469ba88f01b9f998cd89b98e8b9c2cd", null ],
     [ "run_scenario_test_straght", "d4/d0a/scenario_running_8h.html#a09c5c437e4b72adfa57c69a6d656c237", null ],
-    [ "run_scenario_test_straght_NoTrace", "d4/d0a/scenario_running_8h.html#a60be105d0022af370bdf2ae8715f4845", null ],
+    [ "run_scenario_test_straght_NoTrace", "d4/d0a/scenario_running_8h.html#aee9defd8776840a5d36bc4b7f9de7c67", null ],
     [ "run_scenario_test_switch", "d4/d0a/scenario_running_8h.html#a620f9152561057bda272b83c36b02e28", null ],
     [ "run_scenario_test_UTurn", "d4/d0a/scenario_running_8h.html#a2120b908ec08f9935310b8fd22ca1861", null ]
 ];

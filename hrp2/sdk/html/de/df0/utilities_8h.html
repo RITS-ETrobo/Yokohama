@@ -103,7 +103,8 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h.html','../../');})
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">utilities.h File Reference</div>  </div>
 </div><!--header-->
@@ -111,9 +112,13 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h.html','../../');})
 
 <p>This file has the declarations of utilitiy functions and defines.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;target_test.h&quot;</code><br/>
+<div class="textblock"><code>#include &lt;map&gt;</code><br/>
+<code>#include &quot;target_test.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d4/d9e/port_settings_8h_source.html">portSettings.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d6/d35/wheel_settings_8h_source.html">wheelSettings.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../dd/db5/run_pattern_8h_source.html">runPattern.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d0/de2/parameter_p_i_d_8h_source.html">parameterPID.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d5/d3f/_motor_wheel_8h_source.html">MotorWheel.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d6/dec/_logger_8h_source.html">Logger.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d5/d3c/_l_c_d_controller_8h_source.html">LCDController.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -121,14 +126,14 @@ Include dependency graph for utilities.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dfc/utilities_8h__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2utilities_8h" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2utilities_8h" id="hrp2_2sdk_2workspace_2hack_e_v_2utilities_8h">
-<area shape="rect" id="node3" href="../../d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="30,171,132,197"/><area shape="rect" id="node5" href="../../d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="157,171,272,197"/><area shape="rect" id="node6" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="655,96,727,123"/><area shape="rect" id="node14" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="338,96,453,123"/><area shape="rect" id="node10" href="../../da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="693,171,792,197"/><area shape="rect" id="node15" href="../../df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="347,171,445,197"/></map>
+<area shape="rect" id="node4" href="../../d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="131,171,244,197"/><area shape="rect" id="node6" href="../../d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="421,171,544,197"/><area shape="rect" id="node7" href="../../dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="895,96,996,123"/><area shape="rect" id="node8" href="../../d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="1020,96,1143,123"/><area shape="rect" id="node9" href="../../d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="304,96,413,123"/><area shape="rect" id="node10" href="../../d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="793,96,869,123"/><area shape="rect" id="node18" href="../../d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="561,96,681,123"/><area shape="rect" id="node14" href="../../da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="1113,171,1220,197"/><area shape="rect" id="node19" href="../../df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="569,171,673,197"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/db7/utilities_8h__dep__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2utilities_8hdep" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2utilities_8hdep" id="hrp2_2sdk_2workspace_2hack_e_v_2utilities_8hdep">
-<area shape="rect" id="node2" href="../../d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,103,144,145"/><area shape="rect" id="node3" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="169,103,335,145"/><area shape="rect" id="node4" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="360,103,539,145"/><area shape="rect" id="node5" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="563,103,753,145"/><area shape="rect" id="node6" href="../../d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="778,96,976,152"/><area shape="rect" id="node7" href="../../db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1001,103,1199,145"/><area shape="rect" id="node8" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1223,96,1424,152"/><area shape="rect" id="node9" href="../../de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1449,103,1591,145"/></map>
+<area shape="rect" id="node2" href="../../d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,103,152,145"/><area shape="rect" id="node3" href="../../d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,103,353,145"/><area shape="rect" id="node4" href="../../d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="378,103,576,145"/><area shape="rect" id="node5" href="../../db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="601,103,831,145"/><area shape="rect" id="node6" href="../../dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="855,103,1044,145"/><area shape="rect" id="node7" href="../../da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1068,103,1267,145"/><area shape="rect" id="node8" href="../../d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="1293,96,1501,152"/><area shape="rect" id="node9" href="../../db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1526,103,1732,145"/><area shape="rect" id="node10" href="../../da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1757,96,1971,152"/><area shape="rect" id="node11" href="../../de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1996,103,2144,145"/></map>
 </div>
 </div>
 <p><a href="../../de/df0/utilities_8h_source.html">Go to the source code of this file.</a></p>
@@ -155,6 +160,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a62d20c80c50659ca4a6c00bc37abf359"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df0/utilities_8h.html#a62d20c80c50659ca4a6c00bc37abf359">writeFloatLCD</a> (float value)</td></tr>
 <tr class="memdesc:a62d20c80c50659ca4a6c00bc37abf359"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCDに数値を表示させる  <a href="#a62d20c80c50659ca4a6c00bc37abf359">More...</a><br/></td></tr>
 <tr class="separator:a62d20c80c50659ca4a6c00bc37abf359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1247d51cadf9b80b90378ce5badf3b07"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="../../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a>, <br class="typebreak"/>
+<a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df0/utilities_8h.html#a1247d51cadf9b80b90378ce5badf3b07">PID_MAP</a></td></tr>
+<tr class="separator:a1247d51cadf9b80b90378ce5badf3b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file has the declarations of utilitiy functions and defines. </p>
@@ -212,7 +223,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/df0/utilities_8h_af899f4857f178d44a9080ec66506e1a7_icgraph.png" border="0" usemap="#de/df0/utilities_8h_af899f4857f178d44a9080ec66506e1a7_icgraph" alt=""/></div>
 <map name="de/df0/utilities_8h_af899f4857f178d44a9080ec66506e1a7_icgraph" id="de/df0/utilities_8h_af899f4857f178d44a9080ec66506e1a7_icgraph">
-<area shape="rect" id="node2" href="../../de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="214,31,367,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="431,5,505,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="417,56,519,83"/></map>
+<area shape="rect" id="node2" href="../../de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="227,31,394,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="459,5,539,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="443,56,555,83"/></map>
 </div>
 </p>
 
@@ -239,7 +250,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/df0/utilities_8h_ab06cba26c220e9f1cb65ead703acf341_icgraph.png" border="0" usemap="#de/df0/utilities_8h_ab06cba26c220e9f1cb65ead703acf341_icgraph" alt=""/></div>
 <map name="de/df0/utilities_8h_ab06cba26c220e9f1cb65ead703acf341_icgraph" id="de/df0/utilities_8h_ab06cba26c220e9f1cb65ead703acf341_icgraph">
-<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="176,5,259,32"/></map>
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="189,5,277,32"/></map>
 </div>
 </p>
 
@@ -266,7 +277,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/df0/utilities_8h_afed76cc72a0fba47a1627936acd10c2d_icgraph.png" border="0" usemap="#de/df0/utilities_8h_afed76cc72a0fba47a1627936acd10c2d_icgraph" alt=""/></div>
 <map name="de/df0/utilities_8h_afed76cc72a0fba47a1627936acd10c2d_icgraph" id="de/df0/utilities_8h_afed76cc72a0fba47a1627936acd10c2d_icgraph">
-<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="181,5,264,32"/></map>
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="192,5,280,32"/></map>
 </div>
 </p>
 
@@ -300,7 +311,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_cgraph.png" border="0" usemap="#de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_cgraph" alt=""/></div>
 <map name="de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_cgraph" id="de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_cgraph">
-<area shape="rect" id="node2" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="161,31,271,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="320,5,419,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="320,56,419,83"/></map>
+<area shape="rect" id="node2" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="163,31,279,57"/><area shape="rect" id="node3" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="328,5,437,32"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="331,56,434,83"/></map>
 </div>
 </p>
 
@@ -309,9 +320,22 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_icgraph.png" border="0" usemap="#de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_icgraph" alt=""/></div>
 <map name="de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_icgraph" id="de/df0/utilities_8h_a62d20c80c50659ca4a6c00bc37abf359_icgraph">
-<area shape="rect" id="node2" href="../../d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="180,5,263,32"/><area shape="rect" id="node3" href="../../da/d2f/_running_module_8cpp.html#a7428a6e0fb9519bef0cba55a11633b37" title="change_LineSide" alt="" coords="161,56,282,83"/><area shape="rect" id="node4" href="../../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89" title="シナリオに従って走る " alt="" coords="331,81,371,108"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="434,56,507,83"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="419,107,522,133"/></map>
+<area shape="rect" id="node2" href="../../d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="195,5,285,32"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="163,56,317,83"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="366,31,591,57"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="365,81,592,108"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="640,56,787,83"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="851,31,931,57"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="835,81,947,108"/></map>
 </div>
 </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a1247d51cadf9b80b90378ce5badf3b07"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="../../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a>, <a class="el" href="../../d3/d4a/struct_p_i_d___p_a_r_a_m_e_t_e_r.html">PID_PARAMETER</a>&gt; PID_MAP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -321,7 +345,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../de/df0/utilities_8h.html">utilities.h</a></li>
-    <li class="footer">Generated on Mon Aug 8 2016 23:23:38 for ev3RT Workspace by
+    <li class="footer">Generated on Thu Aug 18 2016 15:51:58 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

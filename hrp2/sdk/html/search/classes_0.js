@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger',['Logger',['../d3/d42/class_logger.html',1,'']]]
+  ['drivecontroller',['DriveController',['../d8/dcc/class_drive_controller.html',1,'']]]
 ];

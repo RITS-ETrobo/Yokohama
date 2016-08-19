@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['run',['run',['../da/d2f/_running_module_8cpp.html#a080cda2584e6b5ef0bdcdf060208bd89',1,'RunningModule.cpp']]]
+  ['run',['run',['../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896',1,'DriveController::run()'],['../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855',1,'MotorWheel::run()']]],
+  ['runaspattern',['runAsPattern',['../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a',1,'DriveController']]]
 ];
