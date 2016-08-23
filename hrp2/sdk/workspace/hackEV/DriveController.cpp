@@ -211,12 +211,32 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     default:
         //! ライントレースせずに、直進走行する
-        motorWheelLeft->run(scenario.power);
-        motorWheelRight->run(scenario.power);
+        straightRun(scenario.power);
         break;
     }
 
     return  false;
+}
+
+/**
+ * @brief   直進走行
+ * @return  なし
+ */
+void DriveController::straightRun(int power)
+{
+    float leftDistance = 0.0F;
+    float rightDistance = 0.0F;
+    
+    leftDistance = motorWheelLeft->getDistanceDelta();
+    rightDistance = motorWheelRight->getDistanceDelta();
+    
+    float differenceRateForWheel = rightDistance/leftDistance;
+    
+    //! 瞬間ではなく左右それぞれの合計回転量を見ながら補正する。
+    
+    //! 実際の回転角度を見ながら左右の出力を調整
+    motorWheelLeft->run(power*differenceRateForWheel);
+    motorWheelRight->run(power);
 }
 
 /**

@@ -32,6 +32,7 @@ protected:
 
 private:
     void pinWheel(int power);
+    void straightRun(int power);
     void change_LineSide(scenario_running scenario);
 
     //! 左ホイールクラスのインスタンス

@@ -84,5 +84,8 @@ extern const scenario_running run_scenario_test_straght[1];
 //! 検証用シナリオ(1m直進・誤差検証用)
 extern const scenario_running run_scenario_test_straght_NoTrace[10];
 
+//! 検証用シナリオ(2m直進・誤差検証用)
+extern const scenario_running run_scenario_test_correct_straght_NoTrace[1];
+
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)
 extern const scenario_running run_scenario_straight_30m[1];
