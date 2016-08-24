@@ -89,7 +89,8 @@ void DriveController::run(scenario_running scenario)
 
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
-        getDelta(&directionDelta, &distanceDelta);
+        float   distanceRatio = 0.0F;
+        getDelta(&directionDelta, &distanceDelta, &distanceRatio);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }
@@ -133,14 +134,23 @@ ER DriveController::stop(bool_t brake /*= true*/)
  * 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである
  * @param   directionDelta  瞬間の走行体の向き[単位 : 度]
  * @param   distanceDelta   瞬間の走行体中心の移動距離[単位 : cm]
+ * @param   distanceRatio   左右のホイールの出力比
  * @return  なし
 */
-void DriveController::getDelta(float *directionDelta, float *distanceDelta)
+void DriveController::getDelta(float *directionDelta, float *distanceDelta, float *distanceRatio)
 {
     float   distanceDeltaLeft = motorWheelLeft->getDistanceDelta();
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
     *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
+
+    if ((distanceDeltaRight == 0.0F) || (distanceDeltaLeft == distanceDeltaRight)) {
+        *distanceRatio = 1.0F;
+    } else if (distanceDeltaLeft == 0.0F) {
+        *distanceRatio = 0.0F;
+    } else {
+        *distanceRatio = distanceDeltaLeft / (float)distanceDeltaRight;
+    }
 }
 
 /**
@@ -220,22 +230,20 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
 /**
  * @brief   直進走行
+ * @param   power   モーターへの入力
  * @return  なし
  */
 void DriveController::straightRun(int power)
 {
-    float leftDistance = 0.0F;
-    float rightDistance = 0.0F;
-    
-    leftDistance = motorWheelLeft->getDistanceDelta();
-    rightDistance = motorWheelRight->getDistanceDelta();
-    
-    float differenceRateForWheel = rightDistance/leftDistance;
-    
+    float   directionDelta = 0.0F;
+    float   distanceDelta = 0.0F;
+    float   distanceRatio = 0.0F;
+    driveController->getDelta(&directionDelta, &distanceDelta, &distanceRatio);
+
     //! 瞬間ではなく左右それぞれの合計回転量を見ながら補正する。
-    
+
     //! 実際の回転角度を見ながら左右の出力を調整
-    motorWheelLeft->run(power*differenceRateForWheel);
+    motorWheelLeft->run(power * distanceRatio);
     motorWheelRight->run(power);
 }
 
@@ -287,9 +295,10 @@ void DriveController::change_LineSide(scenario_running scenario)
     float firstDirection = 0.0F;
     float   directionDelta = 0.0F;
     float   distanceDelta = 0.0F;
+    float   distanceRatio = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        driveController->getDelta(&directionDelta, &distanceDelta, &distanceRatio);
         firstDirection += directionDelta; 
 
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
@@ -313,7 +322,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        driveController->getDelta(&directionDelta, &distanceDelta, &distanceRatio);
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ

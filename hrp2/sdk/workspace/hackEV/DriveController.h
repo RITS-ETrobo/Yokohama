@@ -25,7 +25,7 @@ public:
 protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
     virtual bool stopByDirection(scenario_running scenario, float directionDelta);
-    virtual void getDelta(float *directionDelta, float *distanceDelta);
+    virtual void getDelta(float *directionDelta, float *distanceDelta, float *distanceRatio);
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);
     virtual bool runAsPattern(scenario_running scenario);
