@@ -242,10 +242,13 @@ void DriveController::straightRun(int power)
     getDelta(&directionDelta, &distanceDelta, &distanceDeltaRatio);
 
     //! 瞬間ではなく左右それぞれの合計回転量を見ながら補正する。
+    int powerLeft = 0;
+    int powerRight = 0;
+    getPower(power, 0, distanceDeltaRatio, &powerLeft, &powerRight);
 
     //! 実際の回転角度を見ながら左右の出力を調整
-    motorWheelLeft->run(power * distanceDeltaRatio);
-    motorWheelRight->run(power);
+    motorWheelLeft->run(powerLeft);
+    motorWheelRight->run(powerRight);
 }
 
 /**
@@ -384,4 +387,37 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     }
 
     return  false;
+}
+
+/**
+ * @brief   指定した角度だった場合、走行体を停止させる
+ * @param   power       モーターへの入力
+ * @param   direction   角度[単位 : %]
+ * @param   distanceRatio   左右のホイールの進んだ距離の比率
+ * @param   powerLeft   左モーターへ与える入力
+ * @param   powerRight  右モーターへ与える入力
+ * @return  なし
+ */
+void DriveController::getPower(int power, int direction, int distanceRatio, int *powerLeft, int *powerRight)
+{
+    *powerLeft = 0;
+    *powerRight = 0;
+    if (power == 0) {
+        return;
+    }
+
+    *powerLeft = 0;
+    *powerRight = 0;
+    if (distanceRatio == 0) {
+        *powerRight = power;
+        return;
+    }
+
+    if (distanceRatio == 1) {
+        *powerLeft = power;
+        return;
+    }
+
+    *powerRight = power * distanceRatio;
+    *powerLeft = power;
 }
