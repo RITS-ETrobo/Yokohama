@@ -298,7 +298,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float   distanceDelta = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        getDelta(&directionDelta, &distanceDelta);
+        driveController->getDelta(&directionDelta, &distanceDelta);
         firstDirection += directionDelta; 
 
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
@@ -322,7 +322,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        getDelta(&directionDelta, &distanceDelta);
+        driveController->getDelta(&directionDelta, &distanceDelta);
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
