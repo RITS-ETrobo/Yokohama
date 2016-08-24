@@ -145,11 +145,11 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta, floa
 
     if (distanceDeltaRatio) {
         if ((distanceDeltaRight == 0.0F) || (distanceDeltaLeft == distanceDeltaRight)) {
-            *distanceRatio = 1.0F;
+            *distanceDeltaRatio = 1.0F;
         } else if (distanceDeltaLeft == 0.0F) {
-            *distanceRatio = 0.0F;
+            *distanceDeltaRatio = 0.0F;
         } else {
-            *distanceRatio = distanceDeltaLeft / (float)distanceDeltaRight;
+            *distanceDeltaRatio = distanceDeltaLeft / distanceDeltaRight;
         }
     }
 }
@@ -244,7 +244,7 @@ void DriveController::straightRun(int power)
     //! 瞬間ではなく左右それぞれの合計回転量を見ながら補正する。
 
     //! 実際の回転角度を見ながら左右の出力を調整
-    motorWheelLeft->run(power * distanceRatio);
+    motorWheelLeft->run(power * distanceDeltaRatio);
     motorWheelRight->run(power);
 }
 
