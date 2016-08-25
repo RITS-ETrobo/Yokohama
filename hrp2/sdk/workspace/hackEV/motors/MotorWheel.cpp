@@ -11,16 +11,20 @@
 //! Class for MotorWheel
 MotorWheel::MotorWheel(motor_port_t portMotor_)
     : portMotor(portMotor_)
+    , distanceDelta(0.0F)
     , distance(0.0F)
     , distanceLast(0.0F)
+    , speedDelta(0.0F)
 {
 }
 
 void MotorWheel::initialize()
 {
     ev3_motor_reset_counts(portMotor);
+    distanceDelta = 0.0F;
     distance = 0.0F;
     distanceLast = 0.0F;
+    speedDelta = 0.0F;
 }
 
 /**
@@ -65,7 +69,7 @@ float MotorWheel::getDistanceDelta()
 {
     updateDistance();
     float   distanceTotal = getDistance();
-    float   distanceDelta = distanceTotal - distanceLast;
+    distanceDelta = distanceTotal - distanceLast;
 
     if (logger && (distanceDelta > 0)) {
         //ログが多くなり過ぎて、異常終了する為、コメント
