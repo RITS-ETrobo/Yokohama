@@ -11,20 +11,26 @@
 //! Class for MotorWheel
 MotorWheel::MotorWheel(motor_port_t portMotor_)
     : portMotor(portMotor_)
-    , distanceDelta(0.0F)
     , distance(0.0F)
     , distanceLast(0.0F)
-    , speedDelta(0.0F)
+    , speedCalculator100ms(NULL)
+    , speedCalculator1000ms(NULL)
 {
 }
 
 void MotorWheel::initialize()
 {
     ev3_motor_reset_counts(portMotor);
-    distanceDelta = 0.0F;
     distance = 0.0F;
     distanceLast = 0.0F;
-    speedDelta = 0.0F;
+
+    if (speedCalculator100ms == NULL) {
+        speedCalculator100ms = new SpeedCalculator(100);
+    }
+
+    if (speedCalculator1000ms == NULL) {
+        speedCalculator1000ms = new SpeedCalculator(1000);
+    }
 }
 
 /**
@@ -36,6 +42,8 @@ void MotorWheel::initialize()
  */
 ER MotorWheel::run(int power)
 {
+    speedCalculator100ms->initialize();
+    speedCalculator1000ms->initialize();
     return  ev3_motor_set_power(portMotor, power);
 }
 
@@ -67,11 +75,21 @@ float MotorWheel::getDistance()
 
 float MotorWheel::getDistanceDelta()
 {
+    SYSTIM  currentTime = clock->now();
     updateDistance();
     float   distanceTotal = getDistance();
-    distanceDelta = distanceTotal - distanceLast;
+    float   distanceDelta = distanceTotal - distanceLast;
+    if (distanceDelta == 0) {
+        return  distanceDelta;
+    }
 
-    if (logger && (distanceDelta > 0)) {
+    DISTANCE_RECORD record;
+    record.currentTime = currentTime;
+    record.distanceDelta = distanceDelta;
+    speedCalculator100ms->add(record);
+    speedCalculator1000ms->add(record);
+
+    if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT : LOG_TYPE_DISTANCE_RIGHT, distanceDelta);
 
