@@ -79,6 +79,6 @@ void start_run_test()
 
     ev3_speaker_play_tone(NOTE_F4, 300);
     if (logger) {
-        logger->addLog(LOG_NOTICE, "Scenario End");
+        logger->addLog(LOG_TYPE_SCENARIO, "END");
     }
 }

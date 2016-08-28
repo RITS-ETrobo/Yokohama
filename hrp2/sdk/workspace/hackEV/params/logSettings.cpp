@@ -62,7 +62,31 @@ const uint_t LOG_TYPE_DISTANCE_LEFT = 0x8D;
 const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL = 0x8E;
 
 //! シナリオ情報
-const uint_t LOG_TYPE_SCENARIO = 0x8F;
+extern const uint_t LOG_TYPE_SCENARIO = 0x8F;
+
+//! バッテリー情報(mA)
+const uint_t LOG_TYPE_BATTERY_mA = 0x90;
+
+//! バッテリー情報(mV)
+const uint_t LOG_TYPE_BATTERY_mV = 0x91;
+
+//! シナリオ情報(距離[単位 : cm])
+const uint_t LOG_TYPE_SCENARIO_DISTANCE = 0x92;
+
+//! シナリオ情報(向き[単位 : 度])
+const uint_t LOG_TYPE_SCENARIO_DIRECTION = 0x93;
+
+//! シナリオ情報(入力)
+const uint_t LOG_TYPE_SCENARIO_POWER = 0x94;
+
+//! シナリオ情報(走行シナリオの順番)
+const uint_t LOG_TYPE_SCENARIO_PATTERN = 0x95;
+
+//! シナリオ情報(走行シナリオ完了後にストップするか)
+const uint_t LOG_TYPE_SCENARIO_STOP = 0x96;
+
+//! 初期化
+const uint_t LOG_TYPE_INITIALIZE = 0x97;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -97,6 +121,14 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT] = "Distance(Left)";
     LOG_TYPE_MAP[LOG_TYPE_DISTANCE_LEFT_TOTAL] = "Distance(Left/Total)";
     LOG_TYPE_MAP[LOG_TYPE_SCENARIO] = "Scenario";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO_DISTANCE] = "Scenario(distance)";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO_DIRECTION] = "Scenario(direction)";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO_POWER] = "Scenario(power)";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO_PATTERN] = "Scenario(pattern)";
+    LOG_TYPE_MAP[LOG_TYPE_SCENARIO_STOP] = "Scenario(stop)";
+    LOG_TYPE_MAP[LOG_TYPE_BATTERY_mA] = "mA";
+    LOG_TYPE_MAP[LOG_TYPE_BATTERY_mV] = "mV";
+    LOG_TYPE_MAP[LOG_TYPE_INITIALIZE] = "Initialize";
 }
 
 /**

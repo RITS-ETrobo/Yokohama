@@ -144,7 +144,7 @@ static void button_clicked_handler(intptr_t button) {
 void main_task(intptr_t unused) {
     setFontSize(EV3_FONT_MEDIUM);
 
-    writeStringLCD("Start Initializing");
+    writeStringLCD("INIT START");
 
     logger = new Logger();
     driveController = new DriveController();
@@ -163,7 +163,7 @@ void main_task(intptr_t unused) {
     }
 
     if (logger) {
-        logger->addLog(LOG_NOTICE, "Start Initializing");
+        logger->addLog(LOG_TYPE_INITIALIZE, "START");
     }
 
     //! Configure motors
@@ -186,18 +186,21 @@ void main_task(intptr_t unused) {
     ev3_button_set_on_clicked(UP_BUTTON, button_clicked_handler, UP_BUTTON);
     ev3_button_set_on_clicked(DOWN_BUTTON, button_clicked_handler, DOWN_BUTTON);
 
-    writeStringLCD("End Initializing");
+    writeStringLCD("INIT END");
     if (logger) {
-        logger->addLog(LOG_NOTICE, "End Initializing");
+        logger->addLog(LOG_TYPE_INITIALIZE, "END");
     }
 
     char message[16];
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%04d mA %04d mV", ev3_battery_current_mA(), ev3_battery_voltage_mV()); 
+    int battery_mA = ev3_battery_current_mA();
+    int battery_mV = ev3_battery_voltage_mV();
+    sprintf(message, "%04d mA %04d mV", battery_mA, battery_mV); 
 
     writeStringLCD(message);
     if (logger) {
-        logger->addLog(LOG_NOTICE, message);
+        logger->addLogInt(LOG_TYPE_BATTERY_mA, battery_mA);
+        logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mA);
     }
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
