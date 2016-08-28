@@ -63,8 +63,32 @@ extern const uint_t LOG_TYPE_DISTANCE_LEFT;
 //! 距離(左累積)
 extern const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL;
 
+//! バッテリー情報(mA)
+extern const uint_t LOG_TYPE_BATTERY_mA;
+
+//! バッテリー情報(mV)
+extern const uint_t LOG_TYPE_BATTERY_mV;
+
 //! シナリオ情報
 extern const uint_t LOG_TYPE_SCENARIO;
+
+//! シナリオ情報(距離[単位 : cm])
+extern const uint_t LOG_TYPE_SCENARIO_DISTANCE;
+
+//! シナリオ情報(向き[単位 : 度])
+extern const uint_t LOG_TYPE_SCENARIO_DIRECTION;
+
+//! シナリオ情報(入力)
+extern const uint_t LOG_TYPE_SCENARIO_POWER;
+
+//! シナリオ情報(走行シナリオの順番)
+extern const uint_t LOG_TYPE_SCENARIO_PATTERN;
+
+//! シナリオ情報(走行シナリオ完了後にストップするか)
+extern const uint_t LOG_TYPE_SCENARIO_STOP;
+
+//! 初期化
+extern const uint_t LOG_TYPE_INITIALIZE;
 //@}
 
 extern void initialize_logSetting();
