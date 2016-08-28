@@ -24,6 +24,8 @@ DriveController::DriveController()
     , directionTotal(0.0F)
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
+    , speedCalculator100ms(NULL)
+    , speedCalculator1000ms(NULL)
 {
 }
 
@@ -49,12 +51,22 @@ bool DriveController::initialize()
         motorWheelRight = new MotorWheel(EV3_MOTOR_RIGHT);
     }
 
-    if (!motorWheelLeft || !motorWheelRight) {
+    if (speedCalculator100ms == NULL) {
+        speedCalculator100ms = new SpeedCalculator(100);
+    }
+
+    if (speedCalculator1000ms == NULL) {
+        speedCalculator1000ms = new SpeedCalculator(1000);
+    }
+
+    if (!motorWheelLeft || !motorWheelRight || !speedCalculator100ms || !speedCalculator1000ms) {
         return  false;
     }
 
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
+    speedCalculator100ms->initialize();
+    speedCalculator1000ms->initialize();
 
     return  true;
 }
@@ -70,11 +82,11 @@ void DriveController::run(scenario_running scenario)
     initialize();
 
     if (logger) {
-        logger->addLogFloatFormatted(LOG_TYPE_SCENARIO, scenario.distance, (char*)"distance,%.03f");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.direction, (char*)"direction,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.power, (char*)"power,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.pattern, (char*)"pattern,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.stop, (char*)"stop,%d");
+        logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, scenario.distance);
+        logger->addLogInt(LOG_TYPE_SCENARIO_DIRECTION, scenario.direction);
+        logger->addLogInt(LOG_TYPE_SCENARIO_POWER, scenario.power);
+        logger->addLogInt(LOG_TYPE_SCENARIO_PATTERN, (int)scenario.pattern);
+        logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)scenario.stop);
     }
 
     //! ストップ監視しつつ、走行
@@ -87,9 +99,16 @@ void DriveController::run(scenario_running scenario)
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
+        SYSTIM  currentTime = clock->now();
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
         getDelta(&directionDelta, &distanceDelta);
+
+        DISTANCE_RECORD record;
+        record.currentTime = currentTime;
+        record.distanceDelta = distanceDelta;
+        speedCalculator100ms->add(record);
+        speedCalculator1000ms->add(record);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }

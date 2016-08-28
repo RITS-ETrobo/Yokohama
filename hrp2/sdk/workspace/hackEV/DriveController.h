@@ -11,6 +11,7 @@
 #include "scenarioRunning.h"
 
 #include "MotorWheel.h"
+#include "SpeedCalculator.h"
 
 //! Class for driving
 class DriveController
@@ -52,4 +53,12 @@ private:
     //! 距離の累積[単位 : cm]
     float   distanceTotal = 0.0F;
 
+    //! \addtogroup 速度測定用のインスタンス
+    //@{
+    //! 最近の100ms
+    SpeedCalculator *speedCalculator100ms;
+
+    //! 最近の1000ms
+    SpeedCalculator *speedCalculator1000ms;
+    //@}
 };
