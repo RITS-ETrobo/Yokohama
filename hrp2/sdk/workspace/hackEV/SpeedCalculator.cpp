@@ -34,8 +34,8 @@ void SpeedCalculator::initialize()
 */
 void SpeedCalculator::add(DISTANCE_RECORD record)
 {
-    removeExceededTimeItem(record.currentTime);
     distance_record.push_back(record);
+    removeExceededTimeItem(record.currentTime);
 }
 
 /**
