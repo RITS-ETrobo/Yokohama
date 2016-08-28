@@ -35,15 +35,17 @@ void SpeedCalculator::initialize()
 void SpeedCalculator::add(DISTANCE_RECORD record)
 {
     distance_record.push_back(record);
-    removeExceededTimeItem(record.currentTime);
+    removeExceededTimeItem();
 }
 
 /**
- *  @brief  要素が制限時間内に収まっているかを確認し、収まっていない要素を削除する
- *  @param  currentTime 現在のタイマー[単位 : ms]
+ *  @brief  要素全体が指定時間内に収まっているかを確認し、収まっていない要素を削除する
+ *
+ *  deque<DISTANCE_RECORD>が指定時間(duration)内に収まっていなければ、収まるまで先頭側から要素を削除する
+ *  この結果、直近の指定時間内の時間と距離を保持することになる
  *  @return なし
 */
-void SpeedCalculator::removeExceededTimeItem(SYSTIM currentTime)
+void SpeedCalculator::removeExceededTimeItem()
 {
     for (;;) {
         std::deque<DISTANCE_RECORD>::iterator  it = distance_record.begin();

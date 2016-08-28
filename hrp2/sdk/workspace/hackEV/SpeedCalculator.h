@@ -30,7 +30,7 @@ public:
     virtual float getSpeed(DISTANCE_RECORD *record);
 
 private:
-    void removeExceededTimeItem(SYSTIM currentTime);
+    void removeExceededTimeItem();
     SYSTIM  duration;
     std::deque<DISTANCE_RECORD> distance_record;
 };
