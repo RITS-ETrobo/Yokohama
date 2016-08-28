@@ -24,6 +24,7 @@ APPL_CXXOBJS += \
     ColorSensorController.o \
     MotorWheel.o \
     DriveController.o \
+    SpeedCalculator.o \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \
