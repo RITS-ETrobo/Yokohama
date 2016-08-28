@@ -390,7 +390,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
 }
 
 /**
- * @brief   指定した角度だった場合、走行体を停止させる
+ * @brief   補正された出力を取得する
  * @param   power       モーターへの入力
  * @param   direction   角度[単位 : %]
  * @param   distanceRatio   左右のホイールの進んだ距離の比率
@@ -398,22 +398,20 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
  * @param   powerRight  右モーターへ与える入力
  * @return  なし
  */
-void DriveController::getPower(int power, int direction, int distanceRatio, int *powerLeft, int *powerRight)
+void DriveController::getPower(int power, int direction, float distanceRatio, int *powerLeft, int *powerRight)
 {
-    *powerLeft = 0;
-    *powerRight = 0;
     if (power == 0) {
         return;
     }
 
-    *powerLeft = 0;
-    *powerRight = 0;
-    if (distanceRatio == 0) {
+    *powerLeft = power;
+    *powerRight = power;
+    if (distanceRatio == 0.0F) {
         *powerRight = power;
         return;
     }
 
-    if (distanceRatio == 1) {
+    if (distanceRatio == 1.0F) {
         *powerLeft = power;
         return;
     }
