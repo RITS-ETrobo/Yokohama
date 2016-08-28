@@ -26,6 +26,8 @@ DriveController::DriveController()
     , distanceTotal(0.0F)
     , speedCalculator100ms(NULL)
     , speedCalculator1000ms(NULL)
+    , lastGetDistanceLeft(0.0F)
+    , lastGetDistanceRight(0.0F)
 {
 }
 
@@ -42,6 +44,10 @@ bool DriveController::initialize()
     directionTotal = 0.0F;
     distanceLast = 0.0F;
     distanceTotal = 0.0F;
+
+    lastGetDistanceLeft = 0.0F;
+    lastGetDistanceRight = 0.0F;
+    lastTime = 0;
 
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
@@ -71,6 +77,8 @@ bool DriveController::initialize()
     return  true;
 }
 
+const SYSTIM DURATION = 100;
+
 /**
  * @brief   シナリオに従って走る
  * @param   [in] scenario 走行パラメータ
@@ -88,7 +96,9 @@ void DriveController::run(scenario_running scenario)
         logger->addLogInt(LOG_TYPE_SCENARIO_PATTERN, (int)scenario.pattern);
         logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)scenario.stop);
     }
-
+    
+    lastTime = clock->now();
+    
     //! ストップ監視しつつ、走行
     for (;;) {
         //! 走行
@@ -99,16 +109,9 @@ void DriveController::run(scenario_running scenario)
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
-        SYSTIM  currentTime = clock->now();
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
         getDelta(&directionDelta, &distanceDelta);
-
-        DISTANCE_RECORD record;
-        record.currentTime = currentTime;
-        record.distanceDelta = distanceDelta;
-        speedCalculator100ms->add(record);
-        speedCalculator1000ms->add(record);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }
@@ -152,26 +155,37 @@ ER DriveController::stop(bool_t brake /*= true*/)
  * 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである
  * @param   directionDelta  瞬間の走行体の向き[単位 : 度]
  * @param   distanceDelta   瞬間の走行体中心の移動距離[単位 : cm]
- * @param   distanceDeltaRatio  瞬間の左右のホイールの出力比
  * @return  なし
 */
-void DriveController::getDelta(float *directionDelta, float *distanceDelta, float *distanceDeltaRatio /*= NULL*/)
+void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 {
     float   distanceDeltaLeft = motorWheelLeft->getDistanceDelta();
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
     *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
-
-    if (distanceDeltaRatio) {
-        if ((distanceDeltaRight == 0.0F) || (distanceDeltaLeft == distanceDeltaRight)) {
-            *distanceDeltaRatio = 1.0F;
-        } else if (distanceDeltaLeft == 0.0F) {
-            *distanceDeltaRatio = 0.0F;
-        } else {
-            *distanceDeltaRatio = distanceDeltaLeft / distanceDeltaRight;
-        }
-    }
 }
+
+/**
+ * @brief   左右のホイールの回転距離の比率を取得する
+ * @param   directionDelta  瞬間の走行体の向き[単位 : 度]
+ * @param   distanceDelta   瞬間の走行体中心の移動距離[単位 : cm]
+ * @param   distanceDeltaRatio  左右のホイールの回転距離の比率
+ * @return  なし
+*/
+float DriveController::getDistanceRatio(float distanceDeltaLeft, float distanceDeltaRight){
+    float distanceDeltaRatio = 0.0F;
+    
+    if ((distanceDeltaRight == 0.0F) || (distanceDeltaLeft == distanceDeltaRight)) {
+        distanceDeltaRatio = 1.0F;
+    } else if (distanceDeltaLeft == 0.0F) {
+        distanceDeltaRatio = 0.0F;
+    } else {
+        distanceDeltaRatio = distanceDeltaLeft / distanceDeltaRight;
+    }
+    
+    return distanceDeltaRatio;
+}
+
 
 /**
  * @brief   リセットしてからの走行体中心の移動距離を計算
@@ -258,12 +272,41 @@ void DriveController::straightRun(int power)
     float   directionDelta = 0.0F;
     float   distanceDelta = 0.0F;
     float   distanceDeltaRatio = 0.0F;
-    getDelta(&directionDelta, &distanceDelta, &distanceDeltaRatio);
-
-    //! 瞬間ではなく左右それぞれの合計回転量を見ながら補正する。
     int powerLeft = 0;
     int powerRight = 0;
-    getPower(power, 0, distanceDeltaRatio, &powerLeft, &powerRight);
+    
+    //! 最後に出力値として設定した値がなければ通常の出力値を代入
+    if(lastPowerLeft ==0){
+        lastPowerLeft = power;
+    }
+    if(lastPowerRight == 0){
+        lastPowerRight = power;
+    }
+    
+    SYSTIM currentTime = clock->now();
+    if(currentTime - lastTime <= DURATION){
+        //! DURATION以下なら前回の値そのまま
+        powerLeft = lastPowerLeft;
+        powerRight = lastPowerRight;
+    }
+    else{
+        float currentDistanceLeft = motorWheelLeft->getDistance();
+        float currentDistanceRight = motorWheelRight->getDistance();
+        
+        float distanceDurationLeft = currentDistanceLeft - lastGetDistanceLeft;
+        float distanceDurationRight = currentDistanceRight -lastGetDistanceRight;
+        
+        float distanceRatio = getDistanceRatio(distanceDurationLeft,distanceDurationRight);
+        
+        getPower(power, 0, distanceRatio, &powerLeft, &powerRight);
+        
+        //! 値の更新    
+        lastTime = currentTime;
+        lastGetDistanceLeft = currentDistanceLeft;
+        lastGetDistanceRight = currentDistanceRight;
+        lastPowerLeft = powerLeft;
+        lastPowerRight = powerRight;
+    }
 
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);
@@ -434,7 +477,14 @@ void DriveController::getPower(int power, int direction, float distanceRatio, in
         *powerLeft = power;
         return;
     }
+    
+
 
     *powerRight = power * distanceRatio;
     *powerLeft = power;
+    
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "PowRev");
+    logger->addLog(LOG_NOTICE, message);
 }

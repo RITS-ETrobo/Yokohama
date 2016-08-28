@@ -26,7 +26,8 @@ public:
 protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
     virtual bool stopByDirection(scenario_running scenario, float directionDelta);
-    virtual void getDelta(float *directionDelta, float *distanceDelta, float *distanceDeltaRatio = NULL);
+    virtual void getDelta(float *directionDelta, float *distanceDelta);
+    virtual float getDistanceRatio(float directionDelta, float distanceDelta);
     virtual void getPower(int power, int direction, float distanceDeltaRatio, int *powerLeft, int *powerRight);
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);
@@ -54,6 +55,21 @@ private:
 
     //! 距離の累積[単位 : cm]
     float   distanceTotal = 0.0F;
+    
+    //! 最後に左タイヤの距離を取得したときの値
+    float lastGetDistanceLeft =0.0F;
+    
+    //! 最後に右タイヤの距離を取得したときの値
+    float lastGetDistanceRight =0.0F;
+    
+    //! 最後に左タイヤに設定した出力値
+    int lastPowerLeft = 0;
+    
+    //! 最後に右タイヤに設定した出力値
+    int lastPowerRight = 0;
+    
+    //! 時間間隔測定に用いるための最後に取得した時間
+    SYSTIM lastTime = 0;
 
     //! \addtogroup 速度測定用のインスタンス
     //@{
