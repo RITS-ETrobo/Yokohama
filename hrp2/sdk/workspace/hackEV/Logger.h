@@ -18,14 +18,14 @@ using namespace ev3api;
     @brief  ログに出力する情報
 */
 typedef struct {
-    //! ログ情報の種別
+    //! ログ情報の種別(4Bytes)
     uint_t      logType;
 
-    //! ログ時刻
+    //! ログ時刻(4Bytes)
     SYSTIM      logTime;
 
-    //! ログに出力する文字列
-    char    log[32];
+    //! ログに出力する文字列(8Bytes)
+    char    log[8];
 } USER_LOG;
 
 //! Class for logging

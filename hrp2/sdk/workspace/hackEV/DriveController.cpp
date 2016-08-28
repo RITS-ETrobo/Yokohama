@@ -70,11 +70,11 @@ void DriveController::run(scenario_running scenario)
     initialize();
 
     if (logger) {
-        logger->addLogFloatFormatted(LOG_TYPE_SCENARIO, scenario.distance, (char*)"distance,%.03f");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.direction, (char*)"direction,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, scenario.power, (char*)"power,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.pattern, (char*)"pattern,%d");
-        logger->addLogIntFormatted(LOG_TYPE_SCENARIO, (int)scenario.stop, (char*)"stop,%d");
+        logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, scenario.distance);
+        logger->addLogInt(LOG_TYPE_SCENARIO_DIRECTION, scenario.direction);
+        logger->addLogInt(LOG_TYPE_SCENARIO_POWER, scenario.power);
+        logger->addLogInt(LOG_TYPE_SCENARIO_PATTERN, (int)scenario.pattern);
+        logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)scenario.stop);
     }
 
     //! ストップ監視しつつ、走行

@@ -61,7 +61,7 @@ void Logger::addLog(uint_t logType, const char* message)
         info.logTime = clock->now();
     }
 
-    strcpy(info.log, message);
+    strncpy(info.log, message, 7);
     loggerInfo.push_back(info);
 }
 
@@ -73,9 +73,9 @@ void Logger::addLog(uint_t logType, const char* message)
 */
 void Logger::addLogFloat(uint_t logType, const float value)
 {
-    char message[16];
+    char message[8];
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%.04f", value);
+    sprintf(message, "%.02f", value);
 
     addLog(logType, message);
 }
@@ -94,7 +94,7 @@ void Logger::addLogFloatFormatted(uint_t logType, const float value, const char 
         return;
     }
 
-    char    message[32];
+    char    message[8];
     memset(message, '\0', sizeof(message));
     sprintf(message, format, value);
     addLog(logType, message);
@@ -108,7 +108,7 @@ void Logger::addLogFloatFormatted(uint_t logType, const float value, const char 
 */
 void Logger::addLogInt(uint_t logType, const int value)
 {
-    char message[16];
+    char message[8];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%d", value);
 
@@ -129,7 +129,7 @@ void Logger::addLogIntFormatted(uint_t logType, const int value, const char *for
         return;
     }
 
-    char    message[32];
+    char    message[8];
     memset(message, '\0', sizeof(message));
     sprintf(message, format, value);
     addLog(logType, message);
@@ -171,6 +171,10 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
         }
 
         vector<USER_LOG> loggerOutput = move(loggerInfo);
+        if (loggerOutput.size() == 0) {
+            return;
+        }
+
         for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
             if (!outputHeader) {
                 fputs("Duration(ms),Type,Value1,Value2,Value3\r\n", fpLog);
