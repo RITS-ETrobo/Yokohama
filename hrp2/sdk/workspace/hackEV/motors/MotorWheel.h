@@ -9,6 +9,7 @@
 #include "target_test.h"
 
 #include "portSettings.h"
+#include "SpeedCalculator.h"
 
 //! Class for MotorWheel
 class MotorWheel
@@ -33,4 +34,13 @@ private:
 
     //! 対象のポート
     motor_port_t    portMotor;
+
+    //! \addtogroup 速度測定用のインスタンス
+    //@{
+    //! 最近の100ms
+    SpeedCalculator *speedCalculator100ms;
+
+    //! 最近の1000ms
+    SpeedCalculator *speedCalculator1000ms;
+    //@}
 };
