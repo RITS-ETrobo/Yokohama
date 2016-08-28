@@ -83,5 +83,5 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
         return  0.0F;
     }
 
-    return  (record->distanceDelta / (1000 / record->currentTime));
+    return  (record->distanceDelta / (record->currentTime / 1000));
 }
