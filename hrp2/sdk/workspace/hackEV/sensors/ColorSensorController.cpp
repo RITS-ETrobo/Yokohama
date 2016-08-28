@@ -87,10 +87,78 @@ void viewColor()
  *
  * カラー名判定の種類：http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
  * @return  取得したカラーの名前
+ *          issues/811にて、RED, GREEN, BLUE, YELLOW, BLACK, WHITE のいずれかを返すように変更する。
 */
 colorid_t getColorName()
 {
-    return ev3_color_sensor_get_color(EV3_SENSOR_COLOR);
+    //'HSV色空間'について、wikipediaの項目を参考にした
+    colorid_t retColorId = COLOR_NONE;
+    
+    const double BORDER_WHITE_MIN_INT = 100; //仮決め
+    const double BORDER_BLACK_MAX_INT = 30; //仮決め
+    
+    const double BORDER_RED_YELLOW = 0.08333f; //(0.0f + 1.0f/6.0f) / 2.0f;
+    const double BORDER_YELLOW_GREEN = 0.25000f; //(1.0f/6.0f + 2.0f/6.0f) / 2.0f
+    const double BORDER_GREEN_BLUE = 0.50000f; //(2.0f/6.0f + 4.0f/6.0f) / 2.0f;
+    const double BORDER_BLUE_RED = 0.83333f; //(4.0f/6.0f + 1.0f) / 2.0f;
+    
+    rgb_raw_t colorRGB = getColorRGBraw();
+    int maxInt, minInt;
+    
+    maxInt = (colorRGB.r > colorRGB.g) ? colorRGB.r: colorRGB.g;
+    maxInt = (maxInt > colorRGB.b) ? maxInt: colorRGB.b;
+    
+    minInt = (colorRGB.r < colorRGB.g) ? colorRGB.r: colorRGB.g;
+    minInt = (minInt < colorRGB.b) ? minInt: colorRGB.b;
+    
+    //判定開始
+    if (BORDER_WHITE_MIN_INT < minInt) { //白判定
+        retColorId = COLOR_WHITE;
+    } else if (maxInt < BORDER_BLACK_MAX_INT) { //黒判定
+        retColorId = COLOR_BLACK;
+    } else {
+        //色判定
+        double r, g, b;
+        double max, min;
+        r = (colorRGB.r > 255.0f) ? 1.0f: (colorRGB.r / 255.0f); // = colorRGB.r / (double)maxInt;
+        g = (colorRGB.g > 255.0f) ? 1.0f: (colorRGB.g / 255.0f); // = colorRGB.g / (double)maxInt;
+        b = (colorRGB.b > 255.0f) ? 1.0f: (colorRGB.b / 255.0f); // = colorRGB.b / (double)maxInt;
+        
+        max = (r > g) ? r: g;
+        max = (max > b) ? max: b;
+        
+        min = (r < g) ? r: g;
+        min = (min < b) ? min: b;
+        //色相値計算
+        double hue = max - min;
+        if (hue > 0.0f) {
+            if (r-0.0001f < max && max < r+0.0001f) {
+                hue = (g - b) / hue;
+                if (hue < 0.0f) {
+                    hue + 6.0f;
+                }
+            } else if (g-0.0001f < max && max <g+0.0001f) {
+                hue = 2.0f + (b - r) / hue;
+            } else {
+                hue = 4.0f + (r - g) / hue;
+            }
+        }
+        hue /= 6.0f;
+        
+        //色相値から色判定
+        if (hue < BORDER_RED_YELLOW || BORDER_BLUE_RED <= hue) {
+            retColorId = COLOR_RED;
+        } else if (hue < BORDER_YELLOW_GREEN) {
+            retColorId = COLOR_YELLOW;
+        } else if (hue < BORDER_GREEN_BLUE) {
+            retColorId = COLOR_GREEN;
+        } else if (hue < BORDER_BLUE_RED) {
+            retColorId = COLOR_BLUE;
+        }
+    }
+    
+    return retColorId;
+    //return ev3_color_sensor_get_color(EV3_SENSOR_COLOR);
 }
 
 /**
