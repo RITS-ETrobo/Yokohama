@@ -91,16 +91,16 @@ extern const uint_t LOG_TYPE_SCENARIO_STOP;
 extern const uint_t LOG_TYPE_INITIALIZE;
 
 //! 補正した左モーターの補正値
-extern const uint_t LOG_TYPE_CORRECT_RATIO_LEFT;
+extern const uint_t LOG_TYPE_CORRECTED_RATIO_LEFT;
 
 //! 補正した右モーターの補正値
-extern const uint_t LOG_TYPE_CORRECT_RATIO_RIGHT;
+extern const uint_t LOG_TYPE_CORRECTED_RATIO_RIGHT;
 
 //! 補正した左モーターの出力値
-extern const uint_t LOG_TYPE_CORRECT_POWER_LEFT;
+extern const uint_t LOG_TYPE_CORRECTED_POWER_LEFT;
 
 //! 補正した右モーターの出力値
-extern const uint_t LOG_TYPE_CORRECT_POWER_RIGHT;
+extern const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT;
 //@}
 
 extern void initialize_logSetting();

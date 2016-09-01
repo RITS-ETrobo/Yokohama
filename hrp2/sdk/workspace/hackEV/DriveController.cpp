@@ -28,6 +28,8 @@ DriveController::DriveController()
     , speedCalculator1000ms(NULL)
     , lastGetDistanceLeft(0.0F)
     , lastGetDistanceRight(0.0F)
+    , DURATION(100.0F)
+    , KP(1.0F)
 {
 }
 
@@ -77,7 +79,7 @@ bool DriveController::initialize()
     return  true;
 }
 
-const SYSTIM DURATION = 100;
+
 
 /**
  * @brief   シナリオに従って走る
@@ -167,19 +169,23 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 
 /**
  * @brief   距離の補正比率を取得する
- * @param   targetDistance  目標距離
- * @param   resultDistance  タイヤの距離の実績
- * @return  correctRatio 補正比率
+ * @param   targetDistance  目標距離[単位 : cm]
+ * @param   resultDistance  各ホイールの移動実績[単位 : cm]
+ * @return  correctedRatio 補正比率
 */
-float DriveController::getCorrectRatio(float targetDistance, float resultDistance){
+float DriveController::getCorrectedDistanceRatio(float targetDistance, float resultDistance){
     
     //! 目標との偏差
     float deviation = targetDistance - resultDistance;
     
-    //! 補正比率
-    float correctRatio = ((100 + deviation)/100);
+    //! 差が低い方のホイールはpowerがint型で切り捨てられるため補正がかかる。
+    //! 【要検討】一定水準以下の差のときは補正しないなどの処理が必要かもしれない。
     
-    return correctRatio;
+    //! 補正比率※KPは比例制御係数：この係数によって、deviationの値によってどれだけpowerを補正するか調整可能
+    //! 係数KPが1のときでは(power + 0.01*deviation)が補正されたpowerになる。ただしpowerはint型のため注意が必要。小数点以下は切り捨てられる
+    float correctedRatio = KP * ((100 + deviation)/100);
+    
+    return correctedRatio;
 }
 
 
@@ -286,14 +292,12 @@ void DriveController::straightRun(int power)
         powerRight = lastPowerRight;
     }
     else{
-        //! DURATION以上時間が経過していた場合、左右のモーターの距離を比較して出力値を再設定する
-        float distanceLeftTotal = motorWheelLeft->getDistance();
-        float distanceRightTotal = motorWheelRight->getDistance();
+
         
         //! 左右のモーターの各トータル値の差の比率を取得
         //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
         
-        getCorrectPower(power, distanceLeftTotal, distanceRightTotal, &powerLeft, &powerRight);
+        getCorrectedPower(power, &powerLeft, &powerRight);
         
         //! 最後の値の更新    
         lastTime = currentTime;
@@ -453,35 +457,36 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
  * @param   powerRight  右モーターへ与える入力
  * @return  なし
  */
-void DriveController::getCorrectPower(int power, float distanceLeft, float distanceRight, int *powerLeft, int *powerRight)
+void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRight)
 {   
     if (power == 0) {
         return;
     }
     
-    //! 左右のモーター距離の平均値
-    float averageDistance = (distanceLeft + distanceRight) / 2;
+    //! DURATION以上時間が経過していた場合、左右のモーターの距離を比較して出力値を再設定する
+    float distanceLeftTotal = motorWheelLeft->getDistance();
+    float distanceRightTotal = motorWheelRight->getDistance();
     
-    //! 【要検討】getCorrectRatioで偏差が0.01mm単位のものは無視するかどうかpower値はintなのでの差を許容するか
-    float correctRightRatio = getCorrectRatio(averageDistance, distanceRight);
-    float correctLeftRatio = getCorrectRatio(averageDistance, distanceLeft);
+    //! 左右のホイールの走行実績の平均値
+    float averageDistanceTotal = (distanceLeftTotal + distanceRightTotal) / 2;
+    
+    //! 【要検討】getCorrectedRatioで偏差が0.01mm単位のものは無視するかどうかpower値はintなのでの差を許容するか
+    float correctedRightRatio = getCorrectedDistanceRatio(averageDistanceTotal, distanceRightTotal);
+    float correctedLeftRatio = getCorrectedDistanceRatio(averageDistanceTotal, distanceLeftTotal);
     
     //! 【要検討】指定した出力値、または前の出力値に補正をかけるか
     //! 左右のタイヤの出力値に補正を加算
-    *powerRight = power * correctRightRatio;
-    *powerLeft = power * correctLeftRatio;
+    *powerRight = power * correctedRightRatio;
+    *powerLeft = power * correctedLeftRatio;
     
     //! 補正したことをログに出力
-    char message[16];
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "correct");
-    logger->addLog(LOG_NOTICE, message);
+    logger->addLog(LOG_NOTICE, "correct");
     
     //! 補正値をログに出力【ログが正しくでない】
-    logger->addLogFloat(LOG_TYPE_CORRECT_RATIO_RIGHT, correctRightRatio);
-    logger->addLogFloat(LOG_TYPE_CORRECT_RATIO_LEFT, correctLeftRatio);
+    logger->addLogFloat(LOG_TYPE_CORRECTED_RATIO_RIGHT, (correctedRightRatio*100));
+    logger->addLogFloat(LOG_TYPE_CORRECTED_RATIO_LEFT, (correctedLeftRatio*100));
     
     //! 補正された出力値をログに出力
-    logger->addLogInt(LOG_TYPE_CORRECT_POWER_RIGHT, *powerRight);
-    logger->addLogInt(LOG_TYPE_CORRECT_POWER_LEFT, *powerLeft);
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_RIGHT, *powerRight);
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_LEFT, *powerLeft);
 }

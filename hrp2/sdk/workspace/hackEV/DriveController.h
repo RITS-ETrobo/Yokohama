@@ -27,8 +27,8 @@ protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
     virtual bool stopByDirection(scenario_running scenario, float directionDelta);
     virtual void getDelta(float *directionDelta, float *distanceDelta);
-    virtual float getCorrectRatio(float targetDistance, float resultDistance);
-    virtual void getCorrectPower(int power, float distanceRight, float distanceLeft, int *powerLeft, int *powerRight);
+    virtual float getCorrectedDistanceRatio(float targetDistance, float resultDistance);
+    virtual void getCorrectedPower(int power, int *powerLeft, int *powerRight);
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);
     virtual bool runAsPattern(scenario_running scenario);
@@ -70,6 +70,10 @@ private:
     
     //! 時間間隔測定に用いるための最後に取得した時間
     SYSTIM lastTime = 0;
+    
+    SYSTIM DURATION = 100;
+    
+    float KP = 1.0F;
 
     //! \addtogroup 速度測定用のインスタンス
     //@{
