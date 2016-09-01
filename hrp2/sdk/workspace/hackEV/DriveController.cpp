@@ -98,9 +98,10 @@ void DriveController::run(scenario_running scenario)
         logger->addLogInt(LOG_TYPE_SCENARIO_PATTERN, (int)scenario.pattern);
         logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)scenario.stop);
     }
-    
+
     lastTime = clock->now();
-    
+    initializeAsPattern(scenario);
+
     //! ストップ監視しつつ、走行
     for (;;) {
         //! 走行
@@ -265,41 +266,58 @@ bool DriveController::runAsPattern(scenario_running scenario)
 }
 
 /**
+ * @brief   走行シナリオに従って、メンバ変数を初期化する
+ * @param   scenario    走行シナリオ
+ * @return  なし
+*/
+void DriveController::initializeAsPattern(scenario_running scenario)
+{
+    lastPowerLeft = scenario.power;
+    lastPowerRight = scenario.power;
+
+    switch (scenario.pattern) {
+    case PINWHEEL:
+        //! その場回転
+        lastPowerLeft = (-1) * scenario.power;
+        break;
+
+    case ONESIDE_PINWHEEL_RIGHT:
+        //! 右回転(左タイヤのみ回転)
+        lastPowerRight = 0;
+        break;
+
+    case ONESIDE_PINWHEEL_LEFT:
+        //! 左回転(右タイヤのみ回転)
+        lastPowerLeft = 0;
+        break;
+
+    default:
+        //! ライントレースせずに、直進走行する
+        break;
+    }
+}
+
+/**
  * @brief   直進走行
  * @param   power   モーターへの入力
  * @return  なし
  */
 void DriveController::straightRun(int power)
 {
-    float   directionDelta = 0.0F;
-    float   distanceDelta = 0.0F;
-    float   distanceDeltaRatio = 0.0F;
     int powerLeft = 0;
     int powerRight = 0;
-    
-    //! 最後に出力値として設定した値がなければ通常の出力値を代入
-    if(lastPowerLeft == 0){
-        lastPowerLeft = power;
-    }
-    if(lastPowerRight == 0){
-        lastPowerRight = power;
-    }
-    
+
     SYSTIM currentTime = clock->now();
-    if(currentTime - lastTime <= DURATION){
+    if (currentTime - lastTime <= DURATION) {
         //! DURATION以下なら前回の値そのまま
         powerLeft = lastPowerLeft;
         powerRight = lastPowerRight;
-    }
-    else{
-
-        
+    } else {
         //! 左右のモーターの各トータル値の差の比率を取得
         //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
-        
         getCorrectedPower(power, &powerLeft, &powerRight);
-        
-        //! 最後の値の更新    
+
+        //! 最後の値の更新
         lastTime = currentTime;
         lastPowerLeft = powerLeft;
         lastPowerRight = powerRight;

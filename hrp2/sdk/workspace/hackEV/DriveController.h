@@ -32,6 +32,7 @@ protected:
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);
     virtual bool runAsPattern(scenario_running scenario);
+    virtual void initializeAsPattern(scenario_running scenario);
 
 private:
     void pinWheel(int power);
