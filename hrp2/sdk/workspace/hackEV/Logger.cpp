@@ -5,6 +5,7 @@
 #include <utility>
 #include <instances.h>
 #include "Logger.h"
+#include <math.h>
 
 /**
  * @brief   Loggerクラスのコンストラクター
@@ -75,7 +76,7 @@ void Logger::addLogFloat(uint_t logType, const float value)
 {
     char message[8];
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%.02f", value);
+    sprintf(message, "%.2f", floor(value * 100) / (float)100);
 
     addLog(logType, message);
 }
