@@ -57,8 +57,5 @@ private:
     //@{
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
-
-    //! 最近の1000ms
-    SpeedCalculator *speedCalculator1000ms;
     //@}
 };
