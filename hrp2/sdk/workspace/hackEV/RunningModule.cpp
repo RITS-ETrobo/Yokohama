@@ -73,8 +73,8 @@ void start_run_test()
         }
     }
 
-    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
-        driveController->run(run_scenario_test_straght_NoTrace[index]);
+    for (int index = 0; index < sizeof(run_scenario_test_correct_straght_NoTrace) / sizeof(run_scenario_test_correct_straght_NoTrace[0]); index++) {
+        driveController->run(run_scenario_test_correct_straght_NoTrace[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);

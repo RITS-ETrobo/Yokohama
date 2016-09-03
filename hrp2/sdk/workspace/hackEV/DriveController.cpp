@@ -26,6 +26,10 @@ DriveController::DriveController()
     , distanceTotal(0.0F)
     , speedCalculator100ms(NULL)
     , speedCalculator1000ms(NULL)
+    , lastGetDistanceLeft(0.0F)
+    , lastGetDistanceRight(0.0F)
+    , DURATION(100.0F)
+    , OnePowerDeviation(0.084107F)
 {
 }
 
@@ -42,6 +46,10 @@ bool DriveController::initialize()
     directionTotal = 0.0F;
     distanceLast = 0.0F;
     distanceTotal = 0.0F;
+
+    lastGetDistanceLeft = 0.0F;
+    lastGetDistanceRight = 0.0F;
+    lastTime = 0;
 
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
@@ -88,6 +96,9 @@ void DriveController::run(scenario_running scenario)
         logger->addLogInt(LOG_TYPE_SCENARIO_PATTERN, (int)scenario.pattern);
         logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)scenario.stop);
     }
+
+    lastTime = clock->now();
+    initializeAsPattern(scenario);
 
     //! ストップ監視しつつ、走行
     for (;;) {
@@ -163,6 +174,24 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 }
 
 /**
+ * @brief   補正として追加するパワー値を取得する
+ * @param   distanceLeftTotal  左ホイールの移動実績[単位 : cm]
+ * @param   distanceRightTotal  各右ホイールの移動実績[単位 : cm]
+ * @return  correctAddPower 補正で追加するPower値
+*/
+int DriveController::getCorrectedAddRightPower(float distanceLeftTotal, float distanceRightTotal){
+    
+    //! 左右のホイールの距離の差
+    float deviation = distanceLeftTotal - distanceRightTotal;
+    
+    //! 左右の差が「1パワー分の100ms間の走行距離」(OnePowerDeviation)ごとに、１パワーずつ補正をかける
+    int correctAddPower = deviation / OnePowerDeviation;
+    
+    return correctAddPower;
+}
+
+
+/**
  * @brief   リセットしてからの走行体中心の移動距離を計算
  * @param   distanceDelta   瞬間の走行体中心の移動距離[単位 : cm]
  * @return  走行距離[単位 : cm]
@@ -230,12 +259,74 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     default:
         //! ライントレースせずに、直進走行する
-        motorWheelLeft->run(scenario.power);
-        motorWheelRight->run(scenario.power);
+        straightRun(scenario.power);
         break;
     }
 
     return  false;
+}
+
+/**
+ * @brief   走行シナリオに従って、メンバ変数を初期化する
+ * @param   scenario    走行シナリオ
+ * @return  なし
+*/
+void DriveController::initializeAsPattern(scenario_running scenario)
+{
+    lastPowerLeft = scenario.power;
+    lastPowerRight = scenario.power;
+
+    switch (scenario.pattern) {
+    case PINWHEEL:
+        //! その場回転
+        lastPowerLeft = (-1) * scenario.power;
+        break;
+
+    case ONESIDE_PINWHEEL_RIGHT:
+        //! 右回転(左タイヤのみ回転)
+        lastPowerRight = 0;
+        break;
+
+    case ONESIDE_PINWHEEL_LEFT:
+        //! 左回転(右タイヤのみ回転)
+        lastPowerLeft = 0;
+        break;
+
+    default:
+        //! ライントレースせずに、直進走行する
+        break;
+    }
+}
+
+/**
+ * @brief   直進走行
+ * @param   power   モーターへの入力
+ * @return  なし
+ */
+void DriveController::straightRun(int power)
+{
+    int powerLeft = 0;
+    int powerRight = 0;
+
+    SYSTIM currentTime = clock->now();
+    if (currentTime - lastTime <= DURATION) {
+        //! DURATION以下なら前回の値そのまま
+        powerLeft = lastPowerLeft;
+        powerRight = lastPowerRight;
+    } else {
+        //! 左右のモーターの各トータル値の差の比率を取得
+        //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
+        getCorrectedPower(power, &powerLeft, &powerRight);
+
+        //! 最後の値の更新
+        lastTime = currentTime;
+        lastPowerLeft = powerLeft;
+        lastPowerRight = powerRight;
+    }
+
+    //! 実際の回転角度を見ながら左右の出力を調整
+    motorWheelLeft->run(powerLeft);
+    motorWheelRight->run(powerRight);
 }
 
 /**
@@ -362,7 +453,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     if (scenario.direction == -1) {
         return  false;
     }
-
+    
     //! 走行体が指定した向きになったらストップ
     float   directionTotal = getDirection(directionDelta);
     if (abs(directionTotal) >= abs(scenario.direction)) {
@@ -374,4 +465,41 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     }
 
     return  false;
+}
+
+/**
+ * @brief   補正された出力を取得する
+ * @param   power       モーターへの入力
+ * @param   direction   角度[単位 : %]
+ * @param   distanceRatio   左右のホイールの進んだ距離の比率
+ * @param   powerLeft   左モーターへ与える入力
+ * @param   powerRight  右モーターへ与える入力
+ * @return  なし
+ */
+void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRight)
+{   
+    if (power == 0) {
+        return;
+    }
+    
+    //! DURATION以上時間が経過していた場合、左右のモーターの距離を比較して出力値を再設定する
+    float distanceLeftTotal = motorWheelLeft->getDistance();
+    float distanceRightTotal = motorWheelRight->getDistance();
+    
+    //! 右モーターに補正として追加するパワー値を取得する
+    int correctedAddRightPower = getCorrectedAddRightPower(distanceLeftTotal,distanceRightTotal);
+
+    //! 右に補正パワー値を足す
+    *powerRight = power + correctedAddRightPower;
+    *powerLeft = power;
+    
+    //! 補正したことをログに出力
+    logger->addLog(LOG_NOTICE, "correct");
+    
+    //! 右モーターに追加する補正パワー値をログに出力
+    logger->addLogInt(LOG_NOTICE, correctedAddRightPower);
+    
+    //! 補正された出力値をログに出力
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_RIGHT, *powerRight);
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_LEFT, *powerLeft);
 }

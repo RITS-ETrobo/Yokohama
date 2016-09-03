@@ -87,6 +87,18 @@ const uint_t LOG_TYPE_SCENARIO_STOP = 0x96;
 
 //! 初期化
 const uint_t LOG_TYPE_INITIALIZE = 0x97;
+
+//! 補正した左モーターの補正値
+const uint_t LOG_TYPE_CORRECTED_RATIO_LEFT = 0x98;
+
+//! 補正した右モーターの補正値
+const uint_t LOG_TYPE_CORRECTED_RATIO_RIGHT = 0x99;
+
+//! 補正した左モーターの出力値
+const uint_t LOG_TYPE_CORRECTED_POWER_LEFT = 0x9A;
+
+//! 補正した右モーターの出力値
+const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT = 0x9B;
 //@}
 
 std::map<uint_t, char*> LOG_TYPE_MAP;
@@ -129,6 +141,10 @@ void initialize_logSetting()
     LOG_TYPE_MAP[LOG_TYPE_BATTERY_mA] = "mA";
     LOG_TYPE_MAP[LOG_TYPE_BATTERY_mV] = "mV";
     LOG_TYPE_MAP[LOG_TYPE_INITIALIZE] = "Initialize";
+    LOG_TYPE_MAP[LOG_TYPE_CORRECTED_RATIO_LEFT] = "CorrectedRatioLeft";
+    LOG_TYPE_MAP[LOG_TYPE_CORRECTED_RATIO_RIGHT] = "CorrectedRatioRight";
+    LOG_TYPE_MAP[LOG_TYPE_CORRECTED_POWER_LEFT] = "CorrectedPowLeft";
+    LOG_TYPE_MAP[LOG_TYPE_CORRECTED_POWER_RIGHT] = "CorrectedPowRight";
 }
 
 /**
