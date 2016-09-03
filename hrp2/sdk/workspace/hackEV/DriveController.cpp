@@ -79,8 +79,6 @@ bool DriveController::initialize()
     return  true;
 }
 
-
-
 /**
  * @brief   シナリオに従って走る
  * @param   [in] scenario 走行パラメータ
@@ -112,9 +110,16 @@ void DriveController::run(scenario_running scenario)
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
+        SYSTIM  currentTime = clock->now();
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
         getDelta(&directionDelta, &distanceDelta);
+
+        DISTANCE_RECORD record;
+        record.currentTime = currentTime;
+        record.distanceDelta = distanceDelta;
+        speedCalculator100ms->add(record);
+        speedCalculator1000ms->add(record);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }
