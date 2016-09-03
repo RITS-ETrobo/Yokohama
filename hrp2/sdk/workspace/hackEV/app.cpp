@@ -66,51 +66,16 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case LEFT_BUTTON:
-        {
+        //! アーム動作モード
+        initialize_arm();
 
-            initialize_arm();
+        //! アームを上げて、色を読み取って表示
+        move_arm(45, 3, true);
 
-            ////! 色を検知するまで直進走行し、検知したら停止する
-            //int motorPower;
-            //motorPower = 10;
-            //driveController->motorWheelLeft->run(motorPower);
-            //driveController->motorWheelRight->run(motorPower);
-            //while( getColorName() != COLOR_RED ) //検証用ブロックとしてREDを設定
-            //{
-            //    tslp_tsk(4);
-            //}
-            //driveController->stop(true);
-            //tslp_tsk(1000);
-            //
-            ////! XXcm後退. 後退できたら停止
-            //float dist = 0; //単位cm
-            //const float BackDistance = -4.4;
-            //char message[32];
-            //motorPower = -10;
-            //driveController->motorWheelLeft->initialize();
-            //driveController->motorWheelRight->initialize();
-            //driveController->motorWheelLeft->run(motorPower);
-            //driveController->motorWheelRight->run(motorPower);
-            //while(dist > BackDistance) {
-            //    driveController->motorWheelLeft->updateDistance();
-            //    driveController->motorWheelRight->updateDistance();
-            //    dist = (driveController->motorWheelLeft->getDistance() +
-            //            driveController->motorWheelRight->getDistance()) / 2;
-            //    //sprintf(message, "d = %d", dist);
-            //    //writeStringLCD(message);
-            //    tslp_tsk(4);
-            //}
-            //driveController->stop(true);
+        tslp_tsk(400);
 
-            //! アームを上げて、色を読み取って表示
-            move_arm(58, 3, true);
-            tslp_tsk(1000);
-            viewColor();
-            tslp_tsk(5000);
-
-            //!アームを下げる
-            move_arm(0, 3, true);
-        }
+        //!アームを下げる
+        move_arm(0, 3, true);
         break;
 
     case RIGHT_BUTTON:
@@ -119,7 +84,7 @@ static void button_clicked_handler(intptr_t button) {
         syslog(LOG_NOTICE, "RIGHT button clicked.");
 
         //! 超音波制御
-        control_sonarsensor();        
+        control_sonarsensor();
         break;
 
     case UP_BUTTON:
