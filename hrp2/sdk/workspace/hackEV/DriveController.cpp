@@ -308,14 +308,14 @@ void DriveController::straightRun(int power)
     int powerLeft = 0;
     int powerRight = 0;
 
+    //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
     if (currentTime - lastTime <= DURATION) {
         //! DURATION以下なら前回の値そのまま
         powerLeft = lastPowerLeft;
         powerRight = lastPowerRight;
     } else {
-        //! 左右のモーターの各トータル値の差の比率を取得
-        //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
+        //! 補正したパワー値を取得
         getCorrectedPower(power, &powerLeft, &powerRight);
 
         //! 最後の値の更新
@@ -338,14 +338,14 @@ void DriveController::pinWheel(int power)
     int powerLeft = 0;
     int powerRight = 0;
 
+    //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
     if (currentTime - lastTime <= DURATION) {
         //! DURATION以下なら前回の値そのまま
         powerLeft = lastPowerLeft;
         powerRight = lastPowerRight;
     } else {
-        //! 左右のモーターの各トータル値の差の比率を取得
-        //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
+        //! 補正したパワー値を取得
         getCorrectedPower(power, &powerLeft, &powerRight);
 
         //! 最後の値の更新
