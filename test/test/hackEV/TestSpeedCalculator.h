@@ -21,11 +21,11 @@ protected:
     };
 
     /**
-     * @brief   •½‹Ï‘¬“x‚ğ‹‚ß‚éˆ×‚Ìƒf[ƒ^‚ğ’Ç‰Á‚·‚é
-     * @param   distance_record •½‹Ï‘¬“x‚ğ‹‚ß‚éˆ×‚Ìƒf[ƒ^
-     * @param   currentTime ƒ^ƒCƒ}[ŠJn‚©‚ç‚ÌŒo‰ßŠÔ[’PˆÊ : ms]
-     * @param   distanceDelta   ‘O‰ñ‚Ì‘ª’è‚©‚çi‚ñ‚¾‹——£[’PˆÊ : cm]
-     * @return  ‚È‚µ
+     * @brief   å¹³å‡é€Ÿåº¦ã‚’æ±‚ã‚ã‚‹ç‚ºã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹
+     * @param   distance_record å¹³å‡é€Ÿåº¦ã‚’æ±‚ã‚ã‚‹ç‚ºã®ãƒ‡ãƒ¼ã‚¿
+     * @param   currentTime ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹ã‹ã‚‰ã®çµŒéæ™‚é–“[å˜ä½ : ms]
+     * @param   distanceDelta   å‰å›ã®æ¸¬å®šã‹ã‚‰é€²ã‚“ã è·é›¢[å˜ä½ : cm]
+     * @return  ãªã—
     */
     void addRecord(std::deque<DISTANCE_RECORD> *distance_record, SYSTIM currentTime, float distanceDelta)
     {
