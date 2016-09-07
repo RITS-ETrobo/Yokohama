@@ -1,6 +1,6 @@
 /**
  * @file    SpeedCalculator.h
- * @brief   速度を求める
+ * @brief   平均速度を求める
  */
 #pragma once
 
