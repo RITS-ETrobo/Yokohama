@@ -182,9 +182,6 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 */
 int DriveController::getCorrectedAddPower(float targetDistance, float movedDistance){
     
-    logger->addLogFloat(LOG_TYPE_DISTANCE_LEFT_TOTAL, targetDistance);
-    logger->addLogFloat(LOG_TYPE_DISTANCE_RIGHT_TOTAL, movedDistance);
-    
     //! 左右のホイールの距離の差
     float deviation = targetDistance - movedDistance;
     
@@ -511,7 +508,7 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     
     //! 左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
     //! ※その場回転でも利用できるように絶対値を比較する(その場回転は正負の違いだけ)
-    int correctedAddRightPower = getCorrectedAddPower((float)fabs((double)distanceLeftTotal),(float)fabs((double)distanceRightTotal));
+    int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal),fabsf(distanceRightTotal));
 
     //! 右に補正パワー値を足す
     *powerRight = power + correctedAddRightPower;
