@@ -4,6 +4,7 @@
  */
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "instances.h"
 #include "utilities.h"
@@ -407,7 +408,7 @@ void DriveController::change_LineSide(scenario_running scenario)
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
-        if(abs(secondDirection) >= abs(firstDirection)){
+        if(fabsf(secondDirection) >= fabsf(firstDirection)){
             //writeFloatLCD((float)colorValue);
             stop();
             break;
@@ -430,7 +431,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 
     //! 走行体が指定距離走行したらストップ
     float   distanceTotal = getDistance(distanceDelta);
-    if (abs(distanceTotal) >= abs(scenario.distance)) {
+    if (fabsf(distanceTotal) >= fabsf(scenario.distance)) {
         if (scenario.stop) {
             stop();
         }
@@ -456,7 +457,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     
     //! 走行体が指定した向きになったらストップ
     float   directionTotal = getDirection(directionDelta);
-    if (abs(directionTotal) >= abs(scenario.direction)) {
+    if (fabsf(directionTotal) >= fabsf(scenario.direction)) {
         if(scenario.stop){
             stop();
         }
