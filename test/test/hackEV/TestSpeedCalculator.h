@@ -6,6 +6,7 @@
 
 #include "gtest/gtest.h"
 #include <iostream>
+#include <stdint.h>
 
 #include "SpeedCalculator.h"
 
@@ -13,8 +14,9 @@
 class TestSpeedCalculator : public ::testing::Test {
 protected:
     virtual void SetUp() {
-        speedCalculator = new SpeedCalculator(100);
-        speedCalculator->initialize();
+        speedCalculator100ms = new SpeedCalculator(100);
+        speedCalculator100ms->initialize();
+        addRecord(speedCalculator100ms, 0, 0);
     };
 
     virtual void TearDown() {
@@ -27,12 +29,12 @@ protected:
      * @param   distanceDelta   前回の測定から進んだ距離[単位 : cm]
      * @return  なし
     */
-    void addRecord(std::deque<DISTANCE_RECORD> *distance_record, SYSTIM currentTime, float distanceDelta)
+    void addRecord(SpeedCalculator *speedCalculator, SYSTIM currentTime, float distanceDelta)
     {
         DISTANCE_RECORD record;
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
-        distance_record->add(record);
+        speedCalculator->add(record);
     }
 
     SpeedCalculator*    speedCalculator100ms;
