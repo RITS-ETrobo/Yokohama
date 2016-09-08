@@ -515,7 +515,7 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     *powerLeft = power;
     
     //! 補正したことをログに出力
-    logger->addLog(LOG_NOTICE, "correc");
+    logger->addLog(LOG_NOTICE, "correct");
     
     //! 右モーターに追加する補正パワー値をログに出力
     logger->addLogInt(LOG_NOTICE, correctedAddRightPower);
