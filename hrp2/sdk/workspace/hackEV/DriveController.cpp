@@ -408,7 +408,7 @@ void DriveController::change_LineSide(scenario_running scenario)
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
-        if(fabsf(secondDirection) >= fabsf(firstDirection)){
+        if(isGreaterAbsoluteValue(secondDirection, firstDirection)){
             //writeFloatLCD((float)colorValue);
             stop();
             break;
@@ -431,7 +431,8 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 
     //! 走行体が指定距離走行したらストップ
     float   distanceTotal = getDistance(distanceDelta);
-    if (fabsf(distanceTotal) >= fabsf(scenario.distance)) {
+    
+    if (isGreaterAbsoluteValue(distanceTotal, scenario.distance)) {
         if (scenario.stop) {
             stop();
         }
@@ -457,7 +458,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     
     //! 走行体が指定した向きになったらストップ
     float   directionTotal = getDirection(directionDelta);
-    if (fabsf(directionTotal) >= fabsf(scenario.direction)) {
+    if (isGreaterAbsoluteValue(directionTotal, scenario.direction)) {
         if(scenario.stop){
             stop();
         }
