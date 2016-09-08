@@ -506,9 +506,8 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     float distanceLeftTotal = motorWheelLeft->getDistance();
     float distanceRightTotal = motorWheelRight->getDistance();
     
-    //! 左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
-    //! ※その場回転でも利用できるように絶対値を比較する(その場回転は正負の違いだけ)
-    int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal),fabsf(distanceRightTotal));
+    //! 絶対値に変換し、左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
+    int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal), fabsf(distanceRightTotal));
 
     //! 右に補正パワー値を足す
     *powerRight = power + correctedAddRightPower;
