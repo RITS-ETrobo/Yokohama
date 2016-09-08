@@ -68,6 +68,8 @@ void Logger::addLog(uint_t logType, const char* message)
 
 /**
  * @brief   ログを追加する
+ * floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照)
+ * 参考資料： http://simd.jugem.jp/?eid=32
  * @param   logType ログの種類
  * @param   value 出力する数値
  * @return  なし

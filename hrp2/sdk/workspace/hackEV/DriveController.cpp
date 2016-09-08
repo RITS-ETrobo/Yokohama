@@ -4,6 +4,7 @@
  */
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "instances.h"
 #include "utilities.h"
@@ -174,15 +175,15 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 }
 
 /**
- * @brief   補正として追加するパワー値を取得する
- * @param   distanceLeftTotal  左ホイールの移動実績[単位 : cm]
- * @param   distanceRightTotal  各右ホイールの移動実績[単位 : cm]
+ * @brief   目標に対して補正として追加するパワー値を取得する
+ * @param   targetDistance  目標の距離[単位 : cm]
+ * @param   movedDistance  移動実績[単位 : cm]
  * @return  correctAddPower 補正で追加するPower値
 */
-int DriveController::getCorrectedAddRightPower(float distanceLeftTotal, float distanceRightTotal){
+int DriveController::getCorrectedAddPower(float targetDistance, float movedDistance){
     
     //! 左右のホイールの距離の差
-    float deviation = distanceLeftTotal - distanceRightTotal;
+    float deviation = targetDistance - movedDistance;
     
     //! 左右の差が「1パワー分の100ms間の走行距離」(OnePowerDeviation)ごとに、１パワーずつ補正をかける
     int correctAddPower = deviation / OnePowerDeviation;
@@ -308,14 +309,14 @@ void DriveController::straightRun(int power)
     int powerLeft = 0;
     int powerRight = 0;
 
+    //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
     if (currentTime - lastTime <= DURATION) {
         //! DURATION以下なら前回の値そのまま
         powerLeft = lastPowerLeft;
         powerRight = lastPowerRight;
     } else {
-        //! 左右のモーターの各トータル値の差の比率を取得
-        //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
+        //! 補正したパワー値を取得
         getCorrectedPower(power, &powerLeft, &powerRight);
 
         //! 最後の値の更新
@@ -335,6 +336,25 @@ void DriveController::straightRun(int power)
  */
 void DriveController::pinWheel(int power)
 {
+    int powerLeft = 0;
+    int powerRight = 0;
+
+    //! DURATION[ms]ごとに補正をかける
+    SYSTIM currentTime = clock->now();
+    if (currentTime - lastTime <= DURATION) {
+        //! DURATION以下なら前回の値そのまま
+        powerLeft = lastPowerLeft;
+        powerRight = lastPowerRight;
+    } else {
+        //! 補正したパワー値を取得
+        getCorrectedPower(power, &powerLeft, &powerRight);
+
+        //! 最後の値の更新
+        lastTime = currentTime;
+        lastPowerLeft = powerLeft;
+        lastPowerRight = powerRight;
+    }
+    
     motorWheelLeft->run((-power));
     motorWheelRight->run(power);
 }
@@ -468,7 +488,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
 }
 
 /**
- * @brief   補正された出力を取得する
+ * @brief   直線走行のための補正された出力を取得する
  * @param   power       モーターへの入力
  * @param   direction   角度[単位 : %]
  * @param   distanceRatio   左右のホイールの進んだ距離の比率
@@ -486,8 +506,8 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     float distanceLeftTotal = motorWheelLeft->getDistance();
     float distanceRightTotal = motorWheelRight->getDistance();
     
-    //! 右モーターに補正として追加するパワー値を取得する
-    int correctedAddRightPower = getCorrectedAddRightPower(distanceLeftTotal,distanceRightTotal);
+    //! 絶対値に変換し、左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
+    int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal), fabsf(distanceRightTotal));
 
     //! 右に補正パワー値を足す
     *powerRight = power + correctedAddRightPower;
