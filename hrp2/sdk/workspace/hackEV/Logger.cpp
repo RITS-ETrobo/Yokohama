@@ -56,13 +56,13 @@ bool Logger::isEnabled()
 void Logger::addLog(uint_t logType, const char* message)
 {
     USER_LOG    info;
+    memset(&info, '\0', sizeof(info));
     info.logType = logType;
-    info.logTime = 0;
+    strncpy(info.log, message, BUFFER_SIZE_LOG_MESSAGE - 1);
     if (clock) {
         info.logTime = clock->now();
     }
 
-    strncpy(info.log, message, 7);
     loggerInfo.push_back(info);
 }
 
@@ -76,7 +76,7 @@ void Logger::addLog(uint_t logType, const char* message)
 */
 void Logger::addLogFloat(uint_t logType, const float value)
 {
-    char message[8];
+    char message[BUFFER_SIZE_LOG_MESSAGE];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%.2f", floor(value * 100) / (float)100);
 
@@ -97,7 +97,7 @@ void Logger::addLogFloatFormatted(uint_t logType, const float value, const char 
         return;
     }
 
-    char    message[8];
+    char    message[BUFFER_SIZE_LOG_MESSAGE];
     memset(message, '\0', sizeof(message));
     sprintf(message, format, value);
     addLog(logType, message);
@@ -111,7 +111,7 @@ void Logger::addLogFloatFormatted(uint_t logType, const float value, const char 
 */
 void Logger::addLogInt(uint_t logType, const int value)
 {
-    char message[8];
+    char message[BUFFER_SIZE_LOG_MESSAGE];
     memset(message, '\0', sizeof(message));
     sprintf(message, "%d", value);
 
@@ -132,7 +132,7 @@ void Logger::addLogIntFormatted(uint_t logType, const int value, const char *for
         return;
     }
 
-    char    message[8];
+    char    message[BUFFER_SIZE_LOG_MESSAGE];
     memset(message, '\0', sizeof(message));
     sprintf(message, format, value);
     addLog(logType, message);
