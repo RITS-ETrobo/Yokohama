@@ -511,7 +511,7 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal), fabsf(distanceRightTotal));
 
     //! 右に補正パワー値を足す
-    *powerRight = power + correctedAddRightPower;
+    *powerRight = addAdjustPlusOrMinusValue(power, correctedAddRightPower);
     *powerLeft = power;
     
     //! 補正したことをログに出力
@@ -520,7 +520,26 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     //! 右モーターに追加する補正パワー値をログに出力
     logger->addLogInt(LOG_NOTICE, correctedAddRightPower);
     
-    //! 補正された出力値をログに出力
+    //! 補正された出力値をログに出力（その場回転はここで出力されたログ値とは違い、実際には一つがマイナスとなることに留意）
     logger->addLogInt(LOG_TYPE_CORRECTED_POWER_RIGHT, *powerRight);
     logger->addLogInt(LOG_TYPE_CORRECTED_POWER_LEFT, *powerLeft);
+}
+
+/**
+ * @brief   "加算対象"の値が負の場合は、"加算値"の符号を逆にする
+ * 理由：power補正値は後ろに進んでいるときも距離の絶対値を比べて計算した結果であるため、powerがマイナスの場合は補正値が反対になってしまうため
+ * @param   targetValue  加算対象
+ * @param   addvalue  加算する値
+ * @return  計算結果
+ */
+int DriveController::addAdjustPlusOrMinusValue(int targetValue, int addvalue){
+    int sumValue = 0;
+    if(targetValue < 0){
+        //! 加算対象が負の値の場合は加算値の符号を逆にする
+        sumValue = targetValue - addvalue;
+    }
+    else{
+        sumValue = targetValue + addvalue;
+    }
+    return sumValue;
 }

@@ -33,6 +33,7 @@ protected:
     virtual float getDirection(float directionDelta);
     virtual bool runAsPattern(scenario_running scenario);
     virtual void initializeAsPattern(scenario_running scenario);
+    virtual int addAdjustPlusOrMinusValue(int targetValue, int addvalue);
 
 private:
     void pinWheel(int power);
