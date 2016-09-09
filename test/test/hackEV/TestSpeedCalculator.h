@@ -4,9 +4,8 @@
  */
 #pragma once
 
-#include "gtest/gtest.h"
+#include "test.h"
 #include <iostream>
-#include <stdint.h>
 
 #include "SpeedCalculator.h"
 
