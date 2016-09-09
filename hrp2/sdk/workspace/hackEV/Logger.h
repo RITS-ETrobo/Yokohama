@@ -14,6 +14,9 @@
 using namespace std;
 using namespace ev3api;
 
+//! ログに出力する文字列のバッファーサイズ
+#define BUFFER_SIZE_LOG_MESSAGE 8
+
 /*! @struct USER_LOG
     @brief  ログに出力する情報
 */
@@ -25,7 +28,7 @@ typedef struct {
     SYSTIM  logTime;
 
     //! ログに出力する文字列(8Bytes)
-    char    log[8];
+    char    log[BUFFER_SIZE_LOG_MESSAGE];
 } USER_LOG;
 
 //! Class for logging
