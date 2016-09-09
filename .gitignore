@@ -22,7 +22,7 @@ OBJ
 hrp2/cfg/cfg/cfg
 hrp2/sdk/bin
 hrp2/sdk/OBJ
-*.log
+*.log*
 hrp2/sdk/app
 hrp2/sdk/hrp2
 hrp2/sdk/uImage
