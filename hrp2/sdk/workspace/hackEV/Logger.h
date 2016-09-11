@@ -45,6 +45,7 @@ public:
     virtual void addLogIntFormatted(uint_t logType, const int value, const char *format = NULL);
     virtual void outputLog(bool doClosingLog = false);
     virtual void setEnabled(bool enabled_ = true);
+    virtual bool validateAddLog(uint_t logType);
 
 protected:
     virtual bool isEnabled();
@@ -68,4 +69,7 @@ private:
 
     //! ヘッダーを出力したかどうか
     bool    outputHeader;
+    
+    //! 各ログの種類がログ出力する時間間隔
+    SYSTIM LOG_TIME_INTERVAL = 100;
 };
