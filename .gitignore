@@ -29,6 +29,7 @@ hrp2/sdk/uImage
 ~*
 *.lock
 *.rej
+build
 
 # for emacs:
 *~
