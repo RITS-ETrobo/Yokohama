@@ -15,7 +15,6 @@ protected:
     virtual void SetUp() {
         speedCalculator100ms = new SpeedCalculator(100);
         speedCalculator100ms->initialize();
-        addRecord(speedCalculator100ms, 0, 0);
     };
 
     virtual void TearDown() {

@@ -14,8 +14,11 @@ typedef struct {
     //! タイマー開始からの経過時間[単位 : ms]
     SYSTIM  currentTime;
 
-    //! 前回の測定から進んだ距離[単位 : cm]
+    //! 前回の測定から進んだ距離(差分)[単位 : cm]
     float   distanceDelta;
+
+    //! 現在までに進んだ距離(累積)[単位 : cm]
+    float   distance;
 } DISTANCE_RECORD;
 
 //! Class for speed

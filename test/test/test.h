@@ -7,6 +7,8 @@
 #include "product.h"
 #include "gtest/gtest.h"
 
+using namespace std;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
