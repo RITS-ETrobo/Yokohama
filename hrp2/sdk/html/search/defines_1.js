@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debug',['DEBUG',['../de/df0/utilities_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'utilities.h']]]
+  ['buffer_5fsize_5flog_5fmessage',['BUFFER_SIZE_LOG_MESSAGE',['../d6/dec/_logger_8h.html#a3408ac12d9faf628ac91d1a99b5e6c9b',1,'Logger.h']]]
 ];

@@ -40,7 +40,6 @@ void configure_sensors()
 {
     ev3_sensor_config(EV3_SENSOR_TOUCH, TOUCH_SENSOR);
     ev3_sensor_config(EV3_SENSOR_COLOR, COLOR_SENSOR);
-    ev3_sensor_config(EV3_SENSOR_GYRO, GYRO_SENSOR);
 }
 
 /**

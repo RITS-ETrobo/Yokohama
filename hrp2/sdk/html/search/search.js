@@ -7,15 +7,15 @@
 
 var indexSectionsWithContent =
 {
-  0: "_abcdefghiklmnoprstuvwãåæè",
-  1: "dlmpsu",
+  0: "_abcdefghiklmnoprstuvwãåæèé速",
+  1: "dglmpsu速",
   2: "acdgilmprsuw",
   3: "abcdgilmoprstuvw",
-  4: "_bcdefhiklmoprsvw",
+  4: "_bcdefghiklmoprsvw",
   5: "r",
   6: "nopst",
-  7: "_dls",
-  8: "flpvãåæè"
+  7: "_bdls",
+  8: "flpvãåæèé"
 };
 
 var indexSectionNames =

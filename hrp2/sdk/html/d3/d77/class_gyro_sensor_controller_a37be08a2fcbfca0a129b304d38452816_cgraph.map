@@ -1,0 +1,9 @@
+<map id="GyroSensorController::initialize" name="GyroSensorController::initialize">
+<area shape="rect" id="node2" href="$d3/d77/class_gyro_sensor_controller.html#ad96e9a82d821f4d00c1edd8b5264f1e4" title="値のリセット " alt="" coords="214,5,373,46"/>
+<area shape="rect" id="node4" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="233,71,354,97"/>
+<area shape="rect" id="node3" href="$d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496" title="ジャイロセンサーの有効・無効をセットする " alt="" coords="421,5,597,46"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="423,71,595,97"/>
+<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="448,121,571,148"/>
+<area shape="rect" id="node6" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="646,45,770,72"/>
+<area shape="rect" id="node7" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="651,96,765,123"/>
+</map>
