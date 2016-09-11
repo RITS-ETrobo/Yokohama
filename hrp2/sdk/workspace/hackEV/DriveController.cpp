@@ -510,8 +510,8 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     //! 絶対値に変換し、左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
     int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal), fabsf(distanceRightTotal));
 
-    //! 右に補正パワー値を足す
-    *powerRight = addAdjustPlusOrMinusValue(power, correctedAddRightPower);
+    //! 右モーターに補正値の符号を調整して加算する
+    *powerRight = addAdjustValue(power, correctedAddRightPower);
     *powerLeft = power;
     
     //! 補正したことをログに出力
@@ -532,14 +532,14 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
  * @param   addvalue  加算する値
  * @return  計算結果
  */
-int DriveController::addAdjustPlusOrMinusValue(int targetValue, int addvalue){
-    int sumValue = 0;
+int DriveController::addAdjustValue(int targetValue, int addvalue){
+    int sumValue = targetValue;
     if(targetValue < 0){
         //! 加算対象が負の値の場合は加算値の符号を逆にする
-        sumValue = targetValue - addvalue;
+        sumValue -= addvalue;
     }
     else{
-        sumValue = targetValue + addvalue;
+        sumValue += addvalue;
     }
     return sumValue;
 }
