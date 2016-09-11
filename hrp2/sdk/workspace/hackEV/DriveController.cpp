@@ -4,6 +4,7 @@
  */
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "instances.h"
 #include "utilities.h"
@@ -174,15 +175,15 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 }
 
 /**
- * @brief   補正として追加するパワー値を取得する
- * @param   distanceLeftTotal  左ホイールの移動実績[単位 : cm]
- * @param   distanceRightTotal  各右ホイールの移動実績[単位 : cm]
+ * @brief   目標に対して補正として追加するパワー値を取得する
+ * @param   targetDistance  目標の距離[単位 : cm]
+ * @param   movedDistance  移動実績[単位 : cm]
  * @return  correctAddPower 補正で追加するPower値
 */
-int DriveController::getCorrectedAddRightPower(float distanceLeftTotal, float distanceRightTotal){
+int DriveController::getCorrectedAddPower(float targetDistance, float movedDistance){
     
     //! 左右のホイールの距離の差
-    float deviation = distanceLeftTotal - distanceRightTotal;
+    float deviation = targetDistance - movedDistance;
     
     //! 左右の差が「1パワー分の100ms間の走行距離」(OnePowerDeviation)ごとに、１パワーずつ補正をかける
     int correctAddPower = deviation / OnePowerDeviation;
@@ -199,14 +200,6 @@ int DriveController::getCorrectedAddRightPower(float distanceLeftTotal, float di
 float DriveController::getDistance(float distanceDelta)
 {
     distanceTotal += distanceDelta;
-
-    if (logger && (distanceDelta != 0)) {
-        //ログが多くなり過ぎて、異常終了する為、コメント
-        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
-
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
-    }
-
     return  distanceTotal;
 }
 
@@ -218,10 +211,6 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionTotal += directionDelta;
-    if (logger && (directionDelta != 0)) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
-    }
-
     return  directionTotal;
 }
 
@@ -308,14 +297,14 @@ void DriveController::straightRun(int power)
     int powerLeft = 0;
     int powerRight = 0;
 
+    //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
     if (currentTime - lastTime <= DURATION) {
         //! DURATION以下なら前回の値そのまま
         powerLeft = lastPowerLeft;
         powerRight = lastPowerRight;
     } else {
-        //! 左右のモーターの各トータル値の差の比率を取得
-        //float distanceRatio = getCorrectDistanceRatio(distanceLeftTotal,distanceRightTotal);
+        //! 補正したパワー値を取得
         getCorrectedPower(power, &powerLeft, &powerRight);
 
         //! 最後の値の更新
@@ -335,6 +324,25 @@ void DriveController::straightRun(int power)
  */
 void DriveController::pinWheel(int power)
 {
+    int powerLeft = 0;
+    int powerRight = 0;
+
+    //! DURATION[ms]ごとに補正をかける
+    SYSTIM currentTime = clock->now();
+    if (currentTime - lastTime <= DURATION) {
+        //! DURATION以下なら前回の値そのまま
+        powerLeft = lastPowerLeft;
+        powerRight = lastPowerRight;
+    } else {
+        //! 補正したパワー値を取得
+        getCorrectedPower(power, &powerLeft, &powerRight);
+
+        //! 最後の値の更新
+        lastTime = currentTime;
+        lastPowerLeft = powerLeft;
+        lastPowerRight = powerRight;
+    }
+    
     motorWheelLeft->run((-power));
     motorWheelRight->run(power);
 }
@@ -407,7 +415,7 @@ void DriveController::change_LineSide(scenario_running scenario)
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
-        if(abs(secondDirection) >= abs(firstDirection)){
+        if(isGreaterAbsoluteValue(secondDirection, firstDirection)){
             //writeFloatLCD((float)colorValue);
             stop();
             break;
@@ -430,15 +438,18 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 
     //! 走行体が指定距離走行したらストップ
     float   distanceTotal = getDistance(distanceDelta);
-    if (abs(distanceTotal) >= abs(scenario.distance)) {
-        if (scenario.stop) {
-            stop();
-        }
-
-        return  true;
+    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, scenario.distance);
+    if (isGreaterValue && scenario.stop) {
+        stop();
     }    
 
-    return  false;
+    if (logger && (distanceDelta != 0)) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+    }
+
+    return  isGreaterValue;
 }
 
 /**
@@ -456,19 +467,20 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     
     //! 走行体が指定した向きになったらストップ
     float   directionTotal = getDirection(directionDelta);
-    if (abs(directionTotal) >= abs(scenario.direction)) {
-        if(scenario.stop){
-            stop();
-        }
-
-        return  true;
+    bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
+    if (isGreaterValue && scenario.stop){
+        stop();
     }
 
-    return  false;
+    if (logger && (directionDelta != 0)) {
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterValue);
+    }
+
+    return  isGreaterValue;
 }
 
 /**
- * @brief   補正された出力を取得する
+ * @brief   直線走行のための補正された出力を取得する
  * @param   power       モーターへの入力
  * @param   direction   角度[単位 : %]
  * @param   distanceRatio   左右のホイールの進んだ距離の比率
@@ -486,11 +498,11 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     float distanceLeftTotal = motorWheelLeft->getDistance();
     float distanceRightTotal = motorWheelRight->getDistance();
     
-    //! 右モーターに補正として追加するパワー値を取得する
-    int correctedAddRightPower = getCorrectedAddRightPower(distanceLeftTotal,distanceRightTotal);
+    //! 絶対値に変換し、左ホイールの実績距離を目標として、右モーターに補正として追加するパワー値を取得する
+    int correctedAddRightPower = getCorrectedAddPower(fabsf(distanceLeftTotal), fabsf(distanceRightTotal));
 
-    //! 右に補正パワー値を足す
-    *powerRight = power + correctedAddRightPower;
+    //! 右モーターに補正値の符号を調整して加算する
+    *powerRight = addAdjustValue(power, correctedAddRightPower);
     *powerLeft = power;
     
     //! 補正したことをログに出力
@@ -499,7 +511,26 @@ void DriveController::getCorrectedPower(int power, int *powerLeft, int *powerRig
     //! 右モーターに追加する補正パワー値をログに出力
     logger->addLogInt(LOG_NOTICE, correctedAddRightPower);
     
-    //! 補正された出力値をログに出力
+    //! 補正された出力値をログに出力（その場回転はここで出力されたログ値とは違い、実際には一つがマイナスとなることに留意）
     logger->addLogInt(LOG_TYPE_CORRECTED_POWER_RIGHT, *powerRight);
     logger->addLogInt(LOG_TYPE_CORRECTED_POWER_LEFT, *powerLeft);
+}
+
+/**
+ * @brief   "加算対象"の値が負の場合は、"加算値"の符号を逆にする
+ * 理由：power補正値は後ろに進んでいるときも距離の絶対値を比べて計算した結果であるため、powerがマイナスの場合は補正値が反対になってしまうため
+ * @param   targetValue  加算対象
+ * @param   addvalue  加算する値
+ * @return  計算結果
+ */
+int DriveController::addAdjustValue(int targetValue, int addvalue){
+    int sumValue = targetValue;
+    if(targetValue < 0){
+        //! 加算対象が負の値の場合は加算値の符号を逆にする
+        sumValue -= addvalue;
+    }
+    else{
+        sumValue += addvalue;
+    }
+    return sumValue;
 }

@@ -60,3 +60,19 @@ int calibrate_light_intensity()
     int color = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);
     return  color;
 }
+
+/**
+ * @brief 比較対象の絶対値よりも大きい値かどうか
+ * @param targetValue 大きさを判定する値
+ * @param compareValue 比較対象の値
+ * @return  targetValueの絶対値がcompareValueの絶対値よりも大きければtrue,小さければfalse
+*/
+bool isGreaterAbsoluteValue(float targetValue, float compareValue){
+    //! 絶対値を比較して大きければtrueを返す
+    if(fabsf(targetValue) >= fabsf(compareValue)){
+        return true;
+    }
+    
+    //それ以外はfalseを返す
+    return false;
+}

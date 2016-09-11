@@ -26,12 +26,13 @@ protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
     virtual bool stopByDirection(scenario_running scenario, float directionDelta);
     virtual void getDelta(float *directionDelta, float *distanceDelta);
-    virtual int getCorrectedAddRightPower(float distanceLeftTotal, float distanceRightTotal);
+    virtual int getCorrectedAddPower(float targetDistance, float movedDistance);
     virtual void getCorrectedPower(int power, int *powerLeft, int *powerRight);
     virtual float getDistance(float distanceDelta);
     virtual float getDirection(float directionDelta);
     virtual bool runAsPattern(scenario_running scenario);
     virtual void initializeAsPattern(scenario_running scenario);
+    virtual int addAdjustValue(int targetValue, int addvalue);
 
 private:
     void pinWheel(int power);
