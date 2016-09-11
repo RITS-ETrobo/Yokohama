@@ -16,6 +16,7 @@
 #include "DriveController.h"
 #include "ArmModule.h"
 #include "ColorSensorController.h"
+#include "GyroSensorController.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -29,6 +30,9 @@ DriveController*    driveController = NULL;
 
 //! Clockクラスのインスタンス
 Clock   *clock = NULL;
+
+//! GyroSensorControllerクラスのインスタンス
+GyroSensorController* gyroSensorController = NULL;
 
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
@@ -149,6 +153,7 @@ void main_task(intptr_t unused) {
     logger = new Logger();
     driveController = new DriveController();
     clock = new Clock();
+    gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
 
     if (logger) {
         logger->initialize();
@@ -164,6 +169,10 @@ void main_task(intptr_t unused) {
 
     if (logger) {
         logger->addLog(LOG_TYPE_INITIALIZE, "START");
+    }
+
+    if (gyroSensorController) {
+        gyroSensorController->initialize();
     }
 
     //! Configure motors

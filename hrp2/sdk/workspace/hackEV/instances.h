@@ -7,6 +7,7 @@
 #include "Logger.h"
 #include "DriveController.h"
 #include "Clock.h"
+#include "GyroSensorController.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
@@ -16,3 +17,7 @@ extern DriveController* driveController;
 
 //! Clockクラスのインスタンス
 extern Clock    *clock;
+
+//! GyroSensorControllerクラスのインスタンス
+extern GyroSensorController* gyroSensorController;
+
