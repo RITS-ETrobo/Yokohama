@@ -18,6 +18,7 @@ public:
     virtual bool initialize();
     virtual void reset();
     virtual void setEnabledGyroSensor(bool _enabledGyroSensor = true);
+    virtual void updateGyroRate()
     virtual int16_t getGyroRate();
     virtual bool getStaged();
 

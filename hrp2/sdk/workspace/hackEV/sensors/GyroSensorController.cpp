@@ -51,13 +51,22 @@ void GyroSensorController::setEnabledGyroSensor(bool _enabledGyroSensor)
     enabledGyroSensor = _enabledGyroSensor;
 }
 
+
 /**
  * @brief   ジャイロセンサーの角速度を更新する
  * @return  ジャイロセンサーの角速度 [度/秒]
 */
-int16_t GyroSensorController::getGyroRate()
+void GyroSensorController::updateGyroRate()
 {
     gyroRate = ev3_gyro_sensor_get_rate(port);
+}
+
+/**
+ * @brief   ジャイロセンサーの角速度を取得する
+ * @return  ジャイロセンサーの角速度 [度/秒]
+*/
+int16_t GyroSensorController::getGyroRate()
+{
     return gyroRate;
 }
 
