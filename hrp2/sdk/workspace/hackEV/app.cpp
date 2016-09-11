@@ -16,6 +16,7 @@
 #include "DriveController.h"
 #include "ArmModule.h"
 #include "ColorSensorController.h"
+#include "GyroSensorController.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -29,6 +30,9 @@ DriveController*    driveController = NULL;
 
 //! Clockクラスのインスタンス
 Clock   *clock = NULL;
+
+//! GyroSensorControllerクラスのインスタンス
+GyroSensorController* gyroSensorController = NULL;
 
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
@@ -149,6 +153,7 @@ void main_task(intptr_t unused) {
     logger = new Logger();
     driveController = new DriveController();
     clock = new Clock();
+    gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
 
     if (logger) {
         logger->initialize();
@@ -164,6 +169,11 @@ void main_task(intptr_t unused) {
 
     if (logger) {
         logger->addLog(LOG_TYPE_INITIALIZE, "START");
+    }
+
+    if (gyroSensorController) {
+        gyroSensorController->initialize();
+        gyroSensorController->setEnabledGyroSensor(true);
     }
 
     //! Configure motors
@@ -205,6 +215,22 @@ void main_task(intptr_t unused) {
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
+}
+
+/**
+ * @brief   ジャイロセンサーの値を更新する
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void gyro_update_task(intptr_t exinf)
+{
+    if (gyroSensorController == NULL || !gyroSensorController->isEnabledGyroSensor())
+    {
+        return;
+    }
+
+    gyroSensorController->updateGyroRate();
+    logger->addLogInt(LOG_TYPE_GYRO, gyroSensorController->getGyroRate());
 }
 
 /**
