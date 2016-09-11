@@ -16,7 +16,6 @@ Logger::Logger()
     , loggerInfo(NULL)
     , enabled(false)
     , outputHeader(false)
-    , LOG_TIME_INTERVAL(100)
 {
 }
 
@@ -56,46 +55,56 @@ bool Logger::isEnabled()
 */
 void Logger::addLog(uint_t logType, const char* message)
 {
+    SYSTIM  currentTime = 0;
+    if (clock) {
+        currentTime = clock->now();
+    }
+
     //! 前回出力してから指定時間経っていなければ書き込まない
-    if(validateAddLog(logType) == false){
+    if (validateAddLog(logType, currentTime) == false) {
         return;
     }
-    
+
     USER_LOG    info;
     memset(&info, '\0', sizeof(info));
     info.logType = logType;
+    info.logTime = currentTime;
     strncpy(info.log, message, BUFFER_SIZE_LOG_MESSAGE - 1);
-    if (clock) {
-        info.logTime = clock->now();
-    }
 
+    setLogLastTime(logType, currentTime);
     loggerInfo.push_back(info);
 }
 
 /**
  * @brief   ログを追加するか判定する（前回から指定時間異常経過していたら出力）
  * @param   logType ログの種類
+ * @param   currentTime 現在のシステム時刻[単位 : ms]
  * @return  追加するならtrue,追加しない場合はfalse
 */
-bool Logger::validateAddLog(uint_t logType)
+bool Logger::validateAddLog(uint_t logType, SYSTIM currentTime)
 {
-    SYSTIM currentTime = clock->now();
+    //! 現在時刻が取れなかった場合は、出力する
+    if (currentTime == 0) {
+        return  true;
+    }
     
     //! 前回の値が入っていなければ（初期値だったら）追加する
-    if(getLogLastTime(logType) == 0){
-        setLogLastTime(logType, currentTime);
-        return true;
+    if (getLogLastTime(logType) == 0) {
+        return  true;
     }
-    
-    if (currentTime - getLogLastTime(logType) >= LOG_TIME_INTERVAL) {
+
+    SYSTIM  interval = getLogInterval(logType);
+    if (interval == 0) {
+        //! インターバルを確認しない場合、常にストックする
+        return  true;
+    }
+
+    if (currentTime - getLogLastTime(logType) >= interval) {
         //! 前回出力してから指定時間以上経過していたら出力する
-        setLogLastTime(logType, currentTime);
-        return true;
+        return  true;
     }
-    else
-    {
-        return false;
-    }
+
+    return false;
 }
 
 /**
