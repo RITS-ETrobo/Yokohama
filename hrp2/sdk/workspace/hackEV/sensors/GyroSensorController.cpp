@@ -22,8 +22,10 @@ GyroSensorController::GyroSensorController(sensor_port_t _port)
 */
 bool GyroSensorController::initialize()
 {
+    ev3_sensor_config(port, GYRO_SENSOR);
     reset();
     if (ev3_gyro_sensor_reset(port) != E_OK) {
+        logger->addLog(LOG_NOTICE, "GYRO ER");
         return false;
     }
 
