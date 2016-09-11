@@ -5,8 +5,7 @@
 #pragma once
 
 //! ターゲット依存の定義
-#include "ev3api.h"
-#include "target_test.h"
+#include "product.h"
 
 #include "scenarioRunning.h"
 

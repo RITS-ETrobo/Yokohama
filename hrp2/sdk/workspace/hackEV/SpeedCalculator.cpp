@@ -22,7 +22,13 @@ void SpeedCalculator::initialize()
 {
     distance_record.clear();
     DISTANCE_RECORD record;
+
+#ifdef  EV3_UNITTEST
+    record.currentTime = 0;
+#else
     record.currentTime = clock->now();
+#endif  //  EV3_UNITTEST
+
     record.distanceDelta = 0;
     add(record);
 }

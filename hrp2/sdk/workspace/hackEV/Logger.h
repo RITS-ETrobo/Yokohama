@@ -8,11 +8,11 @@
 #include <string.h>
 #include <vector>
 
+#include "product.h"
+
 #include "logSettings.h"
-#include "Clock.h"
 
 using namespace std;
-using namespace ev3api;
 
 /*! @struct USER_LOG
     @brief  ログに出力する情報

@@ -4,8 +4,7 @@
  */
 #pragma once
 
-#include "t_stddef.h"
-#include "t_syslog.h"
+#include "product.h"
 
 //! \addtogroup ログ出力の設定
 //@{

@@ -4,8 +4,7 @@
  */
 #pragma once
 
-#define EV3_UNITTEST
-
+#include "product.h"
 #include "gtest/gtest.h"
 
 #ifdef __cplusplus
@@ -247,3 +246,119 @@ typedef	struct acvct {				/* アクセス許可ベクタ */
 #else /* UINT_MAX < LONG_MAX */
 #define TMAX_RELTIM		((RELTIM) LONG_MAX)
 #endif /* UINT_MAX < LONG_MAX */
+
+//  ./hrp2/sdk/common/ev3api/src/ev3api_sensor.h からコピー
+
+/**
+ * \~English
+ * [TODO: sync with jp version]
+ * \brief Enumeration type for supported sensor ports
+ *
+ * \~Japanese
+ * \brief センサポートを表す番号
+ */
+typedef enum {
+    EV3_PORT_1 = 0,               //!< \~English Port 1                             \~Japanese ポート1
+    EV3_PORT_2 = 1,           //!< \~English Port 2                 \~Japanese ポート2
+    EV3_PORT_3 = 2,               //!< \~English Port 3                         \~Japanese ポート3
+    EV3_PORT_4 = 3,       //!< \~English Port 4                             \~Japanese ポート4
+    TNUM_SENSOR_PORT = 4, //!< \~English Number of sensor ports \~Japanese センサポートの数
+} sensor_port_t;
+
+/**
+ * \~English
+ * \brief Enumeration type for supported sensor types
+ *
+ * \~Japanese
+ * \brief サポートするセンサタイプ
+ */
+typedef enum {
+    NONE_SENSOR = 0,     //!< \~English Not connected                                     \~Japanese センサ未接続
+    ULTRASONIC_SENSOR,   //!< \~English Ultrasonic sensor                                 \~Japanese 超音波センサ
+    GYRO_SENSOR,             //!< \~English Gyroscope sensor                              \~Japanese ジャイロセンサ
+    TOUCH_SENSOR,            //!< \~English Touch sensor                                          \~Japanese タッチセンサ
+    COLOR_SENSOR,            //!< \~English Color sensor                                          \~Japanese カラーセンサ
+        HT_NXT_ACCEL_SENSOR, //!< \~English HiTechnic NXT acceleration sensor \~Japanese 加速度センサ（HiTechnic社製）
+        NXT_TEMP_SENSOR,     //!< \~English NXT temperature sensor            \~Japanese NXT温度センサ
+    TNUM_SENSOR_TYPE     //!< \~English Number of sensor types                    \~Japanese センサタイプの数
+} sensor_type_t;
+
+/**
+ * \~English
+ * \brief Enumeration type for colors that can be detected by color sensor
+ *
+ * \~Japanese
+ * \brief カラーセンサで識別できるカラーの番号
+ */
+typedef enum {
+    COLOR_NONE   = 0, //!< \~English None                         \~Japanese 無色
+    COLOR_BLACK  = 1, //!< \~English Black                        \~Japanese 黒
+    COLOR_BLUE   = 2, //!< \~English Blue                         \~Japanese 青
+    COLOR_GREEN  = 3, //!< \~English Green                \~Japanese 緑
+    COLOR_YELLOW = 4, //!< \~English Yellow               \~Japanese 黄
+    COLOR_RED    = 5, //!< \~English Red                          \~Japanese 赤
+    COLOR_WHITE  = 6, //!< \~English White                    \~Japanese 白
+    COLOR_BROWN  = 7, //!< \~English Brown                        \~Japanese 茶
+    TNUM_COLOR            //!< \~English Number of colors \~Japanese 識別できるカラーの数
+} colorid_t;
+
+/**
+ * \~English
+ * \brief Structure for an RGB raw value
+ *
+ * \~Japanese
+ * \brief RGB Raw値を格納する構造体
+ */
+typedef struct {
+    uint16_t r; //!< \~English Red value   \~Japanese 赤
+    uint16_t g; //!< \~English Green value \~Japanese 緑
+    uint16_t b; //!< \~English Blue value  \~Japanese 青
+} rgb_raw_t;
+
+// ../hrp2/sdk/common/ev3api/src/ev3api_motor.h からコピー
+/**
+ * \~English
+ * [TODO: sync with jp version]
+ * \defgroup ev3motor Motor
+ * \brief    Definitions of API for controlling motors.
+ *
+ * \~Japanese
+ * \defgroup ev3motor サーボモータ
+ * \brief    モータ制御に関するAPI．
+ *
+ * @{
+ */
+
+#pragma once
+
+/**
+ * \~English
+ * [TODO: sync with jp version]
+ * \brief ID for supported motor ports
+ *
+ * \~Japanese
+ * \brief モータポートを表す番号
+ */
+typedef enum {
+    EV3_PORT_A = 0,     //!< \~English Port A                            \~Japanese ポートA
+    EV3_PORT_B = 1,             //!< \~English Port B                            \~Japanese ポートB
+    EV3_PORT_C = 2,             //!< \~English Port C                            \~Japanese ポートC
+    EV3_PORT_D = 3,     //!< \~English Port D                        \~Japanese ポートD
+    TNUM_MOTOR_PORT = 4 //!< \~English Number of motor ports \~Japanese モータポートの数
+} motor_port_t;
+
+/**
+ * \~English
+ * [TODO: sync with jp version]
+ * \brief Enumeration type for supported motor types
+ *
+ * \~Japanese
+ * \brief サポートするモータタイプ
+ */
+typedef enum {
+    NONE_MOTOR = 0,        //!< \~English Not connected         \~Japanese モータ未接続
+    MEDIUM_MOTOR,          //!< \~English Medium servo motor    \~Japanese サーボモータM
+    LARGE_MOTOR,           //!< \~English Large servo motor     \~Japanese サーボモータL
+    UNREGULATED_MOTOR, //!< \~English Unregulated motor     \~Japanese 未調整モータ
+    TNUM_MOTOR_TYPE    //!< \~English Number of motor types \~Japanese モータタイプの数
+} motor_type_t;

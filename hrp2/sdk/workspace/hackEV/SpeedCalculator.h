@@ -4,11 +4,8 @@
  */
 #pragma once
 
-#ifndef EV3_UNITTEST
-    //! ターゲット依存の定義
-    #include "ev3api.h"
-    #include "target_test.h"
-#endif  //  EV3_UNITTEST
+//! ターゲット依存の定義
+#include "product.h"
 
 #include <deque>
 

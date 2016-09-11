@@ -4,9 +4,9 @@
  */
 #pragma once
 
+#include "product.h"
 #include "Logger.h"
 #include "DriveController.h"
-#include "Clock.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
@@ -14,5 +14,7 @@ extern Logger*  logger;
 //! DriveControllerクラスのインスタンス
 extern DriveController* driveController;
 
-//! Clockクラスのインスタンス
-extern Clock    *clock;
+#ifndef EV3_UNITTEST
+    //! Clockクラスのインスタンス
+    extern Clock    *clock;
+#endif  // EV3_UNITTEST
