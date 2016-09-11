@@ -80,6 +80,7 @@ extern "C" {
 extern void	task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
 extern void balance_task(intptr_t exinf);
+extern void gyro_update_task(intptr_t exinf);
 extern void log_monitoring_task(intptr_t exinf);
 extern void idle_task(intptr_t exinf);
 extern void stop_emergency();

@@ -18,9 +18,10 @@ public:
     virtual bool initialize();
     virtual void reset();
     virtual void setEnabledGyroSensor(bool _enabledGyroSensor = true);
-    virtual void updateGyroRate()
+    virtual bool isEnabledGyroSensor();
+    virtual void updateGyroRate();
     virtual int16_t getGyroRate();
-    virtual bool getStaged();
+    virtual bool isStaged();
 
 private:
     //! ジャイロセンサーのポート番号

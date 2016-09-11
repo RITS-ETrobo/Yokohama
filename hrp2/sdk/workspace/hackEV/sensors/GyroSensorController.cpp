@@ -51,6 +51,15 @@ void GyroSensorController::setEnabledGyroSensor(bool _enabledGyroSensor)
     enabledGyroSensor = _enabledGyroSensor;
 }
 
+/**
+ * @brief   ジャイロセンサーの有効・無効を取得する
+ * @return  true:有効
+ *          false:無効
+ */
+bool GyroSensorController::isEnabledGyroSensor()
+{
+    return enabledGyroSensor;
+}
 
 /**
  * @brief   ジャイロセンサーの角速度を更新する
@@ -74,7 +83,7 @@ int16_t GyroSensorController::getGyroRate()
  * @brief   ステージに乗ったかどうかのジャイロ判定を更新する。
  * @return  なし
  */
-bool GyroSensorController::getStaged()
+bool GyroSensorController::isStaged()
 {
     gyroRate = ev3_gyro_sensor_get_rate(port);
     staged = (gyroRate < STAGE_ON_THRESHOLD);

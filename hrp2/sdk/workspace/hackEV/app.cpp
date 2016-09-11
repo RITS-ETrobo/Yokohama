@@ -173,6 +173,7 @@ void main_task(intptr_t unused) {
 
     if (gyroSensorController) {
         gyroSensorController->initialize();
+        gyroSensorController->setEnabledGyroSensor(true);
     }
 
     //! Configure motors
@@ -214,6 +215,22 @@ void main_task(intptr_t unused) {
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
+}
+
+/**
+ * @brief   ジャイロセンサーの値を更新する
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void gyro_update_task(intptr_t exinf)
+{
+    if (gyroSensorController == NULL || !gyroSensorController->isEnabledGyroSensor())
+    {
+        return;
+    }
+
+    gyroSensorController->updateGyroRate();
+    logger->addLogInt(LOG_TYPE_GYRO, gyroSensorController->getGyroRate());
 }
 
 /**
