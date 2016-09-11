@@ -57,7 +57,7 @@ ER MotorWheel::run(int power)
 ER MotorWheel::stop(bool_t brake /*= true*/)
 {
     if (logger) {
-        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT_TOTAL : LOG_TYPE_DISTANCE_RIGHT_TOTAL, distance);
+        logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT_TOTAL : LOG_TYPE_DISTANCE_RIGHT_TOTAL, distance, true);
     }
 
     return  ev3_motor_stop(portMotor, brake);
