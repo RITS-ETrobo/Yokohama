@@ -200,14 +200,6 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
 float DriveController::getDistance(float distanceDelta)
 {
     distanceTotal += distanceDelta;
-
-    if (logger && (distanceDelta != 0)) {
-        //ログが多くなり過ぎて、異常終了する為、コメント
-        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta);
-
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
-    }
-
     return  distanceTotal;
 }
 
@@ -219,10 +211,6 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionTotal += directionDelta;
-    if (logger && (directionDelta != 0)) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
-    }
-
     return  directionTotal;
 }
 
@@ -450,16 +438,18 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 
     //! 走行体が指定距離走行したらストップ
     float   distanceTotal = getDistance(distanceDelta);
-    
-    if (isGreaterAbsoluteValue(distanceTotal, scenario.distance)) {
-        if (scenario.stop) {
-            stop();
-        }
-
-        return  true;
+    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, scenario.distance);
+    if (isGreaterValue && scenario.stop) {
+        stop();
     }    
 
-    return  false;
+    if (logger && (distanceDelta != 0)) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+    }
+
+    return  isGreaterValue;
 }
 
 /**
@@ -477,15 +467,16 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     
     //! 走行体が指定した向きになったらストップ
     float   directionTotal = getDirection(directionDelta);
-    if (isGreaterAbsoluteValue(directionTotal, scenario.direction)) {
-        if(scenario.stop){
-            stop();
-        }
-
-        return  true;
+    bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
+    if (isGreaterValue && scenario.stop){
+        stop();
     }
 
-    return  false;
+    if (logger && (directionDelta != 0)) {
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterValue);
+    }
+
+    return  isGreaterValue;
 }
 
 /**
