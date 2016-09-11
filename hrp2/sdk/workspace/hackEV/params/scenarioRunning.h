@@ -75,14 +75,20 @@ extern const scenario_running run_scenario_test_UTurn[3];
 //! 検証用シナリオ(右側走行)
 extern const scenario_running run_scenario_test_right[];
 
-//! 検証用シナリオ(その場360度回転・誤差検証用)
-extern const scenario_running run_scenario_test_pinWheel[1];
+//! 検証用シナリオ(その場360度回転・左回転)
+extern const scenario_running run_scenario_test_pinWheel_left[1];
+
+//! 検証用シナリオ(その場360度回転・右回転)
+extern const scenario_running run_scenario_test_pinWheel_right[1];
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
 extern const scenario_running run_scenario_test_straght[1];
 
-//! 検証用シナリオ(1m直進・誤差検証用)
+//! 検証用シナリオ(前方へ直進)
 extern const scenario_running run_scenario_test_straght_NoTrace[19];
+
+//! 検証用シナリオ(後方に直進)
+extern const scenario_running run_scenario_test_straght_NoTrace_Back[19];
 
 //! 検証用シナリオ(5m直進・誤差検証用)
 extern const scenario_running run_scenario_test_correct_straght_NoTrace[5];
