@@ -114,6 +114,12 @@ void DriveController::run(scenario_running scenario)
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
         speedCalculator100ms->add(record);
+
+        DISTANCE_RECORD record_lap;
+        float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_SPEED, averageSpeed);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_TIME, record_lap.currentTime);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_DISTANCE, record_lap.distance);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }
