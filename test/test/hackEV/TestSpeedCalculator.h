@@ -12,12 +12,14 @@
 //! Testing class for SpeedCalculator class
 class TestSpeedCalculator : public ::testing::Test {
 protected:
-    virtual void SetUp() {
+    virtual void SetUp()
+    {
         speedCalculator100ms = new SpeedCalculator(100);
         speedCalculator100ms->initialize();
     };
 
-    virtual void TearDown() {
+    virtual void TearDown()
+    {
     };
 
     /**
@@ -33,6 +35,16 @@ protected:
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
         speedCalculator->add(record);
+    }
+
+    void checkRecord()
+    {
+        DISTANCE_RECORD recordAverage;
+        float speedAverage = speedCalculator100ms->getSpeed(&recordAverage);
+        EXPECT_GT(speedAverage, 0);
+        cout << "speedAverage = " << speedAverage << endl;
+        cout << "\trecordAverage.currentTime = " << recordAverage.currentTime << endl;
+        cout << "\trecordAverage.distance = " << recordAverage.distance << endl;
     }
 
     SpeedCalculator*    speedCalculator100ms;

@@ -7,11 +7,24 @@
 TEST_F(TestSpeedCalculator, getSpeed)
 {
     addRecord(speedCalculator100ms, 10, 10);
+    checkRecord();
+}
 
-    DISTANCE_RECORD recordAverage;
-    float speedAverage = speedCalculator100ms->getSpeed(&recordAverage);
-    EXPECT_GT(speedAverage, 0);
-    cout << "speedAverage = " << speedAverage << endl;
-    cout << "recordAverage.currentTime = " << recordAverage.currentTime << endl;
-    cout << "recordAverage.distanceDelta = " << recordAverage.distanceDelta << endl;
+TEST_F(TestSpeedCalculator, removeExceededTimeItem)
+{
+    addRecord(speedCalculator100ms, 10, 10);
+    addRecord(speedCalculator100ms, 20, 10);
+    addRecord(speedCalculator100ms, 30, 10);
+    addRecord(speedCalculator100ms, 40, 10);
+    addRecord(speedCalculator100ms, 50, 10);
+    addRecord(speedCalculator100ms, 60, 10);
+    addRecord(speedCalculator100ms, 70, 10);
+    addRecord(speedCalculator100ms, 80, 10);
+    addRecord(speedCalculator100ms, 90, 10);
+    addRecord(speedCalculator100ms, 100, 10);
+    addRecord(speedCalculator100ms, 110, 10);
+    checkRecord();
+
+    addRecord(speedCalculator100ms, 150, 10);
+    checkRecord();
 }
