@@ -7,7 +7,7 @@
 //! ターゲット依存の定義
 #include "product.h"
 
-#include <deque>
+#include <vector>
 
 //! @struct 速度を算出する為の情報を格納する構造体
 typedef struct {
@@ -34,5 +34,5 @@ public:
 private:
     void removeExceededTimeItem();
     SYSTIM  duration;
-    std::deque<DISTANCE_RECORD> distance_record;
+    std::vector<DISTANCE_RECORD>    distance_record;
 };
