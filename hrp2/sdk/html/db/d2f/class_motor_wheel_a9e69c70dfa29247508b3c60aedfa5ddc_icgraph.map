@@ -1,7 +1,8 @@
 <map id="MotorWheel::getDistance" name="MotorWheel::getDistance">
-<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="237,31,453,57"/>
-<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="502,31,682,57"/>
-<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="731,31,877,57"/>
-<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="941,5,1021,32"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="925,56,1037,83"/>
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a1fee3464626523e2cbbd7b1c66cacf92" title="直線走行のための補正された出力を取得する " alt="" coords="241,5,450,46"/>
+<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="237,71,453,97"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="502,71,682,97"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="731,71,877,97"/>
+<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="941,45,1021,72"/>
+<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="925,96,1037,123"/>
 </map>

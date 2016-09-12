@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h_source.html','../.
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;target_test.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d9e/port_settings_8h.html">portSettings.h</a>&quot;</span></div>
@@ -135,6 +135,7 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h_source.html','../.
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../de/df0/utilities_8h.html#af899f4857f178d44a9080ec66506e1a7">calibrate_light_intensity</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../de/df0/utilities_8h.html#a62d20c80c50659ca4a6c00bc37abf359">writeFloatLCD</a>(<span class="keywordtype">float</span> value);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> std::map&lt;runPattern, PID_PARAMETER&gt; <a class="code" href="../../de/df0/utilities_8h.html#a1247d51cadf9b80b90378ce5badf3b07">PID_MAP</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/df0/utilities_8h.html#a2990cce4fad202c2e21397987f711322">isGreaterAbsoluteValue</a>(<span class="keywordtype">float</span> targetValue, <span class="keywordtype">float</span> compareValue);</div>
 <div class="ttc" id="_motor_wheel_8h_html"><div class="ttname"><a href="../../d5/d3f/_motor_wheel_8h.html">MotorWheel.h</a></div><div class="ttdoc">タイヤについているモーターを制御する </div></div>
 <div class="ttc" id="utilities_8h_html_a62d20c80c50659ca4a6c00bc37abf359"><div class="ttname"><a href="../../de/df0/utilities_8h.html#a62d20c80c50659ca4a6c00bc37abf359">writeFloatLCD</a></div><div class="ttdeci">void writeFloatLCD(float value)</div><div class="ttdoc">LCDに数値を表示させる </div><div class="ttdef"><b>Definition:</b> utilities.cpp:17</div></div>
 <div class="ttc" id="utilities_8h_html_afed76cc72a0fba47a1627936acd10c2d"><div class="ttname"><a href="../../de/df0/utilities_8h.html#afed76cc72a0fba47a1627936acd10c2d">configure_sensors</a></div><div class="ttdeci">void configure_sensors()</div><div class="ttdoc">センサーの設定を行う </div><div class="ttdef"><b>Definition:</b> utilities.cpp:39</div></div>
@@ -144,16 +145,17 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h_source.html','../.
 <div class="ttc" id="parameter_p_i_d_8h_html"><div class="ttname"><a href="../../d0/de2/parameter_p_i_d_8h.html">parameterPID.h</a></div><div class="ttdoc">This file has the declarations of parameter for PID. </div></div>
 <div class="ttc" id="wheel_settings_8h_html"><div class="ttname"><a href="../../d6/d35/wheel_settings_8h.html">wheelSettings.h</a></div><div class="ttdoc">This file has the settings related to wheel of EV3. </div></div>
 <div class="ttc" id="utilities_8h_html_ab06cba26c220e9f1cb65ead703acf341"><div class="ttname"><a href="../../de/df0/utilities_8h.html#ab06cba26c220e9f1cb65ead703acf341">configure_motors</a></div><div class="ttdeci">void configure_motors()</div><div class="ttdoc">モーターの設定を行う </div><div class="ttdef"><b>Definition:</b> utilities.cpp:28</div></div>
-<div class="ttc" id="utilities_8h_html_af899f4857f178d44a9080ec66506e1a7"><div class="ttname"><a href="../../de/df0/utilities_8h.html#af899f4857f178d44a9080ec66506e1a7">calibrate_light_intensity</a></div><div class="ttdeci">int calibrate_light_intensity()</div><div class="ttdoc">光強度の為の測定をおこなう </div><div class="ttdef"><b>Definition:</b> utilities.cpp:50</div></div>
+<div class="ttc" id="utilities_8h_html_af899f4857f178d44a9080ec66506e1a7"><div class="ttname"><a href="../../de/df0/utilities_8h.html#af899f4857f178d44a9080ec66506e1a7">calibrate_light_intensity</a></div><div class="ttdeci">int calibrate_light_intensity()</div><div class="ttdoc">光強度の為の測定をおこなう </div><div class="ttdef"><b>Definition:</b> utilities.cpp:49</div></div>
 <div class="ttc" id="_l_c_d_controller_8h_html"><div class="ttname"><a href="../../d5/d3c/_l_c_d_controller_8h.html">LCDController.h</a></div><div class="ttdoc">This file has LCDController. </div></div>
 <div class="ttc" id="port_settings_8h_html"><div class="ttname"><a href="../../d4/d9e/port_settings_8h.html">portSettings.h</a></div><div class="ttdoc">This file has the settings for each port related to EV3. </div></div>
+<div class="ttc" id="utilities_8h_html_a2990cce4fad202c2e21397987f711322"><div class="ttname"><a href="../../de/df0/utilities_8h.html#a2990cce4fad202c2e21397987f711322">isGreaterAbsoluteValue</a></div><div class="ttdeci">bool isGreaterAbsoluteValue(float targetValue, float compareValue)</div><div class="ttdoc">比較対象の絶対値よりも大きい値かどうか </div><div class="ttdef"><b>Definition:</b> utilities.cpp:69</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../de/df0/utilities_8h.html">utilities.h</a></li>
-    <li class="footer">Generated on Thu Aug 18 2016 15:51:58 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Sep 11 2016 16:14:07 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -14,6 +14,9 @@
 using namespace std;
 using namespace ev3api;
 
+//! ログに出力する文字列のバッファーサイズ
+#define BUFFER_SIZE_LOG_MESSAGE 8
+
 /*! @struct USER_LOG
     @brief  ログに出力する情報
 */
@@ -25,7 +28,7 @@ typedef struct {
     SYSTIM  logTime;
 
     //! ログに出力する文字列(8Bytes)
-    char    log[8];
+    char    log[BUFFER_SIZE_LOG_MESSAGE];
 } USER_LOG;
 
 //! Class for logging
@@ -35,13 +38,14 @@ public:
     explicit Logger();
     virtual void initialize();
     virtual bool openLog();
-    virtual void addLog(uint_t logType, const char* message);
-    virtual void addLogFloat(uint_t logType, const float value);
-    virtual void addLogInt(uint_t logType, const int value);
-    virtual void addLogFloatFormatted(uint_t logType, const float value, const char *format = NULL);
-    virtual void addLogIntFormatted(uint_t logType, const int value, const char *format = NULL);
+    virtual void addLog(uint_t logType, const char* message, bool isForce = false);
+    virtual void addLogFloat(uint_t logType, const float value, bool isForce = false);
+    virtual void addLogInt(uint_t logType, const int value, bool isForce = false);
+    virtual void addLogFloatFormatted(uint_t logType, const float value, const char *format = NULL, bool isForce = false);
+    virtual void addLogIntFormatted(uint_t logType, const int value, const char *format = NULL, bool isForce = false);
     virtual void outputLog(bool doClosingLog = false);
     virtual void setEnabled(bool enabled_ = true);
+    virtual bool validateAddLog(uint_t logType, SYSTIM currentTime, bool isForce);
 
 protected:
     virtual bool isEnabled();

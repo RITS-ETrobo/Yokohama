@@ -1,17 +1,19 @@
 <map id="hrp2/sdk/workspace/hackEV/params/logSettings.h" name="hrp2/sdk/workspace/hackEV/params/logSettings.h">
-<area shape="rect" id="node2" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="1635,97,1783,138"/>
-<area shape="rect" id="node6" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="1946,285,2144,326"/>
-<area shape="rect" id="node16" href="$d5/d0b/log_settings_8cpp.html" title="This file has the settings for logging. " alt="" coords="2052,97,2281,138"/>
-<area shape="rect" id="node3" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="1130,187,1277,229"/>
+<area shape="rect" id="node2" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="1119,97,1267,138"/>
+<area shape="rect" id="node6" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="1947,285,2145,326"/>
+<area shape="rect" id="node12" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="2170,277,2376,333"/>
+<area shape="rect" id="node18" href="$d5/d0b/log_settings_8cpp.html" title="This file has the settings for logging. " alt="" coords="2135,97,2364,138"/>
+<area shape="rect" id="node3" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="1119,187,1267,229"/>
 <area shape="rect" id="node4" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,285,152,326"/>
 <area shape="rect" id="node7" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="379,285,608,326"/>
-<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1723,285,1921,326"/>
-<area shape="rect" id="node14" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="1634,187,1784,229"/>
-<area shape="rect" id="node15" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="2169,285,2316,326"/>
+<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="632,285,831,326"/>
+<area shape="rect" id="node15" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="1766,187,1916,229"/>
+<area shape="rect" id="node16" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="2634,285,2781,326"/>
 <area shape="rect" id="node5" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="177,285,353,326"/>
-<area shape="rect" id="node8" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="1509,285,1699,326"/>
-<area shape="rect" id="node10" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="633,277,841,333"/>
-<area shape="rect" id="node11" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="866,285,1072,326"/>
-<area shape="rect" id="node12" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1097,277,1311,333"/>
-<area shape="rect" id="node13" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1336,285,1484,326"/>
+<area shape="rect" id="node8" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="1733,285,1923,326"/>
+<area shape="rect" id="node10" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="857,277,1065,333"/>
+<area shape="rect" id="node11" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1090,285,1296,326"/>
+<area shape="rect" id="node13" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1321,277,1535,333"/>
+<area shape="rect" id="node14" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1560,285,1708,326"/>
+<area shape="rect" id="node17" href="$d4/d27/_speed_calculator_8cpp.html" title="速度を求める " alt="" coords="2401,285,2609,326"/>
 </map>
