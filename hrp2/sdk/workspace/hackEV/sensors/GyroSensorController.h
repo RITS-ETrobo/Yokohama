@@ -5,10 +5,9 @@
 #pragma once
 
 //! ターゲット依存の定義
-#include "ev3api.h"
-#include "target_test.h"
-#include "portSettings.h"
+#include "product.h"
 
+#include "portSettings.h"
 
 //! Class for gyro sensor
 class GyroSensorController

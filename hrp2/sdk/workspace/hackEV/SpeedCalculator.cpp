@@ -22,7 +22,13 @@ void SpeedCalculator::initialize()
 {
     distance_record.clear();
     DISTANCE_RECORD record;
+
+#ifdef  EV3_UNITTEST
+    record.currentTime = 0;
+#else
     record.currentTime = clock->now();
+#endif  //  EV3_UNITTEST
+
     record.distanceDelta = 0;
     add(record);
 }
@@ -34,6 +40,13 @@ void SpeedCalculator::initialize()
 */
 void SpeedCalculator::add(DISTANCE_RECORD record)
 {
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    if (size == 0) {
+        record.distance = record.distanceDelta;
+    } else {
+        record.distance = distance_record.at(size - 1).distance + record.distanceDelta;
+    }
+
     distance_record.push_back(record);
     removeExceededTimeItem();
 }
@@ -48,20 +61,24 @@ void SpeedCalculator::add(DISTANCE_RECORD record)
 void SpeedCalculator::removeExceededTimeItem()
 {
     for (;;) {
-        std::deque<DISTANCE_RECORD>::iterator  it = distance_record.begin();
-        std::deque<DISTANCE_RECORD>::iterator  it_end = distance_record.end();
-        if (it == it_end) {
+        std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+        if (size <= 1) {
             return;
         }
 
-        if (it_end->currentTime - it->currentTime < duration) {
+        DISTANCE_RECORD record = distance_record.at(size - 1);
+        std::vector<DISTANCE_RECORD>::iterator it = distance_record.begin();
+        if (it == distance_record.end()) {
+            return;
+        }
+
+        if (record.currentTime - it->currentTime <= duration) {
             return;
         }
 
         distance_record.erase(it);
         if (duration == 0) {
-            distance_record.erase(it);
-            break;
+            return;
         }
     }
 }
@@ -77,13 +94,15 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
         return  0.0F;
     }
 
-    DISTANCE_RECORD record_front = distance_record.front();
-    DISTANCE_RECORD record_back = distance_record.back();
-    record->currentTime = record_back.currentTime - record_front.currentTime;
-    record->distanceDelta = record_back.distanceDelta - record_front.distanceDelta;
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    DISTANCE_RECORD record_first = distance_record.at(0);
+    DISTANCE_RECORD record_last = distance_record.at(size - 1);
+    record->currentTime = record_last.currentTime - record_first.currentTime;
+    record->distance = record_last.distance - record_first.distance;
+    record->distanceDelta = 0;
     if (record->currentTime == 0) {
         return  0.0F;
     }
 
-    return  (record->distanceDelta / (record->currentTime / 1000));
+    return  (record->distance / (float)(record->currentTime) * 1000);
 }
