@@ -8,11 +8,11 @@
 #include <string.h>
 #include <vector>
 
+#include "product.h"
+
 #include "logSettings.h"
-#include "Clock.h"
 
 using namespace std;
-using namespace ev3api;
 
 //! ログに出力する文字列のバッファーサイズ
 #define BUFFER_SIZE_LOG_MESSAGE 8

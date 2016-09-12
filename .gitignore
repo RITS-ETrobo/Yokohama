@@ -22,15 +22,14 @@ OBJ
 hrp2/cfg/cfg/cfg
 hrp2/sdk/bin
 hrp2/sdk/OBJ
-build.log
+*.log*
 hrp2/sdk/app
 hrp2/sdk/hrp2
 hrp2/sdk/uImage
-doxygen.log
-update_merge_Doxyfiles.log
 ~*
 *.lock
 *.rej
+build
 
 # for emacs:
 *~
