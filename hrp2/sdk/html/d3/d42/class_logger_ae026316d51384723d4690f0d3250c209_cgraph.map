@@ -1,0 +1,6 @@
+<map id="Logger::addLog" name="Logger::addLog">
+<area shape="rect" id="node2" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="177,31,349,57"/>
+<area shape="rect" id="node5" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="201,81,324,108"/>
+<area shape="rect" id="node3" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="398,5,522,32"/>
+<area shape="rect" id="node4" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="403,56,517,83"/>
+</map>

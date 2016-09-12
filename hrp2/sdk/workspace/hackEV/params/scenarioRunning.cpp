@@ -130,9 +130,14 @@ const scenario_running run_scenario_test_right[] = {
     {20, 100.0F, -1, TRACE_STRAIGHT, true}
 };
 
-//! 検証用シナリオ(その場360度回転・誤差検証用)
-const scenario_running run_scenario_test_pinWheel[1] = {
+//! 検証用シナリオ(その場360度回転・左回転)
+const scenario_running run_scenario_test_pinWheel_left[1] = {
     {30, 0.0F, 360, PINWHEEL, true}
+};
+
+//! 検証用シナリオ(その場360度回転・右回転)
+const scenario_running run_scenario_test_pinWheel_right[1] = {
+    {-30, 0.0F, 360, PINWHEEL, true}
 };
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
@@ -164,7 +169,39 @@ const scenario_running run_scenario_test_straght_NoTrace[19] = {
     {10, 15.0F, -1, NOTRACE_STRAIGHT, true}
 };
 
+const scenario_running run_scenario_test_correct_straght_NoTrace[5] = {
+    {50, 450.0F, -1, NOTRACE_STRAIGHT, false},
+    {40, 10.0F, -1, NOTRACE_STRAIGHT, false},
+    {30, 10.0F, -1, NOTRACE_STRAIGHT, false},
+    {20, 10.0F, -1, NOTRACE_STRAIGHT, false},
+    {10, 20.0F, -1, NOTRACE_STRAIGHT, true}
+};
+
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)
 const scenario_running run_scenario_straight_30m[1] = {
     {100, 3000.0F, -1, TRACE_STRAIGHT, true}
+};
+
+//! 検証用シナリオ(出力変速直進)真後ろ走行ver.
+const scenario_running run_scenario_test_straght_NoTrace_Back[19] = {
+    {-10, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-20, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-30, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-40, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-50, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-60, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-70, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-80, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-90, 30.0F, -1, NOTRACE_STRAIGHT, false},
+    {-100,30.0F, -1, NOTRACE_STRAIGHT, false},
+    
+    {-90, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-80, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-70, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-60, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-50, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-40, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-30, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-20, 15.0F, -1, NOTRACE_STRAIGHT, false},
+    {-10, 15.0F, -1, NOTRACE_STRAIGHT, true}
 };

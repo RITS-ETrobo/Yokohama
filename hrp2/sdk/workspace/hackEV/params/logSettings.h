@@ -4,8 +4,7 @@
  */
 #pragma once
 
-#include "t_stddef.h"
-#include "t_syslog.h"
+#include "product.h"
 
 //! \addtogroup ログ出力の設定
 //@{
@@ -89,7 +88,23 @@ extern const uint_t LOG_TYPE_SCENARIO_STOP;
 
 //! 初期化
 extern const uint_t LOG_TYPE_INITIALIZE;
+
+//! 補正した左モーターの補正値
+extern const uint_t LOG_TYPE_CORRECTED_RATIO_LEFT;
+
+//! 補正した右モーターの補正値
+extern const uint_t LOG_TYPE_CORRECTED_RATIO_RIGHT;
+
+//! 補正した左モーターの出力値
+extern const uint_t LOG_TYPE_CORRECTED_POWER_LEFT;
+
+//! 補正した右モーターの出力値
+extern const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT;
 //@}
 
 extern void initialize_logSetting();
 extern char* getLogName(uint_t logType);
+void initialize_logSetting_map(uint_t logType, char *logName, SYSTIM interval = 0, SYSTIM lastOutput = 0);
+extern SYSTIM getLogLastTime(uint_t logType);
+extern SYSTIM getLogInterval(uint_t logType);
+extern void setLogLastTime(uint_t logType, SYSTIM lastTime);

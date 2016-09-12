@@ -1,6 +1,7 @@
 <map id="hrp2/sdk/workspace/hackEV/DriveController.h" name="hrp2/sdk/workspace/hackEV/DriveController.h">
-<area shape="rect" id="node4" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="29,96,167,123"/>
-<area shape="rect" id="node6" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="195,96,305,123"/>
-<area shape="rect" id="node5" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="21,171,122,197"/>
-<area shape="rect" id="node7" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="197,171,310,197"/>
+<area shape="rect" id="node4" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="445,96,584,123"/>
+<area shape="rect" id="node6" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="140,96,249,123"/>
+<area shape="rect" id="node8" href="$d8/d72/_speed_calculator_8h.html" title="速度を求める " alt="" coords="232,171,371,197"/>
+<area shape="rect" id="node5" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="464,171,565,197"/>
+<area shape="rect" id="node7" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="43,171,156,197"/>
 </map>

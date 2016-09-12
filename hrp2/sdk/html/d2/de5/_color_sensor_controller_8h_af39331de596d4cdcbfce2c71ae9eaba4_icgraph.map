@@ -1,3 +1,4 @@
 <map id="getColorRGBraw" name="getColorRGBraw">
-<area shape="rect" id="node2" href="$d2/de5/_color_sensor_controller_8h.html#adc331d453215c393ae42328b2e7cde9f" title="ターゲット依存の定義 " alt="" coords="179,5,261,32"/>
+<area shape="rect" id="node2" href="$d2/de5/_color_sensor_controller_8h.html#adc331d453215c393ae42328b2e7cde9f" title="ターゲット依存の定義 " alt="" coords="341,5,424,32"/>
+<area shape="rect" id="node3" href="$d2/de5/_color_sensor_controller_8h.html#ab3efbcb68e53e386bdae658487251f01" title="カラーセンサーで検知した色の名前を取得 " alt="" coords="179,31,293,57"/>
 </map>

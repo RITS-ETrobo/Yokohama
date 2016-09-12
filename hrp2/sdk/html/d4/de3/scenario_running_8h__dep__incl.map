@@ -1,11 +1,13 @@
 <map id="hrp2/sdk/workspace/hackEV/params/scenarioRunning.h" name="hrp2/sdk/workspace/hackEV/params/scenarioRunning.h">
-<area shape="rect" id="node2" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="391,97,573,138"/>
-<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="867,278,1065,319"/>
-<area shape="rect" id="node10" href="$d7/df1/scenario_running_8cpp.html" title="This file has scenarios for running. " alt="" coords="697,97,957,138"/>
-<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="215,187,363,229"/>
-<area shape="rect" id="node4" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="439,187,589,229"/>
-<area shape="rect" id="node5" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="5,278,203,319"/>
-<area shape="rect" id="node6" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="227,278,375,319"/>
-<area shape="rect" id="node7" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="400,278,629,319"/>
-<area shape="rect" id="node8" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="653,278,843,319"/>
+<area shape="rect" id="node2" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="625,97,807,138"/>
+<area shape="rect" id="node9" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1331,285,1529,326"/>
+<area shape="rect" id="node12" href="$d7/df1/scenario_running_8cpp.html" title="This file has scenarios for running. " alt="" coords="931,97,1191,138"/>
+<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="449,187,596,229"/>
+<area shape="rect" id="node4" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="673,187,823,229"/>
+<area shape="rect" id="node5" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="5,285,203,326"/>
+<area shape="rect" id="node6" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="227,285,375,326"/>
+<area shape="rect" id="node7" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="400,285,629,326"/>
+<area shape="rect" id="node8" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="653,285,843,326"/>
+<area shape="rect" id="node10" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="867,277,1073,333"/>
+<area shape="rect" id="node11" href="$d4/d27/_speed_calculator_8cpp.html" title="速度を求める " alt="" coords="1099,285,1307,326"/>
 </map>

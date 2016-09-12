@@ -5,7 +5,7 @@
 #pragma once
 
 #include <map>
-
+#include <math.h>
 //! ターゲット依存の定義
 #include "target_test.h"
 
@@ -33,3 +33,4 @@ extern void configure_sensors();
 extern int calibrate_light_intensity();
 extern void writeFloatLCD(float value);
 extern std::map<runPattern, PID_PARAMETER> PID_MAP;
+extern bool isGreaterAbsoluteValue(float targetValue, float compareValue);

@@ -22,6 +22,7 @@ APPL_CXXOBJS += \
     SonarSensorController.o \
     gyroboy.o \
     ColorSensorController.o \
+    GyroSensorController.o \
     MotorWheel.o \
     DriveController.o \
     SpeedCalculator.o \
