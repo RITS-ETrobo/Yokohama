@@ -100,6 +100,15 @@ extern const uint_t LOG_TYPE_CORRECTED_POWER_LEFT;
 
 //! 補正した右モーターの出力値
 extern const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT;
+
+//! 平均速度
+extern const uint_t LOG_TYPE_AVERAGE_SPEED;
+
+//! 平均速度(距離)
+extern const uint_t LOG_TYPE_AVERAGE_DISTANCE;
+
+//! 平均速度(時間)
+extern const uint_t LOG_TYPE_AVERAGE_TIME;
 //@}
 
 extern void initialize_logSetting();

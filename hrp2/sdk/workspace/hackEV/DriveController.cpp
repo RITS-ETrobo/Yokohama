@@ -26,7 +26,6 @@ DriveController::DriveController()
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
     , speedCalculator100ms(NULL)
-    , speedCalculator1000ms(NULL)
     , lastGetDistanceLeft(0.0F)
     , lastGetDistanceRight(0.0F)
     , DURATION(100.0F)
@@ -64,18 +63,13 @@ bool DriveController::initialize()
         speedCalculator100ms = new SpeedCalculator(100);
     }
 
-    if (speedCalculator1000ms == NULL) {
-        speedCalculator1000ms = new SpeedCalculator(1000);
-    }
-
-    if (!motorWheelLeft || !motorWheelRight || !speedCalculator100ms || !speedCalculator1000ms) {
+    if (!motorWheelLeft || !motorWheelRight || !speedCalculator100ms) {
         return  false;
     }
 
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
     speedCalculator100ms->initialize();
-    speedCalculator1000ms->initialize();
 
     return  true;
 }
@@ -120,7 +114,12 @@ void DriveController::run(scenario_running scenario)
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
         speedCalculator100ms->add(record);
-        speedCalculator1000ms->add(record);
+
+        DISTANCE_RECORD record_lap;
+        float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_SPEED, averageSpeed);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_TIME, record_lap.currentTime);
+        logger->addLogFloat(LOG_TYPE_AVERAGE_DISTANCE, record_lap.distance);
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }

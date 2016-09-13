@@ -99,6 +99,15 @@ const uint_t LOG_TYPE_CORRECTED_POWER_LEFT = 0x9A;
 
 //! 補正した右モーターの出力値
 const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT = 0x9B;
+
+//! 平均速度
+const uint_t LOG_TYPE_AVERAGE_SPEED = 0x9C;
+
+//! 平均速度(距離)
+const uint_t LOG_TYPE_AVERAGE_DISTANCE = 0x9D;
+
+//! 平均速度(時間)
+const uint_t LOG_TYPE_AVERAGE_TIME = 0x9E;
 //@}
 
 //! \addtogroup ログ出力用のmap
@@ -155,6 +164,9 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_CORRECTED_RATIO_RIGHT, "CorrectedRatioRight", 100);
     initialize_logSetting_map(LOG_TYPE_CORRECTED_POWER_LEFT, "CorrectedPowLeft", 100);
     initialize_logSetting_map(LOG_TYPE_CORRECTED_POWER_RIGHT, "CorrectedPowRight", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_SPEED, "Average(Speed)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_DISTANCE, "Average(Distance)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME, "Average(Time)", 100);
 }
 
 /**
