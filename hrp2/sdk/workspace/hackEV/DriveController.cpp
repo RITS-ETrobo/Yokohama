@@ -30,6 +30,9 @@ DriveController::DriveController()
     , lastGetDistanceRight(0.0F)
     , DURATION(100.0F)
     , OnePowerDeviation(0.084107F)
+    , lastPowerLeft(0)
+    , lastPowerRight(0)
+    , lastTime(0)
 {
 }
 

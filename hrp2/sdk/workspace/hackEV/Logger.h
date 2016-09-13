@@ -55,11 +55,8 @@ private:
     //! ログファイルのファイルポインタ
     FILE    *fpLog;
 
-    //! ログファイルを収めるディレクトリ
-    const char*  LOGDIRECTORY_PATH = "/ev3rt/logs";
-
     //! ログファイルのファイル名
-    const char*  LOGFILE_NAME = "hackEV_log.csv";
+    char*  LOGFILE_NAME;
 
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;
