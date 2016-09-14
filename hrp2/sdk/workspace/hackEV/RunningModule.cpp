@@ -48,7 +48,7 @@ void start_run()
         }
     }
 
-    for (int index = 0; index < sizeof(L_Start_Sweepstakes_scenario) / sizeof(L_Start_Sweepstakes_scenario[0]); index++) {
+    for (int index = 0; index < (int)(sizeof(L_Start_Sweepstakes_scenario) / sizeof(L_Start_Sweepstakes_scenario[0])); index++) {
         //! シナリオが変わるたびに音を鳴らす
         ev3_speaker_play_tone(NOTE_E4, 100);
         driveController->run(L_Start_Sweepstakes_scenario[index]);
@@ -73,7 +73,7 @@ void start_run_test()
         }
     }
 
-    for (int index = 0; index < sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0]); index++) {
+    for (int index = 0; index < (int)(sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0])); index++) {
         driveController->run(run_scenario_test_straght_NoTrace[index]);
     }
 
