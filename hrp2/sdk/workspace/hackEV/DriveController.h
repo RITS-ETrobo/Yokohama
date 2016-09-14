@@ -46,44 +46,41 @@ private:
     MotorWheel  *motorWheelRight;
 
     //! 前回の向きの累積[単位 : 度]
-    float   directionLast = 0.0F;
+    float   directionLast;
 
     //! 向きの累積[単位 : 度]
-    float   directionTotal = 0.0F;
+    float   directionTotal;
 
     //! 前回の距離の累積[単位 : cm]
-    float   distanceLast = 0.0F;
+    float   distanceLast;
 
     //! 距離の累積[単位 : cm]
-    float   distanceTotal = 0.0F;
+    float   distanceTotal;
     
     //! 最後に左タイヤの距離を取得したときの値
-    float lastGetDistanceLeft =0.0F;
+    float lastGetDistanceLeft;
     
     //! 最後に右タイヤの距離を取得したときの値
-    float lastGetDistanceRight =0.0F;
+    float lastGetDistanceRight;
     
     //! 最後に左タイヤに設定した出力値
-    int lastPowerLeft = 0;
+    int lastPowerLeft;
     
     //! 最後に右タイヤに設定した出力値
-    int lastPowerRight = 0;
+    int lastPowerRight;
     
     //! 時間間隔測定に用いるための最後に取得した時間
-    SYSTIM lastTime = 0;
+    SYSTIM lastTime;
     
     //! 出力値を補正する時間間隔
-    SYSTIM DURATION = 100;
+    SYSTIM DURATION;
     
     //! 1パワー分の100ms間に走行する距離(値はモデル図のグラフから平均を算出)
-    float OnePowerDeviation = 0.084107F;
+    float OnePowerDeviation;
 
     //! \addtogroup 速度測定用のインスタンス
     //@{
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
-
-    //! 最近の1000ms
-    SpeedCalculator *speedCalculator1000ms;
     //@}
 };

@@ -13,6 +13,7 @@
 */
 Logger::Logger()
     : fpLog(NULL)
+    , LOGFILE_NAME("hackEV_log.csv")
     , loggerInfo(NULL)
     , enabled(false)
     , outputHeader(false)

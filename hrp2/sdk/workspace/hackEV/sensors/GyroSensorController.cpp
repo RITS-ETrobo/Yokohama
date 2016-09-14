@@ -12,6 +12,7 @@
 //! class for gyro sensor
 GyroSensorController::GyroSensorController(sensor_port_t _port)
     : port(_port)
+    , STAGE_ON_THRESHOLD(-90)
 {
 }
 
