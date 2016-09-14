@@ -14,7 +14,6 @@
 Logger::Logger()
     : fpLog(NULL)
     , LOGFILE_NAME("hackEV_log.csv")
-    , loggerInfo(NULL)
     , enabled(false)
     , outputHeader(false)
 {
@@ -26,6 +25,7 @@ Logger::Logger()
 */
 void Logger::initialize()
 {
+    loggerInfo.clear();
     initialize_logSetting();
 }
 
