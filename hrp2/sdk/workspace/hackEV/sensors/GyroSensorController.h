@@ -36,6 +36,5 @@ private:
     int16_t gyroRate;
 
     //! 段差乗り上げの際に、ジャイロセンサーが受け取る角速度[度/秒]の閾値。(ただし、約25ms間隔で計測した場合のもの。)
-    const int16_t STAGE_ON_THRESHOLD = -90;
-
+    const int16_t STAGE_ON_THRESHOLD;
 };
