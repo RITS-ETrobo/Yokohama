@@ -235,7 +235,7 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
             }
 
             char    logLine[64];
-            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
+            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType).c_str(), it->log);
             if (fputs(logLine, fpLog) == EOF) {
                 break;
             }

@@ -113,7 +113,7 @@ const uint_t LOG_TYPE_AVERAGE_TIME = 0x9E;
 //! \addtogroup ログ出力用のmap
 //@{
 //! ログに出力する文字列
-std::map<uint_t, char*> LOG_TYPE_MAP;
+std::map<uint_t, std::string> LOG_TYPE_MAP;
 
 //! 前回ログをストックしたシステム時刻[単位 : ms]
 std::map<uint_t, SYSTIM> LOG_TYPE_LASTTIME_MAP;
@@ -177,7 +177,7 @@ void initialize_logSetting()
  *  @param  lastOutput  最後にログをストックしたシステム時刻[単位 : ms]
  *  @return なし
 */
-void initialize_logSetting_map(uint_t logType, char *logName, SYSTIM interval /*= 0*/, SYSTIM lastOutput /*= 0*/)
+void initialize_logSetting_map(uint_t logType, std::string logName, SYSTIM interval /*= 0*/, SYSTIM lastOutput /*= 0*/)
 {
     LOG_TYPE_MAP[logType] = logName;
     LOG_TYPE_INTERVAL_MAP[logType] = interval;
@@ -189,7 +189,7 @@ void initialize_logSetting_map(uint_t logType, char *logName, SYSTIM interval /*
  *  @param  logType ログの種類
  *  @return ログの種類(文字列)
 */
-char* getLogName(uint_t logType)
+std::string getLogName(uint_t logType)
 {
     return LOG_TYPE_MAP[logType];
 }
@@ -218,6 +218,7 @@ SYSTIM getLogInterval(uint_t logType)
     @brief  ログの種類のLastTimeをセットする
     @param ログの種類
     @param 最後の時間
+
     @return なし
 */
 void setLogLastTime(uint_t logType, SYSTIM lastTime)
