@@ -10,9 +10,9 @@
 
 //! Class for MotorWheel
 MotorWheel::MotorWheel(motor_port_t portMotor_)
-    : portMotor(portMotor_)
+    : distanceLast(0.0F)
     , distance(0.0F)
-    , distanceLast(0.0F)
+    , portMotor(portMotor_)
     , speedCalculator100ms(NULL)
 {
 }

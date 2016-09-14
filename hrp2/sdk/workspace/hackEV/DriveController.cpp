@@ -25,14 +25,14 @@ DriveController::DriveController()
     , directionTotal(0.0F)
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
-    , speedCalculator100ms(NULL)
     , lastGetDistanceLeft(0.0F)
     , lastGetDistanceRight(0.0F)
-    , DURATION(100.0F)
-    , OnePowerDeviation(0.084107F)
     , lastPowerLeft(0)
     , lastPowerRight(0)
     , lastTime(0)
+    , DURATION(100.0F)
+    , OnePowerDeviation(0.084107F)
+    , speedCalculator100ms(NULL)
 {
 }
 
