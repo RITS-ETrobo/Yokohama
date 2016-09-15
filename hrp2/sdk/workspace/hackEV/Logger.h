@@ -56,7 +56,7 @@ private:
     FILE    *fpLog;
 
     //! ログファイルのファイル名
-    char*  LOGFILE_NAME;
+    const char*  LOGFILE_NAME;
 
     //! 蓄積するログ情報
     vector<USER_LOG> loggerInfo;

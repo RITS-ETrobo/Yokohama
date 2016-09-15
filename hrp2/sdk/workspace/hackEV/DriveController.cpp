@@ -25,14 +25,14 @@ DriveController::DriveController()
     , directionTotal(0.0F)
     , distanceLast(0.0F)
     , distanceTotal(0.0F)
-    , speedCalculator100ms(NULL)
     , lastGetDistanceLeft(0.0F)
     , lastGetDistanceRight(0.0F)
-    , DURATION(100.0F)
-    , OnePowerDeviation(0.084107F)
     , lastPowerLeft(0)
     , lastPowerRight(0)
     , lastTime(0)
+    , DURATION(100.0F)
+    , OnePowerDeviation(0.084107F)
+    , speedCalculator100ms(NULL)
 {
 }
 
@@ -350,35 +350,24 @@ void DriveController::pinWheel(int power)
 }
 
 /**
- * @brief   ラインの縁の変更処理
+ * @brief   ラインの縁の変更処理をおこなう。初期状態では、移動したい縁が左のときは最初に右タイヤ、次に左タイヤを旋回させて切り替えるものとする
  * @param   scenario    走行シナリオ
  * @return  なし
  */
 void DriveController::change_LineSide(scenario_running scenario)
 {
     //! 最初に回転するタイヤ
-    motor_port_t firstMoveWheel;
+    motor_port_t firstMoveWheel = EV3_MOTOR_RIGHT;
 
     //! 次に回転するタイヤ
-    motor_port_t secondMoveWheel;
-    
-    switch (scenario.pattern) {
-        case SWITCH_SIDE_LEFT:
-            //! 移動したい縁が左のときは最初に右タイヤ、次に左タイヤを旋回させて切り替え
-            firstMoveWheel = EV3_MOTOR_RIGHT;
-            secondMoveWheel = EV3_MOTOR_LEFT;
-            break;
-            
-        case SWITCH_SIDE_RIGHT:
-            //! 移動したい縁が右のときは最初に左タイヤ、次に右タイヤを旋回させて切り替え
-            firstMoveWheel = EV3_MOTOR_LEFT;
-            secondMoveWheel = EV3_MOTOR_RIGHT;
-            break;
-            
-        default:
-            break;
+    motor_port_t secondMoveWheel = EV3_MOTOR_LEFT;
+
+    if (scenario.pattern == SWITCH_SIDE_RIGHT) {
+        //! 移動したい縁が右のときは最初に左タイヤ、次に右タイヤを旋回させて切り替え
+        firstMoveWheel = EV3_MOTOR_LEFT;
+        secondMoveWheel = EV3_MOTOR_RIGHT;
     }
-    
+
     //! ラインの黒線の上にいるフラグ（黒線をまたいで移動するため）
     bool onBlack = false;
     

@@ -14,7 +14,6 @@
 Logger::Logger()
     : fpLog(NULL)
     , LOGFILE_NAME("hackEV_log.csv")
-    , loggerInfo(NULL)
     , enabled(false)
     , outputHeader(false)
 {
@@ -26,6 +25,7 @@ Logger::Logger()
 */
 void Logger::initialize()
 {
+    loggerInfo.clear();
     initialize_logSetting();
 }
 
@@ -141,7 +141,7 @@ void Logger::addLogFloat(uint_t logType, const float value, bool isForce /*= fal
 */
 void Logger::addLogFloatFormatted(uint_t logType, const float value, const char *format /*= NULL*/, bool isForce /*= false*/)
 {
-    if (format == NULL || format == "") {
+    if (format == NULL || strlen(format) == 0) {
         addLogFloat(logType, value);
         return;
     }
@@ -177,7 +177,7 @@ void Logger::addLogInt(uint_t logType, const int value, bool isForce /*= false*/
 */
 void Logger::addLogIntFormatted(uint_t logType, const int value, const char *format /*= NULL*/, bool isForce /*= false*/)
 {
-    if (format == NULL || format == "") {
+    if (format == NULL || strlen(format) == 0) {
         addLogInt(logType, value);
         return;
     }
@@ -235,7 +235,7 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
             }
 
             char    logLine[64];
-            sprintf(logLine, "%d, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
+            sprintf(logLine, "%lu, %s, %s\r\n", it->logTime, getLogName(it->logType).c_str(), it->log);
             if (fputs(logLine, fpLog) == EOF) {
                 break;
             }

@@ -9,11 +9,20 @@
 #include "LCDController.h"
 #include <stdio.h>
 #include <map>
+#include <string>
 #include <stdlib.h>
 
-using namespace std;
+std::map<colorid_t, std::string>    COLOR_NAME_MAP;
 
-map<colorid_t, char*> COLOR_NAME_MAP;
+/**
+ * @brief   初期化処理
+ * 
+ * @return  なし
+*/
+void initialize_ColorMap(colorid_t color_id, std::string color_name)
+{
+    COLOR_NAME_MAP[color_id] = color_name;
+}
 
 /**
  * @brief   初期化処理
@@ -22,14 +31,14 @@ map<colorid_t, char*> COLOR_NAME_MAP;
 */
 void initialize_Color() {
     //! カラー名のマッピング
-    COLOR_NAME_MAP[COLOR_NONE] = "NONE";
-    COLOR_NAME_MAP[COLOR_BLACK] = "BLACK";
-    COLOR_NAME_MAP[COLOR_BLUE] = "BLUE";
-    COLOR_NAME_MAP[COLOR_GREEN] = "GREEN";
-    COLOR_NAME_MAP[COLOR_YELLOW] = "YELLOW";
-    COLOR_NAME_MAP[COLOR_RED] = "RED";
-    COLOR_NAME_MAP[COLOR_WHITE] = "WHITE";
-    COLOR_NAME_MAP[COLOR_BROWN] = "BROWN";
+    initialize_ColorMap(COLOR_NONE, "NONE");
+    initialize_ColorMap(COLOR_BLACK, "BLACK");
+    initialize_ColorMap(COLOR_BLUE, "BLUE");
+    initialize_ColorMap(COLOR_GREEN, "GREEN");
+    initialize_ColorMap(COLOR_YELLOW, "YELLOW");
+    initialize_ColorMap(COLOR_RED, "RED");
+    initialize_ColorMap(COLOR_WHITE, "WHITE");
+    initialize_ColorMap(COLOR_BROWN, "BROWN");
 }
 
 /**
@@ -65,7 +74,7 @@ void viewColor()
     
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%s", COLOR_NAME_MAP[colorName]);
+    sprintf(message, "%s", COLOR_NAME_MAP[colorName].c_str());
     writeStringLCD(message);
     
     //! 取得したRGB値をLCDに表示させる
