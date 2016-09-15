@@ -135,7 +135,7 @@ colorid_t getColorName()
             if (r-0.0001f < max && max < r+0.0001f) {
                 hue = (g - b) / hue;
                 if (hue < 0.0f) {
-                    hue + 6.0f;
+                    hue += 6.0f;
                 }
             } else if (g-0.0001f < max && max <g+0.0001f) {
                 hue = 2.0f + (b - r) / hue;
