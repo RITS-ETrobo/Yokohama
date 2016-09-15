@@ -5,6 +5,7 @@
 
 #include "ev3api.h"
 #include "utilities.h"
+#include "instances.h"
 
 std::map<runPattern, PID_PARAMETER> PID_MAP;
 
@@ -74,4 +75,24 @@ bool isGreaterAbsoluteValue(float targetValue, float compareValue){
     
     //それ以外はfalseを返す
     return false;
+}
+
+/**
+ * @brief バッテリーの残電圧と残電流をLCDに出力する
+ * @param isOutputLog   trueの場合、ログに出力する
+ * @return  なし
+*/
+void confirmBattery(bool isOutputLog /*= false*/)
+{
+    char message[16];
+    memset(message, '\0', sizeof(message));
+    int battery_mA = ev3_battery_current_mA();
+    int battery_mV = ev3_battery_voltage_mV();
+    sprintf(message, "%04d mA %04d mV", battery_mA, battery_mV); 
+
+    writeStringLCD(message);
+    if (isOutputLog && logger) {
+        logger->addLogInt(LOG_TYPE_BATTERY_mA, battery_mA);
+        logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mA);
+    }
 }

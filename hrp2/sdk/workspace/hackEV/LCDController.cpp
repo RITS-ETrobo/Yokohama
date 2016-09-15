@@ -96,5 +96,6 @@ ER writeStringLCD(const char* message)
 */
 ER clearLCD()
 {
+    currentAreaHeight = 0;
     return  ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, EV3_LCD_HEIGHT, getLCDColor());
 }

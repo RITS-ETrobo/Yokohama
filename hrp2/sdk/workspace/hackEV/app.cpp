@@ -63,6 +63,10 @@ static void button_clicked_handler(intptr_t button) {
         logger->setEnabled();
     }
 
+    clearLCD();
+    confirmBattery();
+    writeStringLCD("    ");
+
     switch(button) {
     case BACK_BUTTON:
         writeStringLCD("BACK button click");
@@ -201,17 +205,7 @@ void main_task(intptr_t unused) {
         logger->addLog(LOG_TYPE_INITIALIZE, "END");
     }
 
-    char message[16];
-    memset(message, '\0', sizeof(message));
-    int battery_mA = ev3_battery_current_mA();
-    int battery_mV = ev3_battery_voltage_mV();
-    sprintf(message, "%04d mA %04d mV", battery_mA, battery_mV); 
-
-    writeStringLCD(message);
-    if (logger) {
-        logger->addLogInt(LOG_TYPE_BATTERY_mA, battery_mA);
-        logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mA);
-    }
+    confirmBattery(true);
 
     //! キー入力待ち ここでwhile文があるとタスクが実行されなくなるためコメントアウト
     //while(1){}    
