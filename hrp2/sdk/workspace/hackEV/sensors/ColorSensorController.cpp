@@ -144,7 +144,9 @@ colorid_t getColorName()
             if (r-0.0001f < max && max < r+0.0001f) {
                 hue = (g - b) / hue;
                 if (hue < 0.0f) {
-                    hue + 6.0f;
+                    //  色は最も赤い色に近いが、その中でも緑よりも青っぽかったら色相は6に近い値になる。
+                    //  色相は循環している為、必ずしも正の値にならなくても良い
+                    hue += 6.0f;
                 }
             } else if (g-0.0001f < max && max <g+0.0001f) {
                 hue = 2.0f + (b - r) / hue;
