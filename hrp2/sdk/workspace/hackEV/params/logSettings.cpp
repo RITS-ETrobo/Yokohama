@@ -126,6 +126,13 @@ const uint_t LOG_TYPE_AVERAGE_DISTANCE_RIGHT = 0xA3;
 
 //! 平均速度(右ホイール時間)
 const uint_t LOG_TYPE_AVERAGE_TIME_RIGHT = 0xA4;
+
+//! カーブするために調整した左モーターのパワー
+const uint_t LOG_TYPE_POWER_FOR_CURVE_LEFT = 0xA5;
+
+//! カーブするために調整した右モーターのパワー
+const uint_t LOG_TYPE_POWER_FOR_CURVE_RIGHT = 0xA6;
+
 //@}
 
 //! \addtogroup ログ出力用のmap
@@ -191,6 +198,8 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_AVERAGE_SPEED_RIGHT, "Average(RSpeed)", 100);
     initialize_logSetting_map(LOG_TYPE_AVERAGE_DISTANCE_RIGHT, "Average(RDistance)", 100);
     initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME_RIGHT, "Average(RTime)", 100);
+    initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_LEFT, "PowLeftForCurve", 100);
+    initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_RIGHT, "PowRightForCurve", 100);
 }
 
 /**

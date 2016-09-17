@@ -77,7 +77,7 @@ private:
     //! 出力値を補正する時間間隔
     SYSTIM DURATION;
     
-    //! 1パワー分の100ms間に走行する距離(値はモデル図のグラフから平均を算出)
+    //! 1パワー分の100ms間に走行する距離[cm](値はモデル図のグラフから平均を算出)
     float OnePowerDeviation;
 
     //! \addtogroup 速度測定用のインスタンス
