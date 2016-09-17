@@ -244,6 +244,11 @@ bool DriveController::runAsPattern(scenario_running scenario)
         motorWheelRight->run(scenario.power);
         motorWheelLeft->stop();
         break;
+        
+    case NOTRACE_CURVE:
+        //! 【ToDo 角度を暫定的に代入】
+        curveRun(scenario.power, 2);
+        break;
 
     default:
         //! ライントレースせずに、直進走行する
@@ -525,4 +530,68 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
         sumValue += addvalue;
     }
     return sumValue;
+}
+
+/**
+ * @brief   目標角度から左右のパワーを算出
+ * @param   targetDirection  目標角度[°]
+ * @param   power  基準のパワー値
+ * @param   powerLeft  左モーターへ与える入力
+ * @param   powerRight  右モーターへ与える入力
+ * @return  なし
+ */
+void DriveController::getPowerForTargetDirection(int targetDirection, int power, int *powerLeft, int *powerRight){
+    if (power == 0) {
+        return;
+    }
+    
+    //! 単位[°]をラジアンに変換
+    float targetDirectionRadian = targetDirection * Pi / 180;
+    
+    //! 左に曲がるとき、右に曲がるときで、速さが変わる。速度はどんなものを基準にするのか？
+    
+    //! 100msごとの速度
+    //! 【TODO 要検討】左速度に基準のパワー値を速度に変換した値(100msごと)を入れる
+    float LeftSpeed = power * OnePowerDeviation;
+    float RightSpeed = (targetDirectionRadian * EV3_TREAD) + LeftSpeed;
+    
+    //! 速度は既に100msごとになっているので、時間で割るのは不適切かも ↑上を使う
+    // float RightSpeed = (targetDirectionRadian * EV3_TREAD) / 0.1 +LeftSpeed;
+    
+    
+    //! 目標速度を算出
+    
+    //! 【TODO 要検討】速度をパワーに変換(1パワー分の100msごとに進む距離を使用)
+    *powerLeft=LeftSpeed / OnePowerDeviation;
+    *powerRight=RightSpeed / OnePowerDeviation;
+    
+    //! 【ToDo】速度が限界パワー55あたりを超えていないか確認
+    
+    
+    //! パワーを変更したことをログ通知[ログが増えすぎるため削除]
+    // logger->addLog(LOG_NOTICE, "ChangePow");
+    
+    //! 変更したパワーをログ出力
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_LEFT, *powerLeft);
+    logger->addLogInt(LOG_TYPE_CORRECTED_POWER_RIGHT, *powerRight);
+}
+
+
+/**
+ * @brief   曲線走行
+ * 座標移動で瞬間ごとの目標向きを入れることで点移動が可能になる(?)
+ * @param   power  基準のパワー値
+ * @param   targetDirection  目標角度[°]
+ * @return  なし
+ */
+void DriveController::curveRun(int power, int targetDirection){
+    int powerLeft = power;
+    int powerRight = power;
+    
+    //! 補正したパワー値を取得
+    getPowerForTargetDirection(targetDirection, power, &powerLeft, &powerRight);
+
+    //! 実際の回転角度を見ながら左右の出力を調整
+    motorWheelLeft->run(powerLeft);
+    motorWheelRight->run(powerRight);
 }

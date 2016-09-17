@@ -211,3 +211,8 @@ const scenario_running run_scenario_zeroyon[2] = {
     {10, 1.0F, -1, NOTRACE_STRAIGHT, false},
     {55, 450.0F, -1, NOTRACE_STRAIGHT, true}
 };
+
+//! 検証用シナリオ(曲線走行90°になったら停止)
+const scenario_running run_scenario_curve_90[1] = {
+    {30, 0.0F, 90, NOTRACE_CURVE, true}
+};
