@@ -129,6 +129,12 @@ extern const uint_t LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
 //! 平均速度(右ホイール時間)
 extern const uint_t LOG_TYPE_AVERAGE_TIME_RIGHT;
 
+//! カーブするために調整した左モーターのパワー
+extern const uint_t LOG_TYPE_POWER_FOR_CURVE_LEFT;
+
+//! カーブするために調整した右モーターのパワー
+extern const uint_t LOG_TYPE_POWER_FOR_CURVE_RIGHT;
+
 //@}
 
 extern void initialize_logSetting();
