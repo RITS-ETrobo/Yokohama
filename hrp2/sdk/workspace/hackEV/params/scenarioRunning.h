@@ -95,3 +95,6 @@ extern const scenario_running run_scenario_test_correct_straght_NoTrace[5];
 
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)
 extern const scenario_running run_scenario_straight_30m[1];
+
+//! 検証用シナリオ(ゼロヨン専用)
+extern const scenario_running run_scenario_zeroyon[2];

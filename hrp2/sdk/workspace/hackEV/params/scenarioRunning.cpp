@@ -205,3 +205,9 @@ const scenario_running run_scenario_test_straght_NoTrace_Back[19] = {
     {-20, 15.0F, -1, NOTRACE_STRAIGHT, false},
     {-10, 15.0F, -1, NOTRACE_STRAIGHT, true}
 };
+
+//! 検証用シナリオ(ゼロヨン専用)
+const scenario_running run_scenario_zeroyon[2] = {
+    {10, 1.0F, -1, NOTRACE_STRAIGHT, false},
+    {55, 450.0F, -1, NOTRACE_STRAIGHT, true}
+};
