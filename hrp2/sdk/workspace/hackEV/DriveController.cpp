@@ -247,7 +247,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
         
     case NOTRACE_CURVE:
         //! 【ToDo 角度を暫定的に代入】
-        curveRun(scenario.power, 30);
+        curveRun(scenario.power, -30);
         break;
 
     default:
@@ -550,25 +550,23 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
     
     //! 調整する分のパワー値(OnePowerDeviationは1秒ごとの速度に直している)【TODO本当にこれでよいか】
     //! 【TODO】OnePowerDeviation定数ではなく、ちゃんと速度との変換をする（※そのときは速度の単位に注意にいれること）
-    float adjustPow =(targetDirectionRadian * EV3_TREAD)/(OnePowerDeviation*10); 
+    float adjustPowForCourve =(targetDirectionRadian * EV3_TREAD)/(OnePowerDeviation*10); 
 
-    
     *powerLeft = power;
     *powerRight = power;
-    
-    //! 向きの正負によって調整するホイールを変更する
+
+    //! 向きの正負によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
     if(targetDirectionRadian > 0){
-        *powerLeft = power - adjustPow;
+        *powerLeft = power - abs(adjustPowForCourve);
     }
     else{
-        *powerRight = power - adjustPow;
+        *powerRight = power - abs(adjustPowForCourve);
     }
+
+    //! 【TODO】減算調整後の値が0を下回ると、理想の軌道は描かなくなるので、そのときの処理が必要
+    //! 【要検討】反対方向に加算調整すると全体の速度が変わることになるため、少し違う軌道を描くことになる。「全体の速度」を意識する
     
-    
-    //! 【TODO】目標速度を算出する
-    
-    
-    //! 【ToDo】調整後のパワーが限界パワー55あたりを超えていないか、または０を下回っていないか
+    //! 【TODO】目標速度を算出して補正する必要もある
     
     //! 変更したパワーをログ出力
     logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_LEFT, *powerLeft);
