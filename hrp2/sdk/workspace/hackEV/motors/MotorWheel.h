@@ -16,7 +16,7 @@ class MotorWheel
 public:
     explicit MotorWheel(motor_port_t portMotor);
 
-    virtual void initialize();
+    virtual bool initialize();
     virtual ER run(int power);
     virtual ER stop(bool_t brake = true);
 

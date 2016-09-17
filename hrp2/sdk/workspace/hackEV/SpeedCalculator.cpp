@@ -9,9 +9,33 @@
  *  @brief  コンストラクタ
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
-SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/)
+SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*= TYPE_RELATED_DRIVE_CONTROLLER*/)
     : duration(duration_)
+    , logType_speed(LOG_TYPE_AVERAGE_SPEED)
+    , logType_distance(LOG_TYPE_AVERAGE_DISTANCE)
+    , logType_time(LOG_TYPE_AVERAGE_TIME)
+    , typeRelatedUsing(type_)
 {
+    switch (typeRelatedUsing) {
+    case TYPE_RELATED_WHEEL_LEFT:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED_LEFT;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_LEFT;
+        logType_time = LOG_TYPE_AVERAGE_TIME_LEFT;
+        break;
+
+    case TYPE_RELATED_WHEEL_RIGHT:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED_RIGHT;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
+        logType_time = LOG_TYPE_AVERAGE_TIME_RIGHT;
+        break;
+
+    case TYPE_RELATED_DRIVE_CONTROLLER:
+    default:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
+        logType_time = LOG_TYPE_AVERAGE_TIME;
+        break;
+    }
 }
 
 /**
@@ -49,6 +73,11 @@ void SpeedCalculator::add(DISTANCE_RECORD record)
 
     distance_record.push_back(record);
     removeExceededTimeItem();
+
+    //! 速度をログに残す
+    DISTANCE_RECORD record_lap;
+    getSpeed(&record_lap);
+
 }
 
 /**
@@ -104,5 +133,12 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
         return  0.0F;
     }
 
-    return  (record->distance / (float)(record->currentTime) * 1000);
+    float   averageSpeed = (record->distance / (float)(record->currentTime) * 1000);
+    if(logger != NULL){
+        logger->addLogFloat(logType_speed, averageSpeed);
+        // logger->addLogFloat(logType_distance, record->distance);
+        // logger->addLogFloat(logType_time, record->currentTime);
+    }
+
+    return  averageSpeed;
 }

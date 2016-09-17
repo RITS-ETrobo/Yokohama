@@ -17,15 +17,22 @@ MotorWheel::MotorWheel(motor_port_t portMotor_)
 {
 }
 
-void MotorWheel::initialize()
+bool MotorWheel::initialize()
 {
     ev3_motor_reset_counts(portMotor);
     distance = 0.0F;
     distanceLast = 0.0F;
-
+    
     if (speedCalculator100ms == NULL) {
-        speedCalculator100ms = new SpeedCalculator(100);
+        speedCalculator100ms = new SpeedCalculator(100, (portMotor == EV3_MOTOR_LEFT) ? TYPE_RELATED_WHEEL_LEFT : TYPE_RELATED_WHEEL_RIGHT);
+        if (speedCalculator100ms == NULL) {
+            return  false;
+        }
+
+        speedCalculator100ms->initialize();
     }
+
+    return  true;
 }
 
 /**
@@ -37,7 +44,6 @@ void MotorWheel::initialize()
  */
 ER MotorWheel::run(int power)
 {
-    speedCalculator100ms->initialize();
     return  ev3_motor_set_power(portMotor, power);
 }
 
