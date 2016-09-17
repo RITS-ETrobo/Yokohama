@@ -34,6 +34,7 @@ SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*=
         logType_speed = LOG_TYPE_AVERAGE_SPEED;
         logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
         logType_time = LOG_TYPE_AVERAGE_TIME;
+        break;
     }
 }
 
@@ -133,9 +134,11 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
     }
 
     float   averageSpeed = (record->distance / (float)(record->currentTime) * 1000);
-    logger->addLogFloat(logType_speed, averageSpeed);
-    logger->addLogFloat(logType_distance, record->currentTime);
-    logger->addLogFloat(logType_time, record->distance);
+    if(logger != NULL){
+        logger->addLogFloat(logType_speed, averageSpeed);
+        // logger->addLogFloat(logType_distance, record->distance);
+        // logger->addLogFloat(logType_time, record->currentTime);
+    }
 
     return  averageSpeed;
 }
