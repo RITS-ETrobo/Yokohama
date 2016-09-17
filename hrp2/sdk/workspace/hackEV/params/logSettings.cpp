@@ -108,6 +108,24 @@ const uint_t LOG_TYPE_AVERAGE_DISTANCE = 0x9D;
 
 //! 平均速度(時間)
 const uint_t LOG_TYPE_AVERAGE_TIME = 0x9E;
+
+//! 平均速度(左ホイール)
+const uint_t LOG_TYPE_AVERAGE_SPEED_LEFT = 0x9F;
+
+//! 平均速度(左ホイール距離)
+const uint_t LOG_TYPE_AVERAGE_DISTANCE_LEFT = 0xA0;
+
+//! 平均速度(左ホイール時間)
+const uint_t LOG_TYPE_AVERAGE_TIME_LEFT = 0xA1;
+
+//! 平均速度(右ホイール)
+const uint_t LOG_TYPE_AVERAGE_SPEED_RIGHT = 0xA2;
+
+//! 平均速度(右ホイール距離)
+const uint_t LOG_TYPE_AVERAGE_DISTANCE_RIGHT = 0xA3;
+
+//! 平均速度(右ホイール時間)
+const uint_t LOG_TYPE_AVERAGE_TIME_RIGHT = 0xA4;
 //@}
 
 //! \addtogroup ログ出力用のmap
@@ -167,6 +185,12 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_AVERAGE_SPEED, "Average(Speed)", 100);
     initialize_logSetting_map(LOG_TYPE_AVERAGE_DISTANCE, "Average(Distance)", 100);
     initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME, "Average(Time)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_SPEED_LEFT, "Average(LSpeed)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_DISTANCE_LEFT, "Average(LDistance)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME_LEFT, "Average(LTime)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_SPEED_RIGHT, "Average(RSpeed)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_DISTANCE_RIGHT, "Average(RDistance)", 100);
+    initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME_RIGHT, "Average(RTime)", 100);
 }
 
 /**

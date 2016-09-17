@@ -110,6 +110,25 @@ extern const uint_t LOG_TYPE_AVERAGE_DISTANCE;
 
 //! 平均速度(時間)
 extern const uint_t LOG_TYPE_AVERAGE_TIME;
+
+//! 平均速度(左ホイール)
+extern const uint_t LOG_TYPE_AVERAGE_SPEED_LEFT;
+
+//! 平均速度(左ホイール距離)
+extern const uint_t LOG_TYPE_AVERAGE_DISTANCE_LEFT;
+
+//! 平均速度(左ホイール時間)
+extern const uint_t LOG_TYPE_AVERAGE_TIME_LEFT;
+
+//! 平均速度(右ホイール)
+extern const uint_t LOG_TYPE_AVERAGE_SPEED_RIGHT;
+
+//! 平均速度(右ホイール距離)
+extern const uint_t LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
+
+//! 平均速度(右ホイール時間)
+extern const uint_t LOG_TYPE_AVERAGE_TIME_RIGHT;
+
 //@}
 
 extern void initialize_logSetting();
