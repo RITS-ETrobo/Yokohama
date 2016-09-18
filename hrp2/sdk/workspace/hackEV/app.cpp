@@ -177,7 +177,6 @@ void main_task(intptr_t unused) {
 
     if (gyroSensorController) {
         gyroSensorController->initialize();
-        gyroSensorController->setEnabledGyroSensor(true);
     }
 
     //! Configure motors
