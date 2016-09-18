@@ -77,10 +77,8 @@ void start_run_test()
         }
     }
 
-    gyroSensorController->setEnabledGyroSensor(true);
-
-    for (int index = 0; index < (int)(sizeof(run_scenario_test_pinWheel_left) / sizeof(run_scenario_test_pinWheel_left[0])); index++) {
-        driveController->run(run_scenario_test_pinWheel_left[index]);
+    for (int index = 0; index < (int)(sizeof(run_scenario_LCource_Try) / sizeof(run_scenario_LCource_Try[0])); index++) {
+        driveController->run(run_scenario_LCource_Try[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);

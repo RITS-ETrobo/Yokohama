@@ -247,7 +247,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
         
     case NOTRACE_CURVE:
         //! 【ToDo 角度を暫定的に代入】
-        curveRun(scenario.power, -30);
+        curveRun(scenario.power, scenario.curveDirection);
         break;
 
     default:
