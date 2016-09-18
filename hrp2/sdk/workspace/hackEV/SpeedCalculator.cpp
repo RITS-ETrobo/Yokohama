@@ -10,32 +10,14 @@
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
 SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*= TYPE_RELATED_DRIVE_CONTROLLER*/)
-    : duration(duration_)
+    : EV3Position(duration_)
+    , duration(duration_)
     , logType_speed(LOG_TYPE_AVERAGE_SPEED)
     , logType_distance(LOG_TYPE_AVERAGE_DISTANCE)
     , logType_time(LOG_TYPE_AVERAGE_TIME)
     , typeRelatedUsing(type_)
+    , initialized(false)
 {
-    switch (typeRelatedUsing) {
-    case TYPE_RELATED_WHEEL_LEFT:
-        logType_speed = LOG_TYPE_AVERAGE_SPEED_LEFT;
-        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_LEFT;
-        logType_time = LOG_TYPE_AVERAGE_TIME_LEFT;
-        break;
-
-    case TYPE_RELATED_WHEEL_RIGHT:
-        logType_speed = LOG_TYPE_AVERAGE_SPEED_RIGHT;
-        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
-        logType_time = LOG_TYPE_AVERAGE_TIME_RIGHT;
-        break;
-
-    case TYPE_RELATED_DRIVE_CONTROLLER:
-    default:
-        logType_speed = LOG_TYPE_AVERAGE_SPEED;
-        logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
-        logType_time = LOG_TYPE_AVERAGE_TIME;
-        break;
-    }
 }
 
 /**
@@ -44,72 +26,41 @@ SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*=
 */
 void SpeedCalculator::initialize()
 {
-    distance_record.clear();
-    DISTANCE_RECORD record;
+    if (initialized == false) {
+        switch (typeRelatedUsing) {
+        case TYPE_RELATED_WHEEL_LEFT:
+            logType_speed = LOG_TYPE_AVERAGE_SPEED_LEFT;
+            logType_distance = LOG_TYPE_AVERAGE_DISTANCE_LEFT;
+            logType_time = LOG_TYPE_AVERAGE_TIME_LEFT;
+            break;
 
-#ifdef  EV3_UNITTEST
-    record.currentTime = 0;
-#else
-    record.currentTime = clock->now();
-#endif  //  EV3_UNITTEST
+        case TYPE_RELATED_WHEEL_RIGHT:
+            logType_speed = LOG_TYPE_AVERAGE_SPEED_RIGHT;
+            logType_distance = LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
+            logType_time = LOG_TYPE_AVERAGE_TIME_RIGHT;
+            break;
 
-    record.distanceDelta = 0;
-    add(record);
+        case TYPE_RELATED_DRIVE_CONTROLLER:
+        default:
+            logType_speed = LOG_TYPE_AVERAGE_SPEED;
+            logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
+            logType_time = LOG_TYPE_AVERAGE_TIME;
+            break;
+        }
+    }
+
+    EV3Position::initialize();
+    initialized = true;
 }
 
 /**
- *  @brief  要素をdequeに追加する
+ *  @brief  要素をvectorに追加する
  *  @param  record  追加する要素
  *  @return なし
 */
 void SpeedCalculator::add(DISTANCE_RECORD record)
 {
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-    if (size == 0) {
-        record.distance = record.distanceDelta;
-    } else {
-        record.distance = distance_record.at(size - 1).distance + record.distanceDelta;
-    }
-
-    distance_record.push_back(record);
-    removeExceededTimeItem();
-
-    //! 速度をログに残す
-    DISTANCE_RECORD record_lap;
-    getSpeed(&record_lap);
-
-}
-
-/**
- *  @brief  要素全体が指定時間内に収まっているかを確認し、収まっていない要素を削除する
- *
- *  deque<DISTANCE_RECORD>が指定時間(duration)内に収まっていなければ、収まるまで先頭側から要素を削除する
- *  この結果、直近の指定時間内の時間と距離を保持することになる
- *  @return なし
-*/
-void SpeedCalculator::removeExceededTimeItem()
-{
-    for (;;) {
-        std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-        if (size <= 1) {
-            return;
-        }
-
-        DISTANCE_RECORD record = distance_record.at(size - 1);
-        std::vector<DISTANCE_RECORD>::iterator it = distance_record.begin();
-        if (it == distance_record.end()) {
-            return;
-        }
-
-        if (record.currentTime - it->currentTime <= duration) {
-            return;
-        }
-
-        distance_record.erase(it);
-        if (duration == 0) {
-            return;
-        }
-    }
+    EV3Position::add(record);
 }
 
 /**
@@ -119,21 +70,7 @@ void SpeedCalculator::removeExceededTimeItem()
 */
 float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
 {
-    if (record == NULL) {
-        return  0.0F;
-    }
-
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-    DISTANCE_RECORD record_first = distance_record.at(0);
-    DISTANCE_RECORD record_last = distance_record.at(size - 1);
-    record->currentTime = record_last.currentTime - record_first.currentTime;
-    record->distance = record_last.distance - record_first.distance;
-    record->distanceDelta = 0;
-    if (record->currentTime == 0) {
-        return  0.0F;
-    }
-
-    float   averageSpeed = (record->distance / (float)(record->currentTime) * 1000);
+    float   averageSpeed = EV3Position::getSpeed(record);
     if(logger != NULL){
         logger->addLogFloat(logType_speed, averageSpeed);
         // logger->addLogFloat(logType_distance, record->distance);
@@ -141,4 +78,13 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
     }
 
     return  averageSpeed;
+}
+
+/**
+ *  @brief  現在の向きを取得する
+ *  @return 現在の向き[単位 : 度]
+*/
+float SpeedCalculator::getDirection()
+{
+    return  EV3Position::getDirection();
 }
