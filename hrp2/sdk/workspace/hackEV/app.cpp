@@ -96,6 +96,7 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case UP_BUTTON:
+        gyroSensorController->setEnabledGyroSensor(true);
         //シナリオ走行モードの初期化処理
         initialize_run();
 
@@ -111,10 +112,12 @@ static void button_clicked_handler(intptr_t button) {
 
         //! 走行開始
         start_run();
+        gyroSensorController->setEnabledGyroSensor(false);
         break;
 
     case ENTER_BUTTON:
         writeStringLCD("ENTER button click");
+        gyroSensorController->setEnabledGyroSensor(true);
 
         //シナリオ走行モードの初期化処理
         initialize_run();
@@ -125,6 +128,7 @@ static void button_clicked_handler(intptr_t button) {
 
         //! テスト走行開始
         start_run_test();
+        gyroSensorController->setEnabledGyroSensor(false);
         break;
         
     case DOWN_BUTTON:
@@ -177,7 +181,6 @@ void main_task(intptr_t unused) {
 
     if (gyroSensorController) {
         gyroSensorController->initialize();
-        gyroSensorController->setEnabledGyroSensor(true);
     }
 
     //! Configure motors
