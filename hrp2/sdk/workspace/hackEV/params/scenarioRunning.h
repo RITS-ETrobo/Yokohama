@@ -25,6 +25,9 @@ typedef struct {
 
     //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
+
+    //! 曲線の瞬間の角度
+    float curveDirection;
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
@@ -101,3 +104,6 @@ extern const scenario_running run_scenario_zeroyon[2];
 
 //! 検証用シナリオ(曲線走行90°になったら停止)
 extern const scenario_running run_scenario_curve_90[1];
+
+//! 検証用シナリオ(Lコースをトレースせずに走る)
+extern const scenario_running run_scenario_LCource_Try[8];
