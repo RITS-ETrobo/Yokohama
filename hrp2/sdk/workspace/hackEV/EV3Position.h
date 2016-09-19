@@ -33,6 +33,7 @@ class EV3Position
 public:
     explicit EV3Position(SYSTIM duration_ = 0);
     virtual void initialize();
+    virtual void reset();
     virtual void add(DISTANCE_RECORD record);
     virtual float getSpeed(DISTANCE_RECORD *record);
     virtual float getDirection();
@@ -51,4 +52,7 @@ private:
 
     //! 平均速度算出の為に必要な情報
     std::vector<DISTANCE_RECORD>    distance_record;
+
+    //! 初期化済み判定フラグ
+    bool    initialized;
 };

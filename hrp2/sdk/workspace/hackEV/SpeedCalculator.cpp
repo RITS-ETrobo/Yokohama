@@ -26,31 +26,43 @@ SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*=
 */
 void SpeedCalculator::initialize()
 {
-    if (initialized == false) {
-        switch (typeRelatedUsing) {
-        case TYPE_RELATED_WHEEL_LEFT:
-            logType_speed = LOG_TYPE_AVERAGE_SPEED_LEFT;
-            logType_distance = LOG_TYPE_AVERAGE_DISTANCE_LEFT;
-            logType_time = LOG_TYPE_AVERAGE_TIME_LEFT;
-            break;
+    if (initialized == true) {
+        return;
+    }
 
-        case TYPE_RELATED_WHEEL_RIGHT:
-            logType_speed = LOG_TYPE_AVERAGE_SPEED_RIGHT;
-            logType_distance = LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
-            logType_time = LOG_TYPE_AVERAGE_TIME_RIGHT;
-            break;
+    switch (typeRelatedUsing) {
+    case TYPE_RELATED_WHEEL_LEFT:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED_LEFT;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_LEFT;
+        logType_time = LOG_TYPE_AVERAGE_TIME_LEFT;
+        break;
 
-        case TYPE_RELATED_DRIVE_CONTROLLER:
-        default:
-            logType_speed = LOG_TYPE_AVERAGE_SPEED;
-            logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
-            logType_time = LOG_TYPE_AVERAGE_TIME;
-            break;
-        }
+    case TYPE_RELATED_WHEEL_RIGHT:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED_RIGHT;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
+        logType_time = LOG_TYPE_AVERAGE_TIME_RIGHT;
+        break;
+
+    case TYPE_RELATED_DRIVE_CONTROLLER:
+    default:
+        logType_speed = LOG_TYPE_AVERAGE_SPEED;
+        logType_distance = LOG_TYPE_AVERAGE_DISTANCE;
+        logType_time = LOG_TYPE_AVERAGE_TIME;
+        break;
     }
 
     EV3Position::initialize();
     initialized = true;
+}
+
+/**
+ *  @brief  初期化(強制的に実施)
+ *  @return なし
+*/
+void SpeedCalculator::reset()
+{
+    initialized = false;
+    initialize();
 }
 
 /**

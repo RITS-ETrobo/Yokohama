@@ -13,6 +13,7 @@ EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
     : duration(duration_)
     , averageSpeed(0.0F)
     , direction(0.0F)
+    , initialized(false)
 {
 }
 
@@ -22,6 +23,10 @@ EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
 */
 void EV3Position::initialize()
 {
+    if (initialized == true) {
+        return;
+    }
+
     distance_record.clear();
     DISTANCE_RECORD record;
     memset(&record, '\0', sizeof(DISTANCE_RECORD));
@@ -33,6 +38,17 @@ void EV3Position::initialize()
 #endif  //  EV3_UNITTEST
 
     add(record);
+    initialized = true;
+}
+
+/**
+*  @brief  初期化(強制的に実施)
+ *  @return なし
+*/
+void EV3Position::reset()
+{
+    initialized = false;
+    initialize();
 }
 
 /**
