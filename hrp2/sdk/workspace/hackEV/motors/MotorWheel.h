@@ -39,4 +39,7 @@ private:
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
     //@}
+
+    //! 初期化済み判定フラグ
+    bool    initialized;
 };

@@ -33,6 +33,7 @@ DriveController::DriveController()
     , DURATION(100.0F)
     , OnePowerDeviation(0.084107F)
     , speedCalculator100ms(NULL)
+    , initialized(false)
 {
 }
 
@@ -45,14 +46,16 @@ bool DriveController::initialize()
 {
     ev3_speaker_play_tone(NOTE_E4, 100);
 
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
-    distanceLast = 0.0F;
-    distanceTotal = 0.0F;
+    if (initialized == false) {
+        directionLast = 0.0F;
+        directionTotal = 0.0F;
+        distanceLast = 0.0F;
+        distanceTotal = 0.0F;
 
-    lastGetDistanceLeft = 0.0F;
-    lastGetDistanceRight = 0.0F;
-    lastTime = 0;
+        lastGetDistanceLeft = 0.0F;
+        lastGetDistanceRight = 0.0F;
+        lastTime = 0;
+    }
 
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
@@ -74,6 +77,7 @@ bool DriveController::initialize()
     motorWheelRight->initialize();
     speedCalculator100ms->initialize();
 
+    initialized = true;
     return  true;
 }
 
