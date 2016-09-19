@@ -57,8 +57,8 @@ void control_sonarsensor()
     tslp_tsk(200);
     ev3_speaker_play_tone(NOTE_C4, 100);
 
-    sonarSensorController->executeSonar()
-    while(sonarSensorController->isEnabled()){
+    sonarSensorController->executeSonar();
+    while (sonarSensorController->isEnabled()) {
         //! タッチセンサーを押すと超音波で距離を測定
         if (!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
             continue;
@@ -191,7 +191,7 @@ void main_task(intptr_t unused) {
     driveController = new DriveController();
     clock = new Clock();
     gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
-    sonarSensorController = new SonarSensorController();
+    sonarSensorController = new SonarSensorController(EV3_SENSOR_SONAR);
 
     if (logger) {
         logger->initialize();
