@@ -10,6 +10,10 @@ SonarSensorController::SonarSensorController(sensor_port_t _port)
     : port(_port)
     , enabled(false)
     , initialized(false)
+    , safe(false)
+    , thresholdDistance(100)
+    , thresholdDuration(1000)
+    , lapShinkansen(7350)
 {
 }
 /**
@@ -84,8 +88,24 @@ int16_t SonarSensorController::executeSonar()
         if (logger) {
             logger->addLogInt(LOG_TYPE_SONAR, distance);
         }
+
+        checkSafe(distance);
     }
 #endif  //  EV3_UNITTEST
 
     return  distance;
+}
+
+/**
+ * @brief   走行体がレールを渡れる状態かを確認する
+ * @param   [in] distance   目標との距離
+ * @return  なし
+*/
+void SonarSensorController::checkSafe(int16_t distance)
+{
+    if (distance <= getThresholdDistance()) {
+        safe = false;
+    } else {
+        safe = true;
+    }
 }
