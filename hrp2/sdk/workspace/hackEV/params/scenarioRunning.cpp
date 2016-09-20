@@ -137,11 +137,7 @@ const scenario_running run_scenario_test_pinWheel_left[1] = {
 
 //! 検証用シナリオ(その場360度回転・右回転)
 const scenario_running run_scenario_test_pinWheel_right[1] = {
-<<<<<<< bdc817169f0c58695fd8fec9105d8958a4bd95ec
-    {30, 0.0F, -360, PINWHEEL, true}
-=======
     {-30, 0.0F, 360, PINWHEEL, true,0}
->>>>>>> # カーブ時の角速度を指定できるようシナリオの構造を変更
 };
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
