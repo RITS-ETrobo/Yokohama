@@ -551,7 +551,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     float targetDirectionRadian = (power * speedPerOnePower) / curvatureRadius;
     
     //! この左右のパワーの差があれば指定した角速度で曲がることができる
-    //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする
+    //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする?
     float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(speedPerOnePower); 
 
     //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
@@ -564,31 +564,8 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
         *powerLeft = power + abs(adjustPowForCourve / 2);
         *powerRight = power - abs(adjustPowForCourve / 2);
     }
-
-    //! 調整後のパワー値が限界値を超えていないか確認
-    if(*powerRight > limitPower){
-        //! 曲率半径が変わらないように、速度と角速度を調整（参考公式 v = rω）
-
-    }
-    else if(*powerLeft > limitPower){
-
-    }
-
-    //! 調整後のパワー値が0を下回っていないか確認
-    if(*powerRight < 0){
-
-    }
-    else if(*powerRight < 0){
-
-    }
-    
-    //! 【TODO】回転半径を引数で指定するようにする？
     
     //! 【TODO】目標速度を算出して補正する必要もある
-    
-    //! 変更したパワーをログ出力
-    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_LEFT, *powerLeft);
-    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_RIGHT, *powerRight);
 }
 
 
@@ -603,8 +580,31 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
     int powerLeft = power;
     int powerRight = power;
     
-    //! 補正したパワー値を取得
-    getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
+    //! パワー値が限界値を超えないようになるまでループ
+    for(;;){
+        //! カーブの曲率半径に適した左右のパワー値を取得
+        getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
+
+        //! 調整後のパワー値が限界値を超えていたら曲率半径を優先するため、パワーと角速度を調整する
+        if(powerRight > limitPower|| powerLeft > limitPower){
+            //! 超えていたらパワーを下げて再度取得する
+            power--;
+            continue;
+        }
+
+        //! 調整後のパワー値がマイナスになっていないか確認
+        if(powerRight < 0 || powerRight < 0){
+            //! 超えていたらパワーを上げて再度取得する
+            power++;
+            continue;
+        }
+
+        break;
+    }
+
+    //! 変更したパワーをログ出力
+    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_LEFT, powerLeft);
+    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_RIGHT, powerRight);
 
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);
