@@ -33,6 +33,7 @@ DriveController::DriveController()
     , DURATION(100.0F)
     , OnePowerDeviation(0.084107F)
     , speedCalculator100ms(NULL)
+    , limitPower(55)
 {
 }
 
@@ -548,20 +549,35 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
     //! 【TODO】OnePowerDeviation定数ではなく、ちゃんと速度との変換をする（※そのときは速度の単位に注意にいれること）
     float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(OnePowerDeviation*10); 
 
-
     //! 向きの正負によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
     if(targetDirectionRadian > 0){
         //! 走行体の中心の速度(左右のホイール速度の平均値)が指定したパワーになるようにする
         *powerLeft = power - abs(adjustPowForCourve / 2);
         *powerRight = power + abs(adjustPowForCourve / 2);
+
+
     }
     else{
         *powerLeft = power + abs(adjustPowForCourve / 2);
         *powerRight = power - abs(adjustPowForCourve / 2);
     }
 
-    //! 【TODO】減算調整後の値が0を下回ると、理想の軌道は描かなくなるので、そのときの処理が必要
-    //! 【要検討】反対方向に加算調整すると全体の速度が変わることになるため、少し違う軌道を描くことになる。「全体の速度」を意識する
+    //! 調整後のパワー値が限界値を超えていないか確認
+    if(*powerRight > limitPower){
+        
+    }
+    else if(*powerLeft > limitPower){
+
+    }
+
+    //! 調整後のパワー値が0を下回っていないか確認
+    if(*powerRight < 0){
+
+    }
+    else if(*powerRight < 0){
+
+    }
+    
     //! 【TODO】回転半径を引数で指定するようにする？
     
     //! 【TODO】目標速度を算出して補正する必要もある

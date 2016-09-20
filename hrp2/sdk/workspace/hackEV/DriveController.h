@@ -80,6 +80,9 @@ private:
     //! 1パワー分の100ms間に走行する距離[cm](値はモデル図のグラフから平均を算出)
     float OnePowerDeviation;
 
+    // 指定できるパワーの限界値
+    int limitPower;
+
     //! \addtogroup 速度測定用のインスタンス
     //@{
     //! 最近の100ms
