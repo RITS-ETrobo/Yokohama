@@ -33,8 +33,8 @@ protected:
     virtual bool runAsPattern(scenario_running scenario);
     virtual void initializeAsPattern(scenario_running scenario);
     virtual int addAdjustValue(int targetValue, int addvalue);
-    virtual void getPowerForTargetDirection(int targetDirection, int power, int *powerLeft, int *powerRight);
-    virtual void curveRun(int power, int targetDirection);
+    virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
+    virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
 
 private:
     void pinWheel(int power, int degree);
