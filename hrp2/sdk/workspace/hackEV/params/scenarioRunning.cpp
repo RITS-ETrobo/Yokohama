@@ -137,7 +137,7 @@ const scenario_running run_scenario_test_pinWheel_left[1] = {
 
 //! 検証用シナリオ(その場360度回転・右回転)
 const scenario_running run_scenario_test_pinWheel_right[1] = {
-    {-30, 0.0F, 360, PINWHEEL, true}
+    {30, 0.0F, -360, PINWHEEL, true}
 };
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)

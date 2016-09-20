@@ -35,7 +35,7 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
 
 private:
-    void pinWheel(int power);
+    void pinWheel(int power, int degree);
     void straightRun(int power);
     void change_LineSide(scenario_running scenario);
 
