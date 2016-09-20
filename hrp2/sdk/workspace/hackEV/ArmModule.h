@@ -11,3 +11,4 @@
 extern void initialize_arm();
 extern ER move_arm(int degrees, uint32_t speed_abs, bool_t blocking);
 extern ER stop_arm();
+extern ER initialize_arm_position();
