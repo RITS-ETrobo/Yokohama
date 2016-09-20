@@ -454,17 +454,26 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     }
     
     //! 走行体が指定した向きになったらストップ
-    float   directionTotal = getDirection(directionDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
-    if (isGreaterValue && scenario.stop){
+    float directionTotal = getDirection(directionDelta);
+    bool isGreaterStopDirection = false;
+    int stopDirectionConversion360 = scenario.direction;
+    //! マイナス方向を0～360度変換する
+    if(scenario.direction < 0){
+        stopDirectionConversion360 += 360;
+    }
+    if(directionTotal > stopDirectionConversion360 || directionTotal < scenario.direction){
+        isGreaterStopDirection = true;
+    }
+
+    if (isGreaterStopDirection && scenario.stop){
         stop();
     }
 
     if (logger && (directionDelta != 0)) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterStopDirection);
     }
 
-    return  isGreaterValue;
+    return  isGreaterStopDirection;
 }
 
 /**
