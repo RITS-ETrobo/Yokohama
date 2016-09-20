@@ -84,6 +84,7 @@ float MotorWheel::getDistanceDelta()
     }
 
     DISTANCE_RECORD record;
+    memset(&record, '\0', sizeof(DISTANCE_RECORD));
     record.currentTime = currentTime;
     record.distanceDelta = distanceDelta;
     speedCalculator100ms->add(record);

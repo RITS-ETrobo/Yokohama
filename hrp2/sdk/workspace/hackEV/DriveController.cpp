@@ -114,8 +114,10 @@ void DriveController::run(scenario_running scenario)
         getDelta(&directionDelta, &distanceDelta);
 
         DISTANCE_RECORD record;
+        memset(&record, '\0', sizeof(DISTANCE_RECORD));
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
+        record.directionDelta = directionDelta;
         speedCalculator100ms->add(record);
 
         DISTANCE_RECORD record_lap;
