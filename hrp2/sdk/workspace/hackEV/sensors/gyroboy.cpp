@@ -318,7 +318,7 @@ void idle_task(intptr_t unused) {
     }
 }
 
-void driveController(){
+void driveProcess(){
     while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
     uint8_t c = fgetc(bt);
     sus_tsk(IDLE_TASK);
@@ -380,7 +380,7 @@ void driveController(){
 
 void drive_controller_task(intptr_t unused){
     while(1){
-        driveController();
+        driveProcess();
     }
 }
 

@@ -45,8 +45,11 @@ extern const uint_t LOG_TYPE_DIRECTION;
 //! 角度(累積)
 extern const uint_t LOG_TYPE_DIRECTION_TOTAL;
 
-//! ジャイロ
+//! ジャイロセンサー
 extern const uint_t LOG_TYPE_GYRO;
+
+//! 超音波センサー
+extern const uint_t LOG_TYPE_SONAR;
 
 //! ログを書き出している時間
 extern const uint_t LOG_TYPE_WRITE_PROCESSING;

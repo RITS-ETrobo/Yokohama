@@ -17,6 +17,7 @@
 #include "ArmModule.h"
 #include "ColorSensorController.h"
 #include "GyroSensorController.h"
+#include "SonarSensorController.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -34,9 +35,41 @@ Clock   *clock = NULL;
 //! GyroSensorControllerクラスのインスタンス
 GyroSensorController* gyroSensorController = NULL;
 
+//! SonarSensorControllerクラスのインスタンス
+SonarSensorController   *sonarSensorController = NULL;
+
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
 
+/**
+ * @brief   超音波センサの制御
+ * 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html
+ * @return  なし
+*/
+void control_sonarsensor()
+{
+    if (sonarSensorController == NULL) {
+        return;
+    }
+
+    //! 超音波モードの準備ができたら音が2回鳴る
+    ev3_speaker_play_tone(NOTE_C4, 100);
+    tslp_tsk(200);
+    ev3_speaker_play_tone(NOTE_C4, 100);
+
+    sonarSensorController->executeSonar();
+    while (sonarSensorController->isEnabled()) {
+        //! タッチセンサーを押すと超音波で距離を測定
+        if (!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            continue;
+        }
+
+        sonarSensorController->confirm(sonarSensorController->executeSonar());
+        if (ev3_button_is_pressed(ENTER_BUTTON)) {
+            break;
+        }
+    }
+}
 /**
  * @brief   緊急停止
  *
@@ -45,7 +78,7 @@ const unsigned char RETRY_CREATE_INSTANCE = 3;
 void stop_emergency(){
     ev3_motor_stop(EV3_MOTOR_LEFT,true);
     ev3_motor_stop(EV3_MOTOR_RIGHT,true);
-    setEnabledSonarSensor(false);
+    sonarSensorController->setEnabled(false);
     ev3_motor_stop(EV3_MOTOR_ARM,true);
     //! モータやセンサーを使用する場合には、再開可能な形にしておいて停止処理を追加する
 }
@@ -91,8 +124,14 @@ static void button_clicked_handler(intptr_t button) {
         writeStringLCD("RIGHT button click");
         syslog(LOG_NOTICE, "RIGHT button clicked.");
 
+        //! 超音波センサー有効化
+        sonarSensorController->setEnabled();
+
         //! 超音波制御
         control_sonarsensor();        
+
+        //! 超音波センサー無効化
+        sonarSensorController->setEnabled(false);
         break;
 
     case UP_BUTTON:
@@ -158,6 +197,7 @@ void main_task(intptr_t unused) {
     driveController = new DriveController();
     clock = new Clock();
     gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
+    sonarSensorController = new SonarSensorController(EV3_SENSOR_SONAR);
 
     if (logger) {
         logger->initialize();
@@ -179,14 +219,16 @@ void main_task(intptr_t unused) {
         gyroSensorController->initialize();
     }
 
+    if (sonarSensorController) {
+        //! 超音波センサの初期化
+        sonarSensorController->initialize();
+    }
+
     //! Configure motors
     configure_motors();
 
     //! Configure sensors
     configure_sensors();
-
-    //! 超音波センサの初期化
-    initialize_sonarsensor();
 
     //! 初期化が終わった時点で音を一回鳴らす（キー入力待ちを知らせる）
     ev3_speaker_play_tone(NOTE_C4, 300);
