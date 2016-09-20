@@ -31,9 +31,9 @@ DriveController::DriveController()
     , lastPowerRight(0)
     , lastTime(0)
     , DURATION(100.0F)
-    , OnePowerDeviation(0.084107F)
     , speedCalculator100ms(NULL)
     , limitPower(55)
+    , speedPerOnePower(0.84107F)
 {
 }
 
@@ -185,8 +185,8 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
     //! 左右のホイールの距離の差
     float deviation = targetDistance - movedDistance;
     
-    //! 左右の差が「1パワー分の100ms間の走行距離」(OnePowerDeviation)ごとに、１パワーずつ補正をかける
-    int correctAddPower = deviation / OnePowerDeviation;
+    //! 左右の差が「1パワー分の100ms間の走行距離」(speedPerOnePowerの100ms単位)ごとに、１パワーずつ補正をかける
+    int correctAddPower = deviation / (speedPerOnePower/10);
     
     return correctAddPower;
 }
@@ -548,18 +548,19 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
     
     //! 単位[°]をラジアンに変換
     float targetDirectionRadian = targetDirection * Pi / 180;
+
+    //! 目標の軌道を描くための円半径
+    float radiusForCurve = (power * (speedPerOnePower))  / targetDirectionRadian;
     
-    //! この左右のパワーの差があれば指定した角速度で曲がることができる(OnePowerDeviationは1秒ごとの速度に直している)
-    //! 【TODO】OnePowerDeviation定数ではなく、ちゃんと速度との変換をする（※そのときは速度の単位に注意にいれること）
-    float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(OnePowerDeviation*10); 
+    //! この左右のパワーの差があれば指定した角速度で曲がることができる(speedPerOnePowerは1秒ごとの速度に直している)
+    //! 【TODO】speedPerOnePower定数ではなく、ちゃんと速度との変換をする（※そのときは速度の単位に注意にいれること）
+    float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(speedPerOnePower); 
 
     //! 向きの正負によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
     if(targetDirectionRadian > 0){
         //! 走行体の中心の速度(左右のホイール速度の平均値)が指定したパワーになるようにする
         *powerLeft = power - abs(adjustPowForCourve / 2);
         *powerRight = power + abs(adjustPowForCourve / 2);
-
-
     }
     else{
         *powerLeft = power + abs(adjustPowForCourve / 2);
@@ -568,7 +569,7 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
 
     //! 調整後のパワー値が限界値を超えていないか確認
     if(*powerRight > limitPower){
-        
+        //! 目標の軌道を描くための円半径が変わらないように、速度と角速度を調整（参考公式 v = rω）
     }
     else if(*powerLeft > limitPower){
 
