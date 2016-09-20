@@ -76,12 +76,12 @@ private:
     
     //! 出力値を補正する時間間隔
     SYSTIM DURATION;
-    
-    //! 1パワー分の100ms間に走行する距離[cm](値はモデル図のグラフから平均を算出)
-    float OnePowerDeviation;
 
     // 指定できるパワーの限界値
     int limitPower;
+
+    //! 1パワーあたりの速度変化量
+    float speedPerOnePower;
 
     //! \addtogroup 速度測定用のインスタンス
     //@{
