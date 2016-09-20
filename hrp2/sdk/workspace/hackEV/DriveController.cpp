@@ -345,15 +345,9 @@ void DriveController::pinWheel(int power, int degree)
     }
     
     //! 止まるときの角度がプラスであれば左周り
-    if(degree > 0){
-        motorWheelLeft->run((-power));
-        motorWheelRight->run(power);
-    }else{
-        //! 止まるときの向きがマイナスであれば、右周り
-        motorWheelLeft->run((power));
-        motorWheelRight->run(-power);
-    }
-
+    int sign = (degree >= 0) ? -1 : 1;
+    motorWheelLeft->run(sign *power);
+    motorWheelRight->run(-1 * sign *power);
 }
 
 /**
@@ -464,12 +458,8 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     }
     
     //! 走行体が指定した向きになったらストップ
-    float directionTotal = getDirection(directionDelta);
-    
-    int stopDirectionConversion360 = scenario.direction;
-
+    float   directionTotal = getDirection(directionDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
-
     if (isGreaterValue && scenario.stop){
         stop();
     }
