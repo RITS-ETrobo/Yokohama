@@ -18,14 +18,14 @@
 float sumArmMotorRotate = 0.0F;
 
 //! 下向き側の駆動域の限界から何度戻したところを初期位置とするか(実際に動かす際には、この値はinitialize_armでリセットされているため考慮する必要はない)
-int initializePosition = 10;
+int initializePosition = 38;
 
 //@}
 
 
 /**
  * @brief   アームの初期化
- * 条件 : アームが真下を向いている状態で呼び出さなければならない
+ * 条件 : アームの初期位置を決めるときに駆動域を確かめているので、走行体を持ち上げておくこと！
  *
  * @return  なし
 */
@@ -84,33 +84,39 @@ ER move_arm(int degrees, uint32_t speed_abs, bool_t blocking)
 */
 ER initialize_arm_position()
 {
+    ev3_speaker_play_tone(NOTE_A4, 100);
     int LastArmDegrees = 0;
     int NotChangeDegreesCount = 0;
     ev3_motor_reset_counts(EV3_MOTOR_ARM);
 
+    //! アームを下向き側へ１度ずつ動かす
+    ER result = ev3_motor_rotate(EV3_MOTOR_ARM, -360, 1, false);
     for(;;){
-        //! アームを下向き側へ１度ずつ動かす
-        ER result = ev3_motor_rotate(EV3_MOTOR_ARM, -1, 1, true);
-
         //! 各位置を
         int armDegrees = ev3_motor_get_counts(EV3_MOTOR_ARM);
 
         //! 前回のときの角位置と同じかどうか
         if(armDegrees == LastArmDegrees){
             NotChangeDegreesCount++;
+            tslp_tsk(500);
+        }else{
+            NotChangeDegreesCount = 0;
         }
 
         //! 10回以上角位置が動いていない（駆動域の限界まできたと判断）
         if(NotChangeDegreesCount > 10){
+            ev3_speaker_play_tone(NOTE_A4, 100);
             break;
         }
+        LastArmDegrees = armDegrees;
     }
 
+    ev3_motor_stop(EV3_MOTOR_ARM, true);
+    ev3_motor_reset_counts(EV3_MOTOR_ARM);
     //! 角度が変化しないところから一定のところに戻す
-    ER result = ev3_motor_rotate(EV3_MOTOR_ARM, initializePosition, 1, true);
+    result = ev3_motor_rotate(EV3_MOTOR_ARM, initializePosition, 1, true);
     if (result == E_OK) {
-        writeFloatLCD(ev3_motor_get_counts(EV3_MOTOR_ARM));
-        ev3_speaker_play_tone(NOTE_A4, 100);
+        ev3_speaker_play_tone(NOTE_A6, 100);
     }
 
 }
