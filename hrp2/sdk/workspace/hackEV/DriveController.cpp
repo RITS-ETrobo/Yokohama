@@ -245,10 +245,11 @@ bool DriveController::runAsPattern(scenario_running scenario)
         motorWheelRight->run(scenario.power);
         motorWheelLeft->stop();
         break;
-        
-    case NOTRACE_CURVE:
-        //! 【ToDo 角度を暫定的に代入】
-        curveRun(scenario.power, scenario.curveDirection);
+    
+
+    case NOTRACE_CURVE_RIGHT:
+    case NOTRACE_CURVE_LEFT:
+        curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
         break;
 
     default:
@@ -530,30 +531,27 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
 }
 
 /**
- * @brief   目標角度から左右のパワーを算出
+ * @brief   曲率半径から左右のパワーを算出
  * @param   targetDirection  目標角度[°]
  * @param   power  基準のパワー値
  * @param   powerLeft  左モーターへ与える入力
  * @param   powerRight  右モーターへ与える入力
  * @return  なし
  */
-void DriveController::getPowerForTargetDirection(int targetDirection, int power, int *powerLeft, int *powerRight){
+void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight){
     if (power == 0) {
         return;
     }
-    
-    //! 単位[°]をラジアンに変換
-    float targetDirectionRadian = targetDirection * Pi / 180;
 
-    //! 目標の軌道を描くための円半径
-    float radiusForCurve = (power * (speedPerOnePower))  / targetDirectionRadian;
+    //! 指定された曲率半径を指定のパワー値で進むための角速度を算出
+    float targetDirectionRadian = (power * speedPerOnePower) / curvatureRadius;
     
     //! この左右のパワーの差があれば指定した角速度で曲がることができる(speedPerOnePowerは1秒ごとの速度に直している)
     //! 【TODO】speedPerOnePower定数ではなく、ちゃんと速度との変換をする（※そのときは速度の単位に注意にいれること）
     float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(speedPerOnePower); 
 
-    //! 向きの正負によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
-    if(targetDirectionRadian > 0){
+    //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
+    if(pattern == NOTRACE_CURVE_LEFT){
         //! 走行体の中心の速度(左右のホイール速度の平均値)が指定したパワーになるようにする
         *powerLeft = power - abs(adjustPowForCourve / 2);
         *powerRight = power + abs(adjustPowForCourve / 2);
@@ -565,7 +563,7 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
 
     //! 調整後のパワー値が限界値を超えていないか確認
     if(*powerRight > limitPower){
-        //! 目標の軌道を描くための円半径が変わらないように、速度と角速度を調整（参考公式 v = rω）
+        //! 曲率半径が変わらないように、速度と角速度を調整（参考公式 v = rω）
     }
     else if(*powerLeft > limitPower){
 
@@ -596,12 +594,12 @@ void DriveController::getPowerForTargetDirection(int targetDirection, int power,
  * @param   targetDirection  目標角度[°]
  * @return  なし
  */
-void DriveController::curveRun(int power, int targetDirection){
+void DriveController::curveRun(enum runPattern pattern, int power, float curvatureRadius){
     int powerLeft = power;
     int powerRight = power;
     
     //! 補正したパワー値を取得
-    getPowerForTargetDirection(targetDirection, power, &powerLeft, &powerRight);
+    getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
 
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);

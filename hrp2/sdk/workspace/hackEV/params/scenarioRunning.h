@@ -26,8 +26,8 @@ typedef struct {
     //! 走行シナリオが完了した時に急停止するか(trueの場合)
     bool stop;
 
-    //! 曲線の瞬間の角度
-    float curveDirection;
+    //! 曲率半径
+    float curvatureRadius;
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
