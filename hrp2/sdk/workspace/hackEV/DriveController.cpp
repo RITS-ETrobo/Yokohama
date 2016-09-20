@@ -466,11 +466,14 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     //! 走行体が指定した向きになったらストップ
     float directionTotal = getDirection(directionDelta);
     bool isGreaterStopDirection = false;
+    
     int stopDirectionConversion360 = scenario.direction;
     //! マイナス方向を0～360度変換する
     if(scenario.direction < 0){
         stopDirectionConversion360 += 360;
     }
+
+    //! 360度に変換した角度と、マイナス角度どちらでも判定する
     if(directionTotal > stopDirectionConversion360 || directionTotal < scenario.direction){
         isGreaterStopDirection = true;
     }
