@@ -564,6 +564,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     //! 調整後のパワー値が限界値を超えていないか確認
     if(*powerRight > limitPower){
         //! 曲率半径が変わらないように、速度と角速度を調整（参考公式 v = rω）
+
     }
     else if(*powerLeft > limitPower){
 
