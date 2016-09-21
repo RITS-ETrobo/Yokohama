@@ -124,8 +124,14 @@ static void button_clicked_handler(intptr_t button) {
         writeStringLCD("RIGHT button click");
         syslog(LOG_NOTICE, "RIGHT button clicked.");
 
+        //! 超音波センサー有効化
+        sonarSensorController->setEnabled();
+
         //! 超音波制御
         control_sonarsensor();        
+
+        //! 超音波センサー無効化
+        sonarSensorController->setEnabled(false);
         break;
 
     case UP_BUTTON:

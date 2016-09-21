@@ -114,8 +114,10 @@ void DriveController::run(scenario_running scenario)
         getDelta(&directionDelta, &distanceDelta);
 
         DISTANCE_RECORD record;
+        memset(&record, '\0', sizeof(DISTANCE_RECORD));
         record.currentTime = currentTime;
         record.distanceDelta = distanceDelta;
+        record.directionDelta = directionDelta;
         speedCalculator100ms->add(record);
 
         DISTANCE_RECORD record_lap;
@@ -224,7 +226,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
     switch (scenario.pattern) {
     case PINWHEEL:
         //! その場回転
-        pinWheel(scenario.power);
+        pinWheel(scenario.power, scenario.direction);
         break;
 
     case SWITCH_SIDE_RIGHT:
@@ -319,9 +321,11 @@ void DriveController::straightRun(int power)
 
 /**
  * @brief   その場回転
+ * @param   power   モーターへの入力
+ * @param   degree  回転する向き ※回転方向を決定するためだけに使う
  * @return  なし
  */
-void DriveController::pinWheel(int power)
+void DriveController::pinWheel(int power, int degree)
 {
     int powerLeft = 0;
     int powerRight = 0;
@@ -342,8 +346,10 @@ void DriveController::pinWheel(int power)
         lastPowerRight = powerRight;
     }
     
-    motorWheelLeft->run((-power));
-    motorWheelRight->run(power);
+    //! 止まるときの角度がプラスであれば左周り
+    int sign = (degree >= 0) ? -1 : 1;
+    motorWheelLeft->run(sign *power);
+    motorWheelRight->run(-1 * sign *power);
 }
 
 /**
