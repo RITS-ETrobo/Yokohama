@@ -576,9 +576,19 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
 void DriveController::curveRun(enum runPattern pattern, int power, float curvatureRadius){
     int powerLeft = power;
     int powerRight = power;
+    int limitOverCount = 0;
     
     //! パワー値が限界値を超えないようになるまでループ
     for(;;){
+
+        //! １ずつ調整したパワーが限界値を超えた(または0を下回った)回数が「限界値」そのものを超えると、指定したカーブを曲がれるパワーは限界値内に存在しないということなので、エラーストップさせる
+        if(limitOverCount > limitPower){
+            logger->addLog(LOG_NOTICE, "CurveError");
+            motorWheelLeft->stop(false);
+            motorWheelRight->stop(false);
+            return;
+        }
+
         //! カーブの曲率半径に適した左右のパワー値を取得
         getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
 
@@ -586,6 +596,7 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
         if(powerRight > limitPower|| powerLeft > limitPower){
             //! 超えていたらパワーを下げて再度取得する
             power--;
+            limitOverCount++;
             continue;
         }
 
@@ -593,6 +604,7 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
         if(powerRight < 0 || powerRight < 0){
             //! 超えていたらパワーを上げて再度取得する
             power++;
+            limitOverCount++;
             continue;
         }
 
