@@ -186,7 +186,7 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
     float deviation = targetDistance - movedDistance;
     
     //! 左右の差が「1パワー分の100ms間の走行距離」ごとに、１パワーずつ補正をかける(分母を速度を100msごとになるよう1/10にすると分母が小さくなりすぎるため、分子を10倍)
-    int correctAddPower = deviation*10 / speedPerOnePower;
+    int correctAddPower = deviation / speedPerOnePower * 10;
     
     return correctAddPower;
 }
