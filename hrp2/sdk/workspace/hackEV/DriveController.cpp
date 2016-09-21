@@ -548,11 +548,11 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     }
 
     //! 指定された曲率半径を指定のパワー値で進むための角速度を算出
-    float targetDirectionRadian = (power * speedPerOnePower) / curvatureRadius;
+    float targetDirectionRadian = power * speedPerOnePower / curvatureRadius;
 
     //! この左右のパワーの差があれば指定した角速度で曲がることができる
     //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする?
-    float adjustPowForCourve = (targetDirectionRadian * EV3_TREAD)/(speedPerOnePower); 
+    float adjustPowForCourve = targetDirectionRadian * EV3_TREAD / speedPerOnePower; 
 
     //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
     if(pattern == NOTRACE_CURVE_LEFT){
