@@ -21,6 +21,10 @@ public:
     virtual bool initialize();
     virtual void run(scenario_running scenario);
     virtual ER stop(bool_t brake = true);
+    virtual void straightRun(int power);
+    virtual void pinWheel(int power, int degree);
+    virtual void storageDeltaForSpeed(float directionDelta, float distanceDelta);
+    virtual void outputSpeedLog();
 
 protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
@@ -35,8 +39,6 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
 
 private:
-    void pinWheel(int power, int degree);
-    void straightRun(int power);
     void change_LineSide(scenario_running scenario);
 
     //! 左ホイールクラスのインスタンス

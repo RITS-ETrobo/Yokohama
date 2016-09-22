@@ -108,20 +108,14 @@ void DriveController::run(scenario_running scenario)
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
-        SYSTIM  currentTime = clock->now();
+        
         float   distanceDelta = 0.0F;
         float   directionDelta = 0.0F;
         getDelta(&directionDelta, &distanceDelta);
 
-        DISTANCE_RECORD record;
-        memset(&record, '\0', sizeof(DISTANCE_RECORD));
-        record.currentTime = currentTime;
-        record.distanceDelta = distanceDelta;
-        record.directionDelta = directionDelta;
-        speedCalculator100ms->add(record);
+        storageDeltaForSpeed(directionDelta, distanceDelta);
 
-        DISTANCE_RECORD record_lap;
-        float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
+        outputSpeedLog();
         if (stopByDistance(scenario, distanceDelta)) {
             return;
         }
@@ -130,6 +124,31 @@ void DriveController::run(scenario_running scenario)
             return;
         }
     }
+}
+
+/**
+ * @brief   スピード算出のためのDelta値をレコードに格納
+ * @param   [in] scenario 走行パラメータ
+ * @return  なし
+*/
+void storageDeltaForSpeed(float directionDelta, float distanceDelta){
+    SYSTIM  currentTime = clock->now();
+    DISTANCE_RECORD record;
+    memset(&record, '\0', sizeof(DISTANCE_RECORD));
+    record.currentTime = currentTime;
+    record.distanceDelta = distanceDelta;
+    record.directionDelta = directionDelta;
+    speedCalculator100ms->add(record);
+}
+
+/**
+ * @brief   スピードログを出力させる
+ * @param   [in] scenario 走行パラメータ
+ * @return  なし
+*/
+void outputSpeedLog(){
+    DISTANCE_RECORD record_lap;
+    float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
 }
 
 /**

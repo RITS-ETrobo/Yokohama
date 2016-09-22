@@ -30,7 +30,10 @@ APPL_CXXOBJS += \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \
-    ArmModule.o
+    ArmModule.o \
+    Scenario.o \
+    DistanceRunScenario.o \
+    ScenarioManajer.o
 
 SRCLANG := c++
 
@@ -45,10 +48,12 @@ APPL_DIR += \
     $(mkfile_path)sensors \
     $(mkfile_path)motors \
     $(mkfile_path)params \
-    $(mkfile_path)params/machine
+    $(mkfile_path)params/machine \
+    $(mkfile_path)scenarios
 
 INCLUDES += \
     -I$(mkfile_path)sensors \
     -I$(mkfile_path)motors \
     -I$(mkfile_path)params \
-    -I$(mkfile_path)params/machine
+    -I$(mkfile_path)params/machine \
+    -I$(mkfile_path)scenarios
