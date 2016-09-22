@@ -23,6 +23,7 @@ public:
     virtual void updateDistance(); 
     virtual float getDistance();
     virtual float getDistanceDelta();
+    virtual int getCurrentPower();
 
 private:
     //! リセットしてから、どれくらい走ったか。前回までにホイールが移動した位置[単位 : cm]
@@ -38,5 +39,8 @@ private:
     //@{
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
+
+    //! 現在のモーターのパワー
+    int currentPower;
     //@}
 };
