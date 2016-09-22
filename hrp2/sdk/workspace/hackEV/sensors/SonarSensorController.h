@@ -4,19 +4,30 @@
  */
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "product.h"
+#include "portSettings.h"
 
-//! ターゲット依存の定義
-#include "target_test.h"
+class SonarSensorController
+{
+public:
+    explicit SonarSensorController(sensor_port_t _port);
 
-//  関数のプロトタイプ宣言
-extern void	initialize_sonarsensor();
-extern void control_sonarsensor();
+    virtual bool initialize();
+    virtual void setEnabled(bool _enabled = true);
+    virtual bool isEnabled() { return enabled; };
+    virtual int16_t executeSonar();
 
-extern void setEnabledSonarSensor(bool _enabledSonarSensor);
+#ifndef EV3_UNITTEST
+    virtual void confirm(int16_t distance);
+#endif  //  EV3_UNITTEST
 
-#ifdef __cplusplus
-}
-#endif
+private:
+    //! 超音波センサーのポート
+    sensor_port_t   port;
+
+    //! trueの場合に、超音波センサーを使用するかどうか
+    bool    enabled;
+
+    //! 初期化済み判定フラグ
+    bool    initialized;
+};
