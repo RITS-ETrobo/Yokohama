@@ -249,7 +249,14 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     case NOTRACE_CURVE_RIGHT:
     case NOTRACE_CURVE_LEFT:
-        curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
+        {
+            bool curveError = curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
+            
+            //! カーブにエラーがある場合
+            if(curveError){
+                return true;
+            }
+        }
         break;
 
     default:
@@ -571,9 +578,9 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
  * 座標移動で瞬間ごとの目標向きを入れることで点移動が可能になる(?)
  * @param   power  基準のパワー値
  * @param   targetDirection  目標角度[°]
- * @return  なし
+ * @return  エラーがあるかどうか(指定した曲線で曲がれないときはtrue、曲線を問題なく曲がれる場合はfalse)
  */
-void DriveController::curveRun(enum runPattern pattern, int power, float curvatureRadius){
+bool DriveController::curveRun(enum runPattern pattern, int power, float curvatureRadius){
     int powerLeft = power;
     int powerRight = power;
     int limitOverCount = 0;
@@ -584,9 +591,9 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
         //! １ずつ調整したパワーが限界値を超えた(または0を下回った)回数が「限界値」そのものを超えると、指定したカーブを曲がれるパワーは限界値内に存在しないということなので、エラーストップさせる
         if(limitOverCount > limitPower){
             logger->addLog(LOG_NOTICE, "CurveError");
-            motorWheelLeft->stop(false);
-            motorWheelRight->stop(false);
-            return;
+            motorWheelLeft->stop(true);
+            motorWheelRight->stop(true);
+            return true;
         }
 
         //! カーブの曲率半径に適した左右のパワー値を取得
@@ -618,4 +625,6 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);
     motorWheelRight->run(powerRight);
+
+    return false;
 }
