@@ -84,13 +84,24 @@ int16_t GyroSensorController::getGyroRate()
 
 /**
  * @brief   ステージに乗ったかどうかのジャイロ判定を更新する。
- * @return  なし
+ * @return  ステージに乗っているならばtrue
  */
 bool GyroSensorController::isStaged()
 {
+    static bool beforeStagingCheck = false;
     gyroRate = ev3_gyro_sensor_get_rate(port);
-    staged = (gyroRate < STAGE_ON_THRESHOLD);
+
+    //前回の判定時にステージ乗り上げ判定があれば、
+    //同じ乗り降り時の判定と捉えてチェックしない。
+    if (beforeStagingCheck == false) {
+        return false;
+    }
+
+    //段差乗り降り判定
+    if (gyroRate >= STAGE_ON_THRESHOLD) {
+        beforeStagingCheck = staged = !staged;
+    }
+
     return staged;
 }
-
 
