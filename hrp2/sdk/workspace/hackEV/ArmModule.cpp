@@ -18,7 +18,7 @@
 float sumArmMotorRotate = 0.0F;
 
 //! 下向き側の駆動域の限界から何度戻したところを初期位置とするか(実際に動かす際には、この値はinitialize_armでリセットされているため考慮する必要はない)
-int initializePosition = 38;
+int initializePosition = 37;
 
 //@}
 
@@ -103,8 +103,8 @@ ER initialize_arm_position()
             NotChangeDegreesCount = 0;
         }
 
-        //! 10回以上角位置が動いていない（駆動域の限界まできたと判断）
-        if(NotChangeDegreesCount > 10){
+        //! 3秒(0.5秒×6回)以上角位置が動いていない（駆動域の限界まできたと判断）
+        if(NotChangeDegreesCount > 6){
             ev3_speaker_play_tone(NOTE_A4, 100);
             break;
         }
