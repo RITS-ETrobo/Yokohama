@@ -53,7 +53,7 @@
 ---
 
 # 確認結果
-指摘がある場合は、コメントを残す事(参照 : [About pull request reviews - User Documentation](https://help.github.com/articles/about-pull-request-reviews/])
+指摘がある場合は、コメントを残す事(参照 : [About pull request reviews - User Documentation](https://help.github.com/articles/about-pull-request-reviews/]))
 
 # 終了条件
 以下が確認できた時に、本Pull requestをマージし、終了する。
