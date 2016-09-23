@@ -120,3 +120,43 @@ ER initialize_arm_position()
     }
 
 }
+
+/**
+ * @brief   ブロックを投げ飛ばす動きをする。
+ *
+ * @param   beforeSetDown  投げ飛ばし動作前に真下に向けるならばtrue
+ * @param   afterSetOriginalPosition    投げ飛ばし後に元の位置に戻すならばtrue
+ * @return  ev3_motor_rotate() 参照
+ */
+ER move_arm_throw_block(bool beforeSetDown = false, bool afterSetOriginalPosition = false)
+{
+    //! 投げ飛ばすときのアームの目標角度
+    const int ARM_DEGREE_TOP = 88;
+    //! 投げ飛ばすときのアーム速度
+    const int ARM_SPEED_THROW = 100;
+
+    //! 投げ飛ばし前後の動作のアーム速度
+    const int ARM_SPEED_DEFAULT = 30;
+
+    //! 次の動作に移る際の遅延時間[ms]
+    const int DELAY_INTERVAL = 500;
+
+    //! 呼ばれた時点の角度
+    int armAngle = ev3_motor_get_counts(EV3_MOTOR_ARM);
+
+    ER result;
+    if (beforeSetDown) {
+        move_arm(0, ARM_SPEED_DEFAULT, false);
+        tslp_tsk(DELAY_INTERVAL);
+    }
+
+    result = move_arm(ARM_DEGREE_TOP, ARM_SPEED_THROW, false);
+
+    if (afterSetOriginalPosition) {
+        tslp_tsk(DELAY_INTERVAL);
+        move_arm(armAngle, ARM_SPEED_DEFAULT, false);
+    }
+
+    return result;
+}
+
