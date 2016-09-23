@@ -25,6 +25,7 @@ APPL_CXXOBJS += \
     GyroSensorController.o \
     MotorWheel.o \
     DriveController.o \
+    EV3Position.o \
     SpeedCalculator.o \
     LCDController.o \
     pid_controller.o \

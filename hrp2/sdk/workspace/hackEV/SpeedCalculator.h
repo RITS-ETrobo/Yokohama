@@ -7,20 +7,7 @@
 //! ターゲット依存の定義
 #include "product.h"
 
-
-#include <vector>
-
-//! @struct 速度を算出する為の情報を格納する構造体
-typedef struct {
-    //! タイマー開始からの経過時間[単位 : ms]
-    SYSTIM  currentTime;
-
-    //! 前回の測定から進んだ距離(差分)[単位 : cm]
-    float   distanceDelta;
-
-    //! 現在までに進んだ距離(累積)[単位 : cm]
-    float   distance;
-} DISTANCE_RECORD;
+#include "EV3Position.h"
 
 /**
  * @enum typeRelated    どのモジュールから呼び出したかを区別する
@@ -37,21 +24,32 @@ enum typeRelated {
 };
 
 //! Class for speed
-class SpeedCalculator
+class SpeedCalculator : public EV3Position
 {
 public:
     explicit SpeedCalculator(SYSTIM duration_ = 0, typeRelated type_ = TYPE_RELATED_DRIVE_CONTROLLER);
-
     virtual void initialize();
+    virtual void reset();
     virtual void add(DISTANCE_RECORD record);
     virtual float getSpeed(DISTANCE_RECORD *record);
+    virtual float getDirection();
 
 private:
-    void removeExceededTimeItem();
+    //! 平均速度算出に必要な時間[単位 : ms]
     SYSTIM  duration;
-    std::vector<DISTANCE_RECORD>    distance_record;
+
+    //! 速度用ログ(LOG_TYPE_AVERAGE_SPEED***)
     uint_t logType_speed;
+
+    //! 距離用ログ(LOG_TYPE_AVERAGE_DISTANCE***)
     uint_t logType_distance;
+
+    //! 時刻用ログ(LOG_TYPE_AVERAGE_TIME***)
     uint_t logType_time;
+
+    //! 対象モジュール
     typeRelated typeRelatedUsing;
+
+    //! 初期化済み判定フラグ
+    bool    initialized;
 };

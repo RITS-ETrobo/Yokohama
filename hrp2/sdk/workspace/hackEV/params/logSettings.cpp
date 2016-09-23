@@ -43,8 +43,11 @@ const uint_t LOG_TYPE_DIRECTION = 0x85;
 //! 角度(累積)
 const uint_t LOG_TYPE_DIRECTION_TOTAL = 0x86;
 
-//! ジャイロ
+//! ジャイロセンサー
 const uint_t LOG_TYPE_GYRO = 0x87;
+
+//! 超音波センサー
+const uint_t LOG_TYPE_SONAR = 0xA5;
 
 //! ログを書き出している時間
 const uint_t LOG_TYPE_WRITE_PROCESSING = 0x88;
@@ -155,6 +158,7 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_INFO, "Info");
     initialize_logSetting_map(LOG_DEBUG, "Debug");
     initialize_logSetting_map(LOG_TYPE_GYRO, "Gyro");
+    initialize_logSetting_map(LOG_TYPE_SONAR, "Sonar", 100);
     initialize_logSetting_map(LOG_TYPE_PID, "PID");
     initialize_logSetting_map(LOG_TYPE_COLOR, "Color");
     initialize_logSetting_map(LOG_TYPE_COLOR_BLACK, "Color(Black)");

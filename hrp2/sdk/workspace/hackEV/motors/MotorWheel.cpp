@@ -15,6 +15,7 @@ MotorWheel::MotorWheel(motor_port_t portMotor_)
     , portMotor(portMotor_)
     , speedCalculator100ms(NULL)
     , initialized(false)
+    , currentPower(0)
 {
 }
 
@@ -24,6 +25,7 @@ bool MotorWheel::initialize()
         ev3_motor_reset_counts(portMotor);
         distance = 0.0F;
         distanceLast = 0.0F;
+        currentPower = 0;
     }
     
     if (speedCalculator100ms == NULL) {
@@ -40,14 +42,22 @@ bool MotorWheel::initialize()
 }
 
 /**
- * @brief 	     モータを停止する
- * @param  brake ブレーキモードの指定，@a true （ブレーキモード）, @a false （フロートモード）
+ * @brief 	     モータにパワーを設定する
+ * @param  power セットするパワー値。現在セットされているパワーと同じならセットしない。
  * @retval E_OK  正常終了
  * @retval E_ID  不正のモータポート番号
  * @retval E_OBJ モータ未接続
  */
 ER MotorWheel::run(int power)
 {
+    //! モーターのパワーが現在と同じならAPIに設定をしなおさない（モーターAPIへ無駄な付加をかけない）
+    if(power == currentPower){
+        return E_OK;
+    }
+
+    //! 現在の値として保持
+    currentPower = power;
+
     return  ev3_motor_set_power(portMotor, power);
 }
 
@@ -64,6 +74,9 @@ ER MotorWheel::stop(bool_t brake /*= true*/)
         logger->addLogFloat((portMotor == EV3_MOTOR_LEFT) ? LOG_TYPE_DISTANCE_LEFT_TOTAL : LOG_TYPE_DISTANCE_RIGHT_TOTAL, distance, true);
     }
 
+    //! ストップした場合は現在保持しているパワー値を0にリセット
+    currentPower = 0;
+
     return  ev3_motor_stop(portMotor, brake);
 }
 
@@ -77,6 +90,11 @@ float MotorWheel::getDistance()
     return  distance;
 }
 
+int MotorWheel::getCurrentPower()
+{
+    return currentPower;
+}
+
 float MotorWheel::getDistanceDelta()
 {
     SYSTIM  currentTime = clock->now();
@@ -88,6 +106,7 @@ float MotorWheel::getDistanceDelta()
     }
 
     DISTANCE_RECORD record;
+    memset(&record, '\0', sizeof(DISTANCE_RECORD));
     record.currentTime = currentTime;
     record.distanceDelta = distanceDelta;
     speedCalculator100ms->add(record);
