@@ -200,6 +200,7 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
 float DriveController::getDistance(float distanceDelta)
 {
     distanceScenario += distanceDelta;
+    distanceTotal += distanceDelta;
     return  distanceScenario;
 }
 
@@ -211,6 +212,7 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionScenario += directionDelta;
+    directionTotal += distanceDelta;
     return  directionScenario;
 }
 
@@ -430,7 +432,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
     }
 
     //! 走行体が指定距離走行したらストップ
-    distanceTotal += getDistance(distanceDelta);
+    getDistance(distanceDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, scenario.distance);
     if (isGreaterValue && scenario.stop) {
         stop();
@@ -459,7 +461,7 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     }
 
     //! 走行体が指定した向きになったらストップ
-    directionTotal += getDirection(directionDelta);
+    getDirection(directionDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
     if (isGreaterValue && scenario.stop){
         stop();
