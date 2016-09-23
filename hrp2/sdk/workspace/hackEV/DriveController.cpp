@@ -430,17 +430,16 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
     }
 
     //! 走行体が指定距離走行したらストップ
-    float   distance = getDistance(distanceDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, scenario.distance);
+    distanceTotal += getDistance(distanceDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, scenario.distance);
     if (isGreaterValue && scenario.stop) {
         stop();
     }    
 
-    distanceTotal += distance;
     if (logger && (distanceDelta != 0)) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario, isGreaterValue);
     }
 
     return  isGreaterValue;
@@ -458,17 +457,16 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     if (scenario.direction == -1) {
         return  false;
     }
-    
+
     //! 走行体が指定した向きになったらストップ
-    float   direction = getDirection(directionDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
+    directionTotal += getDirection(directionDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
     if (isGreaterValue && scenario.stop){
         stop();
     }
 
-    directionTotal += direction;
     if (logger && (directionDelta != 0)) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario, isGreaterValue);
     }
 
     return  isGreaterValue;
