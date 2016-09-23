@@ -53,13 +53,7 @@
 ---
 
 # 確認結果
-* 実装した人 : Assignee参照
-* ソースコードの確認結果
-  - [ ] OK
-  - [ ] NG : 該当箇所にコメントを入れる事
-* それ以外の指摘
-  - [ ] あり : 詳細はコメントを追加する事
-  - [ ] なし
+指摘がある場合は、コメントを残す事(参照 : [About pull request reviews - User Documentation](https://help.github.com/articles/about-pull-request-reviews/])
 
 # 終了条件
 以下が確認できた時に、本Pull requestをマージし、終了する。
