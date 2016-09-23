@@ -212,7 +212,7 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionScenario += directionDelta;
-    directionTotal += distanceDelta;
+    directionTotal += directionDelta;
     return  directionScenario;
 }
 
