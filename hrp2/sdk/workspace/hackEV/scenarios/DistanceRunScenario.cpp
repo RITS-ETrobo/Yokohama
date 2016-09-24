@@ -35,7 +35,7 @@ DistanceRunScenario::DistanceRunScenario(int power, float stopDistance, bool fin
 */
 void DistanceRunScenario::initialize(){
     driveController->initialize();
-    driveController->setLastWheelPower((-1)*power, power);
+    driveController->setLastWheelPower(power, power);
     if (logger) {
         logger->addLog(LOG_NOTICE, "RunScenario");
         logger->addLogInt(LOG_TYPE_SCENARIO_POWER, power);
