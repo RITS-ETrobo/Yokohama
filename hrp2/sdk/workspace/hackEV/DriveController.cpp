@@ -29,9 +29,9 @@ DriveController::DriveController()
     , lastPowerRight(0)
     , lastTime(0)
     , DURATION(100.0F)
-    , speedCalculator100ms(NULL)
     , limitPower(55)
     , speedPerOnePower(0.84107F)
+    , speedCalculator100ms(NULL)
     , initialized(false)
 {
 }
