@@ -4,7 +4,6 @@
  */
 #include "EV3Position.h"
 #include "instances.h"
-#include <math.h>
 
 /**
  *  @brief  コンストラクタ
@@ -73,13 +72,9 @@ void EV3Position::add(DISTANCE_RECORD record)
     }
 
     distance_record.push_back(record);
-    bool deleteValue = removeExceededTimeItem();
+    removeExceededTimeItem();
     direction = record.direction;
     updateSpeed();
-    if (deleteValue || (size == 0)) {
-        int distance = distance_record.at(distance_record.size() - 1).distance - distance_record.at(0).distance;
-        movePosition(&currentPositionREAL, distance, direction, CORRECT_POSITION_REAL);
-    }
 }
 
 /**
@@ -164,126 +159,4 @@ float EV3Position::getSpeed(DISTANCE_RECORD *record)
 float EV3Position::getDirection()
 {
     return  direction;
-}
-
-/**
- *  @brief  走行体の現在位置を取得する
- *  @param  positionREAL    実際の座標
- *  @param  positionMAP     マップ上の座標
- *  @param  direction_      向き[単位 : 度]
- *  @return true : 取得できた false : パラメーターエラー
-*/
-bool EV3Position::getPosition(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, float *direction_)
-{
-    if ((positionREAL == NULL) || (positionMAP == NULL) || (direction_ == NULL)) {
-        return  false;
-    }
-
-    memcpy((void*)positionREAL, (const void*)&currentPositionREAL, sizeof(EV3_POSITION));
-    memcpy((void*)positionMAP, (const void*)&currentPositionMAP, sizeof(EV3_POSITION));
-    *direction_ = direction;
-    return  true;
-}
-
-/**
- *  @brief  走行体の座標を指定した位置に移動させる
- *  @param  position    座標
- *  @param  distance_   前回の測定から移動した距離[単位 : cm]
- *  @param  direction_  前回の測定から移動した角度[単位 : 度]
- *  @param  updateType  どの値を更新するか
- *  @param  beCorrected 値を補正するか
- *  @return true : 動かすことができる場合
-*/
-bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float direction_, uint8_t updateType /*= 0*/, bool beCorrected /*= true*/)
-{
-    if (isValidUpdateType(updateType) == false) {
-        return  false;
-    }
-
-    if (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) {
-        if (isValidPosition(position, (updateType == CORRECT_POSITION_REAL) ? true : false, beCorrected) == false) {
-            return  false;
-        }
-
-        double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
-        position->x += distance_ * cos(degreeByRadian);
-        position->y += distance_ * sin(degreeByRadian);
-    }
-
-    synchronizePosition(*position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
-    return  true;
-}
-/**
- *  @brief  走行体の現在位置を同期する
- *  @param  position    座標
- *  @param  updateType  どの値を更新するか
- *  @return なし
-*/
-void EV3Position::synchronizePosition(EV3_POSITION position, uint8_t updateType /*= 0*/)
-{
-    if (isValidUpdateType(updateType) == false) {
-        return;
-    }
-
-    if (updateType & CORRECT_POSITION_REAL) {
-        memcpy((void*)&currentPositionREAL, (const void*)&position, sizeof(EV3_POSITION));
-        convertPostion(&currentPositionREAL, &currentPositionMAP);
-    } else if (updateType & CORRECT_POSITION_MAP) {
-        memcpy((void*)&currentPositionMAP, (const void*)&position, sizeof(EV3_POSITION));
-        convertPostion(&currentPositionREAL, &currentPositionMAP, false);
-    }
-}
-
-/**
- *  @brief  updateTypeが適正かを確認する
- *  @param  updateType  どの値を更新するか
- *  @return 値が適正ならtrue
-*/
-bool EV3Position::isValidUpdateType(uint8_t updateType)
-{
-    return  (bool)(updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP | CORRECT_DIRECTION));
-}
-
-/**
- *  @brief  位置が適正かを確認する
- *  @param  position    座標
- *  @param  isPositionREAL  実際の位置を確認するか
- *  @param  beCorrected 値を補正するか
- *  @return 値が適正ならtrue
-*/
-bool EV3Position::isValidPosition(EV3_POSITION *position, bool isPositionREAL /*= true*/, bool beCorrected /*= true*/)
-{
-    if (position == NULL) {
-        return  false;
-    }
-
-    return  true;
-}
-
-/**
- *  @brief  走行体の座標を指定した位置に移動させる
- *  @param  positionREAL    現実の座標
- *  @param  positionMAP     マップの座標
- *  @param  isExchangeReal2MAP  true : 現実→マップ false : マップ→現実
- *  @return true : 変換完了した場合
-*/
-bool EV3Position::convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, bool isExchangeReal2MAP /*= true*/)
-{
-    if (isValidPosition(positionREAL) == false) {
-        return  false;
-    }
-
-    if (isValidPosition(positionMAP) == false) {
-        return  false;
-    }
-
-    if (isExchangeReal2MAP) {
-        positionMAP->x = positionREAL->x * 2 / (float)7;
-        positionMAP->y = positionREAL->y * 2 / (float)7;
-    } else {
-        positionREAL->x = positionMAP->x * 7 / (float)2;
-        positionREAL->y = positionMAP->y * 7 / (float)2;
-    }
-
-    return  true;
 }
