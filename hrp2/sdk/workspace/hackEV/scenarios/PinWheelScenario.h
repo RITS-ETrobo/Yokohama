@@ -18,7 +18,7 @@
 class PinWheelScenario : public Scenario
 {
 public:
-    explicit PinWheelScenario(int power, float stopDistance, bool finishedStop);
+    explicit PinWheelScenario(int power, float stopDirection, bool finishedStop);
 
     void initialize();
 
@@ -32,7 +32,7 @@ protected:
 
 private:
     int power;
-    float stopDistance;
+    float stopDirection;
     bool finishedStop;
     float directionLast;
     float distanceDelta;

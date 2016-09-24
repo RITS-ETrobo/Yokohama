@@ -73,15 +73,15 @@ void DistanceRunScenario::Act(){
 */
 bool DistanceRunScenario::Stop(){
     //! 走行体が指定距離走行したらストップ
-    float   distanceTotal = driveController->getDistance(distanceDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, stopDistance);
+    float   distanceScenario = driveController->getDistance(distanceDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, stopDistance);
     if (isGreaterValue && finishedStop) {
         driveController->stop();
     }    
 
     if (logger && (distanceDelta != 0)) {
         //ログが多くなり過ぎて、異常終了する為、コメント
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario, isGreaterValue);
     }
     return  isGreaterValue;
 }

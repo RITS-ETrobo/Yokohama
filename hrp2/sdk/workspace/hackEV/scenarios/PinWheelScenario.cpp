@@ -19,9 +19,9 @@
 #include "PinWheelScenario.h"
 
 //! 距離まで走るクラス
-PinWheelScenario::PinWheelScenario(int power, float stopDistance, bool finishedStop)
+PinWheelScenario::PinWheelScenario(int power, float stopDirection, bool finishedStop)
     : power(power)
-    , stopDistance(stopDistance)
+    , stopDirection(stopDirection)
     , finishedStop(finishedStop)
     , directionLast(0.0F)
     , distanceDelta(0.0F)
@@ -37,9 +37,9 @@ void PinWheelScenario::initialize(){
     driveController->initialize();
     driveController->setLastWheelPower((-1)*power, power);
     if (logger) {
-        logger->addLog(LOG_NOTICE, "RunScenario");
+        logger->addLog(LOG_NOTICE, "PinWheelScenario");
         logger->addLogInt(LOG_TYPE_SCENARIO_POWER, power);
-        logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, stopDistance);
+        logger->addLogFloat(LOG_TYPE_SCENARIO_DIRECTION, stopDirection);
         logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)finishedStop);
     }
     driveController->setLastTime(clock->now());
@@ -53,7 +53,7 @@ void PinWheelScenario::Act(){
     initialize();
 
     for(;;){
-        driveController->straightRun(power);
+        driveController->pinWheel(power, stopDirection);
         
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);//今も必要？
@@ -72,16 +72,16 @@ void PinWheelScenario::Act(){
  * @brief   停止
 */
 bool PinWheelScenario::Stop(){
-    //! 走行体が指定距離走行したらストップ
-    float   distanceTotal = driveController->getDistance(distanceDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, stopDistance);
+    //! 走行体が指定の向きに達したらストップ
+    float   directionScenario = driveController->getDirection(directionDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, stopDirection);
     if (isGreaterValue && finishedStop) {
         driveController->stop();
     }    
 
     if (logger && (distanceDelta != 0)) {
         //ログが多くなり過ぎて、異常終了する為、コメント
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario, isGreaterValue);
     }
     return  isGreaterValue;
 }
