@@ -119,6 +119,7 @@ ER initialize_arm_position()
         ev3_speaker_play_tone(NOTE_A6, 100);
     }
 
+    return  result;
 }
 
 /**
