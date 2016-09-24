@@ -14,8 +14,6 @@
 #include "portSettings.h"
 
 #include "pid_controller.h"
-
-#include "Scenario.h"
 #include "ScenarioManajer.h"
 
 
@@ -32,6 +30,7 @@ void ScenarioManajer::initialize(){
 
     //! シナリオを設定
     ScenarioList.push_back(new DistanceRunScenario(30, 20.0F, true));
+    ScenarioList.push_back(new PinWheelScenario(30, 180.0F, true));
 }
 
 /**

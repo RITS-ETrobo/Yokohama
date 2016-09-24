@@ -14,6 +14,7 @@
 #include "Scenario.h"
 #include <vector>
 #include "DistanceRunScenario.h"
+#include "PinWheelScenario.h"
 
 using namespace std;
 
