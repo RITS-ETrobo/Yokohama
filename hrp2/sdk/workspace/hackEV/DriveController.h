@@ -25,8 +25,6 @@ public:
     virtual void pinWheel(int power, int degree);
     virtual void storageDeltaForSpeed(float directionDelta, float distanceDelta);
     virtual void outputSpeedLog();
-
-protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
     virtual bool stopByDirection(scenario_running scenario, float directionDelta);
     virtual void getDelta(float *directionDelta, float *distanceDelta);
@@ -37,6 +35,9 @@ protected:
     virtual bool runAsPattern(scenario_running scenario);
     virtual void initializeAsPattern(scenario_running scenario);
     virtual int addAdjustValue(int targetValue, int addvalue);
+    virtual void setLastWheelPower(int leftPower, int rightPower);
+
+protected:
 
 private:
     void change_LineSide(scenario_running scenario);

@@ -31,7 +31,7 @@ void ScenarioManajer::initialize(){
     ScenarioList.clear();
 
     //! シナリオを設定
-    ScenarioList.push_back(new DistanceRunScenario(30, 20.0F));
+    ScenarioList.push_back(new DistanceRunScenario(30, 20.0F, true));
 }
 
 /**
@@ -46,6 +46,6 @@ void ScenarioManajer::act(){
     for(;begin != end; ++begin){
         (*begin)->Act();
   }
-  //! メモリの開放を行うこと
+  //! 【TODO】メモリの開放を行うこと
 
 }

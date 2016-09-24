@@ -33,7 +33,8 @@ APPL_CXXOBJS += \
     ArmModule.o \
     Scenario.o \
     DistanceRunScenario.o \
-    ScenarioManajer.o
+    ScenarioManajer.o \
+    PinWheelScenario.o
 
 SRCLANG := c++
 

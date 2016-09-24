@@ -1,6 +1,6 @@
 /**
- * @file    DistanceRunScenario.cpp
- * @brief   シナリオの親クラス
+ * @file    PinWheelScenario.cpp
+ * @brief  その場回転のシナリオクラス
  */
 #include <string.h>
 #include <stdlib.h>
@@ -16,10 +16,10 @@
 #include "pid_controller.h"
 
 #include "Scenario.h"
-#include "DistanceRunScenario.h"
+#include "PinWheelScenario.h"
 
 //! 距離まで走るクラス
-DistanceRunScenario::DistanceRunScenario(int power, float stopDistance, bool finishedStop)
+PinWheelScenario::PinWheelScenario(int power, float stopDistance, bool finishedStop)
     : power(power)
     , stopDistance(stopDistance)
     , finishedStop(finishedStop)
@@ -33,17 +33,14 @@ DistanceRunScenario::DistanceRunScenario(int power, float stopDistance, bool fin
 /**
  * @brief   初期化
 */
-void DistanceRunScenario::initialize(){
-    driveController->initialize();
-    driveController->setLastWheelPower(power, power);
+void PinWheelScenario::initialize(){
 }
 
 /**
  * @brief   実行
 */
-void DistanceRunScenario::Act(){
-
-    initialize();
+void PinWheelScenario::Act(){
+    driveController->initialize();
 
     for(;;){
         driveController->straightRun(power);
@@ -60,7 +57,7 @@ void DistanceRunScenario::Act(){
 /**
  * @brief   停止
 */
-bool DistanceRunScenario::Stop(){
+bool PinWheelScenario::Stop(){
     //! 走行体が指定距離走行したらストップ
     float   distanceTotal = driveController->getDistance(distanceDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, stopDistance);

@@ -1,6 +1,6 @@
 /**
- * @file    DistanceRunScenario.h
- * @brief   走行シナリオクラス
+ * @file    PinWheelScenario.h
+ * @brief   その場回転シナリオクラス
  */
 #pragma once
 
@@ -14,11 +14,11 @@
 #include "Scenario.h"
 #include "instances.h"
 
-//! Class for DistanceRunScenario
-class DistanceRunScenario : public Scenario
+//! Class for PinWheelScenario
+class PinWheelScenario : public Scenario
 {
 public:
-    explicit DistanceRunScenario(int power, float stopDistance, bool finishedStop);
+    explicit PinWheelScenario(int power, float stopDistance, bool finishedStop);
 
     void initialize();
 

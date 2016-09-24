@@ -116,7 +116,7 @@ void DriveController::run(scenario_running scenario)
         getDelta(&directionDelta, &distanceDelta);
 
         storageDeltaForSpeed(directionDelta, distanceDelta);
-        
+
         outputSpeedLog();
         bool    needReturn = stopByDistance(scenario, distanceDelta) | stopByDirection(scenario, directionDelta);
         if (needReturn) {
@@ -130,7 +130,7 @@ void DriveController::run(scenario_running scenario)
  * @param   [in] scenario 走行パラメータ
  * @return  なし
 */
-void storageDeltaForSpeed(float directionDelta, float distanceDelta){
+void DriveController::storageDeltaForSpeed(float directionDelta, float distanceDelta){
     SYSTIM  currentTime = clock->now();
     DISTANCE_RECORD record;
     memset(&record, '\0', sizeof(DISTANCE_RECORD));
@@ -145,7 +145,7 @@ void storageDeltaForSpeed(float directionDelta, float distanceDelta){
  * @param   [in] scenario 走行パラメータ
  * @return  なし
 */
-void outputSpeedLog(){
+void DriveController::outputSpeedLog(){
     DISTANCE_RECORD record_lap;
     float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
 }
@@ -277,14 +277,26 @@ bool DriveController::runAsPattern(scenario_running scenario)
 }
 
 /**
+ * @brief   ホイールの最後のパワー値をセットする
+ * @param   leftPower    左ホイールの最後のパワー値
+ * @param   rightPower   右ホイールの最後のパワー値
+ * @return  なし
+*/
+void DriveController::setLastWheelPower(int leftPower, int rightPower)
+{
+    lastPowerLeft = leftPower;
+    lastPowerRight = rightPower;
+}
+
+
+/**
  * @brief   走行シナリオに従って、メンバ変数を初期化する
  * @param   scenario    走行シナリオ
  * @return  なし
 */
 void DriveController::initializeAsPattern(scenario_running scenario)
 {
-    lastPowerLeft = scenario.power;
-    lastPowerRight = scenario.power;
+    setLastWheelPower(scenario.power, scenario.power);
 
     switch (scenario.pattern) {
     case PINWHEEL:
@@ -330,8 +342,7 @@ void DriveController::straightRun(int power)
 
         //! 最後の値の更新
         lastTime = currentTime;
-        lastPowerLeft = powerLeft;
-        lastPowerRight = powerRight;
+        setLastWheelPower(powerLeft, powerRight);
     }
 
     //! 実際の回転角度を見ながら左右の出力を調整
