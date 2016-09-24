@@ -14,8 +14,8 @@ MotorWheel::MotorWheel(motor_port_t portMotor_)
     , distance(0.0F)
     , portMotor(portMotor_)
     , speedCalculator100ms(NULL)
-    , initialized(false)
     , currentPower(0)
+    , initialized(false)
 {
 }
 
