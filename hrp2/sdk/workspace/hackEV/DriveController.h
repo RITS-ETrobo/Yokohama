@@ -45,24 +45,18 @@ private:
     //! 右ホイールクラスのインスタンス
     MotorWheel  *motorWheelRight;
 
-    //! 前回の向きの累積[単位 : 度]
-    float   directionLast;
+    //! シナリオごとの向きの累積[単位 : 度]
+    float   directionScenario;
 
-    //! 向きの累積[単位 : 度]
+    //! スタートからの向きの累積[単位 : 度]
     float   directionTotal;
 
-    //! 前回の距離の累積[単位 : cm]
-    float   distanceLast;
+    //! シナリオごとの距離の累積[単位 : cm]
+    float   distanceScenario;
 
-    //! 距離の累積[単位 : cm]
+    //! スタートからの距離の累積[単位 : cm]
     float   distanceTotal;
-    
-    //! 最後に左タイヤの距離を取得したときの値
-    float lastGetDistanceLeft;
-    
-    //! 最後に右タイヤの距離を取得したときの値
-    float lastGetDistanceRight;
-    
+
     //! 最後に左タイヤに設定した出力値
     int lastPowerLeft;
     
@@ -83,4 +77,7 @@ private:
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
     //@}
+
+    //! 初期化済み判定フラグ
+    bool    initialized;
 };
