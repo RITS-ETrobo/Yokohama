@@ -382,7 +382,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float   distanceDelta = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        getDelta(&directionDelta, &distanceDelta);
         firstDirection += directionDelta; 
 
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
@@ -398,7 +398,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     }
     
     //! モーターの回転角、距離、方向を0に戻す
-    driveController->initialize();
+    initialize();
     
     //! 目的の縁まで回転させたらその場回転で向きを戻す
     //ev3_motor_set_power(firstMoveWheel, (power/2));
@@ -406,7 +406,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        getDelta(&directionDelta, &distanceDelta);
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
