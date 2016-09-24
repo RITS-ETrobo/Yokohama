@@ -21,18 +21,17 @@
 DriveController::DriveController()
     : motorWheelLeft(NULL)
     , motorWheelRight(NULL)
-    , directionLast(0.0F)
+    , directionScenario(0.0F)
     , directionTotal(0.0F)
-    , distanceLast(0.0F)
+    , distanceScenario(0.0F)
     , distanceTotal(0.0F)
-    , lastGetDistanceLeft(0.0F)
-    , lastGetDistanceRight(0.0F)
     , lastPowerLeft(0)
     , lastPowerRight(0)
     , lastTime(0)
     , DURATION(100.0F)
     , OnePowerDeviation(0.084107F)
     , speedCalculator100ms(NULL)
+    , initialized(false)
 {
 }
 
@@ -45,14 +44,16 @@ bool DriveController::initialize()
 {
     ev3_speaker_play_tone(NOTE_E4, 100);
 
-    directionLast = 0.0F;
-    directionTotal = 0.0F;
-    distanceLast = 0.0F;
-    distanceTotal = 0.0F;
+    if (initialized == false) {
+        //  最初だけ初期化する
+        directionTotal = 0.0F;
+        distanceTotal = 0.0F;
+        lastTime = 0;
+    }
 
-    lastGetDistanceLeft = 0.0F;
-    lastGetDistanceRight = 0.0F;
-    lastTime = 0;
+    //  シナリオごとに初期化する
+    directionScenario = 0.0F;
+    distanceScenario = 0.0F;
 
     if (motorWheelLeft == NULL) {
         motorWheelLeft = new MotorWheel(EV3_MOTOR_LEFT);
@@ -74,6 +75,7 @@ bool DriveController::initialize()
     motorWheelRight->initialize();
     speedCalculator100ms->initialize();
 
+    initialized = true;
     return  true;
 }
 
@@ -114,13 +116,10 @@ void DriveController::run(scenario_running scenario)
         getDelta(&directionDelta, &distanceDelta);
 
         storageDeltaForSpeed(directionDelta, distanceDelta);
-
+        
         outputSpeedLog();
-        if (stopByDistance(scenario, distanceDelta)) {
-            return;
-        }
-
-        if (stopByDirection(scenario, directionDelta)) {
+        bool    needReturn = stopByDistance(scenario, distanceDelta) | stopByDirection(scenario, directionDelta);
+        if (needReturn) {
             return;
         }
     }
@@ -215,23 +214,25 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
 /**
  * @brief   リセットしてからの走行体中心の移動距離を計算
  * @param   distanceDelta   瞬間の走行体中心の移動距離[単位 : cm]
- * @return  走行距離[単位 : cm]
+ * @return  シナリオでの走行距離[単位 : cm]
 */
 float DriveController::getDistance(float distanceDelta)
 {
+    distanceScenario += distanceDelta;
     distanceTotal += distanceDelta;
-    return  distanceTotal;
+    return  distanceScenario;
 }
 
 /**
  * @brief   リセットしてからの走行体の向きを取得する
  * @param   directionDelta  瞬間の走行体の向き[単位 : 度]
- * @return  走行体の向き[単位 : 度]
+ * @return  シナリオでの走行体の向き[単位 : 度]
 */
 float DriveController::getDirection(float directionDelta)
 {
+    directionScenario += directionDelta;
     directionTotal += directionDelta;
-    return  directionTotal;
+    return  directionScenario;
 }
 
 /**
@@ -400,7 +401,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float   distanceDelta = 0.0F;
     for(;;){
         //! 動いた角度を記録
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        getDelta(&directionDelta, &distanceDelta);
         firstDirection += directionDelta; 
 
         int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
@@ -416,7 +417,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     }
     
     //! モーターの回転角、距離、方向を0に戻す
-    driveController->initialize();
+    initialize();
     
     //! 目的の縁まで回転させたらその場回転で向きを戻す
     //ev3_motor_set_power(firstMoveWheel, (power/2));
@@ -424,7 +425,7 @@ void DriveController::change_LineSide(scenario_running scenario)
     float secondDirection=0.0F;
     for(;;){
         //! 瞬間の向きを取得、累積して走行体の向きを計測
-        driveController->getDelta(&directionDelta, &distanceDelta);
+        getDelta(&directionDelta, &distanceDelta);
         secondDirection += directionDelta; 
 
         //! 走行体が最初に動いた角度分戻ったらストップ
@@ -450,8 +451,8 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
     }
 
     //! 走行体が指定距離走行したらストップ
-    float   distanceTotal = getDistance(distanceDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(distanceTotal, scenario.distance);
+    getDistance(distanceDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, scenario.distance);
     if (isGreaterValue && scenario.stop) {
         stop();
     }    
@@ -459,7 +460,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
     if (logger && (distanceDelta != 0)) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario, isGreaterValue);
     }
 
     return  isGreaterValue;
@@ -477,16 +478,16 @@ bool DriveController::stopByDirection(scenario_running scenario, float direction
     if (scenario.direction == -1) {
         return  false;
     }
-    
+
     //! 走行体が指定した向きになったらストップ
-    float   directionTotal = getDirection(directionDelta);
-    bool isGreaterValue = isGreaterAbsoluteValue(directionTotal, scenario.direction);
+    getDirection(directionDelta);
+    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
     if (isGreaterValue && scenario.stop){
         stop();
     }
 
     if (logger && (directionDelta != 0)) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal, isGreaterValue);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario, isGreaterValue);
     }
 
     return  isGreaterValue;
