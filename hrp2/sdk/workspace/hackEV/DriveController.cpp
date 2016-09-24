@@ -80,6 +80,16 @@ bool DriveController::initialize()
 }
 
 /**
+ * @brief   最後に取得した時間をセット
+ * @param   time 時間
+ * @return  なし
+*/
+void DriveController::setLastTime(SYSTIM time)
+{
+    lastTime = time;
+}
+
+/**
  * @brief   シナリオに従って走る
  * @param   [in] scenario 走行パラメータ
  * @return  なし

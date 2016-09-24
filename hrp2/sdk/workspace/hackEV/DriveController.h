@@ -36,6 +36,7 @@ public:
     virtual void initializeAsPattern(scenario_running scenario);
     virtual int addAdjustValue(int targetValue, int addvalue);
     virtual void setLastWheelPower(int leftPower, int rightPower);
+    virtual void setLastTime(SYSTIM time);
 
 protected:
 

@@ -34,16 +34,30 @@ PinWheelScenario::PinWheelScenario(int power, float stopDistance, bool finishedS
  * @brief   初期化
 */
 void PinWheelScenario::initialize(){
+    driveController->initialize();
+    driveController->setLastWheelPower((-1)*power, power);
+    if (logger) {
+        logger->addLog(LOG_NOTICE, "RunScenario");
+        logger->addLogInt(LOG_TYPE_SCENARIO_POWER, power);
+        logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, stopDistance);
+        logger->addLogInt(LOG_TYPE_SCENARIO_STOP, (int)finishedStop);
+    }
+    driveController->setLastTime(clock->now());
 }
 
 /**
  * @brief   実行
 */
 void PinWheelScenario::Act(){
-    driveController->initialize();
+
+    initialize();
 
     for(;;){
         driveController->straightRun(power);
+        
+        //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
+        tslp_tsk(2);//今も必要？
+        
         driveController->getDelta(&directionDelta, &distanceDelta);
         driveController->storageDeltaForSpeed(directionDelta, distanceDelta);
         driveController->outputSpeedLog();
