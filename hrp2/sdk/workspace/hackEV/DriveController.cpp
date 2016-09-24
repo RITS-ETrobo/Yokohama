@@ -578,7 +578,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
 
 /**
  * @brief   曲線走行
- * ※注意：曲率半径6cm～351cmの範囲内であること。この範囲外はパワーを変更しても指定した曲率半径で曲がれない。
+ * ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外はパワーを変更しても指定した曲率半径で曲がれない。
  * @param   pattern 走行パターン（曲がる方向を判別する目的）
  * @param   power  基準のパワー値
  * @param   curvatureRadius  曲率半径[cm]
