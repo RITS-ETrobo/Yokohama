@@ -9,7 +9,7 @@
 #include "DriveController.h"
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
-#include "ScenarioManajer.h"
+#include "ScenarioManager.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
@@ -28,5 +28,5 @@ extern GyroSensorController* gyroSensorController;
 //! SonarSensorControllerクラスのインスタンス
 extern SonarSensorController    *sonarSensorController;
 
-//! ScenarioManajerクラスのインスタンス　※エラーになってしまう
-// extern ScenarioManajer    *scenarioManajer;
+//! ScenarioManagerクラスのインスタンス　※エラーになってしまう
+//extern ScenarioManager    *scenarioManager;

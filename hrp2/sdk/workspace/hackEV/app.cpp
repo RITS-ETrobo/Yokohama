@@ -18,7 +18,7 @@
 #include "ColorSensorController.h"
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
-#include "ScenarioManajer.h"
+#include "ScenarioManager.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -39,8 +39,8 @@ GyroSensorController* gyroSensorController = NULL;
 //! SonarSensorControllerクラスのインスタンス
 SonarSensorController   *sonarSensorController = NULL;
 
-//! ScenarioManajerクラスのインスタンス
-ScenarioManajer    *scenarioManajer = NULL;
+//! ScenarioManagerクラスのインスタンス
+ScenarioManager    *scenarioManager = NULL;
 
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
@@ -165,7 +165,7 @@ static void button_clicked_handler(intptr_t button) {
         //start_run_test();
 
         //! シナリオを実行
-        scenarioManajer->act();
+        scenarioManager->act();
         break;
         
     case DOWN_BUTTON:
@@ -200,7 +200,7 @@ void main_task(intptr_t unused) {
     clock = new Clock();
     gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
     sonarSensorController = new SonarSensorController(EV3_SENSOR_SONAR);
-    scenarioManajer = new ScenarioManajer();
+    scenarioManager = new ScenarioManager();
     if (logger) {
         logger->initialize();
     }
@@ -226,8 +226,8 @@ void main_task(intptr_t unused) {
         sonarSensorController->initialize();
     }
 
-    if(scenarioManajer){
-        scenarioManajer->initialize();
+    if (scenarioManager) {
+        scenarioManager->initialize();
     }
 
     //! Configure motors
