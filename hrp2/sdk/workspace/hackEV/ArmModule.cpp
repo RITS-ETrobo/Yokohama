@@ -161,3 +161,14 @@ ER move_arm_throw_block(bool beforeSetDown = false, bool afterSetOriginalPositio
     return result;
 }
 
+/**
+ * @brief   アームを水平にする
+ *
+ * @return  ev3_motor_rotate() 参照
+ */
+ER move_arm_horizon()
+{
+    ER result = move_arm(ARM_DEGREE_HORIZON, ARM_SPEED_HORIZON, false);
+    return result;
+}
+
