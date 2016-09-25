@@ -21,123 +21,125 @@ extern const uint8_t OUTPUT_TYPE_LCD;
 
 //! \addtogroup ログの種類(hrp2/include/t_syslog.h での定義も確認する事)
 //@{
-//! PID値に関するログ
-extern const uint_t LOG_TYPE_PID;
+typedef enum
+{
+    //! PID値に関するログ
+    LOG_TYPE_PID = 0x81,
 
-//! 色(多色)に関するログ
-extern const uint_t LOG_TYPE_COLOR;
+    //! 色(多色)に関するログ
+    LOG_TYPE_COLOR,
 
-//! 色(黒)に関するログ
-extern const uint_t LOG_TYPE_COLOR_BLACK;
+    //! 色(黒)に関するログ
+    LOG_TYPE_COLOR_BLACK,
 
-//! 色(白)に関するログ
-extern const uint_t LOG_TYPE_COLOR_WHITE;
+    //! 色(白)に関するログ
+    LOG_TYPE_COLOR_WHITE,
 
-//! 距離(瞬間)
-extern const uint_t LOG_TYPE_DISTANCE;
+    //! 距離(瞬間)
+    LOG_TYPE_DISTANCE,
 
-//! 距離(累積)
-extern const uint_t LOG_TYPE_DISTANCE_TOTAL;
+    //! 距離(累積)
+    LOG_TYPE_DISTANCE_TOTAL,
 
-//! 角度(瞬間)
-extern const uint_t LOG_TYPE_DIRECTION;
+    //! 角度(瞬間)
+    LOG_TYPE_DIRECTION,
 
-//! 角度(累積)
-extern const uint_t LOG_TYPE_DIRECTION_TOTAL;
+    //! 角度(累積)
+    LOG_TYPE_DIRECTION_TOTAL,
 
-//! ジャイロセンサー
-extern const uint_t LOG_TYPE_GYRO;
+    //! ジャイロセンサー
+    LOG_TYPE_GYRO,
 
-//! 超音波センサー
-extern const uint_t LOG_TYPE_SONAR;
+    //! 超音波センサー
+    LOG_TYPE_SONAR,
 
-//! ログを書き出している時間
-extern const uint_t LOG_TYPE_WRITE_PROCESSING;
+    //! ログを書き出している時間
+    LOG_TYPE_WRITE_PROCESSING,
 
-//! 距離(右瞬間)
-extern const uint_t LOG_TYPE_DISTANCE_RIGHT;
+    //! 距離(右瞬間)
+    LOG_TYPE_DISTANCE_RIGHT,
 
-//! 距離(右累積)
-extern const uint_t LOG_TYPE_DISTANCE_RIGHT_TOTAL;
+    //! 距離(右累積)
+    LOG_TYPE_DISTANCE_RIGHT_TOTAL,
 
-//! 距離(左瞬間)
-extern const uint_t LOG_TYPE_DISTANCE_LEFT;
+    //! 距離(左瞬間)
+    LOG_TYPE_DISTANCE_LEFT,
 
-//! 距離(左累積)
-extern const uint_t LOG_TYPE_DISTANCE_LEFT_TOTAL;
+    //! 距離(左累積)
+    LOG_TYPE_DISTANCE_LEFT_TOTAL,
 
-//! バッテリー情報(mA)
-extern const uint_t LOG_TYPE_BATTERY_mA;
+    //! シナリオ情報
+    LOG_TYPE_SCENARIO,
 
-//! バッテリー情報(mV)
-extern const uint_t LOG_TYPE_BATTERY_mV;
+    //! バッテリー情報(mA)
+    LOG_TYPE_BATTERY_mA,
 
-//! シナリオ情報
-extern const uint_t LOG_TYPE_SCENARIO;
+    //! バッテリー情報(mV)
+    LOG_TYPE_BATTERY_mV,
 
-//! シナリオ情報(距離[単位 : cm])
-extern const uint_t LOG_TYPE_SCENARIO_DISTANCE;
+    //! シナリオ情報(距離[単位 : cm])
+    LOG_TYPE_SCENARIO_DISTANCE,
 
-//! シナリオ情報(向き[単位 : 度])
-extern const uint_t LOG_TYPE_SCENARIO_DIRECTION;
+    //! シナリオ情報(向き[単位 : 度])
+    LOG_TYPE_SCENARIO_DIRECTION,
 
-//! シナリオ情報(入力)
-extern const uint_t LOG_TYPE_SCENARIO_POWER;
+    //! シナリオ情報(入力)
+    LOG_TYPE_SCENARIO_POWER,
 
-//! シナリオ情報(走行シナリオの順番)
-extern const uint_t LOG_TYPE_SCENARIO_PATTERN;
+    //! シナリオ情報(走行シナリオの順番)
+    LOG_TYPE_SCENARIO_PATTERN,
 
-//! シナリオ情報(走行シナリオ完了後にストップするか)
-extern const uint_t LOG_TYPE_SCENARIO_STOP;
+    //! シナリオ情報(走行シナリオ完了後にストップするか)
+    LOG_TYPE_SCENARIO_STOP,
 
-//! 初期化
-extern const uint_t LOG_TYPE_INITIALIZE;
+    //! 初期化
+    LOG_TYPE_INITIALIZE,
 
-//! 補正した左モーターの補正値
-extern const uint_t LOG_TYPE_CORRECTED_RATIO_LEFT;
+    //! 補正した左モーターの補正値
+    LOG_TYPE_CORRECTED_RATIO_LEFT,
 
-//! 補正した右モーターの補正値
-extern const uint_t LOG_TYPE_CORRECTED_RATIO_RIGHT;
+    //! 補正した右モーターの補正値
+    LOG_TYPE_CORRECTED_RATIO_RIGHT,
 
-//! 補正した左モーターの出力値
-extern const uint_t LOG_TYPE_CORRECTED_POWER_LEFT;
+    //! 補正した左モーターの出力値
+    LOG_TYPE_CORRECTED_POWER_LEFT,
 
-//! 補正した右モーターの出力値
-extern const uint_t LOG_TYPE_CORRECTED_POWER_RIGHT;
+    //! 補正した右モーターの出力値
+    LOG_TYPE_CORRECTED_POWER_RIGHT,
 
-//! 平均速度
-extern const uint_t LOG_TYPE_AVERAGE_SPEED;
+    //! 平均速度
+    LOG_TYPE_AVERAGE_SPEED,
 
-//! 平均速度(距離)
-extern const uint_t LOG_TYPE_AVERAGE_DISTANCE;
+    //! 平均速度(距離)
+    LOG_TYPE_AVERAGE_DISTANCE,
 
-//! 平均速度(時間)
-extern const uint_t LOG_TYPE_AVERAGE_TIME;
+    //! 平均速度(時間)
+    LOG_TYPE_AVERAGE_TIME,
 
-//! 平均速度(左ホイール)
-extern const uint_t LOG_TYPE_AVERAGE_SPEED_LEFT;
+    //! 平均速度(左ホイール)
+    LOG_TYPE_AVERAGE_SPEED_LEFT,
 
-//! 平均速度(左ホイール距離)
-extern const uint_t LOG_TYPE_AVERAGE_DISTANCE_LEFT;
+    //! 平均速度(左ホイール距離)
+    LOG_TYPE_AVERAGE_DISTANCE_LEFT,
 
-//! 平均速度(左ホイール時間)
-extern const uint_t LOG_TYPE_AVERAGE_TIME_LEFT;
+    //! 平均速度(左ホイール時間)
+    LOG_TYPE_AVERAGE_TIME_LEFT,
 
-//! 平均速度(右ホイール)
-extern const uint_t LOG_TYPE_AVERAGE_SPEED_RIGHT;
+    //! 平均速度(右ホイール)
+    LOG_TYPE_AVERAGE_SPEED_RIGHT,
 
-//! 平均速度(右ホイール距離)
-extern const uint_t LOG_TYPE_AVERAGE_DISTANCE_RIGHT;
+    //! 平均速度(右ホイール距離)
+    LOG_TYPE_AVERAGE_DISTANCE_RIGHT,
 
-//! 平均速度(右ホイール時間)
-extern const uint_t LOG_TYPE_AVERAGE_TIME_RIGHT;
+    //! 平均速度(右ホイール時間)
+    LOG_TYPE_AVERAGE_TIME_RIGHT,
 
-//! カーブするために調整した左モーターのパワー
-extern const uint_t LOG_TYPE_POWER_FOR_CURVE_LEFT;
+    //! カーブするために調整した左モーターのパワー
+    LOG_TYPE_POWER_FOR_CURVE_LEFT,
 
-//! カーブするために調整した右モーターのパワー
-extern const uint_t LOG_TYPE_POWER_FOR_CURVE_RIGHT;
-
+    //! カーブするために調整した右モーターのパワー
+    LOG_TYPE_POWER_FOR_CURVE_RIGHT
+} LOGTYPE;
 //@}
 
 extern void initialize_logSetting();
