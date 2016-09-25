@@ -96,3 +96,12 @@ void confirmBattery(bool isOutputLog /*= false*/)
         logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mA);
     }
 }
+
+/**
+ * 弧度法表記を度数法表記に変換する
+ * @param[in] r 角度[rad]
+ * @return 角度[deg]
+ */
+float to_deg(float r) {
+    return r * 180.0 / Pi;
+}

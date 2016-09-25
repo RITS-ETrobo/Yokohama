@@ -15,6 +15,7 @@
 #include "Logger.h"
 #include <stdlib.h>
 #include "ArmModule.h"
+#include "coordinateScenario.h"
 
 /**
  * @brief   初期化処理
@@ -79,8 +80,13 @@ void start_run_test()
 
     gyroSensorController->setEnabledGyroSensor(true);
 
-    for (int index = 0; index < (int)(sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0])); index++) {
-        driveController->run(run_scenario_test_straght_NoTrace[index]);
+    // for (int index = 0; index < (int)(sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0])); index++) {
+    //     driveController->run(run_scenario_test_straght_NoTrace[index]);
+    // }
+
+    //! 座標シナリオリストを順に実行
+    for (int index = 0; index < (int)(sizeof(test_coordinate) / sizeof(test_coordinate[0])); index++) {
+        driveController->manageMoveCoordinate(test_coordinate[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);

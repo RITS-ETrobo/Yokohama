@@ -4,7 +4,6 @@
  */
 #include <string.h>
 #include <stdlib.h>
-#include <math.h>
 
 #include "instances.h"
 #include "utilities.h"
@@ -333,7 +332,7 @@ void DriveController::straightRun(int power)
  * @param   degree  回転する向き ※回転方向を決定するためだけに使う
  * @return  なし
  */
-void DriveController::pinWheel(int power, int degree)
+void DriveController::pinWheel(int power, float degree)
 {
     int powerLeft = power;
     int powerRight = power;
@@ -455,7 +454,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 }
 
 /**
- * @brief   指定した角度だった場合、走行体を停止させる
+ * @brief   指定した角度だった場合、走行体を停止させる(0度であれば判定しない)
  * @param   scenario    走行シナリオ
  * @param   directionDelta   角度の増分
  * @return  true : 停止可能
@@ -463,7 +462,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
  */
 bool DriveController::stopByDirection(scenario_running scenario, float directionDelta)
 {
-    if (scenario.direction == -1) {
+    if (scenario.direction == 0) {
         return  false;
     }
 
@@ -621,4 +620,62 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);
     motorWheelRight->run(powerRight);
+}
+
+/**
+ * @brief   座標指定移動(その場回転→直進で移動)
+ * @param   power  走行パワー値
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   startDirection 始点での角度
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @param   endDirection 終点での角度
+ * @return  
+ */
+void DriveController::moveCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY){
+    float differenceX = endX - startX;
+    float differenceY = endY - startY;
+
+    //! ｘ座標を基準としたラジアン
+    float Radian = atan2(differenceY, differenceX);
+
+    //! 目標座標までの直線距離
+    float targetDistance = fabsf(fabsf(differenceX)/cos(fabsf(Radian)));
+
+    //! 仮で出力
+    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_LEFT, targetDistance);
+    
+    //! ラジアンを度数変換
+    float deg = to_deg(Radian);
+
+    //! y座標を基準とした角度にする（向きの判定はy座標を基準とした角度になっているため）
+    int sign = (deg >= 0) ? 1 : -1;
+    float targetDirection = sign*(90 - fabsf(deg));
+
+    //! 仮で出力
+    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_RIGHT, targetDirection);
+
+    //! 現在の向きを考慮し、最終的に動く角度を算出
+    float moveDirection = targetDirection - startDirection;
+
+    //! 目標の座標の向きまでその場回転
+    scenario_running pinWheelScenario={30, 0.0F, moveDirection, PINWHEEL, true,0};
+    run(pinWheelScenario);
+    
+    //! 目標の座標まで直進
+    scenario_running straghtScenario={30, targetDistance, 0, NOTRACE_STRAIGHT, true,0};
+    run(straghtScenario);
+}
+
+/**
+ * @brief   座標指定移動のための変数を用意して実行させる
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario){
+    //! [ 【TODO】現在の座標を取得【現在の位置が取得できるようになったら実装TODO】
+
+    //! 仮でスタート地点の座標と角度は0を指定（本当は現在の座標と向きを入れること）
+    moveCoordinate(_coordinateScenario.power, 0,0,0, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }

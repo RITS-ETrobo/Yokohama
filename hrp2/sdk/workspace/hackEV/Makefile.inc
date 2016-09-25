@@ -30,7 +30,8 @@ APPL_CXXOBJS += \
     LCDController.o \
     pid_controller.o \
     RunningModule.o \
-    ArmModule.o
+    ArmModule.o \
+    coordinateScenario.o 
 
 SRCLANG := c++
 

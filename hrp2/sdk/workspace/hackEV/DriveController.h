@@ -6,11 +6,13 @@
 
 //! ターゲット依存の定義
 #include "product.h"
+#include <math.h>
 
 #include "scenarioRunning.h"
 
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
+#include "coordinateScenario.h"
 
 //! Class for driving
 class DriveController
@@ -21,6 +23,7 @@ public:
     virtual bool initialize();
     virtual void run(scenario_running scenario);
     virtual ER stop(bool_t brake = true);
+    virtual void manageMoveCoordinate(scenario_coordinate _coordinateScenario);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
@@ -35,9 +38,10 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
+    virtual void moveCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY);
 
 private:
-    void pinWheel(int power, int degree);
+    void pinWheel(int power, float degree);
     void straightRun(int power);
     void change_LineSide(scenario_running scenario);
 
