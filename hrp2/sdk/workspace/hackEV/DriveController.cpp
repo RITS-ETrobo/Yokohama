@@ -29,7 +29,8 @@ DriveController::DriveController()
     , lastPowerRight(0)
     , lastTime(0)
     , DURATION(100.0F)
-    , OnePowerDeviation(0.084107F)
+    , limitPower(55)
+    , speedPerOnePower(0.84107F)
     , speedCalculator100ms(NULL)
     , initialized(false)
 {
@@ -185,8 +186,8 @@ int DriveController::getCorrectedAddPower(float targetDistance, float movedDista
     //! 左右のホイールの距離の差
     float deviation = targetDistance - movedDistance;
     
-    //! 左右の差が「1パワー分の100ms間の走行距離」(OnePowerDeviation)ごとに、１パワーずつ補正をかける
-    int correctAddPower = deviation / OnePowerDeviation;
+    //! 左右の差が「1パワー分の100ms間の走行距離」ごとに、１パワーずつ補正をかける(分母を速度を100msごとになるよう1/10にすると分母が小さくなりすぎるため、分子を10倍)
+    int correctAddPower = deviation / speedPerOnePower * 10;
     
     return correctAddPower;
 }
@@ -246,6 +247,12 @@ bool DriveController::runAsPattern(scenario_running scenario)
         //! 左回転(右タイヤのみ回転)
         motorWheelRight->run(scenario.power);
         motorWheelLeft->stop();
+        break;
+    
+
+    case NOTRACE_CURVE_RIGHT:
+    case NOTRACE_CURVE_LEFT:
+        curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
         break;
 
     default:
@@ -528,4 +535,90 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
         sumValue += addvalue;
     }
     return sumValue;
+}
+
+/**
+ * @brief   曲率半径から左右のパワーを算出
+ * @param   targetDirection  目標角度[°]
+ * @param   power  基準のパワー値
+ * @param   powerLeft  左モーターへ与える入力
+ * @param   powerRight  右モーターへ与える入力
+ * @return  なし
+ */
+void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight){
+    if (power == 0) {
+        return;
+    }
+
+    //! 指定された曲率半径を指定のパワー値で進むための角速度を算出
+    float targetDirectionRadian = power * speedPerOnePower / curvatureRadius;
+
+    //! この左右のパワーの差があれば指定した角速度で曲がることができる
+    //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする?
+    float adjustPowForCurve = targetDirectionRadian * EV3_TREAD / speedPerOnePower; 
+
+    //! 一つのホイールへの調整量（パワー）
+    int adjustPowForCurverToOneWheel = (int)abs(adjustPowForCurve / 2);
+
+    //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
+    int sign = (pattern == NOTRACE_CURVE_LEFT) ? -1 : 1;
+    *powerLeft = power + sign * adjustPowForCurverToOneWheel;
+    *powerRight = power - sign * adjustPowForCurverToOneWheel;
+    
+    //! 【TODO】目標速度を算出して補正する必要もある
+}
+
+
+/**
+ * @brief   曲線走行
+ * ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。
+ * @param   pattern 走行パターン（曲がる方向を判別する目的）
+ * @param   power  基準のパワー値
+ * @param   curvatureRadius  曲率半径[cm]
+ * @return  
+ */
+void DriveController::curveRun(enum runPattern pattern, int power, float curvatureRadius){
+    int powerLeft = power;
+    int powerRight = power;
+
+    //! 指定した曲率が許容範囲外であれば、一番近い範囲内の値に変更
+    if (curvatureRadius < 7) {
+        logger->addLog(LOG_NOTICE, "CurveEr");
+        logger->addLog(LOG_NOTICE, "R=7");
+        curvatureRadius = 7.0F;
+    } else if (curvatureRadius > 351) {
+        logger->addLog(LOG_NOTICE, "CurveEr");
+        logger->addLog(LOG_NOTICE, "R=351");
+        curvatureRadius = 351.0F;
+    }
+    
+    //! パワー値が限界値を超えないようになるまでループ
+    for(;;){
+        //! カーブの曲率半径に適した左右のパワー値を取得
+        getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
+
+        //! 調整後のパワー値が限界値を超えていたら曲率半径を優先するため、パワーと角速度を調整する
+        if(powerRight > limitPower|| powerLeft > limitPower){
+            //! 超えていたらパワーを下げて再度取得する
+            power--;
+            continue;
+        }
+
+        //! 調整後のパワー値がマイナスになっていないか確認
+        if(powerRight < 0 || powerRight < 0){
+            //! 超えていたらパワーを上げて再度取得する
+            power++;
+            continue;
+        }
+
+        break;
+    }
+
+    //! 変更したパワーをログ出力
+    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_LEFT, powerLeft);
+    logger->addLogInt(LOG_TYPE_POWER_FOR_CURVE_RIGHT, powerRight);
+
+    //! 実際の回転角度を見ながら左右の出力を調整
+    motorWheelLeft->run(powerLeft);
+    motorWheelRight->run(powerRight);
 }

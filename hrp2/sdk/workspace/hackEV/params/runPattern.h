@@ -48,6 +48,12 @@ enum runPattern {
 
     //! ライントレースせずに、直進走行する
     NOTRACE_STRAIGHT,
+    
+    //! ライントレースせずに、右方向に曲線走行
+    NOTRACE_CURVE_RIGHT,
+
+    //! ライントレースせずに、左方向に曲線走行
+    NOTRACE_CURVE_LEFT,
 
     //! トレースするラインを変更する（ライン右側へ変更）
     SWITCH_SIDE_RIGHT,

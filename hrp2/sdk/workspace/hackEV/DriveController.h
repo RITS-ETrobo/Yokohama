@@ -33,6 +33,8 @@ protected:
     virtual bool runAsPattern(scenario_running scenario);
     virtual void initializeAsPattern(scenario_running scenario);
     virtual int addAdjustValue(int targetValue, int addvalue);
+    virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
+    virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
 
 private:
     void pinWheel(int power, int degree);
@@ -68,9 +70,12 @@ private:
     
     //! 出力値を補正する時間間隔
     SYSTIM DURATION;
-    
-    //! 1パワー分の100ms間に走行する距離(値はモデル図のグラフから平均を算出)
-    float OnePowerDeviation;
+
+    // 指定できるパワーの限界値
+    int limitPower;
+
+    //! 1パワーあたりの速度変化量
+    float speedPerOnePower;
 
     //! \addtogroup 速度測定用のインスタンス
     //@{
