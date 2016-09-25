@@ -211,6 +211,13 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
     }
 
     synchronizePosition(*position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+    if (logger) {
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, currentPositionREAL.x);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, currentPositionREAL.y);
+        logger->addLogInt(LOG_TYPE_EV3_POSITION_MAP_X, currentPositionMAP.x);
+        logger->addLogInt(LOG_TYPE_EV3_POSITION_MAP_Y, currentPositionMAP.y);
+        logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction);
+    }
     return  true;
 }
 /**
