@@ -233,8 +233,14 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
         }
 
         double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
-        position->x += distance_ * cos(degreeByRadian);
-        position->y += distance_ * sin(degreeByRadian);
+        float   absDirection = fabs(direction_);
+        int modValue = (int)fmod(absDirection, (float)90);
+        if (!((modValue == 0) && fmod(absDirection, (float)180) != 0)) {
+            position->x += distance_ * cos(degreeByRadian);
+        }
+        if ((fmod(direction_, (float)180)) != 0) {
+            position->y += distance_ * sin(degreeByRadian);
+        }
     }
 
     synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
