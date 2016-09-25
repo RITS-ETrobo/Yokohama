@@ -39,6 +39,12 @@ void EV3Position::initialize()
 #endif  //  EV3_UNITTEST
 
     add(record);
+
+    EV3_POSITION    position;
+    position.x = 0;
+    position.y = 0;
+    setPosition(&position, direction, CORRECT_POSITION_MAP | CORRECT_DIRECTION);
+
     initialized = true;
 }
 
@@ -73,13 +79,12 @@ void EV3Position::add(DISTANCE_RECORD record)
     }
 
     distance_record.push_back(record);
-    bool deleteValue = removeExceededTimeItem();
+    removeExceededTimeItem();
     direction = record.direction;
     updateSpeed();
-    if (deleteValue || (size == 0)) {
-        int distance = distance_record.at(distance_record.size() - 1).distance - distance_record.at(0).distance;
-        movePosition(&currentPositionREAL, distance, direction, CORRECT_POSITION_REAL);
-    }
+
+    int distance = distance_record.at(distance_record.size() - 1).distance - distance_record.at(0).distance;
+    movePosition(&currentPositionREAL, distance, direction, CORRECT_POSITION_REAL);
 }
 
 /**
@@ -186,6 +191,28 @@ bool EV3Position::getPosition(EV3_POSITION *positionREAL, EV3_POSITION *position
 }
 
 /**
+ *  @brief  走行体の現在位置を設定する
+ *  @param  position    座標
+ *  @param  direction_  向き[単位 : 度]
+*/
+void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
+{
+    if (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) {
+        if (updateType & CORRECT_POSITION_REAL) {
+            memcpy((void*)&currentPositionREAL, (const void*)position, sizeof(EV3_POSITION));
+        } else {
+            memcpy((void*)&currentPositionMAP, (const void*)position, sizeof(EV3_POSITION));
+        }
+
+        synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+    }
+
+    if (updateType & CORRECT_DIRECTION) {
+        direction = direction_;
+    }
+}
+
+/**
  *  @brief  走行体の座標を指定した位置に移動させる
  *  @param  position    座標
  *  @param  distance_   前回の測定から移動した距離[単位 : cm]
@@ -210,7 +237,8 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
         position->y += distance_ * sin(degreeByRadian);
     }
 
-    synchronizePosition(*position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+    synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+    return  true;
     if (logger) {
         logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, currentPositionREAL.x);
         logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, currentPositionREAL.y);
@@ -226,17 +254,17 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
  *  @param  updateType  どの値を更新するか
  *  @return なし
 */
-void EV3Position::synchronizePosition(EV3_POSITION position, uint8_t updateType /*= 0*/)
+void EV3Position::synchronizePosition(EV3_POSITION *position, uint8_t updateType /*= 0*/)
 {
     if (isValidUpdateType(updateType) == false) {
         return;
     }
 
     if (updateType & CORRECT_POSITION_REAL) {
-        memcpy((void*)&currentPositionREAL, (const void*)&position, sizeof(EV3_POSITION));
+        memcpy((void*)&currentPositionREAL, (const void*)position, sizeof(EV3_POSITION));
         convertPostion(&currentPositionREAL, &currentPositionMAP);
     } else if (updateType & CORRECT_POSITION_MAP) {
-        memcpy((void*)&currentPositionMAP, (const void*)&position, sizeof(EV3_POSITION));
+        memcpy((void*)&currentPositionMAP, (const void*)position, sizeof(EV3_POSITION));
         convertPostion(&currentPositionREAL, &currentPositionMAP, false);
     }
 }
@@ -285,11 +313,11 @@ bool EV3Position::convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *posit
     }
 
     if (isExchangeReal2MAP) {
-        positionMAP->x = positionREAL->x * 2 / (float)7;
-        positionMAP->y = positionREAL->y * 2 / (float)7;
+        positionMAP->x = positionREAL->x * 7 / (float)2;
+        positionMAP->y = positionREAL->y * 7 / (float)2;
     } else {
-        positionREAL->x = positionMAP->x * 7 / (float)2;
-        positionREAL->y = positionMAP->y * 7 / (float)2;
+        positionREAL->x = positionMAP->x * 2 / (float)7;
+        positionREAL->y = positionMAP->y * 2 / (float)7;
     }
 
     return  true;
