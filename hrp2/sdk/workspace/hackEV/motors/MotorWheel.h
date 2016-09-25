@@ -43,7 +43,4 @@ private:
     //! 現在のモーターのパワー
     int currentPower;
     //@}
-
-    //! 初期化済み判定フラグ
-    bool    initialized;
 };
