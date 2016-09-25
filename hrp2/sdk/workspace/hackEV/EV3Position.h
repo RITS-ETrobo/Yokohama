@@ -39,7 +39,8 @@ public:
     virtual float getDirection();
 
 private:
-    void removeExceededTimeItem();
+    bool removeExceededTimeItem();
+    void updateSpeed();
 
     //! 平均速度算出に必要な時間[単位 : ms]
     SYSTIM  duration;
@@ -55,4 +56,7 @@ private:
 
     //! 初期化済み判定フラグ
     bool    initialized;
+
+    //! 平均速度算出の為の情報
+    DISTANCE_RECORD record_speed;
 };
