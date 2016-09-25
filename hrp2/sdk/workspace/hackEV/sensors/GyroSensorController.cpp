@@ -93,13 +93,16 @@ bool GyroSensorController::isStaged()
 
     //前回の判定時にステージ乗り上げ判定があれば、
     //同じ乗り降り時の判定と捉えてチェックしない。
-    if (beforeStagingCheck == false) {
+    if (beforeStagingCheck == true) {
         return false;
     }
 
     //段差乗り降り判定
     if (gyroRate >= STAGE_ON_THRESHOLD) {
-        beforeStagingCheck = staged = !staged;
+        staged = !staged;
+        beforeStagingCheck = true;
+    } else {
+        beforeStagingCheck = false;
     }
 
     return staged;
