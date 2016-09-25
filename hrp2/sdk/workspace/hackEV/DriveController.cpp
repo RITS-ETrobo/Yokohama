@@ -296,8 +296,8 @@ void DriveController::initializeAsPattern(scenario_running scenario)
  */
 void DriveController::straightRun(int power)
 {
-    int powerLeft = 0;
-    int powerRight = 0;
+    int powerLeft = power;
+    int powerRight = power;
 
     //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
@@ -328,8 +328,8 @@ void DriveController::straightRun(int power)
  */
 void DriveController::pinWheel(int power, int degree)
 {
-    int powerLeft = 0;
-    int powerRight = 0;
+    int powerLeft = power;
+    int powerRight = power;
 
     //! DURATION[ms]ごとに補正をかける
     SYSTIM currentTime = clock->now();
