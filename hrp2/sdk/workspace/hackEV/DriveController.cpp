@@ -582,20 +582,18 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
     int powerRight = power;
 
     //! 指定した曲率が許容範囲外であれば、一番近い範囲内の値に変更
-    if(curvatureRadius < 7){
-        logger->addLog(LOG_NOTICE, "CurveError");
-        logger->addLog(LOG_NOTICE, "RadiusChange=7");
-        curvatureRadius=7.0F;
-    }
-    if(curvatureRadius > 351){
-        logger->addLog(LOG_NOTICE, "CurveError");
-        logger->addLog(LOG_NOTICE, "RadiusChange=351");
-        curvatureRadius=351.0F;
+    if (curvatureRadius < 7) {
+        logger->addLog(LOG_NOTICE, "CurveEr");
+        logger->addLog(LOG_NOTICE, "R=7");
+        curvatureRadius = 7.0F;
+    } else if (curvatureRadius > 351) {
+        logger->addLog(LOG_NOTICE, "CurveEr");
+        logger->addLog(LOG_NOTICE, "R=351");
+        curvatureRadius = 351.0F;
     }
     
     //! パワー値が限界値を超えないようになるまでループ
     for(;;){
-
         //! カーブの曲率半径に適した左右のパワー値を取得
         getPowerForCurvatureRadius(pattern, curvatureRadius, power, &powerLeft, &powerRight);
 
