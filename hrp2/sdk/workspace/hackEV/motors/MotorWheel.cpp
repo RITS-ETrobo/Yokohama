@@ -23,8 +23,7 @@ bool MotorWheel::initialize()
     ev3_motor_reset_counts(portMotor);
     distance = 0.0F;
     distanceLast = 0.0F;
-    currentPower = 0;
-    
+
     if (speedCalculator100ms == NULL) {
         speedCalculator100ms = new SpeedCalculator(100, (portMotor == EV3_MOTOR_LEFT) ? TYPE_RELATED_WHEEL_LEFT : TYPE_RELATED_WHEEL_RIGHT);
         if (speedCalculator100ms == NULL) {
