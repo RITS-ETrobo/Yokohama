@@ -168,11 +168,6 @@ ER move_arm_throw_block(bool beforeSetDown = false, bool afterSetOriginalPositio
  */
 ER move_arm_horizon()
 {
-    //! アームを水平にするときの角度[deg]。センサーが真下を向くときが0degree。
-    const int ARM_DEGREE_HORIZON = -31;
-    //! アームを水平にするときのアーム速度(=パワー)
-    const int ARM_SPEED_HORIZON = 30;
-
     ER result = move_arm(ARM_DEGREE_HORIZON, ARM_SPEED_HORIZON, false);
     return result;
 }
