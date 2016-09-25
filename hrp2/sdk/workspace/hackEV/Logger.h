@@ -22,7 +22,7 @@ using namespace std;
 */
 typedef struct {
     //! ログ情報の種別(1Bytes)
-    uint8_t logType;
+    uint_t  logType;
 
     //! ログ時刻(4Bytes)
     SYSTIM  logTime;
