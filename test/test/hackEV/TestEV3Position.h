@@ -14,8 +14,8 @@ class TestEV3Position : public ::testing::Test {
 protected:
     virtual void SetUp()
     {
-        ev3Position100ms = new EV3Position(100);
-        ev3Position100ms->initialize();
+        ev3Position = new EV3Position(100);
+        ev3Position->initialize();
     };
 
     virtual void TearDown()
@@ -42,7 +42,7 @@ protected:
     void checkSpeed()
     {
         DISTANCE_RECORD recordAverage;
-        float speedAverage = ev3Position100ms->getSpeed(&recordAverage);
+        float speedAverage = ev3Position->getSpeed(&recordAverage);
         EXPECT_GT(speedAverage, 0);
         cout << "speedAverage = " << speedAverage << endl;
         cout << "\ttime = " << recordAverage.currentTime << endl;
@@ -51,11 +51,22 @@ protected:
 
     void checkDirection()
     {
-        float   direction = ev3Position100ms->getDirection();
+        float   direction = ev3Position->getDirection();
         EXPECT_NE(direction, 0);
         cout << "\tdirection = " << direction << endl;
     }
 
+    void checkPosition()
+    {
+        EV3_POSITION    positionREAL;
+        EV3_POSITION    positionMAP;
+        float   direction = 0.0F;
+        ev3Position->getPosition(&positionREAL, &positionMAP, &direction);
+        cout << "positionREAL\tx = " << positionREAL.x << "\ty = " << positionREAL.y << endl;
+        cout << "positionMAP\tx = " << positionMAP.x << "\ty = " << positionMAP.y << endl;
+        cout << "direction = " << direction << endl;
+    }
+
     //! テスト対象クラスのインスタンス
-    EV3Position*    ev3Position100ms;
+    EV3Position*    ev3Position;
 };
