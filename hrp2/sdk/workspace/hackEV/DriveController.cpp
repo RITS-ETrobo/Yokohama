@@ -433,7 +433,7 @@ void DriveController::change_LineSide(scenario_running scenario)
  */
 bool DriveController::stopByDistance(scenario_running scenario, float distanceDelta)
 {
-    if (scenario.distance <= 0) {
+    if (scenario.stopConditionPattern != DISTANCE_STOP) {
         return  false;
     }
 
@@ -462,7 +462,7 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
  */
 bool DriveController::stopByDirection(scenario_running scenario, float directionDelta)
 {
-    if (scenario.direction == 0) {
+    if (scenario.stopConditionPattern != DIRECTION_STOP) {
         return  false;
     }
 
@@ -744,21 +744,16 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     //! 最初にその場で動く角度
     float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
     
-    //! ためしで入れる
-    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_LEFT, moveDirection);
-    
-    
     //! 目標の座標の向きまでその場回転
-    scenario_running pinWheelScenario={30, 0.0F, moveDirection, PINWHEEL, true,0};
+    scenario_running pinWheelScenario={30, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    
     run(pinWheelScenario);
 
     //! 座標点間の直線距離
     float moveDistance = distanceFromCoordinateForJitteryMovement(startX, startY, endX, endY);
-
-    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_RIGHT, moveDistance);
     
     //! 目標の座標まで直進
-    scenario_running straghtScenario={30, moveDistance, 0, NOTRACE_STRAIGHT, true,0};
+    scenario_running straghtScenario={30, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP};
     run(straghtScenario);
 }
 

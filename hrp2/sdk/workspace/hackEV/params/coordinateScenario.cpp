@@ -7,6 +7,6 @@
 
 //! 検証用
 const scenario_coordinate test_coordinate[2] = {
-    {30, 50, 50},
-    {30, -50, -50},
+    {30, 0, 50},
+    {30, 50, 0},
 };
