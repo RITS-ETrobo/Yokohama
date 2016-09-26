@@ -31,8 +31,7 @@ APPL_CXXOBJS += \
     pid_controller.o \
     RunningModule.o \
     ArmModule.o \
-    coordinateScenario.o \
-    stopCondition.o
+    coordinateScenario.o 
 
 SRCLANG := c++
 
