@@ -233,12 +233,12 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
         }
 
         double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
-        float   absDirection = fabs(direction_);
-        int modValue = (int)fmod(absDirection, (float)90);
-        if (!((modValue == 0) && fmod(absDirection, (float)180) != 0)) {
+        int modValue90 = (int)user_fmod(direction_, (float)90);
+        int modValue180 = (int)user_fmod(direction_, (float)180);
+        if (!((modValue90 == 0) && modValue180 != 0)) {
             position->x += distance_ * cos(degreeByRadian);
         }
-        if ((fmod(direction_, (float)180)) != 0) {
+        if (modValue180 != 0) {
             position->y += distance_ * sin(degreeByRadian);
         }
     }
@@ -330,4 +330,18 @@ bool EV3Position::convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *posit
     }
 
     return  true;
+}
+
+/**
+ *  @brief  imgビルドでfmodがエラーになる為、自作した
+ *  @param  x   割られる数
+ *  @param  y   割る数
+ *  @return 余り
+*/
+double EV3Position::user_fmod(double x, double y)
+{
+    int numberX = x * 100000;
+    int numberY = y * 100000;
+
+    return  (numberX % numberY) / (float)100000;
 }

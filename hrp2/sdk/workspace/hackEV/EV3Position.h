@@ -69,6 +69,7 @@ private:
     bool convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, bool isExchangeReal2MAP = true);
     bool isValidUpdateType(uint8_t updateType);
     bool isValidPosition(EV3_POSITION *position, bool isPositionREAL = true, bool beCorrected = true);
+    double user_fmod(double x, double y);
 
     //! 平均速度算出に必要な時間[単位 : ms]
     SYSTIM  duration;
