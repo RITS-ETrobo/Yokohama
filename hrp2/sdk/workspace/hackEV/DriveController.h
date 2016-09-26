@@ -13,7 +13,7 @@
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
-#include "stopCondition.h"
+
 
 //! Class for driving
 class DriveController
