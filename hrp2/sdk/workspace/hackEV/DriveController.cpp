@@ -623,7 +623,112 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
 }
 
 /**
- * @brief   座標指定移動(その場回転→直進で移動)
+ * @brief   座標点間の直線距離を算出
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @return  
+ */
+float DriveController::distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY){
+        float differenceX = endX - startX;
+        float differenceY = endY - startY;
+
+        if (differenceX==0 && differenceY==0)
+        {
+            return 0;
+        }
+
+        if (differenceX !=0 && differenceY == 0)
+        {
+            return fabsf(differenceX);
+        }
+
+        if (differenceX == 0 && differenceY != 0)
+        {
+            return fabsf(differenceY);
+        }
+
+        //! ｘ座標を基準としたラジアン
+        float Radian = atan2(differenceY, differenceX);
+
+        //! 目標座標までの直線距離(sqrtを使うとimgビルドがエラーになるためコサインを使って求める)
+        float moveDistance = fabsf(fabsf(differenceX) / cos(Radian));
+
+        return moveDistance;
+}
+
+/**
+ * @brief   座標点間を直線移動するための最初にその場で回転する角度を算出
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @return  
+ */
+float DriveController::directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY){
+            float differenceX = endX - startX;
+            float differenceY = endY - startY;
+
+            //! 動かない場合は角度移動はしない
+            if (differenceX==0&& differenceY==0)
+            {
+                return 0;
+            }
+            if (differenceX == 0 && differenceY > 0)
+            {
+                return -startDirection;
+            }
+            if (differenceX == 0 && differenceY < 0)
+            {
+                return 180 - startDirection;
+            }       
+            if (differenceY == 0 && differenceX > 0)
+            {
+                return 90 - startDirection;
+            }
+            if (differenceY == 0 && differenceX < 0)
+            {
+                return -90 - startDirection;
+            }
+
+            //! ｘ座標を基準としたラジアン
+            float Radian = atan2(differenceY, differenceX);
+
+            float deg = to_deg(Radian);
+
+            float targetDirection = 0;
+
+            //! 目標座標の領域によって、Y軸を基準とした目標角度を調整する
+            //! 左上領域
+            if (differenceX > 0 && differenceY > 0)
+            {
+                targetDirection = 90 - deg;
+            }
+            //! 右上領域
+            else if (differenceX < 0 && differenceY > 0)
+            {
+                targetDirection = 90 - deg;
+            }
+            //! 左下領域
+            else if (differenceX > 0 && differenceY < 0)
+            {
+                targetDirection = 90 - deg;
+            }
+            //! 右下領域
+            else
+            {
+                targetDirection = -270 - deg;
+            }
+
+            //! 現在の向きを考慮して、最終的に動く角度を算出
+            float moveDirection = targetDirection - startDirection;
+
+            return moveDirection;
+}
+
+/**
+ * @brief   座標指定移動(その場回転→直進で移動)（通称：かくかく移動版）
  * @param   power  走行パワー値
  * @param   startX 始点X
  * @param   startY 始点Y
@@ -633,38 +738,27 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
  * @param   endDirection 終点での角度
  * @return  
  */
-void DriveController::moveCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY){
-    float differenceX = endX - startX;
-    float differenceY = endY - startY;
+void DriveController::jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY){
 
-    //! ｘ座標を基準としたラジアン
-    float Radian = atan2(differenceY, differenceX);
-
-    //! 目標座標までの直線距離
-    float targetDistance = fabsf(fabsf(differenceX)/cos(fabsf(Radian)));
-
-    //! 仮で出力
-    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_LEFT, targetDistance);
     
-    //! ラジアンを度数変換
-    float deg = to_deg(Radian);
-
-    //! y座標を基準とした角度にする（向きの判定はy座標を基準とした角度になっているため）
-    int sign = (deg >= 0) ? 1 : -1;
-    float targetDirection = sign*(90 - fabsf(deg));
-
-    //! 仮で出力
-    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_RIGHT, targetDirection);
-
-    //! 現在の向きを考慮し、最終的に動く角度を算出
-    float moveDirection = targetDirection - startDirection;
-
+    //! 最初にその場で動く角度
+    float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
+    
+    //! ためしで入れる
+    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_LEFT, moveDirection);
+    
+    
     //! 目標の座標の向きまでその場回転
     scenario_running pinWheelScenario={30, 0.0F, moveDirection, PINWHEEL, true,0};
     run(pinWheelScenario);
+
+    //! 座標点間の直線距離
+    float moveDistance = distanceFromCoordinateForJitteryMovement(startX, startY, endX, endY);
+
+    logger->addLogFloat(LOG_TYPE_POWER_FOR_CURVE_RIGHT, moveDistance);
     
     //! 目標の座標まで直進
-    scenario_running straghtScenario={30, targetDistance, 0, NOTRACE_STRAIGHT, true,0};
+    scenario_running straghtScenario={30, moveDistance, 0, NOTRACE_STRAIGHT, true,0};
     run(straghtScenario);
 }
 
@@ -676,6 +770,6 @@ void DriveController::moveCoordinate(int power, float startX, float startY, floa
 void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario){
     //! [ 【TODO】現在の座標を取得【現在の位置が取得できるようになったら実装TODO】
 
-    //! 仮でスタート地点の座標と角度は0を指定（本当は現在の座標と向きを入れること）
-    moveCoordinate(_coordinateScenario.power, 0,0,0, _coordinateScenario.targetX, _coordinateScenario.targetY);
+    //! かくかく移動：スタート地点の座標と角度は0を「仮指定」（本来は現在の座標と向きを入れること）
+    jitteryMovementFromCoordinate(_coordinateScenario.power, 0,0,directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }
