@@ -95,18 +95,16 @@ int16_t SonarSensorController::executeSonar()
  *
  * @return  つかめる距離ならばtrueを返す
  */
-bool SonarSensorController::catchablePrizeSafety()
+bool SonarSensorController::isGrabbableDistance()
 {
     int16_t distance = -1;
 
     if (isEnabled()) {
         distance = executeSonar();
-        if (SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN <= distance && distance <= SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX) {
+        if ((SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN <= distance) &&
+            (distance <= SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX)) {
             return true;
-        } else {
-            return false;
         }
-    } else {
-        return false;
     }
+    return false;
 }

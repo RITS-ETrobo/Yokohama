@@ -16,7 +16,7 @@ public:
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled() { return enabled; };
     virtual int16_t executeSonar();
-    virtual bool catchablePrizeSafety();
+    virtual bool isGrabbableDistance();
 
 #ifndef EV3_UNITTEST
     virtual void confirm(int16_t distance);
