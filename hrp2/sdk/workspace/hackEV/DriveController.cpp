@@ -539,6 +539,7 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
 
 /**
  * @brief   曲率半径から左右のパワーを算出
+ * 【参考】 http://www.ftech-net.co.jp/robot/howto/motion01.html
  * @param   targetDirection  目標角度[°]
  * @param   power  基準のパワー値
  * @param   powerLeft  左モーターへ与える入力
@@ -547,23 +548,23 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
  */
 void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight){
     if (power == 0) {
+        *powerLeft = 0;
+        *powerRight = 0;
         return;
     }
 
-    //! 指定された曲率半径を指定のパワー値で進むための角速度を算出
-    float targetDirectionRadian = power * speedPerOnePower / curvatureRadius;
+    //! 左右の速度比を算出
+    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD/2)/(curvatureRadius + EV3_TREAD/2);
 
-    //! この左右のパワーの差があれば指定した角速度で曲がることができる
-    //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする?
-    float adjustPowForCurve = targetDirectionRadian * EV3_TREAD / speedPerOnePower; 
-
-    //! 一つのホイールへの調整量（パワー）
-    int adjustPowForCurverToOneWheel = (int)abs(adjustPowForCurve / 2);
-
-    //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
-    int sign = (pattern == NOTRACE_CURVE_LEFT) ? -1 : 1;
-    *powerLeft = power + sign * adjustPowForCurverToOneWheel;
-    *powerRight = power - sign * adjustPowForCurverToOneWheel;
+    if(pattern == NOTRACE_CURVE_LEFT){
+        //! 左に曲がる場合
+        *powerLeft = 2*power/(1 + 1/PowerRatioForCurve);
+        *powerRight = 2*power/(1 + PowerRatioForCurve);
+    }else{
+        //! 右に曲がる場合
+        *powerRight = 2*power/(1 + 1/PowerRatioForCurve);
+        *powerLeft = 2*power/(1 + PowerRatioForCurve);
+    }
     
     //! 【TODO】目標速度を算出して補正する必要もある
 }
