@@ -277,3 +277,17 @@ void log_monitoring_task(intptr_t exinf)
 
     logger->outputLog();
 }
+
+/**
+ * @brief   走行体の位置を更新するタスク
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void position_update_task(intptr_t exinf)
+{
+    if (driveController == NULL) {
+        return;
+    }
+
+    driveController->updatePosition();
+}

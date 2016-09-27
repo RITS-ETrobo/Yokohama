@@ -21,10 +21,11 @@ public:
     virtual bool initialize();
     virtual void run(scenario_running scenario);
     virtual ER stop(bool_t brake = true);
+    virtual void updatePosition();
 
 protected:
-    virtual bool stopByDistance(scenario_running scenario, float distanceDelta);
-    virtual bool stopByDirection(scenario_running scenario, float directionDelta);
+    virtual bool stopByDistance(scenario_running scenario);
+    virtual bool stopByDirection(scenario_running scenario);
     virtual void getDelta(float *directionDelta, float *distanceDelta);
     virtual int getCorrectedAddPower(float targetDistance, float movedDistance);
     virtual void getCorrectedPower(int power, int *powerLeft, int *powerRight);
