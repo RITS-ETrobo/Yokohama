@@ -554,18 +554,20 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     }
 
     //! 左右の速度比を算出
-    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD/2)/(curvatureRadius + EV3_TREAD/2);
+    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD / (float)2)/(curvatureRadius + EV3_TREAD / (float)2);
+    int powerWheelA = 2 * power / (1 + 1 / PowerRatioForCurve);
+    int powerWheelB = 2 * power / (1 + PowerRatioForCurve);
 
-    if(pattern == NOTRACE_CURVE_LEFT){
+    if (pattern == NOTRACE_CURVE_LEFT) {
         //! 左に曲がる場合
-        *powerLeft = 2*power/(1 + 1/PowerRatioForCurve);
-        *powerRight = 2*power/(1 + PowerRatioForCurve);
-    }else{
+        *powerLeft = powerWheelA;
+        *powerRight = powerWheelB;
+    } else {
         //! 右に曲がる場合
-        *powerRight = 2*power/(1 + 1/PowerRatioForCurve);
-        *powerLeft = 2*power/(1 + PowerRatioForCurve);
+        *powerRight = powerWheelB;
+        *powerLeft = powerWheelA;
     }
-    
+
     //! 【TODO】目標速度を算出して補正する必要もある
 }
 
