@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="../../classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="../../inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="../../functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -110,7 +111,7 @@ $(document).ready(function(){initNavTree('d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d8/d72/_speed_calculator_8h_source.html">SpeedCalculator.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d6/db9/_e_v3_position_8h_source.html">EV3Position.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,8 +119,17 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:aaafab40ae671eb62786374a4e65cb94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">タイマー開始からの経過時間[単位 : ms]  <a href="#aaafab40ae671eb62786374a4e65cb94f">More...</a><br/></td></tr>
 <tr class="separator:aaafab40ae671eb62786374a4e65cb94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2abb4f2d1c5369fbb701452684ef820f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#a2abb4f2d1c5369fbb701452684ef820f">distanceDelta</a></td></tr>
-<tr class="memdesc:a2abb4f2d1c5369fbb701452684ef820f"><td class="mdescLeft">&#160;</td><td class="mdescRight">前回の測定から進んだ距離[単位 : cm]  <a href="#a2abb4f2d1c5369fbb701452684ef820f">More...</a><br/></td></tr>
+<tr class="memdesc:a2abb4f2d1c5369fbb701452684ef820f"><td class="mdescLeft">&#160;</td><td class="mdescRight">前回の測定から進んだ距離(差分)[単位 : cm]  <a href="#a2abb4f2d1c5369fbb701452684ef820f">More...</a><br/></td></tr>
 <tr class="separator:a2abb4f2d1c5369fbb701452684ef820f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39a1a721e5d4c5756b7ddf01d11d481"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#aa39a1a721e5d4c5756b7ddf01d11d481">distance</a></td></tr>
+<tr class="memdesc:aa39a1a721e5d4c5756b7ddf01d11d481"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在までに進んだ距離(累積)[単位 : cm]  <a href="#aa39a1a721e5d4c5756b7ddf01d11d481">More...</a><br/></td></tr>
+<tr class="separator:aa39a1a721e5d4c5756b7ddf01d11d481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af15db3f7ea25044e8d87a45a8f92ef66"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#af15db3f7ea25044e8d87a45a8f92ef66">directionDelta</a></td></tr>
+<tr class="memdesc:af15db3f7ea25044e8d87a45a8f92ef66"><td class="mdescLeft">&#160;</td><td class="mdescRight">前回からの向きの変更(差分)[単位 : 度]  <a href="#af15db3f7ea25044e8d87a45a8f92ef66">More...</a><br/></td></tr>
+<tr class="separator:af15db3f7ea25044e8d87a45a8f92ef66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9565145a804be6e095c7a96f746cc07"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#ad9565145a804be6e095c7a96f746cc07">direction</a></td></tr>
+<tr class="memdesc:ad9565145a804be6e095c7a96f746cc07"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の向き(累積)[単位 : 度]  <a href="#ad9565145a804be6e095c7a96f746cc07">More...</a><br/></td></tr>
+<tr class="separator:ad9565145a804be6e095c7a96f746cc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="aaafab40ae671eb62786374a4e65cb94f"></a>
@@ -136,6 +146,48 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad9565145a804be6e095c7a96f746cc07"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DISTANCE_RECORD::direction</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の向き(累積)[単位 : 度] </p>
+
+</div>
+</div>
+<a class="anchor" id="af15db3f7ea25044e8d87a45a8f92ef66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DISTANCE_RECORD::directionDelta</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>前回からの向きの変更(差分)[単位 : 度] </p>
+
+</div>
+</div>
+<a class="anchor" id="aa39a1a721e5d4c5756b7ddf01d11d481"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DISTANCE_RECORD::distance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在までに進んだ距離(累積)[単位 : cm] </p>
+
+</div>
+</div>
 <a class="anchor" id="a2abb4f2d1c5369fbb701452684ef820f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -146,12 +198,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>前回の測定から進んだ距離[単位 : cm] </p>
+<p>前回の測定から進んだ距離(差分)[単位 : cm] </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>hrp2/sdk/workspace/hackEV/<a class="el" href="../../d8/d72/_speed_calculator_8h_source.html">SpeedCalculator.h</a></li>
+<li>hrp2/sdk/workspace/hackEV/<a class="el" href="../../d6/db9/_e_v3_position_8h_source.html">EV3Position.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -159,7 +211,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html">DISTANCE_RECORD</a></li>
-    <li class="footer">Generated on Sun Sep 11 2016 16:14:07 for ev3RT Workspace by
+    <li class="footer">Generated on Tue Sep 27 2016 12:29:46 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

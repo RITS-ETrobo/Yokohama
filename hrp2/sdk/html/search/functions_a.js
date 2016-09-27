@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['reset',['reset',['../d3/d77/class_gyro_sensor_controller.html#ad96e9a82d821f4d00c1edd8b5264f1e4',1,'GyroSensorController']]],
-  ['run',['run',['../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896',1,'DriveController::run()'],['../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855',1,'MotorWheel::run()']]],
-  ['runaspattern',['runAsPattern',['../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a',1,'DriveController']]]
+  ['pid_5fcontroller',['pid_controller',['../dd/d0a/pid__controller_8cpp.html#adc50124153c91f022cf309508b0d4ea6',1,'pid_controller(PID_PARAMETER pidParameter):&#160;pid_controller.cpp'],['../de/dc3/pid__controller_8h.html#adc50124153c91f022cf309508b0d4ea6',1,'pid_controller(PID_PARAMETER pidParameter):&#160;pid_controller.cpp']]],
+  ['pid_5fcontroller_5ftask',['pid_controller_task',['../dd/d0a/pid__controller_8cpp.html#ad4cc59d26b453542605de6a3b7dc2b5b',1,'pid_controller_task(intptr_t unused):&#160;pid_controller.cpp'],['../de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1',1,'pid_controller_task(intptr_t exinf):&#160;pid_controller.cpp']]]
 ];

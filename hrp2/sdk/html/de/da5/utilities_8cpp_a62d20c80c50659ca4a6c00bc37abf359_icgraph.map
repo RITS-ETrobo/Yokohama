@@ -1,9 +1,11 @@
 <map id="writeFloatLCD" name="writeFloatLCD">
-<area shape="rect" id="node2" href="$d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="195,5,285,32"/>
-<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="163,56,317,83"/>
-<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="366,31,591,57"/>
-<area shape="rect" id="node8" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="365,81,592,108"/>
-<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="640,56,787,83"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="851,31,931,57"/>
-<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="835,81,947,108"/>
+<area shape="rect" id="node2" href="$d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="191,56,273,83"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="161,107,303,133"/>
+<area shape="rect" id="node3" href="$d4/d64/_arm_module_8h.html#a7dfe73c2339839d976f461facf1be8ac" title="ブロックを投げ飛ばす動きをする。 " alt="" coords="377,5,537,32"/>
+<area shape="rect" id="node4" href="$d4/d64/_arm_module_8h.html#a035904fc19672142f9a6b2d53b0385b2" title="アームを水平にする " alt="" coords="391,56,523,83"/>
+<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="352,107,563,133"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="352,157,563,184"/>
+<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="611,132,746,159"/>
+<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="810,107,883,133"/>
+<area shape="rect" id="node9" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="795,157,898,184"/>
 </map>

@@ -1,0 +1,11 @@
+<map id="confirmBattery" name="confirmBattery">
+<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="169,56,279,83"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="161,107,287,133"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="343,5,441,32"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="343,56,441,83"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="337,107,447,133"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="497,81,655,108"/>
+<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="519,132,633,159"/>
+<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="704,56,819,83"/>
+<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="709,107,813,133"/>
+</map>

@@ -1,12 +1,13 @@
 <map id="DriveController::getDelta" name="DriveController::getDelta">
-<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="235,81,451,108"/>
-<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="499,5,706,32"/>
-<area shape="rect" id="node4" href="$db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="511,56,694,83"/>
-<area shape="rect" id="node5" href="$da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をdequeに追加する " alt="" coords="523,107,682,133"/>
-<area shape="rect" id="node6" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="527,157,679,184"/>
-<area shape="rect" id="node7" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="755,157,877,184"/>
-<area shape="rect" id="node8" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="926,132,1098,159"/>
-<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="951,183,1073,209"/>
-<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1147,107,1271,133"/>
-<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1153,157,1266,184"/>
+<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="222,81,423,108"/>
+<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="473,5,663,32"/>
+<area shape="rect" id="node4" href="$db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="483,56,653,83"/>
+<area shape="rect" id="node5" href="$da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をvectorに追加する " alt="" coords="495,107,641,133"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="498,157,638,184"/>
+<area shape="rect" id="node6" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="712,107,835,133"/>
+<area shape="rect" id="node8" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="718,157,829,184"/>
+<area shape="rect" id="node9" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="883,132,1042,159"/>
+<area shape="rect" id="node12" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="905,183,1020,209"/>
+<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1091,107,1205,133"/>
+<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1096,157,1200,184"/>
 </map>

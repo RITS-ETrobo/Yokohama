@@ -1,12 +1,13 @@
 <map id="DriveController::runAsPattern" name="DriveController::runAsPattern">
-<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータを停止する " alt="" coords="265,5,391,32"/>
-<area shape="rect" id="node5" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="261,56,395,83"/>
-<area shape="rect" id="node3" href="$da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="443,5,629,32"/>
-<area shape="rect" id="node4" href="$da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をdequeに追加する " alt="" coords="678,5,837,32"/>
-<area shape="rect" id="node6" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="460,56,612,83"/>
-<area shape="rect" id="node7" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="697,56,818,83"/>
-<area shape="rect" id="node8" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="886,31,1058,57"/>
-<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="911,81,1033,108"/>
-<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1107,5,1231,32"/>
-<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1113,56,1226,83"/>
+<area shape="rect" id="node2" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="497,56,615,83"/>
+<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="272,5,397,32"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="248,115,421,141"/>
+<area shape="rect" id="node4" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="486,5,626,32"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="691,173,802,200"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="851,148,1010,175"/>
+<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="873,199,988,225"/>
+<area shape="rect" id="node7" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1059,123,1173,149"/>
+<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1064,173,1168,200"/>
+<area shape="rect" id="node11" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="470,107,642,149"/>
+<area shape="rect" id="node12" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="493,173,619,200"/>
 </map>

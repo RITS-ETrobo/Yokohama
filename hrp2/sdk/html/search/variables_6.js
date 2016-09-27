@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gyrosensorcontroller',['gyroSensorController',['../d5/df2/app_8cpp.html#a791d56f34e65e71befb63d0de1682758',1,'gyroSensorController():&#160;app.cpp'],['../dd/d3f/instances_8h.html#a791d56f34e65e71befb63d0de1682758',1,'gyroSensorController():&#160;app.cpp']]]
+  ['fall_5ftime_5fms',['FALL_TIME_MS',['../d1/d19/group___constants.html#ga37dbfd3312ec3ca9fd68d2c27f8f5bbb',1,'gyroboy.cpp']]],
+  ['fontsize',['fontSize',['../df/d88/_l_c_d_controller_8cpp.html#a0ff889f8d5cc4fccaf8d7545201edcab',1,'LCDController.cpp']]]
 ];
