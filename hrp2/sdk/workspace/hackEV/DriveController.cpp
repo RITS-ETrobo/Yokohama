@@ -564,8 +564,8 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
         *powerRight = powerWheelB;
     } else {
         //! 右に曲がる場合
-        *powerRight = powerWheelB;
-        *powerLeft = powerWheelA;
+        *powerLeft = powerWheelB;
+        *powerRight = powerWheelA;
     }
 
     //! 【TODO】目標速度を算出して補正する必要もある
