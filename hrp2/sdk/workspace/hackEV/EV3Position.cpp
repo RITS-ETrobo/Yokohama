@@ -83,8 +83,7 @@ void EV3Position::add(DISTANCE_RECORD record)
     direction = record.direction;
     updateSpeed();
 
-    int distance = distance_record.at(distance_record.size() - 1).distance - distance_record.at(0).distance;
-    movePosition(&currentPositionREAL, distance, direction, CORRECT_POSITION_REAL);
+    movePosition(&currentPositionREAL, record.distanceDelta, record.directionDelta, CORRECT_POSITION_REAL);
 }
 
 /**
