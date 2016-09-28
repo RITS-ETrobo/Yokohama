@@ -768,3 +768,86 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     //! かくかく移動：スタート地点の座標と角度は0を「仮指定」（本来は現在の座標と向きを入れること）
     jitteryMovementFromCoordinate(_coordinateScenario.power, 0,0,directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }
+
+/**
+ * @brief   移動する曲線から瞬間の曲率半径を取得する
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
+
+    float s = _s;
+
+    float p0x=startX;
+    float p0y=startY;
+
+    float p1x=endX;
+    float p1y=endY;
+
+    float v0x=1;//! 単位ベクトルとする（これでよいかわからない）
+    float v0y=v0x*tan(startDirection);
+
+    float v1x=1;//! 単位ベクトル（これでよいかわからない）
+    float v1y=v1x*tan(endDirection);
+    
+    float a1x = p1x;
+    float a1y = p1y;
+
+    float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
+    float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
+
+    float a3x = -2*p1x + 2*p0x + v0x + v1x;
+    float a3y = -2*p1y + 2*p0y + v0y + v1y;
+
+    float d1x=0;
+    float d1y=0;
+    getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
+    
+    float d2x=0;
+    float d2y=0;
+    getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
+
+    //! 曲率半径Rの最終計算
+    float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
+
+    return R;
+}
+
+/**
+ * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
+    //! 微分の計算結果
+    *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
+    *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
+}
+
+/**
+ * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
+    *d2x = 2*a2x + 6*a3x*s;
+    *d2y = 2*a2y + 6*a3y*s;
+}
+
+/**
+ * @brief   ベクトル成分から大きさを取得
+ * @return  
+ */
+float DriveController::toVectorMagnitude(float x, float y){
+    return sqrt(x*x+y*y);
+}
+
+/**
+ * @brief   ベクトル積
+ * @return  
+ */
+float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
+
+    //! ベクトル積の計算が合っているか不安
+    float a = x1*y2;
+    float b = x2*y1;
+    return toVectorMagnitude(a,b);
+}
