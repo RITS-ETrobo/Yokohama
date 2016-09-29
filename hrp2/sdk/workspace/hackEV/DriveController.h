@@ -46,7 +46,9 @@ protected:
     virtual void getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y);
     virtual void getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y);
     virtual float toVectorMagnitude(float x, float y);
-    float multiplicationVector(float x1, float y1, float x2, float y2);
+    virtual float multiplicationVector(float x1, float y1, float x2, float y2);
+    virtual void VectorFromDirection(float Direction, float *x, float *y);
+    virtual float degForTrigonometric(float direction);
 
 private:
     void pinWheel(int power, float degree);

@@ -783,12 +783,16 @@ float DriveController::getCurvatureRadius(float startX, float startY, float star
 
     float p1x=endX;
     float p1y=endY;
+    
+    //! startDirectionの大きさ１のベクトル成分を算出
+    float v0x=0;
+    float v0y=0;
+    VectorFromDirection(startDirection, &v0x, &v0y);
 
-    float v0x=1;//! 単位ベクトルとする（これでよいかわからない）
-    float v0y=v0x*tan(startDirection);
-
-    float v1x=1;//! 単位ベクトル（これでよいかわからない）
-    float v1y=v1x*tan(endDirection);
+    //! endDirectionの大きさ１のベクトル成分を算出
+    float v1x=0;
+    float v1y=0;
+    VectorFromDirection(endDirection, &v1x, &v1y);
     
     float a1x = p1x;
     float a1y = p1y;
@@ -850,4 +854,82 @@ float DriveController::multiplicationVector(float x1, float y1, float x2, float 
     float a = x1*y2;
     float b = x2*y1;
     return toVectorMagnitude(a,b);
+}
+
+/**
+ * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
+ * @return  
+ */
+void DriveController::VectorFromDirection(float Direction, float *x, float *y){
+    //!ベクトルの大きさを定義（仮で１とする）
+    float unit = 1.0F;
+
+    //Directionの範囲0～360と0～-360が来るものとする
+
+    if (Direction == 0 || Direction == 360 || Direction == -360)
+    {
+        *x = 0;
+        *y = unit;
+        return;
+    }
+
+    if (Direction == 180 || Direction == -180)
+    {
+        *x = 0;
+        *y = -unit;
+        return;
+    }
+
+    if (Direction == 90 || Direction == -270)
+    {
+        *x = unit;
+        *y = 0;
+        return;
+    }
+
+    if (Direction == 270 || Direction == -90)
+    {
+        *x = -unit;
+        *y = 0;
+        return;
+    }
+
+    //! Tanなどの三角関数で扱うときの角度に変換
+    float deg = degForTrigonometric(Direction);
+
+    if (Direction < 0 && Direction > -180)
+    {
+
+        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+    if (Direction < -180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+
+    if (Direction > 0 && Direction < 180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+
+    if (Direction > 180)
+    {
+        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+}
+
+/**
+ * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
+ * @return  
+ */
+float DriveController::degForTrigonometric(float direction){
+    return -direction + 90;
 }
