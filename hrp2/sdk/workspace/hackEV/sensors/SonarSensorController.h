@@ -33,7 +33,8 @@ private:
     bool    initialized;
 
     //! 検証を安全につかめる最小距離
-    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN = 3;
+    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN;
+
     //! 検証を安全につかめる最大距離
-    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX = 3;
+    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX;
 };
