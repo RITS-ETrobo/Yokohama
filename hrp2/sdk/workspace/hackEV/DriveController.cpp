@@ -429,12 +429,6 @@ bool DriveController::stopByDistance(scenario_running scenario)
         stop();
     }    
 
-    if (logger) {
-        //ログが多くなり過ぎて、異常終了する為、コメント
-        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario, isGreaterValue);
-    }
-
     return  isGreaterValue;
 }
 
@@ -454,10 +448,6 @@ bool DriveController::stopByDirection(scenario_running scenario)
     bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
     if (isGreaterValue && scenario.stop){
         stop();
-    }
-
-    if (logger) {
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario, isGreaterValue);
     }
 
     return  isGreaterValue;
@@ -613,12 +603,6 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
  * @param   [in]    exinf   未使用
  * @return  なし
  */
-
-/**
- * @brief   走行体の位置を更新するタスク
- * @param   [in]    exinf   未使用
- * @return  なし
- */
 void DriveController::updatePosition()
 {
     if (!(speedCalculator100ms && motorWheelLeft && motorWheelRight)) {
@@ -638,4 +622,12 @@ void DriveController::updatePosition()
     record.distanceDelta = distanceDelta;
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
+
+    if (logger) {
+        //ログが多くなり過ぎて、異常終了する為、コメント
+        //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario);
+
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario);
+    }
 }
