@@ -22,13 +22,20 @@ EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
  *  @brief  初期化
  *  @return なし
 */
-void EV3Position::initialize()
+void EV3Position::initialize(bool isForce /*= false*/)
 {
+    if (isForce) {
+        initialized = false;
+    }
+
     if (initialized == true) {
         return;
     }
 
-    distance_record.clear();
+    std::vector<DISTANCE_RECORD>().swap(distance_record);
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    direction = 0.0F;
+
     DISTANCE_RECORD record;
     memset(&record, '\0', sizeof(DISTANCE_RECORD));
 
@@ -41,8 +48,8 @@ void EV3Position::initialize()
     add(record);
 
     EV3_POSITION    position;
-    position.x = 0;
-    position.y = 0;
+    position.x = 0.0F;
+    position.y = 0.0F;
     setPosition(&position, direction, CORRECT_POSITION_MAP | CORRECT_DIRECTION);
 
     initialized = true;
@@ -54,8 +61,7 @@ void EV3Position::initialize()
 */
 void EV3Position::reset()
 {
-    initialized = false;
-    initialize();
+    initialize(true);
 }
 
 /**
@@ -65,17 +71,13 @@ void EV3Position::reset()
 */
 void EV3Position::add(DISTANCE_RECORD record)
 {
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-    if (size == 0) {
-        record.distance = record.distanceDelta;
-    } else {
-        record.distance = distance_record.at(size - 1).distance + record.distanceDelta;
-    }
+    record.distance = record.distanceDelta;
+    record.direction = record.directionDelta;
 
-    if (size == 0) {
-        record.direction = record.directionDelta;
-    } else {
-        record.direction = distance_record.at(size - 1).direction + record.directionDelta;
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    if (size > 0) {
+        record.distance += distance_record.at(size - 1).distance;
+        record.direction += distance_record.at(size - 1).direction;
     }
 
     distance_record.push_back(record);
@@ -246,11 +248,16 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
 
 #ifndef EV3_UNITTEST
     if (logger) {
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, currentPositionREAL.x);
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, currentPositionREAL.y);
-        logger->addLogInt(LOG_TYPE_EV3_POSITION_MAP_X, currentPositionMAP.x);
-        logger->addLogInt(LOG_TYPE_EV3_POSITION_MAP_Y, currentPositionMAP.y);
-        logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction);
+        EV3_POSITION    positionREAL;
+        EV3_POSITION    positionMAP;
+        float   direction_ = 0.0F;
+        getPosition(&positionREAL, &positionMAP, &direction_);
+
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, positionREAL.x);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, positionREAL.y);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_X, positionMAP.x);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_Y, positionMAP.y);
+        logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction_);
     }
 #endif  //  EV3_UNITTEST
 

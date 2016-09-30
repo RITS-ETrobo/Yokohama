@@ -24,8 +24,12 @@ SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*=
  *  @brief  初期化
  *  @return なし
 */
-void SpeedCalculator::initialize()
+void SpeedCalculator::initialize(bool isForce /*= false*/)
 {
+    if (isForce) {
+        initialized = false;
+    }
+
     if (initialized == true) {
         return;
     }
@@ -51,7 +55,7 @@ void SpeedCalculator::initialize()
         break;
     }
 
-    EV3Position::initialize();
+    EV3Position::initialize(isForce);
     initialized = true;
 }
 
@@ -61,8 +65,7 @@ void SpeedCalculator::initialize()
 */
 void SpeedCalculator::reset()
 {
-    initialized = false;
-    initialize();
+    initialize(true);
 }
 
 /**
@@ -83,11 +86,14 @@ void SpeedCalculator::add(DISTANCE_RECORD record)
 float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
 {
     float   averageSpeed = EV3Position::getSpeed(record);
+
+#ifndef EV3_UNITTEST
     if(logger != NULL){
         logger->addLogFloat(logType_speed, averageSpeed);
         // logger->addLogFloat(logType_distance, record->distance);
         // logger->addLogFloat(logType_time, record->currentTime);
     }
+#endif  //  EV3_UNITTEST
 
     return  averageSpeed;
 }

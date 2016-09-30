@@ -41,7 +41,7 @@ class EV3Position
 {
 public:
     explicit EV3Position(SYSTIM duration_ = 0);
-    virtual void initialize();
+    virtual void initialize(bool isForce = false);
     virtual void reset();
     virtual void add(DISTANCE_RECORD record);
     virtual float getSpeed(DISTANCE_RECORD *record);

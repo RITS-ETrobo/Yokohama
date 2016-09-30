@@ -28,7 +28,7 @@ class SpeedCalculator : public EV3Position
 {
 public:
     explicit SpeedCalculator(SYSTIM duration_ = 0, typeRelated type_ = TYPE_RELATED_DRIVE_CONTROLLER);
-    virtual void initialize();
+    virtual void initialize(bool isForce = false);
     virtual void reset();
     virtual void add(DISTANCE_RECORD record);
     virtual float getSpeed(DISTANCE_RECORD *record);
