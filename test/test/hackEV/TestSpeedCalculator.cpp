@@ -132,6 +132,9 @@ TEST_F(TestSpeedCalculator, positionCheck_Minus)
 
 TEST_F(TestSpeedCalculator, positionCheck2)
 {
-    addRecord(speedCalculator, 16.88 - 14.45, 96.54 - 82.92, -30);
+    addRecord(speedCalculator, 10, 10, 5);
+    addRecord(speedCalculator, 20, 10, 0);
+    addRecord(speedCalculator, 30, 10, 3);
+    addRecord(speedCalculator, 50, 20, -2);
     checkPosition();
 }
