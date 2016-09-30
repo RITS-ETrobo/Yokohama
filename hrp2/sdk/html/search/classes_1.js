@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gyrosensorcontroller',['GyroSensorController',['../d3/d77/class_gyro_sensor_controller.html',1,'']]]
+  ['ev3position',['EV3Position',['../d1/d48/class_e_v3_position.html',1,'']]]
 ];

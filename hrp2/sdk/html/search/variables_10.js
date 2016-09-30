@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['valueholder',['valueHolder',['../d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html#gaafc1f59818c74cdc7bf363ff6a11311b',1,'pid_controller.cpp']]]
+  ['sonarsensorcontroller',['sonarSensorController',['../d5/df2/app_8cpp.html#a725f394284dce1df4c429539288afa43',1,'sonarSensorController():&#160;app.cpp'],['../dd/d3f/instances_8h.html#a725f394284dce1df4c429539288afa43',1,'sonarSensorController():&#160;app.cpp']]],
+  ['stop',['stop',['../d4/d30/structscenario__running.html#aa7bf5cf11b50cdf8f6c2174a95325b60',1,'scenario_running']]],
+  ['sumarmmotorrotate',['sumArmMotorRotate',['../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga08103159ff9fd4ea39e06da0ab58547c',1,'ArmModule.cpp']]]
 ];

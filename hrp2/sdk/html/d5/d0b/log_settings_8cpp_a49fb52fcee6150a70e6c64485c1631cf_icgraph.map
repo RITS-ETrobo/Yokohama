@@ -1,26 +1,31 @@
 <map id="setLogLastTime" name="setLogLastTime">
-<area shape="rect" id="node2" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="177,328,298,355"/>
-<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="620,8,708,35"/>
-<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a1fee3464626523e2cbbd7b1c66cacf92" title="直線走行のための補正された出力を取得する " alt="" coords="559,59,769,101"/>
-<area shape="rect" id="node5" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="351,480,503,507"/>
-<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1541,455,1653,481"/>
-<area shape="rect" id="node11" href="$d3/d42/class_logger.html#addf6e94f8f07aaa677b48fa1e8a8bc3d" title="ログを追加する " alt="" coords="555,632,773,659"/>
-<area shape="rect" id="node17" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="358,223,495,249"/>
-<area shape="rect" id="node19" href="$d3/d42/class_logger.html#a7760917411cb9698bf5d6486d9593d90" title="ログを追加する " alt="" coords="562,328,766,355"/>
-<area shape="rect" id="node23" href="$de/dc3/pid__controller_8h.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="373,733,481,760"/>
-<area shape="rect" id="node25" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="347,5,506,46"/>
-<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1336,455,1483,481"/>
-<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="1051,480,1277,507"/>
-<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="1051,379,1277,405"/>
-<area shape="rect" id="node12" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="597,429,731,456"/>
-<area shape="rect" id="node15" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="556,531,772,557"/>
-<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1557,404,1637,431"/>
-<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="835,379,989,405"/>
-<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="1060,429,1268,456"/>
-<area shape="rect" id="node16" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="822,531,1002,557"/>
-<area shape="rect" id="node18" href="$d2/d39/app_8h.html#a2312776ca4acc1d44c1729a5bac59592" title="ジャイロセンサーの値を更新する " alt="" coords="596,176,732,203"/>
-<area shape="rect" id="node20" href="$d3/d42/class_logger.html#a67e4bdcee11074437bcb9fce83d75516" title="ログをファイルに出力する " alt="" coords="595,125,733,152"/>
-<area shape="rect" id="node22" href="$de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="1326,404,1493,431"/>
-<area shape="rect" id="node21" href="$d2/d39/app_8h.html#a58d3d132ce96418a511b21c04103cb8f" title="ログ監視タスク " alt="" coords="837,125,987,152"/>
-<area shape="rect" id="node24" href="$de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="593,733,735,760"/>
+<area shape="rect" id="node2" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="169,553,279,580"/>
+<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="829,885,912,912"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a1fee3464626523e2cbbd7b1c66cacf92" title="直線走行のための補正された出力を取得する " alt="" coords="528,398,720,439"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="537,464,711,491"/>
+<area shape="rect" id="node9" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1478,195,1581,221"/>
+<area shape="rect" id="node10" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="331,220,471,247"/>
+<area shape="rect" id="node13" href="$d3/d42/class_logger.html#addf6e94f8f07aaa677b48fa1e8a8bc3d" title="ログを追加する " alt="" coords="525,347,723,373"/>
+<area shape="rect" id="node19" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="338,591,465,617"/>
+<area shape="rect" id="node21" href="$d3/d42/class_logger.html#a7760917411cb9698bf5d6486d9593d90" title="ログを追加する " alt="" coords="531,835,717,861"/>
+<area shape="rect" id="node28" href="$de/dc3/pid__controller_8h.html#adc50124153c91f022cf309508b0d4ea6" title="PID制御を行う " alt="" coords="352,1000,451,1027"/>
+<area shape="rect" id="node30" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="328,934,475,975"/>
+<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="774,347,967,373"/>
+<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1285,195,1419,221"/>
+<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1493,245,1566,272"/>
+<area shape="rect" id="node11" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="1016,245,1227,272"/>
+<area shape="rect" id="node12" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="1016,195,1227,221"/>
+<area shape="rect" id="node14" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="561,245,687,272"/>
+<area shape="rect" id="node16" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="523,93,725,120"/>
+<area shape="rect" id="node18" href="$da/dcf/class_speed_calculator.html#a43f08e3194f490ac92766068dc4d1fad" title="平均速度を算出する " alt="" coords="1031,144,1212,171"/>
+<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="799,245,942,272"/>
+<area shape="rect" id="node17" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="1038,93,1205,120"/>
+<area shape="rect" id="node20" href="$d2/d39/app_8h.html#a2312776ca4acc1d44c1729a5bac59592" title="ジャイロセンサーの値を更新する " alt="" coords="561,616,687,643"/>
+<area shape="rect" id="node22" href="$d3/d42/class_logger.html#a67e4bdcee11074437bcb9fce83d75516" title="ログをファイルに出力する " alt="" coords="561,733,687,760"/>
+<area shape="rect" id="node24" href="$de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="1275,245,1429,272"/>
+<area shape="rect" id="node25" href="$df/d60/class_sonar_sensor_controller.html#a8d2e11956724270d5d36889b3a4e8fe6" title="超音波の測定 " alt="" coords="547,667,701,709"/>
+<area shape="rect" id="node27" href="$de/df0/utilities_8h.html#a45715ec1142d7259638cddc7ba980ed6" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="571,784,677,811"/>
+<area shape="rect" id="node23" href="$d2/d39/app_8h.html#a58d3d132ce96418a511b21c04103cb8f" title="ログ監視タスク " alt="" coords="801,733,940,760"/>
+<area shape="rect" id="node26" href="$d5/df2/app_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html " alt="" coords="801,675,940,701"/>
+<area shape="rect" id="node29" href="$de/dc3/pid__controller_8h.html#a84af7dba8546a0008f65d8ee078249d1" title="[タスク]PID制御を行う " alt="" coords="559,1000,689,1027"/>
 </map>

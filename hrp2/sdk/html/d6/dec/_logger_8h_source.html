@@ -112,16 +112,16 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d9c/log_settings_8h.html">logSettings.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;Clock.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>ev3api;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/daa/product_8h.html">product.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d9c/log_settings_8h.html">logSettings.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d6/dec/_logger_8h.html#a3408ac12d9faf628ac91d1a99b5e6c9b">   18</a></span>&#160;<span class="preprocessor">#define BUFFER_SIZE_LOG_MESSAGE 8</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a258fac78aa65f739379f8817053f393e">   25</a></span>&#160;    uint8_t <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a258fac78aa65f739379f8817053f393e">logType</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">   25</a></span>&#160;    uint_t  <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">logType</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">   28</a></span>&#160;    SYSTIM  <a class="code" href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">logTime</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
@@ -150,21 +150,20 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    FILE    *fpLog;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGDIRECTORY_PATH = <span class="stringliteral">&quot;/ev3rt/logs&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>*  LOGFILE_NAME = <span class="stringliteral">&quot;hackEV_log.csv&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    vector&lt;USER_LOG&gt; loggerInfo;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    vector&lt;USER_LOG&gt; loggerInfo;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span> enabled;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> enabled;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span>    outputHeader;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span>    outputHeader;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
 <div class="ttc" id="struct_u_s_e_r___l_o_g_html_ae234de4c1708a8643f64f494fcb5d27f"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#ae234de4c1708a8643f64f494fcb5d27f">USER_LOG::logTime</a></div><div class="ttdeci">SYSTIM logTime</div><div class="ttdoc">ログ時刻(4Bytes) </div><div class="ttdef"><b>Definition:</b> Logger.h:28</div></div>
 <div class="ttc" id="class_logger_html"><div class="ttname"><a href="../../d3/d42/class_logger.html">Logger</a></div><div class="ttdoc">Class for logging. </div><div class="ttdef"><b>Definition:</b> Logger.h:35</div></div>
 <div class="ttc" id="_logger_8h_html_a3408ac12d9faf628ac91d1a99b5e6c9b"><div class="ttname"><a href="../../d6/dec/_logger_8h.html#a3408ac12d9faf628ac91d1a99b5e6c9b">BUFFER_SIZE_LOG_MESSAGE</a></div><div class="ttdeci">#define BUFFER_SIZE_LOG_MESSAGE</div><div class="ttdoc">ログに出力する文字列のバッファーサイズ </div><div class="ttdef"><b>Definition:</b> Logger.h:18</div></div>
+<div class="ttc" id="product_8h_html"><div class="ttname"><a href="../../dc/daa/product_8h.html">product.h</a></div><div class="ttdoc">This file has the includes depend on environment. </div></div>
 <div class="ttc" id="struct_u_s_e_r___l_o_g_html"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html">USER_LOG</a></div><div class="ttdoc">ログに出力する情報 </div><div class="ttdef"><b>Definition:</b> Logger.h:23</div></div>
-<div class="ttc" id="struct_u_s_e_r___l_o_g_html_a258fac78aa65f739379f8817053f393e"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a258fac78aa65f739379f8817053f393e">USER_LOG::logType</a></div><div class="ttdeci">uint8_t logType</div><div class="ttdoc">ログ情報の種別(1Bytes) </div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
+<div class="ttc" id="struct_u_s_e_r___l_o_g_html_a41ce625efadb70fbb714af6ea4d028e4"><div class="ttname"><a href="../../d2/dff/struct_u_s_e_r___l_o_g.html#a41ce625efadb70fbb714af6ea4d028e4">USER_LOG::logType</a></div><div class="ttdeci">uint_t logType</div><div class="ttdoc">ログ情報の種別(1Bytes) </div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
 <div class="ttc" id="log_settings_8h_html"><div class="ttname"><a href="../../da/d9c/log_settings_8h.html">logSettings.h</a></div><div class="ttdoc">This file has the settings for logging. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -172,7 +171,7 @@ $(document).ready(function(){initNavTree('d6/dec/_logger_8h_source.html','../../
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../d6/dec/_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Sun Sep 11 2016 16:14:07 for ev3RT Workspace by
+    <li class="footer">Generated on Tue Sep 27 2016 12:29:46 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

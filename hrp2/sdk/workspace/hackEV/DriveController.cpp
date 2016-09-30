@@ -111,21 +111,7 @@ void DriveController::run(scenario_running scenario)
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
 
-        SYSTIM  currentTime = clock->now();
-        float   distanceDelta = 0.0F;
-        float   directionDelta = 0.0F;
-        getDelta(&directionDelta, &distanceDelta);
-
-        DISTANCE_RECORD record;
-        memset(&record, '\0', sizeof(DISTANCE_RECORD));
-        record.currentTime = currentTime;
-        record.distanceDelta = distanceDelta;
-        record.directionDelta = directionDelta;
-        speedCalculator100ms->add(record);
-
-        DISTANCE_RECORD record_lap;
-        float   averageSpeed = speedCalculator100ms->getSpeed(&record_lap);
-        bool    needReturn = stopByDistance(scenario, distanceDelta) | stopByDirection(scenario, directionDelta);
+        bool    needReturn = stopByDistance(scenario) | stopByDirection(scenario);
         if (needReturn) {
             return;
         }
@@ -428,24 +414,22 @@ void DriveController::change_LineSide(scenario_running scenario)
 /**
  * @brief   指定した距離を走行していた場合、走行体を停止させる
  * @param   scenario    走行シナリオ
- * @param   distanceDelta   走行距離の増分
  * @return  true : 停止可能
  * @return  false : 停止不可能
  */
-bool DriveController::stopByDistance(scenario_running scenario, float distanceDelta)
+bool DriveController::stopByDistance(scenario_running scenario)
 {
     if (scenario.distance <= 0) {
         return  false;
     }
 
     //! 走行体が指定距離走行したらストップ
-    getDistance(distanceDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, scenario.distance);
     if (isGreaterValue && scenario.stop) {
         stop();
     }    
 
-    if (logger && (distanceDelta != 0)) {
+    if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
         logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario, isGreaterValue);
@@ -457,24 +441,22 @@ bool DriveController::stopByDistance(scenario_running scenario, float distanceDe
 /**
  * @brief   指定した角度だった場合、走行体を停止させる
  * @param   scenario    走行シナリオ
- * @param   directionDelta   角度の増分
  * @return  true : 停止可能
  * @return  false : 停止不可能
  */
-bool DriveController::stopByDirection(scenario_running scenario, float directionDelta)
+bool DriveController::stopByDirection(scenario_running scenario)
 {
     if (scenario.direction == -1) {
         return  false;
     }
 
     //! 走行体が指定した向きになったらストップ
-    getDirection(directionDelta);
     bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
     if (isGreaterValue && scenario.stop){
         stop();
     }
 
-    if (logger && (directionDelta != 0)) {
+    if (logger) {
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario, isGreaterValue);
     }
 
@@ -539,6 +521,7 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
 
 /**
  * @brief   曲率半径から左右のパワーを算出
+ * 【参考】 http://www.ftech-net.co.jp/robot/howto/motion01.html
  * @param   targetDirection  目標角度[°]
  * @param   power  基準のパワー値
  * @param   powerLeft  左モーターへ与える入力
@@ -547,24 +530,26 @@ int DriveController::addAdjustValue(int targetValue, int addvalue){
  */
 void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight){
     if (power == 0) {
+        *powerLeft = 0;
+        *powerRight = 0;
         return;
     }
 
-    //! 指定された曲率半径を指定のパワー値で進むための角速度を算出
-    float targetDirectionRadian = power * speedPerOnePower / curvatureRadius;
+    //! 左右の速度比を算出
+    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD / (float)2)/(curvatureRadius + EV3_TREAD / (float)2);
+    int powerWheelA = 2 * power / (1 + 1 / PowerRatioForCurve);
+    int powerWheelB = 2 * power / (1 + PowerRatioForCurve);
 
-    //! この左右のパワーの差があれば指定した角速度で曲がることができる
-    //! 【TODO】speedPerOnePower定数ではなく、速度との変換をする?
-    float adjustPowForCurve = targetDirectionRadian * EV3_TREAD / speedPerOnePower; 
+    if (pattern == NOTRACE_CURVE_LEFT) {
+        //! 左に曲がる場合
+        *powerLeft = powerWheelA;
+        *powerRight = powerWheelB;
+    } else {
+        //! 右に曲がる場合
+        *powerLeft = powerWheelB;
+        *powerRight = powerWheelA;
+    }
 
-    //! 一つのホイールへの調整量（パワー）
-    int adjustPowForCurverToOneWheel = (int)abs(adjustPowForCurve / 2);
-
-    //! カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)
-    int sign = (pattern == NOTRACE_CURVE_LEFT) ? -1 : 1;
-    *powerLeft = power + sign * adjustPowForCurverToOneWheel;
-    *powerRight = power - sign * adjustPowForCurverToOneWheel;
-    
     //! 【TODO】目標速度を算出して補正する必要もある
 }
 
@@ -621,4 +606,36 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
     //! 実際の回転角度を見ながら左右の出力を調整
     motorWheelLeft->run(powerLeft);
     motorWheelRight->run(powerRight);
+}
+
+/**
+ * @brief   走行体の位置を更新するタスク
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+
+/**
+ * @brief   走行体の位置を更新するタスク
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::updatePosition()
+{
+    if (!(speedCalculator100ms && motorWheelLeft && motorWheelRight)) {
+        return;
+    }
+
+    SYSTIM  currentTime = clock->now();
+    float   distanceDelta = 0.0F;
+    float   directionDelta = 0.0F;
+    getDelta(&directionDelta, &distanceDelta);
+    getDistance(distanceDelta);
+    getDirection(directionDelta);
+
+    DISTANCE_RECORD record;
+    memset(&record, '\0', sizeof(DISTANCE_RECORD));
+    record.currentTime = currentTime;
+    record.distanceDelta = distanceDelta;
+    record.directionDelta = directionDelta;
+    speedCalculator100ms->add(record);
 }

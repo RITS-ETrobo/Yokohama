@@ -16,6 +16,7 @@ public:
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled() { return enabled; };
     virtual int16_t executeSonar();
+    virtual bool isGrabbableDistance();
 
 #ifndef EV3_UNITTEST
     virtual void confirm(int16_t distance);
@@ -30,4 +31,9 @@ private:
 
     //! 初期化済み判定フラグ
     bool    initialized;
+
+    //! 検証を安全につかめる最小距離
+    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN = 3;
+    //! 検証を安全につかめる最大距離
+    const int16_t SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX = 3;
 };
