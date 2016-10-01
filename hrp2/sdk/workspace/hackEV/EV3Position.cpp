@@ -125,16 +125,21 @@ void EV3Position::updateSpeed()
     DISTANCE_RECORD record_first = distance_record.at(0);
     DISTANCE_RECORD record_last = distance_record.at(size - 1);
 
+    memset((void*)&record_speed, '\0', sizeof(DISTANCE_RECORD));
     record_speed.distance = record_last.distance - record_first.distance;
-    record_speed.distanceDelta = 0;
     record_speed.direction = record_last.direction;
-    record_speed.directionDelta = 0;
     record_speed.currentTime = record_last.currentTime - record_first.currentTime;
     if (record_speed.currentTime == 0) {
         return;
     }
 
     averageSpeed = record_speed.distance / (float)(record_speed.currentTime) * 1000;
+
+#ifndef EV3_UNITTEST
+    if (logger) {
+        logger->addLogFloat(LOG_TYPE_AVERAGE_SPEED, averageSpeed);
+    }
+#endif  //  EV3_UNITTEST
 }
 
 /**
