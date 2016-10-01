@@ -9,6 +9,7 @@ extern "C" {
 #endif
 
 double user_fmod(double x, double y);
+float adjustValue(float value, float minValue, float maxValue);
 
 #ifdef __cplusplus
 }
