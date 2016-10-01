@@ -16,6 +16,7 @@
 #include "pid_controller.h"
 
 #include "DriveController.h"
+#include "user_function.h"
 
 //! class for driving
 DriveController::DriveController()
@@ -200,6 +201,7 @@ float DriveController::getDirection(float directionDelta)
 {
     directionScenario += directionDelta;
     directionTotal += directionDelta;
+    directionTotal = adjustValue(directionTotal, -180, 180);
     return  directionScenario;
 }
 
