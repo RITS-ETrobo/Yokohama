@@ -5,8 +5,6 @@
 #pragma once
 
 #include "test.h"
-#include <iostream>
-
 #include "EV3Position.h"
 
 //! Testing class for EV3_POSITION class
