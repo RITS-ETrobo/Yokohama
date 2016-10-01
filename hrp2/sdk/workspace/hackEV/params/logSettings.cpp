@@ -50,9 +50,11 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_COLOR_BLACK, "Color(Black)");
     initialize_logSetting_map(LOG_TYPE_COLOR_WHITE, "Color(White)");
     initialize_logSetting_map(LOG_TYPE_DISTANCE, "Distance", 100);
-    initialize_logSetting_map(LOG_TYPE_DISTANCE_TOTAL, "Distance(Total)", 100);
+    initialize_logSetting_map(LOG_TYPE_DISTANCE_SCENARIO, "Distance(Scenario)", 100);
+    initialize_logSetting_map(LOG_TYPE_DISTANCE_TOTAL, "Distance(Total)", 500);
     initialize_logSetting_map(LOG_TYPE_DIRECTION, "Direction", 100);
-    initialize_logSetting_map(LOG_TYPE_DIRECTION_TOTAL, "Direction(Total)", 100);
+    initialize_logSetting_map(LOG_TYPE_DIRECTION_SCENARIO, "Direction(Scenario)", 100);
+    initialize_logSetting_map(LOG_TYPE_DIRECTION_TOTAL, "Direction(Total)", 500);
     initialize_logSetting_map(LOG_TYPE_GYRO, "Gyro");
     initialize_logSetting_map(LOG_TYPE_WRITE_PROCESSING, "Writing Log");
     initialize_logSetting_map(LOG_TYPE_DISTANCE_RIGHT, "Distance(Right)", 100);

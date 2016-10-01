@@ -38,11 +38,17 @@ typedef enum
     //! 距離(瞬間)
     LOG_TYPE_DISTANCE,
 
+    //! 距離(累積/シナリオ)
+    LOG_TYPE_DISTANCE_SCENARIO,
+
     //! 距離(累積)
     LOG_TYPE_DISTANCE_TOTAL,
 
     //! 角度(瞬間)
     LOG_TYPE_DIRECTION,
+
+    //! 角度(累積/シナリオ)
+    LOG_TYPE_DIRECTION_SCENARIO,
 
     //! 角度(累積)
     LOG_TYPE_DIRECTION_TOTAL,
