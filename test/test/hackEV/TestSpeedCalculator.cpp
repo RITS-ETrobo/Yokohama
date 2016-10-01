@@ -138,3 +138,9 @@ TEST_F(TestSpeedCalculator, positionCheck2)
     addRecord(speedCalculator, 50, 20, -2);
     checkPosition();
 }
+
+TEST_F(TestSpeedCalculator, positionCheck3)
+{
+    addRecord(speedCalculator, 10, 0.07, 0.008);
+    checkPosition();
+}

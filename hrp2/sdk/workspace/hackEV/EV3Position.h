@@ -65,6 +65,7 @@ public:
 
 private:
     bool removeExceededTimeItem();
+    bool removeExceededLength();
     void updateSpeed();
     bool convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, bool isExchangeReal2MAP = true);
     bool isValidUpdateType(uint8_t updateType);
@@ -81,6 +82,9 @@ private:
 
     //! 平均速度算出の為に必要な情報
     std::vector<DISTANCE_RECORD>    distance_record;
+
+    //! 位置算出の為に必要な情報
+    std::vector<DISTANCE_RECORD>    position_record;
 
     //! 初期化済み判定フラグ
     bool    initialized;

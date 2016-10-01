@@ -34,7 +34,7 @@ void EV3Position::initialize(bool isForce /*= false*/)
     }
 
     std::vector<DISTANCE_RECORD>().swap(distance_record);
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    std::vector<DISTANCE_RECORD>().swap(position_record);
     direction = 0.0F;
 
     DISTANCE_RECORD record;
@@ -86,7 +86,25 @@ void EV3Position::add(DISTANCE_RECORD record)
     direction = record.direction;
     updateSpeed();
 
-    movePosition(&currentPositionREAL, record.distanceDelta, record.directionDelta, CORRECT_POSITION_REAL);
+    DISTANCE_RECORD recordPos;
+    memset((void*)&recordPos, '\0', sizeof(DISTANCE_RECORD));
+    recordPos.distance = record.distanceDelta;
+    recordPos.direction = record.directionDelta;
+
+    std::vector<DISTANCE_RECORD>::size_type sizePos = position_record.size();
+    if (sizePos > 0) {
+        recordPos.distance += position_record.at(sizePos - 1).distance;
+        recordPos.direction += position_record.at(sizePos - 1).direction;
+    }
+
+    position_record.push_back(recordPos);
+    if (position_record.at(sizePos).distance - position_record.at(0).distance < 1.0F) {
+        //  1cm未満の場合、座標を移動させない
+        return;
+    }
+
+    movePosition(&currentPositionREAL, recordPos.distance, recordPos.direction, CORRECT_POSITION_REAL);
+    removeExceededLength();
 }
 
 /**
@@ -120,6 +138,36 @@ bool EV3Position::removeExceededTimeItem()
         if (duration == 0) {
             break;
         }
+    }
+
+    return  result;
+}
+
+/**
+ *  @brief  要素全体が指定長さ内に収まっているかを確認する
+ *  @return true : 要素を削除できる
+*/
+bool EV3Position::removeExceededLength()
+{
+    bool    result = false;
+    for (;;) {
+        std::vector<DISTANCE_RECORD>::size_type size = position_record.size();
+        if (size <= 1) {
+            break;
+        }
+
+        DISTANCE_RECORD record = position_record.at(size - 1);
+        std::vector<DISTANCE_RECORD>::iterator it = position_record.begin();
+        if (it == position_record.end()) {
+            break;
+        }
+
+        if (record.distance - it->distance < 1.0F) {
+            break;
+        }
+
+        position_record.erase(it);
+        result = true;
     }
 
     return  result;
@@ -212,10 +260,25 @@ void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t 
         }
 
         synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+
+#ifndef EV3_UNITTEST
+        if (logger) {
+            logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, currentPositionREAL.x);
+            logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, currentPositionREAL.y);
+            logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_X, currentPositionMAP.x);
+            logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_Y, currentPositionMAP.y);
+        }
+#endif  //  EV3_UNITTEST
     }
 
     if (updateType & CORRECT_DIRECTION) {
         direction = direction_;
+
+#ifndef EV3_UNITTEST
+        if (logger) {
+            logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction);
+        }
+#endif  //  EV3_UNITTEST
     }
 }
 
@@ -243,30 +306,14 @@ bool EV3Position::movePosition(EV3_POSITION *position, float distance_, float di
         double  modValue90 = user_fmod(direction_, (float)90);
         double  modValue180 = user_fmod(direction_, (float)180);
         if (!((modValue90 == 0.0F) && modValue180 != 0.0F)) {
-            position->x += distance_ * cos(degreeByRadian);
+            position->x += distance_ * sin(degreeByRadian);
         }
         if (modValue180 != 0.0F) {
-            position->y += distance_ * sin(degreeByRadian);
+            position->y += distance_ * cos(degreeByRadian);
         }
     }
 
-    synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
-
-#ifndef EV3_UNITTEST
-    if (logger) {
-        EV3_POSITION    positionREAL;
-        EV3_POSITION    positionMAP;
-        float   direction_ = 0.0F;
-        getPosition(&positionREAL, &positionMAP, &direction_);
-
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, positionREAL.x);
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, positionREAL.y);
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_X, positionMAP.x);
-        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_Y, positionMAP.y);
-        logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction_);
-    }
-#endif  //  EV3_UNITTEST
-
+    setPosition(position, direction_, updateType);
     return  true;
 }
 /**
