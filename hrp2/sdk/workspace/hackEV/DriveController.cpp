@@ -765,8 +765,46 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
 void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario){
     //! [ 【TODO】現在の座標を取得【現在の位置が取得できるようになったら実装TODO】
 
+    //! 滑らか走行（曲率半径を走行中に切り替えつつ移動する)
+    //! 曲線を算出処理
+    float a0=0;
+	float a1=0;
+	float a2=1;
+	float a3=0;
+    float x=-5; //! 初期のx座標を入れる
+
+    float distanceXaxis=x;
+    initialize();
+
+    //! モーターの回転角、距離、方向を0に戻す
+    for(;;){
+        float curvatureRadius = CalculationCurvatureRadius(a0,a1,a2,a3,x);
+
+        
+        curveRun(NOTRACE_CURVE_LEFT ,30, curvatureRadius);
+
+        float   distanceDelta = 0.0F;
+        float   directionDelta = 0.0F;
+        getDelta(&directionDelta, &distanceDelta);
+
+        //! x軸に動いた距離
+        distanceXaxis += distanceDelta*sin(to_rad(directionDelta));
+        x=distanceXaxis;
+
+        //! 表示
+        writeFloatLCD(distanceXaxis);
+
+        if(x >= _coordinateScenario.targetX){
+            stop();
+            break;
+        }
+
+        //! 適度な待ち時間
+        tslp_tsk(2);
+    }
+
     //! かくかく移動：スタート地点の座標と角度は0を「仮指定」（本来は現在の座標と向きを入れること）
-    jitteryMovementFromCoordinate(_coordinateScenario.power, 0,0,directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
+    //jitteryMovementFromCoordinate(_coordinateScenario.power, 0,0,directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }
 
 /**
@@ -932,4 +970,60 @@ void DriveController::VectorFromDirection(float Direction, float *x, float *y){
  */
 float DriveController::degForTrigonometric(float direction){
     return -direction + 90;
+}
+
+
+
+/**
+* @brief   曲率半径を計算する（モデル図のものではなく独自ver）
+* 公式の参考サイト http://mathtrain.jp/curvature
+* 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´
+* @return 現在のxの値に対する曲率半径
+*/
+float DriveController::CalculationCurvatureRadius(float a0, float a1, float a2, float a3, float x){
+
+	float dy1 = 0;
+	float dy2 = 0;
+
+	//! 2次関数のdy1とdy2
+	if(a3==0){
+		dy1=OnceDifferentialOfQuadraticFunction(a1,a2,x);
+		dy2=SecondDifferentialOfQuadraticFunction(a2);
+	}
+	
+
+	//! 3次関数
+	//【TODO】
+
+
+	//! 分母が0の場合は曲率半径は無限大（つまり直進）
+	if(dy2==0){
+		//! 【TODO】充分に大きい値とする
+		return 100000;
+	}
+
+	float R = pow((1+pow(dy1,2)),(3/2)) / dy2;
+	return R;
+}
+
+
+
+/**
+* @brief   2次関数の1回微分曲率半径を計算する
+* y´= 2*a2*x+a1
+* @return  
+*/
+float DriveController::OnceDifferentialOfQuadraticFunction(float a1, float a2, float x){
+	float dy1=2*a2*x+a1;
+	return dy1; 
+}
+
+/**
+* @brief   2次関数の２回微分曲率半径を計算する
+* y´´= 2*a2
+* @return  
+*/
+float DriveController::SecondDifferentialOfQuadraticFunction(float a2){
+	float dy2=2*a2;
+	return dy2;
 }

@@ -49,6 +49,9 @@ protected:
     virtual float multiplicationVector(float x1, float y1, float x2, float y2);
     virtual void VectorFromDirection(float Direction, float *x, float *y);
     virtual float degForTrigonometric(float direction);
+    virtual float CalculationCurvatureRadius(float a0, float a1, float a2, float a3, float x);
+    virtual float OnceDifferentialOfQuadraticFunction(float a1, float a2, float x);
+    virtual float SecondDifferentialOfQuadraticFunction(float a2);
 
 private:
     void pinWheel(int power, float degree);

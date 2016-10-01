@@ -6,7 +6,6 @@
 #include "coordinateScenario.h"
 
 //! 検証用
-const scenario_coordinate test_coordinate[2] = {
-    {30, 0, 50},
-    {30, 50, 0},
+const scenario_coordinate test_coordinate[1] = {
+    {30, 50, 0}
 };
