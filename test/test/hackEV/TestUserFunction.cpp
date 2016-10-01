@@ -1,6 +1,6 @@
 /**
  * @file    TestUserFunction.cpp
- * @brief   This file is test file for UserFunction class.
+ * @brief   This file is test file for user functions.
  */
 #include "TestUserFunction.h"
 

@@ -1,17 +1,16 @@
 /**
  * @file    TestUserFunction.h
- * @brief   This file is test file for EV3_POSITION class.
+ * @brief   This file is test file for user functions.
  */
 #pragma once
 
 #include "test.h"
 
-extern "C"
-{
+extern "C" {
 #include "user_function.h"
 }
 
-//! Testing class for EV3_POSITION class
+//! Testing class for user functions
 class TestUserFunction : public ::testing::Test {
 protected:
     virtual void SetUp()
