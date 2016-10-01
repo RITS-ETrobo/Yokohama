@@ -133,14 +133,29 @@ TEST_F(TestSpeedCalculator, positionCheck_Minus)
 TEST_F(TestSpeedCalculator, positionCheck2)
 {
     addRecord(speedCalculator, 10, 10, 5);
+    checkPosition();
     addRecord(speedCalculator, 20, 10, 0);
+    checkPosition();
     addRecord(speedCalculator, 30, 10, 3);
+    checkPosition();
     addRecord(speedCalculator, 50, 20, -2);
     checkPosition();
 }
 
-TEST_F(TestSpeedCalculator, positionCheck3)
+TEST_F(TestSpeedCalculator, positionCheck_straight)
 {
-    addRecord(speedCalculator, 10, 0.07, 0.008);
+    for (int index = 0; index < 100; index++) {
+        addRecord(speedCalculator, 10, 0.07, 0);
+    }
+
+    checkPosition();
+}
+
+TEST_F(TestSpeedCalculator, positionCheck_curve)
+{
+    for (int index = 0; index < 100; index++) {
+        addRecord(speedCalculator, 10, 0.07, 0.01);
+    }
+
     checkPosition();
 }

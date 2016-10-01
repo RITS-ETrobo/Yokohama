@@ -98,12 +98,14 @@ void EV3Position::add(DISTANCE_RECORD record)
     }
 
     position_record.push_back(recordPos);
-    if (position_record.at(sizePos).distance - position_record.at(0).distance < 1.0F) {
+    float   distancePos = recordPos.distance - position_record.at(0).distance;
+    if (distancePos < 1.0F) {
         //  1cm未満の場合、座標を移動させない
         return;
     }
 
-    movePosition(&currentPositionREAL, recordPos.distance, recordPos.direction, CORRECT_POSITION_REAL);
+    float   directionPos = recordPos.direction - position_record.at(0).direction;
+    movePosition(&currentPositionREAL, distancePos, directionPos, CORRECT_POSITION_REAL);
     removeExceededLength();
 }
 
@@ -149,28 +151,30 @@ bool EV3Position::removeExceededTimeItem()
 */
 bool EV3Position::removeExceededLength()
 {
-    bool    result = false;
-    for (;;) {
-        std::vector<DISTANCE_RECORD>::size_type size = position_record.size();
-        if (size <= 1) {
-            break;
+    //  1cmを超えるまでの要素を見つける
+    int indexTarget = -1;
+    DISTANCE_RECORD record_first = position_record.at(0);
+    for (int index = (int)position_record.size() - 1; index >= 0; index--) {
+        DISTANCE_RECORD record = position_record.at(index);
+        if (record.distance - record_first.distance >= 1.0F) {
+            continue;
         }
 
-        DISTANCE_RECORD record = position_record.at(size - 1);
-        std::vector<DISTANCE_RECORD>::iterator it = position_record.begin();
-        if (it == position_record.end()) {
-            break;
-        }
-
-        if (record.distance - it->distance < 1.0F) {
-            break;
-        }
-
-        position_record.erase(it);
-        result = true;
+        indexTarget = index;
+        break;
     }
 
-    return  result;
+    if (indexTarget == -1) {
+        indexTarget = 0;
+    }
+
+    std::vector<DISTANCE_RECORD>::size_type size = position_record.size();
+    for (int index = 0; index <= indexTarget; index++) {
+        std::vector<DISTANCE_RECORD>::iterator it = position_record.begin();
+        position_record.erase(it);
+    }
+
+    return  true;
 }
 
 /**
@@ -253,13 +257,15 @@ bool EV3Position::getPosition(EV3_POSITION *positionREAL, EV3_POSITION *position
 void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
 {
     if (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) {
+        bool    synchronize2MAP = false;
         if (updateType & CORRECT_POSITION_REAL) {
             memcpy((void*)&currentPositionREAL, (const void*)position, sizeof(EV3_POSITION));
+            synchronize2MAP = true;
         } else {
             memcpy((void*)&currentPositionMAP, (const void*)position, sizeof(EV3_POSITION));
         }
 
-        synchronizePosition(position, (updateType == CORRECT_POSITION_REAL) ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
+        synchronizePosition(position, synchronize2MAP ? CORRECT_POSITION_MAP : CORRECT_POSITION_REAL);
 
 #ifndef EV3_UNITTEST
         if (logger) {
@@ -297,18 +303,15 @@ bool EV3Position::movePosition(EV3_POSITION *position, float distance_, float di
         return  false;
     }
 
-    if ((distance_ != 0.0F) && (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP))) {
-        if (isValidPosition(position, (updateType == CORRECT_POSITION_REAL) ? true : false, beCorrected) == false) {
-            return  false;
-        }
-
+    if ((distance_ != 0.0F) && (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) && isValidPosition(position, (bool)(updateType == CORRECT_POSITION_REAL), beCorrected)) {
         double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
         double  modValue90 = user_fmod(direction_, (float)90);
         double  modValue180 = user_fmod(direction_, (float)180);
-        if (!((modValue90 == 0.0F) && modValue180 != 0.0F)) {
+        if (modValue180 != 0.0F) {
             position->x += distance_ * sin(degreeByRadian);
         }
-        if (modValue180 != 0.0F) {
+
+        if (!((modValue90 == 0.0F) && (modValue180 != 0.0F))) {
             position->y += distance_ * cos(degreeByRadian);
         }
     }
