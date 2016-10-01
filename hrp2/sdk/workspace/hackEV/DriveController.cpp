@@ -448,7 +448,7 @@ bool DriveController::stopByDirection(scenario_running scenario)
     }
 
     //! 走行体が指定した向きになったらストップ
-    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, adjustValue(scenario.direction, -180, 180);
+    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, adjustValue(scenario.direction, -180, 180));
     if (isGreaterValue && scenario.stop){
         stop();
     }
