@@ -32,6 +32,8 @@ DriveController::DriveController()
     , speedPerOnePower(0.84107F)
     , speedCalculator100ms(NULL)
     , initialized(false)
+    , positionTargetXLast(0.0F)
+    , positionTargetYLast(0.0F)
 {
 }
 
@@ -740,13 +742,36 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
 void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario){
     //! [ 【TODO】現在の座標を取得【現在の位置が取得できるようになったら実装TODO】
 
+    //! 滑らか走行
+    //smoothMovementFromCoordinate(_coordinateScenario);
+
+    //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
+    //! 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！
+    jitteryMovementFromCoordinate(_coordinateScenario.power, positionTargetXLast, positionTargetYLast, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
+    
+    //! 【TODO】仮の処理！！本当の走行座標から持ってくること
+    positionTargetXLast = _coordinateScenario.targetX;
+    positionTargetYLast = _coordinateScenario.targetY;
+}
+
+
+/**
+ * @brief   滑らか座標移動
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario){
     //! 滑らか走行（曲率半径を走行中に切り替えつつ移動する)
-    //! 曲線を算出処理
+    //! 曲線を算出処理処理
     float a0=0;
 	float a1=0;
 	float a2=1;
 	float a3=0;
+
+
+
     float x=-5; //! 初期のx座標を入れる
+
 
     float distanceXaxis=x;
     initialize();
@@ -757,20 +782,20 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
         
         curveRun(NOTRACE_CURVE_LEFT ,30, curvatureRadius);
 
-        float   distanceDelta = 0.0F;
-        float   directionDelta = 0.0F;
-        getDelta(&directionDelta, &distanceDelta);
+        // float   distanceDelta = 0.0F;
+        // float   directionDelta = 0.0F;
+        // getDelta(&directionDelta, &distanceDelta);//updateでも更新されている
 
-        //! x軸に動いた距離
-        distanceXaxis += distanceDelta*sin(to_rad(directionDelta));
-        x=distanceXaxis;
+        // //! x軸に動いた距離 
+        // distanceXaxis += distanceDelta*sin(to_rad(directionDelta));
+        
+        //! 座標がx軸でプラス側に0.1cmずつ動いていると過程
+        x+=0.0001;
 
-        //! 表示
-        writeFloatLCD(curvatureRadius);
-        writeFloatLCD(distanceDelta);
-        writeFloatLCD(directionDelta);
-        // logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceDelta);
-        // logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, directionDelta);
+        // //! 表示
+         writeFloatLCD(curvatureRadius);
+        // writeFloatLCD(distanceDelta);
+        // writeFloatLCD(directionDelta);
 
         if(x >= _coordinateScenario.targetX){
             stop();
@@ -780,176 +805,176 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
         //! 適度な待ち時間
         tslp_tsk(2);
     }
-
-    //! かくかく移動：スタート地点の座標と角度は0を「仮指定」（本来は現在の座標と向きを入れること）
-    //jitteryMovementFromCoordinate(_coordinateScenario.power, 0,0,directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }
 
-/**
- * @brief   移動する曲線から瞬間の曲率半径を取得する
- * @param   目標座標が書かれたシナリオ
- * @return  
- */
-float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
 
-    float s = _s;
+///モデル図記載の式から算出しようと思ったもの//////////////////////////////////////////////////////////
 
-    float p0x=startX;
-    float p0y=startY;
+// /**
+//  * @brief   移動する曲線から瞬間の曲率半径を取得する
+//  * @param   目標座標が書かれたシナリオ
+//  * @return  
+//  */
+// float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
 
-    float p1x=endX;
-    float p1y=endY;
+//     float s = _s;
+
+//     float p0x=startX;
+//     float p0y=startY;
+
+//     float p1x=endX;
+//     float p1y=endY;
     
-    //! startDirectionの大きさ１のベクトル成分を算出
-    float v0x=0;
-    float v0y=0;
-    VectorFromDirection(startDirection, &v0x, &v0y);
+//     //! startDirectionの大きさ１のベクトル成分を算出
+//     float v0x=0;
+//     float v0y=0;
+//     VectorFromDirection(startDirection, &v0x, &v0y);
 
-    //! endDirectionの大きさ１のベクトル成分を算出
-    float v1x=0;
-    float v1y=0;
-    VectorFromDirection(endDirection, &v1x, &v1y);
+//     //! endDirectionの大きさ１のベクトル成分を算出
+//     float v1x=0;
+//     float v1y=0;
+//     VectorFromDirection(endDirection, &v1x, &v1y);
     
-    float a1x = p1x;
-    float a1y = p1y;
+//     float a1x = p1x;
+//     float a1y = p1y;
 
-    float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
-    float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
+//     float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
+//     float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
 
-    float a3x = -2*p1x + 2*p0x + v0x + v1x;
-    float a3y = -2*p1y + 2*p0y + v0y + v1y;
+//     float a3x = -2*p1x + 2*p0x + v0x + v1x;
+//     float a3y = -2*p1y + 2*p0y + v0y + v1y;
 
-    float d1x=0;
-    float d1y=0;
-    getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
+//     float d1x=0;
+//     float d1y=0;
+//     getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
     
-    float d2x=0;
-    float d2y=0;
-    getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
+//     float d2x=0;
+//     float d2y=0;
+//     getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
 
-    //! 曲率半径Rの最終計算
-    float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
+//     //! 曲率半径Rの最終計算
+//     float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
 
-    return R;
-}
+//     return R;
+// }
 
-/**
- * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
- * @return  
- */
-void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
-    //! 微分の計算結果
-    *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
-    *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
-}
+// /**
+//  * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
+//  * @return  
+//  */
+// void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
+//     //! 微分の計算結果
+//     *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
+//     *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
+// }
 
-/**
- * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
- * @return  
- */
-void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
-    *d2x = 2*a2x + 6*a3x*s;
-    *d2y = 2*a2y + 6*a3y*s;
-}
+// /**
+//  * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
+//  * @return  
+//  */
+// void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
+//     *d2x = 2*a2x + 6*a3x*s;
+//     *d2y = 2*a2y + 6*a3y*s;
+// }
 
-/**
- * @brief   ベクトル成分から大きさを取得
- * @return  
- */
-float DriveController::toVectorMagnitude(float x, float y){
-    return sqrt(x*x+y*y);
-}
+// /**
+//  * @brief   ベクトル成分から大きさを取得
+//  * @return  
+//  */
+// float DriveController::toVectorMagnitude(float x, float y){
+//     return sqrt(x*x+y*y);
+// }
 
-/**
- * @brief   ベクトル積
- * @return  
- */
-float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
+// /**
+//  * @brief   ベクトル積
+//  * @return  
+//  */
+// float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
 
-    //! ベクトル積の計算が合っているか不安
-    float a = x1*y2;
-    float b = x2*y1;
-    return toVectorMagnitude(a,b);
-}
+//     //! ベクトル積の計算が合っているか不安
+//     float a = x1*y2;
+//     float b = x2*y1;
+//     return toVectorMagnitude(a,b);
+// }
 
-/**
- * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
- * @return  
- */
-void DriveController::VectorFromDirection(float Direction, float *x, float *y){
-    //!ベクトルの大きさを定義（仮で１とする）
-    float unit = 1.0F;
+// /**
+//  * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
+//  * @return  
+//  */
+// void DriveController::VectorFromDirection(float Direction, float *x, float *y){
+//     //!ベクトルの大きさを定義（仮で１とする）
+//     float unit = 1.0F;
 
-    //Directionの範囲0～360と0～-360が来るものとする
+//     //Directionの範囲0～360と0～-360が来るものとする
 
-    if (Direction == 0 || Direction == 360 || Direction == -360)
-    {
-        *x = 0;
-        *y = unit;
-        return;
-    }
+//     if (Direction == 0 || Direction == 360 || Direction == -360)
+//     {
+//         *x = 0;
+//         *y = unit;
+//         return;
+//     }
 
-    if (Direction == 180 || Direction == -180)
-    {
-        *x = 0;
-        *y = -unit;
-        return;
-    }
+//     if (Direction == 180 || Direction == -180)
+//     {
+//         *x = 0;
+//         *y = -unit;
+//         return;
+//     }
 
-    if (Direction == 90 || Direction == -270)
-    {
-        *x = unit;
-        *y = 0;
-        return;
-    }
+//     if (Direction == 90 || Direction == -270)
+//     {
+//         *x = unit;
+//         *y = 0;
+//         return;
+//     }
 
-    if (Direction == 270 || Direction == -90)
-    {
-        *x = -unit;
-        *y = 0;
-        return;
-    }
+//     if (Direction == 270 || Direction == -90)
+//     {
+//         *x = -unit;
+//         *y = 0;
+//         return;
+//     }
 
-    //! Tanなどの三角関数で扱うときの角度に変換
-    float deg = degForTrigonometric(Direction);
+//     //! Tanなどの三角関数で扱うときの角度に変換
+//     float deg = degForTrigonometric(Direction);
 
-    if (Direction < 0 && Direction > -180)
-    {
+//     if (Direction < 0 && Direction > -180)
+//     {
 
-        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
-        return;
-    }
-    if (Direction < -180)
-    {
-        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
-        return;
-    }
+//         *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+//         *y = *x * (float)tan(to_rad(deg));
+//         return;
+//     }
+//     if (Direction < -180)
+//     {
+//         *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+//         *y = *x * (float)tan(to_rad(deg));
+//         return;
+//     }
 
-    if (Direction > 0 && Direction < 180)
-    {
-        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
-        return;
-    }
+//     if (Direction > 0 && Direction < 180)
+//     {
+//         *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+//         *y = *x * (float)tan(to_rad(deg));
+//         return;
+//     }
 
-    if (Direction > 180)
-    {
-        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
-        return;
-    }
-}
+//     if (Direction > 180)
+//     {
+//         *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+//         *y = *x * (float)tan(to_rad(deg));
+//         return;
+//     }
+// }
 
-/**
- * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
- * @return  
- */
-float DriveController::degForTrigonometric(float direction){
-    return -direction + 90;
-}
-
+// /**
+//  * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
+//  * @return  
+//  */
+// float DriveController::degForTrigonometric(float direction){
+//     return -direction + 90;
+// }
+///モデル図記載の式から算出しようと思ったもの//////////////////////////////////////////////////////////
 
 
 /**
@@ -964,14 +989,17 @@ float DriveController::CalculationCurvatureRadius(float a0, float a1, float a2, 
 	float dy2 = 0;
 
 	//! 2次関数のdy1とdy2
-	if(a3==0){
+	if(a3 == 0){
 		dy1=OnceDifferentialOfQuadraticFunction(a1,a2,x);
 		dy2=SecondDifferentialOfQuadraticFunction(a2);
 	}
 	
 
-	//! 3次関数
-	//【TODO】
+	//! 3次関数（＝xの3乗の項が存在する場合）
+	if(a3 != 0){
+		dy1 = OnceDifferentialOfCubicFunction(a1, a2, a3 ,x);
+		dy2 = SecondDifferentialOfCubicFunction(a2, a3 ,x);
+	}
 
 
 	//! 分母が0の場合は曲率半径は無限大（つまり直進）
@@ -987,7 +1015,7 @@ float DriveController::CalculationCurvatureRadius(float a0, float a1, float a2, 
 
 
 /**
-* @brief   2次関数の1回微分曲率半径を計算する
+* @brief   ２次関数の1回微分の計算
 * y´= 2*a2*x+a1
 * @return  
 */
@@ -997,7 +1025,7 @@ float DriveController::OnceDifferentialOfQuadraticFunction(float a1, float a2, f
 }
 
 /**
-* @brief   2次関数の２回微分曲率半径を計算する
+* @brief   ２次関数の２回微分の計算
 * y´´= 2*a2
 * @return  
 */
@@ -1005,6 +1033,28 @@ float DriveController::SecondDifferentialOfQuadraticFunction(float a2){
 	float dy2=2*a2;
 	return dy2;
 }
+
+
+/**
+* @brief   ３次関数の1回微分の計算
+* y´= 2*a2*x+a1
+* @return  
+*/
+float DriveController::OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x){
+	float dy1 = 3*a3*x*x + 2*a2*x + a1;
+	return dy1; 
+}
+
+/**
+* @brief   ３次関数の２回微分の計算
+* y´´= 2*a2
+* @return  
+*/
+float DriveController::SecondDifferentialOfCubicFunction(float a2, float a3, float x){
+	float dy2 = 6*a3*x + 2*a2;
+	return dy2;
+}
+
 
 /**
  * @brief   走行体の位置を更新するタスク
