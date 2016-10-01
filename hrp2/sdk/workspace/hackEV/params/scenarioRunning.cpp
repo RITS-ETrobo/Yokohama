@@ -60,7 +60,7 @@ const scenario_running L_Sumo_scenario[23] = {
     { 20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
-    { 20,  0.000F,  180, PINWHEEL        , false, 0}, //黄の方へ向く
+    { 20,  0.000F,  190, PINWHEEL        , false, 0}, //黄の方へ向く //本当は180
     { 20, 28.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //計算上は24cmだが、調整して28cm
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
@@ -78,20 +78,20 @@ const scenario_running L_Sumo_scenario_hoshi_red[19] = {
     { 20,  0.000F,   45, PINWHEEL        , false, 0}, //赤の方へ向きなおす
     { 20,  9.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //さらに近寄り、サークルを検知した(本当はカラーセンサーで前進終了判定)
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
-    {-20, 17.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
+    {-20, 20.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退 //17から20へ調整
     { 20,  0.000F,   90, PINWHEEL        , false, 0}, //奥の方へ向く
     { 20, 30.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、黒ラインを検知した(本当はカラーセンサーで判定)
     { 20,  0.000F,  -90, PINWHEEL        , false, 0}, //緑の方へ向く
-    { 20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    { 20, 13.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //10から13へ調整
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
-    { 20,  0.000F,  180, PINWHEEL        , false, 0}, //黄の方へ向く
-    { 20, 28.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //計算上は24cmだが、調整して28cm
+    { 20,  0.000F,  190, PINWHEEL        , false, 0}, //黄の方へ向く //本当は180でよいが調整して190
+    { 20, 30.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //計算上は24cmだが、調整して30cm
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
-    {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
+    {-20, 13.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退 //計算上は10cmだが、(//17から20へ調整)に合わせて13cmに調整
     { 20,  0.000F, -200, PINWHEEL        , false, 0}, //内側に向く
     { 20, 11.174F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.000F,  110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.000F,  100, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち) //(//本当は180でよいが調整して190)に合わせて100に調整
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
@@ -103,20 +103,20 @@ const scenario_running L_Sumo_scenario_hoshi_blue[19] = {
     { 20,  0.000F,  -45, PINWHEEL        , false, 0}, //赤の方へ向きなおす
     { 20,  9.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //さらに近寄り、サークルを検知した(本当はカラーセンサーで前進終了判定)
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
-    {-20, 17.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
+    {-20, 20.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退 //17から20へ調整
     { 20,  0.000F,  -90, PINWHEEL        , false, 0}, //奥の方へ向く
     { 20, 30.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、黒ラインを検知した(本当はカラーセンサーで判定)
     { 20,  0.000F,   90, PINWHEEL        , false, 0}, //黄の方へ向く
-    { 20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    { 20, 13.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //10から13へ調整
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
-    { 20,  0.000F, -180, PINWHEEL        , false, 0}, //緑の方へ向く
-    { 20, 28.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //計算上は24cmだが、調整して28cm
+    { 20,  0.000F, -190, PINWHEEL        , false, 0}, //緑の方へ向く //本当は-180でよいが調整して-190
+    { 20, 30.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定) //計算上は24cmだが、調整して30cm
     { 20,  7.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
-    {-20, 10.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
+    {-20, 13.000F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退 //計算上は10cmだが、(//17から20へ調整)に合わせて13cmに調整
     { 20,  0.000F,  200, PINWHEEL        , false, 0}, //内側に向く
     { 20, 11.174F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.000F, -110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.000F, -100, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち) //(//本当は-180でよいが調整して-190)に合わせて210に調整
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
