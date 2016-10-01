@@ -57,4 +57,6 @@ float adjustValue(float value, float minValue, float maxValue)
     if (value > maxValue) {
         return  maxValue;
     }
+
+    return  value;
 }
