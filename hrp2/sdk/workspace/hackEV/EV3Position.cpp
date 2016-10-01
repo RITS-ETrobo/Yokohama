@@ -240,12 +240,12 @@ bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float dire
         }
 
         double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
-        int modValue90 = (int)user_fmod(direction_, (float)90);
-        int modValue180 = (int)user_fmod(direction_, (float)180);
-        if (!((modValue90 == 0) && modValue180 != 0)) {
+        double  modValue90 = user_fmod(direction_, (float)90);
+        double  modValue180 = user_fmod(direction_, (float)180);
+        if (!((modValue90 == 0.0F) && modValue180 != 0.0F)) {
             position->x += distance_ * cos(degreeByRadian);
         }
-        if (modValue180 != 0) {
+        if (modValue180 != 0.0F) {
             position->y += distance_ * sin(degreeByRadian);
         }
     }
