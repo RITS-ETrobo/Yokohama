@@ -5,6 +5,7 @@
 #include "EV3Position.h"
 #include "instances.h"
 #include <math.h>
+#include "user_function.h"
 
 /**
  *  @brief  コンストラクタ
@@ -341,18 +342,4 @@ bool EV3Position::convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *posit
     }
 
     return  true;
-}
-
-/**
- *  @brief  imgビルドでfmodがエラーになる為、自作した
- *  @param  x   割られる数
- *  @param  y   割る数
- *  @return 余り
-*/
-double EV3Position::user_fmod(double x, double y)
-{
-    int numberX = x * 100000;
-    int numberY = y * 100000;
-
-    return  (numberX % numberY) / (float)100000;
 }
