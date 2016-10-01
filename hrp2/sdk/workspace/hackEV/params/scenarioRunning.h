@@ -43,7 +43,7 @@ extern const scenario_running L_StarUP_scenario[];
 extern const scenario_running L_StarUP_Sumo_scenario[];
 
 //! Lコース（ET相撲）※この間にゲーム
-extern const scenario_running L_Sumo_scenario[24];
+extern const scenario_running L_Sumo_scenario[23];
 
 //! Lコース（ET相撲後～懸賞運び入口）
 extern const scenario_running L_Sumo_kensho_scenario[];
