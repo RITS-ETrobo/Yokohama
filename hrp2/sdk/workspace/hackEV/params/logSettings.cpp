@@ -50,9 +50,11 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_COLOR_BLACK, "Color(Black)");
     initialize_logSetting_map(LOG_TYPE_COLOR_WHITE, "Color(White)");
     initialize_logSetting_map(LOG_TYPE_DISTANCE, "Distance", 100);
-    initialize_logSetting_map(LOG_TYPE_DISTANCE_TOTAL, "Distance(Total)", 100);
+    initialize_logSetting_map(LOG_TYPE_DISTANCE_SCENARIO, "Distance(Scenario)", 100);
+    initialize_logSetting_map(LOG_TYPE_DISTANCE_TOTAL, "Distance(Total)", 500);
     initialize_logSetting_map(LOG_TYPE_DIRECTION, "Direction", 100);
-    initialize_logSetting_map(LOG_TYPE_DIRECTION_TOTAL, "Direction(Total)", 100);
+    initialize_logSetting_map(LOG_TYPE_DIRECTION_SCENARIO, "Direction(Scenario)", 100);
+    initialize_logSetting_map(LOG_TYPE_DIRECTION_TOTAL, "Direction(Total)", 500);
     initialize_logSetting_map(LOG_TYPE_GYRO, "Gyro");
     initialize_logSetting_map(LOG_TYPE_WRITE_PROCESSING, "Writing Log");
     initialize_logSetting_map(LOG_TYPE_DISTANCE_RIGHT, "Distance(Right)", 100);
@@ -83,6 +85,14 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME_RIGHT, "Average(RTime)", 100);
     initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_LEFT, "PowLeftForCurve", 100);
     initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_RIGHT, "PowRightForCurve", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST1, "Test1", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST2, "Test2", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST3, "Test3", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST4, "Test4", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST5, "Test5", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST6, "Test6", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST7, "Test7", 100);
+    initialize_logSetting_map(LOG_TYPE_TEST8, "Test8", 100);
 }
 
 /**

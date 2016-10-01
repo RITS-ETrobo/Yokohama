@@ -42,9 +42,34 @@ const scenario_running L_StarUP_Sumo_scenario[] = {
     {30, 10.5F, -1, TRACE_CURVE, false,0,DISTANCE_STOP}
 };
 
-//! Lコース（ET相撲）※この間にゲーム
-const scenario_running L_Sumo_scenario[] = {
-    {30, 134.2F, -1, TRACE_STRAIGHT, false,0,DISTANCE_STOP}
+
+//! Lコース（ET相撲. 4つ落とすシナリオ.）
+const scenario_running L_Sumo_scenario[24] = {
+    //{30, 50.0F, -1, NOTRACE_STRAIGHT, false, 0},    //土俵中心まで前進する
+    {20, 0.0F, 140, PINWHEEL, false, 0},    //赤の方を向く
+    {20, 11.0F, -1, NOTRACE_STRAIGHT, false, 0}, //近寄る
+    {20, 0.0F, -45, PINWHEEL, false, 0},    //赤の方へ向きなおす
+    {20, 12.0F, -1, NOTRACE_STRAIGHT, false, 0}, //さらに近寄り、サークルを検知した(本当はカラーセンサーで前進終了判定)
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
+    {-10, 8.0F, -1, NOTRACE_STRAIGHT, false, 0},    //余裕を持って後退
+    {20, 0.0F, 180, PINWHEEL, false, 0},    //青へ向く
+    {20, 34.0F, -1, NOTRACE_STRAIGHT, false, 0},    //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
+    {-10, 15.0F, -1, NOTRACE_STRAIGHT, false, 0},    //後退
+    {20, 0.0F, 90, PINWHEEL, false, 0},   //奥の方へ向く
+    {20, 30.0F, -1, NOTRACE_STRAIGHT, false, 0},    //近寄り、黒ラインを検知した(本当はカラーセンサーで判定)
+    {20, 0.0F, -90, PINWHEEL, false, 0}, //緑の方へ向く
+    {20, 10.0F, -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
+    {-10, 8.0F, -1, NOTRACE_STRAIGHT, false, 0},    //後退
+    {20, 0.0F, 180, PINWHEEL, false, 0},   //黄の方へ向く
+    {20, 32.0F, -1, NOTRACE_STRAIGHT, false, 0},    //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
+    {-10, 4.0F, -1, NOTRACE_STRAIGHT, false, 0},    //4cm後退
+    {20, 0.0F, -180, PINWHEEL, false, 0},   //内側に向く
+    {20, 14.0F, -1, NOTRACE_STRAIGHT, false, 0},  //中間まで進む
+    {20, 0.0F, 90, PINWHEEL, true, 0}, //レールの方を向く (ここで新幹線待ち)
+    {20, 40.0F, -1, NOTRACE_STRAIGHT, false, 0} //土俵から降りる
 };
 
 //! Lコース（ET相撲後～懸賞運び入口）

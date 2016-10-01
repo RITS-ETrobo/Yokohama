@@ -38,11 +38,17 @@ typedef enum
     //! 距離(瞬間)
     LOG_TYPE_DISTANCE,
 
+    //! 距離(累積/シナリオ)
+    LOG_TYPE_DISTANCE_SCENARIO,
+
     //! 距離(累積)
     LOG_TYPE_DISTANCE_TOTAL,
 
     //! 角度(瞬間)
     LOG_TYPE_DIRECTION,
+
+    //! 角度(累積/シナリオ)
+    LOG_TYPE_DIRECTION_SCENARIO,
 
     //! 角度(累積)
     LOG_TYPE_DIRECTION_TOTAL,
@@ -138,7 +144,31 @@ typedef enum
     LOG_TYPE_POWER_FOR_CURVE_LEFT,
 
     //! カーブするために調整した右モーターのパワー
-    LOG_TYPE_POWER_FOR_CURVE_RIGHT
+    LOG_TYPE_POWER_FOR_CURVE_RIGHT,
+
+    //! テスト用1
+    LOG_TYPE_TEST1,
+
+    //! テスト用2
+    LOG_TYPE_TEST2,
+
+    //! テスト用3
+    LOG_TYPE_TEST3,
+
+    //! テスト用4
+    LOG_TYPE_TEST4,
+
+    //! テスト用5
+    LOG_TYPE_TEST5,
+
+    //! テスト用6
+    LOG_TYPE_TEST6,
+
+    //! テスト用7
+    LOG_TYPE_TEST7,
+
+    //! テスト用8
+    LOG_TYPE_TEST8
 } LOGTYPE;
 //@}
 

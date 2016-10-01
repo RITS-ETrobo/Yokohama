@@ -15,6 +15,7 @@
 #include "pid_controller.h"
 
 #include "DriveController.h"
+#include "user_function.h"
 
 //! class for driving
 DriveController::DriveController()
@@ -201,6 +202,7 @@ float DriveController::getDirection(float directionDelta)
 {
     directionScenario += directionDelta;
     directionTotal += directionDelta;
+    directionTotal = adjustValue(directionTotal, -180, 180);
     return  directionScenario;
 }
 
@@ -1084,8 +1086,10 @@ void DriveController::updatePosition()
     if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
-        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceScenario);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_SCENARIO, distanceScenario);
+        logger->addLogFloat(LOG_TYPE_DISTANCE_TOTAL, distanceTotal);
 
-        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionScenario);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_SCENARIO, directionScenario);
+        logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 }
