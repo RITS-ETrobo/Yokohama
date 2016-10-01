@@ -184,7 +184,6 @@ typedef enum
 
     //! テスト用8
     LOG_TYPE_TEST8
->>>>>>> origin/hackev/cpp/develop
 } LOGTYPE;
 //@}
 
