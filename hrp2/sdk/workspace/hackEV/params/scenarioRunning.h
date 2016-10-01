@@ -55,7 +55,7 @@ extern const scenario_running L_Sumo_scenario_hoshi_blue[19];
 extern const scenario_running L_Sumo_scenario_hoshi_green[19];
 
 //! Lコース（ET相撲. 黄以外を落とすシナリオ. ）
-extern const scenario_running L_Sumo_scenario_hoshi_yellow[18];
+extern const scenario_running L_Sumo_scenario_hoshi_yellow[19];
 
 //! Lコース（ET相撲後～懸賞運び入口）
 extern const scenario_running L_Sumo_kensho_scenario[];
