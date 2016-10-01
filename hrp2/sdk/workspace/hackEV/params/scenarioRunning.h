@@ -42,7 +42,7 @@ extern const scenario_running L_StarUP_scenario[];
 //! Lコース（星取り入口～ET相撲）
 extern const scenario_running L_StarUP_Sumo_scenario[];
 
-//! Lコース（ET相撲）※この間にゲーム
+//! Lコース（ET相撲. 4つ落とすシナリオ.）
 extern const scenario_running L_Sumo_scenario[23];
 
 //! Lコース（ET相撲後～懸賞運び入口）
