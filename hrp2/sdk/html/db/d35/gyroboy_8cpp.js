@@ -2,7 +2,7 @@ var gyroboy_8cpp =
 [
     [ "balance_task", "db/d35/gyroboy_8cpp.html#ad17da87df58d4bfe5bf127e5fc8df730", null ],
     [ "drive_controller_task", "db/d35/gyroboy_8cpp.html#a859133c420293b120b61fd5da10d31fc", null ],
-    [ "driveController", "db/d35/gyroboy_8cpp.html#a0463297b4f07c80275f91b94e0c0db4c", null ],
+    [ "driveProcess", "db/d35/gyroboy_8cpp.html#a9f5a4fa410a323fc88b4c367dc31dedf", null ],
     [ "idle_task", "db/d35/gyroboy_8cpp.html#aca19bf03e7dd21a3a6e07fce0f741d2e", null ],
     [ "initialize_gyroboy", "db/d35/gyroboy_8cpp.html#a3ba714d85d368a288920489dc6bf1828", null ],
     [ "EMAOFFSET", "db/d35/gyroboy_8cpp.html#gaaf58abd98fc6f4e0351fcb8d69c1ab97", null ],

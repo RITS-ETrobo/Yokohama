@@ -93,7 +93,7 @@ void confirmBattery(bool isOutputLog /*= false*/)
     writeStringLCD(message);
     if (isOutputLog && logger) {
         logger->addLogInt(LOG_TYPE_BATTERY_mA, battery_mA);
-        logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mA);
+        logger->addLogInt(LOG_TYPE_BATTERY_mV, battery_mV);
     }
 }
 

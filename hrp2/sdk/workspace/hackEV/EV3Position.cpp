@@ -74,6 +74,7 @@ void EV3Position::add(DISTANCE_RECORD record)
     distance_record.push_back(record);
     removeExceededTimeItem();
     direction = record.direction;
+    updateSpeed();
 }
 
 /**
@@ -81,31 +82,64 @@ void EV3Position::add(DISTANCE_RECORD record)
  *
  *  deque<DISTANCE_RECORD>が指定時間(duration)内に収まっていなければ、収まるまで先頭側から要素を削除する
  *  この結果、直近の指定時間内の時間と距離を保持することになる
- *  @return なし
+ *  @return true : 要素を削除した
 */
-void EV3Position::removeExceededTimeItem()
+bool EV3Position::removeExceededTimeItem()
 {
+    bool    result = false;
     for (;;) {
         std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
         if (size <= 1) {
-            return;
+            break;
         }
 
         DISTANCE_RECORD record = distance_record.at(size - 1);
         std::vector<DISTANCE_RECORD>::iterator it = distance_record.begin();
         if (it == distance_record.end()) {
-            return;
+            break;
         }
 
         if (record.currentTime - it->currentTime <= duration) {
-            return;
+            break;
         }
 
         distance_record.erase(it);
+        result = true;
         if (duration == 0) {
-            return;
+            break;
         }
     }
+
+    return  result;
+}
+
+/**
+ *  @param  平均速度を更新する
+ *  @return なし
+*/
+void EV3Position::updateSpeed()
+{
+    averageSpeed = 0.0F;
+
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    DISTANCE_RECORD record_first = distance_record.at(0);
+    DISTANCE_RECORD record_last = distance_record.at(size - 1);
+
+    memset((void*)&record_speed, '\0', sizeof(DISTANCE_RECORD));
+    record_speed.distance = record_last.distance - record_first.distance;
+    record_speed.direction = record_last.direction;
+    record_speed.currentTime = record_last.currentTime - record_first.currentTime;
+    if (record_speed.currentTime == 0) {
+        return;
+    }
+
+    averageSpeed = record_speed.distance / (float)(record_speed.currentTime) * 1000;
+
+#ifndef EV3_UNITTEST
+    if (logger) {
+        logger->addLogFloat(LOG_TYPE_AVERAGE_SPEED, averageSpeed);
+    }
+#endif  //  EV3_UNITTEST
 }
 
 /**
@@ -119,17 +153,7 @@ float EV3Position::getSpeed(DISTANCE_RECORD *record)
         return  0.0F;
     }
 
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-    DISTANCE_RECORD record_first = distance_record.at(0);
-    DISTANCE_RECORD record_last = distance_record.at(size - 1);
-    record->currentTime = record_last.currentTime - record_first.currentTime;
-    record->distance = record_last.distance - record_first.distance;
-    record->distanceDelta = 0;
-    if (record->currentTime == 0) {
-        return  0.0F;
-    }
-
-    averageSpeed = (record->distance / (float)(record->currentTime) * 1000);
+    memcpy((void*)record, (const void*)&record_speed, sizeof(DISTANCE_RECORD));
     return  averageSpeed;
 }
 

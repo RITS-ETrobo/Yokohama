@@ -8,6 +8,8 @@ var dir_d11f1d065a93b4f229e87718d830fe83 =
     [ "GyroSensorController.h", "d0/d48/_gyro_sensor_controller_8h.html", [
       [ "GyroSensorController", "d3/d77/class_gyro_sensor_controller.html", "d3/d77/class_gyro_sensor_controller" ]
     ] ],
-    [ "SonarSensorController.cpp", "da/df2/_sonar_sensor_controller_8cpp.html", "da/df2/_sonar_sensor_controller_8cpp" ],
-    [ "SonarSensorController.h", "de/db5/_sonar_sensor_controller_8h.html", "de/db5/_sonar_sensor_controller_8h" ]
+    [ "SonarSensorController.cpp", "da/df2/_sonar_sensor_controller_8cpp.html", null ],
+    [ "SonarSensorController.h", "de/db5/_sonar_sensor_controller_8h.html", [
+      [ "SonarSensorController", "df/d60/class_sonar_sensor_controller.html", "df/d60/class_sonar_sensor_controller" ]
+    ] ]
 ];

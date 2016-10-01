@@ -1,3 +1,3 @@
 <map id="stop_emergency" name="stop_emergency">
-<area shape="rect" id="node2" href="$da/df2/_sonar_sensor_controller_8cpp.html#aa0e8eec831480be7f8ba3bafc5b5312c" title="setEnabledSonarSensor" alt="" coords="184,5,360,32"/>
+<area shape="rect" id="node2" href="$df/d60/class_sonar_sensor_controller.html#a8ef6afeb59b4fcccd4fa8905e63dd1e9" title="超音波センサの有効/無効を切り替える " alt="" coords="174,5,327,46"/>
 </map>

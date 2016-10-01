@@ -11,6 +11,11 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
     [ "DriveController.h", "d5/d5b/_drive_controller_8h.html", [
       [ "DriveController", "d8/dcc/class_drive_controller.html", "d8/dcc/class_drive_controller" ]
     ] ],
+    [ "EV3Position.cpp", "da/dc4/_e_v3_position_8cpp.html", null ],
+    [ "EV3Position.h", "d6/db9/_e_v3_position_8h.html", [
+      [ "DISTANCE_RECORD", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d" ],
+      [ "EV3Position", "d1/d48/class_e_v3_position.html", "d1/d48/class_e_v3_position" ]
+    ] ],
     [ "instances.h", "dd/d3f/instances_8h.html", "dd/d3f/instances_8h" ],
     [ "LCDController.cpp", "df/d88/_l_c_d_controller_8cpp.html", "df/d88/_l_c_d_controller_8cpp" ],
     [ "LCDController.h", "d5/d3c/_l_c_d_controller_8h.html", "d5/d3c/_l_c_d_controller_8h" ],
@@ -19,13 +24,11 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
     [ "Makefile.inc", "d4/d1f/_makefile_8inc.html", null ],
     [ "pid_controller.cpp", "dd/d0a/pid__controller_8cpp.html", "dd/d0a/pid__controller_8cpp" ],
     [ "pid_controller.h", "de/dc3/pid__controller_8h.html", "de/dc3/pid__controller_8h" ],
+    [ "product.h", "dc/daa/product_8h.html", null ],
     [ "RunningModule.cpp", "da/d2f/_running_module_8cpp.html", "da/d2f/_running_module_8cpp" ],
     [ "RunningModule.h", "d6/d2f/_running_module_8h.html", "d6/d2f/_running_module_8h" ],
     [ "SpeedCalculator.cpp", "d4/d27/_speed_calculator_8cpp.html", null ],
-    [ "SpeedCalculator.h", "d8/d72/_speed_calculator_8h.html", [
-      [ "DISTANCE_RECORD", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d" ],
-      [ "SpeedCalculator", "da/dcf/class_speed_calculator.html", "da/dcf/class_speed_calculator" ]
-    ] ],
+    [ "SpeedCalculator.h", "d8/d72/_speed_calculator_8h.html", "d8/d72/_speed_calculator_8h" ],
     [ "utilities.cpp", "de/da5/utilities_8cpp.html", "de/da5/utilities_8cpp" ],
     [ "utilities.h", "de/df0/utilities_8h.html", "de/df0/utilities_8h" ]
 ];

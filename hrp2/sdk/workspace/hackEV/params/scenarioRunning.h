@@ -107,7 +107,7 @@ extern const scenario_running run_scenario_straight_30m[1];
 extern const scenario_running run_scenario_zeroyon[2];
 
 //! 検証用シナリオ(曲線走行90°になったら停止)
-extern const scenario_running run_scenario_curve_90[1];
+extern const scenario_running run_scenario_curve_90[5];
 
 //! 検証用シナリオ(Lコースをトレースせずに走る)
 extern const scenario_running run_scenario_LCource_Try[8];

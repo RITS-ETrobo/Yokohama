@@ -10,6 +10,8 @@ SonarSensorController::SonarSensorController(sensor_port_t _port)
     : port(_port)
     , enabled(false)
     , initialized(false)
+    , SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN(3)
+    , SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX(3)
 {
 }
 /**
@@ -88,4 +90,23 @@ int16_t SonarSensorController::executeSonar()
 #endif  //  EV3_UNITTEST
 
     return  distance;
+}
+
+/**
+ * @brief   懸賞を安全につかめる距離か検証する
+ *
+ * @return  つかめる距離ならばtrueを返す
+ */
+bool SonarSensorController::isGrabbableDistance()
+{
+    int16_t distance = -1;
+
+    if (isEnabled()) {
+        distance = executeSonar();
+        if ((SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN <= distance) &&
+            (distance <= SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX)) {
+            return true;
+        }
+    }
+    return false;
 }

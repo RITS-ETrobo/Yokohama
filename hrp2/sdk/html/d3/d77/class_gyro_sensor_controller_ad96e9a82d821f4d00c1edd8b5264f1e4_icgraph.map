@@ -1,4 +1,4 @@
 <map id="GyroSensorController::reset" name="GyroSensorController::reset">
-<area shape="rect" id="node2" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="214,5,373,46"/>
-<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="421,12,509,39"/>
+<area shape="rect" id="node2" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="200,5,347,46"/>
+<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="395,12,477,39"/>
 </map>

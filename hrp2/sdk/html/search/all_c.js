@@ -8,5 +8,7 @@ var searchData=
   ['motorwheel',['MotorWheel',['../db/d2f/class_motor_wheel.html',1,'MotorWheel'],['../db/d2f/class_motor_wheel.html#af2b96567604273b9f623a9c3d06140f8',1,'MotorWheel::MotorWheel()']]],
   ['motorwheel_2ecpp',['MotorWheel.cpp',['../db/dd1/_motor_wheel_8cpp.html',1,'']]],
   ['motorwheel_2eh',['MotorWheel.h',['../d5/d3f/_motor_wheel_8h.html',1,'']]],
-  ['move_5farm',['move_arm',['../d3/d68/_arm_module_8cpp.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp']]]
+  ['move_5farm',['move_arm',['../d3/d68/_arm_module_8cpp.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32',1,'move_arm(int degrees, uint32_t speed_abs, bool_t blocking):&#160;ArmModule.cpp']]],
+  ['move_5farm_5fhorizon',['move_arm_horizon',['../d3/d68/_arm_module_8cpp.html#a035904fc19672142f9a6b2d53b0385b2',1,'move_arm_horizon():&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a035904fc19672142f9a6b2d53b0385b2',1,'move_arm_horizon():&#160;ArmModule.cpp']]],
+  ['move_5farm_5fthrow_5fblock',['move_arm_throw_block',['../d3/d68/_arm_module_8cpp.html#a9a9d8164a906e35335b0e45d43431f1e',1,'move_arm_throw_block(bool beforeSetDown=false, bool afterSetOriginalPosition=false):&#160;ArmModule.cpp'],['../d4/d64/_arm_module_8h.html#a7dfe73c2339839d976f461facf1be8ac',1,'move_arm_throw_block(bool beforeSetDown, bool afterSetOriginalPosition):&#160;ArmModule.cpp']]]
 ];

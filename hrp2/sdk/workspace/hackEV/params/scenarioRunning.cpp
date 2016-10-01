@@ -214,8 +214,12 @@ const scenario_running run_scenario_zeroyon[2] = {
 };
 
 //! 検証用シナリオ(曲線走行90°になったら停止)
-const scenario_running run_scenario_curve_90[1] = {
-    {30, 0.0F, 90, NOTRACE_CURVE_LEFT, true, 50,DISTANCE_STOP}
+const scenario_running run_scenario_curve_90[5] = {
+    {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 40},
+    {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 30},
+    {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 20},
+    {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 10},
+    {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 5}
 };
 
 //! 検証用シナリオ(Lコースをトレースせずに走る)

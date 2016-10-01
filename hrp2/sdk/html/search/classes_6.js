@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['user_5flog',['USER_LOG',['../d2/dff/struct_u_s_e_r___l_o_g.html',1,'']]]
+  ['scenario_5frunning',['scenario_running',['../d4/d30/structscenario__running.html',1,'']]],
+  ['sonarsensorcontroller',['SonarSensorController',['../df/d60/class_sonar_sensor_controller.html',1,'']]],
+  ['speedcalculator',['SpeedCalculator',['../da/dcf/class_speed_calculator.html',1,'']]]
 ];
