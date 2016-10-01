@@ -64,9 +64,9 @@ const scenario_running L_Sumo_scenario[23] = {
     { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //4cm後退
-    { 20,  0.0F, -180, PINWHEEL        , false, 0}, //内側に向く
-    { 20, 14.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.0F,   90, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
+    { 20, 18.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
+    { 20,  0.0F,  110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
@@ -88,9 +88,9 @@ const scenario_running L_Sumo_scenario_hoshi_red[18] = {
     { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //4cm後退
-    { 20,  0.0F, -180, PINWHEEL        , false, 0}, //内側に向く
-    { 20, 14.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.0F,   90, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
+    { 20, 18.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
+    { 20,  0.0F,  110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
@@ -113,9 +113,9 @@ const scenario_running L_Sumo_scenario_hoshi_blue[19] = {
     { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //4cm後退
-    { 20,  0.0F,  180, PINWHEEL        , false, 0}, //内側に向く
-    { 20, 14.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.0F,  -90, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.0F,  200, PINWHEEL        , false, 0}, //内側に向く
+    { 20, 18.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
+    { 20,  0.0F, -110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
@@ -138,9 +138,9 @@ const scenario_running L_Sumo_scenario_hoshi_green[19] = {
     { 20, 10.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
     {-20,  8.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
-    { 20,  0.0F, -180, PINWHEEL        , false, 0}, //内側に向く
-    { 20, 14.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.0F,   90, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
+    { 20, 18.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
+    { 20,  0.0F,  110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
@@ -162,9 +162,9 @@ const scenario_running L_Sumo_scenario_hoshi_yellow[18] = {
     { 20,  0.0F,  -90, PINWHEEL        , false, 0}, //緑の方へ向く
     { 20, 10.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //5cm前進(このあとアームで投げ飛ばし)
-    { 20,  0.0F, -180, PINWHEEL        , false, 0}, //内側に向く
-    { 20, 14.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
-    { 20,  0.0F,   90, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
+    { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
+    { 20, 18.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //中間まで進む
+    { 20,  0.0F,  110, PINWHEEL        , true , 0}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
