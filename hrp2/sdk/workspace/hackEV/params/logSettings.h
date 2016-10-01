@@ -159,7 +159,32 @@ typedef enum
     LOG_TYPE_EV3_POSITION_MAP_Y,
 
     //! 走行体の向き[単位 : 度]
-    LOG_TYPE_EV3_DIRECTION
+    LOG_TYPE_EV3_DIRECTION,
+
+    //! テスト用1
+    LOG_TYPE_TEST1,
+
+    //! テスト用2
+    LOG_TYPE_TEST2,
+
+    //! テスト用3
+    LOG_TYPE_TEST3,
+
+    //! テスト用4
+    LOG_TYPE_TEST4,
+
+    //! テスト用5
+    LOG_TYPE_TEST5,
+
+    //! テスト用6
+    LOG_TYPE_TEST6,
+
+    //! テスト用7
+    LOG_TYPE_TEST7,
+
+    //! テスト用8
+    LOG_TYPE_TEST8
+>>>>>>> origin/hackev/cpp/develop
 } LOGTYPE;
 //@}
 
