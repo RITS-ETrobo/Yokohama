@@ -228,13 +228,13 @@ void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t 
  *  @param  beCorrected 値を補正するか
  *  @return true : 動かすことができる場合
 */
-bool EV3Position::movePosition(EV3_POSITION *position, int distance_, float direction_, uint8_t updateType /*= 0*/, bool beCorrected /*= true*/)
+bool EV3Position::movePosition(EV3_POSITION *position, float distance_, float direction_, uint8_t updateType /*= 0*/, bool beCorrected /*= true*/)
 {
     if (isValidUpdateType(updateType) == false) {
         return  false;
     }
 
-    if (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) {
+    if ((distance_ != 0.0F) && (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP))) {
         if (isValidPosition(position, (updateType == CORRECT_POSITION_REAL) ? true : false, beCorrected) == false) {
             return  false;
         }

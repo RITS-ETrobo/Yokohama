@@ -49,7 +49,7 @@ public:
     virtual bool getPosition(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, float *direction);
     virtual void setPosition(EV3_POSITION *position, float direction_, uint8_t updateType = 0);
     virtual void synchronizePosition(EV3_POSITION *position, uint8_t updateType = 0);
-    virtual bool movePosition(EV3_POSITION *position, int distance_, float direction_, uint8_t updateType = 0, bool beCorrected = true);
+    virtual bool movePosition(EV3_POSITION *position, float distance_, float direction_, uint8_t updateType = 0, bool beCorrected = true);
 
     //! \addtogroup correctPosition関数とmovePosition関数のupdateTypeに指定可能なビット
     //@{
