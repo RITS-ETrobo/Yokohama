@@ -10,6 +10,8 @@ SonarSensorController::SonarSensorController(sensor_port_t _port)
     : port(_port)
     , enabled(false)
     , initialized(false)
+    , SAFETY_CATCHABLE_PRIZE_DISTANCE_MIN(3)
+    , SAFETY_CATCHABLE_PRIZE_DISTANCE_MAX(3)
 {
 }
 /**
