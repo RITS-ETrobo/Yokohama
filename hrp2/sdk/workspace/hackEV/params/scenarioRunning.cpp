@@ -41,8 +41,7 @@ const scenario_running L_StarUP_Sumo_scenario[] = {
     {30, 10.5F, -1, TRACE_CURVE, false,0}
 };
 
-//! Lコース（ET相撲. 4つ落とすシナリオ. 数値は全て未調整）※この間にゲーム
-//回転角度は、大きめを入力すること
+//! Lコース（ET相撲. 4つ落とすシナリオ.）
 const scenario_running L_Sumo_scenario[24] = {
     //{30, 50.0F, -1, NOTRACE_STRAIGHT, false, 0},    //土俵中心まで前進する
     {20, 0.0F, 140, PINWHEEL, false, 0},    //赤の方を向く
