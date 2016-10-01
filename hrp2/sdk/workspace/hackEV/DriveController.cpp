@@ -16,6 +16,7 @@
 #include "pid_controller.h"
 
 #include "DriveController.h"
+#include "user_function.h"
 
 //! class for driving
 DriveController::DriveController()
@@ -199,7 +200,9 @@ float DriveController::getDistance(float distanceDelta)
 float DriveController::getDirection(float directionDelta)
 {
     directionScenario += directionDelta;
+    directionScenario = adjustValue(directionScenario, -180, 180);
     directionTotal += directionDelta;
+    directionTotal = adjustValue(directionTotal, -180, 180);
     return  directionScenario;
 }
 
@@ -445,7 +448,7 @@ bool DriveController::stopByDirection(scenario_running scenario)
     }
 
     //! 走行体が指定した向きになったらストップ
-    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, scenario.direction);
+    bool isGreaterValue = isGreaterAbsoluteValue(directionScenario, adjustValue(scenario.direction, -180, 180);
     if (isGreaterValue && scenario.stop){
         stop();
     }
