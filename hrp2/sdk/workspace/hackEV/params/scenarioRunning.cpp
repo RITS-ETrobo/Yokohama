@@ -61,7 +61,7 @@ const scenario_running L_Sumo_scenario[23] = {
     { 20,  7.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F,  180, PINWHEEL        , false, 0}, //黄の方へ向く
-    { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    { 20, 30.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
@@ -85,7 +85,7 @@ const scenario_running L_Sumo_scenario_hoshi_red[18] = {
     { 20,  7.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F,  180, PINWHEEL        , false, 0}, //黄の方へ向く
-    { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    { 20, 30.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F, -200, PINWHEEL        , false, 0}, //内側に向く
@@ -110,7 +110,7 @@ const scenario_running L_Sumo_scenario_hoshi_blue[19] = {
     { 20,  7.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20, 10.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F, -180, PINWHEEL        , false, 0}, //緑の方へ向く
-    { 20, 32.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
+    { 20, 30.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //近寄り、サークルを検知した(本当はカラーセンサーで判定)
     { 20,  5.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //前進(このあとアームで投げ飛ばし)
     {-20,  4.0F,   -1, NOTRACE_STRAIGHT, false, 0}, //後退
     { 20,  0.0F,  200, PINWHEEL        , false, 0}, //内側に向く
