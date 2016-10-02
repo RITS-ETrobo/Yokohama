@@ -39,7 +39,7 @@ const scenario_coordinate start_beforeSumo[9] = {
 
 //! 相撲台の上まで移動
 const scenario_coordinate onStageSumo[1]={
-    {30, -132.5714286, 182.5714286}
+    {50, -132.5714286, 182.5714286}
 };
 
 //! 相撲が終わってから懸賞まで

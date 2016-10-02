@@ -429,7 +429,7 @@ bool DriveController::stopByDistance(scenario_running scenario)
     //! 走行体が指定距離走行したらストップ
     bool isGreaterValue = isGreaterAbsoluteValue(distanceScenario, scenario.distance);
     if (isGreaterValue && scenario.stop) {
-        stop();
+        stop(false);//【TODO】検証用にfalse
     }    
 
     return  isGreaterValue;
