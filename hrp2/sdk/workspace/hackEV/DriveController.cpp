@@ -610,31 +610,31 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
  * @return  
  */
 float DriveController::distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY){
-        float differenceX = endX - startX;
-        float differenceY = endY - startY;
+    float differenceX = endX - startX;
+    float differenceY = endY - startY;
 
-        if (differenceX==0 && differenceY==0)
-        {
-            return 0;
-        }
+    if (differenceX==0 && differenceY==0)
+    {
+        return 0;
+    }
 
-        if (differenceX !=0 && differenceY == 0)
-        {
-            return fabsf(differenceX);
-        }
+    if (differenceX !=0 && differenceY == 0)
+    {
+        return fabsf(differenceX);
+    }
 
-        if (differenceX == 0 && differenceY != 0)
-        {
-            return fabsf(differenceY);
-        }
+    if (differenceX == 0 && differenceY != 0)
+    {
+        return fabsf(differenceY);
+    }
 
-        //! ｘ座標を基準としたラジアン
-        float Radian = atan2(differenceY, differenceX);
+    //! ｘ座標を基準としたラジアン
+    float Radian = atan2(differenceY, differenceX);
 
-        //! 目標座標までの直線距離(sqrtを使うとimgビルドがエラーになるためコサインを使って求める)
-        float moveDistance = fabsf(fabsf(differenceX) / cos(Radian));
+    //! 目標座標までの直線距離(sqrtを使うとimgビルドがエラーになるためコサインを使って求める)
+    float moveDistance = fabsf(fabsf(differenceX) / cos(Radian));
 
-        return moveDistance;
+    return moveDistance;
 }
 
 /**
@@ -646,101 +646,101 @@ float DriveController::distanceFromCoordinateForJitteryMovement(float startX, fl
  * @return  
  */
 float DriveController::directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY){
-            float differenceX = endX - startX;
-            float differenceY = endY - startY;
+    float differenceX = endX - startX;
+    float differenceY = endY - startY;
 
-            // //! 動かない場合は角度移動はしない
-            if (differenceX == 0)
-            {
-                if (differenceY == 0)
-                {
-                    return 0;
-                }
+    // //! 動かない場合は角度移動はしない
+    if (differenceX == 0)
+    {
+        if (differenceY == 0)
+        {
+            return 0;
+        }
 
-                if (differenceY > 0)
-                {
-                    return (-startDirection);
-                }
+        if (differenceY > 0)
+        {
+            return (-startDirection);
+        }
 
-                //! スタート時点の角度に最も近い方を選択(180と-180は同じ)
-                if (startDirection > 0)
-                {
-                    return (180 - startDirection);
-                }
+        //! スタート時点の角度に最も近い方を選択(180と-180は同じ)
+        if (startDirection > 0)
+        {
+            return (180 - startDirection);
+        }
 
-                if (startDirection < 0)
-                {
-                    return (-180 - startDirection);
-                }
-            }
+        if (startDirection < 0)
+        {
+            return (-180 - startDirection);
+        }
+    }
 
-            if (differenceY == 0)
-            {
-                if (differenceX > 0)
-                {
-                    return (90 - startDirection);
-                }
+    if (differenceY == 0)
+    {
+        if (differenceX > 0)
+        {
+            return (90 - startDirection);
+        }
 
-                return (-90 - startDirection);
-            }
-            
+        return (-90 - startDirection);
+    }
+    
 
-            //! ｘ座標を基準としたラジアン
-            float Radian = atan2(differenceY, differenceX);
+    //! ｘ座標を基準としたラジアン
+    float Radian = atan2(differenceY, differenceX);
 
-            float deg = to_deg(Radian);
+    float deg = to_deg(Radian);
 
-            float targetDirection = 0;
+    float targetDirection = 0;
 
-            //! 目標座標の領域によって、Y軸を基準とした目標角度を調整する
-            //! 左上領域
-            if (differenceX > 0 && differenceY > 0)
-            {
-                targetDirection = 90 - deg;
-            }
-            //! 右上領域
-            else if (differenceX < 0 && differenceY > 0)
-            {
-                targetDirection = 90 - deg;
-            }
-            //! 左下領域
-            else if (differenceX > 0 && differenceY < 0)
-            {
-                targetDirection = 90 - deg;
-            }
-            //! 右下領域
-            else
-            {
-                targetDirection = -270 - deg;
-            }
+    //! 目標座標の領域によって、Y軸を基準とした目標角度を調整する
+    //! 左上領域
+    if (differenceX > 0 && differenceY > 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 右上領域
+    else if (differenceX < 0 && differenceY > 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 左下領域
+    else if (differenceX > 0 && differenceY < 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 右下領域
+    else
+    {
+        targetDirection = -270 - deg;
+    }
 
-            //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
-            if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
-            {
-                //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
-                if (fabsf((targetDirection - 360) - (startDirection - 360)) < fabsf((targetDirection - 360) - startDirection))
-                {
-                    //! スタート角度を３６０度反転とみなした方がいい場合はそちらを選択
-                    return (targetDirection - 360) - (startDirection - 360);
-                }
-                else
-                {
-                    return (targetDirection - 360) - startDirection;
-                }
+    //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
+    if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
+    {
+        //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+        if (fabsf((targetDirection - 360) - (startDirection - 360)) < fabsf((targetDirection - 360) - startDirection))
+        {
+            //! スタート角度を３６０度反転とみなした方がいい場合はそちらを選択
+            return (targetDirection - 360) - (startDirection - 360);
+        }
+        else
+        {
+            return (targetDirection - 360) - startDirection;
+        }
 
-            }
-            else
-            {
-                //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
-                if (fabsf((targetDirection) - (startDirection - 360)) < fabsf(targetDirection - startDirection))
-                {
-                    return targetDirection - (startDirection - 360);
-                }
-                else
-                {
-                    return targetDirection - startDirection;
-                }
-            }
+    }
+    else
+    {
+        //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+        if (fabsf((targetDirection) - (startDirection - 360)) < fabsf(targetDirection - startDirection))
+        {
+            return targetDirection - (startDirection - 360);
+        }
+        else
+        {
+            return targetDirection - startDirection;
+        }
+    }
 }
 
 /**
@@ -846,175 +846,172 @@ void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordina
     }
 }
 
+#if FALSE //モデル図記載の式から算出しようと思ったもの。うまくいかないので保留
+/**
+ * @brief   移動する曲線から瞬間の曲率半径を取得する
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
 
-///モデル図記載の式から算出しようと思ったもの//////////////////////////////////////////////////////////
+    float s = _s;
 
-// /**
-//  * @brief   移動する曲線から瞬間の曲率半径を取得する
-//  * @param   目標座標が書かれたシナリオ
-//  * @return  
-//  */
-// float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
+    float p0x=startX;
+    float p0y=startY;
 
-//     float s = _s;
-
-//     float p0x=startX;
-//     float p0y=startY;
-
-//     float p1x=endX;
-//     float p1y=endY;
+    float p1x=endX;
+    float p1y=endY;
     
-//     //! startDirectionの大きさ１のベクトル成分を算出
-//     float v0x=0;
-//     float v0y=0;
-//     VectorFromDirection(startDirection, &v0x, &v0y);
+    //! startDirectionの大きさ１のベクトル成分を算出
+    float v0x=0;
+    float v0y=0;
+    VectorFromDirection(startDirection, &v0x, &v0y);
 
-//     //! endDirectionの大きさ１のベクトル成分を算出
-//     float v1x=0;
-//     float v1y=0;
-//     VectorFromDirection(endDirection, &v1x, &v1y);
+    //! endDirectionの大きさ１のベクトル成分を算出
+    float v1x=0;
+    float v1y=0;
+    VectorFromDirection(endDirection, &v1x, &v1y);
     
-//     float a1x = p1x;
-//     float a1y = p1y;
+    float a1x = p1x;
+    float a1y = p1y;
 
-//     float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
-//     float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
+    float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
+    float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
 
-//     float a3x = -2*p1x + 2*p0x + v0x + v1x;
-//     float a3y = -2*p1y + 2*p0y + v0y + v1y;
+    float a3x = -2*p1x + 2*p0x + v0x + v1x;
+    float a3y = -2*p1y + 2*p0y + v0y + v1y;
 
-//     float d1x=0;
-//     float d1y=0;
-//     getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
+    float d1x=0;
+    float d1y=0;
+    getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
     
-//     float d2x=0;
-//     float d2y=0;
-//     getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
+    float d2x=0;
+    float d2y=0;
+    getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
 
-//     //! 曲率半径Rの最終計算
-//     float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
+    //! 曲率半径Rの最終計算
+    float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
 
-//     return R;
-// }
+    return R;
+}
 
-// /**
-//  * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
-//  * @return  
-//  */
-// void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
-//     //! 微分の計算結果
-//     *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
-//     *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
-// }
+/**
+ * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
+    //! 微分の計算結果
+    *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
+    *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
+}
 
-// /**
-//  * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
-//  * @return  
-//  */
-// void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
-//     *d2x = 2*a2x + 6*a3x*s;
-//     *d2y = 2*a2y + 6*a3y*s;
-// }
+/**
+ * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
+    *d2x = 2*a2x + 6*a3x*s;
+    *d2y = 2*a2y + 6*a3y*s;
+}
 
-// /**
-//  * @brief   ベクトル成分から大きさを取得
-//  * @return  
-//  */
-// float DriveController::toVectorMagnitude(float x, float y){
-//     return sqrt(x*x+y*y);
-// }
+/**
+ * @brief   ベクトル成分から大きさを取得
+ * @return  
+ */
+float DriveController::toVectorMagnitude(float x, float y){
+    return sqrt(x*x+y*y);
+}
 
-// /**
-//  * @brief   ベクトル積
-//  * @return  
-//  */
-// float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
+/**
+ * @brief   ベクトル積
+ * @return  
+ */
+float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
 
-//     //! ベクトル積の計算が合っているか不安
-//     float a = x1*y2;
-//     float b = x2*y1;
-//     return toVectorMagnitude(a,b);
-// }
+    //! ベクトル積の計算が合っているか不安
+    float a = x1*y2;
+    float b = x2*y1;
+    return toVectorMagnitude(a,b);
+}
 
-// /**
-//  * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
-//  * @return  
-//  */
-// void DriveController::VectorFromDirection(float Direction, float *x, float *y){
-//     //!ベクトルの大きさを定義（仮で１とする）
-//     float unit = 1.0F;
+/**
+ * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
+ * @return  
+ */
+void DriveController::VectorFromDirection(float Direction, float *x, float *y){
+    //!ベクトルの大きさを定義（仮で１とする）
+    float unit = 1.0F;
 
-//     //Directionの範囲0～360と0～-360が来るものとする
+    //Directionの範囲0～360と0～-360が来るものとする
 
-//     if (Direction == 0 || Direction == 360 || Direction == -360)
-//     {
-//         *x = 0;
-//         *y = unit;
-//         return;
-//     }
+    if (Direction == 0 || Direction == 360 || Direction == -360)
+    {
+        *x = 0;
+        *y = unit;
+        return;
+    }
 
-//     if (Direction == 180 || Direction == -180)
-//     {
-//         *x = 0;
-//         *y = -unit;
-//         return;
-//     }
+    if (Direction == 180 || Direction == -180)
+    {
+        *x = 0;
+        *y = -unit;
+        return;
+    }
 
-//     if (Direction == 90 || Direction == -270)
-//     {
-//         *x = unit;
-//         *y = 0;
-//         return;
-//     }
+    if (Direction == 90 || Direction == -270)
+    {
+        *x = unit;
+        *y = 0;
+        return;
+    }
 
-//     if (Direction == 270 || Direction == -90)
-//     {
-//         *x = -unit;
-//         *y = 0;
-//         return;
-//     }
+    if (Direction == 270 || Direction == -90)
+    {
+        *x = -unit;
+        *y = 0;
+        return;
+    }
 
-//     //! Tanなどの三角関数で扱うときの角度に変換
-//     float deg = degForTrigonometric(Direction);
+    //! Tanなどの三角関数で扱うときの角度に変換
+    float deg = degForTrigonometric(Direction);
 
-//     if (Direction < 0 && Direction > -180)
-//     {
+    if (Direction < 0 && Direction > -180)
+    {
 
-//         *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-//         *y = *x * (float)tan(to_rad(deg));
-//         return;
-//     }
-//     if (Direction < -180)
-//     {
-//         *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-//         *y = *x * (float)tan(to_rad(deg));
-//         return;
-//     }
+        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+    if (Direction < -180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
 
-//     if (Direction > 0 && Direction < 180)
-//     {
-//         *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-//         *y = *x * (float)tan(to_rad(deg));
-//         return;
-//     }
+    if (Direction > 0 && Direction < 180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
 
-//     if (Direction > 180)
-//     {
-//         *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-//         *y = *x * (float)tan(to_rad(deg));
-//         return;
-//     }
-// }
+    if (Direction > 180)
+    {
+        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
+        *y = *x * (float)tan(to_rad(deg));
+        return;
+    }
+}
 
-// /**
-//  * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
-//  * @return  
-//  */
-// float DriveController::degForTrigonometric(float direction){
-//     return -direction + 90;
-// }
-///モデル図記載の式から算出しようと思ったもの//////////////////////////////////////////////////////////
-
+/**
+ * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
+ * @return  
+ */
+float DriveController::degForTrigonometric(float direction){
+    return -direction + 90;
+}
+#endif  // FALSE(モデル図記載の式から算出しようと思ったもの)
 
 /**
 * @brief   曲率半径を計算する（モデル図のものではなく独自ver）
