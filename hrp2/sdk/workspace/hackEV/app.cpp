@@ -107,10 +107,16 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case LEFT_BUTTON:
-        //! アーム動作モード
-        initialize_arm();
+        
+        //シナリオ走行モードの初期化処理
+        initialize_run();
 
-        //! 検証としてアームを動かしたい場合は以下に記載すること
+        //! 準備ができたら音が3回鳴る
+        ev3_speaker_play_tone(NOTE_E6, 300);
+        tslp_tsk(300);
+
+        //! テスト走行開始
+        start_LcourseRun();
 
         break;
 

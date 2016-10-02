@@ -15,6 +15,7 @@
 #include "Logger.h"
 #include <stdlib.h>
 #include "ArmModule.h"
+#include "coordinateScenario.h"
 
 /**
  * @brief   初期化処理
@@ -79,8 +80,47 @@ void start_run_test()
 
     gyroSensorController->setEnabledGyroSensor(true);
 
+    //! 個別のシナリオ検証用
     for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
         driveController->run(run_scenario_test_position[index]);
+    }
+
+    ev3_speaker_play_tone(NOTE_F4, 300);
+    if (logger) {
+        logger->addLog(LOG_TYPE_SCENARIO, "END");
+    }
+
+    gyroSensorController->setEnabledGyroSensor(false);
+
+}
+
+/**
+ * @brief   Lコース走行
+ *
+ * @return  なし
+*/
+void start_LcourseRun()
+{
+    initialize_pid_controller();
+
+    ev3_speaker_play_tone(NOTE_E6, 100);
+
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    for (;;) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            break;
+        }
+    }
+
+    gyroSensorController->setEnabledGyroSensor(true);
+
+    // for (int index = 0; index < (int)(sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0])); index++) {
+    //     driveController->run(run_scenario_test_straght_NoTrace[index]);
+    // }
+
+    //! 座標シナリオリストを順に実行
+    for (int index = 0; index < (int)(sizeof(test_coordinate) / sizeof(test_coordinate[0])); index++) {
+        driveController->manageMoveCoordinate(test_coordinate[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);
