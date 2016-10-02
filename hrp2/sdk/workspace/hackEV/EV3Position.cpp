@@ -274,11 +274,30 @@ void EV3Position::synchronizePosition(EV3_POSITION *position, uint8_t updateType
         return;
     }
 
+    EV3_POSITION    positionUpdate;
     if (updateType & CORRECT_POSITION_REAL) {
-        memcpy((void*)&currentPositionREAL, (const void*)position, sizeof(EV3_POSITION));
+        memcpy((void*)&positionUpdate, (const void*)currentPositionREAL, sizeof(EV3_POSITION));
+        if (updateType & CORRECT_POSITION_REAL_X) {
+            positionUpdate.x = position->x;
+        }
+
+        if (updateType & CORRECT_POSITION_REAL_Y) {
+            positionUpdate.y = position->y;
+        }
+
+        memcpy((void*)&currentPositionREAL, (const void*)positionUpdate, sizeof(EV3_POSITION));
         convertPostion(&currentPositionREAL, &currentPositionMAP);
     } else if (updateType & CORRECT_POSITION_MAP) {
-        memcpy((void*)&currentPositionMAP, (const void*)position, sizeof(EV3_POSITION));
+        memcpy((void*)&positionUpdate, (const void*)currentPositionREAL, sizeof(EV3_POSITION));
+        if (updateType & CORRECT_POSITION_MAP_X) {
+            positionUpdate.x = position->x;
+        }
+
+        if (updateType & CORRECT_POSITION_MAP_Y) {
+            positionUpdate.y = position->y;
+        }
+
+        memcpy((void*)&currentPositionMAP, (const void*)positionUpdate, sizeof(EV3_POSITION));
         convertPostion(&currentPositionREAL, &currentPositionMAP, false);
     }
 

@@ -53,14 +53,26 @@ public:
 
     //! \addtogroup correctPosition関数とmovePosition関数のupdateTypeに指定可能なビット
     //@{
+    //! 実際のX座標を補正する(CORRECT_POSITION_MAPと排他)
+    static const uint8_t    CORRECT_POSITION_REAL_X = (1 << 0);
+
+    //! 実際のY座標を補正する(CORRECT_POSITION_MAPと排他)
+    static const uint8_t    CORRECT_POSITION_REAL_Y = (1 << 1);
+
     //! 実際の位置を補正する(CORRECT_POSITION_MAPと排他)
-    static const uint8_t    CORRECT_POSITION_REAL = (1 << 0);
+    static const uint8_t    CORRECT_POSITION_REAL = (CORRECT_POSITION_REAL_X | CORRECT_POSITION_REAL_Y);
+
+    //! マップ上のX座標を補正する(CORRECT_POSITION_REALと排他)
+    static const uint8_t    CORRECT_POSITION_MAP_X = (1 << 2);
+
+    //! マップ上のY座標を補正する(CORRECT_POSITION_REALと排他)
+    static const uint8_t    CORRECT_POSITION_MAP_Y = (1 << 3);
 
     //! マップ上の位置を補正する(CORRECT_POSITION_REALと排他)
-    static const uint8_t    CORRECT_POSITION_MAP = (1 << 1);
+    static const uint8_t    CORRECT_POSITION_MAP = (CORRECT_POSITION_MAP_X | CORRECT_POSITION_MAP_Y);
 
     //! 向きを補正する
-    static const uint8_t    CORRECT_DIRECTION = (1 << 2);
+    static const uint8_t    CORRECT_DIRECTION = (1 << 4);
     //@}
 
 private:
