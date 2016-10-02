@@ -245,7 +245,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
     
     case CORRECT_DIRECTION_BY_LINE:
         correctDirectionByLine(scenario.power);
-        break;
+        return true;
 
     default:
         //! ライントレースせずに、直進走行する
