@@ -778,21 +778,23 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
  * @param   目標座標が書かれたシナリオ
  * @return  
  */
-void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario){
-    //! [ 【TODO】現在の座標を取得【現在の位置が取得できるようになったら実装TODO】
+void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario)
+{
+    EV3_POSITION currentPositionREAL;
+    EV3_POSITION currentPositionMAP;
+    float currentDirection = 0.0F;
+    speedCalculator100ms->getPosition(&currentPositionREAL, &currentPositionMAP, &currentDirection);
+
+    writeFloatLCD(currentPositionREAL.x);
+    writeFloatLCD(currentPositionREAL.y);
 
     //! 滑らか走行
     //smoothMovementFromCoordinate(_coordinateScenario);
 
     //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
     //! 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！
-    jitteryMovementFromCoordinate(_coordinateScenario.power, positionTargetXLast, positionTargetYLast, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
-    
-    //! 【TODO】仮の処理！！本当の走行座標から持ってくること
-    positionTargetXLast = _coordinateScenario.targetX;
-    positionTargetYLast = _coordinateScenario.targetY;
+    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
 }
-
 
 /**
  * @brief   滑らか座標移動
@@ -832,7 +834,7 @@ void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordina
         x+=0.0001;
 
         // //! 表示
-         writeFloatLCD(curvatureRadius);
+        // writeFloatLCD(curvatureRadius);
         // writeFloatLCD(distanceDelta);
         // writeFloatLCD(directionDelta);
 
