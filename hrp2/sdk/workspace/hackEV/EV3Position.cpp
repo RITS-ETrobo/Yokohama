@@ -241,17 +241,17 @@ bool EV3Position::movePosition(EV3_POSITION *position, float distance_, float di
     }
 
     if ((distance_ != 0.0F) && (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) && isValidPosition(position, (bool)(updateType == CORRECT_POSITION_REAL), beCorrected)) {
-        double  degreeByRadian = direction_ * 3.141592653589793 / (float)180;
+        double  directionRadian = degree2radian(direction_);
         double  modValue90 = user_fmod(direction_, (float)90);
         double  modValue180 = user_fmod(direction_, (float)180);
         double  diffX = 0.0F;
         if (modValue180 != 0.0F) {
-            diffX = distance_ * sin(degreeByRadian);
+            diffX = distance_ * sin(directionRadian);
         }
 
         double  diffY = 0.0F;
         if (!((modValue90 == 0.0F) && (modValue180 != 0.0F))) {
-            diffY = distance_ * cos(degreeByRadian);
+            diffY = distance_ * cos(directionRadian);
         }
 
         position->x += (float)diffX;
