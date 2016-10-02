@@ -11,7 +11,6 @@
 */
 SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*= TYPE_RELATED_DRIVE_CONTROLLER*/)
     : EV3Position((bool)(type_ == TYPE_RELATED_DRIVE_CONTROLLER), duration_)
-    , duration(duration_)
     , logType_speed(LOG_TYPE_AVERAGE_SPEED)
     , logType_distance(LOG_TYPE_AVERAGE_DISTANCE)
     , logType_time(LOG_TYPE_AVERAGE_TIME)
@@ -69,16 +68,6 @@ void SpeedCalculator::reset()
 }
 
 /**
- *  @brief  要素をvectorに追加する
- *  @param  record  追加する要素
- *  @return なし
-*/
-void SpeedCalculator::add(DISTANCE_RECORD record)
-{
-    EV3Position::add(record);
-}
-
-/**
  *  @brief  平均速度を算出する
  *  @param  record  算出元の情報
  *  @return 平均速度[単位 : cm/s]
@@ -96,13 +85,4 @@ float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
 #endif  //  EV3_UNITTEST
 
     return  averageSpeed;
-}
-
-/**
- *  @brief  現在の向きを取得する
- *  @return 現在の向き[単位 : 度]
-*/
-float SpeedCalculator::getDirection()
-{
-    return  EV3Position::getDirection();
 }
