@@ -146,6 +146,21 @@ typedef enum
     //! カーブするために調整した右モーターのパワー
     LOG_TYPE_POWER_FOR_CURVE_RIGHT,
 
+    //! 走行体の実際のX座標[単位 : cm]
+    LOG_TYPE_EV3_POSITION_REAL_X,
+
+    //! 走行体の実際のY座標[単位 : cm]
+    LOG_TYPE_EV3_POSITION_REAL_Y,
+
+    //! 走行体のマップ上のX座標[単位 : ピクセル]
+    LOG_TYPE_EV3_POSITION_MAP_X,
+
+    //! 走行体のマップ上のY座標[単位 : ピクセル]
+    LOG_TYPE_EV3_POSITION_MAP_Y,
+
+    //! 走行体の向き[単位 : 度]
+    LOG_TYPE_EV3_DIRECTION,
+
     //! テスト用1
     LOG_TYPE_TEST1,
 

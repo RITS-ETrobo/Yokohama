@@ -81,8 +81,8 @@ void start_run_test()
     gyroSensorController->setEnabledGyroSensor(true);
 
     //! 個別のシナリオ検証用
-    for (int index = 0; index < (int)(sizeof(run_scenario_test_straght_NoTrace) / sizeof(run_scenario_test_straght_NoTrace[0])); index++) {
-        driveController->run(run_scenario_test_straght_NoTrace[index]);
+    for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
+        driveController->run(run_scenario_test_position[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);

@@ -365,5 +365,12 @@ const scenario_running run_scenario_LCource_Try[8] = {
     {30, 0.0F, 90, PINWHEEL, false,0,DISTANCE_STOP},
     {50, 183.1F, -1, NOTRACE_STRAIGHT, false,0 ,DISTANCE_STOP},
 
-    {30, 167.7F, 90, PINWHEEL, true,0,DISTANCE_STOP}
+    {30, 167.7F, 90, PINWHEEL, true,0}
+};
+
+//! 自己位置推定Positionの検証用
+const scenario_running run_scenario_test_position[3] = {
+    {30, 20.0F, -1, NOTRACE_STRAIGHT, true,0},
+    {5, 0.0F, 90, PINWHEEL, true,0},
+    {30, 20.0F, -1, NOTRACE_STRAIGHT, true,0}
 };

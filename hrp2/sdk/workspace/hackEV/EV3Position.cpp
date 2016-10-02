@@ -4,16 +4,20 @@
  */
 #include "EV3Position.h"
 #include "instances.h"
+#include <math.h>
+#include "user_function.h"
 
 /**
  *  @brief  コンストラクタ
+ *  @param  needPositionInfo_   位置情報を更新するかどうか
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
-EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
+EV3Position::EV3Position(bool needPositionInfo_, SYSTIM duration_ /*= 0*/)
     : duration(duration_)
     , averageSpeed(0.0F)
     , direction(0.0F)
     , initialized(false)
+    , needPositionInfo(needPositionInfo_)
 {
 }
 
@@ -21,13 +25,19 @@ EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
  *  @brief  初期化
  *  @return なし
 */
-void EV3Position::initialize()
+void EV3Position::initialize(bool isForce /*= false*/)
 {
+    if (isForce) {
+        initialized = false;
+    }
+
     if (initialized == true) {
         return;
     }
 
-    distance_record.clear();
+    std::vector<DISTANCE_RECORD>().swap(distance_record);
+    direction = 0.0F;
+
     DISTANCE_RECORD record;
     memset(&record, '\0', sizeof(DISTANCE_RECORD));
 
@@ -38,6 +48,12 @@ void EV3Position::initialize()
 #endif  //  EV3_UNITTEST
 
     add(record);
+
+    EV3_POSITION    position;
+    position.x = 0.0F;
+    position.y = 0.0F;
+    setPosition(&position, direction, CORRECT_POSITION_MAP | CORRECT_DIRECTION);
+
     initialized = true;
 }
 
@@ -47,8 +63,7 @@ void EV3Position::initialize()
 */
 void EV3Position::reset()
 {
-    initialized = false;
-    initialize();
+    initialize(true);
 }
 
 /**
@@ -58,23 +73,26 @@ void EV3Position::reset()
 */
 void EV3Position::add(DISTANCE_RECORD record)
 {
-    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
-    if (size == 0) {
-        record.distance = record.distanceDelta;
-    } else {
-        record.distance = distance_record.at(size - 1).distance + record.distanceDelta;
-    }
+    record.distance = record.distanceDelta;
+    record.direction = record.directionDelta;
 
-    if (size == 0) {
-        record.direction = record.directionDelta;
-    } else {
-        record.direction = distance_record.at(size - 1).direction + record.directionDelta;
+    std::vector<DISTANCE_RECORD>::size_type size = distance_record.size();
+    if (size > 0) {
+        record.distance += distance_record.at(size - 1).distance;
+        record.direction += distance_record.at(size - 1).direction;
     }
 
     distance_record.push_back(record);
     removeExceededTimeItem();
     direction = record.direction;
     updateSpeed();
+
+    if (!needPositionInfo) {
+        return;
+    }
+
+    movePosition(&currentPositionREAL, record.distanceDelta, record.direction, CORRECT_POSITION_REAL);
+
 }
 
 /**
@@ -164,4 +182,166 @@ float EV3Position::getSpeed(DISTANCE_RECORD *record)
 float EV3Position::getDirection()
 {
     return  direction;
+}
+
+/**
+ *  @brief  走行体の現在位置を取得する
+ *  @param  positionREAL    実際の座標
+ *  @param  positionMAP     マップ上の座標
+ *  @param  direction_      向き[単位 : 度]
+ *  @return true : 取得できた false : パラメーターエラー
+*/
+bool EV3Position::getPosition(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, float *direction_)
+{
+    if ((positionREAL == NULL) || (positionMAP == NULL) || (direction_ == NULL)) {
+        return  false;
+    }
+
+    memcpy((void*)positionREAL, (const void*)&currentPositionREAL, sizeof(EV3_POSITION));
+    memcpy((void*)positionMAP, (const void*)&currentPositionMAP, sizeof(EV3_POSITION));
+    *direction_ = direction;
+    return  true;
+}
+
+/**
+ *  @brief  走行体の現在位置を設定する
+ *  @param  position    座標
+ *  @param  direction_  向き[単位 : 度]
+*/
+void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
+{
+    if (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) {
+        synchronizePosition(position, updateType);
+    }
+
+    if (updateType & CORRECT_DIRECTION) {
+        direction = direction_;
+
+#ifndef EV3_UNITTEST
+        if (logger) {
+            logger->addLogFloat(LOG_TYPE_EV3_DIRECTION, direction);
+        }
+#endif  //  EV3_UNITTEST
+    }
+}
+
+/**
+ *  @brief  走行体の座標を指定した位置に移動させる
+ *  @param  position    座標
+ *  @param  distance_   前回の測定から移動した距離[単位 : cm]
+ *  @param  direction_  前回の測定から移動した角度[単位 : 度]
+ *  @param  updateType  どの値を更新するか
+ *  @param  beCorrected 値を補正するか
+ *  @return true : 動かすことができる場合
+*/
+bool EV3Position::movePosition(EV3_POSITION *position, float distance_, float direction_, uint8_t updateType /*= 0*/, bool beCorrected /*= true*/)
+{
+    if (isValidUpdateType(updateType) == false) {
+        return  false;
+    }
+
+    if ((distance_ != 0.0F) && (updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP)) && isValidPosition(position, (bool)(updateType == CORRECT_POSITION_REAL), beCorrected)) {
+        double  directionRadian = degree2radian(direction_);
+        double  modValue90 = user_fmod(direction_, (float)90);
+        double  modValue180 = user_fmod(direction_, (float)180);
+        double  diffX = 0.0F;
+        if (modValue180 != 0.0F) {
+            diffX = distance_ * sin(directionRadian);
+        }
+
+        double  diffY = 0.0F;
+        if (!((modValue90 == 0.0F) && (modValue180 != 0.0F))) {
+            diffY = distance_ * cos(directionRadian);
+        }
+
+        position->x += (float)diffX;
+        position->y += (float)diffY;
+
+        setPosition(position, direction_, updateType);
+    }
+
+    return  true;
+}
+/**
+ *  @brief  走行体の現在位置を同期する
+ *  @param  position    座標
+ *  @param  updateType  どの値を更新するか
+ *  @return なし
+*/
+void EV3Position::synchronizePosition(EV3_POSITION *position, uint8_t updateType /*= 0*/)
+{
+    if (isValidUpdateType(updateType) == false) {
+        return;
+    }
+
+    if (updateType & CORRECT_POSITION_REAL) {
+        memcpy((void*)&currentPositionREAL, (const void*)position, sizeof(EV3_POSITION));
+        convertPostion(&currentPositionREAL, &currentPositionMAP);
+    } else if (updateType & CORRECT_POSITION_MAP) {
+        memcpy((void*)&currentPositionMAP, (const void*)position, sizeof(EV3_POSITION));
+        convertPostion(&currentPositionREAL, &currentPositionMAP, false);
+    }
+
+#ifndef EV3_UNITTEST
+    if (logger) {
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_X, currentPositionREAL.x);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_REAL_Y, currentPositionREAL.y);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_X, currentPositionMAP.x);
+        logger->addLogFloat(LOG_TYPE_EV3_POSITION_MAP_Y, currentPositionMAP.y);
+    }
+#endif  //  EV3_UNITTEST
+}
+
+/**
+ *  @brief  updateTypeが適正かを確認する
+ *  @param  updateType  どの値を更新するか
+ *  @return 値が適正ならtrue
+*/
+bool EV3Position::isValidUpdateType(uint8_t updateType)
+{
+    return  (bool)(updateType & (CORRECT_POSITION_REAL | CORRECT_POSITION_MAP | CORRECT_DIRECTION));
+}
+
+/**
+ *  @brief  位置が適正かを確認する
+ *  @param  position    座標
+ *  @param  isPositionREAL  実際の位置を確認するか
+ *  @param  beCorrected 値を補正するか
+ *  @return 値が適正ならtrue
+*/
+bool EV3Position::isValidPosition(EV3_POSITION *position, bool isPositionREAL /*= true*/, bool beCorrected /*= true*/)
+{
+    if (position == NULL) {
+        return  false;
+    }
+
+    return  true;
+}
+
+/**
+ *  @brief  走行体の座標を指定した位置に移動させる
+ *  @param  positionREAL    現実の座標
+ *  @param  positionMAP     マップの座標
+ *  @param  isExchangeReal2MAP  true : 現実→マップ false : マップ→現実
+ *  @return true : 変換完了した場合
+*/
+bool EV3Position::convertPostion(EV3_POSITION *positionREAL, EV3_POSITION *positionMAP, bool isExchangeReal2MAP /*= true*/)
+{
+    if (isValidPosition(positionREAL) == false) {
+        return  false;
+    }
+
+    if (isValidPosition(positionMAP) == false) {
+        return  false;
+    }
+
+    if (isExchangeReal2MAP) {
+        positionMAP->x = positionREAL->x * 7 / (float)2;
+        positionMAP->y = positionREAL->y * 7 / (float)2;
+    } else {
+        positionREAL->x = positionMAP->x * 2 / (float)7;
+        positionREAL->y = positionMAP->y * 2 / (float)7;
+    }
+
+    return  true;
 }

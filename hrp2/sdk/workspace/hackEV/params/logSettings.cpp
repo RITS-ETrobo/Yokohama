@@ -85,6 +85,11 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_AVERAGE_TIME_RIGHT, "Average(RTime)", 100);
     initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_LEFT, "PowLeftForCurve", 100);
     initialize_logSetting_map(LOG_TYPE_POWER_FOR_CURVE_RIGHT, "PowRightForCurve", 100);
+    initialize_logSetting_map(LOG_TYPE_EV3_POSITION_REAL_X, "Position.x", 100);
+    initialize_logSetting_map(LOG_TYPE_EV3_POSITION_REAL_Y, "Position.y", 100);
+    initialize_logSetting_map(LOG_TYPE_EV3_POSITION_MAP_X, "MAP.x", 100);
+    initialize_logSetting_map(LOG_TYPE_EV3_POSITION_MAP_Y, "MAP.y", 100);
+    initialize_logSetting_map(LOG_TYPE_EV3_DIRECTION, "Direction.ev3", 100);
     initialize_logSetting_map(LOG_TYPE_TEST1, "Test1", 100);
     initialize_logSetting_map(LOG_TYPE_TEST2, "Test2", 100);
     initialize_logSetting_map(LOG_TYPE_TEST3, "Test3", 100);
