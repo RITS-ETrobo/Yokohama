@@ -9,14 +9,16 @@
 
 /**
  *  @brief  コンストラクタ
+ *  @param  needPositionInfo_   位置情報を更新するかどうか
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
-EV3Position::EV3Position(SYSTIM duration_ /*= 0*/)
+EV3Position::EV3Position(bool needPositionInfo_, SYSTIM duration_ /*= 0*/)
     : duration(duration_)
     , averageSpeed(0.0F)
     , direction(0.0F)
     , initialized(false)
     , UPDATE_POSITION_DISTANCE(1.0F)
+    , needPositionInfo(needPositionInfo_)
 {
 }
 
@@ -86,6 +88,10 @@ void EV3Position::add(DISTANCE_RECORD record)
     removeExceededTimeItem();
     direction = record.direction;
     updateSpeed();
+
+    if (!needPositionInfo) {
+        return;
+    }
 
     DISTANCE_RECORD recordPos;
     memset((void*)&recordPos, '\0', sizeof(DISTANCE_RECORD));

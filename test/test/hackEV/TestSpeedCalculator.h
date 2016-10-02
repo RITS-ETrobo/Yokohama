@@ -14,7 +14,7 @@ class TestSpeedCalculator : public ::testing::Test {
 protected:
     virtual void SetUp()
     {
-        speedCalculator = new SpeedCalculator(100);
+        speedCalculator = new SpeedCalculator(true, 100);
         speedCalculator->initialize();
     };
 

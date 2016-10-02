@@ -40,7 +40,7 @@ typedef struct {
 class EV3Position
 {
 public:
-    explicit EV3Position(SYSTIM duration_ = 0);
+    explicit EV3Position(bool needPositionInfo_, SYSTIM duration_ = 0);
     virtual void initialize(bool isForce = false);
     virtual void reset();
     virtual void add(DISTANCE_RECORD record);
@@ -103,4 +103,7 @@ private:
 
     //! 座標更新間隔
     const float UPDATE_POSITION_DISTANCE;
+
+    //  座標情報を更新するかどうか(走行体の位置情報の場合、true)
+    bool    needPositionInfo;
 };

@@ -10,7 +10,7 @@
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
 SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*= TYPE_RELATED_DRIVE_CONTROLLER*/)
-    : EV3Position(duration_)
+    : EV3Position((bool)(type_ == TYPE_RELATED_DRIVE_CONTROLLER), duration_)
     , duration(duration_)
     , logType_speed(LOG_TYPE_AVERAGE_SPEED)
     , logType_distance(LOG_TYPE_AVERAGE_DISTANCE)
