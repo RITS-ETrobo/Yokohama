@@ -111,8 +111,7 @@ void EV3Position::add(DISTANCE_RECORD record)
         return;
     }
 
-    float   directionPos = recordPos.direction - position_record.at(0).direction;
-    movePosition(&currentPositionREAL, distancePos, directionPos, CORRECT_POSITION_REAL);
+    movePosition(&currentPositionREAL, distancePos, recordPos.direction, CORRECT_POSITION_REAL);
     removeExceededLength();
 }
 

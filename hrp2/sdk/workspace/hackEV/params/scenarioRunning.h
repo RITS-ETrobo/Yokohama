@@ -107,3 +107,6 @@ extern const scenario_running run_scenario_curve_90[5];
 
 //! 検証用シナリオ(Lコースをトレースせずに走る)
 extern const scenario_running run_scenario_LCource_Try[8];
+
+//! 自己位置推定Positionの検証用
+extern const scenario_running run_scenario_test_position[3];

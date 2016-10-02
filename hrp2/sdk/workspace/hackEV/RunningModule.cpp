@@ -79,8 +79,8 @@ void start_run_test()
 
     gyroSensorController->setEnabledGyroSensor(true);
 
-    for (int index = 0; index < (int)(sizeof(run_scenario_curve_90) / sizeof(run_scenario_curve_90[0])); index++) {
-        driveController->run(run_scenario_curve_90[index]);
+    for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
+        driveController->run(run_scenario_test_position[index]);
     }
 
     ev3_speaker_play_tone(NOTE_F4, 300);
