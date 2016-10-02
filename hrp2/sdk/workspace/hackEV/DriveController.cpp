@@ -769,7 +769,7 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     float moveDistance = distanceFromCoordinateForJitteryMovement(startX, startY, endX, endY);
     
     //! 目標の座標まで直進
-    scenario_running straghtScenario={30, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP};
+    scenario_running straghtScenario={power, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP};
     run(straghtScenario);
 }
 
