@@ -4,6 +4,9 @@
  */
 #include "user_function.h"
 
+//! 円周率
+const float Pi = 3.14159265359F;
+
 /**
  *  @brief  imgビルドでfmodがエラーになる為、自作した
  *  @param  x   割られる数
@@ -59,4 +62,24 @@ float adjustValue(float value, float minValue, float maxValue)
     }
 
     return  value;
+}
+
+/**
+ * 弧度法表記を度数法表記に変換する
+ * @param[in]   radian  角度[ラジアン]
+ * @return  角度[度]
+ */
+float radian2degree(float radian)
+{
+    return  radian * 180.0 / Pi;
+}
+
+/**
+ * 度数法表記を弧度法表記に変換する
+ * @param[in]   degree  角度[度]
+ * @return  角度[ラジアン]
+ */
+float degree2radian(float degree)
+{
+    return  degree * Pi / 180.0 ;
 }
