@@ -242,6 +242,10 @@ bool DriveController::runAsPattern(scenario_running scenario)
     case NOTRACE_CURVE_LEFT:
         curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
         break;
+    
+    case CORRECT_DIRECTION_BY_LINE:
+        correctDirectionByLine(scenario.power);
+        break;
 
     default:
         //! ライントレースせずに、直進走行する

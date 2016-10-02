@@ -365,3 +365,10 @@ const scenario_running run_scenario_LCource_Try[8] = {
 
     {30, 167.7F, 90, PINWHEEL, true,0}
 };
+
+//! 検証用(ラインを使って向きを整える)
+const scenario_running correct_direction_line[3] = {
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, false, 0},
+    {10, 0.0F, -1, CORRECT_DIRECTION_BY_LINE, false, 0},
+    {10, 5.0F, -1, NOTRACE_STRAIGHT, true, 0}
+};
