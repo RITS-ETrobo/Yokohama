@@ -19,5 +19,17 @@ typedef struct {
     float targetY;
 } scenario_coordinate;
 
-//! Lコース（スタート～懸賞入口）
+//! 検証用
 extern const scenario_coordinate test_coordinate[14];
+
+//! スタートしてから相撲まで
+extern const scenario_coordinate start_beforeSumo[9];
+
+//! 相撲台の上まで移動
+extern const scenario_coordinate onStageSumo[1];
+
+//! 相撲が終わってから懸賞まで
+extern const scenario_coordinate fromSumo_toKensho[4];
+
+//! 懸賞からゴール
+extern const scenario_coordinate fromKensho_toGoal[2];
