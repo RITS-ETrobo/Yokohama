@@ -1129,3 +1129,27 @@ void DriveController::updatePosition()
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 }
+
+/**
+ * @brief   ふんわりアクセル処理(急発進を避ける)
+ * @param   [in]    startPower   発進の最初のパワー
+ * @param   [in]    targetPower   最終的に出したい目的のパワー
+ * @param   [in]    stopDistance   ストップするまでの走行距離
+ * 現在のdistanceDcenarioも見る（どれくらい走っているかが必要）
+ * @return  なし
+ */
+void DriveController::softAcceleration(int startPower, int targetPower, float stopDistance){
+    
+}
+
+/**
+ * @brief   減速処理（急ブレーキを避ける）
+ * @param   [in]    finishPower   減速後最終のパワー
+ * @param   [in]    currentPower   走行しているときのパワー
+ * @param   [in]    stopDistance   ストップするまでの走行距離
+ * 現在のdistanceDcenarioも見る（どれくらい走っているかが必要）
+ * @return  なし
+ */
+void DriveController::deceleration(int finishPower, int currentPower, float stopDistance){
+
+}
