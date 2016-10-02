@@ -154,8 +154,17 @@ TEST_F(TestSpeedCalculator, positionCheck_straight)
 TEST_F(TestSpeedCalculator, positionCheck_curve)
 {
     for (int index = 0; index < 100; index++) {
-        addRecord(speedCalculator, 10, 0.07, 0.01);
+        addRecord(speedCalculator, 10, 0.07, 0.0001);
     }
 
+    checkPosition();
+}
+
+TEST_F(TestSpeedCalculator, setPosition)
+{
+    EV3_POSITION    position;
+    position.x = 71;
+    position.y = 250;
+    speedCalculator->setPosition(&position, 0.0F, EV3Position::CORRECT_POSITION_MAP | EV3Position::CORRECT_DIRECTION);
     checkPosition();
 }

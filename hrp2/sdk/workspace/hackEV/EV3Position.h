@@ -100,4 +100,7 @@ private:
 
     //! 平均速度算出の為の情報
     DISTANCE_RECORD record_speed;
+
+    //! 座標更新間隔
+    const float UPDATE_POSITION_DISTANCE;
 };
