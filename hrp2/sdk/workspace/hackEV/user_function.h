@@ -4,12 +4,17 @@
  */
 #pragma once
 
+//! 円周率
+extern const float Pi;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 double user_fmod(double x, double y);
 float adjustValue(float value, float minValue, float maxValue);
+float radian2degree(float radian);
+float degree2radian(float degree);
 
 #ifdef __cplusplus
 }

@@ -7,6 +7,7 @@
 //! ターゲット依存の定義
 #include "ev3api.h"
 #include "target_test.h"
+#include "user_function.h"
 
 //! \addtogroup 距離計算要素
 //@{
@@ -15,7 +16,4 @@ extern const float EV3_WHEEL_DIAMETER;
 
 //! 左右のタイヤ間のトレッド[単位 : cm]
 extern const float EV3_TREAD;
-
-//! 円周率
-extern const float Pi;
 //@}

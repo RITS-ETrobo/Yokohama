@@ -32,9 +32,9 @@ DriveController::DriveController()
     , limitPower(55)
     , speedPerOnePower(0.84107F)
     , speedCalculator100ms(NULL)
-    , initialized(false)
     , positionTargetXLast(0.0F)
     , positionTargetYLast(0.0F)
+    , initialized(false)
 {
 }
 
@@ -688,7 +688,7 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
     //! ｘ座標を基準としたラジアン
     float Radian = atan2(differenceY, differenceX);
 
-    float deg = to_deg(Radian);
+    float deg = radian2degree(Radian);
 
     float targetDirection = 0;
 
@@ -812,7 +812,7 @@ void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordina
     float x=-5; //! 初期のx座標を入れる
 
 
-    float distanceXaxis=x;
+    //float distanceXaxis=x;
     initialize();
 
     //! モーターの回転角、距離、方向を0に戻す
@@ -826,7 +826,7 @@ void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordina
         // getDelta(&directionDelta, &distanceDelta);//updateでも更新されている
 
         // //! x軸に動いた距離 
-        // distanceXaxis += distanceDelta*sin(to_rad(directionDelta));
+        // distanceXaxis += distanceDelta*sin(degree2radian(directionDelta));
         
         //! 座標がx軸でプラス側に0.1cmずつ動いていると過程
         x+=0.0001;
@@ -978,28 +978,28 @@ void DriveController::VectorFromDirection(float Direction, float *x, float *y){
     if (Direction < 0 && Direction > -180)
     {
 
-        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
+        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
         return;
     }
     if (Direction < -180)
     {
-        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
         return;
     }
 
     if (Direction > 0 && Direction < 180)
     {
-        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
         return;
     }
 
     if (Direction > 180)
     {
-        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(to_rad(deg)), 2)));
-        *y = *x * (float)tan(to_rad(deg));
+        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
         return;
     }
 }
