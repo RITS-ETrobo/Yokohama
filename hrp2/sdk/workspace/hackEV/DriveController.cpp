@@ -635,3 +635,56 @@ void DriveController::updatePosition()
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
 }
+
+/**
+ * @brief   ラインを使って向きをリセットする
+ * ホイールオドメトリで蓄積される誤差をラインを使ってリセットする
+ * @param   
+ * @param   
+ * @return  成功、失敗
+ */
+bool DriveController::correctDirectionByLine(int power){
+
+    //! どちら側にいたのかでホイールを動かす作業を変える
+
+    //! ラインを見つけたら現在の方向から向きを測定
+    int moveCount = 10;
+
+    //! ラインのどちら側にいるのか検討をつけて動かすほうのモーターを決める
+
+    for(;;){
+        //! 左のみ動かす
+        motorWheelRight->run(power);
+        motorWheelLeft->stop(true);
+
+        moveCount++;
+        for(;;){
+            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+            if(colorValue < (black + 5 +moveCount)){
+                motorWheelRight->stop(true);
+                motorWheelLeft->stop(true);
+                break;
+            }
+        }
+
+        //! 右を動かす
+        motorWheelLeft->run(power);
+        motorWheelRight->stop(true);
+
+        for(;;){
+            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+            if(colorValue > (white - 5 -moveCount)){
+                motorWheelRight->stop(true);
+                motorWheelLeft->stop(true);
+                break;
+            }
+        }
+
+        //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+        if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
+            break;
+        }
+    }
+
+    return true;
+}

@@ -36,6 +36,7 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
+    virtual bool correctDirectionByLine(int power);
 
 private:
     void pinWheel(int power, int degree);
