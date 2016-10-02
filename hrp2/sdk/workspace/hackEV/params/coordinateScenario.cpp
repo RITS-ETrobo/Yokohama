@@ -6,9 +6,9 @@
 #include "coordinateScenario.h"
 
 //! 検証用
-const scenario_coordinate test_coordinate[15] = {
+const scenario_coordinate test_coordinate[14] = {
     {30, 0, 253.7143},
-    {30, -18.28571429, 275.4285714},
+    //{30, -18.28571429, 275.4285714},
     {30, -41.71428571, 253.1428571},
     {30, -41.71428571, 120.5714286},
     {30, -80, 80},

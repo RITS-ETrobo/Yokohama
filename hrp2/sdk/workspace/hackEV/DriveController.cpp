@@ -649,27 +649,41 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
             float differenceX = endX - startX;
             float differenceY = endY - startY;
 
-            //! 動かない場合は角度移動はしない
-            if (differenceX==0&& differenceY==0)
+            // //! 動かない場合は角度移動はしない
+            if (differenceX == 0)
             {
-                return 0;
+                if (differenceY == 0)
+                {
+                    return 0;
+                }
+
+                if (differenceY > 0)
+                {
+                    return (-startDirection);
+                }
+
+                //! スタート時点の角度に最も近い方を選択(180と-180は同じ)
+                if (startDirection > 0)
+                {
+                    return (180 - startDirection);
+                }
+
+                if (startDirection < 0)
+                {
+                    return (-180 - startDirection);
+                }
             }
-            if (differenceX == 0 && differenceY > 0)
+
+            if (differenceY == 0)
             {
-                return -startDirection;
+                if (differenceX > 0)
+                {
+                    return (90 - startDirection);
+                }
+
+                return (-90 - startDirection);
             }
-            if (differenceX == 0 && differenceY < 0)
-            {
-                return 180 - startDirection;
-            }       
-            if (differenceY == 0 && differenceX > 0)
-            {
-                return 90 - startDirection;
-            }
-            if (differenceY == 0 && differenceX < 0)
-            {
-                return -90 - startDirection;
-            }
+            
 
             //! ｘ座標を基準としたラジアン
             float Radian = atan2(differenceY, differenceX);
@@ -700,10 +714,33 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
                 targetDirection = -270 - deg;
             }
 
-            //! 現在の向きを考慮して、最終的に動く角度を算出
-            float moveDirection = targetDirection - startDirection;
+            //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
+            if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
+            {
+                //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+                if (fabsf((targetDirection - 360) - (startDirection - 360)) < fabsf((targetDirection - 360) - startDirection))
+                {
+                    //! スタート角度を３６０度反転とみなした方がいい場合はそちらを選択
+                    return (targetDirection - 360) - (startDirection - 360);
+                }
+                else
+                {
+                    return (targetDirection - 360) - startDirection;
+                }
 
-            return moveDirection;
+            }
+            else
+            {
+                //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+                if (fabsf((targetDirection) - (startDirection - 360)) < fabsf(targetDirection - startDirection))
+                {
+                    return targetDirection - (startDirection - 360);
+                }
+                else
+                {
+                    return targetDirection - startDirection;
+                }
+            }
 }
 
 /**
@@ -724,7 +761,7 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
     
     //! 目標の座標の向きまでその場回転
-    scenario_running pinWheelScenario={30, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    scenario_running pinWheelScenario={5, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
     
     run(pinWheelScenario);
 

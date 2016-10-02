@@ -20,4 +20,4 @@ typedef struct {
 } scenario_coordinate;
 
 //! Lコース（スタート～懸賞入口）
-extern const scenario_coordinate test_coordinate[15];
+extern const scenario_coordinate test_coordinate[14];
