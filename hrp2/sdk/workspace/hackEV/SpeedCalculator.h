@@ -30,14 +30,9 @@ public:
     explicit SpeedCalculator(SYSTIM duration_ = 0, typeRelated type_ = TYPE_RELATED_DRIVE_CONTROLLER);
     virtual void initialize(bool isForce = false);
     virtual void reset();
-    virtual void add(DISTANCE_RECORD record);
     virtual float getSpeed(DISTANCE_RECORD *record);
-    virtual float getDirection();
 
 private:
-    //! 平均速度算出に必要な時間[単位 : ms]
-    SYSTIM  duration;
-
     //! 速度用ログ(LOG_TYPE_AVERAGE_SPEED***)
     uint_t logType_speed;
 
