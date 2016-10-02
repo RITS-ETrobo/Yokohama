@@ -17,7 +17,6 @@ EV3Position::EV3Position(bool needPositionInfo_, SYSTIM duration_ /*= 0*/)
     , averageSpeed(0.0F)
     , direction(0.0F)
     , initialized(false)
-    , UPDATE_POSITION_DISTANCE(1.0F)
     , needPositionInfo(needPositionInfo_)
 {
 }
@@ -37,7 +36,6 @@ void EV3Position::initialize(bool isForce /*= false*/)
     }
 
     std::vector<DISTANCE_RECORD>().swap(distance_record);
-    std::vector<DISTANCE_RECORD>().swap(position_record);
     direction = 0.0F;
 
     DISTANCE_RECORD record;
@@ -93,26 +91,8 @@ void EV3Position::add(DISTANCE_RECORD record)
         return;
     }
 
-    DISTANCE_RECORD recordPos;
-    memset((void*)&recordPos, '\0', sizeof(DISTANCE_RECORD));
-    recordPos.distance = record.distanceDelta;
-    recordPos.direction = record.directionDelta;
+    movePosition(&currentPositionREAL, record.distanceDelta, record.direction, CORRECT_POSITION_REAL);
 
-    std::vector<DISTANCE_RECORD>::size_type sizePos = position_record.size();
-    if (sizePos > 0) {
-        recordPos.distance += position_record.at(sizePos - 1).distance;
-        recordPos.direction += position_record.at(sizePos - 1).direction;
-    }
-
-    position_record.push_back(recordPos);
-    float   distancePos = recordPos.distance - position_record.at(0).distance;
-    if (distancePos < UPDATE_POSITION_DISTANCE) {
-        //  規定長さ未満の場合、座標を移動させない
-        return;
-    }
-
-    movePosition(&currentPositionREAL, distancePos, recordPos.direction, CORRECT_POSITION_REAL);
-    removeExceededLength();
 }
 
 /**
@@ -149,38 +129,6 @@ bool EV3Position::removeExceededTimeItem()
     }
 
     return  result;
-}
-
-/**
- *  @brief  要素全体が指定長さ内に収まっているかを確認する
- *  @return true : 要素を削除できる
-*/
-bool EV3Position::removeExceededLength()
-{
-    //  1cmを超えるまでの要素を見つける
-    int indexTarget = -1;
-    DISTANCE_RECORD record_first = position_record.at(0);
-    for (int index = (int)position_record.size() - 1; index >= 0; index--) {
-        DISTANCE_RECORD record = position_record.at(index);
-        if (record.distance - record_first.distance >= UPDATE_POSITION_DISTANCE) {
-            continue;
-        }
-
-        indexTarget = index;
-        break;
-    }
-
-    if (indexTarget == -1) {
-        indexTarget = 0;
-    }
-
-    std::vector<DISTANCE_RECORD>::size_type size = position_record.size();
-    for (int index = 0; index <= indexTarget; index++) {
-        std::vector<DISTANCE_RECORD>::iterator it = position_record.begin();
-        position_record.erase(it);
-    }
-
-    return  true;
 }
 
 /**
