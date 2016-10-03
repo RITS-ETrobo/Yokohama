@@ -41,6 +41,18 @@ SonarSensorController   *sonarSensorController = NULL;
 //! インスタンス作成のリトライ上限
 const unsigned char RETRY_CREATE_INSTANCE = 3;
 
+//! \addtogroup 周期タスク実行中フラグ
+//@{
+//! ログ書き出しタスク
+bool inProress_Log = false;
+
+//! ジャイロ検出タスク
+bool inProress_Gyro = false;
+
+//! 位置更新タスク
+bool inProress_Position = false;
+//@}
+
 /**
  * @brief   超音波センサの制御
  * 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html
@@ -265,8 +277,16 @@ void gyro_update_task(intptr_t exinf)
         return;
     }
 
+    if (inProress_Gyro) {
+        return;
+    }
+
+    inProress_Gyro = true;
+
     gyroSensorController->updateGyroRate();
     logger->addLogInt(LOG_TYPE_GYRO, gyroSensorController->getGyroRate());
+
+    inProress_Gyro = false;
 }
 
 /**
@@ -281,7 +301,15 @@ void log_monitoring_task(intptr_t exinf)
         return;
     }
 
+    if (inProress_Log) {
+        return;
+    }
+
+    inProress_Log = true;
+
     logger->outputLog();
+
+    inProress_Log = false;
 }
 
 /**
@@ -295,5 +323,13 @@ void position_update_task(intptr_t exinf)
         return;
     }
 
+    if (inProress_Position) {
+        return;
+    }
+
+    inProress_Position = true;
+
     driveController->updatePosition();
+
+    inProress_Position = false;
 }
