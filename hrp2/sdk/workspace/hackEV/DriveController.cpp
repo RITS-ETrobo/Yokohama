@@ -245,8 +245,13 @@ bool DriveController::runAsPattern(scenario_running scenario)
         break;
 
     default:
-        //! ライントレースせずに、直進走行する
-        straightRun(scenario.power);
+        {
+            //! 急発進急加速しないためのパワーを取得
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario);
+            
+            //! ライントレースせずに、直進走行する
+            straightRun(softAccelPower);
+        }
         break;
     }
 
@@ -281,6 +286,7 @@ void DriveController::initializeAsPattern(scenario_running scenario)
 
     default:
         //! ライントレースせずに、直進走行する
+
         break;
     }
 }
@@ -785,8 +791,8 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     float currentDirection = 0.0F;
     speedCalculator100ms->getPosition(&currentPositionREAL, &currentPositionMAP, &currentDirection);
 
-    writeFloatLCD(currentPositionREAL.x);
-    writeFloatLCD(currentPositionREAL.y);
+    // writeFloatLCD(currentPositionREAL.x);
+    // writeFloatLCD(currentPositionREAL.y);
 
     //! 滑らか走行
     //smoothMovementFromCoordinate(_coordinateScenario);
@@ -1131,15 +1137,42 @@ void DriveController::updatePosition()
 }
 
 /**
- * @brief   ふんわりアクセル処理(急発進を避ける)
- * @param   [in]    startPower   発進の最初のパワー
- * @param   [in]    targetPower   最終的に出したい目的のパワー
- * @param   [in]    stopDistance   ストップするまでの走行距離
- * 現在のdistanceDcenarioも見る（どれくらい走っているかが必要）
+ * @brief   開始直後の急加速、目的距離で急停止しない処理
+ * @param   [in]    power   シナリオで指定されたパワー
+ * @param   [in]    stopDistance   停止距離
+ * @param   [in]    currentDistance   現在のシナリオ距離
  * @return  なし
  */
-void DriveController::softAcceleration(int startPower, int targetPower, float stopDistance){
-    
+int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance){
+
+    //! 現在の距離がマイナスになることはないが、タイヤの回転角によっては起こりえるためマイナスは全て０にする
+	if(currentDistance < 0){
+		currentDistance=0;
+	}
+
+	int softAccelPower=power;
+
+    //! 加速パワー
+    const int startPower = 5;
+    float accelerationDistance = 25;//適度な範囲にすること
+	if(stopDistance - accelerationDistance<0){
+		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
+		accelerationDistance = stopDistance*0.6;
+	}
+
+    softAccelPower = getAccelerationPower(startPower, power, accelerationDistance, currentDistance);
+
+    //! 減速パワー
+    const int  finishPower=5;
+    float DecelerationDistanceFromStopDistance = 25;//適度な範囲にすること
+	if(stopDistance - DecelerationDistanceFromStopDistance<0){
+		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
+		DecelerationDistanceFromStopDistance = stopDistance*0.6;
+	}
+
+    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, DecelerationDistanceFromStopDistance, currentDistance);
+
+	return softAccelPower;
 }
 
 /**

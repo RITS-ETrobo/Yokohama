@@ -60,9 +60,9 @@ protected:
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
-    virtual void softAcceleration(int startPower, int targetPower, float stopDistance);
     virtual int getDecelerationPower(int finishPower, int currentPower, float stopDistance, float decelerationBeginDistance, float currentDistance);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance);
+    virtual int getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistanceScenario);
 
 private:
     void pinWheel(int power, float degree);
