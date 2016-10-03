@@ -127,10 +127,13 @@ private:
 
     //! 利用可能かどうか
     bool    enabled;
-
-    //! 加速はじめのパワー
-    static const int accelStartPower = 10;
-
-    //! 減速最後のパワー
-    static const int  decelerationFinishPower=5;
 };
+
+//! 加速はじめのパワー
+static const int accelStartPower = 10;
+
+//! 減速最後のパワー
+static const int  decelerationFinishPower = 5;
+
+//! 加速と減速範囲を再定義するときの停止値に対する割合
+static const float rangeRate = 0.6F;

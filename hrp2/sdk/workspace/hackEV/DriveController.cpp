@@ -1184,16 +1184,16 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 	int softAccelPower = power;
 
 	if(stopValue - accelerationRange<0){
-		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
-		accelerationRange = stopValue*0.6;
+		//! 万が一、加速範囲よりも停止値が小さい場合は、加速範囲を停止距離の一定の割合で再定義
+		accelerationRange = stopValue*rangeRate;
 	}
 
     softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
 
 
 	if(stopValue - decelerationRange<0){
-		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
-		decelerationRange = stopValue*0.6;
+		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の一定の割合で再定義
+		decelerationRange = stopValue*rangeRate;
 	}
 
     softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
