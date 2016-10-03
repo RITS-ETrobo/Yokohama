@@ -26,6 +26,8 @@ public:
     virtual ER stop(bool_t brake = true);
     virtual void manageMoveCoordinate(scenario_coordinate _coordinateScenario);
     virtual void updatePosition();
+    virtual void setEnabled(bool _enabled = true);
+    virtual bool isEnabled();
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -116,4 +118,7 @@ private:
 
     //! 初期化済み判定フラグ
     bool    initialized;
+
+    //! 利用可能かどうか
+    bool    enabled;
 };
