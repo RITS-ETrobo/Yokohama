@@ -213,9 +213,18 @@ bool Logger::openLog()
 */
 void Logger::outputLog(bool doClosingLog /*= false*/)
 {
-    if (isEnabled()) {
+    for (;;) {
+        if (!isEnabled()) {
+            break;
+        }
+
         if (!openLog()) {
-            return;
+            break;
+        }
+
+        vector<USER_LOG> loggerOutput = move(loggerInfo);
+        if (loggerOutput.size() == 0) {
+            break;
         }
 
         SYSTIM  start = 0;
@@ -223,18 +232,14 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
             start = clock->now();
         }
 
-        vector<USER_LOG> loggerOutput = move(loggerInfo);
-        if (loggerOutput.size() == 0) {
-            return;
-        }
-
-        for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it ++ ) {
+        for (vector<USER_LOG>::iterator it = loggerOutput.begin(); it != loggerOutput.end(); it++) {
             if (!outputHeader) {
                 fputs("Duration(ms),Type,Value1,Value2,Value3\r\n", fpLog);
                 outputHeader = true;
             }
 
             char    logLine[64];
+            memset(logLine, '\0', sizeof(logLine));
             sprintf(logLine, "%lu, %s, %s\r\n", it->logTime, getLogName(it->logType).c_str(), it->log);
             if (fputs(logLine, fpLog) == EOF) {
                 break;
@@ -242,8 +247,14 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
         }
 
         if (clock) {
-            addLogInt(LOG_TYPE_WRITE_PROCESSING, clock->now() - start);
+            SYSTIM  end = clock->now();
+            char    logLine[64];
+            memset(logLine, '\0', sizeof(logLine));
+            sprintf(logLine, "%lu, %s, %lu\r\n", end, getLogName(LOG_TYPE_WRITE_PROCESSING).c_str(), end - start);
+            fputs(logLine, fpLog);
         }
+
+        break;
     }
 
     if (doClosingLog) {
