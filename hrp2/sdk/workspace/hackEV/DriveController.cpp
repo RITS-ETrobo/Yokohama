@@ -1181,7 +1181,7 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 	currentValue = fabsf(currentValue);
     stopValue = fabsf(stopValue);
 
-	int softAccelPower=power;
+	int softAccelPower = power;
 
     //! 加速パワー
     const int startPower = 10;
