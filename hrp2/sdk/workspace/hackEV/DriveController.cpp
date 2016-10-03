@@ -1177,10 +1177,9 @@ void DriveController::updatePosition()
  */
 int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration){
 
-    //! 現在の距離がマイナスになることはないが、タイヤの回転角によっては起こりえるためマイナスは全て０にする
-	if(currentValue < 0){
-		currentValue=0;
-	}
+    //! 現在の値と停止値は絶対値で計算を行う
+	currentValue = fabsf(currentValue);
+    stopValue = fabsf(stopValue);
 
 	int softAccelPower=power;
 
