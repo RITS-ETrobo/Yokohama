@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['scenario_5frunning',['scenario_running',['../d4/d30/structscenario__running.html',1,'']]],
-  ['sonarsensorcontroller',['SonarSensorController',['../df/d60/class_sonar_sensor_controller.html',1,'']]],
-  ['speedcalculator',['SpeedCalculator',['../da/dcf/class_speed_calculator.html',1,'']]]
+  ['object_5finformation',['OBJECT_INFORMATION',['../df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html',1,'']]]
 ];

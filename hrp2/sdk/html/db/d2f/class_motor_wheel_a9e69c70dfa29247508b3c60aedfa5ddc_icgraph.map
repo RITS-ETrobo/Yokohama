@@ -2,7 +2,6 @@
 <area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a1fee3464626523e2cbbd7b1c66cacf92" title="直線走行のための補正された出力を取得する " alt="" coords="229,5,421,46"/>
 <area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="225,71,426,97"/>
 <area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="475,71,642,97"/>
-<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="691,71,826,97"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="890,45,963,72"/>
-<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="875,96,978,123"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="691,71,893,97"/>
+<area shape="rect" id="node6" href="$d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="942,71,1087,97"/>
 </map>

@@ -1,0 +1,4 @@
+<map id="DriveController::OnceDifferentialOfCubicFunction" name="DriveController::OnceDifferentialOfCubicFunction">
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="265,5,447,46"/>
+<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="496,5,717,46"/>
+</map>

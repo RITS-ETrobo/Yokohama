@@ -1,7 +1,0 @@
-<map id="SpeedCalculator::add" name="SpeedCalculator::add">
-<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="667,31,802,57"/>
-<area shape="rect" id="node5" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="201,56,402,83"/>
-<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="866,5,939,32"/>
-<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="851,56,954,83"/>
-<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="451,56,618,83"/>
-</map>

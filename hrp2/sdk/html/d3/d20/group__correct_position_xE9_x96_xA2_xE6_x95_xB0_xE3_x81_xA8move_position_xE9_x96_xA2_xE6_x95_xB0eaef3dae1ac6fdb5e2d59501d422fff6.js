@@ -1,0 +1,10 @@
+var group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6 =
+[
+    [ "CORRECT_DIRECTION", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga49a22d42c4bf9e5bd3f146776e16f0c7", null ],
+    [ "CORRECT_POSITION_MAP", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gafe3afb4d5f4250e42b459228d9f48f1c", null ],
+    [ "CORRECT_POSITION_MAP_X", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga4a50aa69201ce54a5472cae7b5e1f11a", null ],
+    [ "CORRECT_POSITION_MAP_Y", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga24a7efd4b5c5535b9fa98ca1989f4424", null ],
+    [ "CORRECT_POSITION_REAL", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gaa09be635db34c2a5f4e836419a31c8ca", null ],
+    [ "CORRECT_POSITION_REAL_X", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga1bff36c8d500206bcbd1a2fde025ba74", null ],
+    [ "CORRECT_POSITION_REAL_Y", "d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga3a26692ab4b33e3d775c319e163eeb3e", null ]
+];

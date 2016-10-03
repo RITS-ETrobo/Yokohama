@@ -105,6 +105,7 @@ $(document).ready(function(){initNavTree('d1/d48/class_e_v3_position.html','../.
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="../../d8/d42/class_e_v3_position-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">EV3Position Class Reference</div>  </div>
@@ -125,12 +126,12 @@ Inheritance diagram for EV3Position:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa48de2fa16c94a3517aa56584ac14488"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#aa48de2fa16c94a3517aa56584ac14488">EV3Position</a> (SYSTIM duration_=0)</td></tr>
-<tr class="memdesc:aa48de2fa16c94a3517aa56584ac14488"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#aa48de2fa16c94a3517aa56584ac14488">More...</a><br/></td></tr>
-<tr class="separator:aa48de2fa16c94a3517aa56584ac14488"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3b031524cab2162e09ee2d14c8be382"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382">initialize</a> ()</td></tr>
-<tr class="memdesc:ad3b031524cab2162e09ee2d14c8be382"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化  <a href="#ad3b031524cab2162e09ee2d14c8be382">More...</a><br/></td></tr>
-<tr class="separator:ad3b031524cab2162e09ee2d14c8be382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2997b89d11efd9ee15fa3d4eef77c96a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#a2997b89d11efd9ee15fa3d4eef77c96a">EV3Position</a> (bool needPositionInfo_, SYSTIM duration_=0)</td></tr>
+<tr class="memdesc:a2997b89d11efd9ee15fa3d4eef77c96a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a2997b89d11efd9ee15fa3d4eef77c96a">More...</a><br/></td></tr>
+<tr class="separator:a2997b89d11efd9ee15fa3d4eef77c96a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d82e5c3ccb110dfacec8fa051270f31"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31">initialize</a> (bool isForce=false)</td></tr>
+<tr class="memdesc:a2d82e5c3ccb110dfacec8fa051270f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化  <a href="#a2d82e5c3ccb110dfacec8fa051270f31">More...</a><br/></td></tr>
+<tr class="separator:a2d82e5c3ccb110dfacec8fa051270f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1585f69281d9247ae2bbeb4feea3ef34"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34">reset</a> ()</td></tr>
 <tr class="memdesc:a1585f69281d9247ae2bbeb4feea3ef34"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化(強制的に実施)  <a href="#a1585f69281d9247ae2bbeb4feea3ef34">More...</a><br/></td></tr>
 <tr class="separator:a1585f69281d9247ae2bbeb4feea3ef34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,11 +144,47 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0ae6be2d548e3aaea487de99cc4a8bb"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#ae0ae6be2d548e3aaea487de99cc4a8bb">getDirection</a> ()</td></tr>
 <tr class="memdesc:ae0ae6be2d548e3aaea487de99cc4a8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の向きを取得する  <a href="#ae0ae6be2d548e3aaea487de99cc4a8bb">More...</a><br/></td></tr>
 <tr class="separator:ae0ae6be2d548e3aaea487de99cc4a8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe1162b6f8b7e3dc49fd552c8b5c93ab"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#abe1162b6f8b7e3dc49fd552c8b5c93ab">getPosition</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *positionREAL, <a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *positionMAP, float *direction)</td></tr>
+<tr class="memdesc:abe1162b6f8b7e3dc49fd552c8b5c93ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体の現在位置を取得する  <a href="#abe1162b6f8b7e3dc49fd552c8b5c93ab">More...</a><br/></td></tr>
+<tr class="separator:abe1162b6f8b7e3dc49fd552c8b5c93ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a696c713dc4d764901d3eeac52e833cd9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9">setPosition</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *position, float direction_, uint8_t updateType=0)</td></tr>
+<tr class="memdesc:a696c713dc4d764901d3eeac52e833cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体の現在位置を設定する  <a href="#a696c713dc4d764901d3eeac52e833cd9">More...</a><br/></td></tr>
+<tr class="separator:a696c713dc4d764901d3eeac52e833cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef4b495f06db35ca6b2b992c5b56cbf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf">synchronizePosition</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *position, uint8_t updateType=0)</td></tr>
+<tr class="memdesc:aaef4b495f06db35ca6b2b992c5b56cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体の現在位置を同期する  <a href="#aaef4b495f06db35ca6b2b992c5b56cbf">More...</a><br/></td></tr>
+<tr class="separator:aaef4b495f06db35ca6b2b992c5b56cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b525f04003dfb990de2ddd7a7d1855"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855">movePosition</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *position, float distance_, float direction_, uint8_t updateType=0, bool beCorrected=true)</td></tr>
+<tr class="memdesc:a08b525f04003dfb990de2ddd7a7d1855"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体の座標を指定した位置に移動させる  <a href="#a08b525f04003dfb990de2ddd7a7d1855">More...</a><br/></td></tr>
+<tr class="separator:a08b525f04003dfb990de2ddd7a7d1855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ga1bff36c8d500206bcbd1a2fde025ba74"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga1bff36c8d500206bcbd1a2fde025ba74">CORRECT_POSITION_REAL_X</a> = (1 &lt;&lt; 0)</td></tr>
+<tr class="memdesc:ga1bff36c8d500206bcbd1a2fde025ba74"><td class="mdescLeft">&#160;</td><td class="mdescRight">実際のX座標を補正する(CORRECT_POSITION_MAPと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga1bff36c8d500206bcbd1a2fde025ba74">More...</a><br/></td></tr>
+<tr class="separator:ga1bff36c8d500206bcbd1a2fde025ba74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a26692ab4b33e3d775c319e163eeb3e"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga3a26692ab4b33e3d775c319e163eeb3e">CORRECT_POSITION_REAL_Y</a> = (1 &lt;&lt; 1)</td></tr>
+<tr class="memdesc:ga3a26692ab4b33e3d775c319e163eeb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">実際のY座標を補正する(CORRECT_POSITION_MAPと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga3a26692ab4b33e3d775c319e163eeb3e">More...</a><br/></td></tr>
+<tr class="separator:ga3a26692ab4b33e3d775c319e163eeb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa09be635db34c2a5f4e836419a31c8ca"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gaa09be635db34c2a5f4e836419a31c8ca">CORRECT_POSITION_REAL</a> = (<a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga1bff36c8d500206bcbd1a2fde025ba74">CORRECT_POSITION_REAL_X</a> | <a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga3a26692ab4b33e3d775c319e163eeb3e">CORRECT_POSITION_REAL_Y</a>)</td></tr>
+<tr class="memdesc:gaa09be635db34c2a5f4e836419a31c8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">実際の位置を補正する(CORRECT_POSITION_MAPと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gaa09be635db34c2a5f4e836419a31c8ca">More...</a><br/></td></tr>
+<tr class="separator:gaa09be635db34c2a5f4e836419a31c8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a50aa69201ce54a5472cae7b5e1f11a"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga4a50aa69201ce54a5472cae7b5e1f11a">CORRECT_POSITION_MAP_X</a> = (1 &lt;&lt; 2)</td></tr>
+<tr class="memdesc:ga4a50aa69201ce54a5472cae7b5e1f11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">マップ上のX座標を補正する(CORRECT_POSITION_REALと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga4a50aa69201ce54a5472cae7b5e1f11a">More...</a><br/></td></tr>
+<tr class="separator:ga4a50aa69201ce54a5472cae7b5e1f11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga24a7efd4b5c5535b9fa98ca1989f4424"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga24a7efd4b5c5535b9fa98ca1989f4424">CORRECT_POSITION_MAP_Y</a> = (1 &lt;&lt; 3)</td></tr>
+<tr class="memdesc:ga24a7efd4b5c5535b9fa98ca1989f4424"><td class="mdescLeft">&#160;</td><td class="mdescRight">マップ上のY座標を補正する(CORRECT_POSITION_REALと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga24a7efd4b5c5535b9fa98ca1989f4424">More...</a><br/></td></tr>
+<tr class="separator:ga24a7efd4b5c5535b9fa98ca1989f4424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe3afb4d5f4250e42b459228d9f48f1c"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gafe3afb4d5f4250e42b459228d9f48f1c">CORRECT_POSITION_MAP</a> = (<a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga4a50aa69201ce54a5472cae7b5e1f11a">CORRECT_POSITION_MAP_X</a> | <a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga24a7efd4b5c5535b9fa98ca1989f4424">CORRECT_POSITION_MAP_Y</a>)</td></tr>
+<tr class="memdesc:gafe3afb4d5f4250e42b459228d9f48f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">マップ上の位置を補正する(CORRECT_POSITION_REALと排他)  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#gafe3afb4d5f4250e42b459228d9f48f1c">More...</a><br/></td></tr>
+<tr class="separator:gafe3afb4d5f4250e42b459228d9f48f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49a22d42c4bf9e5bd3f146776e16f0c7"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga49a22d42c4bf9e5bd3f146776e16f0c7">CORRECT_DIRECTION</a> = (1 &lt;&lt; 4)</td></tr>
+<tr class="memdesc:ga49a22d42c4bf9e5bd3f146776e16f0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">向きを補正する  <a href="../../d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga49a22d42c4bf9e5bd3f146776e16f0c7">More...</a><br/></td></tr>
+<tr class="separator:ga49a22d42c4bf9e5bd3f146776e16f0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for position. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aa48de2fa16c94a3517aa56584ac14488"></a>
+<a class="anchor" id="a2997b89d11efd9ee15fa3d4eef77c96a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -157,9 +194,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">EV3Position::EV3Position </td>
           <td>(</td>
-          <td class="paramtype">SYSTIM&#160;</td>
-          <td class="paramname"><em>duration_</em> = <code>0</code></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>needPositionInfo_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">SYSTIM&#160;</td>
+          <td class="paramname"><em>duration_</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -172,6 +219,7 @@ Public Member Functions</h2></td></tr>
 <p>コンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">needPositionInfo_</td><td>位置情報を更新するかどうか </td></tr>
     <tr><td class="paramname">duration_</td><td>速度を求める間隔[単位 : ms] </td></tr>
   </table>
   </dd>
@@ -211,14 +259,21 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 
-<p>Reimplemented in <a class="el" href="../../da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be">SpeedCalculator</a>.</p>
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_cgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_cgraph" id="d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_cgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="176,56,357,83"/><area shape="rect" id="node3" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="438,5,541,32"/><area shape="rect" id="node4" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="448,56,531,83"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="406,107,573,133"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="622,70,794,111"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="843,107,983,133"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1033,107,1143,133"/><area shape="rect" id="node9" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1193,81,1351,108"/><area shape="rect" id="node12" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1215,132,1329,159"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1400,56,1515,83"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1405,107,1509,133"/></map>
+</div>
+</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_icgraph" alt=""/></div>
 <map name="d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_icgraph" id="d1/d48/class_e_v3_position_a9721e105a15e1140bab8c7a497db10cd_icgraph">
-<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382" title="初期化 " alt="" coords="176,56,325,83"/><area shape="rect" id="node12" href="../../da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をvectorに追加する " alt="" coords="387,132,533,159"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="395,5,525,32"/><area shape="rect" id="node4" href="../../da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="373,56,547,83"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="847,31,1011,57"/><area shape="rect" id="node10" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="623,31,769,57"/><area shape="rect" id="node11" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="619,81,773,108"/><area shape="rect" id="node6" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1088,31,1171,57"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1062,132,1197,159"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1261,107,1334,133"/><area shape="rect" id="node9" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1246,157,1349,184"/><area shape="rect" id="node13" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="595,183,797,209"/><area shape="rect" id="node14" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="846,183,1013,209"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="648,5,851,32"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="203,81,352,108"/><area shape="rect" id="node18" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="177,31,378,57"/><area shape="rect" id="node3" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="909,5,1054,32"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="448,81,579,108"/><area shape="rect" id="node6" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="427,132,600,159"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="899,157,1063,184"/><area shape="rect" id="node16" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="676,183,823,209"/><area shape="rect" id="node17" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="672,81,827,108"/><area shape="rect" id="node8" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1181,107,1264,133"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1155,157,1290,184"/><area shape="rect" id="node15" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="1112,209,1333,250"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1381,66,1557,107"/><area shape="rect" id="node12" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1848,103,1973,129"/><area shape="rect" id="node13" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1433,183,1506,209"/><area shape="rect" id="node14" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1418,233,1521,260"/><area shape="rect" id="node11" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1605,66,1800,107"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="430,31,597,57"/></map>
 </div>
 </p>
 
@@ -248,14 +303,63 @@ Here is the caller graph for this function:</div>
 <p>現在の向きを取得する </p>
 <dl class="section return"><dt>Returns</dt><dd>現在の向き[単位 : 度] </dd></dl>
 
-<p>Reimplemented in <a class="el" href="../../da/dcf/class_speed_calculator.html#a3bf4146d60907c025507e3e3c8dd992e">SpeedCalculator</a>.</p>
+</div>
+</div>
+<a class="anchor" id="abe1162b6f8b7e3dc49fd552c8b5c93ab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EV3Position::getPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>positionREAL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>positionMAP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>direction_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行体の現在位置を取得する </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">positionREAL</td><td>実際の座標 </td></tr>
+    <tr><td class="paramname">positionMAP</td><td>マップ上の座標 </td></tr>
+    <tr><td class="paramname">direction_</td><td>向き[単位 : 度] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true : 取得できた false : パラメーターエラー </dd></dl>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d1/d48/class_e_v3_position_ae0ae6be2d548e3aaea487de99cc4a8bb_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_ae0ae6be2d548e3aaea487de99cc4a8bb_icgraph" alt=""/></div>
-<map name="d1/d48/class_e_v3_position_ae0ae6be2d548e3aaea487de99cc4a8bb_icgraph" id="d1/d48/class_e_v3_position_ae0ae6be2d548e3aaea487de99cc4a8bb_icgraph">
-<area shape="rect" id="node2" href="../../da/dcf/class_speed_calculator.html#a3bf4146d60907c025507e3e3c8dd992e" title="現在の向きを取得する " alt="" coords="227,5,423,32"/></map>
+<div class="center"><img src="../../d1/d48/class_e_v3_position_abe1162b6f8b7e3dc49fd552c8b5c93ab_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_abe1162b6f8b7e3dc49fd552c8b5c93ab_icgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_abe1162b6f8b7e3dc49fd552c8b5c93ab_icgraph" id="d1/d48/class_e_v3_position_abe1162b6f8b7e3dc49fd552c8b5c93ab_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="221,5,416,46"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="464,12,589,39"/></map>
 </div>
 </p>
 
@@ -299,13 +403,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d48/class_e_v3_position_ae55111760dffee12d15ea36c9d5fda0b_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_ae55111760dffee12d15ea36c9d5fda0b_icgraph" alt=""/></div>
 <map name="d1/d48/class_e_v3_position_ae55111760dffee12d15ea36c9d5fda0b_icgraph" id="d1/d48/class_e_v3_position_ae55111760dffee12d15ea36c9d5fda0b_icgraph">
-<area shape="rect" id="node2" href="../../da/dcf/class_speed_calculator.html#a43f08e3194f490ac92766068dc4d1fad" title="平均速度を算出する " alt="" coords="211,31,392,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="441,31,575,57"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="639,5,713,32"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="625,56,727,83"/></map>
+<area shape="rect" id="node2" href="../../da/dcf/class_speed_calculator.html#a43f08e3194f490ac92766068dc4d1fad" title="平均速度を算出する " alt="" coords="211,5,392,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="ad3b031524cab2162e09ee2d14c8be382"></a>
+<a class="anchor" id="a2d82e5c3ccb110dfacec8fa051270f31"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -315,7 +419,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void EV3Position::initialize </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isForce</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -329,23 +434,106 @@ Here is the caller graph for this function:</div>
 <p>初期化 </p>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
 
-<p>Reimplemented in <a class="el" href="../../da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f">SpeedCalculator</a>.</p>
+<p>Reimplemented in <a class="el" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a">SpeedCalculator</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_cgraph" alt=""/></div>
-<map name="d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_cgraph" id="d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_cgraph">
-<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="203,5,325,32"/></map>
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_cgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_cgraph" id="d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_cgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="203,56,325,83"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="603,107,770,133"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="373,56,555,83"/><area shape="rect" id="node4" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="635,5,738,32"/><area shape="rect" id="node5" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="645,56,728,83"/><area shape="rect" id="node7" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="819,70,991,111"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1041,107,1181,133"/><area shape="rect" id="node9" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1230,107,1341,133"/><area shape="rect" id="node10" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1390,81,1549,108"/><area shape="rect" id="node13" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1412,132,1527,159"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1597,56,1712,83"/><area shape="rect" id="node12" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1603,107,1707,133"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_icgraph" alt=""/></div>
-<map name="d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_icgraph" id="d1/d48/class_e_v3_position_ad3b031524cab2162e09ee2d14c8be382_icgraph">
-<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="224,5,355,32"/><area shape="rect" id="node3" href="../../da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="203,56,376,83"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="627,31,791,57"/><area shape="rect" id="node9" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="428,56,575,83"/><area shape="rect" id="node10" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="424,107,579,133"/><area shape="rect" id="node5" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="867,5,949,32"/><area shape="rect" id="node6" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="841,56,975,83"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1039,31,1113,57"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1025,81,1127,108"/></map>
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_icgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_icgraph" id="d1/d48/class_e_v3_position_a2d82e5c3ccb110dfacec8fa051270f31_icgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="224,72,355,99"/><area shape="rect" id="node3" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="203,123,376,149"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="627,97,791,124"/><area shape="rect" id="node13" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="428,123,575,149"/><area shape="rect" id="node14" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="424,173,579,200"/><area shape="rect" id="node5" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="909,47,992,73"/><area shape="rect" id="node6" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="883,97,1018,124"/><area shape="rect" id="node12" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="840,149,1061,190"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1109,6,1285,47"/><area shape="rect" id="node9" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1576,43,1701,69"/><area shape="rect" id="node10" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1161,123,1234,149"/><area shape="rect" id="node11" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1146,173,1249,200"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1333,6,1528,47"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a08b525f04003dfb990de2ddd7a7d1855"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EV3Position::movePosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>direction_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>updateType</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>beCorrected</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行体の座標を指定した位置に移動させる </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>座標 </td></tr>
+    <tr><td class="paramname">distance_</td><td>前回の測定から移動した距離[単位 : cm] </td></tr>
+    <tr><td class="paramname">direction_</td><td>前回の測定から移動した角度[単位 : 度] </td></tr>
+    <tr><td class="paramname">updateType</td><td>どの値を更新するか </td></tr>
+    <tr><td class="paramname">beCorrected</td><td>値を補正するか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true : 動かすことができる場合 </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_cgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_cgraph" id="d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_cgraph">
+<area shape="rect" id="node2" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="267,5,370,32"/><area shape="rect" id="node3" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="277,56,360,83"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="235,107,402,133"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="451,70,623,111"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="673,107,813,133"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="862,107,973,133"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1022,81,1181,108"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1044,132,1159,159"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1229,56,1344,83"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1235,107,1339,133"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_icgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_icgraph" id="d1/d48/class_e_v3_position_a08b525f04003dfb990de2ddd7a7d1855_icgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="235,31,357,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="877,5,1080,32"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="432,81,581,108"/><area shape="rect" id="node19" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="406,31,607,57"/><area shape="rect" id="node4" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="1138,5,1283,32"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="677,81,808,108"/><area shape="rect" id="node7" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="656,132,829,159"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1129,157,1293,184"/><area shape="rect" id="node17" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="905,183,1052,209"/><area shape="rect" id="node18" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="901,81,1056,108"/><area shape="rect" id="node9" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1411,107,1493,133"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1385,157,1519,184"/><area shape="rect" id="node16" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="1341,209,1563,250"/><area shape="rect" id="node11" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1611,66,1787,107"/><area shape="rect" id="node13" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="2077,103,2203,129"/><area shape="rect" id="node14" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1662,183,1735,209"/><area shape="rect" id="node15" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1647,233,1750,260"/><area shape="rect" id="node12" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1835,66,2029,107"/><area shape="rect" id="node20" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="659,31,826,57"/></map>
 </div>
 </p>
 
@@ -382,7 +570,136 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d48/class_e_v3_position_a1585f69281d9247ae2bbeb4feea3ef34_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a1585f69281d9247ae2bbeb4feea3ef34_cgraph" alt=""/></div>
 <map name="d1/d48/class_e_v3_position_a1585f69281d9247ae2bbeb4feea3ef34_cgraph" id="d1/d48/class_e_v3_position_a1585f69281d9247ae2bbeb4feea3ef34_cgraph">
-<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382" title="初期化 " alt="" coords="184,5,333,32"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="381,5,504,32"/></map>
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="184,81,333,108"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="381,56,504,83"/><area shape="rect" id="node7" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="782,107,949,133"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="552,56,733,83"/><area shape="rect" id="node5" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="814,5,917,32"/><area shape="rect" id="node6" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="824,56,907,83"/><area shape="rect" id="node8" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="998,70,1170,111"/><area shape="rect" id="node9" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1219,107,1359,133"/><area shape="rect" id="node10" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1409,107,1519,133"/><area shape="rect" id="node11" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1569,81,1727,108"/><area shape="rect" id="node14" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1591,132,1705,159"/><area shape="rect" id="node12" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1776,56,1891,83"/><area shape="rect" id="node13" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1781,107,1885,133"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a696c713dc4d764901d3eeac52e833cd9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Position::setPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>direction_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>updateType</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行体の現在位置を設定する </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>座標 </td></tr>
+    <tr><td class="paramname">direction_</td><td>向き[単位 : 度] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_cgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_cgraph" id="d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_cgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="222,19,394,61"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="443,56,583,83"/><area shape="rect" id="node4" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="633,56,743,83"/><area shape="rect" id="node5" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="793,31,951,57"/><area shape="rect" id="node8" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="815,81,929,108"/><area shape="rect" id="node6" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1000,5,1115,32"/><area shape="rect" id="node7" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1005,56,1109,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_icgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_icgraph" id="d1/d48/class_e_v3_position_a696c713dc4d764901d3eeac52e833cd9_icgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="648,123,797,149"/><area shape="rect" id="node16" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="221,173,403,200"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="893,72,1024,99"/><area shape="rect" id="node4" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="872,123,1045,149"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1345,97,1509,124"/><area shape="rect" id="node14" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1121,123,1268,149"/><area shape="rect" id="node15" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="1117,173,1272,200"/><area shape="rect" id="node6" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1627,47,1709,73"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1601,97,1735,124"/><area shape="rect" id="node13" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="1557,149,1779,190"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1827,6,2003,47"/><area shape="rect" id="node10" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="2293,43,2419,69"/><area shape="rect" id="node11" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1878,123,1951,149"/><area shape="rect" id="node12" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1863,173,1966,200"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="2051,6,2245,47"/><area shape="rect" id="node17" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="451,173,573,200"/><area shape="rect" id="node18" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="1093,224,1296,251"/><area shape="rect" id="node20" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="622,224,823,251"/><area shape="rect" id="node19" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="1354,224,1499,251"/><area shape="rect" id="node21" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="875,224,1042,251"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaef4b495f06db35ca6b2b992c5b56cbf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Position::synchronizePosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>updateType</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行体の現在位置を同期する </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>座標 </td></tr>
+    <tr><td class="paramname">updateType</td><td>どの値を更新するか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_cgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_cgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_cgraph" id="d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_cgraph">
+<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="227,56,367,83"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="417,56,527,83"/><area shape="rect" id="node4" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="577,31,735,57"/><area shape="rect" id="node7" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="599,81,713,108"/><area shape="rect" id="node5" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="784,5,899,32"/><area shape="rect" id="node6" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="789,56,893,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_icgraph.png" border="0" usemap="#d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_icgraph" alt=""/></div>
+<map name="d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_icgraph" id="d1/d48/class_e_v3_position_aaef4b495f06db35ca6b2b992c5b56cbf_icgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="227,148,394,175"/><area shape="rect" id="node3" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="869,123,1019,149"/><area shape="rect" id="node17" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="443,173,624,200"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="1115,72,1245,99"/><area shape="rect" id="node5" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="1093,123,1267,149"/><area shape="rect" id="node6" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1566,97,1730,124"/><area shape="rect" id="node15" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1343,123,1489,149"/><area shape="rect" id="node16" href="../../da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="1339,173,1493,200"/><area shape="rect" id="node7" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1848,47,1931,73"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1822,97,1957,124"/><area shape="rect" id="node14" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="1779,149,2000,190"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="2048,6,2224,47"/><area shape="rect" id="node11" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="2515,43,2640,69"/><area shape="rect" id="node12" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="2099,123,2173,149"/><area shape="rect" id="node13" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="2085,173,2187,200"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="2272,6,2467,47"/><area shape="rect" id="node18" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="672,173,795,200"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="1315,224,1517,251"/><area shape="rect" id="node21" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="843,224,1045,251"/><area shape="rect" id="node20" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="1575,224,1721,251"/><area shape="rect" id="node22" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="1097,224,1263,251"/></map>
 </div>
 </p>
 
@@ -398,7 +715,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d1/d48/class_e_v3_position.html">EV3Position</a></li>
-    <li class="footer">Generated on Tue Sep 27 2016 12:29:46 for ev3RT Workspace by
+    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

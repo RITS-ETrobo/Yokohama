@@ -1,0 +1,21 @@
+<map id="DriveController::updatePosition" name="DriveController::updatePosition">
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="266,107,433,133"/>
+<area shape="rect" id="node6" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="776,157,899,184"/>
+<area shape="rect" id="node12" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1649,204,1789,231"/>
+<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#ab9d08c9ef1e6fa73914e848237103676" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="256,259,443,285"/>
+<area shape="rect" id="node19" href="$d8/dcc/class_drive_controller.html#a88b1565e8487f806a8c618d4343ca3c5" title="リセットしてからの走行体の向きを取得する " alt="" coords="499,221,685,248"/>
+<area shape="rect" id="node3" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="491,107,693,133"/>
+<area shape="rect" id="node4" href="$db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="742,5,933,32"/>
+<area shape="rect" id="node5" href="$db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="752,56,923,83"/>
+<area shape="rect" id="node7" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="981,196,1163,223"/>
+<area shape="rect" id="node8" href="$d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1243,157,1346,184"/>
+<area shape="rect" id="node9" href="$d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1253,259,1336,285"/>
+<area shape="rect" id="node10" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1211,208,1378,235"/>
+<area shape="rect" id="node11" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1427,226,1599,267"/>
+<area shape="rect" id="node13" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1838,204,1949,231"/>
+<area shape="rect" id="node14" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1998,179,2157,205"/>
+<area shape="rect" id="node17" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2020,229,2135,256"/>
+<area shape="rect" id="node15" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2205,153,2320,180"/>
+<area shape="rect" id="node16" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2211,204,2315,231"/>
+<area shape="rect" id="node20" href="$d4/dcf/user__function_8cpp.html#a955e59039bc6f30ed9e72e8938250292" title="範囲内に収まっていない場合に、値を範囲内に収める " alt="" coords="1027,247,1117,273"/>
+</map>

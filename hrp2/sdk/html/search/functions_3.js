@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['drive_5fcontroller_5ftask',['drive_controller_task',['../db/d35/gyroboy_8cpp.html#a859133c420293b120b61fd5da10d31fc',1,'drive_controller_task(intptr_t unused):&#160;gyroboy.cpp'],['../dc/d58/gyroboy_8h.html#afc44cee9fbdd7e498f28eacb8be3674f',1,'drive_controller_task(intptr_t exinf):&#160;gyroboy.cpp']]],
-  ['drivecontroller',['DriveController',['../d8/dcc/class_drive_controller.html#ae9fb429c8fe74cd5bf3e65e6c0a2823e',1,'DriveController']]],
-  ['driveprocess',['driveProcess',['../db/d35/gyroboy_8cpp.html#a9f5a4fa410a323fc88b4c367dc31dedf',1,'gyroboy.cpp']]]
+  ['degree2radian',['degree2radian',['../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394',1,'degree2radian(float degree):&#160;user_function.cpp'],['../d1/da0/user__function_8h.html#a672166152dd598c54e3c42e8e2e16394',1,'degree2radian(float degree):&#160;user_function.cpp']]],
+  ['directionfromcoordinateforjitterymovement',['directionFromCoordinateForJitteryMovement',['../d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c',1,'DriveController']]],
+  ['distancefromcoordinateforjitterymovement',['distanceFromCoordinateForJitteryMovement',['../d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b',1,'DriveController']]],
+  ['drivecontroller',['DriveController',['../d8/dcc/class_drive_controller.html#ae9fb429c8fe74cd5bf3e65e6c0a2823e',1,'DriveController']]]
 ];

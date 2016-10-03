@@ -6,8 +6,10 @@ var group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E =
       [ "LOG_TYPE_COLOR_BLACK", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a2955abfaf6a79b466a6937ac50b15bf7", null ],
       [ "LOG_TYPE_COLOR_WHITE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a19d1afa8b3b18bd001516977ca5e11a9", null ],
       [ "LOG_TYPE_DISTANCE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a0a0c99a88b4181415569265d67e03cff", null ],
+      [ "LOG_TYPE_DISTANCE_SCENARIO", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61afb19f15872f6b901f968215da9818ba3", null ],
       [ "LOG_TYPE_DISTANCE_TOTAL", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ae0c8b5235c27ea33d6fc69fba336c19a", null ],
       [ "LOG_TYPE_DIRECTION", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61aac99a90c7799ce816e8a366305d752dc", null ],
+      [ "LOG_TYPE_DIRECTION_SCENARIO", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a98a918d0a6af9be8b27bd443affe82e8", null ],
       [ "LOG_TYPE_DIRECTION_TOTAL", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ad91e9acee3782e98538a6ca429f7c034", null ],
       [ "LOG_TYPE_GYRO", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a570c01f1b2a409cb68d02b99c56e28d1", null ],
       [ "LOG_TYPE_SONAR", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a14295a2878406d379e3f6128f3357162", null ],
@@ -39,6 +41,27 @@ var group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E =
       [ "LOG_TYPE_AVERAGE_DISTANCE_RIGHT", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a410a4c37ecaa4057961a29768e2b67c0", null ],
       [ "LOG_TYPE_AVERAGE_TIME_RIGHT", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ac4f5f4c066992cbf22b2ebfd93b97ea1", null ],
       [ "LOG_TYPE_POWER_FOR_CURVE_LEFT", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a92e15defe0daade4f59e982edbea328a", null ],
-      [ "LOG_TYPE_POWER_FOR_CURVE_RIGHT", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ae84148823c69df244ac53189094c86b7", null ]
+      [ "LOG_TYPE_POWER_FOR_CURVE_RIGHT", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ae84148823c69df244ac53189094c86b7", null ],
+      [ "LOG_TYPE_EV3_POSITION_REAL_X", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a2a5f650c9601fe523cbcd81c94de29e4", null ],
+      [ "LOG_TYPE_EV3_POSITION_REAL_Y", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a630cc235fead18ceb1cacde280919508", null ],
+      [ "LOG_TYPE_EV3_POSITION_MAP_X", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a9ae9644c2c4ea974f480c22b35fcded0", null ],
+      [ "LOG_TYPE_EV3_POSITION_MAP_Y", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ab6ac9d3891cabf874129635f58ea3839", null ],
+      [ "LOG_TYPE_EV3_DIRECTION", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ad8f0ec910c0fc3590793e27d06075f5f", null ],
+      [ "LOG_TYPE_TEST1", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a54c0e79a34b4aef5aaa83a2b4bbfd057", null ],
+      [ "LOG_TYPE_TEST2", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61ab1aaae6a3d5be89182bbc242bd81a814", null ],
+      [ "LOG_TYPE_TEST3", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61aeb500b3ffb1a2f4f7ebdaaf2cdcda2ae", null ],
+      [ "LOG_TYPE_TEST4", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61abc02669c5408fdcf193740aec2901412", null ],
+      [ "LOG_TYPE_TEST5", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a17e6059e3f0b18aba79d8a33440be2d2", null ],
+      [ "LOG_TYPE_TEST6", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61adc56e7b9940b3f1737c6b1b6733dd041", null ],
+      [ "LOG_TYPE_TEST7", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a5a30af2a89be98788656b4f3ae841c88", null ],
+      [ "LOG_TYPE_TEST8", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga9ca6006a59fa53a5cd728fa1efcd4b61a507252d4513264f570c07da7cfdfd9f2", null ]
+    ] ],
+    [ "SHAPE_TYPE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#ga733713fb5a6f60fae1f1fe872b3e391b", [
+      [ "SHAPE_TYPE_LINE_HORIZONTAL", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391ba99407fd212f2baf3c42357d340e35c6f", null ],
+      [ "SHAPE_TYPE_LINE_VERTICAL", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391babf50011143f1e8dd82601510fa2ba779", null ],
+      [ "SHAPE_TYPE_SQUARE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391ba5bde673b29d7379a1abf372127959bf3", null ],
+      [ "SHAPE_TYPE_CURVE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391ba03827dc9d05530d3be834844b70949dd", null ],
+      [ "SHAPE_TYPE_CIRCLE", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391ba73ab3bf88f938abf2ff899b5dfb65237", null ],
+      [ "SHAPE_TYPE_END", "d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#gga733713fb5a6f60fae1f1fe872b3e391babf59b89f4e62b829b26f046184a6d0ea", null ]
     ] ]
 ];

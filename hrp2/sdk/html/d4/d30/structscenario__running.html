@@ -121,9 +121,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a54d14e0c19510be31ffd499d89889d15"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#a54d14e0c19510be31ffd499d89889d15">distance</a></td></tr>
 <tr class="memdesc:a54d14e0c19510be31ffd499d89889d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行距離[cm]  <a href="#a54d14e0c19510be31ffd499d89889d15">More...</a><br/></td></tr>
 <tr class="separator:a54d14e0c19510be31ffd499d89889d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79dc733b141cf996004969d2d960e43c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#a79dc733b141cf996004969d2d960e43c">direction</a></td></tr>
-<tr class="memdesc:a79dc733b141cf996004969d2d960e43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">向き。使わない場合は、-1。使う場合は、0～360  <a href="#a79dc733b141cf996004969d2d960e43c">More...</a><br/></td></tr>
-<tr class="separator:a79dc733b141cf996004969d2d960e43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add09e0a754ec53da8bde153963972833"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#add09e0a754ec53da8bde153963972833">direction</a></td></tr>
+<tr class="memdesc:add09e0a754ec53da8bde153963972833"><td class="mdescLeft">&#160;</td><td class="mdescRight">向き。使わない場合は、-1。使う場合は、0～360  <a href="#add09e0a754ec53da8bde153963972833">More...</a><br/></td></tr>
+<tr class="separator:add09e0a754ec53da8bde153963972833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50d327e73dfade2627e6380df12ad0eb"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="../../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#a50d327e73dfade2627e6380df12ad0eb">pattern</a></td></tr>
 <tr class="memdesc:a50d327e73dfade2627e6380df12ad0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行パターン  <a href="#a50d327e73dfade2627e6380df12ad0eb">More...</a><br/></td></tr>
 <tr class="separator:a50d327e73dfade2627e6380df12ad0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,6 +133,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7f1d1b73e1994dd2f33e0553556f4d89"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#a7f1d1b73e1994dd2f33e0553556f4d89">curvatureRadius</a></td></tr>
 <tr class="memdesc:a7f1d1b73e1994dd2f33e0553556f4d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲率半径  <a href="#a7f1d1b73e1994dd2f33e0553556f4d89">More...</a><br/></td></tr>
 <tr class="separator:a7f1d1b73e1994dd2f33e0553556f4d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cea929980c1a38e4b7c536622151131"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="../../df/d8b/stop_condition_8h.html#ab7d2a843ba010a12d0b6059eb93b0260">stopCondition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d30/structscenario__running.html#a4cea929980c1a38e4b7c536622151131">stopConditionPattern</a></td></tr>
+<tr class="memdesc:a4cea929980c1a38e4b7c536622151131"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止条件とするもの  <a href="#a4cea929980c1a38e4b7c536622151131">More...</a><br/></td></tr>
+<tr class="separator:a4cea929980c1a38e4b7c536622151131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>走行シナリオ </p>
@@ -151,12 +154,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a79dc733b141cf996004969d2d960e43c"></a>
+<a class="anchor" id="add09e0a754ec53da8bde153963972833"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int scenario_running::direction</td>
+          <td class="memname">float scenario_running::direction</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -221,6 +224,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4cea929980c1a38e4b7c536622151131"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../df/d8b/stop_condition_8h.html#ab7d2a843ba010a12d0b6059eb93b0260">stopCondition</a> scenario_running::stopConditionPattern</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停止条件とするもの </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>hrp2/sdk/workspace/hackEV/params/<a class="el" href="../../d4/d0a/scenario_running_8h_source.html">scenarioRunning.h</a></li>
 </ul>
@@ -230,7 +247,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a></li>
-    <li class="footer">Generated on Tue Sep 27 2016 12:29:46 for ev3RT Workspace by
+    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,5 +1,16 @@
 <map id="MotorWheel::initialize" name="MotorWheel::initialize">
-<area shape="rect" id="node2" href="$da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="200,5,373,32"/>
-<area shape="rect" id="node3" href="$d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382" title="初期化 " alt="" coords="421,5,571,32"/>
-<area shape="rect" id="node4" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="619,5,741,32"/>
+<area shape="rect" id="node2" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="200,81,373,108"/>
+<area shape="rect" id="node3" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="421,81,571,108"/>
+<area shape="rect" id="node4" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="619,56,741,83"/>
+<area shape="rect" id="node8" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1019,107,1186,133"/>
+<area shape="rect" id="node5" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="789,56,971,83"/>
+<area shape="rect" id="node6" href="$d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1051,5,1154,32"/>
+<area shape="rect" id="node7" href="$d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1061,56,1144,83"/>
+<area shape="rect" id="node9" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1235,70,1407,111"/>
+<area shape="rect" id="node10" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1457,107,1597,133"/>
+<area shape="rect" id="node11" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1646,107,1757,133"/>
+<area shape="rect" id="node12" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1806,81,1965,108"/>
+<area shape="rect" id="node15" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1828,132,1943,159"/>
+<area shape="rect" id="node13" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2013,56,2128,83"/>
+<area shape="rect" id="node14" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2019,107,2123,133"/>
 </map>

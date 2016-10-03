@@ -1,18 +1,22 @@
 <map id="getLCDColor" name="getLCDColor">
 <area shape="rect" id="node2" href="$d5/d3c/_l_c_d_controller_8h.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="153,107,263,133"/>
-<area shape="rect" id="node17" href="$d5/d3c/_l_c_d_controller_8h.html#aa3449ab345699ba9b8b9274723d11a31" title="LCDの表示を消す " alt="" coords="169,157,247,184"/>
-<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="497,31,580,57"/>
-<area shape="rect" id="node4" href="$de/dc3/pid__controller_8h.html#a3cb8f8d1ee8f91ca87e443eaf86d9b98" title="PID contollerの初期化処理 " alt="" coords="918,107,1071,133"/>
-<area shape="rect" id="node7" href="$d2/de5/_color_sensor_controller_8h.html#adc331d453215c393ae42328b2e7cde9f" title="ターゲット依存の定義 " alt="" coords="325,208,405,235"/>
-<area shape="rect" id="node8" href="$de/df0/utilities_8h.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="312,157,419,184"/>
-<area shape="rect" id="node16" href="$de/df0/utilities_8h.html#a45715ec1142d7259638cddc7ba980ed6" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="312,5,419,32"/>
-<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1135,107,1209,133"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1121,157,1223,184"/>
-<area shape="rect" id="node9" href="$d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="497,259,580,285"/>
-<area shape="rect" id="node12" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="467,157,610,184"/>
-<area shape="rect" id="node10" href="$d4/d64/_arm_module_8h.html#a7dfe73c2339839d976f461facf1be8ac" title="ブロックを投げ飛ばす動きをする。 " alt="" coords="684,309,844,336"/>
-<area shape="rect" id="node11" href="$d4/d64/_arm_module_8h.html#a035904fc19672142f9a6b2d53b0385b2" title="アームを水平にする " alt="" coords="698,259,830,285"/>
-<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="659,157,869,184"/>
-<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="659,208,869,235"/>
-<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="927,157,1062,184"/>
+<area shape="rect" id="node21" href="$d5/d3c/_l_c_d_controller_8h.html#aa3449ab345699ba9b8b9274723d11a31" title="LCDの表示を消す " alt="" coords="169,157,247,184"/>
+<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="497,5,580,32"/>
+<area shape="rect" id="node4" href="$d2/de5/_color_sensor_controller_8h.html#adc331d453215c393ae42328b2e7cde9f" title="ターゲット依存の定義 " alt="" coords="325,107,405,133"/>
+<area shape="rect" id="node5" href="$de/df0/utilities_8h.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="312,157,419,184"/>
+<area shape="rect" id="node19" href="$de/df0/utilities_8h.html#a45715ec1142d7259638cddc7ba980ed6" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="312,5,419,32"/>
+<area shape="rect" id="node20" href="$de/df0/utilities_8h.html#a10d80c3380e49b3bad0801938d1865cd" title="白黒のキャリブレートをおこなう " alt="" coords="949,369,1043,396"/>
+<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="467,245,610,272"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1336,195,1531,237"/>
+<area shape="rect" id="node16" href="$d4/d64/_arm_module_8h.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="497,157,580,184"/>
+<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="664,325,875,352"/>
+<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="664,275,875,301"/>
+<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="659,209,880,250"/>
+<area shape="rect" id="node8" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="929,287,1063,313"/>
+<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1112,195,1288,237"/>
+<area shape="rect" id="node11" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1579,261,1704,288"/>
+<area shape="rect" id="node12" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1163,312,1237,339"/>
+<area shape="rect" id="node13" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1149,363,1251,389"/>
+<area shape="rect" id="node17" href="$d4/d64/_arm_module_8h.html#a7dfe73c2339839d976f461facf1be8ac" title="ブロックを投げ飛ばす動きをする。 " alt="" coords="689,157,849,184"/>
+<area shape="rect" id="node18" href="$d4/d64/_arm_module_8h.html#a035904fc19672142f9a6b2d53b0385b2" title="アームを水平にする " alt="" coords="703,107,835,133"/>
 </map>

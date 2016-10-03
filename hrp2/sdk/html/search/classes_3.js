@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger',['Logger',['../d3/d42/class_logger.html',1,'']]]
+  ['gyrosensorcontroller',['GyroSensorController',['../d3/d77/class_gyro_sensor_controller.html',1,'']]]
 ];

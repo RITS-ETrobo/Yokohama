@@ -1,14 +1,8 @@
 <map id="log_monitoring_task" name="log_monitoring_task">
-<area shape="rect" id="node2" href="$d3/d42/class_logger.html#a67e4bdcee11074437bcb9fce83d75516" title="ログをファイルに出力する " alt="" coords="193,107,319,133"/>
+<area shape="rect" id="node2" href="$d3/d42/class_logger.html#a67e4bdcee11074437bcb9fce83d75516" title="ログをファイルに出力する " alt="" coords="193,81,319,108"/>
 <area shape="rect" id="node3" href="$d3/d42/class_logger.html#a8f64adcd6ad7e5cba216453f94bfdf00" title="ログを出力可能な状態かを取得する " alt="" coords="369,5,495,32"/>
 <area shape="rect" id="node4" href="$d3/d42/class_logger.html#a0c1044d954578a578ead45d10a28e521" title="ログファイルを開く " alt="" coords="373,56,491,83"/>
 <area shape="rect" id="node5" href="$d5/d0b/log_settings_8cpp.html#aaed673e1812b871d0356d8b4f12251ff" title="ログの種類の名前を取得する " alt="" coords="384,107,480,133"/>
-<area shape="rect" id="node6" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="369,157,495,184"/>
-<area shape="rect" id="node12" href="$d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15" title="ログファイルにクローズする " alt="" coords="371,208,493,235"/>
-<area shape="rect" id="node7" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="557,157,667,184"/>
-<area shape="rect" id="node8" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="729,132,887,159"/>
-<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="751,183,865,209"/>
-<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="936,107,1051,133"/>
-<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="941,157,1045,184"/>
-<area shape="rect" id="node13" href="$d3/d42/class_logger.html#ac77adddf6f7ca85381a77f000ccf802b" title="ログを出力可能な状態かを更新する " alt="" coords="545,208,679,235"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15" title="ログファイルにクローズする " alt="" coords="371,157,493,184"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#ac77adddf6f7ca85381a77f000ccf802b" title="ログを出力可能な状態かを更新する " alt="" coords="545,157,679,184"/>
 </map>

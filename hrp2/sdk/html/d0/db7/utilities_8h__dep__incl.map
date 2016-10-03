@@ -1,12 +1,10 @@
 <map id="hrp2/sdk/workspace/hackEV/utilities.h" name="hrp2/sdk/workspace/hackEV/utilities.h">
 <area shape="rect" id="node2" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="5,103,144,145"/>
-<area shape="rect" id="node3" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="169,103,335,145"/>
-<area shape="rect" id="node4" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="359,103,547,145"/>
-<area shape="rect" id="node5" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="571,103,785,145"/>
-<area shape="rect" id="node6" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="811,103,989,145"/>
-<area shape="rect" id="node7" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1014,103,1204,145"/>
-<area shape="rect" id="node8" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="1229,96,1427,152"/>
-<area shape="rect" id="node9" href="$db/d35/gyroboy_8cpp.html" title="This file has the gyro controll feature. " alt="" coords="1452,103,1649,145"/>
-<area shape="rect" id="node10" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="1673,96,1868,152"/>
-<area shape="rect" id="node11" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1893,103,2035,145"/>
+<area shape="rect" id="node3" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="169,103,356,145"/>
+<area shape="rect" id="node4" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="381,103,591,145"/>
+<area shape="rect" id="node5" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="617,103,831,145"/>
+<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="855,103,1045,145"/>
+<area shape="rect" id="node7" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="1070,96,1268,152"/>
+<area shape="rect" id="node8" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="1293,96,1488,152"/>
+<area shape="rect" id="node9" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1513,103,1655,145"/>
 </map>
