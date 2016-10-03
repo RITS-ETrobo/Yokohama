@@ -33,7 +33,6 @@ DriveController::DriveController()
     , positionTargetXLast(0.0F)
     , positionTargetYLast(0.0F)
     , initialized(false)
-    , runningEV3(false)
     , enabled(false)
 {
 }
@@ -91,9 +90,6 @@ void DriveController::run(scenario_running scenario)
 {
     //! モーターの回転角、距離、方向を0に戻す
     initialize();
-    
-    //! 走行体の走行中フラグ
-    runningEV3 = true;
 
     if (logger) {
         logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, scenario.distance);
@@ -132,9 +128,6 @@ void DriveController::run(scenario_running scenario)
  */
 ER DriveController::stop(bool_t brake /*= true*/)
 {
-    //! 走行体の走行中フラグをOFFにする
-    runningEV3=false;
-    
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     ER  resultLeft = motorWheelLeft->stop(brake);
@@ -223,8 +216,21 @@ bool DriveController::runAsPattern(scenario_running scenario)
     switch (scenario.pattern) {
     case PINWHEEL:
         {
+            bool softAcceleration = false;
+            bool softDeceleration = false;
+
+            //! 両モーターともに停止している場合は、加速処理を行うフラグを有効
+            if(motorWheelRight->getCurrentPower() == 0 && motorWheelLeft->getCurrentPower() == 0){
+                softAcceleration = true;
+            }
+
+            //! シナリオが停止させる条件を持っている場合は、減速処理を行うフラグを有効
+            if(scenario.stop){
+                softDeceleration = true;
+            }
+
             //! 急発進、急停止しないためのパワー処理(角度はマイナスが入ることもあるので、絶対値の目標をとる)
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60, softAcceleration, softDeceleration);
 
             //! その場回転
             pinWheel(softAccelPower, scenario.direction);
@@ -257,8 +263,21 @@ bool DriveController::runAsPattern(scenario_running scenario)
 
     default:
         {
+            bool softAcceleration = false;
+            bool softDeceleration = false;
+
+            //! 両モーターともに停止している場合は、加速処理を行うフラグを有効
+            if(motorWheelRight->getCurrentPower() == 0 && motorWheelLeft->getCurrentPower() == 0){
+                softAcceleration = true;
+            }
+
+            //! シナリオが停止させる条件を持っている場合は、減速処理を行うフラグを有効
+            if(scenario.stop){
+                softDeceleration = true;
+            }
+
             //! 急発進急加速しないためのパワーを取得
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20, softAcceleration, softDeceleration);
             
             //! ライントレースせずに、直進走行する
             straightRun(softAccelPower);
@@ -1152,9 +1171,11 @@ void DriveController::updatePosition()
  * @param   [in]    currentDistance   現在のシナリオ距離
  * @param   [in]    accelerationDistance   加速距離
  * @param   [in]    decelerationDistance   減速距離
+ * @param   [in]    softAcceleration   加速処理を行うフラグ
+ * @param   [in]    softDeceleration   減速処理を行うフラグ
  * @return  なし
  */
-int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance, float accelerationDistance,float decelerationDistance){
+int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance, float accelerationDistance,float decelerationDistance, bool softAcceleration, bool softDeceleration){
 
     //! 現在の距離がマイナスになることはないが、タイヤの回転角によっては起こりえるためマイナスは全て０にする
 	if(currentDistance < 0){
@@ -1170,7 +1191,7 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 		accelerationDistance = stopDistance*0.6;
 	}
 
-    softAccelPower = getAccelerationPower(startPower, power, accelerationDistance, currentDistance);
+    softAccelPower = getAccelerationPower(startPower, power, accelerationDistance, currentDistance, softAcceleration);
 
     //! 減速パワー
     const int  finishPower=5;
@@ -1179,7 +1200,7 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 		decelerationDistance = stopDistance*0.6;
 	}
 
-    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, decelerationDistance, currentDistance);
+    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, decelerationDistance, currentDistance, softDeceleration);
 
 	return softAccelPower;
 }
@@ -1193,7 +1214,11 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
  * @param   [in]    currentDistance   現在の距離
  * @return  なし
  */
-int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopDistance, float DecelerationDistanceFromStopDistance, float currentDistance){
+int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopDistance, float DecelerationDistanceFromStopDistance, float currentDistance, bool softDeceleration){
+
+    if(softDeceleration == false){
+        return runPower;
+    }
 
 	float beginDecelerationDistance = stopDistance-DecelerationDistanceFromStopDistance;
 
@@ -1223,8 +1248,13 @@ int DriveController::getDecelerationPower(int finishPower,  int runPower, float 
  * @param   [in]    currentDistance   現在の距離
  * @return  なし
  */
-int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance){
+int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance,bool softAcceleration){
 	
+    //! 加速処理を行うフラグがなければ加速パワー調整を行わない
+    if(softAcceleration == false){
+        return runPower;
+    }
+
 	//! 現在の距離が加速距離を進んだあとであればもう加速しない
 	if(currentDistance > accelerationDistance){
 		return runPower;
