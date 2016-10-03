@@ -7,7 +7,6 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "instances.h"
-#include "pid_controller.h"
 #include "app.h"
 #include "scenarioRunning.h"
 #include "RunningModule.h"
@@ -36,7 +35,7 @@ void initialize_run() {
 */
 void start_run()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
     tslp_tsk(100);
@@ -67,7 +66,7 @@ void start_run()
 */
 void start_run_test()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
@@ -101,7 +100,7 @@ void start_run_test()
 */
 void start_LcourseRun()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
