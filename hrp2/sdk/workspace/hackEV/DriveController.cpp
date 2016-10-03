@@ -265,8 +265,6 @@ bool DriveController::runAsPattern(scenario_running scenario)
 */
 void DriveController::initializeAsPattern(scenario_running scenario)
 {
-    lastPowerLeft = scenario.power;
-    lastPowerRight = scenario.power;
 
     switch (scenario.pattern) {
     case PINWHEEL:
