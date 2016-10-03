@@ -20,7 +20,6 @@ APPL_CXXOBJS += \
     utilities.o \
     Logger.o \
     SonarSensorController.o \
-    gyroboy.o \
     ColorSensorController.o \
     GyroSensorController.o \
     MotorWheel.o \
