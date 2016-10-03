@@ -281,7 +281,7 @@ void gyro_update_task(intptr_t exinf)
         return;
     }
 
-    inProress_Position = true;
+    inProress_Gyro = true;
 
     gyroSensorController->updateGyroRate();
     logger->addLogInt(LOG_TYPE_GYRO, gyroSensorController->getGyroRate());
