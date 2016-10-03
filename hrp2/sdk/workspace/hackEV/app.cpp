@@ -319,7 +319,7 @@ void log_monitoring_task(intptr_t exinf)
  */
 void position_update_task(intptr_t exinf)
 {
-    if (driveController == NULL) {
+    if (driveController == NULL || !driveController->isEnabled()) {
         return;
     }
 
