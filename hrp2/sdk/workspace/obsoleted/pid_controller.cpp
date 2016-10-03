@@ -27,12 +27,6 @@ const int HOLD_MAX=5;
 
 //! \addtogroup PID制御で用いる変数
 //@{
-//! 白の光量値
-int white = 0;
-
-//! 黒の光量値
-int black = 0;
-
 //! 前回の偏差
 float lastValue = 0.0F;
 
@@ -55,25 +49,7 @@ int holderIndex = -1;
 */
 void initialize_pid_controller()
 {
-    char message[16];
-
-    //! Calibrate for light intensity of WHITE
-    writeStringLCD("WHITE");
-    white = calibrate_light_intensity();
-    memset(message, '\0', sizeof(message));
-    sprintf(message, "   %03d", white);
-    writeStringLCD(message);
-
-    //! Calibrate for light intensity of BLACK
-    writeStringLCD("BLACK");
-    black = calibrate_light_intensity();
-    sprintf(message, "   %03d", black);
-    writeStringLCD(message);
-
-    if (logger) {
-        logger->addLogInt(LOG_TYPE_COLOR_WHITE, white);
-        logger->addLogInt(LOG_TYPE_COLOR_BLACK, black);
-    }
+    calibrateBW()
 
     lastValue = 0.0F;
     integral = 0.0F;

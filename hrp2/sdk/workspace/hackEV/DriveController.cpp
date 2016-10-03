@@ -12,8 +12,6 @@
 #include "logSettings.h"
 #include "portSettings.h"
 
-#include "pid_controller.h"
-
 #include "DriveController.h"
 #include "user_function.h"
 

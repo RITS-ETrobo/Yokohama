@@ -8,7 +8,6 @@
  */
 #include "ev3api.h"
 #include "utilities.h"
-#include "pid_controller.h"
 #include "app.h"
 #include "SonarSensorController.h"
 #include "RunningModule.h"
@@ -37,9 +36,6 @@ GyroSensorController* gyroSensorController = NULL;
 
 //! SonarSensorControllerクラスのインスタンス
 SonarSensorController   *sonarSensorController = NULL;
-
-//! インスタンス作成のリトライ上限
-const unsigned char RETRY_CREATE_INSTANCE = 3;
 
 //! \addtogroup 周期タスク実行中フラグ
 //@{
