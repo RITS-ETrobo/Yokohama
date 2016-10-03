@@ -12,8 +12,6 @@
 #include "logSettings.h"
 #include "portSettings.h"
 
-#include "pid_controller.h"
-
 #include "DriveController.h"
 #include "user_function.h"
 
@@ -35,6 +33,7 @@ DriveController::DriveController()
     , positionTargetXLast(0.0F)
     , positionTargetYLast(0.0F)
     , initialized(false)
+    , enabled(false)
 {
 }
 
@@ -1128,4 +1127,22 @@ void DriveController::updatePosition()
         logger->addLogFloat(LOG_TYPE_DIRECTION_SCENARIO, directionScenario);
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
+}
+
+/**
+ *  @param  ログを出力するかどうかを切り替える
+ *  @return なし
+*/
+void DriveController::setEnabled(bool _enabled /*= true*/)
+{
+    enabled = _enabled;
+}
+
+/**
+ *  @param  ログを出力するかどうかを返す
+ *  @return true : ログを出力する false : ログを出力しない
+*/
+bool DriveController::isEnabled()
+{
+    return  enabled;
 }

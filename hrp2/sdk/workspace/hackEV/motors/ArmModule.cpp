@@ -1,12 +1,10 @@
 /**
  * @file    ArmModule.cpp
  * @brief   This file has ArmModule.
- *          
  */
 
 #include "ev3api.h"
 #include "utilities.h"
-#include "pid_controller.h"
 #include "app.h"
 #include "ArmModule.h"
 #include "LCDController.h"

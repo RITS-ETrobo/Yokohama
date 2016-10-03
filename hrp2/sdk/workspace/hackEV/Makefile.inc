@@ -28,7 +28,6 @@ APPL_CXXOBJS += \
     EV3Position.o \
     SpeedCalculator.o \
     LCDController.o \
-    pid_controller.o \
     RunningModule.o \
     ArmModule.o \
     coordinateScenario.o \

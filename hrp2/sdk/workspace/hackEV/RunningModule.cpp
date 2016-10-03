@@ -7,7 +7,6 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "instances.h"
-#include "pid_controller.h"
 #include "app.h"
 #include "scenarioRunning.h"
 #include "RunningModule.h"
@@ -36,7 +35,7 @@ void initialize_run() {
 */
 void start_run()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
     tslp_tsk(100);
@@ -67,7 +66,7 @@ void start_run()
 */
 void start_run_test()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
@@ -79,6 +78,7 @@ void start_run_test()
     }
 
     gyroSensorController->setEnabledGyroSensor(true);
+    driveController->setEnabled();
 
     //! 個別のシナリオ検証用
     for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
@@ -91,7 +91,7 @@ void start_run_test()
     }
 
     gyroSensorController->setEnabledGyroSensor(false);
-
+    driveController->setEnabled(false);
 }
 
 /**
@@ -101,7 +101,7 @@ void start_run_test()
 */
 void start_LcourseRun()
 {
-    initialize_pid_controller();
+    calibrateBW();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
@@ -111,9 +111,9 @@ void start_LcourseRun()
             break;
         }
     }
+
     gyroSensorController->setEnabledGyroSensor(true);
-
-
+    driveController->setEnabled();
 
     //! 相撲前まで座標移動
     for (int index = 0; index < (int)(sizeof(start_beforeSumo) / sizeof(start_beforeSumo[0])); index++) {
@@ -166,5 +166,5 @@ void start_LcourseRun()
     }
 
     gyroSensorController->setEnabledGyroSensor(false);
-
+    driveController->setEnabled(false);
 }
