@@ -247,7 +247,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
     default:
         {
             //! 急発進急加速しないためのパワーを取得
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20);
             
             //! ライントレースせずに、直進走行する
             straightRun(softAccelPower);
@@ -1139,9 +1139,11 @@ void DriveController::updatePosition()
  * @param   [in]    power   シナリオで指定されたパワー
  * @param   [in]    stopDistance   停止距離
  * @param   [in]    currentDistance   現在のシナリオ距離
+ * @param   [in]    accelerationDistance   加速距離
+ * @param   [in]    decelerationDistance   減速距離
  * @return  なし
  */
-int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance){
+int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance, float accelerationDistance,float decelerationDistance){
 
     //! 現在の距離がマイナスになることはないが、タイヤの回転角によっては起こりえるためマイナスは全て０にする
 	if(currentDistance < 0){
@@ -1152,7 +1154,6 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 
     //! 加速パワー
     const int startPower = 10;
-    float accelerationDistance = 10;//適度な範囲にすること
 	if(stopDistance - accelerationDistance<0){
 		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
 		accelerationDistance = stopDistance*0.6;
@@ -1162,13 +1163,12 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 
     //! 減速パワー
     const int  finishPower=5;
-    float DecelerationDistanceFromStopDistance = 20;//適度な範囲にすること
-	if(stopDistance - DecelerationDistanceFromStopDistance<0){
+	if(stopDistance - decelerationDistance<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
-		DecelerationDistanceFromStopDistance = stopDistance*0.6;
+		decelerationDistance = stopDistance*0.6;
 	}
 
-    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, DecelerationDistanceFromStopDistance, currentDistance);
+    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, decelerationDistance, currentDistance);
 
 	return softAccelPower;
 }

@@ -62,7 +62,7 @@ protected:
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
     virtual int getDecelerationPower(int finishPower, int currentPower, float stopDistance, float decelerationBeginDistance, float currentDistance);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance);
-    virtual int getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistanceScenario);
+    virtual int getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance, float accelerationDistance,float decelerationDistance);
 
 private:
     void pinWheel(int power, float degree);
