@@ -78,6 +78,7 @@ void start_run_test()
     }
 
     gyroSensorController->setEnabledGyroSensor(true);
+    driveController->setEnabled();
 
     //! 個別のシナリオ検証用
     for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
@@ -90,7 +91,7 @@ void start_run_test()
     }
 
     gyroSensorController->setEnabledGyroSensor(false);
-
+    driveController->setEnabled(false);
 }
 
 /**
@@ -110,9 +111,9 @@ void start_LcourseRun()
             break;
         }
     }
+
     gyroSensorController->setEnabledGyroSensor(true);
-
-
+    driveController->setEnabled();
 
     //! 相撲前まで座標移動
     for (int index = 0; index < (int)(sizeof(start_beforeSumo) / sizeof(start_beforeSumo[0])); index++) {
@@ -165,5 +166,5 @@ void start_LcourseRun()
     }
 
     gyroSensorController->setEnabledGyroSensor(false);
-
+    driveController->setEnabled(false);
 }
