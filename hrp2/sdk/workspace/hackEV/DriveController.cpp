@@ -1165,42 +1165,42 @@ void DriveController::updatePosition()
 }
 
 /**
- * @brief   開始直後の急加速、目的距離で急停止しない処理
+ * @brief   開始直後の急加速、目的距離で急停止しない処理(走行だけでなく回転でも使用する)
  * @param   [in]    power   シナリオで指定されたパワー
- * @param   [in]    stopDistance   停止距離
- * @param   [in]    currentDistance   現在のシナリオ距離
- * @param   [in]    accelerationDistance   加速距離
- * @param   [in]    decelerationDistance   減速距離
+ * @param   [in]    stopValue   停止する値
+ * @param   [in]    currentValue   現在の値
+ * @param   [in]    accelerationRange   加速を行う範囲
+ * @param   [in]    decelerationRange   減速を行う範囲
  * @param   [in]    softAcceleration   加速処理を行うフラグ
  * @param   [in]    softDeceleration   減速処理を行うフラグ
  * @return  なし
  */
-int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDistance, float currentDistance, float accelerationDistance,float decelerationDistance, bool softAcceleration, bool softDeceleration){
+int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration){
 
     //! 現在の距離がマイナスになることはないが、タイヤの回転角によっては起こりえるためマイナスは全て０にする
-	if(currentDistance < 0){
-		currentDistance=0;
+	if(currentValue < 0){
+		currentValue=0;
 	}
 
 	int softAccelPower=power;
 
     //! 加速パワー
     const int startPower = 10;
-	if(stopDistance - accelerationDistance<0){
+	if(stopValue - accelerationRange<0){
 		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
-		accelerationDistance = stopDistance*0.6;
+		accelerationRange = stopValue*0.6;
 	}
 
-    softAccelPower = getAccelerationPower(startPower, power, accelerationDistance, currentDistance, softAcceleration);
+    softAccelPower = getAccelerationPower(startPower, power, accelerationRange, currentValue, softAcceleration);
 
     //! 減速パワー
     const int  finishPower=5;
-	if(stopDistance - decelerationDistance<0){
+	if(stopValue - decelerationRange<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
-		decelerationDistance = stopDistance*0.6;
+		decelerationRange = stopValue*0.6;
 	}
 
-    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopDistance, decelerationDistance, currentDistance, softDeceleration);
+    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
 
 	return softAccelPower;
 }
@@ -1209,27 +1209,27 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
  * @brief   減速処理のための、現在距離に対するパワー取得する
  * @param   [in]    finishPower   減速後最終のパワー
  * @param   [in]    runPower   走行しているときのパワー
- * @param   [in]    stopDistance   ストップするまでの走行距離
- * @param   [in]    DecelerationDistanceFromStopDistance   ストップ位置から何センチ前から減速するか
- * @param   [in]    currentDistance   現在の距離
+ * @param   [in]    stopValue   ストップする値
+ * @param   [in]    DecelerationRangeFromStopValue   ストップする箇所からどれだけ前を減速範囲とするか
+ * @param   [in]    currentValue   現在の値
  * @return  なし
  */
-int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopDistance, float DecelerationDistanceFromStopDistance, float currentDistance, bool softDeceleration){
+int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration){
 
     if(softDeceleration == false){
         return runPower;
     }
 
-	float beginDecelerationDistance = stopDistance-DecelerationDistanceFromStopDistance;
+	float beginDecelerationValue = stopValue-DecelerationRangeFromStopValue;
 
 	//! 現在の距離が減速開始以下であればまだ減速しない
-	if(currentDistance < beginDecelerationDistance){
+	if(currentValue < beginDecelerationValue){
 		return runPower;
 	}
 
-	float slop = (runPower-finishPower)/(pow(beginDecelerationDistance,2)-pow(stopDistance,2));
-	float Intercept = runPower - slop*pow(beginDecelerationDistance,2);
-	float decelerationPower = slop*pow(currentDistance,2) + Intercept;
+	float slop = (runPower-finishPower)/(pow(beginDecelerationValue,2)-pow(stopValue,2));
+	float Intercept = runPower - slop*pow(beginDecelerationValue,2);
+	float decelerationPower = slop*pow(currentValue,2) + Intercept;
 
 
 	//! もし最小値よりも小さくなってしまった場合は、最小値にする。
@@ -1244,11 +1244,11 @@ int DriveController::getDecelerationPower(int finishPower,  int runPower, float 
  * @brief   加速処理のための、現在距離に対するパワー取得する
  * @param   [in]    startPower   加速始めのパワー
  * @param   [in]    runPower   走行しているときのパワー
- * @param   [in]    accelerationDistance   加速距離（何センチで指定したrunPowerに到達するか）
- * @param   [in]    currentDistance   現在の距離
+ * @param   [in]    accelerationRange   加速範囲（どのくらいで指定したrunPowerに到達するか）
+ * @param   [in]    currentValue   現在の値
  * @return  なし
  */
-int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance,bool softAcceleration){
+int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration){
 	
     //! 加速処理を行うフラグがなければ加速パワー調整を行わない
     if(softAcceleration == false){
@@ -1256,13 +1256,13 @@ int DriveController::getAccelerationPower(int startPower, int runPower, float ac
     }
 
 	//! 現在の距離が加速距離を進んだあとであればもう加速しない
-	if(currentDistance > accelerationDistance){
+	if(currentValue > accelerationRange){
 		return runPower;
 	}
 	
-	float slop=(runPower-startPower)/pow(accelerationDistance,2);
+	float slop=(runPower-startPower)/pow(accelerationRange,2);
 	float Intercept=startPower;
-	float accelerationPower=slop*pow(currentDistance,2) + Intercept;
+	float accelerationPower=slop*pow(currentValue,2) + Intercept;
 
 	//! もし指定された最大パワーよりも大きくなってしまったときは最大値にする
 	if(accelerationPower > runPower){
