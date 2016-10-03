@@ -127,4 +127,10 @@ private:
 
     //! 利用可能かどうか
     bool    enabled;
+
+    //! 加速はじめのパワー
+    static const int accelStartPower = 10;
+
+    //! 減速最後のパワー
+    static const int  decelerationFinishPower=5;
 };

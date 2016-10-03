@@ -1183,23 +1183,20 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 
 	int softAccelPower = power;
 
-    //! 加速パワー
-    const int startPower = 10;
 	if(stopValue - accelerationRange<0){
 		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
 		accelerationRange = stopValue*0.6;
 	}
 
-    softAccelPower = getAccelerationPower(startPower, power, accelerationRange, currentValue, softAcceleration);
+    softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
 
-    //! 減速パワー
-    const int  finishPower=5;
+
 	if(stopValue - decelerationRange<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
 		decelerationRange = stopValue*0.6;
 	}
 
-    softAccelPower = getDecelerationPower(finishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+    softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
 
 	return softAccelPower;
 }
