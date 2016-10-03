@@ -62,8 +62,8 @@ public:
     virtual int8_t getEV3onZone(EV3_POSITION *position, OBJECT_INFORMATION *zone, bool isREAL = true);
 
 protected:
-    virtual void addParts(int8_t idParts, float x, float y, float width, float length, colorid_t color = COLOR_BLACK, SHAPE_TYPE shape = SHAPE_TYPE_LINE);
-    virtual void addZones(int8_t idZone, float x, float y, float width, float length, colorid_t color = COLOR_WHITE, SHAPE_TYPE shape = SHAPE_TYPE_LINE);
+    virtual void addParts(int8_t idParts, float x, float y, float width, float length, colorid_t color = COLOR_BLACK, SHAPE_TYPE shape = SHAPE_TYPE_LINE_VERTICAL);
+    virtual void addZones(int8_t idZone, float x, float y, float width, float length, colorid_t color = COLOR_WHITE, SHAPE_TYPE shape = SHAPE_TYPE_SQUARE);
     virtual int8_t getEV3onPosition(EV3_POSITION *position, std::vector<OBJECT_INFORMATION> *information, OBJECT_INFORMATION *objectInformation, bool isREAL = true);
 
     static const int8_t NOT_FOUND = -1;

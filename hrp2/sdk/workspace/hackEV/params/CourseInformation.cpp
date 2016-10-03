@@ -35,7 +35,7 @@ void CourseInformation::initialize(bool isForce /*= false*/)
  *  @brief  パーツ情報を登録する
  *  @return なし
 */
-void CourseInformation::addParts(int8_t idParts, float x, float y, float width, float length, colorid_t color /*= COLOR_BLACK*/, SHAPE_TYPE shape /*= SHAPE_TYPE_LINE*/)
+void CourseInformation::addParts(int8_t idParts, float x, float y, float width, float length, colorid_t color /*= COLOR_BLACK*/, SHAPE_TYPE shape /*= SHAPE_TYPE_LINE_VERTICAL*/)
 {
     addInformation(&partsInformation, idParts, x, y, width, length, color, shape);
 }
@@ -44,7 +44,7 @@ void CourseInformation::addParts(int8_t idParts, float x, float y, float width, 
  *  @brief  ゾーン情報を登録する
  *  @return なし
 */
-void CourseInformation::addZones(int8_t idZone, float x, float y, float width, float length, colorid_t color /*= COLOR_BLACK*/, SHAPE_TYPE shape /*= SHAPE_TYPE_LINE*/)
+void CourseInformation::addZones(int8_t idZone, float x, float y, float width, float length, colorid_t color /*= COLOR_BLACK*/, SHAPE_TYPE shape /*= SHAPE_TYPE_SQUARE*/)
 {
     addInformation(&zonesInformation, idZone, x, y, width, length, color, shape);
 }
