@@ -216,8 +216,13 @@ bool DriveController::runAsPattern(scenario_running scenario)
 {
     switch (scenario.pattern) {
     case PINWHEEL:
-        //! その場回転
-        pinWheel(scenario.power, scenario.direction);
+        {
+            //! 急発進、急停止しないためのパワー処理(角度はマイナスが入ることもあるので、絶対値の目標をとる)
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60);
+
+            //! その場回転
+            pinWheel(softAccelPower, scenario.direction);
+        }
         break;
 
     case SWITCH_SIDE_RIGHT:
