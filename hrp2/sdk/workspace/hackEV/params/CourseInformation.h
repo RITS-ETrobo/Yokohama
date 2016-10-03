@@ -11,16 +11,22 @@
 //! \addtogroup ログの種類(hrp2/include/t_syslog.h での定義も確認する事)
 //@{
 typedef enum {
-    //! 直線
-    SHAPE_TYPE_LINE = 0,
+    //! 直線(横=X軸方向)
+    SHAPE_TYPE_LINE_HORIZONTAL = (1 << 0),
+
+    //! 直線(縦=Y軸方向)
+    SHAPE_TYPE_LINE_VERTICAL = (1 << 1),
+
+    //! 四角
+    SHAPE_TYPE_SQUARE = (SHAPE_TYPE_LINE_HORIZONTAL | SHAPE_TYPE_LINE_VERTICAL),
 
     //! カーブ
-    SHAPE_TYPE_CURVE,
+    SHAPE_TYPE_CURVE = (1 << 2),
 
     //! 円
-    SHAPE_TYPE_CIRCLE,
+    SHAPE_TYPE_CIRCLE = (1 << 3),
 
-    SHAPE_TYPE_COUNT
+    SHAPE_TYPE_END
 } SHAPE_TYPE;
 //@}
 
