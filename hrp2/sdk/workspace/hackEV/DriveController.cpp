@@ -1151,8 +1151,8 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 	int softAccelPower=power;
 
     //! 加速パワー
-    const int startPower = 5;
-    float accelerationDistance = 25;//適度な範囲にすること
+    const int startPower = 10;
+    float accelerationDistance = 10;//適度な範囲にすること
 	if(stopDistance - accelerationDistance<0){
 		//! 万が一、加速範囲よりも停止距離が小さい場合は、加速範囲を停止距離の60％と再定義
 		accelerationDistance = stopDistance*0.6;
@@ -1162,7 +1162,7 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopDista
 
     //! 減速パワー
     const int  finishPower=5;
-    float DecelerationDistanceFromStopDistance = 25;//適度な範囲にすること
+    float DecelerationDistanceFromStopDistance = 20;//適度な範囲にすること
 	if(stopDistance - DecelerationDistanceFromStopDistance<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の60％と再定義
 		DecelerationDistanceFromStopDistance = stopDistance*0.6;
