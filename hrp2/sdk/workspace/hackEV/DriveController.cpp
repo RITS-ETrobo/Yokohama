@@ -1172,3 +1172,30 @@ int DriveController::getDecelerationPower(int finishPower,  int runPower, float 
 
 	return decelerationPower;
 }
+
+/**
+ * @brief   加速処理のための、現在距離に対するパワー取得する
+ * @param   [in]    startPower   加速始めのパワー
+ * @param   [in]    runPower   走行しているときのパワー
+ * @param   [in]    accelerationDistance   加速距離（何センチで指定したrunPowerに到達するか）
+ * @param   [in]    currentDistance   現在の距離
+ * @return  なし
+ */
+int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationDistance, float currentDistance){
+	
+	//! 現在の距離が加速距離を進んだあとであればもう加速しない
+	if(currentDistance > accelerationDistance){
+		return runPower;
+	}
+	
+	float slop=(runPower-startPower)/pow(accelerationDistance,2);
+	float Intercept=startPower;
+	float accelerationPower=slop*pow(currentDistance,2) + Intercept;
+
+	//! もし指定された最大パワーよりも大きくなってしまったときは最大値にする
+	if(accelerationPower > runPower){
+		return runPower;
+	}
+
+	return accelerationPower;
+}
