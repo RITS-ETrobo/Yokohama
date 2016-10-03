@@ -35,6 +35,7 @@ DriveController::DriveController()
     , positionTargetXLast(0.0F)
     , positionTargetYLast(0.0F)
     , initialized(false)
+    , runningEV3(false)
 {
 }
 
@@ -91,6 +92,9 @@ void DriveController::run(scenario_running scenario)
 {
     //! モーターの回転角、距離、方向を0に戻す
     initialize();
+    
+    //! 走行体の走行中フラグ
+    runningEV3 = true;
 
     if (logger) {
         logger->addLogFloat(LOG_TYPE_SCENARIO_DISTANCE, scenario.distance);
@@ -129,6 +133,9 @@ void DriveController::run(scenario_running scenario)
  */
 ER DriveController::stop(bool_t brake /*= true*/)
 {
+    //! 走行体の走行中フラグをOFFにする
+    runningEV3=false;
+    
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     ER  resultLeft = motorWheelLeft->stop(brake);

@@ -119,4 +119,7 @@ private:
 
     //! 初期化済み判定フラグ
     bool    initialized;
+
+    //! EV3が現在停止しているかどうか
+    bool runningEV3;
 };
