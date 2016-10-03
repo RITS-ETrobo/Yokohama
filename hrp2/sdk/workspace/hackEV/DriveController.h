@@ -26,6 +26,8 @@ public:
     virtual ER stop(bool_t brake = true);
     virtual void manageMoveCoordinate(scenario_coordinate _coordinateScenario);
     virtual void updatePosition();
+    virtual void setEnabled(bool _enabled = true);
+    virtual bool isEnabled();
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -122,4 +124,7 @@ private:
 
     //! EV3が現在停止しているかどうか
     bool runningEV3;
+
+    //! 利用可能かどうか
+    bool    enabled;
 };

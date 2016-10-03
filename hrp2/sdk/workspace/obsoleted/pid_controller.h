@@ -14,12 +14,6 @@
 extern "C" {
 #endif  //  __cplusplus
 
-//! 白の光量値
-extern int white;
-
-//! 黒の光量値
-extern int black;
-
 //! 白と黒の光量値の平均値
 extern float midpoint;
 
