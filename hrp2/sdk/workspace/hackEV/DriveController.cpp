@@ -1143,13 +1143,32 @@ void DriveController::softAcceleration(int startPower, int targetPower, float st
 }
 
 /**
- * @brief   減速処理（急ブレーキを避ける）
+ * @brief   減速処理のための、現在距離に対するパワー取得する
  * @param   [in]    finishPower   減速後最終のパワー
- * @param   [in]    currentPower   走行しているときのパワー
+ * @param   [in]    runPower   走行しているときのパワー
  * @param   [in]    stopDistance   ストップするまでの走行距離
- * 現在のdistanceDcenarioも見る（どれくらい走っているかが必要）
+ * @param   [in]    DecelerationDistanceFromStopDistance   ストップ位置から何センチ前から減速するか
+ * @param   [in]    currentDistance   現在の距離
  * @return  なし
  */
-void DriveController::deceleration(int finishPower, int currentPower, float stopDistance){
+int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopDistance, float DecelerationDistanceFromStopDistance, float currentDistance){
 
+	float beginDecelerationDistance = stopDistance-DecelerationDistanceFromStopDistance;
+
+	//! 現在の距離が減速開始以下であればまだ減速しない
+	if(currentDistance < beginDecelerationDistance){
+		return runPower;
+	}
+
+	float slop = (runPower-finishPower)/(pow(beginDecelerationDistance,2)-pow(stopDistance,2));
+	float Intercept = runPower - slop*pow(beginDecelerationDistance,2);
+	float decelerationPower = slop*pow(currentDistance,2) + Intercept;
+
+
+	//! もし最小値よりも小さくなってしまった場合は、最小値にする。
+	if(decelerationPower<finishPower){
+		return finishPower;
+	}
+
+	return decelerationPower;
 }
