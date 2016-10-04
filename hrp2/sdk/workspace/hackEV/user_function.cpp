@@ -83,3 +83,33 @@ float degree2radian(float degree)
 {
     return  degree * Pi / 180.0 ;
 }
+
+/**
+ * 最小値を返す
+ * @param[in]   value1  値1
+ * @param[in]   value2  値2
+ * @param[in]   value3  値3
+ * @return  最小値
+ */
+double getMinimumValue(double value1, double value2, double value3)
+{
+    double minimumValue = (value1 < value2) ? value1 : value2;
+    minimumValue = (minimumValue < value3) ? minimumValue : value3;
+
+    return  minimumValue;
+}
+
+/**
+ * 最大値を返す
+ * @param[in]   value1  値1
+ * @param[in]   value2  値2
+ * @param[in]   value3  値3
+ * @return  最大値
+ */
+double getMaximumValue(double value1, double value2, double value3)
+{
+    double maximumValue = (value1 > value2) ? value1 : value2;
+    maximumValue = (maximumValue > value3) ? maximumValue : value3;
+
+    return  value3;
+}

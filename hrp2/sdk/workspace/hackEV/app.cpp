@@ -37,6 +37,9 @@ GyroSensorController* gyroSensorController = NULL;
 //! SonarSensorControllerクラスのインスタンス
 SonarSensorController   *sonarSensorController = NULL;
 
+//! ColorSensorControllerクラスのインスタンス
+ColorSensorController   *colorSensorController = NULL;
+
 //! \addtogroup 周期タスク実行中フラグ
 //@{
 //! ログ書き出しタスク
@@ -207,6 +210,7 @@ void main_task(intptr_t unused) {
     clock = new Clock();
     gyroSensorController = new GyroSensorController(EV3_SENSOR_GYRO);
     sonarSensorController = new SonarSensorController(EV3_SENSOR_SONAR);
+    colorSensorController = new ColorSensorController(EV3_SENSOR_COLOR);
 
     if (logger) {
         logger->initialize();
@@ -231,6 +235,10 @@ void main_task(intptr_t unused) {
     if (sonarSensorController) {
         //! 超音波センサの初期化
         sonarSensorController->initialize();
+    }
+
+    if (colorSensorController) {
+        colorSensorController->initialize();
     }
 
     //! Configure motors
