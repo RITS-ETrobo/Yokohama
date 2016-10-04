@@ -159,6 +159,34 @@ rgb_raw_t ColorSensorController::getColorRGBraw()
 }
 
 /**
+ * @brief   輝度を取得 http://www.dinop.com/vc/image_gray_scale.html
+ * @param   red RGBでの赤の値
+ * @param   green   RGBでの緑の値
+ * @param   blue    RGBでの青の値
+ * @return  輝度
+*/
+uint8_t ColorSensorController::getBrightness(uint8_t red, uint8_t green, uint8_t blue)
+{
+    return  (uint8_t)((77 * red + 150 * green + 29 * blue) >> 8);
+}
+
+/**
+ * @brief   輝度を取得 http://www.dinop.com/vc/image_gray_scale.html
+ * @param   red RGBでの赤の値
+ * @param   green   RGBでの緑の値
+ * @param   blue    RGBでの青の値
+ * @return  輝度
+*/
+uint8_t ColorSensorController::getBrightness(rgb_raw_t *colorRGB)
+{
+    uint8_t redCorrected = 0;
+    uint8_t greenCorrected = 0;
+    uint8_t blueCorrected = 0;
+
+    correctColor(colorRGB, &redCorrected, &greenCorrected, &blueCorrected);
+    return  getBrightness(redCorrected, greenCorrected, blueCorrected);
+}
+/**
  * @brief   255超えの数値を255までに収める
  * @param   colorRGB    カラーセンサーから読み取った値
  * @param   red RGBでの赤の値

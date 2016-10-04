@@ -182,4 +182,8 @@ void viewColor()
     memset(message, '\0', sizeof(message));
     sprintf(message, " Blue      : %d", colorRGB.b);
     writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, " Brightness: %d", colorSensorController->getBrightness(&colorRGB));
+    writeStringLCD(message);
 }
