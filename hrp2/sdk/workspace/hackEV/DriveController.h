@@ -62,6 +62,8 @@ protected:
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+    virtual float errorDirectionByDistanceToLine(float fromLineDistance, float toLineDistance, float betweenDirection);
+    virtual void AngleTwoSideAndBetweenAngleOfTriangle(float side1, float side2, float betweenAngle, float *degA, float *degB);
 
 private:
     void pinWheel(int power, float degree);

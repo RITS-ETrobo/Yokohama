@@ -1092,6 +1092,47 @@ float DriveController::SecondDifferentialOfCubicFunction(float a2, float a3, flo
 	return dy2;
 }
 
+/**
+ * @brief   直線領域において、ラインから外れてからの距離と、ラインに復帰するまでの長さを使って三角形から誤差を検出する
+ * @param   [in]    fromLineDistance   黒線から外れてからの直線距離
+ * @param   [in]    toLineDistance   回転してから黒線に再度入るまでの直線距離
+ * @param   [in]    betweenDirection   黒線にあたるための回転角度
+ * @return  なし
+ */
+float DriveController::errorDirectionByDistanceToLine(float fromLineDistance, float toLineDistance, float betweenDirection){
+
+	float errorDirection=0;
+	float a=0;
+	AngleTwoSideAndBetweenAngleOfTriangle(fromLineDistance, toLineDistance, betweenDirection, &a, &errorDirection);
+
+	return errorDirection;
+}
+
+/**
+ * @brief   2つの辺とその間の角度から、他の角度を算出する
+ * @param   [in]    sideA   辺A
+ * @param   [in]    sideB   辺B
+ * @param   [in]    betweenAngle   辺A,Bの間の角度
+ * @param   [in]    *degA 辺Aの対面にある角度
+ * @param   [in]    *degB 辺Bの対面にある角度
+ * @return  なし
+ */
+void DriveController::AngleTwoSideAndBetweenAngleOfTriangle(float sideA, float sideB, float betweenAngle, float *degA, float *degB){
+	
+	//! 未知の残りの辺の2乗を算出
+	float UnknownSideTwoSquare = pow(sideA,2) + pow(sideB, 2) + 2*sideA*sideB*cos(betweenAngle);
+
+	//! 辺sideAと対面している角度Aを求める
+	float cosA = (pow(sideB,2) + UnknownSideTwoSquare -pow(sideA,2) ) / (2*sideB*sqrt(UnknownSideTwoSquare));
+	float radianA = acos(cosA);
+	*degA = radian2degree(radianA); 
+
+	//! 辺sideBと対面している角度Bを求める
+	float cosB = (pow(sideB,2) + UnknownSideTwoSquare -pow(sideB,2) ) / (2*sideA*sqrt(UnknownSideTwoSquare));
+	float radianB = acos(cosB);
+	*degB = radian2degree(radianB);
+}
+
 
 /**
  * @brief   走行体の位置を更新するタスク
