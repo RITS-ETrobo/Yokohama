@@ -68,12 +68,13 @@ colorid_t ColorSensorController::getColorID()
     }
 
     //色判定
-    double  r = (colorRGB.r > 255.0f) ? 1.0f : (colorRGB.r / 255.0f); // = colorRGB.r / (double)maxInt;
-    double  g = (colorRGB.g > 255.0f) ? 1.0f : (colorRGB.g / 255.0f); // = colorRGB.g / (double)maxInt;
-    double  b = (colorRGB.b > 255.0f) ? 1.0f : (colorRGB.b / 255.0f); // = colorRGB.b / (double)maxInt;
+    uint8_t red = 0;
+    uint8_t green = 0;
+    uint8_t blue = 0;
+    correctColor(&colorRGB, &red, &green, &blue);
 
     //色相値計算
-    double hue = getHue(r, g, b);
+    double hue = getHue(red, green, blue);
 
     //色相値から色判定
     if (hue < BORDER_RED_YELLOW || BORDER_BLUE_RED <= hue) {
@@ -102,11 +103,11 @@ colorid_t ColorSensorController::getColorID()
  * @param   blue    RGBでの青の値
  * @return  色相値
 */
-double ColorSensorController::getHue(double red, double green, double blue)
+double ColorSensorController::getHue(uint8_t red, uint8_t green, uint8_t blue)
 {
-    double  max = getMaximumValue(red, green, blue);
-    double  min = getMinimumValue(red, green, blue);
-    double  hue = max - min;
+    uint8_t max = getMaximumValue(red, green, blue);
+    uint8_t min = getMinimumValue(red, green, blue);
+    double  hue = (float)(max - min);
     if (hue > 0.0f) {
         if (red - 0.0001f < max && max < red + 0.0001f) {
             hue = (green - blue) / hue;
@@ -155,4 +156,19 @@ rgb_raw_t ColorSensorController::getColorRGBraw()
     rgb_raw_t colorRGB;
     ev3_color_sensor_get_rgb_raw(port, &colorRGB);
     return colorRGB;
+}
+
+/**
+ * @brief   255超えの数値を255までに収める
+ * @param   colorRGB    カラーセンサーから読み取った値
+ * @param   red RGBでの赤の値
+ * @param   green   RGBでの緑の値
+ * @param   blue    RGBでの青の値
+ * @return  輝度
+*/
+void ColorSensorController::correctColor(rgb_raw_t *colorRGB, uint8_t *redCorrected, uint8_t *greenCorrected, uint8_t *blueCorrected)
+{
+    *redCorrected = (uint8_t)((colorRGB->r > 255.0f) ? 1.0f : (colorRGB->r / 255.0f)); // = colorRGB->r / (double)maxInt;
+    *greenCorrected = (uint8_t)((colorRGB->g > 255.0f) ? 1.0f : (colorRGB->g / 255.0f)); // = colorRGB->g / (double)maxInt;
+    *blueCorrected = (uint8_t)((colorRGB->b > 255.0f) ? 1.0f : (colorRGB->b / 255.0f)); // = colorRGB->b / (double)maxInt;
 }

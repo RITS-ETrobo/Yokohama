@@ -109,7 +109,6 @@ static void button_clicked_handler(intptr_t button) {
 
     clearLCD();
     confirmBattery();
-    writeStringLCD("    ");
 
     switch(button) {
     case BACK_BUTTON:
@@ -179,10 +178,8 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case DOWN_BUTTON:
-    
         //! カラー名とRGBの表示
         viewColor();
-        
         break;
 
     default:

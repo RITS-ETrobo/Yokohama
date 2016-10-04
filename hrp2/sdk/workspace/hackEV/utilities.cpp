@@ -160,6 +160,8 @@ void viewColor()
         }
     }
 
+    writeStringLCD(" ");
+
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
     sprintf(message, "%s", colorSensorController->getColorName().c_str());
@@ -170,14 +172,14 @@ void viewColor()
 
     //! 取得したRGB値をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "R: %d", colorRGB.r);
+    sprintf(message, " Red       : %d", colorRGB.r);
     writeStringLCD(message);
 
     memset(message, '\0', sizeof(message));
-    sprintf(message, "G: %d", colorRGB.g);
+    sprintf(message, " Green     : %d", colorRGB.g);
     writeStringLCD(message);
 
     memset(message, '\0', sizeof(message));
-    sprintf(message, "B: %d", colorRGB.b);
+    sprintf(message, " Blue      : %d", colorRGB.b);
     writeStringLCD(message);
 }
