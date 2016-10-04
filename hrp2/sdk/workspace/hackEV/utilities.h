@@ -45,3 +45,4 @@ extern std::map<runPattern, PID_PARAMETER> PID_MAP;
 extern bool isGreaterAbsoluteValue(float targetValue, float compareValue);
 extern void confirmBattery(bool isOutputLog = false);
 extern void calibrateBW();
+extern void viewColor();

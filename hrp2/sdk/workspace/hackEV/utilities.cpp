@@ -132,3 +132,54 @@ void calibrateBW()
         logger->addLogInt(LOG_TYPE_COLOR_BLACK, black);
     }
 }
+
+/**
+ * @brief   色情報をLCDに表示する
+ * @return  なし
+*/
+void viewColor()
+{
+    if (!colorSensorController) {
+        writeStringLCD("[ERROR]ColorSensor");
+        return;
+    }
+
+    ev3_speaker_play_tone(NOTE_F5, 200);
+    tslp_tsk(200);
+    ev3_speaker_play_tone(NOTE_E6, 200);
+    char message[16];
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, " Push Touch Sensor!");
+    writeStringLCD(message);
+
+    //! タッチセンサーが押されるまで待機
+    for (;;) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            break;
+        }
+    }
+
+    writeStringLCD(" ");
+
+    //! 取得したカラー名をLCDに表示させる
+    memset(message, '\0', sizeof(message));
+    sprintf(message, "%s", colorSensorController->getColorName().c_str());
+    writeStringLCD(message);
+
+    //! RGB値を取得
+    rgb_raw_t colorRGB = colorSensorController->getColorRGBraw();
+
+    //! 取得したRGB値をLCDに表示させる
+    memset(message, '\0', sizeof(message));
+    sprintf(message, " Red       : %d", colorRGB.r);
+    writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, " Green     : %d", colorRGB.g);
+    writeStringLCD(message);
+
+    memset(message, '\0', sizeof(message));
+    sprintf(message, " Blue      : %d", colorRGB.b);
+    writeStringLCD(message);
+}
