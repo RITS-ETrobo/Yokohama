@@ -81,9 +81,12 @@ void start_run_test()
     driveController->setEnabled();
 
     //! 個別のシナリオ検証用
-    for (int index = 0; index < (int)(sizeof(correct_direction_line) / sizeof(correct_direction_line[0])); index++) {
-        driveController->run(correct_direction_line[index]);
-    }
+    // for (int index = 0; index < (int)(sizeof(correct_direction_line) / sizeof(correct_direction_line[0])); index++) {
+    //     driveController->run(correct_direction_line[index]);
+    // }
+
+    //! ラインを探して向きを揃える
+    driveController->catchLineAndCorrectDirection(50, 30, 0);
 
     ev3_speaker_play_tone(NOTE_F4, 300);
     if (logger) {

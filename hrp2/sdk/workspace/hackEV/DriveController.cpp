@@ -268,8 +268,6 @@ bool DriveController::runAsPattern(scenario_running scenario)
     
     case CORRECT_DIRECTION_BY_LINE:
     {
-        enum orientationPattern findLineOrientation = catchLine(20,10);
-        correctDirectionByLine(scenario.power, findLineOrientation);
 
         //! 【TODO】向きをリセット。場所によってxかyどちらかをリセット
     }
@@ -1412,10 +1410,19 @@ bool DriveController::isEnabled()
 }
 
 /**
+ *  @param ラインを掴んで、向きを揃える一連の動作をまとめる
+ *  @return なし
+*/
+void DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
+    enum orientationPattern findLineOrientation = catchLine(power, searchWidth, searchHeight);
+    correctDirectionByLine(power, findLineOrientation);
+}
+
+/**
  *  @param ラインを掴む
  *  @return なし
 */
-orientationPattern DriveController::catchLine(float serchWidth, float searchHeight){
+orientationPattern DriveController::catchLine(int power, float serchWidth, float searchHeight){
 
     enum orientationPattern findLineOrientation = LEFT_PATTERN;
 
@@ -1424,16 +1431,18 @@ orientationPattern DriveController::catchLine(float serchWidth, float searchHeig
     //! ラインを探す前の向きを覚えておく
     float beforeDirection = directionTotal;
 
-    //! 左方向
-    jitteryMovementFromCoordinate(30, 0 , 0 , 0, -serchWidth/2, searchHeight);
+    //! 左方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , 0, -serchWidth/2, searchHeight);
+
+    float leftMovedDirection =shortestMoveDirection(directionTotal, beforeDirection);
 
     //! 途中で黒線がある通知が来ればストップさせる
 
-    //! 右方向
-    jitteryMovementFromCoordinate(30, 0 , 0 , 0, serchWidth, searchHeight);
+    //! 右方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , leftMovedDirection, serchWidth, searchHeight);
 
-    //! 向きを直す
-    rotateAbsolutelyDirection(20 ,beforeDirection);
+    //! 一番最初の向き(beforeDirection)に直す
+    rotateAbsolutelyDirection(power, beforeDirection);
 
     //! 見つけた方向を返す
     return findLineOrientation;

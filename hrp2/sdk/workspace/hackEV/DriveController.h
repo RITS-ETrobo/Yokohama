@@ -29,6 +29,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
+    virtual void catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -66,11 +67,11 @@ protected:
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
     virtual float shortestMoveDirection(float targetDirection, float startDirection);
     virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
-    virtual orientationPattern catchLine(float serchWidth, float searchHeight);
+    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
-
+    
 private:
     void pinWheel(int power, float degree);
     void straightRun(int power);
