@@ -248,6 +248,8 @@ bool DriveController::runAsPattern(scenario_running scenario)
     {
         enum orientationPattern findLineOrientation = catchLine(20,10);
         correctDirectionByLine(scenario.power, findLineOrientation);
+
+        //! 【TODO】向きをリセット。場所によってxかyどちらかをリセット
     }
         return true;
 
@@ -1231,6 +1233,8 @@ bool DriveController::correctDirectionByLine(int power, orientationPattern findL
             }
         }
     }
+
+
 
     return true;
 }
