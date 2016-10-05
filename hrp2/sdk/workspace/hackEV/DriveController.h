@@ -62,6 +62,9 @@ protected:
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+    virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
+    virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
+    virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
 
 private:
     void pinWheel(int power, float degree);
@@ -119,9 +122,21 @@ private:
     //! 初期化済み判定フラグ
     bool    initialized;
 
+    //! EV3が現在停止しているかどうか
+    bool runningEV3;
+
     //! 利用可能かどうか
     bool    enabled;
 
     //! 前回の色
     uint8_t lastColor;
 };
+
+//! 加速はじめのパワー
+static const int accelStartPower = 10;
+
+//! 減速最後のパワー
+static const int  decelerationFinishPower = 5;
+
+//! 加速と減速範囲を再定義するときの停止値に対する割合
+static const float rangeRate = 0.6F;
