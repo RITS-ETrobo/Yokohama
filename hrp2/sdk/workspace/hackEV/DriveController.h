@@ -13,6 +13,7 @@
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
+#include "orientationPattern.h"
 
 
 //! Class for driving
@@ -42,7 +43,7 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
-    virtual bool correctDirectionByLine(int power);
+    virtual bool correctDirectionByLine(int power, orientationPattern findLineOrientation);
     virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY);
     virtual float distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY);
     virtual float directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY);
@@ -65,7 +66,7 @@ protected:
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
     virtual float shortestMoveDirection(float targetDirection, float startDirection);
     virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
-    virtual void catchLine(float serchWidth, float searchHeight);
+    virtual orientationPattern catchLine(float serchWidth, float searchHeight);
 
 private:
     void pinWheel(int power, float degree);

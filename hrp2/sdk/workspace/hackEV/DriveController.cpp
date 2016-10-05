@@ -15,6 +15,7 @@
 #include "DriveController.h"
 #include "user_function.h"
 
+
 //! class for driving
 DriveController::DriveController()
     : motorWheelLeft(NULL)
@@ -244,7 +245,10 @@ bool DriveController::runAsPattern(scenario_running scenario)
         break;
     
     case CORRECT_DIRECTION_BY_LINE:
-        correctDirectionByLine(scenario.power);
+    {
+        enum orientationPattern findLineOrientation = catchLine(20,10);
+        correctDirectionByLine(scenario.power, findLineOrientation);
+    }
         return true;
 
     default:
@@ -1151,46 +1155,80 @@ void DriveController::updatePosition()
  * @param   
  * @return  成功、失敗
  */
-bool DriveController::correctDirectionByLine(int power){
+bool DriveController::correctDirectionByLine(int power, orientationPattern findLineOrientation){
 
     //! どちら側にいたのかでホイールを動かす作業を変える
 
-    //! ラインを見つけたら現在の方向から向きを測定
+    
     int moveCount = 10;
 
     //! ラインのどちら側にいるのか検討をつけて動かすほうのモーターを決める
-
-    for(;;){
-        //! 左のみ動かす
-        motorWheelRight->run(power);
-        motorWheelLeft->stop(true);
-
-        moveCount++;
+    if(findLineOrientation == LEFT_PATTERN){
+        //! ラインが走行体の左方向に位置する場合
         for(;;){
-            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
-            if(colorValue < (black + 5 +moveCount)){
-                motorWheelRight->stop(true);
-                motorWheelLeft->stop(true);
+            //! 左のみ動かす
+            motorWheelRight->run(power);
+            motorWheelLeft->stop(true);
+
+            moveCount++;
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue < (black + 5 +moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 右のみ動かす
+            motorWheelLeft->run(power);
+            motorWheelRight->stop(true);
+
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue > (white - 5 -moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+            if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
                 break;
             }
         }
-
-        //! 右を動かす
-        motorWheelLeft->run(power);
-        motorWheelRight->stop(true);
-
+    }
+    else{
+        //! ラインが走行体の右方向に位置する場合
         for(;;){
-            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
-            if(colorValue > (white - 5 -moveCount)){
-                motorWheelRight->stop(true);
-                motorWheelLeft->stop(true);
+            //! 右のみ動かす
+            motorWheelLeft->run(power);
+            motorWheelRight->stop(true);
+
+            moveCount++;
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue < (black + 5 +moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 左のみ動かす
+            motorWheelRight->run(power);
+            motorWheelLeft->stop(true);
+
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue > (white - 5 -moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+            if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
                 break;
             }
-        }
-
-        //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
-        if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
-            break;
         }
     }
 
@@ -1219,7 +1257,11 @@ bool DriveController::isEnabled()
  *  @param ラインを掴む
  *  @return なし
 */
-void DriveController::catchLine(float serchWidth, float searchHeight){
+orientationPattern DriveController::catchLine(float serchWidth, float searchHeight){
+
+    enum orientationPattern findLineOrientation = LEFT_PATTERN;
+
+    //! 【TODO】線がどちら側にあるかを判定
 
     //! ラインを探す前の向きを覚えておく
     float beforeDirection = directionTotal;
@@ -1234,6 +1276,9 @@ void DriveController::catchLine(float serchWidth, float searchHeight){
 
     //! 向きを直す
     rotateAbsolutelyDirection(20 ,beforeDirection);
+
+    //! 見つけた方向を返す
+    return findLineOrientation;
 }
 
 /**
