@@ -13,6 +13,7 @@
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
+#include "ColorSensorController.h"
 
 
 //! Class for driving
@@ -108,6 +109,12 @@ private:
     //@{
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
+
+    //! カラーセンサーのインスタンス
+    ColorSensorController *colorSensorController;
+
+    //! 現在のカラーセンサーで検知した色のID
+    colorid_t currentColorID;
 
     //! ｘ座標の最後に指定した位置（テストでいれてみる）
     float positionTargetXLast;
