@@ -1164,7 +1164,7 @@ bool DriveController::isEnabled()
 */
 void DriveController::catchLine(float serchWidth, float searchHeight){
 
-    //! 復帰前の向きを覚えておく
+    //! ラインを探す前の向きを覚えておく
     float beforeDirection = directionTotal;
 
     //! 左方向
@@ -1187,6 +1187,7 @@ void DriveController::catchLine(float serchWidth, float searchHeight){
 */
 void DriveController::rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection){
     
+    //! ターゲット角度までの回転量
     float moveDirection = shortestMoveDirection(AbsolutelyTargetDirection, directionTotal);
     
     //! 目標の座標の向きまでその場回転
