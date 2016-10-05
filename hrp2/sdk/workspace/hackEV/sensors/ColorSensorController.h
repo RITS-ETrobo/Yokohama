@@ -7,9 +7,6 @@
 #include "product.h"
 #include <map>
 
-//! ターゲット依存の定義
-#include "target_test.h"
-
 class ColorSensorController
 {
 public:
