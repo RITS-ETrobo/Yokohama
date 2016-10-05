@@ -37,6 +37,7 @@ DriveController::DriveController()
     , enabled(false)
     , lastColor(COLOR_NONE)
     , foundColor(false)
+    , validColorTask(true)
 {
 }
 
@@ -1192,7 +1193,7 @@ void DriveController::updatePosition()
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
 
-    if (colorSensorController) {
+    if (colorSensorController && validColorTask) {
         uint8_t currentColor = colorSensorController->getColorID();
         if (lastColor != currentColor) {
             lastColor = currentColor;
@@ -1223,8 +1224,8 @@ void DriveController::updatePosition()
  */
 bool DriveController::correctDirectionByLine(int power, orientationPattern findLineOrientation){
 
-    //! どちら側にいたのかでホイールを動かす作業を変える
-
+    //! 輝度を使いたいので、通常のカラー取得は一度オフにする
+    validColorTask = false;
     
     int moveCount = 10;
 
@@ -1298,8 +1299,8 @@ bool DriveController::correctDirectionByLine(int power, orientationPattern findL
         }
     }
 
-
-
+    //! 再び通常のカラーセンサーを有効
+    validColorTask = true;
     return true;
 }
 
