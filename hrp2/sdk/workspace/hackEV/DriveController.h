@@ -121,4 +121,7 @@ private:
 
     //! 利用可能かどうか
     bool    enabled;
+
+    //! 前回の色
+    uint8_t lastColor;
 };

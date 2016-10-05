@@ -15,18 +15,18 @@ class ColorSensorController
 public:
     explicit ColorSensorController(sensor_port_t _port);
     virtual void initialize();
-    virtual colorid_t getColorID();
+    virtual uint8_t getColorID();
     virtual std::string getColorName();
-    virtual std::string getColorName(colorid_t color);
+    virtual std::string getColorName(uint8_t color_id);
     virtual rgb_raw_t getColorRGBraw();
     virtual void correctColor(rgb_raw_t *colorRGB, uint8_t *redCorrected, uint8_t *greenCorrected, uint8_t *blueCorrected);
 
 private:
-    void addColorMap(colorid_t color_id, std::string color_name);
+    void addColorMap(uint8_t color_id, std::string color_name);
     double getHue(uint8_t red, uint8_t green, uint8_t blue);
 
     //! 色情報
-    std::map<colorid_t, std::string>    COLOR_NAME_MAP;
+    std::map<uint8_t, std::string>  COLOR_NAME_MAP;
 
     //! カラーセンサーのポート
     sensor_port_t   port;
