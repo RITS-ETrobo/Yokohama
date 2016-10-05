@@ -5,6 +5,7 @@
 #pragma once
 
 #include "runPattern.h"
+#include "stopCondition.h"
 
 /**
  * @struct scenario_running
@@ -18,7 +19,7 @@ typedef struct {
     float distance;
 
     //! 向き。使わない場合は、-1。使う場合は、0～360
-    int direction;
+    float direction;
 
     //! 走行パターン
     enum runPattern pattern;
@@ -28,6 +29,9 @@ typedef struct {
 
     //! 曲率半径
     float curvatureRadius;
+
+    //! 停止条件とするもの
+    enum stopCondition stopConditionPattern;
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
@@ -120,5 +124,10 @@ extern const scenario_running run_scenario_curve_90[5];
 //! 検証用シナリオ(Lコースをトレースせずに走る)
 extern const scenario_running run_scenario_LCource_Try[8];
 
+<<<<<<< HEAD
 //! 検証用(ラインを使って向きを整える)
 extern const scenario_running correct_direction_line[3];
+=======
+//! 自己位置推定Positionの検証用
+extern const scenario_running run_scenario_test_position[3];
+>>>>>>> issues/linehukki

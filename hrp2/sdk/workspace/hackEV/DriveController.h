@@ -6,11 +6,14 @@
 
 //! ターゲット依存の定義
 #include "product.h"
+#include <math.h>
 
 #include "scenarioRunning.h"
 
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
+#include "coordinateScenario.h"
+
 
 //! Class for driving
 class DriveController
@@ -21,7 +24,10 @@ public:
     virtual bool initialize();
     virtual void run(scenario_running scenario);
     virtual ER stop(bool_t brake = true);
+    virtual void manageMoveCoordinate(scenario_coordinate _coordinateScenario);
     virtual void updatePosition();
+    virtual void setEnabled(bool _enabled = true);
+    virtual bool isEnabled();
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -37,9 +43,32 @@ protected:
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
     virtual bool correctDirectionByLine(int power);
+    virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY);
+    virtual float distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY);
+    virtual float directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY);
+
+#if FALSE //モデル図記載の式、うまくいかないので、ひとまず保留
+    virtual float getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s);
+    virtual void getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y);
+    virtual void getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y);
+    virtual float toVectorMagnitude(float x, float y);
+    virtual float multiplicationVector(float x1, float y1, float x2, float y2);
+    virtual void VectorFromDirection(float Direction, float *x, float *y);
+    virtual float degForTrigonometric(float direction);
+#endif //
+
+    virtual float CalculationCurvatureRadius(float a0, float a1, float a2, float a3, float x);
+    virtual float OnceDifferentialOfQuadraticFunction(float a1, float a2, float x);
+    virtual float SecondDifferentialOfQuadraticFunction(float a2);
+    virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
+    virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
+    virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+    virtual float shortestMoveDirection(float targetDirection, float startDirection);
+    virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
+    virtual void catchLine(float serchWidth, float searchHeight);
 
 private:
-    void pinWheel(int power, int degree);
+    void pinWheel(int power, float degree);
     void straightRun(int power);
     void change_LineSide(scenario_running scenario);
 
@@ -83,8 +112,17 @@ private:
     //@{
     //! 最近の100ms
     SpeedCalculator *speedCalculator100ms;
+
+    //! ｘ座標の最後に指定した位置（テストでいれてみる）
+    float positionTargetXLast;
+
+        //! y座標の最後に指定した位置（テストでいれてみる）
+    float positionTargetYLast;
     //@}
 
     //! 初期化済み判定フラグ
     bool    initialized;
+
+    //! 利用可能かどうか
+    bool    enabled;
 };

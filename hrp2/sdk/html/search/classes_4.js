@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['motorwheel',['MotorWheel',['../db/d2f/class_motor_wheel.html',1,'']]]
+  ['logger',['Logger',['../d3/d42/class_logger.html',1,'']]]
 ];

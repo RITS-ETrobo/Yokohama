@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sonarsensorcontroller',['sonarSensorController',['../d5/df2/app_8cpp.html#a725f394284dce1df4c429539288afa43',1,'sonarSensorController():&#160;app.cpp'],['../dd/d3f/instances_8h.html#a725f394284dce1df4c429539288afa43',1,'sonarSensorController():&#160;app.cpp']]],
-  ['stop',['stop',['../d4/d30/structscenario__running.html#aa7bf5cf11b50cdf8f6c2174a95325b60',1,'scenario_running']]],
-  ['sumarmmotorrotate',['sumArmMotorRotate',['../dc/d43/group___xE6_x96_xB9_xE5_x90_x91_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html#ga08103159ff9fd4ea39e06da0ab58547c',1,'ArmModule.cpp']]]
+  ['targetx',['targetX',['../dd/da7/structscenario__coordinate.html#aec1ebb2acae5f81677597d5961b7378f',1,'scenario_coordinate']]],
+  ['targety',['targetY',['../dd/da7/structscenario__coordinate.html#a0f4ac064e5b0814520843710f5329238',1,'scenario_coordinate']]],
+  ['test_5fcoordinate',['test_coordinate',['../dd/de5/coordinate_scenario_8cpp.html#a4d891a491d4a294b5de566584f6133f6',1,'test_coordinate():&#160;coordinateScenario.cpp'],['../d4/d05/coordinate_scenario_8h.html#a4d891a491d4a294b5de566584f6133f6',1,'test_coordinate():&#160;coordinateScenario.cpp']]]
 ];

@@ -8,6 +8,6 @@
 <area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="873,199,988,225"/>
 <area shape="rect" id="node7" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1059,123,1173,149"/>
 <area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1064,173,1168,200"/>
-<area shape="rect" id="node11" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="470,107,642,149"/>
+<area shape="rect" id="node11" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="470,107,642,149"/>
 <area shape="rect" id="node12" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="493,173,619,200"/>
 </map>

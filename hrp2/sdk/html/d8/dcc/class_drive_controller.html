@@ -131,15 +131,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e6738ba41caab5431d7cd1c565649ee"><td class="memItemLeft" align="right" valign="top">virtual ER&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee">stop</a> (bool_t brake=true)</td></tr>
 <tr class="memdesc:a0e6738ba41caab5431d7cd1c565649ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータを停止する  <a href="#a0e6738ba41caab5431d7cd1c565649ee">More...</a><br/></td></tr>
 <tr class="separator:a0e6738ba41caab5431d7cd1c565649ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a74858c12bf806178f285891bee600"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600">manageMoveCoordinate</a> (<a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> _coordinateScenario)</td></tr>
+<tr class="memdesc:a57a74858c12bf806178f285891bee600"><td class="mdescLeft">&#160;</td><td class="mdescRight">座標指定移動のための変数を用意して実行させる  <a href="#a57a74858c12bf806178f285891bee600">More...</a><br/></td></tr>
+<tr class="separator:a57a74858c12bf806178f285891bee600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e5f2cc43e437b972df118d566f8e5b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b">updatePosition</a> ()</td></tr>
+<tr class="memdesc:a54e5f2cc43e437b972df118d566f8e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体の位置を更新するタスク  <a href="#a54e5f2cc43e437b972df118d566f8e5b">More...</a><br/></td></tr>
+<tr class="separator:a54e5f2cc43e437b972df118d566f8e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afebbf198fe7115be65ae98455a9397e8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#afebbf198fe7115be65ae98455a9397e8">setEnabled</a> (bool _enabled=true)</td></tr>
+<tr class="separator:afebbf198fe7115be65ae98455a9397e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27b0b934c421fa402dea374fd901883"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#ad27b0b934c421fa402dea374fd901883">isEnabled</a> ()</td></tr>
+<tr class="separator:ad27b0b934c421fa402dea374fd901883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a192ea45348366a7f8432af6a053014b6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6">stopByDistance</a> (<a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> scenario, float distanceDelta)</td></tr>
-<tr class="memdesc:a192ea45348366a7f8432af6a053014b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定した距離を走行していた場合、走行体を停止させる  <a href="#a192ea45348366a7f8432af6a053014b6">More...</a><br/></td></tr>
-<tr class="separator:a192ea45348366a7f8432af6a053014b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2274abf609747ad9d01a9e61d3808dc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc">stopByDirection</a> (<a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> scenario, float directionDelta)</td></tr>
-<tr class="memdesc:ad2274abf609747ad9d01a9e61d3808dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定した角度だった場合、走行体を停止させる  <a href="#ad2274abf609747ad9d01a9e61d3808dc">More...</a><br/></td></tr>
-<tr class="separator:ad2274abf609747ad9d01a9e61d3808dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0be5ed4343365bd6357ee84cd8863e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e">stopByDistance</a> (<a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> scenario)</td></tr>
+<tr class="memdesc:a0e0be5ed4343365bd6357ee84cd8863e"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定した距離を走行していた場合、走行体を停止させる  <a href="#a0e0be5ed4343365bd6357ee84cd8863e">More...</a><br/></td></tr>
+<tr class="separator:a0e0be5ed4343365bd6357ee84cd8863e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c8d62cd6045def096ef134daaf7383"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383">stopByDirection</a> (<a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a> scenario)</td></tr>
+<tr class="memdesc:a08c8d62cd6045def096ef134daaf7383"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定した角度だった場合、走行体を停止させる(0度であれば判定しない)  <a href="#a08c8d62cd6045def096ef134daaf7383">More...</a><br/></td></tr>
+<tr class="separator:a08c8d62cd6045def096ef134daaf7383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05bd44913c1bbbaffe443cef0f6791aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa">getDelta</a> (float *directionDelta, float *distanceDelta)</td></tr>
 <tr class="memdesc:a05bd44913c1bbbaffe443cef0f6791aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである  <a href="#a05bd44913c1bbbaffe443cef0f6791aa">More...</a><br/></td></tr>
 <tr class="separator:a05bd44913c1bbbaffe443cef0f6791aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,11 +175,38 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:ac4ff1dd03eadd4c4d6b6e6f21dde2f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">"加算対象"の値が負の場合は、"加算値"の符号を逆にする 理由：power補正値は後ろに進んでいるときも距離の絶対値を比べて計算した結果であるため、powerがマイナスの場合は補正値が反対になってしまうため  <a href="#ac4ff1dd03eadd4c4d6b6e6f21dde2f09">More...</a><br/></td></tr>
 <tr class="separator:ac4ff1dd03eadd4c4d6b6e6f21dde2f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a423999da092c2c28ea49e4701510c3d6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6">getPowerForCurvatureRadius</a> (enum <a class="el" href="../../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a> pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight)</td></tr>
-<tr class="memdesc:a423999da092c2c28ea49e4701510c3d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲率半径から左右のパワーを算出  <a href="#a423999da092c2c28ea49e4701510c3d6">More...</a><br/></td></tr>
+<tr class="memdesc:a423999da092c2c28ea49e4701510c3d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲率半径から左右のパワーを算出 【参考】 <a href="http://www.ftech-net.co.jp/robot/howto/motion01.html">http://www.ftech-net.co.jp/robot/howto/motion01.html</a>  <a href="#a423999da092c2c28ea49e4701510c3d6">More...</a><br/></td></tr>
 <tr class="separator:a423999da092c2c28ea49e4701510c3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3facd0995801cdbd67ab819bc49c6370"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370">curveRun</a> (enum <a class="el" href="../../dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2">runPattern</a> pattern, int power, float curvatureRadius)</td></tr>
 <tr class="memdesc:a3facd0995801cdbd67ab819bc49c6370"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。  <a href="#a3facd0995801cdbd67ab819bc49c6370">More...</a><br/></td></tr>
 <tr class="separator:a3facd0995801cdbd67ab819bc49c6370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad954e02eb1a3665d8955805eddc0e55a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a">jitteryMovementFromCoordinate</a> (int power, float startX, float startY, float startDirection, float endX, float endY)</td></tr>
+<tr class="memdesc:ad954e02eb1a3665d8955805eddc0e55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">座標指定移動(その場回転→直進で移動)（通称：かくかく移動版）  <a href="#ad954e02eb1a3665d8955805eddc0e55a">More...</a><br/></td></tr>
+<tr class="separator:ad954e02eb1a3665d8955805eddc0e55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511072007dc08f7cad1a33bbb1732a7b"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b">distanceFromCoordinateForJitteryMovement</a> (float startX, float startY, float endX, float endY)</td></tr>
+<tr class="memdesc:a511072007dc08f7cad1a33bbb1732a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">座標点間の直線距離を算出  <a href="#a511072007dc08f7cad1a33bbb1732a7b">More...</a><br/></td></tr>
+<tr class="separator:a511072007dc08f7cad1a33bbb1732a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b85466240c40d0b6537f4b65293133c"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c">directionFromCoordinateForJitteryMovement</a> (float startX, float startY, float startDirection, float endX, float endY)</td></tr>
+<tr class="memdesc:a7b85466240c40d0b6537f4b65293133c"><td class="mdescLeft">&#160;</td><td class="mdescRight">座標点間を直線移動するための最初にその場で回転する角度を算出  <a href="#a7b85466240c40d0b6537f4b65293133c">More...</a><br/></td></tr>
+<tr class="separator:a7b85466240c40d0b6537f4b65293133c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18943bf937b7352302b88792af568465"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465">CalculationCurvatureRadius</a> (float a0, float a1, float a2, float a3, float x)</td></tr>
+<tr class="memdesc:a18943bf937b7352302b88792af568465"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト <a href="http://mathtrain.jp/curvature">http://mathtrain.jp/curvature</a> 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´  <a href="#a18943bf937b7352302b88792af568465">More...</a><br/></td></tr>
+<tr class="separator:a18943bf937b7352302b88792af568465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5b987a47692e84b01a8d6bef918355"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#aca5b987a47692e84b01a8d6bef918355">OnceDifferentialOfQuadraticFunction</a> (float a1, float a2, float x)</td></tr>
+<tr class="memdesc:aca5b987a47692e84b01a8d6bef918355"><td class="mdescLeft">&#160;</td><td class="mdescRight">２次関数の1回微分の計算 y´= 2*a2*x+a1  <a href="#aca5b987a47692e84b01a8d6bef918355">More...</a><br/></td></tr>
+<tr class="separator:aca5b987a47692e84b01a8d6bef918355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bd088559fc05e062f08b7502a39843"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a01bd088559fc05e062f08b7502a39843">SecondDifferentialOfQuadraticFunction</a> (float a2)</td></tr>
+<tr class="memdesc:a01bd088559fc05e062f08b7502a39843"><td class="mdescLeft">&#160;</td><td class="mdescRight">２次関数の２回微分の計算 y´´= 2*a2  <a href="#a01bd088559fc05e062f08b7502a39843">More...</a><br/></td></tr>
+<tr class="separator:a01bd088559fc05e062f08b7502a39843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb0d1e363484c16c293fef5a1339b77"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77">smoothMovementFromCoordinate</a> (<a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> _coordinateScenario)</td></tr>
+<tr class="memdesc:a7bb0d1e363484c16c293fef5a1339b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">滑らか座標移動  <a href="#a7bb0d1e363484c16c293fef5a1339b77">More...</a><br/></td></tr>
+<tr class="separator:a7bb0d1e363484c16c293fef5a1339b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace9ac94d3adf558a1f453b7bc7dbcd00"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#ace9ac94d3adf558a1f453b7bc7dbcd00">OnceDifferentialOfCubicFunction</a> (float a1, float a2, float a3, float x)</td></tr>
+<tr class="memdesc:ace9ac94d3adf558a1f453b7bc7dbcd00"><td class="mdescLeft">&#160;</td><td class="mdescRight">３次関数の1回微分の計算 y´= 2*a2*x+a1  <a href="#ace9ac94d3adf558a1f453b7bc7dbcd00">More...</a><br/></td></tr>
+<tr class="separator:ace9ac94d3adf558a1f453b7bc7dbcd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbcc372eebec08b82820dd6c04b2d69"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcc/class_drive_controller.html#a1cbcc372eebec08b82820dd6c04b2d69">SecondDifferentialOfCubicFunction</a> (float a2, float a3, float x)</td></tr>
+<tr class="memdesc:a1cbcc372eebec08b82820dd6c04b2d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">３次関数の２回微分の計算 y´´= 2*a2  <a href="#a1cbcc372eebec08b82820dd6c04b2d69">More...</a><br/></td></tr>
+<tr class="separator:a1cbcc372eebec08b82820dd6c04b2d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ターゲット依存の定義 </p>
@@ -255,6 +292,83 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a18943bf937b7352302b88792af568465"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::CalculationCurvatureRadius </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト <a href="http://mathtrain.jp/curvature">http://mathtrain.jp/curvature</a> 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ </p>
+<dl class="section return"><dt>Returns</dt><dd>現在のxの値に対する曲率半径 </dd></dl>
+<p>2次関数のdy1とdy2</p>
+<p>3次関数（＝xの3乗の項が存在する場合）</p>
+<p>分母が0の場合は曲率半径は無限大（つまり直進）</p>
+<p>【TODO】充分に大きい値とする </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_cgraph" id="d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_cgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#aca5b987a47692e84b01a8d6bef918355" title="２次関数の1回微分の計算 y´= 2*a2*x+a1 " alt="" coords="244,5,455,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a01bd088559fc05e062f08b7502a39843" title="２次関数の２回微分の計算 y´´= 2*a2 " alt="" coords="237,70,461,111"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#ace9ac94d3adf558a1f453b7bc7dbcd00" title="３次関数の1回微分の計算 y´= 2*a2*x+a1 " alt="" coords="244,135,455,177"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#a1cbcc372eebec08b82820dd6c04b2d69" title="３次関数の２回微分の計算 y´´= 2*a2 " alt="" coords="237,201,461,242"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_icgraph" id="d8/dcc/class_drive_controller_a18943bf937b7352302b88792af568465_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="237,5,459,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a3facd0995801cdbd67ab819bc49c6370"></a>
 <div class="memitem">
 <div class="memproto">
@@ -318,7 +432,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_cgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_cgraph" id="d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_cgraph">
-<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="449,56,559,83"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="227,49,399,90"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="250,115,377,141"/><area shape="rect" id="node9" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="254,165,373,192"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="609,31,767,57"/><area shape="rect" id="node6" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="631,81,745,108"/><area shape="rect" id="node4" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="816,5,931,32"/><area shape="rect" id="node5" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="821,56,925,83"/></map>
+<area shape="rect" id="node2" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="449,56,559,83"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="227,49,399,90"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="250,115,377,141"/><area shape="rect" id="node9" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="254,165,373,192"/><area shape="rect" id="node3" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="609,31,767,57"/><area shape="rect" id="node6" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="631,81,745,108"/><area shape="rect" id="node4" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="816,5,931,32"/><area shape="rect" id="node5" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="821,56,925,83"/></map>
 </div>
 </p>
 
@@ -327,7 +441,168 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_icgraph" id="d8/dcc/class_drive_controller_a3facd0995801cdbd67ab819bc49c6370_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="227,31,421,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="470,31,605,57"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="669,5,742,32"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="654,56,757,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="241,96,434,123"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="227,147,448,189"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="497,96,631,123"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="680,5,856,46"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1147,41,1272,68"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="731,121,805,148"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="717,172,819,199"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="904,5,1099,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7b85466240c40d0b6537f4b65293133c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::directionFromCoordinateForJitteryMovement </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>座標点間を直線移動するための最初にその場で回転する角度を算出 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startX</td><td>始点X </td></tr>
+    <tr><td class="paramname">startY</td><td>始点Y </td></tr>
+    <tr><td class="paramname">endX</td><td>終点X </td></tr>
+    <tr><td class="paramname">endY</td><td>終点Y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>スタート時点の角度に最も近い方を選択(180と-180は同じ)</p>
+<p>ｘ座標を基準としたラジアン</p>
+<p>目標座標の領域によって、Y軸を基準とした目標角度を調整する 左上領域</p>
+<p>右上領域</p>
+<p>左下領域</p>
+<p>右下領域</p>
+<p>ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）</p>
+<p>スタート時の角度を今のままか、360度反転させたときの移動量を比較</p>
+<p>スタート角度を３６０度反転とみなした方がいい場合はそちらを選択</p>
+<p>スタート時の角度を今のままか、360度反転させたときの移動量を比較 </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_cgraph" id="d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_cgraph">
+<area shape="rect" id="node2" href="../../d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="286,12,389,39"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_icgraph" id="d8/dcc/class_drive_controller_a7b85466240c40d0b6537f4b65293133c_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="285,5,461,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="509,5,704,46"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="752,12,877,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a511072007dc08f7cad1a33bbb1732a7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::distanceFromCoordinateForJitteryMovement </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>座標点間の直線距離を算出 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startX</td><td>始点X </td></tr>
+    <tr><td class="paramname">startY</td><td>始点Y </td></tr>
+    <tr><td class="paramname">endX</td><td>終点X </td></tr>
+    <tr><td class="paramname">endY</td><td>終点Y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>ｘ座標を基準としたラジアン</p>
+<p>目標座標までの直線距離(sqrtを使うとimgビルドがエラーになるためコサインを使って求める) </p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a511072007dc08f7cad1a33bbb1732a7b_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a511072007dc08f7cad1a33bbb1732a7b_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a511072007dc08f7cad1a33bbb1732a7b_icgraph" id="d8/dcc/class_drive_controller_a511072007dc08f7cad1a33bbb1732a7b_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="285,5,461,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="509,5,704,46"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="752,12,877,39"/></map>
 </div>
 </p>
 
@@ -503,7 +778,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_cgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_cgraph" id="d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_cgraph">
-<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="222,81,423,108"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="473,5,663,32"/><area shape="rect" id="node4" href="../../db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="483,56,653,83"/><area shape="rect" id="node5" href="../../da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をvectorに追加する " alt="" coords="495,107,641,133"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="498,157,638,184"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="712,107,835,133"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="718,157,829,184"/><area shape="rect" id="node9" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="883,132,1042,159"/><area shape="rect" id="node12" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="905,183,1020,209"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1091,107,1205,133"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1096,157,1200,184"/></map>
+<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="222,81,423,108"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="473,5,663,32"/><area shape="rect" id="node4" href="../../db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="483,56,653,83"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="507,107,629,133"/><area shape="rect" id="node11" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1379,107,1519,133"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="712,81,893,108"/><area shape="rect" id="node7" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="974,5,1077,32"/><area shape="rect" id="node8" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="984,56,1067,83"/><area shape="rect" id="node9" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="942,107,1109,133"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1158,41,1330,82"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1569,107,1679,133"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1729,81,1887,108"/><area shape="rect" id="node16" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1751,132,1865,159"/><area shape="rect" id="node14" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1936,56,2051,83"/><area shape="rect" id="node15" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1941,107,2045,133"/></map>
 </div>
 </p>
 
@@ -512,7 +787,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_icgraph" id="d8/dcc/class_drive_controller_a05bd44913c1bbbaffe443cef0f6791aa_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="222,31,357,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="421,5,494,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="406,56,509,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="221,5,424,32"/><area shape="rect" id="node3" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="473,5,618,32"/></map>
 </div>
 </p>
 
@@ -550,11 +825,20 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>シナリオでの走行体の向き[単位 : 度] </dd></dl>
 
 <p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_cgraph" id="d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_cgraph">
+<area shape="rect" id="node2" href="../../d4/dcf/user__function_8cpp.html#a955e59039bc6f30ed9e72e8938250292" title="範囲内に収まっていない場合に、値を範囲内に収める " alt="" coords="240,5,331,32"/><area shape="rect" id="node3" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="379,5,461,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_icgraph" id="d8/dcc/class_drive_controller_a88b1565e8487f806a8c618d4343ca3c5_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="240,31,451,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="499,31,634,57"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="698,5,771,32"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="683,56,786,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="240,5,443,32"/><area shape="rect" id="node3" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="491,5,637,32"/></map>
 </div>
 </p>
 
@@ -596,7 +880,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_ab9d08c9ef1e6fa73914e848237103676_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ab9d08c9ef1e6fa73914e848237103676_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_ab9d08c9ef1e6fa73914e848237103676_icgraph" id="d8/dcc/class_drive_controller_ab9d08c9ef1e6fa73914e848237103676_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="240,31,451,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="499,31,634,57"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="698,5,771,32"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="683,56,786,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="240,5,443,32"/><area shape="rect" id="node3" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="491,5,637,32"/></map>
 </div>
 </p>
 
@@ -652,7 +936,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>曲率半径から左右のパワーを算出 </p>
+<p>曲率半径から左右のパワーを算出 【参考】 <a href="http://www.ftech-net.co.jp/robot/howto/motion01.html">http://www.ftech-net.co.jp/robot/howto/motion01.html</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">targetDirection</td><td>目標角度[°] </td></tr>
@@ -663,10 +947,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
-<p>指定された曲率半径を指定のパワー値で進むための角速度を算出</p>
-<p>この左右のパワーの差があれば指定した角速度で曲がることができる 【TODO】speedPerOnePower定数ではなく、速度との変換をする?</p>
-<p>一つのホイールへの調整量（パワー）</p>
-<p>カーブ方向によって調整するホイールを変更する(符号をそのまま加算すると減算調整が加算調整になることもあるため絶対値で調整)</p>
+<p>左右の速度比を算出</p>
+<p>左に曲がる場合</p>
+<p>右に曲がる場合</p>
 <p>【TODO】目標速度を算出して補正する必要もある </p>
 
 <p><div class="dynheader">
@@ -674,7 +957,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a423999da092c2c28ea49e4701510c3d6_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a423999da092c2c28ea49e4701510c3d6_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a423999da092c2c28ea49e4701510c3d6_icgraph" id="d8/dcc/class_drive_controller_a423999da092c2c28ea49e4701510c3d6_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="227,31,400,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="449,31,642,57"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="691,31,826,57"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="890,5,963,32"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="875,56,978,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="227,125,400,152"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="462,96,655,123"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="448,147,669,189"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="718,96,853,123"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="901,5,1077,46"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1368,41,1493,68"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="953,121,1026,148"/><area shape="rect" id="node9" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="938,172,1041,199"/><area shape="rect" id="node6" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1125,5,1320,46"/></map>
 </div>
 </p>
 
@@ -711,7 +994,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_cgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_cgraph" id="d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_cgraph">
-<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="219,5,365,32"/><area shape="rect" id="node3" href="../../da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="413,31,587,57"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382" title="初期化 " alt="" coords="635,31,784,57"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="832,31,955,57"/></map>
+<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="219,56,365,83"/><area shape="rect" id="node3" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="413,81,587,108"/><area shape="rect" id="node4" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="635,81,784,108"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="832,56,955,83"/><area shape="rect" id="node9" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1233,107,1399,133"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1003,56,1184,83"/><area shape="rect" id="node7" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1265,5,1367,32"/><area shape="rect" id="node8" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1275,56,1357,83"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1449,70,1621,111"/><area shape="rect" id="node11" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1670,107,1810,133"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1859,107,1970,133"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2019,81,2178,108"/><area shape="rect" id="node16" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2041,132,2156,159"/><area shape="rect" id="node14" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2227,56,2341,83"/><area shape="rect" id="node15" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2232,107,2336,133"/></map>
 </div>
 </p>
 
@@ -720,7 +1003,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_icgraph" id="d8/dcc/class_drive_controller_aec9576638e3a7684ab1eaa419c868b82_icgraph">
-<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="245,5,328,32"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="219,56,354,83"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="418,31,491,57"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="403,81,506,108"/></map>
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="288,45,371,72"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="262,96,397,123"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="219,147,440,189"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="488,5,664,46"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="955,41,1080,68"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="539,121,613,148"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="525,172,627,199"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="712,5,907,46"/></map>
 </div>
 </p>
 
@@ -766,7 +1049,304 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_acd7e947d3b853256c6c8c5f60b51e645_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_acd7e947d3b853256c6c8c5f60b51e645_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_acd7e947d3b853256c6c8c5f60b51e645_icgraph" id="d8/dcc/class_drive_controller_acd7e947d3b853256c6c8c5f60b51e645_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="219,31,354,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="418,5,491,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="403,56,506,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="219,96,354,123"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="403,5,579,46"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="869,41,995,68"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="454,121,527,148"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="439,172,542,199"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="627,5,821,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad27b0b934c421fa402dea374fd901883"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DriveController::isEnabled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ログを出力するかどうかを返す</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true : ログを出力する false : ログを出力しない </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_ad27b0b934c421fa402dea374fd901883_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ad27b0b934c421fa402dea374fd901883_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_ad27b0b934c421fa402dea374fd901883_icgraph" id="d8/dcc/class_drive_controller_ad27b0b934c421fa402dea374fd901883_icgraph">
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="230,5,375,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad954e02eb1a3665d8955805eddc0e55a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveController::jitteryMovementFromCoordinate </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>endY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>走行パワー値 </td></tr>
+    <tr><td class="paramname">startX</td><td>始点X </td></tr>
+    <tr><td class="paramname">startY</td><td>始点Y </td></tr>
+    <tr><td class="paramname">startDirection</td><td>始点での角度 </td></tr>
+    <tr><td class="paramname">endX</td><td>終点X </td></tr>
+    <tr><td class="paramname">endY</td><td>終点Y </td></tr>
+    <tr><td class="paramname">endDirection</td><td>終点での角度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>最初にその場で動く角度</p>
+<p>目標の座標の向きまでその場回転</p>
+<p>座標点間の直線距離</p>
+<p>目標の座標まで直進 </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_cgraph" id="d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_cgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c" title="座標点間を直線移動するための最初にその場で回転する角度を算出 " alt="" coords="230,85,461,126"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="278,219,413,245"/><area shape="rect" id="node36" href="../../d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b" title="座標点間の直線距離を算出 " alt="" coords="230,270,461,311"/><area shape="rect" id="node3" href="../../d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="563,5,666,32"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="533,143,697,169"/><area shape="rect" id="node15" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="2291,259,2431,285"/><area shape="rect" id="node21" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="1255,360,1382,387"/><area shape="rect" id="node22" href="../../d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="533,295,697,337"/><area shape="rect" id="node23" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="769,417,962,444"/><area shape="rect" id="node28" href="../../d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="509,244,720,271"/><area shape="rect" id="node35" href="../../d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="509,193,720,220"/><area shape="rect" id="node6" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="792,157,939,184"/><area shape="rect" id="node7" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="1011,132,1184,159"/><area shape="rect" id="node8" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="1244,132,1393,159"/><area shape="rect" id="node9" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1453,107,1576,133"/><area shape="rect" id="node13" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1854,208,2021,235"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1624,107,1805,133"/><area shape="rect" id="node11" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1886,157,1989,184"/><area shape="rect" id="node12" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1896,107,1979,133"/><area shape="rect" id="node14" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="2070,193,2242,234"/><area shape="rect" id="node16" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="2481,360,2591,387"/><area shape="rect" id="node17" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2641,335,2799,361"/><area shape="rect" id="node20" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2663,385,2777,412"/><area shape="rect" id="node18" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2848,309,2963,336"/><area shape="rect" id="node19" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2853,360,2957,387"/><area shape="rect" id="node24" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="1259,528,1378,555"/><area shape="rect" id="node25" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="1035,309,1160,336"/><area shape="rect" id="node26" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="1011,419,1184,445"/><area shape="rect" id="node27" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="1233,411,1405,453"/><area shape="rect" id="node29" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="786,208,945,235"/><area shape="rect" id="node30" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="794,259,937,285"/><area shape="rect" id="node31" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="1044,259,1151,285"/><area shape="rect" id="node32" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="1263,259,1374,285"/><area shape="rect" id="node33" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1465,208,1564,235"/><area shape="rect" id="node34" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1465,259,1564,285"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_icgraph" id="d8/dcc/class_drive_controller_ad954e02eb1a3665d8955805eddc0e55a_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="229,5,424,46"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="472,12,597,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a57a74858c12bf806178f285891bee600"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveController::manageMoveCoordinate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td>
+          <td class="paramname"><em>_coordinateScenario</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>座標指定移動のための変数を用意して実行させる </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">目標座標が書かれたシナリオ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>滑らか走行</p>
+<p>かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること） 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！ </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_cgraph" id="d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_cgraph">
+<area shape="rect" id="node2" href="../../d1/d48/class_e_v3_position.html#abe1162b6f8b7e3dc49fd552c8b5c93ab" title="走行体の現在位置を取得する " alt="" coords="253,5,419,32"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="1287,72,1393,99"/><area shape="rect" id="node7" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="248,293,424,334"/><area shape="rect" id="node4" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="1506,72,1617,99"/><area shape="rect" id="node5" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1708,47,1807,73"/><area shape="rect" id="node6" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1708,97,1807,124"/><area shape="rect" id="node8" href="../../d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c" title="座標点間を直線移動するための最初にその場で回転する角度を算出 " alt="" coords="473,322,703,363"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="521,271,655,297"/><area shape="rect" id="node38" href="../../d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b" title="座標点間の直線距離を算出 " alt="" coords="473,387,703,429"/><area shape="rect" id="node9" href="../../d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="806,528,909,555"/><area shape="rect" id="node11" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="775,271,939,297"/><area shape="rect" id="node21" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="2534,273,2674,300"/><area shape="rect" id="node27" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="1498,417,1625,444"/><area shape="rect" id="node28" href="../../d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="775,462,939,503"/><area shape="rect" id="node29" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="1011,360,1205,387"/><area shape="rect" id="node34" href="../../d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="752,107,963,133"/><area shape="rect" id="node37" href="../../d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="752,157,963,184"/><area shape="rect" id="node12" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1035,309,1181,336"/><area shape="rect" id="node13" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="1253,259,1427,285"/><area shape="rect" id="node14" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="1487,259,1636,285"/><area shape="rect" id="node15" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1696,265,1819,292"/><area shape="rect" id="node19" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="2097,215,2263,241"/><area shape="rect" id="node16" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1867,265,2048,292"/><area shape="rect" id="node17" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="2129,265,2231,292"/><area shape="rect" id="node18" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="2139,316,2221,343"/><area shape="rect" id="node20" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="2313,266,2485,307"/><area shape="rect" id="node22" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="2723,417,2834,444"/><area shape="rect" id="node23" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2883,392,3042,419"/><area shape="rect" id="node26" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2905,443,3020,469"/><area shape="rect" id="node24" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="3091,367,3205,393"/><area shape="rect" id="node25" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="3096,417,3200,444"/><area shape="rect" id="node30" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="1502,585,1621,612"/><area shape="rect" id="node31" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="1277,360,1403,387"/><area shape="rect" id="node32" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="1253,468,1427,495"/><area shape="rect" id="node33" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="1475,519,1647,561"/><area shape="rect" id="node35" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="1029,157,1187,184"/><area shape="rect" id="node36" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="1037,107,1179,133"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_icgraph" id="d8/dcc/class_drive_controller_a57a74858c12bf806178f285891bee600_icgraph">
+<area shape="rect" id="node2" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="248,12,373,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ace9ac94d3adf558a1f453b7bc7dbcd00"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::OnceDifferentialOfCubicFunction </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>３次関数の1回微分の計算 y´= 2*a2*x+a1 </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_ace9ac94d3adf558a1f453b7bc7dbcd00_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ace9ac94d3adf558a1f453b7bc7dbcd00_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_ace9ac94d3adf558a1f453b7bc7dbcd00_icgraph" id="d8/dcc/class_drive_controller_ace9ac94d3adf558a1f453b7bc7dbcd00_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="265,5,447,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="496,5,717,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aca5b987a47692e84b01a8d6bef918355"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::OnceDifferentialOfQuadraticFunction </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>２次関数の1回微分の計算 y´= 2*a2*x+a1 </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_aca5b987a47692e84b01a8d6bef918355_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_aca5b987a47692e84b01a8d6bef918355_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_aca5b987a47692e84b01a8d6bef918355_icgraph" id="d8/dcc/class_drive_controller_aca5b987a47692e84b01a8d6bef918355_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="265,5,447,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="496,5,717,46"/></map>
 </div>
 </p>
 
@@ -812,7 +1392,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_cgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_cgraph" id="d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_cgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="213,56,377,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="955,487,1095,513"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="962,777,1089,804"/><area shape="rect" id="node14" href="../../d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="213,829,377,870"/><area shape="rect" id="node15" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="453,715,646,741"/><area shape="rect" id="node20" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="211,183,378,209"/><area shape="rect" id="node24" href="../../da/dcf/class_speed_calculator.html#a5b81be5827377b790ccc897aa95a17be" title="要素をvectorに追加する " alt="" coords="721,56,868,83"/><area shape="rect" id="node25" href="../../da/dcf/class_speed_calculator.html#a43f08e3194f490ac92766068dc4d1fad" title="平均速度を算出する " alt="" coords="204,613,385,640"/><area shape="rect" id="node27" href="../../d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="189,411,400,437"/><area shape="rect" id="node35" href="../../d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="189,461,400,488"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="476,5,623,32"/><area shape="rect" id="node4" href="../../da/dcf/class_speed_calculator.html#a2018a3b7fd39b39b59f158657685381f" title="初期化 " alt="" coords="708,5,881,32"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#ad3b031524cab2162e09ee2d14c8be382" title="初期化 " alt="" coords="951,5,1100,32"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1160,31,1283,57"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1166,727,1277,753"/><area shape="rect" id="node9" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1331,701,1490,728"/><area shape="rect" id="node12" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1353,752,1468,779"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1539,676,1653,703"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1544,727,1648,753"/><area shape="rect" id="node16" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="966,609,1085,636"/><area shape="rect" id="node17" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="732,487,857,513"/><area shape="rect" id="node18" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="708,727,881,753"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="939,661,1111,702"/><area shape="rect" id="node21" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="449,157,650,184"/><area shape="rect" id="node22" href="../../db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="699,208,890,235"/><area shape="rect" id="node23" href="../../db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="709,107,880,133"/><area shape="rect" id="node26" href="../../d1/d48/class_e_v3_position.html#ae55111760dffee12d15ea36c9d5fda0b" title="平均速度を取得する " alt="" coords="471,613,628,640"/><area shape="rect" id="node28" href="../../d8/dcc/class_drive_controller.html#ab9d08c9ef1e6fa73914e848237103676" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="456,360,643,387"/><area shape="rect" id="node29" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="470,461,629,488"/><area shape="rect" id="node30" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="478,411,621,437"/><area shape="rect" id="node31" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="741,411,848,437"/><area shape="rect" id="node32" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="970,411,1081,437"/><area shape="rect" id="node33" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1172,385,1271,412"/><area shape="rect" id="node34" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1172,436,1271,463"/><area shape="rect" id="node36" href="../../d8/dcc/class_drive_controller.html#a88b1565e8487f806a8c618d4343ca3c5" title="リセットしてからの走行体の向きを取得する " alt="" coords="456,512,643,539"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="213,111,377,138"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1971,127,2111,154"/><area shape="rect" id="node18" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="935,162,1062,189"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="213,213,377,255"/><area shape="rect" id="node20" href="../../d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="449,279,642,306"/><area shape="rect" id="node25" href="../../d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="189,330,400,357"/><area shape="rect" id="node32" href="../../d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="189,381,400,407"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="472,111,619,138"/><area shape="rect" id="node4" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="691,102,864,129"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="924,102,1073,129"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1133,94,1256,121"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1534,145,1701,171"/><area shape="rect" id="node7" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1304,94,1485,121"/><area shape="rect" id="node8" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1566,94,1669,121"/><area shape="rect" id="node9" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1576,43,1659,70"/><area shape="rect" id="node11" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1750,61,1922,103"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="2161,229,2271,255"/><area shape="rect" id="node14" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2321,203,2479,230"/><area shape="rect" id="node17" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2343,254,2457,281"/><area shape="rect" id="node15" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2528,178,2643,205"/><area shape="rect" id="node16" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2533,229,2637,255"/><area shape="rect" id="node21" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="939,330,1058,357"/><area shape="rect" id="node22" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="715,381,840,407"/><area shape="rect" id="node23" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="691,279,864,306"/><area shape="rect" id="node24" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="913,213,1085,255"/><area shape="rect" id="node26" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="466,330,625,357"/><area shape="rect" id="node27" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="474,381,617,407"/><area shape="rect" id="node28" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="724,431,831,458"/><area shape="rect" id="node29" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="943,431,1054,458"/><area shape="rect" id="node30" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1145,418,1244,445"/><area shape="rect" id="node31" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1145,469,1244,495"/></map>
 </div>
 </p>
 
@@ -821,7 +1401,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_icgraph" id="d8/dcc/class_drive_controller_a68550a28c09263c7cd7fe68ac5e83896_icgraph">
-<area shape="rect" id="node2" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="205,5,278,32"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="190,56,293,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="189,5,365,46"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="656,41,781,68"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="241,121,314,148"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="226,172,329,199"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="413,5,608,46"/></map>
 </div>
 </p>
 
@@ -870,7 +1450,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_cgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_cgraph" id="d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_cgraph">
-<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="497,56,615,83"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="272,5,397,32"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="248,115,421,141"/><area shape="rect" id="node4" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="486,5,626,32"/><area shape="rect" id="node5" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="691,173,802,200"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="851,148,1010,175"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="873,199,988,225"/><area shape="rect" id="node7" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1059,123,1173,149"/><area shape="rect" id="node8" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1064,173,1168,200"/><area shape="rect" id="node11" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="470,107,642,149"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="493,173,619,200"/></map>
+<area shape="rect" id="node2" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="497,56,615,83"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="272,5,397,32"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="248,115,421,141"/><area shape="rect" id="node4" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="486,5,626,32"/><area shape="rect" id="node5" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="691,173,802,200"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="851,148,1010,175"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="873,199,988,225"/><area shape="rect" id="node7" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1059,123,1173,149"/><area shape="rect" id="node8" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1064,173,1168,200"/><area shape="rect" id="node11" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="470,107,642,149"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="493,173,619,200"/></map>
 </div>
 </p>
 
@@ -879,7 +1459,182 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_icgraph" id="d8/dcc/class_drive_controller_a6745050dd8d6335bf4067b969ab28a0a_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="249,31,383,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="447,5,521,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="433,56,535,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="249,96,383,123"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="432,5,608,46"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="899,41,1024,68"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="483,121,557,148"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="469,172,571,199"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="656,5,851,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1cbcc372eebec08b82820dd6c04b2d69"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::SecondDifferentialOfCubicFunction </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>３次関数の２回微分の計算 y´´= 2*a2 </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a1cbcc372eebec08b82820dd6c04b2d69_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a1cbcc372eebec08b82820dd6c04b2d69_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a1cbcc372eebec08b82820dd6c04b2d69_icgraph" id="d8/dcc/class_drive_controller_a1cbcc372eebec08b82820dd6c04b2d69_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="278,5,461,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="509,5,731,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a01bd088559fc05e062f08b7502a39843"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DriveController::SecondDifferentialOfQuadraticFunction </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>２次関数の２回微分の計算 y´´= 2*a2 </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a01bd088559fc05e062f08b7502a39843_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a01bd088559fc05e062f08b7502a39843_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a01bd088559fc05e062f08b7502a39843_icgraph" id="d8/dcc/class_drive_controller_a01bd088559fc05e062f08b7502a39843_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="278,5,461,46"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="509,5,731,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afebbf198fe7115be65ae98455a9397e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveController::setEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_enabled</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ログを出力するかどうかを切り替える</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_afebbf198fe7115be65ae98455a9397e8_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_afebbf198fe7115be65ae98455a9397e8_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_afebbf198fe7115be65ae98455a9397e8_icgraph" id="d8/dcc/class_drive_controller_afebbf198fe7115be65ae98455a9397e8_icgraph">
+<area shape="rect" id="node2" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="249,5,351,32"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="237,56,363,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7bb0d1e363484c16c293fef5a1339b77"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveController::smoothMovementFromCoordinate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td>
+          <td class="paramname"><em>_coordinateScenario</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>滑らか座標移動 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">目標座標が書かれたシナリオ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>滑らか走行（曲率半径を走行中に切り替えつつ移動する) 曲線を算出処理処理</p>
+<p>初期のx座標を入れる</p>
+<p>モーターの回転角、距離、方向を0に戻す</p>
+<p>座標がx軸でプラス側に0.1cmずつ動いていると過程</p>
+<p>適度な待ち時間 </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a7bb0d1e363484c16c293fef5a1339b77_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a7bb0d1e363484c16c293fef5a1339b77_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a7bb0d1e363484c16c293fef5a1339b77_cgraph" id="d8/dcc/class_drive_controller_a7bb0d1e363484c16c293fef5a1339b77_cgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="285,305,449,332"/><area shape="rect" id="node18" href="../../d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465" title="曲率半径を計算する（モデル図のものではなく独自ver） 公式の参考サイト http://mathtrain.jp/curvature 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´ " alt="" coords="275,174,458,215"/><area shape="rect" id="node23" href="../../d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="1816,36,1989,63"/><area shape="rect" id="node27" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="295,407,438,433"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="545,356,692,383"/><area shape="rect" id="node4" href="../../da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="779,305,952,332"/><area shape="rect" id="node5" href="../../d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="1000,305,1149,332"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1199,280,1321,307"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1601,331,1767,357"/><area shape="rect" id="node7" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1371,280,1552,307"/><area shape="rect" id="node8" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1633,280,1735,307"/><area shape="rect" id="node9" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1643,229,1725,256"/><area shape="rect" id="node11" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1817,271,1989,313"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="2054,308,2194,335"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="2259,87,2370,113"/><area shape="rect" id="node14" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2419,61,2578,88"/><area shape="rect" id="node17" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2441,112,2556,139"/><area shape="rect" id="node15" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2627,36,2741,63"/><area shape="rect" id="node16" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2632,87,2736,113"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#aca5b987a47692e84b01a8d6bef918355" title="２次関数の1回微分の計算 y´= 2*a2*x+a1 " alt="" coords="513,109,724,150"/><area shape="rect" id="node20" href="../../d8/dcc/class_drive_controller.html#a01bd088559fc05e062f08b7502a39843" title="２次関数の２回微分の計算 y´´= 2*a2 " alt="" coords="507,174,731,215"/><area shape="rect" id="node21" href="../../d8/dcc/class_drive_controller.html#ace9ac94d3adf558a1f453b7bc7dbcd00" title="３次関数の1回微分の計算 y´= 2*a2*x+a1 " alt="" coords="513,239,724,281"/><area shape="rect" id="node22" href="../../d8/dcc/class_drive_controller.html#a1cbcc372eebec08b82820dd6c04b2d69" title="３次関数の２回微分の計算 y´´= 2*a2 " alt="" coords="507,43,731,85"/><area shape="rect" id="node24" href="../../d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="2038,138,2210,179"/><area shape="rect" id="node25" href="../../d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="2061,87,2187,113"/><area shape="rect" id="node26" href="../../db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="2065,36,2183,63"/><area shape="rect" id="node28" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="1197,407,1323,433"/><area shape="rect" id="node29" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="565,407,672,433"/><area shape="rect" id="node30" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="810,407,921,433"/><area shape="rect" id="node31" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1025,407,1124,433"/><area shape="rect" id="node32" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1025,356,1124,383"/></map>
 </div>
 </p>
 
@@ -937,13 +1692,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dcc/class_drive_controller_a0e6738ba41caab5431d7cd1c565649ee_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a0e6738ba41caab5431d7cd1c565649ee_icgraph" alt=""/></div>
 <map name="d8/dcc/class_drive_controller_a0e6738ba41caab5431d7cd1c565649ee_icgraph" id="d8/dcc/class_drive_controller_a0e6738ba41caab5431d7cd1c565649ee_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="197,5,408,32"/><area shape="rect" id="node6" href="../../d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc" title="指定した角度だった場合、走行体を停止させる " alt="" coords="197,56,408,83"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="457,31,591,57"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="655,5,729,32"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="641,56,743,83"/></map>
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="203,72,413,99"/><area shape="rect" id="node9" href="../../d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="203,123,413,149"/><area shape="rect" id="node10" href="../../d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="197,174,419,215"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="467,97,602,124"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="651,6,827,47"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1117,43,1243,69"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="702,123,775,149"/><area shape="rect" id="node8" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="687,173,790,200"/><area shape="rect" id="node5" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="875,6,1069,47"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="ad2274abf609747ad9d01a9e61d3808dc"></a>
+<a class="anchor" id="a08c8d62cd6045def096ef134daaf7383"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -954,18 +1709,8 @@ Here is the caller graph for this function:</div>
           <td class="memname">bool DriveController::stopByDirection </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td>
-          <td class="paramname"><em>scenario</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>scenario</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>directionDelta</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -975,11 +1720,10 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>指定した角度だった場合、走行体を停止させる </p>
+<p>指定した角度だった場合、走行体を停止させる(0度であれば判定しない) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">scenario</td><td>走行シナリオ </td></tr>
-    <tr><td class="paramname">directionDelta</td><td>角度の増分 </td></tr>
   </table>
   </dd>
 </dl>
@@ -991,24 +1735,24 @@ false : 停止不可能 </dd></dl>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_cgraph" alt=""/></div>
-<map name="d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_cgraph" id="d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_cgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a88b1565e8487f806a8c618d4343ca3c5" title="リセットしてからの走行体の向きを取得する " alt="" coords="264,5,451,32"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="278,56,437,83"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="286,107,429,133"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="673,145,813,172"/><area shape="rect" id="node5" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="499,107,624,133"/><area shape="rect" id="node12" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="508,56,615,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="862,145,973,172"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1022,120,1181,147"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1044,171,1159,197"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1229,95,1344,121"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1235,145,1339,172"/><area shape="rect" id="node13" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="687,56,798,83"/><area shape="rect" id="node14" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="868,81,967,108"/><area shape="rect" id="node15" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="868,31,967,57"/></map>
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_cgraph" id="d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_cgraph">
+<area shape="rect" id="node2" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="265,31,423,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="273,81,415,108"/><area shape="rect" id="node4" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="472,56,597,83"/><area shape="rect" id="node11" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="481,107,588,133"/><area shape="rect" id="node5" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="646,56,786,83"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="835,56,946,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="995,31,1154,57"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1017,81,1132,108"/><area shape="rect" id="node8" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1203,5,1317,32"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1208,56,1312,83"/><area shape="rect" id="node12" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="661,107,771,133"/><area shape="rect" id="node13" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="841,107,940,133"/><area shape="rect" id="node14" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="841,157,940,184"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_icgraph" alt=""/></div>
-<map name="d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_icgraph" id="d8/dcc/class_drive_controller_ad2274abf609747ad9d01a9e61d3808dc_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="265,31,399,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="463,5,537,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="449,56,551,83"/></map>
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_icgraph" id="d8/dcc/class_drive_controller_a08c8d62cd6045def096ef134daaf7383_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="265,96,399,123"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="448,5,624,46"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="915,41,1040,68"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="499,121,573,148"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="485,172,587,199"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="672,5,867,46"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a192ea45348366a7f8432af6a053014b6"></a>
+<a class="anchor" id="a0e0be5ed4343365bd6357ee84cd8863e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1019,18 +1763,8 @@ Here is the caller graph for this function:</div>
           <td class="memname">bool DriveController::stopByDistance </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d4/d30/structscenario__running.html">scenario_running</a>&#160;</td>
-          <td class="paramname"><em>scenario</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>scenario</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>distanceDelta</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1044,7 +1778,6 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">scenario</td><td>走行シナリオ </td></tr>
-    <tr><td class="paramname">distanceDelta</td><td>走行距離の増分 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1056,18 +1789,68 @@ false : 停止不可能 </dd></dl>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_cgraph" alt=""/></div>
-<map name="d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_cgraph" id="d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_cgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#ab9d08c9ef1e6fa73914e848237103676" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="264,5,451,32"/><area shape="rect" id="node3" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="278,56,437,83"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="286,107,429,133"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="673,145,813,172"/><area shape="rect" id="node5" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="499,107,624,133"/><area shape="rect" id="node12" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="508,56,615,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="862,145,973,172"/><area shape="rect" id="node8" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1022,120,1181,147"/><area shape="rect" id="node11" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1044,171,1159,197"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1229,95,1344,121"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1235,145,1339,172"/><area shape="rect" id="node13" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="687,56,798,83"/><area shape="rect" id="node14" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="868,81,967,108"/><area shape="rect" id="node15" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="868,31,967,57"/></map>
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_cgraph" id="d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_cgraph">
+<area shape="rect" id="node2" href="../../de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="265,31,423,57"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="273,81,415,108"/><area shape="rect" id="node4" href="../../db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="472,56,597,83"/><area shape="rect" id="node11" href="../../de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="481,107,588,133"/><area shape="rect" id="node5" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="646,56,786,83"/><area shape="rect" id="node6" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="835,56,946,83"/><area shape="rect" id="node7" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="995,31,1154,57"/><area shape="rect" id="node10" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="1017,81,1132,108"/><area shape="rect" id="node8" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1203,5,1317,32"/><area shape="rect" id="node9" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1208,56,1312,83"/><area shape="rect" id="node12" href="../../df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="661,107,771,133"/><area shape="rect" id="node13" href="../../df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="841,107,940,133"/><area shape="rect" id="node14" href="../../df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="841,157,940,184"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_icgraph" alt=""/></div>
-<map name="d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_icgraph" id="d8/dcc/class_drive_controller_a192ea45348366a7f8432af6a053014b6_icgraph">
-<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="265,31,399,57"/><area shape="rect" id="node3" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="463,5,537,32"/><area shape="rect" id="node4" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="449,56,551,83"/></map>
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_icgraph" id="d8/dcc/class_drive_controller_a0e0be5ed4343365bd6357ee84cd8863e_icgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="265,96,399,123"/><area shape="rect" id="node3" href="../../d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="448,5,624,46"/><area shape="rect" id="node5" href="../../d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="915,41,1040,68"/><area shape="rect" id="node6" href="../../d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="499,121,573,148"/><area shape="rect" id="node7" href="../../d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="485,172,587,199"/><area shape="rect" id="node4" href="../../d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="672,5,867,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a54e5f2cc43e437b972df118d566f8e5b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveController::updatePosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行体の位置を更新するタスク </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">exinf</td><td>未使用 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_cgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_cgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_cgraph" id="d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_cgraph">
+<area shape="rect" id="node2" href="../../d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="266,107,433,133"/><area shape="rect" id="node6" href="../../d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="776,157,899,184"/><area shape="rect" id="node12" href="../../d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1649,204,1789,231"/><area shape="rect" id="node18" href="../../d8/dcc/class_drive_controller.html#ab9d08c9ef1e6fa73914e848237103676" title="リセットしてからの走行体中心の移動距離を計算 " alt="" coords="256,259,443,285"/><area shape="rect" id="node19" href="../../d8/dcc/class_drive_controller.html#a88b1565e8487f806a8c618d4343ca3c5" title="リセットしてからの走行体の向きを取得する " alt="" coords="499,221,685,248"/><area shape="rect" id="node3" href="../../db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="491,107,693,133"/><area shape="rect" id="node4" href="../../db/d2f/class_motor_wheel.html#aa183b9ab58203d58c4cda5544c853695" title="MotorWheel::updateDistance" alt="" coords="742,5,933,32"/><area shape="rect" id="node5" href="../../db/d2f/class_motor_wheel.html#a9e69c70dfa29247508b3c60aedfa5ddc" title="MotorWheel::getDistance" alt="" coords="752,56,923,83"/><area shape="rect" id="node7" href="../../d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="981,196,1163,223"/><area shape="rect" id="node8" href="../../d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1243,157,1346,184"/><area shape="rect" id="node9" href="../../d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1253,259,1336,285"/><area shape="rect" id="node10" href="../../d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1211,208,1378,235"/><area shape="rect" id="node11" href="../../d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1427,226,1599,267"/><area shape="rect" id="node13" href="../../d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1838,204,1949,231"/><area shape="rect" id="node14" href="../../d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="1998,179,2157,205"/><area shape="rect" id="node17" href="../../d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2020,229,2135,256"/><area shape="rect" id="node15" href="../../d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2205,153,2320,180"/><area shape="rect" id="node16" href="../../d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2211,204,2315,231"/><area shape="rect" id="node20" href="../../d4/dcf/user__function_8cpp.html#a955e59039bc6f30ed9e72e8938250292" title="範囲内に収まっていない場合に、値を範囲内に収める " alt="" coords="1027,247,1117,273"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_icgraph.png" border="0" usemap="#d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_icgraph" alt=""/></div>
+<map name="d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_icgraph" id="d8/dcc/class_drive_controller_a54e5f2cc43e437b972df118d566f8e5b_icgraph">
+<area shape="rect" id="node2" href="../../d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="257,5,402,32"/></map>
 </div>
 </p>
 
@@ -1083,7 +1866,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dcc/class_drive_controller.html">DriveController</a></li>
-    <li class="footer">Generated on Tue Sep 27 2016 12:29:46 for ev3RT Workspace by
+    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -3,10 +3,9 @@
 <area shape="rect" id="node3" href="$da/dc4/_e_v3_position_8cpp.html" title="移動距離と向きから位置を算出する " alt="" coords="217,103,391,145"/>
 <area shape="rect" id="node4" href="$de/d27/_logger_8cpp.html" title="This file has Logger class. " alt="" coords="415,103,555,145"/>
 <area shape="rect" id="node5" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="579,103,793,145"/>
-<area shape="rect" id="node6" href="$dd/d0a/pid__controller_8cpp.html" title="This file has the PID contoller task. This program will be optimized for HackEV. EV means Educator Ve..." alt="" coords="819,103,997,145"/>
-<area shape="rect" id="node7" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1022,103,1212,145"/>
-<area shape="rect" id="node8" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="1237,96,1432,152"/>
-<area shape="rect" id="node9" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1457,96,1657,152"/>
-<area shape="rect" id="node10" href="$d4/d27/_speed_calculator_8cpp.html" title="速度を求める " alt="" coords="1683,103,1880,145"/>
-<area shape="rect" id="node11" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1905,103,2047,145"/>
+<area shape="rect" id="node6" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="818,103,1008,145"/>
+<area shape="rect" id="node7" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="1033,96,1228,152"/>
+<area shape="rect" id="node8" href="$da/df2/_sonar_sensor_controller_8cpp.html" title="hrp2/sdk/workspace\l/hackEV/sensors/SonarSensor\lController.cpp" alt="" coords="1253,96,1453,152"/>
+<area shape="rect" id="node9" href="$d4/d27/_speed_calculator_8cpp.html" title="速度を求める " alt="" coords="1479,103,1676,145"/>
+<area shape="rect" id="node10" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1701,103,1843,145"/>
 </map>

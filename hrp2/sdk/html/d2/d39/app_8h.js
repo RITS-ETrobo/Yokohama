@@ -12,6 +12,7 @@ var app_8h =
     [ "idle_task", "d2/d39/app_8h.html#adf1ca31adffac652fc532aaf03857119", null ],
     [ "log_monitoring_task", "d2/d39/app_8h.html#a58d3d132ce96418a511b21c04103cb8f", null ],
     [ "main_task", "d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991", null ],
+    [ "position_update_task", "d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba", null ],
     [ "stop_emergency", "d2/d39/app_8h.html#a27869433979701bc6bd15b516e098e68", null ],
     [ "task", "d2/d39/app_8h.html#aac40c9754da64fb47691ccc068b0ec7a", null ]
 ];

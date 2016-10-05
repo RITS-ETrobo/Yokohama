@@ -27,6 +27,15 @@
     #define _debug(x)
 #endif  //  DEBUG
 
+//! \addtogroup 白黒判定で用いる変数
+//@{
+//! 白の光量値
+extern int white;
+
+//! 黒の光量値
+extern int black;
+//@}
+
 //  関数のプロトタイプ宣言
 extern void configure_motors();
 extern void configure_sensors();
@@ -35,3 +44,4 @@ extern void writeFloatLCD(float value);
 extern std::map<runPattern, PID_PARAMETER> PID_MAP;
 extern bool isGreaterAbsoluteValue(float targetValue, float compareValue);
 extern void confirmBattery(bool isOutputLog = false);
+extern void calibrateBW();

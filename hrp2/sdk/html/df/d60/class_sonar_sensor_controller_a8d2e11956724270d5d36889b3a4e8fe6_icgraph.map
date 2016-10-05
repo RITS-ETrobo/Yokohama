@@ -1,3 +1,4 @@
 <map id="SonarSensorController::executeSonar" name="SonarSensorController::executeSonar">
-<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html " alt="" coords="208,12,347,39"/>
+<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html " alt="" coords="216,5,355,32"/>
+<area shape="rect" id="node3" href="$df/d60/class_sonar_sensor_controller.html#a0f1c2440b27d14d751b8e1e642afd459" title="懸賞を安全につかめる距離か検証する " alt="" coords="209,57,362,98"/>
 </map>

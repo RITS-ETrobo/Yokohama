@@ -10,8 +10,7 @@
  *  @param  duration_   速度を求める間隔[単位 : ms]
 */
 SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*= TYPE_RELATED_DRIVE_CONTROLLER*/)
-    : EV3Position(duration_)
-    , duration(duration_)
+    : EV3Position((bool)(type_ == TYPE_RELATED_DRIVE_CONTROLLER), duration_)
     , logType_speed(LOG_TYPE_AVERAGE_SPEED)
     , logType_distance(LOG_TYPE_AVERAGE_DISTANCE)
     , logType_time(LOG_TYPE_AVERAGE_TIME)
@@ -24,8 +23,12 @@ SpeedCalculator::SpeedCalculator(SYSTIM duration_ /*= 0*/, typeRelated type_ /*=
  *  @brief  初期化
  *  @return なし
 */
-void SpeedCalculator::initialize()
+void SpeedCalculator::initialize(bool isForce /*= false*/)
 {
+    if (isForce) {
+        initialized = false;
+    }
+
     if (initialized == true) {
         return;
     }
@@ -51,7 +54,7 @@ void SpeedCalculator::initialize()
         break;
     }
 
-    EV3Position::initialize();
+    EV3Position::initialize(isForce);
     initialized = true;
 }
 
@@ -61,18 +64,7 @@ void SpeedCalculator::initialize()
 */
 void SpeedCalculator::reset()
 {
-    initialized = false;
-    initialize();
-}
-
-/**
- *  @brief  要素をvectorに追加する
- *  @param  record  追加する要素
- *  @return なし
-*/
-void SpeedCalculator::add(DISTANCE_RECORD record)
-{
-    EV3Position::add(record);
+    initialize(true);
 }
 
 /**
@@ -83,20 +75,14 @@ void SpeedCalculator::add(DISTANCE_RECORD record)
 float SpeedCalculator::getSpeed(DISTANCE_RECORD *record)
 {
     float   averageSpeed = EV3Position::getSpeed(record);
+
+#ifndef EV3_UNITTEST
     if(logger != NULL){
         logger->addLogFloat(logType_speed, averageSpeed);
         // logger->addLogFloat(logType_distance, record->distance);
         // logger->addLogFloat(logType_time, record->currentTime);
     }
+#endif  //  EV3_UNITTEST
 
     return  averageSpeed;
-}
-
-/**
- *  @brief  現在の向きを取得する
- *  @return 現在の向き[単位 : 度]
-*/
-float SpeedCalculator::getDirection()
-{
-    return  EV3Position::getDirection();
 }

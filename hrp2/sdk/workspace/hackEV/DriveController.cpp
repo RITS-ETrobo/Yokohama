@@ -4,7 +4,6 @@
  */
 #include <string.h>
 #include <stdlib.h>
-#include <math.h>
 
 #include "instances.h"
 #include "utilities.h"
@@ -12,8 +11,6 @@
 #include "wheelSettings.h"
 #include "logSettings.h"
 #include "portSettings.h"
-
-#include "pid_controller.h"
 
 #include "DriveController.h"
 #include "user_function.h"
@@ -33,7 +30,10 @@ DriveController::DriveController()
     , limitPower(55)
     , speedPerOnePower(0.84107F)
     , speedCalculator100ms(NULL)
+    , positionTargetXLast(0.0F)
+    , positionTargetYLast(0.0F)
     , initialized(false)
+    , enabled(false)
 {
 }
 
@@ -325,7 +325,7 @@ void DriveController::straightRun(int power)
  * @param   degree  回転する向き ※回転方向を決定するためだけに使う
  * @return  なし
  */
-void DriveController::pinWheel(int power, int degree)
+void DriveController::pinWheel(int power, float degree)
 {
     int powerLeft = power;
     int powerRight = power;
@@ -425,7 +425,7 @@ void DriveController::change_LineSide(scenario_running scenario)
  */
 bool DriveController::stopByDistance(scenario_running scenario)
 {
-    if (scenario.distance <= 0) {
+    if (scenario.stopConditionPattern != DISTANCE_STOP) {
         return  false;
     }
 
@@ -439,14 +439,14 @@ bool DriveController::stopByDistance(scenario_running scenario)
 }
 
 /**
- * @brief   指定した角度だった場合、走行体を停止させる
+ * @brief   指定した角度だった場合、走行体を停止させる(0度であれば判定しない)
  * @param   scenario    走行シナリオ
  * @return  true : 停止可能
  * @return  false : 停止不可能
  */
 bool DriveController::stopByDirection(scenario_running scenario)
 {
-    if (scenario.direction == -1) {
+    if (scenario.stopConditionPattern != DIRECTION_STOP) {
         return  false;
     }
 
@@ -605,6 +605,510 @@ void DriveController::curveRun(enum runPattern pattern, int power, float curvatu
 }
 
 /**
+ * @brief   座標点間の直線距離を算出
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @return  
+ */
+float DriveController::distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY){
+    float differenceX = endX - startX;
+    float differenceY = endY - startY;
+
+    if (differenceX==0 && differenceY==0)
+    {
+        return 0;
+    }
+
+    if (differenceX !=0 && differenceY == 0)
+    {
+        return fabsf(differenceX);
+    }
+
+    if (differenceX == 0 && differenceY != 0)
+    {
+        return fabsf(differenceY);
+    }
+
+    //! ｘ座標を基準としたラジアン
+    float Radian = atan2(differenceY, differenceX);
+
+    //! 目標座標までの直線距離(sqrtを使うとimgビルドがエラーになるためコサインを使って求める)
+    float moveDistance = fabsf(fabsf(differenceX) / cos(Radian));
+
+    return moveDistance;
+}
+
+/**
+ * @brief   座標点間を直線移動するための最初にその場で回転する角度を算出
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @return  
+ */
+float DriveController::directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY){
+    float differenceX = endX - startX;
+    float differenceY = endY - startY;
+
+    // //! 動かない場合は角度移動はしない
+    if (differenceX == 0)
+    {
+        if (differenceY == 0)
+        {
+            return 0;
+        }
+
+        if (differenceY > 0)
+        {
+            return (-startDirection);
+        }
+
+        //! スタート時点の角度に最も近い方を選択(180と-180は同じ)
+        if (startDirection > 0)
+        {
+            return (180 - startDirection);
+        }
+
+        if (startDirection < 0)
+        {
+            return (-180 - startDirection);
+        }
+    }
+
+    if (differenceY == 0)
+    {
+        if (differenceX > 0)
+        {
+            return (90 - startDirection);
+        }
+
+        return (-90 - startDirection);
+    }
+    
+
+    //! ｘ座標を基準としたラジアン
+    float Radian = atan2(differenceY, differenceX);
+
+    float deg = radian2degree(Radian);
+
+    float targetDirection = 0;
+
+    //! 目標座標の領域によって、Y軸を基準とした目標角度を調整する
+    //! 左上領域
+    if (differenceX > 0 && differenceY > 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 右上領域
+    else if (differenceX < 0 && differenceY > 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 左下領域
+    else if (differenceX > 0 && differenceY < 0)
+    {
+        targetDirection = 90 - deg;
+    }
+    //! 右下領域
+    else
+    {
+        targetDirection = -270 - deg;
+    }
+
+    //! 回転量が最小となる回転角度を返す
+    return shortestMoveDirection(targetDirection, startDirection);
+}
+
+/**
+ * @brief   2つの角度で最小となる回転量を算出
+ * @param   targetDirection  ターゲット角度
+ * @param   startDirection 初期角度
+ * @return  
+ */
+float DriveController::shortestMoveDirection(float targetDirection, float startDirection){
+    //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
+    if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
+    {
+        //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+        if (fabsf((targetDirection - 360) - (startDirection - 360)) < fabsf((targetDirection - 360) - startDirection))
+        {
+            //! スタート角度を３６０度反転とみなした方がいい場合はそちらを選択
+            return (targetDirection - 360) - (startDirection - 360);
+        }
+        else
+        {
+            return (targetDirection - 360) - startDirection;
+        }
+
+    }
+    else
+    {
+        //! スタート時の角度を今のままか、360度反転させたときの移動量を比較
+        if (fabsf((targetDirection) - (startDirection - 360)) < fabsf(targetDirection - startDirection))
+        {
+            return targetDirection - (startDirection - 360);
+        }
+        else
+        {
+            return targetDirection - startDirection;
+        }
+    }
+}
+
+/**
+ * @brief   座標指定移動(その場回転→直進で移動)（通称：かくかく移動版）
+ * @param   power  走行パワー値
+ * @param   startX 始点X
+ * @param   startY 始点Y
+ * @param   startDirection 始点での角度
+ * @param   endX 終点X
+ * @param   endY 終点Y
+ * @param   endDirection 終点での角度
+ * @return  
+ */
+void DriveController::jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY){
+
+    
+    //! 最初にその場で動く角度
+    float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
+    
+    //! 目標の座標の向きまでその場回転
+    scenario_running pinWheelScenario={power/2, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    
+    run(pinWheelScenario);
+
+    //! 座標点間の直線距離
+    float moveDistance = distanceFromCoordinateForJitteryMovement(startX, startY, endX, endY);
+    
+    //! 目標の座標まで直進
+    scenario_running straghtScenario={power, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP};
+    run(straghtScenario);
+}
+
+/**
+ * @brief   座標指定移動のための変数を用意して実行させる
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenario)
+{
+    EV3_POSITION currentPositionREAL;
+    EV3_POSITION currentPositionMAP;
+    float currentDirection = 0.0F;
+    speedCalculator100ms->getPosition(&currentPositionREAL, &currentPositionMAP, &currentDirection);
+
+    writeFloatLCD(currentPositionREAL.x);
+    writeFloatLCD(currentPositionREAL.y);
+
+    //! 滑らか走行
+    //smoothMovementFromCoordinate(_coordinateScenario);
+
+    //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
+    //! 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！
+    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
+}
+
+/**
+ * @brief   滑らか座標移動
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario){
+    //! 滑らか走行（曲率半径を走行中に切り替えつつ移動する)
+    //! 曲線を算出処理処理
+    float a0=0;
+	float a1=0;
+	float a2=1;
+	float a3=0;
+
+
+
+    float x=-5; //! 初期のx座標を入れる
+
+
+    //float distanceXaxis=x;
+    initialize();
+
+    //! モーターの回転角、距離、方向を0に戻す
+    for(;;){
+        float curvatureRadius = CalculationCurvatureRadius(a0,a1,a2,a3,x);
+        
+        curveRun(NOTRACE_CURVE_LEFT ,30, curvatureRadius);
+
+        // float   distanceDelta = 0.0F;
+        // float   directionDelta = 0.0F;
+        // getDelta(&directionDelta, &distanceDelta);//updateでも更新されている
+
+        // //! x軸に動いた距離 
+        // distanceXaxis += distanceDelta*sin(degree2radian(directionDelta));
+        
+        //! 座標がx軸でプラス側に0.1cmずつ動いていると過程
+        x+=0.0001;
+
+        // //! 表示
+        // writeFloatLCD(curvatureRadius);
+        // writeFloatLCD(distanceDelta);
+        // writeFloatLCD(directionDelta);
+
+        if(x >= _coordinateScenario.targetX){
+            stop();
+            break;
+        }
+
+        //! 適度な待ち時間
+        tslp_tsk(2);
+    }
+}
+
+#if FALSE //モデル図記載の式から算出しようと思ったもの。うまくいかないので保留
+/**
+ * @brief   移動する曲線から瞬間の曲率半径を取得する
+ * @param   目標座標が書かれたシナリオ
+ * @return  
+ */
+float DriveController::getCurvatureRadius(float startX, float startY, float startDirection, float endX, float endY, float endDirection, float _s){
+
+    float s = _s;
+
+    float p0x=startX;
+    float p0y=startY;
+
+    float p1x=endX;
+    float p1y=endY;
+    
+    //! startDirectionの大きさ１のベクトル成分を算出
+    float v0x=0;
+    float v0y=0;
+    VectorFromDirection(startDirection, &v0x, &v0y);
+
+    //! endDirectionの大きさ１のベクトル成分を算出
+    float v1x=0;
+    float v1y=0;
+    VectorFromDirection(endDirection, &v1x, &v1y);
+    
+    float a1x = p1x;
+    float a1y = p1y;
+
+    float a2x = 3*p1x - 3*p0x - 2*v0x - v1x;
+    float a2y = 3*p1y - 3*p0y - 2*v0y - v1y;
+
+    float a3x = -2*p1x + 2*p0x + v0x + v1x;
+    float a3y = -2*p1y + 2*p0y + v0y + v1y;
+
+    float d1x=0;
+    float d1y=0;
+    getOnceDifferential(a1x, a1y, a2x, a2y, a3x, a3y, s, &d1x, &d1y);
+    
+    float d2x=0;
+    float d2y=0;
+    getSecondDifferential(a2x, a2y, a3x, a3y, s, &d2x, &d2y);
+
+    //! 曲率半径Rの最終計算
+    float R = pow(toVectorMagnitude(d1x, d1y),3) / multiplicationVector(d1x, d1y, d2x, d2y);
+
+    return R;
+}
+
+/**
+ * @brief   3次スプライン曲線の1回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getOnceDifferential(float a1x, float a1y, float a2x, float a2y, float a3x, float a3y,float s, float *d1x, float *d1y){
+    //! 微分の計算結果
+    *d1x = a1x + 2*a2x*s + 3*a3x*s*s;
+    *d1y = a1y + 2*a2y*s + 3*a3y*s*s;
+}
+
+/**
+ * @brief   3次スプライン曲線の2回微分の値(ベクトル成分)
+ * @return  
+ */
+void DriveController::getSecondDifferential(float a2x, float a2y, float a3x, float a3y,float s, float *d2x, float *d2y){
+    *d2x = 2*a2x + 6*a3x*s;
+    *d2y = 2*a2y + 6*a3y*s;
+}
+
+/**
+ * @brief   ベクトル成分から大きさを取得
+ * @return  
+ */
+float DriveController::toVectorMagnitude(float x, float y){
+    return sqrt(x*x+y*y);
+}
+
+/**
+ * @brief   ベクトル積
+ * @return  
+ */
+float DriveController::multiplicationVector(float x1, float y1, float x2, float y2){
+
+    //! ベクトル積の計算が合っているか不安
+    float a = x1*y2;
+    float b = x2*y1;
+    return toVectorMagnitude(a,b);
+}
+
+/**
+ * @brief   角度をベクトル成分で表示する。ベクトルの大きさは１とする
+ * @return  
+ */
+void DriveController::VectorFromDirection(float Direction, float *x, float *y){
+    //!ベクトルの大きさを定義（仮で１とする）
+    float unit = 1.0F;
+
+    //Directionの範囲0～360と0～-360が来るものとする
+
+    if (Direction == 0 || Direction == 360 || Direction == -360)
+    {
+        *x = 0;
+        *y = unit;
+        return;
+    }
+
+    if (Direction == 180 || Direction == -180)
+    {
+        *x = 0;
+        *y = -unit;
+        return;
+    }
+
+    if (Direction == 90 || Direction == -270)
+    {
+        *x = unit;
+        *y = 0;
+        return;
+    }
+
+    if (Direction == 270 || Direction == -90)
+    {
+        *x = -unit;
+        *y = 0;
+        return;
+    }
+
+    //! Tanなどの三角関数で扱うときの角度に変換
+    float deg = degForTrigonometric(Direction);
+
+    if (Direction < 0 && Direction > -180)
+    {
+
+        *x = -(float)sqrt(pow(unit,2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
+        return;
+    }
+    if (Direction < -180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
+        return;
+    }
+
+    if (Direction > 0 && Direction < 180)
+    {
+        *x = (float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
+        return;
+    }
+
+    if (Direction > 180)
+    {
+        *x = -(float)sqrt(pow(unit, 2) / (1 + pow((float)tan(degree2radian(deg)), 2)));
+        *y = *x * (float)tan(degree2radian(deg));
+        return;
+    }
+}
+
+/**
+ * @brief   三角関数で扱うときの角度（x軸プラスを基準とした角度）に変換
+ * @return  
+ */
+float DriveController::degForTrigonometric(float direction){
+    return -direction + 90;
+}
+#endif  // FALSE(モデル図記載の式から算出しようと思ったもの)
+
+/**
+* @brief   曲率半径を計算する（モデル図のものではなく独自ver）
+* 公式の参考サイト http://mathtrain.jp/curvature
+* 公式：R=pow((1+pow(y´,2)),(3/2)) / y´´
+* @return 現在のxの値に対する曲率半径
+*/
+float DriveController::CalculationCurvatureRadius(float a0, float a1, float a2, float a3, float x){
+
+	float dy1 = 0;
+	float dy2 = 0;
+
+	//! 2次関数のdy1とdy2
+	if(a3 == 0){
+		dy1=OnceDifferentialOfQuadraticFunction(a1,a2,x);
+		dy2=SecondDifferentialOfQuadraticFunction(a2);
+	}
+	
+
+	//! 3次関数（＝xの3乗の項が存在する場合）
+	if(a3 != 0){
+		dy1 = OnceDifferentialOfCubicFunction(a1, a2, a3 ,x);
+		dy2 = SecondDifferentialOfCubicFunction(a2, a3 ,x);
+	}
+
+
+	//! 分母が0の場合は曲率半径は無限大（つまり直進）
+	if(dy2==0){
+		//! 【TODO】充分に大きい値とする
+		return 100000;
+	}
+
+	float R = pow((1+pow(dy1,2)),(3/2)) / dy2;
+	return R;
+}
+
+
+
+/**
+* @brief   ２次関数の1回微分の計算
+* y´= 2*a2*x+a1
+* @return  
+*/
+float DriveController::OnceDifferentialOfQuadraticFunction(float a1, float a2, float x){
+	float dy1=2*a2*x+a1;
+	return dy1; 
+}
+
+/**
+* @brief   ２次関数の２回微分の計算
+* y´´= 2*a2
+* @return  
+*/
+float DriveController::SecondDifferentialOfQuadraticFunction(float a2){
+	float dy2=2*a2;
+	return dy2;
+}
+
+
+/**
+* @brief   ３次関数の1回微分の計算
+* y´= 2*a2*x+a1
+* @return  
+*/
+float DriveController::OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x){
+	float dy1 = 3*a3*x*x + 2*a2*x + a1;
+	return dy1; 
+}
+
+/**
+* @brief   ３次関数の２回微分の計算
+* y´´= 2*a2
+* @return  
+*/
+float DriveController::SecondDifferentialOfCubicFunction(float a2, float a3, float x){
+	float dy2 = 6*a3*x + 2*a2;
+	return dy2;
+}
+
+
+/**
  * @brief   走行体の位置を更新するタスク
  * @param   [in]    exinf   未使用
  * @return  なし
@@ -691,4 +1195,60 @@ bool DriveController::correctDirectionByLine(int power){
     }
 
     return true;
+}
+
+/**
+ *  @param  ログを出力するかどうかを切り替える
+ *  @return なし
+*/
+void DriveController::setEnabled(bool _enabled /*= true*/)
+{
+    enabled = _enabled;
+}
+
+/**
+ *  @param  ログを出力するかどうかを返す
+ *  @return true : ログを出力する false : ログを出力しない
+*/
+bool DriveController::isEnabled()
+{
+    return  enabled;
+}
+
+/**
+ *  @param ラインを掴む
+ *  @return なし
+*/
+void DriveController::catchLine(float serchWidth, float searchHeight){
+
+    //! ラインを探す前の向きを覚えておく
+    float beforeDirection = directionTotal;
+
+    //! 左方向
+    jitteryMovementFromCoordinate(30, 0 , 0 , 0, -serchWidth/2, -searchHeight/2);
+
+    //! 途中で黒線がある通知が来ればストップさせる
+
+    //! 右方向
+    jitteryMovementFromCoordinate(30, 0 , 0 , 0, serchWidth, searchHeight);
+
+    //! 向きを直す
+    rotateAbsolutelyDirection(20 ,beforeDirection);
+}
+
+/**
+ *  @param 向きを絶対指定する（相対指定ではなく）
+ * @param   [in]    power   回転パワー
+ * @param   [in]    AbsolutelyTargetDirection   あわせたい向きの指定（絶対指定）
+ *  @return なし
+*/
+void DriveController::rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection){
+    
+    //! ターゲット角度までの回転量
+    float moveDirection = shortestMoveDirection(AbsolutelyTargetDirection, directionTotal);
+    
+    //! 目標の座標の向きまでその場回転
+    scenario_running pinWheelScenario={power, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    
+    run(pinWheelScenario);
 }

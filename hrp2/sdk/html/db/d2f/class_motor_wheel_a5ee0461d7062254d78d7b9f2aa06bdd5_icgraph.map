@@ -1,7 +1,11 @@
 <map id="MotorWheel::initialize" name="MotorWheel::initialize">
-<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="201,31,365,57"/>
-<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="440,5,523,32"/>
-<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="414,56,549,83"/>
-<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="613,31,686,57"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="598,81,701,108"/>
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="201,96,365,123"/>
+<area shape="rect" id="node3" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="483,45,565,72"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="457,96,591,123"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="413,147,635,189"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="683,5,859,46"/>
+<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1149,41,1275,68"/>
+<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="734,121,807,148"/>
+<area shape="rect" id="node9" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="719,172,822,199"/>
+<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="907,5,1101,46"/>
 </map>

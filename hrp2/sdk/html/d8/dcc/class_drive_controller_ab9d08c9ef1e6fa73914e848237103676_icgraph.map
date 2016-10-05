@@ -1,6 +1,4 @@
 <map id="DriveController::getDistance" name="DriveController::getDistance">
-<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="240,31,451,57"/>
-<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="499,31,634,57"/>
-<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="698,5,771,32"/>
-<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="683,56,786,83"/>
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="240,5,443,32"/>
+<area shape="rect" id="node3" href="$d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="491,5,637,32"/>
 </map>

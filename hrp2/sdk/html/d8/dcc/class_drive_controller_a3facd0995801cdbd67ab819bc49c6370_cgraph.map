@@ -1,6 +1,6 @@
 <map id="DriveController::curveRun" name="DriveController::curveRun">
 <area shape="rect" id="node2" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="449,56,559,83"/>
-<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 " alt="" coords="227,49,399,90"/>
+<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="227,49,399,90"/>
 <area shape="rect" id="node8" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="250,115,377,141"/>
 <area shape="rect" id="node9" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="254,165,373,192"/>
 <area shape="rect" id="node3" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="609,31,767,57"/>

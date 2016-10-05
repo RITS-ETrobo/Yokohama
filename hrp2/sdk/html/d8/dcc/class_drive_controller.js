@@ -2,7 +2,10 @@ var class_drive_controller =
 [
     [ "DriveController", "d8/dcc/class_drive_controller.html#ae9fb429c8fe74cd5bf3e65e6c0a2823e", null ],
     [ "addAdjustValue", "d8/dcc/class_drive_controller.html#ac4ff1dd03eadd4c4d6b6e6f21dde2f09", null ],
+    [ "CalculationCurvatureRadius", "d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465", null ],
     [ "curveRun", "d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370", null ],
+    [ "directionFromCoordinateForJitteryMovement", "d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c", null ],
+    [ "distanceFromCoordinateForJitteryMovement", "d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b", null ],
     [ "getCorrectedAddPower", "d8/dcc/class_drive_controller.html#a3f6dda754ac47c99ee798bd95ffe37fd", null ],
     [ "getCorrectedPower", "d8/dcc/class_drive_controller.html#a1fee3464626523e2cbbd7b1c66cacf92", null ],
     [ "getDelta", "d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa", null ],
@@ -11,9 +14,19 @@ var class_drive_controller =
     [ "getPowerForCurvatureRadius", "d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6", null ],
     [ "initialize", "d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82", null ],
     [ "initializeAsPattern", "d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645", null ],
+    [ "isEnabled", "d8/dcc/class_drive_controller.html#ad27b0b934c421fa402dea374fd901883", null ],
+    [ "jitteryMovementFromCoordinate", "d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a", null ],
+    [ "manageMoveCoordinate", "d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600", null ],
+    [ "OnceDifferentialOfCubicFunction", "d8/dcc/class_drive_controller.html#ace9ac94d3adf558a1f453b7bc7dbcd00", null ],
+    [ "OnceDifferentialOfQuadraticFunction", "d8/dcc/class_drive_controller.html#aca5b987a47692e84b01a8d6bef918355", null ],
     [ "run", "d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896", null ],
     [ "runAsPattern", "d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a", null ],
+    [ "SecondDifferentialOfCubicFunction", "d8/dcc/class_drive_controller.html#a1cbcc372eebec08b82820dd6c04b2d69", null ],
+    [ "SecondDifferentialOfQuadraticFunction", "d8/dcc/class_drive_controller.html#a01bd088559fc05e062f08b7502a39843", null ],
+    [ "setEnabled", "d8/dcc/class_drive_controller.html#afebbf198fe7115be65ae98455a9397e8", null ],
+    [ "smoothMovementFromCoordinate", "d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77", null ],
     [ "stop", "d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee", null ],
-    [ "stopByDirection", "d8/dcc/class_drive_controller.html#ad2274abf609747ad9d01a9e61d3808dc", null ],
-    [ "stopByDistance", "d8/dcc/class_drive_controller.html#a192ea45348366a7f8432af6a053014b6", null ]
+    [ "stopByDirection", "d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383", null ],
+    [ "stopByDistance", "d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e", null ],
+    [ "updatePosition", "d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b", null ]
 ];
