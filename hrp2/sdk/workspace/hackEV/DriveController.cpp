@@ -110,18 +110,17 @@ void DriveController::run(scenario_running scenario)
 
     //! ストップ監視しつつ、走行
     for (;;) {
-        //! 走行
-        if (runAsPattern(scenario)) {
-            return;
-        }
-
-        //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
-        tslp_tsk(2);
-
         bool    needReturn = stopByDistance(scenario) | stopByDirection(scenario) | stopByColor(scenario);
         if (needReturn) {
             return;
         }
+
+        //! 走行
+        if (runAsPattern(scenario)) {
+            return;
+        }
+        //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
+        tslp_tsk(2);
     }
 }
 
