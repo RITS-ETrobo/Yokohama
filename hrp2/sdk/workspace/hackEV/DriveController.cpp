@@ -1426,14 +1426,13 @@ orientationPattern DriveController::catchLine(int power, float serchWidth, float
 
     enum orientationPattern findLineOrientation = LEFT_PATTERN;
 
-    //! 【TODO】線がどちら側にあるかを判定
-
     //! ラインを探す前の向きを覚えておく
     float beforeDirection = directionTotal;
 
     //! 左方向を探す
     jitteryMovementFromCoordinate(power, 0 , 0 , 0, -serchWidth/2, searchHeight);
 
+    //! 左方向を探し終えるまでに向いた向き
     float leftMovedDirection =shortestMoveDirection(directionTotal, beforeDirection);
 
     //! 途中で黒線がある通知が来ればストップさせる

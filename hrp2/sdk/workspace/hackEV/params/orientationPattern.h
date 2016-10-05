@@ -14,5 +14,6 @@ enum orientationPattern {
     LEFT_PATTERN = 0,
     RIGHT_PATTERN,
     UP_PATTERN,
-    DOWN_PATTERN
+    DOWN_PATTERN,
+    NONE_PATTERN
 };
