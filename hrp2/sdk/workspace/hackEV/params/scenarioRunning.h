@@ -124,10 +124,7 @@ extern const scenario_running run_scenario_curve_90[5];
 //! 検証用シナリオ(Lコースをトレースせずに走る)
 extern const scenario_running run_scenario_LCource_Try[8];
 
-<<<<<<< HEAD
 //! 検証用(ラインを使って向きを整える)
 extern const scenario_running correct_direction_line[3];
-=======
 //! 自己位置推定Positionの検証用
 extern const scenario_running run_scenario_test_position[3];
->>>>>>> issues/linehukki
