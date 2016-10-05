@@ -713,6 +713,17 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
         targetDirection = -270 - deg;
     }
 
+    //! 回転量が最小となる回転角度を返す
+    return shortestMoveDirection(targetDirection, startDirection);
+}
+
+/**
+ * @brief   2つの角度で最小となる回転量を算出
+ * @param   targetDirection  ターゲット角度
+ * @param   startDirection 初期角度
+ * @return  
+ */
+float DriveController::shortestMoveDirection(float targetDirection, float startDirection){
     //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
     if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
     {
@@ -760,7 +771,7 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
     
     //! 目標の座標の向きまでその場回転
-    scenario_running pinWheelScenario={5, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    scenario_running pinWheelScenario={power/2, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
     
     run(pinWheelScenario);
 
@@ -1145,4 +1156,41 @@ void DriveController::setEnabled(bool _enabled /*= true*/)
 bool DriveController::isEnabled()
 {
     return  enabled;
+}
+
+/**
+ *  @param ラインを掴む
+ *  @return なし
+*/
+void DriveController::catchLine(float serchWidth, float searchHeight){
+
+    //! 復帰前の向きを覚えておく
+    float beforeDirection = directionTotal;
+
+    //! 左方向
+    jitteryMovementFromCoordinate(30, 0 , 0 , 0, -serchWidth/2, -searchHeight/2);
+
+    //! 途中で黒線がある通知が来ればストップさせる
+
+    //! 右方向
+    jitteryMovementFromCoordinate(30, 0 , 0 , 0, serchWidth, searchHeight);
+
+    //! 向きを直す
+    rotateAbsolutelyDirection(20 ,beforeDirection);
+}
+
+/**
+ *  @param 向きを絶対指定する（相対指定ではなく）
+ * @param   [in]    power   回転パワー
+ * @param   [in]    AbsolutelyTargetDirection   あわせたい向きの指定（絶対指定）
+ *  @return なし
+*/
+void DriveController::rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection){
+    
+    float moveDirection = shortestMoveDirection(AbsolutelyTargetDirection, directionTotal);
+    
+    //! 目標の座標の向きまでその場回転
+    scenario_running pinWheelScenario={power, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    
+    run(pinWheelScenario);
 }

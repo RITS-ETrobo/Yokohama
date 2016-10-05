@@ -62,6 +62,9 @@ protected:
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+    virtual float shortestMoveDirection(float targetDirection, float startDirection);
+    virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
+    virtual void catchLine(float serchWidth, float searchHeight);
 
 private:
     void pinWheel(int power, float degree);
