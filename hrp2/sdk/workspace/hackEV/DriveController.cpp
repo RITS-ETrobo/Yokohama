@@ -1225,7 +1225,7 @@ void DriveController::catchLine(float serchWidth, float searchHeight){
     float beforeDirection = directionTotal;
 
     //! 左方向
-    jitteryMovementFromCoordinate(30, 0 , 0 , 0, -serchWidth/2, -searchHeight/2);
+    jitteryMovementFromCoordinate(30, 0 , 0 , 0, -serchWidth/2, searchHeight);
 
     //! 途中で黒線がある通知が来ればストップさせる
 
