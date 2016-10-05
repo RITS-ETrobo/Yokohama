@@ -34,6 +34,7 @@ DriveController::DriveController()
     , positionTargetYLast(0.0F)
     , initialized(false)
     , enabled(false)
+    , lastColor(COLOR_NONE)
 {
 }
 
@@ -51,6 +52,9 @@ bool DriveController::initialize()
         directionTotal = 0.0F;
         distanceTotal = 0.0F;
         lastTime = 0;
+        if (colorSensorController) {
+            lastColor = colorSensorController->getColorID();
+        }
     }
 
     //  シナリオごとに初期化する
@@ -1117,6 +1121,17 @@ void DriveController::updatePosition()
     record.distanceDelta = distanceDelta;
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
+
+    if (colorSensorController) {
+        uint8_t currentColor = colorSensorController->getColorID();
+        if (lastColor != currentColor) {
+            lastColor = currentColor;
+            if (logger) {
+                //  前回と色が違った時は、ログに出力する
+                logger->addLogInt(LOG_TYPE_COLOR, currentColor);
+            }
+        }
+    }
 
     if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
