@@ -14,7 +14,7 @@ class TestColorSensorController : public ::testing::Test {
 protected:
     virtual void SetUp()
     {
-        colorSensorController = new ColorSensorController((sensor_port_t)1/*EV3_SENSOR_COLOR*/);
+        colorSensorController = new ColorSensorController(EV3_PORT_2);
         colorSensorController->initialize();
     };
 
