@@ -68,9 +68,9 @@ colorid_t ColorSensorController::getColorID()
     }
 
     //色判定
-    uint8_t red = 0;
-    uint8_t green = 0;
-    uint8_t blue = 0;
+    double red = 0.0F;
+    double green = 0.0F;
+    double blue = 0.0F;
     correctColor(&colorRGB, &red, &green, &blue);
 
     //色相値計算
@@ -98,15 +98,15 @@ colorid_t ColorSensorController::getColorID()
 
 /**
  * @brief   色相値を求める
- * @param   red RGBでの赤の値
- * @param   green   RGBでの緑の値
- * @param   blue    RGBでの青の値
+ * @param   red RGBでの赤の割合
+ * @param   green   RGBでの緑の割合
+ * @param   blue    RGBでの青の割合
  * @return  色相値
 */
-double ColorSensorController::getHue(uint8_t red, uint8_t green, uint8_t blue)
+double ColorSensorController::getHue(double red, double green, double blue)
 {
-    uint8_t max = getMaximumValue(red, green, blue);
-    uint8_t min = getMinimumValue(red, green, blue);
+    double max = getMaximumValue(red, green, blue);
+    double min = getMinimumValue(red, green, blue);
     double  hue = (float)(max - min);
     if (hue > 0.0f) {
         if (red - 0.0001f < max && max < red + 0.0001f) {
@@ -153,35 +153,38 @@ std::string ColorSensorController::getColorName(colorid_t color_id)
 */
 rgb_raw_t ColorSensorController::getColorRGBraw()
 {
-    rgb_raw_t colorRGB;
+    rgb_raw_t   colorRGB;
+    memset(&colorRGB, '\0', sizeof(rgb_raw_t));
+
+#ifndef EV3_UNITTEST
     ev3_color_sensor_get_rgb_raw(port, &colorRGB);
-    return colorRGB;
+#endif  //  EV3_UNITTEST
+
+    return  colorRGB;
 }
 
 /**
  * @brief   輝度を取得 http://www.dinop.com/vc/image_gray_scale.html
- * @param   red RGBでの赤の値
- * @param   green   RGBでの緑の値
- * @param   blue    RGBでの青の値
+ * @param   red RGBでの赤の割合
+ * @param   green   RGBでの緑の割合
+ * @param   blue    RGBでの青の割合
  * @return  輝度
 */
-uint8_t ColorSensorController::getBrightness(uint8_t red, uint8_t green, uint8_t blue)
+double ColorSensorController::getBrightness(double red, double green, double blue)
 {
-    return  (uint8_t)((77 * red + 150 * green + 29 * blue) >> 8);
+    return  (double)(77 * red + 150 * green + 29 * blue);
 }
 
 /**
  * @brief   輝度を取得 http://www.dinop.com/vc/image_gray_scale.html
- * @param   red RGBでの赤の値
- * @param   green   RGBでの緑の値
- * @param   blue    RGBでの青の値
+ * @param   colorRGB    カラーセンサーから読み取った値
  * @return  輝度
 */
-uint8_t ColorSensorController::getBrightness(rgb_raw_t *colorRGB)
+double ColorSensorController::getBrightness(rgb_raw_t *colorRGB)
 {
-    uint8_t redCorrected = 0;
-    uint8_t greenCorrected = 0;
-    uint8_t blueCorrected = 0;
+    double redCorrected = 0;
+    double greenCorrected = 0;
+    double blueCorrected = 0;
 
     correctColor(colorRGB, &redCorrected, &greenCorrected, &blueCorrected);
     return  getBrightness(redCorrected, greenCorrected, blueCorrected);
@@ -189,14 +192,14 @@ uint8_t ColorSensorController::getBrightness(rgb_raw_t *colorRGB)
 /**
  * @brief   255超えの数値を255までに収める
  * @param   colorRGB    カラーセンサーから読み取った値
- * @param   red RGBでの赤の値
- * @param   green   RGBでの緑の値
- * @param   blue    RGBでの青の値
+ * @param   red RGBでの赤の割合
+ * @param   green   RGBでの緑の割合
+ * @param   blue    RGBでの青の割合
  * @return  輝度
 */
-void ColorSensorController::correctColor(rgb_raw_t *colorRGB, uint8_t *redCorrected, uint8_t *greenCorrected, uint8_t *blueCorrected)
+void ColorSensorController::correctColor(rgb_raw_t *colorRGB, double *redCorrected, double *greenCorrected, double *blueCorrected)
 {
-    *redCorrected = (uint8_t)((colorRGB->r > 255.0f) ? 1.0f : (colorRGB->r / 255.0f)); // = colorRGB->r / (double)maxInt;
-    *greenCorrected = (uint8_t)((colorRGB->g > 255.0f) ? 1.0f : (colorRGB->g / 255.0f)); // = colorRGB->g / (double)maxInt;
-    *blueCorrected = (uint8_t)((colorRGB->b > 255.0f) ? 1.0f : (colorRGB->b / 255.0f)); // = colorRGB->b / (double)maxInt;
+    *redCorrected = (colorRGB->r > 255.0f) ? 1.0f : (colorRGB->r / 255.0f); // = colorRGB->r / (double)maxInt;
+    *greenCorrected = (colorRGB->g > 255.0f) ? 1.0f : (colorRGB->g / 255.0f); // = colorRGB->g / (double)maxInt;
+    *blueCorrected = (colorRGB->b > 255.0f) ? 1.0f : (colorRGB->b / 255.0f); // = colorRGB->b / (double)maxInt;
 }

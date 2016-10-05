@@ -16,13 +16,13 @@ public:
     virtual std::string getColorName();
     virtual std::string getColorName(colorid_t color);
     virtual rgb_raw_t getColorRGBraw();
-    virtual void correctColor(rgb_raw_t *colorRGB, uint8_t *redCorrected, uint8_t *greenCorrected, uint8_t *blueCorrected);
-    virtual uint8_t getBrightness(uint8_t red, uint8_t green, uint8_t blue);
-    virtual uint8_t getBrightness(rgb_raw_t *colorRGB);
+    virtual void correctColor(rgb_raw_t *colorRGB, double *redCorrected, double *greenCorrected, double *blueCorrected);
+    virtual double getBrightness(double red, double green, double blue);
+    virtual double getBrightness(rgb_raw_t *colorRGB);
 
 private:
     void addColorMap(colorid_t color_id, std::string color_name);
-    double getHue(uint8_t red, uint8_t green, uint8_t blue);
+    double getHue(double red, double green, double blue);
 
     //! 色情報
     std::map<colorid_t, std::string>    COLOR_NAME_MAP;
