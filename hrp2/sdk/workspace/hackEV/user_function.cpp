@@ -91,9 +91,9 @@ float degree2radian(float degree)
  * @param[in]   value3  値3
  * @return  最小値
  */
-uint8_t getMinimumValue(uint8_t value1, uint8_t value2, uint8_t value3)
+double getMinimumValue(double value1, double value2, double value3)
 {
-    uint8_t minimumValue = (value1 < value2) ? value1 : value2;
+    double minimumValue = (value1 < value2) ? value1 : value2;
     minimumValue = (minimumValue < value3) ? minimumValue : value3;
 
     return  minimumValue;
@@ -106,9 +106,9 @@ uint8_t getMinimumValue(uint8_t value1, uint8_t value2, uint8_t value3)
  * @param[in]   value3  値3
  * @return  最大値
  */
-uint8_t getMaximumValue(uint8_t value1, uint8_t value2, uint8_t value3)
+double getMaximumValue(double value1, double value2, double value3)
 {
-    uint8_t maximumValue = (value1 > value2) ? value1 : value2;
+    double maximumValue = (value1 > value2) ? value1 : value2;
     maximumValue = (maximumValue > value3) ? maximumValue : value3;
 
     return  value3;
