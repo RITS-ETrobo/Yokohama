@@ -21,7 +21,7 @@ ColorSensorController::ColorSensorController(sensor_port_t _port)
  * 
  * @return  なし
 */
-void ColorSensorController::addColorMap(colorid_t color_id, std::string color_name)
+void ColorSensorController::addColorMap(uint8_t color_id, std::string color_name)
 {
     COLOR_NAME_MAP[color_id] = color_name;
 }
@@ -50,7 +50,7 @@ void ColorSensorController::initialize() {
  * @return  取得したカラーのID
  *          issues/811にて、RED, GREEN, BLUE, YELLOW, BLACK, WHITE のいずれかを返すように変更する。
 */
-colorid_t ColorSensorController::getColorID()
+uint8_t ColorSensorController::getColorID()
 {
     //'HSV色空間'について、wikipediaの項目を参考にした
     rgb_raw_t colorRGB = getColorRGBraw();
@@ -60,11 +60,11 @@ colorid_t ColorSensorController::getColorID()
 
     //白黒判定
     if (BORDER_WHITE_MIN < minimumValue) { //白判定
-        return  COLOR_WHITE;
+        return  (uint8_t)COLOR_WHITE;
     }
 
     if (maximumValue < BORDER_BLACK_MAX) { //黒判定
-        return  COLOR_BLACK;
+        return  (uint8_t)COLOR_BLACK;
     }
 
     //色判定
@@ -78,22 +78,22 @@ colorid_t ColorSensorController::getColorID()
 
     //色相値から色判定
     if (hue < BORDER_RED_YELLOW || BORDER_BLUE_RED <= hue) {
-        return  COLOR_RED;
+        return  (uint8_t)COLOR_RED;
     }
 
     if (hue < BORDER_YELLOW_GREEN) {
-        return  COLOR_YELLOW;
+        return  (uint8_t)COLOR_YELLOW;
     }
 
     if (hue < BORDER_GREEN_BLUE) {
-        return  COLOR_GREEN;
+        return  (uint8_t)COLOR_GREEN;
     }
 
     if (hue < BORDER_BLUE_RED) {
-        return  COLOR_BLUE;
+        return  (uint8_t)COLOR_BLUE;
     }
 
-    return  COLOR_NONE;
+    return  (uint8_t)COLOR_NONE;
 }
 
 /**
@@ -133,7 +133,7 @@ double ColorSensorController::getHue(double red, double green, double blue)
 */
 std::string ColorSensorController::getColorName()
 {
-    colorid_t   color = getColorID();
+    uint8_t color = getColorID();
     return  getColorName(color);
 }
 
@@ -142,7 +142,7 @@ std::string ColorSensorController::getColorName()
  * @param   color_id    色のID
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(colorid_t color_id)
+std::string ColorSensorController::getColorName(uint8_t color_id)
 {
     return  COLOR_NAME_MAP[color_id];
 }
