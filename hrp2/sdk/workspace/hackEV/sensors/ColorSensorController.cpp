@@ -2,6 +2,7 @@
  * @file    ColorSensorController.cpp
  * @brief   カラーセンサーを制御する
  */
+#include <string.h>
 #include "ColorSensorController.h"
 #include "user_function.h"
 
