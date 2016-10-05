@@ -6,6 +6,7 @@
 
 #include "runPattern.h"
 #include "stopCondition.h"
+#include "product.h"
 
 /**
  * @struct scenario_running
@@ -32,6 +33,9 @@ typedef struct {
 
     //! 停止条件とするもの
     enum stopCondition stopConditionPattern;
+
+    //! 停止条件カラー(COLOR_NONEが設定されている場合は停止判定しない)
+    uint8_t stopColorID;
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）

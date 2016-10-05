@@ -29,7 +29,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
-    virtual void catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -45,7 +45,7 @@ protected:
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
     virtual bool correctDirectionByLine(int power, orientationPattern findLineOrientation);
-    virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY);
+    virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY, uint8_t stopColorID=COLOR_NONE);
     virtual float distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY);
     virtual float directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY);
 
@@ -71,7 +71,9 @@ protected:
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
-    
+    virtual bool judgeStopColor(uint8_t targetColor);
+    virtual bool stopByColor(scenario_running scenario);
+
 private:
     void pinWheel(int power, float degree);
     void straightRun(int power);
@@ -136,6 +138,9 @@ private:
 
     //! 前回の色
     uint8_t lastColor;
+
+    //! 指定したカラーをみつけたかどうか
+    bool foundColor;
 };
 
 //! 加速はじめのパワー
