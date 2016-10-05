@@ -35,6 +35,7 @@ DriveController::DriveController()
     , positionTargetYLast(0.0F)
     , initialized(false)
     , enabled(false)
+    , lastColor(COLOR_NONE)
 {
 }
 
@@ -52,6 +53,9 @@ bool DriveController::initialize()
         directionTotal = 0.0F;
         distanceTotal = 0.0F;
         lastTime = 0;
+        if (colorSensorController) {
+            lastColor = colorSensorController->getColorID();
+        }
     }
 
     //  シナリオごとに初期化する
@@ -216,8 +220,26 @@ bool DriveController::runAsPattern(scenario_running scenario)
 {
     switch (scenario.pattern) {
     case PINWHEEL:
-        //! その場回転
-        pinWheel(scenario.power, scenario.direction);
+        {
+            bool softAcceleration = false;
+            bool softDeceleration = false;
+
+            //! 両モーターともに停止している場合は、加速処理を行うフラグを有効
+            if(motorWheelRight->getCurrentPower() == 0 && motorWheelLeft->getCurrentPower() == 0){
+                softAcceleration = true;
+            }
+
+            //! シナリオが停止させる条件を持っている場合は、減速処理を行うフラグを有効
+            if(scenario.stop){
+                softDeceleration = true;
+            }
+
+            //! 急発進、急停止しないためのパワー処理(角度はマイナスが入ることもあるので、絶対値の目標をとる)
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60, softAcceleration, softDeceleration);
+
+            //! その場回転
+            pinWheel(softAccelPower, scenario.direction);
+        }
         break;
 
     case SWITCH_SIDE_RIGHT:
@@ -254,8 +276,26 @@ bool DriveController::runAsPattern(scenario_running scenario)
         return true;
 
     default:
-        //! ライントレースせずに、直進走行する
-        straightRun(scenario.power);
+        {
+            bool softAcceleration = false;
+            bool softDeceleration = false;
+
+            //! 両モーターともに停止している場合は、加速処理を行うフラグを有効
+            if(motorWheelRight->getCurrentPower() == 0 && motorWheelLeft->getCurrentPower() == 0){
+                softAcceleration = true;
+            }
+
+            //! シナリオが停止させる条件を持っている場合は、減速処理を行うフラグを有効
+            if(scenario.stop){
+                softDeceleration = true;
+            }
+
+            //! 急発進急加速しないためのパワーを取得
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20, softAcceleration, softDeceleration);
+            
+            //! ライントレースせずに、直進走行する
+            straightRun(softAccelPower);
+        }
         break;
     }
 
@@ -269,8 +309,6 @@ bool DriveController::runAsPattern(scenario_running scenario)
 */
 void DriveController::initializeAsPattern(scenario_running scenario)
 {
-    lastPowerLeft = scenario.power;
-    lastPowerRight = scenario.power;
 
     switch (scenario.pattern) {
     case PINWHEEL:
@@ -290,6 +328,7 @@ void DriveController::initializeAsPattern(scenario_running scenario)
 
     default:
         //! ライントレースせずに、直進走行する
+
         break;
     }
 }
@@ -805,8 +844,8 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     float currentDirection = 0.0F;
     speedCalculator100ms->getPosition(&currentPositionREAL, &currentPositionMAP, &currentDirection);
 
-    writeFloatLCD(currentPositionREAL.x);
-    writeFloatLCD(currentPositionREAL.y);
+    // writeFloatLCD(currentPositionREAL.x);
+    // writeFloatLCD(currentPositionREAL.y);
 
     //! 滑らか走行
     //smoothMovementFromCoordinate(_coordinateScenario);
@@ -1139,6 +1178,17 @@ void DriveController::updatePosition()
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
 
+    if (colorSensorController) {
+        uint8_t currentColor = colorSensorController->getColorID();
+        if (lastColor != currentColor) {
+            lastColor = currentColor;
+            if (logger) {
+                //  前回と色が違った時は、ログに出力する
+                logger->addLogInt(LOG_TYPE_COLOR, currentColor);
+            }
+        }
+    }
+
     if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
         //logger->addLogFloat(LOG_TYPE_DISTANCE, distanceDelta, true);
@@ -1237,6 +1287,110 @@ bool DriveController::correctDirectionByLine(int power, orientationPattern findL
 
 
     return true;
+}
+
+/**
+ * @brief   開始直後の急加速、目的距離で急停止しない処理(走行だけでなく回転でも使用する)
+ * @param   [in]    power   シナリオで指定されたパワー
+ * @param   [in]    stopValue   停止する値
+ * @param   [in]    currentValue   現在の値
+ * @param   [in]    accelerationRange   加速を行う範囲
+ * @param   [in]    decelerationRange   減速を行う範囲
+ * @param   [in]    softAcceleration   加速処理を行うフラグ
+ * @param   [in]    softDeceleration   減速処理を行うフラグ
+ * @return  なし
+ */
+int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration){
+
+    //! 現在の値と停止値は絶対値で計算を行う
+	currentValue = fabsf(currentValue);
+    stopValue = fabsf(stopValue);
+
+	int softAccelPower = power;
+
+	if(stopValue - accelerationRange<0){
+		//! 万が一、加速範囲よりも停止値が小さい場合は、加速範囲を停止距離の一定の割合で再定義
+		accelerationRange = stopValue*rangeRate;
+	}
+
+    softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
+
+
+	if(stopValue - decelerationRange<0){
+		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の一定の割合で再定義
+		decelerationRange = stopValue*rangeRate;
+	}
+
+    softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+
+	return softAccelPower;
+}
+
+/**
+ * @brief   減速処理のための、現在距離に対するパワー取得する
+ * @param   [in]    finishPower   減速後最終のパワー
+ * @param   [in]    runPower   走行しているときのパワー
+ * @param   [in]    stopValue   ストップする値
+ * @param   [in]    DecelerationRangeFromStopValue   ストップする箇所からどれだけ前を減速範囲とするか
+ * @param   [in]    currentValue   現在の値
+ * @return  なし
+ */
+int DriveController::getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration){
+
+    if(softDeceleration == false){
+        return runPower;
+    }
+
+	float beginDecelerationValue = stopValue-DecelerationRangeFromStopValue;
+
+	//! 現在の距離が減速開始以下であればまだ減速しない
+	if(currentValue < beginDecelerationValue){
+		return runPower;
+	}
+
+	float slop = (runPower-finishPower)/(pow(beginDecelerationValue,2)-pow(stopValue,2));
+	float Intercept = runPower - slop*pow(beginDecelerationValue,2);
+	float decelerationPower = slop*pow(currentValue,2) + Intercept;
+
+
+	//! もし最小値よりも小さくなってしまった場合は、最小値にする。
+	if(decelerationPower<finishPower){
+		return finishPower;
+	}
+
+	return decelerationPower;
+}
+
+/**
+ * @brief   加速処理のための、現在距離に対するパワー取得する
+ * @param   [in]    startPower   加速始めのパワー
+ * @param   [in]    runPower   走行しているときのパワー
+ * @param   [in]    accelerationRange   加速範囲（どのくらいで指定したrunPowerに到達するか）
+ * @param   [in]    currentValue   現在の値
+ * @return  なし
+ */
+int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration){
+	
+    //! 加速処理を行うフラグがなければ加速パワー調整を行わない
+    if(softAcceleration == false){
+        return runPower;
+    }
+
+	//! 現在の距離が加速距離を進んだあとであればもう加速しない
+	if(currentValue > accelerationRange){
+		return runPower;
+	}
+	
+	float slop=(runPower-startPower)/pow(accelerationRange,2);
+	float Intercept=startPower;
+	float accelerationPower=slop*pow(currentValue,2) + Intercept;
+
+	//! もし指定された最大パワーよりも大きくなってしまったときは最大値にする
+	if(accelerationPower > runPower){
+		return runPower;
+	}
+
+	return accelerationPower;
 }
 
 /**

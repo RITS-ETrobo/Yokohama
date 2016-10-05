@@ -376,8 +376,10 @@ const scenario_running correct_direction_line[3] = {
 };
 
 //! 自己位置推定Positionの検証用
-const scenario_running run_scenario_test_position[3] = {
-    {30, 20.0F, -1, NOTRACE_STRAIGHT, true,0, DISTANCE_STOP},
-    {5, 0.0F, 90, PINWHEEL, true,0, DIRECTION_STOP},
-    {30, 20.0F, -1, NOTRACE_STRAIGHT, true,0, DISTANCE_STOP}
+const scenario_running run_scenario_test_position[5] = {
+    {50, 50.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP},
+    {50, 0.0F, 360, PINWHEEL, true,0, DIRECTION_STOP},
+    {50, 5.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP},
+    {50, 0.0F, 90, PINWHEEL, true,0, DIRECTION_STOP},
+    {10, 0.0F, 50, PINWHEEL, true,0, DIRECTION_STOP}
 };
