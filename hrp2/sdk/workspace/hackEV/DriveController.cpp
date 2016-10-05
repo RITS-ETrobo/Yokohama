@@ -34,6 +34,8 @@ DriveController::DriveController()
     , positionTargetYLast(0.0F)
     , initialized(false)
     , enabled(false)
+    , colorSensorController(NULL)
+    , currentColorID(COLOR_NONE)
 {
 }
 
@@ -46,12 +48,7 @@ bool DriveController::initialize()
 {
     ev3_speaker_play_tone(NOTE_E4, 100);
 
-    if (initialized == false) {
-        //  最初だけ初期化する
-        directionTotal = 0.0F;
-        distanceTotal = 0.0F;
-        lastTime = 0;
-    }
+
 
     //  シナリオごとに初期化する
     directionScenario = 0.0F;
@@ -68,6 +65,9 @@ bool DriveController::initialize()
     if (speedCalculator100ms == NULL) {
         speedCalculator100ms = new SpeedCalculator(100);
     }
+    if(colorSensorController == NULL){
+        colorSensorController =new ColorSensorController(EV3_SENSOR_COLOR);
+    }
 
     if (!motorWheelLeft || !motorWheelRight || !speedCalculator100ms) {
         return  false;
@@ -76,6 +76,15 @@ bool DriveController::initialize()
     motorWheelLeft->initialize();
     motorWheelRight->initialize();
     speedCalculator100ms->initialize();
+
+    if (initialized == false) {
+        //  最初だけ初期化する
+        directionTotal = 0.0F;
+        distanceTotal = 0.0F;
+        lastTime = 0;
+
+        colorSensorController->initialize();//カラーセンサーも最初だけでいいはず
+    }
 
     initialized = true;
     return  true;
@@ -1117,6 +1126,8 @@ void DriveController::updatePosition()
     record.distanceDelta = distanceDelta;
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
+
+    currentColorID = colorSensorController->getColorID();
 
     if (logger) {
         //ログが多くなり過ぎて、異常終了する為、コメント
