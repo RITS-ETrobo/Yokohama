@@ -8,6 +8,8 @@
 
 ColorSensorController::ColorSensorController(sensor_port_t _port)
     : port(_port)
+    , BORDER_GRAY_MIN(0.1 * 255)
+    , BORDER_GRAY_MAX(0.3 * 255)
     , BORDER_WHITE_MIN(100.0F)
     , BORDER_BLACK_MAX(30.0F)
     , BORDER_RED_YELLOW(0.08333F)
@@ -42,22 +44,31 @@ void ColorSensorController::initialize() {
     addColorMap(COLOR_RED, "RED");
     addColorMap(COLOR_WHITE, "WHITE");
     addColorMap(COLOR_BROWN, "BROWN");
+    addColorMap(COLOR_GRAY, "GRAY");
 }
 
 /**
- * @brief カラーセンサーで検知した色のIDを取得
+ * @brief   カラーセンサーで検知した色のIDを取得
+ * @param   checkGray   灰色を検出するかどうか
  *
  * カラー名判定の種類 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
- * @return  取得したカラーのID
- *          issues/811にて、RED, GREEN, BLUE, YELLOW, BLACK, WHITE のいずれかを返すように変更する。
+ * @return  取得したカラーのID(RED, GREEN, BLUE, YELLOW, BLACK, WHITE, GRAY, NONE のいずれか)
 */
-uint8_t ColorSensorController::getColorID()
+uint8_t ColorSensorController::getColorID(bool checkGray /*= false*/)
 {
     //'HSV色空間'について、wikipediaの項目を参考にした
     rgb_raw_t colorRGB = getColorRGBraw();
 
     double  maximumValue = getMaximumValue(colorRGB.r, colorRGB.g, colorRGB.b);
     double  minimumValue = getMinimumValue(colorRGB.r, colorRGB.g, colorRGB.b);
+
+    if (checkGray) {
+        double  brightness = getBrightness(&colorRGB);
+        if ((BORDER_GRAY_MIN <= brightness) && (brightness <= BORDER_GRAY_MAX)) {
+            //  灰
+            return  (uint8_t)COLOR_GRAY;
+        }
+    }
 
     //白黒判定
     if (BORDER_WHITE_MIN < minimumValue) { //白判定
