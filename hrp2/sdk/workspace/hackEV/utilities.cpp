@@ -165,15 +165,15 @@ void viewColor()
 
     writeStringLCD(" ");
 
-    bool checkGray = (bool)((countViewColor % 2) == 0);
+    bool checkGray = (bool)((countViewColor % 2) != 0);
+    rgb_raw_t colorRGB = colorSensorController->getColorRGBraw();
 
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%s", colorSensorController->getColorName(checkGray).c_str());
+    sprintf(message, "%s", colorSensorController->getColorName(&colorRGB, checkGray).c_str());
     writeStringLCD(message);
 
     //! RGB値を取得
-    rgb_raw_t colorRGB = colorSensorController->getColorRGBraw();
 
     //! 取得したRGB値をLCDに表示させる
     memset(message, '\0', sizeof(message));
