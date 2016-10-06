@@ -12,9 +12,9 @@ class ColorSensorController
 public:
     explicit ColorSensorController(sensor_port_t _port);
     virtual void initialize();
-    virtual uint8_t getColorID(bool checkGray = true);
-    virtual std::string getColorName();
-    virtual std::string getColorName(uint8_t color_id);
+    virtual uint8_t getColorID(bool checkGray = false);
+    virtual std::string getColorName(bool checkGray = false);
+    virtual std::string getColorNameByID(uint8_t color_id);
     virtual rgb_raw_t getColorRGBraw();
     virtual void correctColor(rgb_raw_t *colorRGB, double *redCorrected, double *greenCorrected, double *blueCorrected);
     virtual double getBrightness(double red, double green, double blue);

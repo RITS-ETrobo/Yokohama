@@ -18,6 +18,9 @@ int white = 0;
 int black = 0;
 //@}
 
+//! viewColorの実行回数
+int countViewColor = 0;
+
 /**
  * @brief   LCDに数値を表示させる
  * 
@@ -162,9 +165,11 @@ void viewColor()
 
     writeStringLCD(" ");
 
+    bool checkGray = (bool)((countViewColor % 2) == 0);
+
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%s", colorSensorController->getColorName().c_str());
+    sprintf(message, "%s", colorSensorController->getColorName(checkGray).c_str());
     writeStringLCD(message);
 
     //! RGB値を取得
@@ -183,7 +188,12 @@ void viewColor()
     sprintf(message, " Blue      : %d", colorRGB.b);
     writeStringLCD(message);
 
-    memset(message, '\0', sizeof(message));
-    sprintf(message, " Brightness: %d", (int)colorSensorController->getBrightness(&colorRGB));
-    writeStringLCD(message);
+
+    if (checkGray) {
+        memset(message, '\0', sizeof(message));
+        sprintf(message, " Brightness: %d", (int)colorSensorController->getBrightness(&colorRGB));
+        writeStringLCD(message);
+    }
+
+    countViewColor++;
 }

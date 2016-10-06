@@ -143,10 +143,10 @@ double ColorSensorController::getHue(double red, double green, double blue)
  * @brief   カラーセンサーで検知した色の名前を取得する
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName()
+std::string ColorSensorController::getColorName(bool checkGray /*= false*/)
 {
-    uint8_t color = getColorID();
-    return  getColorName(color);
+    uint8_t color = getColorID(checkGray);
+    return  getColorNameByID(color);
 }
 
 /**
@@ -154,7 +154,7 @@ std::string ColorSensorController::getColorName()
  * @param   color_id    色のID
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(uint8_t color_id)
+std::string ColorSensorController::getColorNameByID(uint8_t color_id)
 {
     return  COLOR_NAME_MAP[color_id];
 }
