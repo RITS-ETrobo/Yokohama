@@ -26,3 +26,11 @@ TEST_F(TestColorSensorController, getBrightness_rgbRAW)
     double  brightness = colorSensorController->getBrightness(&colorRGB);
     std::cout << "brightness = " << brightness << std::endl;
 }
+
+TEST_F(TestColorSensorController, getColorName)
+{
+    checkColor("YELLOW", 254, 238, 31);
+    checkColor("RED", 215, 16, 6);
+    checkColor("GREEN", 23, 91, 17);
+    checkColor("BLUE", 16, 51, 78);
+}
