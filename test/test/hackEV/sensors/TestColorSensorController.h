@@ -5,7 +5,6 @@
 #pragma once
 
 #include "test.h"
-#include <iostream>
 
 #include "ColorSensorController.h"
 
@@ -20,6 +19,15 @@ protected:
 
     virtual void TearDown()
     {
+    };
+
+    void checkColor(std::string colorName, uint16_t red, uint16_t green, uint16_t blue)
+    {
+        rgb_raw_t   colorRGB;
+        colorRGB.r = red;
+        colorRGB.g = green;
+        colorRGB.b = blue;
+        EXPECT_EQ(colorName, colorSensorController->getColorName(&colorRGB));
     };
 
     //! テスト対象クラスのインスタンス

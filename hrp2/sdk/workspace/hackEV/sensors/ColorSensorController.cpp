@@ -59,11 +59,24 @@ uint8_t ColorSensorController::getColorID(bool checkGray /*= false*/)
     //'HSV色空間'について、wikipediaの項目を参考にした
     rgb_raw_t colorRGB = getColorRGBraw();
 
-    double  maximumValue = getMaximumValue(colorRGB.r, colorRGB.g, colorRGB.b);
-    double  minimumValue = getMinimumValue(colorRGB.r, colorRGB.g, colorRGB.b);
+    return  getColorID(&colorRGB, checkGray);
+}
+
+/**
+ * @brief   カラーセンサーで検知した色のIDを取得
+ * @param   colorRGB    カラーセンサーで取得した値
+ * @param   checkGray   灰色を検出するかどうか
+ *
+ * カラー名判定の種類 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
+ * @return  取得したカラーのID(RED, GREEN, BLUE, YELLOW, BLACK, WHITE, GRAY, NONE のいずれか)
+*/
+uint8_t ColorSensorController::getColorID(rgb_raw_t *colorRGB, bool checkGray /*= false*/)
+{
+    double  maximumValue = getMaximumValue(colorRGB->r, colorRGB->g, colorRGB->b);
+    double  minimumValue = getMinimumValue(colorRGB->r, colorRGB->g, colorRGB->b);
 
     if (checkGray) {
-        double  brightness = getBrightness(&colorRGB);
+        double  brightness = getBrightness(colorRGB);
         if ((BORDER_GRAY_MIN <= brightness) && (brightness <= BORDER_GRAY_MAX)) {
             //  灰
             return  (uint8_t)COLOR_GRAY;
@@ -80,10 +93,10 @@ uint8_t ColorSensorController::getColorID(bool checkGray /*= false*/)
     }
 
     //色判定
-    double red = 0.0F;
-    double green = 0.0F;
-    double blue = 0.0F;
-    correctColor(&colorRGB, &red, &green, &blue);
+    double red = 0.0;
+    double green = 0.0;
+    double blue = 0.0;
+    correctColor(colorRGB, &red, &green, &blue);
 
     //色相値計算
     double hue = getHue(red, green, blue);
@@ -119,7 +132,7 @@ double ColorSensorController::getHue(double red, double green, double blue)
 {
     double max = getMaximumValue(red, green, blue);
     double min = getMinimumValue(red, green, blue);
-    double  hue = (float)(max - min);
+    double  hue = max - min;
     if (hue > 0.0f) {
         if (red - 0.0001f < max && max < red + 0.0001f) {
             hue = (green - blue) / hue;
@@ -141,6 +154,19 @@ double ColorSensorController::getHue(double red, double green, double blue)
 
 /**
  * @brief   カラーセンサーで検知した色の名前を取得する
+ * @param   colorRGB    カラーセンサーから読み取った値
+ * @param   checkGray   グレースケールかどうか
+ * @return  取得した色の名前
+*/
+std::string ColorSensorController::getColorName(rgb_raw_t *colorRGB, bool checkGray /*= false*/)
+{
+    uint8_t color = getColorID(colorRGB, checkGray);
+    return  getColorNameByID(color);
+}
+
+/**
+ * @brief   カラーセンサーで検知した色の名前を取得する
+ * @param   checkGray   グレースケールかどうか
  * @return  取得した色の名前
 */
 std::string ColorSensorController::getColorName(bool checkGray /*= false*/)
@@ -194,15 +220,15 @@ double ColorSensorController::getBrightness(double red, double green, double blu
 */
 double ColorSensorController::getBrightness(rgb_raw_t *colorRGB)
 {
-    double redCorrected = 0;
-    double greenCorrected = 0;
-    double blueCorrected = 0;
+    double redCorrected = 0.0;
+    double greenCorrected = 0.0;
+    double blueCorrected = 0.0;
 
     correctColor(colorRGB, &redCorrected, &greenCorrected, &blueCorrected);
     return  getBrightness(redCorrected, greenCorrected, blueCorrected);
 }
 /**
- * @brief   255超えの数値を255までに収める
+ * @brief   255超えの数値を255まででの割合に収める
  * @param   colorRGB    カラーセンサーから読み取った値
  * @param   red RGBでの赤の割合
  * @param   green   RGBでの緑の割合
