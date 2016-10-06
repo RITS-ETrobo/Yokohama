@@ -105,12 +105,9 @@ void start_LcourseRun()
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
-    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
-    for (;;) {
-        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
-            break;
-        }
-    }
+    //! キャリブレーションを終えたらタッチセンサーが押されるまで待機
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
 
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();

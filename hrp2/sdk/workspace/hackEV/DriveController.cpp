@@ -162,7 +162,7 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 {
     float   distanceDeltaLeft = motorWheelLeft->getDistanceDelta();
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
-    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD) * 180 / Pi;
+    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD_inCorrectFact) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
 }
 
@@ -567,7 +567,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     }
 
     //! 左右の速度比を算出
-    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD / (float)2)/(curvatureRadius + EV3_TREAD / (float)2);
+    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD_inCorrectFact / (float)2)/(curvatureRadius + EV3_TREAD_inCorrectFact / (float)2);
     int powerWheelA = 2 * power / (1 + 1 / PowerRatioForCurve);
     int powerWheelB = 2 * power / (1 + PowerRatioForCurve);
 
@@ -1314,12 +1314,20 @@ float DriveController::calibrateRun(int power, float realDistance){
     straightRun(power);
     
     //! タッチセンサーが押されるまで走る
+    for (;;) {
+        updatePosition();
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            stop();
+            break;
+        }
+    }
+
+    //! 再度押して終了
     while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
     while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
-    stop();
 
     //! タイヤ径の補正係数
-    float diaMetercorrectValue =  realDistance / distanceTotal;
+    float diaMetercorrectValue =  realDistance / distanceScenario;
     return diaMetercorrectValue;
 }
 
@@ -1336,12 +1344,20 @@ float DriveController::calibrateSpin(int power, float realDirection){
 
     pinWheel(power, 720);
     
-    //! タッチセンサーが押されたら止まる
+    //! タッチセンサーが押されるまで回転
+    for (;;) {
+        updatePosition();
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            stop();  
+            break;
+        }
+    }
+
+    //! 再度押して終了
     while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
     while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
-    stop();
 
     //! タイヤ径の補正係数
-    float treadCorrectValue =  realDirection / directionTotal;
+    float treadCorrectValue =  realDirection / directionScenario;
     return treadCorrectValue;
 }

@@ -77,7 +77,7 @@ ER MotorWheel::stop(bool_t brake /*= true*/)
 
 void MotorWheel::updateDistance()
 {
-    distance = Pi * EV3_WHEEL_DIAMETER * ev3_motor_get_counts(portMotor) / (float)360;
+    distance = Pi * EV3_WHEEL_DIAMETER_inCorrectFact * ev3_motor_get_counts(portMotor) / (float)360;
 }
 
 float MotorWheel::getDistance()

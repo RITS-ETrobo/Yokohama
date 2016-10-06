@@ -166,7 +166,7 @@ void CalibrateTREAD(){
         calibratedrive->initialize();
 
         //! トレッドの補正係数(回転の補正係数)
-        Tread_correctFactor = calibratedrive->calibrateSpin(2, RealDirectionForCalibrate);
+        Tread_correctFactor = calibratedrive->calibrateSpin(4, RealDirectionForCalibrate);
     }
     writeFloatLCD(Tread_correctFactor);
 
