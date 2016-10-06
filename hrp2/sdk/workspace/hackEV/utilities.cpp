@@ -135,7 +135,7 @@ void calibrateBW()
 }
 
 /**
- * @brief   タイヤ径のキャリブレーションを行う
+ * @brief   直進させてタイヤ径のキャリブレーションを行う
  * @return  なし
 */
 void CalibrateDIAMETER(){
@@ -149,6 +149,26 @@ void CalibrateDIAMETER(){
         Diameter_corerctFactor = calibratedrive->calibrateRun(5, RealDistanceStartLineToGreenArea);
     }
     writeFloatLCD(Diameter_corerctFactor);
+
+    delete calibratedrive;
+}
+
+
+/**
+ * @brief   回転させえタイヤトレッドのキャリブレーションを行う
+ * @return  なし
+*/
+void CalibrateTREAD(){
+    writeStringLCD("caliTREAD");
+    //! キャリブレーションのための走行（別でインスタンスしているのはここでの走行の情報を保持させたくないため）
+    DriveController* calibratedrive = new DriveController();
+    if (driveController) {
+        calibratedrive->initialize();
+
+        //! トレッドの補正係数(回転の補正係数)
+        Tread_correctFactor = calibratedrive->calibrateSpin(2, RealDirectionForCalibrate);
+    }
+    writeFloatLCD(Tread_correctFactor);
 
     delete calibratedrive;
 }

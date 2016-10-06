@@ -37,6 +37,10 @@ extern int black;
 
 //! スタート地点から後ろ側の緑ふちまでの距離
 const float RealDistanceStartLineToGreenArea = 51.14285714F;
+
+//! スタート地点から後ろ側の緑ふちまでの距離
+const float RealDirectionForCalibrate = 360.0F;
+
 //@}
 
 //  関数のプロトタイプ宣言
@@ -50,3 +54,4 @@ extern void confirmBattery(bool isOutputLog = false);
 extern void calibrateBW();
 extern void viewColor();
 extern void CalibrateDIAMETER();
+extern void CalibrateTREAD();

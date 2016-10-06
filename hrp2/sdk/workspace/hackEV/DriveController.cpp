@@ -1307,14 +1307,41 @@ bool DriveController::isEnabled()
  *  @return タイヤ径の補正係数
 */
 float DriveController::calibrateRun(int power, float realDistance){
-    
+    //! タッチセンサーが押されたら走る
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
     straightRun(power);
     
     //! タッチセンサーが押されるまで走る
     while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
     while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    stop();
 
     //! タイヤ径の補正係数
     float diaMetercorrectValue =  realDistance / distanceTotal;
     return diaMetercorrectValue;
+}
+
+/**
+ *  @param  キャリブレーション用の走行
+ *  実際に走行して現実の走行距離と走行体が推定した距離を比べて補正係数を算出する
+ *  @return タイヤ径の補正係数
+*/
+float DriveController::calibrateSpin(int power, float realDirection){
+    
+    //! タッチセンサーが押されたら回転
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    pinWheel(power, 720);
+    
+    //! タッチセンサーが押されたら止まる
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    stop();
+
+    //! タイヤ径の補正係数
+    float treadCorrectValue =  realDirection / directionTotal;
+    return treadCorrectValue;
 }

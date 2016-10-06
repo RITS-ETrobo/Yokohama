@@ -35,7 +35,7 @@ void initialize_run() {
 */
 void start_run()
 {
-    calibrateBW();
+    calibrateALL();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
     tslp_tsk(100);
@@ -66,7 +66,7 @@ void start_run()
 */
 void start_run_test()
 {
-    calibrateBW();
+    calibrateALL();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
@@ -101,7 +101,7 @@ void start_run_test()
 */
 void start_LcourseRun()
 {
-    calibrateBW();
+    calibrateALL();
 
     ev3_speaker_play_tone(NOTE_E6, 100);
 
@@ -167,4 +167,10 @@ void start_LcourseRun()
 
     gyroSensorController->setEnabledGyroSensor(false);
     driveController->setEnabled(false);
+}
+
+void calibrateALL(){
+    calibrateBW();
+    CalibrateDIAMETER();
+    CalibrateTREAD();
 }
