@@ -1307,5 +1307,54 @@ bool DriveController::isEnabled()
  *  @return 星とりを探しあてればtrue,探せなければfalse
 */
 bool DriveController::searchHOSHITORI(int power, float searchWidth){
+    for(;;){
 
+        float firstDirection = directionTotal;
+
+        //! 片側ずつ探してしらみつぶしで見つける
+        motorWheelRight->run(power);
+        motorWheelLeft->stop(true);
+
+        moveCount++;
+        for(;;){     
+            if(isAnyHOSHITORIcolor()){
+                stop();
+                return true;
+            }
+
+            if(){
+                break;
+            }
+        }
+
+        //! 右のみ動かす
+        motorWheelLeft->run(power);
+        motorWheelRight->stop(true);
+
+        for(;;){
+            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+            if(colorValue > (white - 5 -moveCount)){
+                stop();
+                break;
+            }
+        }
+
+        //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+        if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
+            break;
+        }
+    }
+}
+
+/**
+ *  @param  星とりのどれかの色が真下にある
+ *  @return あればtrue,なければfalse
+*/
+bool DriveController::isAnyHOSHITORIcolor(){
+    if(lastColor == COLOR_RED || lastColor == COLOR_YELLOW || lastColor == COLOR_GREEN || lastColor == COLOR_BLUE){
+        
+        //! 星とりの色としてセット
+        colorHOSHITORI = lastColor;
+        return true;
+    }
 }
