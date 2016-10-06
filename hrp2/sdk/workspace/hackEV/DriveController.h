@@ -28,7 +28,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
-    virtual bool searchHOSHITORI(int power, float searchWidth);
+    virtual bool searchHOSHITORI(int power, float searchDirection);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -66,6 +66,7 @@ protected:
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
+    virtual bool isAnyHOSHITORIcolor();
 
 private:
     void pinWheel(int power, float degree);

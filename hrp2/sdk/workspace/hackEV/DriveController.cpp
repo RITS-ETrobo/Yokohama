@@ -1306,10 +1306,15 @@ bool DriveController::isEnabled()
  *  @param  星とり探し
  *  @return 星とりを探しあてればtrue,探せなければfalse
 */
-bool DriveController::searchHOSHITORI(int power, float searchWidth){
-    for(;;){
+bool DriveController::searchHOSHITORI(int power, float searchDirection){
 
-        float firstDirection = directionTotal;
+    int moveCount = 0;
+    for(;;){
+        if(isAnyHOSHITORIcolor()){
+            stop();
+            return true;
+        }
+
 
         //! 片側ずつ探してしらみつぶしで見つける
         motorWheelRight->run(power);
@@ -1322,7 +1327,7 @@ bool DriveController::searchHOSHITORI(int power, float searchWidth){
                 return true;
             }
 
-            if(){
+            if(directionTotal > searchDirection){
                 break;
             }
         }
@@ -1332,16 +1337,19 @@ bool DriveController::searchHOSHITORI(int power, float searchWidth){
         motorWheelRight->stop(true);
 
         for(;;){
-            int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
-            if(colorValue > (white - 5 -moveCount)){
+            if(isAnyHOSHITORIcolor()){
                 stop();
+                return true;
+            }
+
+            if(directionTotal < -searchDirection){
                 break;
             }
         }
 
-        //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
-        if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
-            break;
+        //! 探す限界値
+        if(moveCount >10){
+            return false;
         }
     }
 }
