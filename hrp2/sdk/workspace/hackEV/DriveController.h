@@ -28,6 +28,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
+    virtual float calibrateRun(int power, float realDistance);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);

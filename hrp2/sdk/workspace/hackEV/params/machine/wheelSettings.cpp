@@ -13,7 +13,8 @@ const float EV3_WHEEL_DIAMETER = 8.2F;
 //! 左右のタイヤ間のトレッド[単位 : cm]
 const float EV3_TREAD = 13.25F;
 
+float Diameter_corerctFactor = 1.0F;
+
 float Tread_correctFactor = 1.0F;
 
-float Diameter_corerctFactor = 1.0F;
 //@}

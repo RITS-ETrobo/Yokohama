@@ -1300,3 +1300,21 @@ bool DriveController::isEnabled()
 {
     return  enabled;
 }
+
+/**
+ *  @param  キャリブレーション用の走行
+ *  実際に走行して現実の走行距離と走行体が推定した距離を比べて補正係数を算出する
+ *  @return タイヤ径の補正係数
+*/
+float DriveController::calibrateRun(int power, float realDistance){
+    
+    straightRun(power);
+    
+    //! タッチセンサーが押されるまで走る
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    //! タイヤ径の補正係数
+    float diaMetercorrectValue =  realDistance / distanceTotal;
+    return diaMetercorrectValue;
+}

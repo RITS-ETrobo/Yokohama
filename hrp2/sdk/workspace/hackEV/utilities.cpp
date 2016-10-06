@@ -6,6 +6,7 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "instances.h"
+#include "wheelSettings.h"
 
 std::map<runPattern, PID_PARAMETER> PID_MAP;
 
@@ -131,6 +132,25 @@ void calibrateBW()
         logger->addLogInt(LOG_TYPE_COLOR_WHITE, white);
         logger->addLogInt(LOG_TYPE_COLOR_BLACK, black);
     }
+}
+
+/**
+ * @brief   タイヤ径のキャリブレーションを行う
+ * @return  なし
+*/
+void CalibrateDIAMETER(){
+    writeStringLCD("caliDIA");
+    //! キャリブレーションのための走行（別でインスタンスしているのはここでの走行の情報を保持させたくないため）
+    DriveController* calibratedrive = new DriveController();
+    if (driveController) {
+        calibratedrive->initialize();
+
+        //! タイヤ径の補正係数(距離の補正係数)
+        Diameter_corerctFactor = calibratedrive->calibrateRun(5, RealDistanceStartLineToGreenArea);
+    }
+    writeFloatLCD(Diameter_corerctFactor);
+
+    delete calibratedrive;
 }
 
 /**
