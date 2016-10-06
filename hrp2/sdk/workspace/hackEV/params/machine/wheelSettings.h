@@ -20,8 +20,4 @@ extern const float EV3_TREAD;
 extern float Diameter_corerctFactor;
 
 extern float Tread_correctFactor;
-
-extern float EV3_WHEEL_DIAMETER_inCorrectFact;
-
-extern float EV3_TREAD_inCorrectFact;
 //@}

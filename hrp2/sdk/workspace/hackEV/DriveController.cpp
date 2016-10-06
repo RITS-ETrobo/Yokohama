@@ -162,7 +162,7 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 {
     float   distanceDeltaLeft = motorWheelLeft->getDistanceDelta();
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
-    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD_inCorrectFact) * 180 / Pi;
+    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / (EV3_TREAD / Tread_correctFactor)) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
 }
 
@@ -567,7 +567,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     }
 
     //! 左右の速度比を算出
-    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD_inCorrectFact / (float)2)/(curvatureRadius + EV3_TREAD_inCorrectFact / (float)2);
+    float PowerRatioForCurve = (curvatureRadius - (EV3_TREAD / Tread_correctFactor) / (float)2)/(curvatureRadius + (EV3_TREAD / Tread_correctFactor) / (float)2);
     int powerWheelA = 2 * power / (1 + 1 / PowerRatioForCurve);
     int powerWheelB = 2 * power / (1 + PowerRatioForCurve);
 
