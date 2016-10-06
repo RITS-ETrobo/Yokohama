@@ -28,6 +28,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
+    virtual bool searchHOSHITORI(int power, float searchWidth);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -130,6 +131,9 @@ private:
 
     //! 前回の色
     uint8_t lastColor;
+
+    //! 星とりで取得したカラー
+    uint8_t colorHOSHITORI;
 };
 
 //! 加速はじめのパワー

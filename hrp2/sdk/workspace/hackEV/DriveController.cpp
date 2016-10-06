@@ -35,6 +35,7 @@ DriveController::DriveController()
     , initialized(false)
     , enabled(false)
     , lastColor(COLOR_NONE)
+    , colorHOSHITORI(COLOR_RED)
 {
 }
 
@@ -1299,4 +1300,12 @@ void DriveController::setEnabled(bool _enabled /*= true*/)
 bool DriveController::isEnabled()
 {
     return  enabled;
+}
+
+/**
+ *  @param  星とり探し
+ *  @return 星とりを探しあてればtrue,探せなければfalse
+*/
+bool DriveController::searchHOSHITORI(int power, float searchWidth){
+
 }

@@ -120,6 +120,9 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(start_beforeSumo[index]);
     }
 
+    //! 星とり付近で色を探す
+     driveController->searchHOSHITORI(20, 30);
+
     //! 【TODO】新幹線処理
 
     //! 相撲台の上に移動
