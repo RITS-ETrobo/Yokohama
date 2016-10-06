@@ -12,7 +12,8 @@ const scenario_running L_Start_Sweepstakes_scenario[2] = {
     {30, 246.0F, -1, TRACE_STRAIGHT_RIGHT, false,0 ,DISTANCE_STOP},
     {30, 64.5F, -1, TRACE_CURVE_RIGHT, true,0 ,DISTANCE_STOP}
 };
- 
+
+#if FALSE
 //! Lコース（懸賞入口～星取り入口）
 const scenario_running L_Sweepstakes_starUP_scenario[] = {
     {30, 127.5F, -1, TRACE_STRAIGHT, false,0,DISTANCE_STOP},
@@ -71,6 +72,7 @@ const scenario_running L_Sumo_scenario[23] = {
     { 20,  0.000F,  110, PINWHEEL        , true , 0, DIRECTION_STOP}  //レールの方を向く (ここで新幹線待ち)
     //{ 20, 40.000F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
+#endif  //  FALSE
 
 //! Lコース（ET相撲. 赤以外を落とすシナリオ. ）
 const scenario_running L_Sumo_scenario_hoshi_red[19] = {
@@ -172,7 +174,7 @@ const scenario_running L_Sumo_scenario_hoshi_yellow[19] = {
     //{ 20, 40.0F,   -1, NOTRACE_STRAIGHT, false, 0}  //土俵から降りる
 };
 
-
+#if FALSE
 //! Lコース（ET相撲後～懸賞運び入口）
 const scenario_running L_Sumo_kensho_scenario[] = {
     {30, 26.5F, -1, TRACE_CURVE, false,0,DISTANCE_STOP},
@@ -271,8 +273,9 @@ const scenario_running run_scenario_test_pinWheel_right[1] = {
 const scenario_running run_scenario_test_straght[1] = {
     {30, 100.0F, -1, TRACE_STRAIGHT, true,0,DISTANCE_STOP}
 };
+#endif  //  FALSE
 
-//! 検証用シナリオ(出力変速直進)※【注意】出力が非常に高い状態(100など)で急なstopすると走行体が落ちる可能性が高い!
+//! 検証用シナリオ(出力変速直進)
 const scenario_running run_scenario_test_straght_NoTrace[19] = {
     {10, 30.0F, -1, NOTRACE_STRAIGHT, false,0,DISTANCE_STOP},
     {20, 30.0F, -1, NOTRACE_STRAIGHT, false,0,DISTANCE_STOP},
@@ -296,6 +299,7 @@ const scenario_running run_scenario_test_straght_NoTrace[19] = {
     {10, 15.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP}
 };
 
+#if FALSE
 const scenario_running run_scenario_test_correct_straght_NoTrace[5] = {
     {50, 450.0F, -1, NOTRACE_STRAIGHT, false,0,DISTANCE_STOP},
     {40, 10.0F, -1, NOTRACE_STRAIGHT, false,0,DISTANCE_STOP},
@@ -332,6 +336,7 @@ const scenario_running run_scenario_test_straght_NoTrace_Back[19] = {
     {-20, 15.0F, -1, NOTRACE_STRAIGHT, false,0,DISTANCE_STOP},
     {-10, 15.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP}
 };
+#endif  //  FALSE
 
 //! 検証用シナリオ(ゼロヨン専用)
 const scenario_running run_scenario_zeroyon[2] = {
@@ -339,6 +344,7 @@ const scenario_running run_scenario_zeroyon[2] = {
     {55, 450.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP}
 };
 
+#if FALSE
 //! 検証用シナリオ(曲線走行90°になったら停止)
 const scenario_running run_scenario_curve_90[5] = {
     {30, 0.0F, 180, NOTRACE_CURVE_LEFT, true, 40},
@@ -367,6 +373,7 @@ const scenario_running run_scenario_LCource_Try[8] = {
 
     {30, 167.7F, 90, PINWHEEL, true,0}
 };
+#endif  //  FALSE
 
 //! 自己位置推定Positionの検証用
 const scenario_running run_scenario_test_position[5] = {
