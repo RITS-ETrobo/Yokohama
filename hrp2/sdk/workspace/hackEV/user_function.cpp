@@ -111,5 +111,5 @@ double getMaximumValue(double value1, double value2, double value3)
     double maximumValue = (value1 > value2) ? value1 : value2;
     maximumValue = (maximumValue > value3) ? maximumValue : value3;
 
-    return  value3;
+    return  maximumValue;
 }
