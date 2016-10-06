@@ -37,6 +37,7 @@ typedef struct {
 //! Lコース（スタート～懸賞入口）
 extern const scenario_running L_Start_Sweepstakes_scenario[2];
 
+#if FALSE
 //! Lコース（懸賞入口～星取り入口）
 extern const scenario_running L_Sweepstakes_starUP_scenario[];
 
@@ -48,6 +49,7 @@ extern const scenario_running L_StarUP_Sumo_scenario[];
 
 //! Lコース（ET相撲. 4つ落とすシナリオ.）
 extern const scenario_running L_Sumo_scenario[23];
+#endif  //  FALSE
 
 //! Lコース（ET相撲. 赤以外を落とすシナリオ. ）
 extern const scenario_running L_Sumo_scenario_hoshi_red[19];
@@ -61,6 +63,7 @@ extern const scenario_running L_Sumo_scenario_hoshi_green[19];
 //! Lコース（ET相撲. 黄以外を落とすシナリオ. ）
 extern const scenario_running L_Sumo_scenario_hoshi_yellow[19];
 
+#if FALSE
 //! Lコース（ET相撲後～懸賞運び入口）
 extern const scenario_running L_Sumo_kensho_scenario[];
 
@@ -108,21 +111,26 @@ extern const scenario_running run_scenario_test_straght_NoTrace[19];
 
 //! 検証用シナリオ(後方に直進)
 extern const scenario_running run_scenario_test_straght_NoTrace_Back[19];
+#endif  //  FALSE
 
-//! 検証用シナリオ(5m直進・誤差検証用)
+//! 検証用シナリオ(5m直進・速度検証用)
 extern const scenario_running run_scenario_test_correct_straght_NoTrace[5];
 
+#if FALSE
 //! 検証用シナリオ(30m直進・ログ監視タスク評価用)
 extern const scenario_running run_scenario_straight_30m[1];
+#endif  //  FALSE
 
 //! 検証用シナリオ(ゼロヨン専用)
 extern const scenario_running run_scenario_zeroyon[2];
 
+#if FALSE
 //! 検証用シナリオ(曲線走行90°になったら停止)
 extern const scenario_running run_scenario_curve_90[5];
 
 //! 検証用シナリオ(Lコースをトレースせずに走る)
 extern const scenario_running run_scenario_LCource_Try[8];
+#endif  //  FALSE
 
 //! 自己位置推定Positionの検証用
 extern const scenario_running run_scenario_test_position[5];
