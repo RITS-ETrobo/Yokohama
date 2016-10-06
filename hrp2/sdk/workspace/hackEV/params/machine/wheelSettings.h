@@ -16,4 +16,8 @@ extern const float EV3_WHEEL_DIAMETER;
 
 //! 左右のタイヤ間のトレッド[単位 : cm]
 extern const float EV3_TREAD;
+
+extern float Tread_correctFactor;
+
+extern float Diameter_corerctFactor;
 //@}
