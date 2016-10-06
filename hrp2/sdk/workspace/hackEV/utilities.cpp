@@ -150,6 +150,11 @@ void CalibrateDIAMETER(){
     }
     writeFloatLCD(Diameter_corerctFactor);
 
+    //! 補正係数が1.5倍以上の場合は警告を出す。（間違い防止）
+    if(fabsf(Diameter_corerctFactor) > 1.5F){
+        writeStringLCD("[WARN]CalibrateLarge!!");
+    }
+
     delete calibratedrive;
 }
 
@@ -169,6 +174,11 @@ void CalibrateTREAD(){
         Tread_correctFactor = calibratedrive->calibrateSpin(4, RealDirectionForCalibrate);
     }
     writeFloatLCD(Tread_correctFactor);
+
+    //! 補正係数が1.5倍以上の場合は警告を出す。（間違い防止）
+    if(fabsf(Tread_correctFactor) > 1.5F){
+        writeStringLCD("[WARN]CalibrateLarge!!");
+    }
 
     delete calibratedrive;
 }

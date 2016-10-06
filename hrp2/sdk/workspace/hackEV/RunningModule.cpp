@@ -35,8 +35,6 @@ void initialize_run() {
 */
 void start_run()
 {
-    calibrateALL();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
     tslp_tsk(100);
     ev3_speaker_play_tone(NOTE_E6, 100);
@@ -66,8 +64,6 @@ void start_run()
 */
 void start_run_test()
 {
-    calibrateALL();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
@@ -101,8 +97,6 @@ void start_run_test()
 */
 void start_LcourseRun()
 {
-    calibrateALL();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     //! キャリブレーションを終えたらタッチセンサーが押されるまで待機
