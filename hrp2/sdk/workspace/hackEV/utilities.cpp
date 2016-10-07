@@ -6,6 +6,7 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "instances.h"
+#include "wheelSettings.h"
 
 std::map<runPattern, PID_PARAMETER> PID_MAP;
 
@@ -134,6 +135,55 @@ void calibrateBW()
         logger->addLogInt(LOG_TYPE_COLOR_WHITE, white);
         logger->addLogInt(LOG_TYPE_COLOR_BLACK, black);
     }
+}
+
+/**
+ * @brief   直進させてタイヤ径のキャリブレーションを行う
+ * @return  なし
+*/
+void CalibrateDIAMETER(){
+    writeStringLCD("caliDIA");
+    //! キャリブレーションのための走行（別でインスタンスしているのはここでの走行の情報を保持させたくないため）
+    DriveController* calibratedrive = new DriveController();
+    if (driveController) {
+        calibratedrive->initialize();
+
+        //! タイヤ径の補正係数(距離の補正係数)
+        Diameter_corerctFactor = calibratedrive->calibrateRun(5, RealDistanceStartLineToGreenArea);
+    }
+    writeFloatLCD(Diameter_corerctFactor);
+
+    //! 補正係数が1.5倍以上の場合は警告を出す。（間違い防止）
+    if(fabsf(Diameter_corerctFactor) > 1.5F){
+        writeStringLCD("[WARN]CalibrateLarge!!");
+    }
+
+    delete calibratedrive;
+}
+
+
+/**
+ * @brief   回転させえタイヤトレッドのキャリブレーションを行う
+ * @return  なし
+*/
+void CalibrateTREAD(){
+    writeStringLCD("caliTREAD");
+    //! キャリブレーションのための走行（別でインスタンスしているのはここでの走行の情報を保持させたくないため）
+    DriveController* calibratedrive = new DriveController();
+    if (driveController) {
+        calibratedrive->initialize();
+
+        //! トレッドの補正係数(回転の補正係数)
+        Tread_correctFactor = calibratedrive->calibrateSpin(4, RealDirectionForCalibrate);
+    }
+    writeFloatLCD(Tread_correctFactor);
+
+    //! 補正係数が1.5倍以上の場合は警告を出す。（間違い防止）
+    if(fabsf(Tread_correctFactor) > 1.5F){
+        writeStringLCD("[WARN]CalibrateLarge!!");
+    }
+
+    delete calibratedrive;
 }
 
 /**

@@ -117,13 +117,14 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case LEFT_BUTTON:
-        
+        writeStringLCD("L Course Mode");
         //シナリオ走行モードの初期化処理
         initialize_run();
 
         //! 準備ができたら音が3回鳴る
-        ev3_speaker_play_tone(NOTE_E6, 300);
-        tslp_tsk(300);
+        ev3_speaker_play_tone(NOTE_C6, 300);
+        tslp_tsk(200);
+        ev3_speaker_play_tone(NOTE_C6, 300);
 
         //! テスト走行開始
         start_LcourseRun();
@@ -146,25 +147,22 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case UP_BUTTON:
-        //シナリオ走行モードの初期化処理
-        initialize_run();
-
         //! シナリオ走行モード
-        writeStringLCD("UP button click");
+        writeStringLCD("Calibrate Mode");
 
         //! 準備ができたら音が3回鳴る
-        ev3_speaker_play_tone(NOTE_C4, 100);
+        ev3_speaker_play_tone(NOTE_F4, 100);
         tslp_tsk(200);
         ev3_speaker_play_tone(NOTE_C4, 100);
         tslp_tsk(200);
-        ev3_speaker_play_tone(NOTE_C4, 100);
+        ev3_speaker_play_tone(NOTE_F4, 100);
 
         //! 走行開始
-        start_run();
+        calibrateALL();
         break;
 
     case ENTER_BUTTON:
-        writeStringLCD("ENTER button click");
+        writeStringLCD("Test Mode");
 
         //シナリオ走行モードの初期化処理
         initialize_run();

@@ -35,8 +35,6 @@ void initialize_run() {
 */
 void start_run()
 {
-    calibrateBW();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
     tslp_tsk(100);
     ev3_speaker_play_tone(NOTE_E6, 100);
@@ -66,8 +64,6 @@ void start_run()
 */
 void start_run_test()
 {
-    calibrateBW();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
@@ -101,16 +97,11 @@ void start_run_test()
 */
 void start_LcourseRun()
 {
-    calibrateBW();
-
     ev3_speaker_play_tone(NOTE_E6, 100);
 
-    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
-    for (;;) {
-        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
-            break;
-        }
-    }
+    //! キャリブレーションを終えたらタッチセンサーが押されるまで待機
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
 
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();
@@ -168,4 +159,10 @@ void start_LcourseRun()
 
     gyroSensorController->setEnabledGyroSensor(false);
     driveController->setEnabled(false);
+}
+
+void calibrateALL(){
+    calibrateBW();
+    CalibrateDIAMETER();
+    CalibrateTREAD();
 }

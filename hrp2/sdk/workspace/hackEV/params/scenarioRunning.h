@@ -133,4 +133,4 @@ extern const scenario_running run_scenario_LCource_Try[8];
 #endif  //  FALSE
 
 //! 自己位置推定Positionの検証用
-extern const scenario_running run_scenario_test_position[5];
+extern const scenario_running run_scenario_test_position[2];

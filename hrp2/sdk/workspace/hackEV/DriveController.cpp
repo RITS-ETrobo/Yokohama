@@ -162,7 +162,7 @@ void DriveController::getDelta(float *directionDelta, float *distanceDelta)
 {
     float   distanceDeltaLeft = motorWheelLeft->getDistanceDelta();
     float   distanceDeltaRight = motorWheelRight->getDistanceDelta();
-    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / EV3_TREAD) * 180 / Pi;
+    *directionDelta = ((distanceDeltaRight - distanceDeltaLeft) / (EV3_TREAD / Tread_correctFactor)) * 180 / Pi;
     *distanceDelta = (distanceDeltaRight + distanceDeltaLeft) / 2.0F;
 }
 
@@ -567,7 +567,7 @@ void DriveController::getPowerForCurvatureRadius(enum runPattern pattern, float 
     }
 
     //! 左右の速度比を算出
-    float PowerRatioForCurve = (curvatureRadius - EV3_TREAD / (float)2)/(curvatureRadius + EV3_TREAD / (float)2);
+    float PowerRatioForCurve = (curvatureRadius - (EV3_TREAD / Tread_correctFactor) / (float)2)/(curvatureRadius + (EV3_TREAD / Tread_correctFactor) / (float)2);
     int powerWheelA = 2 * power / (1 + 1 / PowerRatioForCurve);
     int powerWheelB = 2 * power / (1 + PowerRatioForCurve);
 
@@ -1301,3 +1301,63 @@ bool DriveController::isEnabled()
     return  enabled;
 }
 
+/**
+ *  @param  キャリブレーション用の走行
+ *  実際に走行して現実の走行距離と走行体が推定した距離を比べて補正係数を算出する
+ *  @return タイヤ径の補正係数
+*/
+float DriveController::calibrateRun(int power, float realDistance){
+    //! タッチセンサーが押されたら走る
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    straightRun(power);
+    
+    //! タッチセンサーが押されるまで走る
+    for (;;) {
+        updatePosition();
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            stop();
+            break;
+        }
+    }
+
+    //! 再度押して終了
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    //! タイヤ径の補正係数
+    float diaMetercorrectValue =  realDistance / distanceScenario;
+    return diaMetercorrectValue;
+}
+
+/**
+ *  @param  キャリブレーション用の走行
+ *  実際に走行して現実の走行距離と走行体が推定した距離を比べて補正係数を算出する
+ *  @return タイヤ径の補正係数
+*/
+float DriveController::calibrateSpin(int power, float realDirection){
+    
+    //! タッチセンサーが押されたら回転
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    pinWheel(power, 720);
+    
+    //! タッチセンサーが押されるまで回転
+    for (;;) {
+        updatePosition();
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            stop();  
+            break;
+        }
+    }
+
+    //! 再度押して終了
+    while(!ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+    while(ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH));
+
+    //! タイヤ径の補正係数
+    float treadCorrectValue =  realDirection / directionScenario;
+    return treadCorrectValue;
+}
