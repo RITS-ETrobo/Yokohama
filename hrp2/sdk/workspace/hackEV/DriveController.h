@@ -59,12 +59,15 @@ protected:
     virtual float degForTrigonometric(float direction);
 #endif //
 
+#if FALSE  // 実装の時間が足りない為
     virtual float CalculationCurvatureRadius(float a0, float a1, float a2, float a3, float x);
     virtual float OnceDifferentialOfQuadraticFunction(float a1, float a2, float x);
     virtual float SecondDifferentialOfQuadraticFunction(float a2);
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+#endif  //  FALSE
+
     virtual float shortestMoveDirection(float targetDirection, float startDirection);
     virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
     virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
