@@ -30,7 +30,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
-    virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual orientationPattern catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
     virtual void setNewDirection(float newDirection);
     virtual void setNewPositionX(float x);
 

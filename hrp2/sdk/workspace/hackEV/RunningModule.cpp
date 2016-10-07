@@ -127,10 +127,15 @@ void start_LcourseRun()
     }
 
     //! 一度この直線でラインを掴む
-    bool success = driveController->catchLineAndCorrectDirection(30, 30, 20);
+    orientationPattern catchPattern = driveController->catchLineAndCorrectDirection(30, 30, 20);
     //! ラインつかみに成功したらリセット
-    if(success){
-        //! 【TODO】ここでXと向きをリセット
+    if(catchPattern == RIGHT_PATTERN){
+        //! ライン左縁を捉えている
+        driveController->setNewPositionX(-860);//ここでX座標をリセット
+        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+    }else if(catchPattern == LEFT_PATTERN){
+        //! ライン右縁を捉えている
+        driveController->setNewPositionX(-853);//ここでX座標をリセット
         driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
     }
 
@@ -187,10 +192,15 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
     }
 
-    success = driveController->catchLineAndCorrectDirection(30, 30, 20);
+    catchPattern = driveController->catchLineAndCorrectDirection(30, 30, 20);
     //! ラインつかみに成功したらリセット
-    if(success){
-        //! 【TODO】ここでXと向きをリセット
+    if(catchPattern == RIGHT_PATTERN){
+        //! ライン左縁を捉えている
+        driveController->setNewPositionX(-217);//ここでX座標をリセット
+        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+    }else if(catchPattern == LEFT_PATTERN){
+        //! ライン右縁を捉えている
+        driveController->setNewPositionX(-211);//ここでX座標をリセット
         driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
     }
 

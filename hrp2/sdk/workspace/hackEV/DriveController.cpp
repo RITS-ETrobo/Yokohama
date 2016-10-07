@@ -1434,14 +1434,18 @@ bool DriveController::isEnabled()
  *  @param ラインを掴んで、向きを揃える一連の動作をまとめる
  *  @return なし
 */
-bool DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
+orientationPattern DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
     enum orientationPattern findLineOrientation = catchLine(power, searchWidth, searchHeight);
     
     if(findLineOrientation == NONE_PATTERN){
-        return false;
+        return NONE_PATTERN;
     }
 
-    return correctDirectionByLine(power, findLineOrientation);
+    if(correctDirectionByLine(power, findLineOrientation)){
+        return findLineOrientation;
+    }
+
+    return NONE_PATTERN;
 }
 
 /**
