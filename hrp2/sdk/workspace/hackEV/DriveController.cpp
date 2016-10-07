@@ -1528,3 +1528,18 @@ bool DriveController::judgeStopColor(uint8_t stopColor){
 
     return false;
 }
+
+/**
+ *  @brief  走行体の現在位置を設定する
+ *  @param  position    座標
+ *  @param  direction_  向き[単位 : 度]
+ *  @param  updateType  更新する項目を指定する
+*/
+void DriveController::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
+{
+    if (speedCalculator100ms == NULL) {
+        return;
+    }
+
+    speedCalculator100ms->setPosition(position, direction_, updateType);
+}

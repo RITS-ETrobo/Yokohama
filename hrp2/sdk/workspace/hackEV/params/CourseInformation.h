@@ -54,12 +54,14 @@ typedef struct {
     colorid_t   color_id;
 } OBJECT_INFORMATION;
 
+//! Class for course
 class CourseInformation
 {
 public:
-    explicit CourseInformation();
+    explicit CourseInformation(float xStart, float yStart, float directionStart_);
     virtual void initialize(bool isForce = false);
     virtual int8_t getEV3onZone(EV3_POSITION *position, OBJECT_INFORMATION *zone, bool isREAL = true);
+    virtual void getStartPosition(EV3_POSITION *position, float *direction);
 
 protected:
     virtual void addParts(int8_t idParts, float x, float y, float width, float length, colorid_t color = COLOR_BLACK, SHAPE_TYPE shape = SHAPE_TYPE_LINE_VERTICAL);
@@ -79,4 +81,10 @@ private:
 
     //! ゾーン情報
     std::vector<OBJECT_INFORMATION>  zonesInformation;
+
+    //! スタート地点の座標
+    EV3_POSITION    positionStart;
+
+    //! スタート地点での向き
+    float   directionStart;
 };

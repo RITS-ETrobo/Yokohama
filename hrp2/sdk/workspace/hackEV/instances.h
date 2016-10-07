@@ -10,6 +10,8 @@
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
 #include "ColorSensorController.h"
+#include "CourseInformationLeft.h"
+#include "CourseInformationRight.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;
@@ -30,3 +32,6 @@ extern SonarSensorController    *sonarSensorController;
 
 //! ColorSensorControllerクラスのインスタンス
 extern ColorSensorController    *colorSensorController;
+
+//! CourseInformationクラスのインスタンス
+extern CourseInformation    *courseInformation;
