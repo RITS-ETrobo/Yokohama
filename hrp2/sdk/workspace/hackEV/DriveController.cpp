@@ -1224,7 +1224,7 @@ void DriveController::updatePosition()
  */
 bool DriveController::correctDirectionByLine(int power, orientationPattern findLineOrientation){
 
-    //! 輝度を使いたいので、通常のカラー取得は一度オフにする
+    //! 明度を使うので、通常のカラー取得は一度オフにする
     validColorTask = false;
     
     int moveCount = 10;
