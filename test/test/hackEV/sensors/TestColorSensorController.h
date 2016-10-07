@@ -27,7 +27,7 @@ protected:
         colorRGB.r = red;
         colorRGB.g = green;
         colorRGB.b = blue;
-        EXPECT_EQ(colorName, colorSensorController->getColorName(&colorRGB));
+        EXPECT_EQ(colorName, colorSensorController->getColorName(&colorRGB, COLOR_MODE_COLOR));
     };
 
     //! テスト対象クラスのインスタンス
