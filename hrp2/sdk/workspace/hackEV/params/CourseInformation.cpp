@@ -40,7 +40,7 @@ void CourseInformation::initialize(bool isForce /*= false*/)
 */
 void CourseInformation::getStartPosition(EV3_POSITION *position, float *direction)
 {
-    memcpy((void*)position, (const void*)positionStart, sizeof(EV3_POSITION));
+    memcpy((void*)position, (const void*)&positionStart, sizeof(EV3_POSITION));
     *direction = directionStart;
 }
 

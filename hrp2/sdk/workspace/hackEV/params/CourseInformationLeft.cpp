@@ -5,6 +5,6 @@
 #include "CourseInformationLeft.h"
 
 CourseInformationLeft::CourseInformationLeft()
-    : CourseInformation(71, 250, 0)
+    : CourseInformation(71, 250 - 12 * 7 / (float)2, 0)
 {
 }

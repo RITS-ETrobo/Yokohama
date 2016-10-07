@@ -10,5 +10,5 @@
 class CourseInformationLeft : public CourseInformation
 {
 public:
-    explicit CourseInformation();
+    explicit CourseInformationLeft();
 };

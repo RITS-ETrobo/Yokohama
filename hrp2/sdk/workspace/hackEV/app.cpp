@@ -17,6 +17,7 @@
 #include "ColorSensorController.h"
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
+#include "CourseInformationLeft.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -121,7 +122,12 @@ static void button_clicked_handler(intptr_t button) {
 
     case LEFT_BUTTON:
         //  Lコースのコース情報を持つインスタンスを生成する
-        courseInformation = CourseInformationLeft();
+        if (courseInformation) {
+            delete courseInformation;
+            courseInformation = NULL;
+        }
+
+        courseInformation = new CourseInformationLeft();
 
         //シナリオ走行モードの初期化処理
         initialize_run();
