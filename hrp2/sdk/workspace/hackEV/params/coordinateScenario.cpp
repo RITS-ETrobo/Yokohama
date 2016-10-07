@@ -28,7 +28,7 @@ const scenario_coordinate test_coordinate[14] = {
 const scenario_coordinate start_straightBeforeHoshitori[7] = {
     {50, 0, 253.7143},
     {50, -41.71428571, 253.1428571},
-    {50, -41.71428571, 120.5714286},
+    {50, -41.71428571, 89.71428571},
     {50, -80, 80},
     {50, -168.5714286, 80},
     {50, -225.1428571, 120.5714286},
@@ -37,8 +37,15 @@ const scenario_coordinate start_straightBeforeHoshitori[7] = {
 
 //! 星取り前の直線
 const scenario_coordinate toHoshitori [1] ={
+    {50, -225.1428571, 268.5714286}
+};
+
+//! 相撲前の線路前まで
+const scenario_coordinate beforeSUMO[2] = {
+    {50, -132.5714286, 259.4285714},
     {50, -132.5714286, 222.2857143}
 };
+
 
 //! 相撲台の上まで移動
 const scenario_coordinate onStageSumo[1]={

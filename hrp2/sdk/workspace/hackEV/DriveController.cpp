@@ -234,7 +234,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
             }
 
             //! 急発進、急停止しないためのパワー処理(角度はマイナスが入ることもあるので、絶対値の目標をとる)
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60, softAcceleration, softDeceleration);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), accelRangeForPinWheel, decelerationRangeForPinWheel, softAcceleration, softDeceleration);
 
             //! その場回転
             pinWheel(softAccelPower, scenario.direction);
@@ -281,7 +281,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
             }
 
             //! 急発進急加速しないためのパワーを取得
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20, softAcceleration, softDeceleration);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, accelRangeForStraight, decelerationRangeForStraight, softAcceleration, softDeceleration);
             
             //! ライントレースせずに、直進走行する
             straightRun(softAccelPower);
@@ -799,7 +799,7 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
     
     //! 目標の座標の向きまでその場回転
-    scenario_running pinWheelScenario={5, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    scenario_running pinWheelScenario={power/2, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
     
     run(pinWheelScenario);
 

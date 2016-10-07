@@ -128,7 +128,12 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(toHoshitori[index]);
     }
 
-    //! 星取り付近で色を探す
+    //! 【TODO】星取り付近で色を探す
+
+    //! 新幹線線前まで
+    for (int index = 0; index < (int)(sizeof(beforeSUMO) / sizeof(beforeSUMO[0])); index++) {
+        driveController->manageMoveCoordinate(beforeSUMO[index]);
+    }
 
     //! 【TODO】新幹線処理
 

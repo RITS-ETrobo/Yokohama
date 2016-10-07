@@ -28,6 +28,9 @@ extern const scenario_coordinate start_straightBeforeHoshitori[7];
 //! 星取りまで
 extern const scenario_coordinate toHoshitori [1];
 
+//! 相撲前の線路前まで
+extern const scenario_coordinate beforeSUMO[2];
+
 //! 相撲台の上まで移動
 extern const scenario_coordinate onStageSumo[1];
 
