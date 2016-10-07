@@ -30,6 +30,7 @@ public:
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
     virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual void setPosition(EV3_POSITION *position, float direction_, uint8_t updateType = 0);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
