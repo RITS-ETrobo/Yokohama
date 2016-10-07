@@ -23,7 +23,10 @@ typedef struct {
 extern const scenario_coordinate test_coordinate[14];
 
 //! スタートしてから相撲まで
-extern const scenario_coordinate start_straightBeforeHoshitori[7];
+extern const scenario_coordinate start_straightBeforeHoshitori[6];
+
+//! 星取り前の灰色（カラーでもとめる）
+extern const scenario_coordinate toGRAYBeforeHOSHI[1];
 
 //! 星取りまで
 extern const scenario_coordinate toHoshitori [1];
@@ -34,8 +37,14 @@ extern const scenario_coordinate beforeSUMO[2];
 //! 相撲台の上まで移動
 extern const scenario_coordinate onStageSumo[1];
 
-//! 相撲が終わってから懸賞まで
-extern const scenario_coordinate fromSumo_toKensho[4];
+//! 相撲が終わってから懸賞までの直線
+extern const scenario_coordinate fromSumo_toKenshoStraight[3];
+
+//! 検証前のグレーゾーン
+extern const scenario_coordinate toGRAYBeforeKENSHO[1];
+
+//! 懸賞まで
+extern const scenario_coordinate KENSHO[1];
 
 //! 懸賞からゴール
 extern const scenario_coordinate fromKensho_toGoal[2];

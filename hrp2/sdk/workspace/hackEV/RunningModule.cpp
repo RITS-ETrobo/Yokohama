@@ -126,21 +126,25 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(start_straightBeforeHoshitori[index]);
     }
 
-    //! 【TODO】一度この直線でラインを掴む
+    //! 一度この直線でラインを掴む
     bool success = driveController->catchLineAndCorrectDirection(30, 30, 20);
-
     //! ラインつかみに成功したらリセット
     if(success){
         //! 【TODO】ここでXと向きをリセット
         driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
     }
-    
 
+    //! 【TODO】灰色検知しても止まること
+    for (int index = 0; index < (int)(sizeof(toGRAYBeforeHOSHI) / sizeof(toGRAYBeforeHOSHI[0])); index++) {
+        driveController->manageMoveCoordinate(toGRAYBeforeHOSHI[index]);
+    }
+    
+    //! 星取り【色を検知しても止まること】
     for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
         driveController->manageMoveCoordinate(toHoshitori[index]);
     }
 
-    //! 【TODO】星取り付近で色を探す
+    //! 【TODO】もし色をさがせてなければ色を探す
 
     //! 新幹線線前まで
     for (int index = 0; index < (int)(sizeof(beforeSUMO) / sizeof(beforeSUMO[0])); index++) {
@@ -175,9 +179,26 @@ void start_LcourseRun()
 
     }
 
-    //! 相撲ゾーン終わった位置から懸賞まで
-    for (int index = 0; index < (int)(sizeof(fromSumo_toKensho) / sizeof(fromSumo_toKensho[0])); index++) {
-        driveController->manageMoveCoordinate(fromSumo_toKensho[index]);
+    //! 相撲ゾーン終わった位置から懸賞前の直線
+    for (int index = 0; index < (int)(sizeof(fromSumo_toKenshoStraight) / sizeof(fromSumo_toKenshoStraight[0])); index++) {
+        driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
+    }
+
+    success = driveController->catchLineAndCorrectDirection(30, 30, 20);
+    //! ラインつかみに成功したらリセット
+    if(success){
+        //! 【TODO】ここでXと向きをリセット
+        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+    }
+
+
+    //! 懸賞前の灰色
+    for (int index = 0; index < (int)(sizeof(toGRAYBeforeKENSHO) / sizeof(toGRAYBeforeKENSHO[0])); index++) {
+        driveController->manageMoveCoordinate(toGRAYBeforeKENSHO[index]);
+    }
+
+    for (int index = 0; index < (int)(sizeof(KENSHO) / sizeof(KENSHO[0])); index++) {
+        driveController->manageMoveCoordinate(KENSHO[index]);
     }
 
     //! 【TODO】懸賞をとる作業

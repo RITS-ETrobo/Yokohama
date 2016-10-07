@@ -1558,5 +1558,5 @@ void DriveController::setNewDirection(float newDirection){
  * @return  なし
  */
 float DriveController::convertMapToREAL(float map){
-    return map * 2 / (float)7;;
+    return map * 2 / (float)7;
 }
