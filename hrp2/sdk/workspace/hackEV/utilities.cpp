@@ -163,14 +163,28 @@ void viewColor()
         }
     }
 
-    writeStringLCD(" ");
+    clearLCD();
+    confirmBattery();
 
-    bool checkGray = (bool)((countViewColor % 2) != 0);
+    COLOR_MODE  modeColor = (COLOR_MODE)(countViewColor % 3);
+    switch (modeColor) {
+    case COLOR_MODE_BLACK_GRAY_WHITE:
+        writeStringLCD("MODE : B/G/W");
+        break;
+
+    case COLOR_MODE_COLOR:
+        writeStringLCD("MODE : COLOR");
+        break;
+
+    case COLOR_MODE_BLACK_WHITE:
+        writeStringLCD("MODE : B/W");
+        break;
+    }
     rgb_raw_t colorRGB = colorSensorController->getColorRGBraw();
 
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%s", colorSensorController->getColorName(&colorRGB, checkGray).c_str());
+    sprintf(message, "%s", colorSensorController->getColorName(&colorRGB, modeColor).c_str());
     writeStringLCD(message);
 
     //! RGB値を取得
@@ -188,8 +202,7 @@ void viewColor()
     sprintf(message, " Blue      : %d", colorRGB.b);
     writeStringLCD(message);
 
-
-    if (checkGray) {
+    if ((modeColor == COLOR_MODE_BLACK_WHITE) || (modeColor == COLOR_MODE_BLACK_GRAY_WHITE))  {
         memset(message, '\0', sizeof(message));
         sprintf(message, " Brightness: %d", (int)colorSensorController->getBrightness(&colorRGB));
         writeStringLCD(message);

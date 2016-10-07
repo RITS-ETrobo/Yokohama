@@ -9,7 +9,7 @@
 ColorSensorController::ColorSensorController(sensor_port_t _port)
     : port(_port)
     , BORDER_GRAY_MIN(0.1 * 255)
-    , BORDER_GRAY_MAX(0.3 * 255)
+    , BORDER_GRAY_MAX(0.6 * 255)
     , BORDER_WHITE_MIN(100.0F)
     , BORDER_BLACK_MAX(30.0F)
     , BORDER_RED_YELLOW(0.08333F)
@@ -49,38 +49,47 @@ void ColorSensorController::initialize() {
 
 /**
  * @brief   カラーセンサーで検知した色のIDを取得
- * @param   checkGray   灰色を検出するかどうか
+ * @param   modeColor   色識別モード
  *
  * カラー名判定の種類 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
  * @return  取得したカラーのID(RED, GREEN, BLUE, YELLOW, BLACK, WHITE, GRAY, NONE のいずれか)
 */
-uint8_t ColorSensorController::getColorID(bool checkGray /*= false*/)
+uint8_t ColorSensorController::getColorID(COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
     //'HSV色空間'について、wikipediaの項目を参考にした
     rgb_raw_t colorRGB = getColorRGBraw();
 
-    return  getColorID(&colorRGB, checkGray);
+    return  getColorID(&colorRGB, modeColor);
 }
 
 /**
  * @brief   カラーセンサーで検知した色のIDを取得
  * @param   colorRGB    カラーセンサーで取得した値
- * @param   checkGray   灰色を検出するかどうか
+ * @param   modeColor   色識別モード
  *
  * カラー名判定の種類 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html#gaf11750614f023e665f98eca0b1f79c2f
  * @return  取得したカラーのID(RED, GREEN, BLUE, YELLOW, BLACK, WHITE, GRAY, NONE のいずれか)
 */
-uint8_t ColorSensorController::getColorID(rgb_raw_t *colorRGB, bool checkGray /*= false*/)
+uint8_t ColorSensorController::getColorID(rgb_raw_t *colorRGB, COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
     double  maximumValue = getMaximumValue(colorRGB->r, colorRGB->g, colorRGB->b);
     double  minimumValue = getMinimumValue(colorRGB->r, colorRGB->g, colorRGB->b);
 
-    if (checkGray) {
+    if ((modeColor == COLOR_MODE_BLACK_WHITE) || (modeColor == COLOR_MODE_BLACK_GRAY_WHITE)) {
         double  brightness = getBrightness(colorRGB);
-        if ((BORDER_GRAY_MIN <= brightness) && (brightness <= BORDER_GRAY_MAX)) {
-            //  灰
+        if (BORDER_GRAY_MIN > brightness) {
+            return  (uint8_t)COLOR_BLACK;
+        }
+
+        if (brightness > BORDER_GRAY_MAX) {
+            return  (uint8_t)COLOR_WHITE;
+        }
+
+        if (modeColor == COLOR_MODE_BLACK_GRAY_WHITE) {
             return  (uint8_t)COLOR_GRAY;
         }
+
+        return  (uint8_t)COLOR_BLACK;
     }
 
     //白黒判定
@@ -155,23 +164,23 @@ double ColorSensorController::getHue(double red, double green, double blue)
 /**
  * @brief   カラーセンサーで検知した色の名前を取得する
  * @param   colorRGB    カラーセンサーから読み取った値
- * @param   checkGray   グレースケールかどうか
+ * @param   modeColor   色識別モード
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(rgb_raw_t *colorRGB, bool checkGray /*= false*/)
+std::string ColorSensorController::getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
-    uint8_t color = getColorID(colorRGB, checkGray);
+    uint8_t color = getColorID(colorRGB, modeColor);
     return  getColorNameByID(color);
 }
 
 /**
  * @brief   カラーセンサーで検知した色の名前を取得する
- * @param   checkGray   グレースケールかどうか
+ * @param   modeColor   色識別モード
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(bool checkGray /*= false*/)
+std::string ColorSensorController::getColorName(COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
-    uint8_t color = getColorID(checkGray);
+    uint8_t color = getColorID(modeColor);
     return  getColorNameByID(color);
 }
 

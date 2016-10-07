@@ -7,15 +7,32 @@
 #include "product.h"
 #include <map>
 
+//! \addtogroup 色識別モード
+//@{
+typedef enum {
+    //! 黒 / 白
+    COLOR_MODE_BLACK_WHITE = 0,
+
+    //! 黒 / 灰 / 白
+    COLOR_MODE_BLACK_GRAY_WHITE,
+
+    //! カラー
+    COLOR_MODE_COLOR,
+
+    //! 色識別モードの数
+    COLOR_MODE_COUNT
+} COLOR_MODE;
+//@}
+
 class ColorSensorController
 {
 public:
     explicit ColorSensorController(sensor_port_t _port);
     virtual void initialize();
-    virtual uint8_t getColorID(bool checkGray = false);
-    virtual uint8_t getColorID(rgb_raw_t *colorRGB, bool checkGray = false);
-    virtual std::string getColorName(rgb_raw_t *colorRGB, bool checkGray = false);
-    virtual std::string getColorName(bool checkGray = false);
+    virtual uint8_t getColorID(COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
+    virtual uint8_t getColorID(rgb_raw_t *colorRGB, COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
+    virtual std::string getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
+    virtual std::string getColorName(COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
     virtual std::string getColorNameByID(uint8_t color_id);
     virtual rgb_raw_t getColorRGBraw();
     virtual void correctColor(rgb_raw_t *colorRGB, double *redCorrected, double *greenCorrected, double *blueCorrected);
