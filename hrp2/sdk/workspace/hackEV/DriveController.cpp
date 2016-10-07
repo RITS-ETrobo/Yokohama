@@ -14,6 +14,7 @@
 
 #include "DriveController.h"
 #include "user_function.h"
+#include "EV3Position.h"
 
 
 //! class for driving
@@ -865,9 +866,12 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     //! 滑らか走行
     //smoothMovementFromCoordinate(_coordinateScenario);
 
+    //! マップ座標から現実座標へ変換
+    float targetREAL_X = convertMapToREAL(_coordinateScenario.targetX);
+    float targetREAL_Y = convertMapToREAL(_coordinateScenario.targetY);
+
     //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
-    //! 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！
-    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
+    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, targetREAL_X, targetREAL_Y);
 }
 
 /**
@@ -1524,4 +1528,35 @@ bool DriveController::judgeStopColor(uint8_t stopColor){
     }
 
     return false;
+}
+
+/**
+ * @brief   x座標を設定 [pixcel値]
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewPositionX(float newX){
+    EV3_POSITION position;
+    position.x = newX;
+    speedCalculator100ms->setPosition(&position , 0.0F, EV3Position::CORRECT_POSITION_MAP_X);
+}
+
+/**
+ * @brief   新しい向きを設定
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewDirection(float newDirection){
+    directionTotal = newDirection;
+    EV3_POSITION position;
+    speedCalculator100ms->setPosition(&position, newDirection, EV3Position::CORRECT_DIRECTION);
+}
+
+/**
+ * @brief   マップ座標を現実座標に変換
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+float DriveController::convertMapToREAL(float map){
+    return map * 2 / (float)7;;
 }

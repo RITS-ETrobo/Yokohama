@@ -14,6 +14,7 @@
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
 #include "orientationPattern.h"
+#include "EV3Position.h"
 
 
 //! Class for driving
@@ -30,6 +31,8 @@ public:
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
     virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual void setNewDirection(float newDirection);
+    virtual void setNewPositionX(float x);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -73,6 +76,7 @@ protected:
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
     virtual bool judgeStopColor(uint8_t targetColor);
     virtual bool stopByColor(scenario_running scenario);
+    virtual float convertMapToREAL(float map);
 
 private:
     void pinWheel(int power, float degree);

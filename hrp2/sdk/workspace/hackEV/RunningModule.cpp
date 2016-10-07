@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "ArmModule.h"
 #include "coordinateScenario.h"
+#include "EV3Position.h"
 
 /**
  * @brief   初期化処理
@@ -106,6 +107,8 @@ void start_LcourseRun()
 {
     calibrateBW();
 
+    //! 【TODO】初期位置設定
+
     ev3_speaker_play_tone(NOTE_E6, 100);
 
     //! PIDの準備を終えたらタッチセンサーが押されるまで待機
@@ -124,9 +127,13 @@ void start_LcourseRun()
     }
 
     //! 【TODO】一度この直線でラインを掴む
-    driveController->catchLineAndCorrectDirection(30, 30, 20);
+    bool success = driveController->catchLineAndCorrectDirection(30, 30, 20);
 
-    //! 【TODO】ここでXと向きをリセット
+    //! ラインつかみに成功したらリセット
+    if(success){
+        //! 【TODO】ここでXと向きをリセット
+        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+    }
     
 
     for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
