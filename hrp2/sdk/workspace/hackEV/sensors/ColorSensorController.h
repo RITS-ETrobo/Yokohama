@@ -74,6 +74,12 @@ private:
 
     //! 青/赤  (4.0f/6.0f + 1.0f) / 2.0f;
     double BORDER_BLUE_RED;
+
+    //! 緑と青(RGBの青で判別する)
+    double BORDER_GREEN_BLUE_AS_BLUE;
+
+        //! 緑と灰(RGBの赤で判別する)
+    double BORDER_GREEN_GRAY_AS_RED;
     //@}
 
     uint8_t COLOR_GRAY = (uint8_t)TNUM_COLOR + 1;
