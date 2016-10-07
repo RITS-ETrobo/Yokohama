@@ -183,13 +183,22 @@ void start_LcourseRun()
         }
     }
     else if(hoshitoriColor == 1){
-
+        //! 星取りの色は青だった場合のシナリオ
+        for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_blue) / sizeof(L_Sumo_scenario_hoshi_blue[0])); index++) {
+            driveController->run(L_Sumo_scenario_hoshi_blue[index]);
+        }
     }
     else if(hoshitoriColor == 2){
-
+        //! 星取りの色は緑だった場合のシナリオ
+        for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_green) / sizeof(L_Sumo_scenario_hoshi_green[0])); index++) {
+            driveController->run(L_Sumo_scenario_hoshi_green[index]);
+        }
     }
     else{
-
+        //! 星取りの色は黄色だった場合のシナリオ
+        for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_yellow) / sizeof(L_Sumo_scenario_hoshi_yellow[0])); index++) {
+            driveController->run(L_Sumo_scenario_hoshi_yellow[index]);
+        }
     }
 
     move_arm(0, 60, false);
