@@ -6,6 +6,7 @@
 
 #include "runPattern.h"
 #include "stopCondition.h"
+#include "product.h"
 
 /**
  * @struct scenario_running
@@ -32,6 +33,9 @@ typedef struct {
 
     //! 停止条件とするもの
     enum stopCondition stopConditionPattern;
+
+    //! 停止条件カラー(COLOR_NONEが設定されている場合は停止判定しない)
+    uint8_t stopColorID;
 } scenario_running;
 
 //! Lコース（スタート～懸賞入口）
@@ -132,5 +136,7 @@ extern const scenario_running run_scenario_curve_90[5];
 extern const scenario_running run_scenario_LCource_Try[8];
 #endif  //  FALSE
 
+//! 検証用(ラインを使って向きを整える)
+extern const scenario_running correct_direction_line[3];
 //! 自己位置推定Positionの検証用
 extern const scenario_running run_scenario_test_position[5];
