@@ -11,6 +11,7 @@
 #include "SonarSensorController.h"
 #include "ColorSensorController.h"
 #include "CourseInformationLeft.h"
+#include "CourseInformationRight.h"
 
 //! ログクラスのインスタンス
 extern Logger*  logger;

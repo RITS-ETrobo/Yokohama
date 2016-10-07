@@ -18,6 +18,7 @@
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
 #include "CourseInformationLeft.h"
+#include "CourseInformationRight.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -142,6 +143,13 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case RIGHT_BUTTON:
+        //  Lコースのコース情報を持つインスタンスを生成する
+        if (courseInformation) {
+            delete courseInformation;
+            courseInformation = NULL;
+        }
+
+        courseInformation = new CourseInformationRight();
         //! 本体の右ボタンで超音波モード
         writeStringLCD("RIGHT button click");
         syslog(LOG_NOTICE, "RIGHT button clicked.");

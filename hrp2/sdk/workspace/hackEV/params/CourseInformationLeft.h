@@ -1,6 +1,6 @@
 /**
- * @file    CourseInformation.h
- * @brief   This file has course informations.
+ * @file    CourseInformationLeft.h
+ * @brief   This file has left course informations.
  */
 #pragma once
 

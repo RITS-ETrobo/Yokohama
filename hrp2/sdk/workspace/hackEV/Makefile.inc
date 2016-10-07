@@ -24,6 +24,7 @@ APPL_CXXOBJS += \
     GyroSensorController.o \
     CourseInformation.o \
     CourseInformationLeft.o \
+    CourseInformationRight.o \
     MotorWheel.o \
     DriveController.o \
     EV3Position.o \
