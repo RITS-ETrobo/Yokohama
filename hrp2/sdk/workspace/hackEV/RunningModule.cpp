@@ -86,7 +86,7 @@ void start_run_test()
     // }
 
     //! ラインを探して向きを揃える
-    driveController->catchLineAndCorrectDirection(50, 30, 0);
+    driveController->catchLineAndCorrectDirection(30, 30, 30);
 
     ev3_speaker_play_tone(NOTE_F4, 300);
     if (logger) {
