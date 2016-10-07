@@ -5,6 +5,8 @@
 #include "parameterPID.h"
 #include "coordinateScenario.h"
 
+#include "ColorSensorController.h"
+
 //! 検証用
 const scenario_coordinate test_coordinate[14] = {
     {30, 0, 253.7143},
@@ -37,7 +39,7 @@ const scenario_coordinate start_straightBeforeHoshitori[6] = {
 
 //! 灰色にかかるところ（グレー検知でも止まるように）
 const scenario_coordinate toGRAYBeforeHOSHI[1] ={
-    {20, -857, 1190,COLOR_GRAY}
+    {20, -857, 1190, COLOR_GRAY}
 };
 
 //! 星取り
@@ -48,25 +50,25 @@ const scenario_coordinate toHoshitori [1] ={
 //! 相撲前の線路前まで
 const scenario_coordinate beforeSUMO[2] = {
     {50, -535, 1162},
-    {50, -535, 1025}
+    {50, -535, 1020}
 };
 
 
 //! 相撲台の上まで移動
 const scenario_coordinate onStageSumo[1]={
-    {50, -535, 891}
+    {50, -535, 874}
 };
 
 //! 相撲が終わってから懸賞前の直線まで
 const scenario_coordinate fromSumo_toKenshoStraight[3]={
     {50, -535, 566},
     {50, -214, 566},
-    {50, -214, 997}
+    {50, -214, 815}
 };
 
 //! 懸賞前の灰色(カラーでも止まる)
 const scenario_coordinate toGRAYBeforeKENSHO[1] ={
-    {50, -214, 1217}
+    {50, -214, 1217, COLOR_GRAY}
 };
 
 //! 懸賞

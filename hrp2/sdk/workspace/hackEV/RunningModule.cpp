@@ -16,6 +16,7 @@
 #include "ArmModule.h"
 #include "coordinateScenario.h"
 #include "EV3Position.h"
+#include "ArmModule.h"
 
 /**
  * @brief   初期化処理
@@ -132,11 +133,11 @@ void start_LcourseRun()
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている
         driveController->setNewPositionX(-860);//ここでX座標をリセット
-        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+        //driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
     }else if(catchPattern == LEFT_PATTERN){
         //! ライン右縁を捉えている
         driveController->setNewPositionX(-853);//ここでX座標をリセット
-        driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
+        //driveController->setNewDirection(0.0F);//y軸に垂直になっているはずなのでリセット
     }
 
     //! 【TODO】灰色検知しても止まること
@@ -144,7 +145,10 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(toGRAYBeforeHOSHI[index]);
     }
 
-    driveController->
+    if(driveController->foundColor){
+        driveController->foundColor=false;
+        driveController->setNewPositionY(1216);//ここでY座標をリセット
+    }
     
     //! 星取り【色を検知しても止まること】
     for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
@@ -157,6 +161,8 @@ void start_LcourseRun()
     for (int index = 0; index < (int)(sizeof(beforeSUMO) / sizeof(beforeSUMO[0])); index++) {
         driveController->manageMoveCoordinate(beforeSUMO[index]);
     }
+
+    move_arm(50, 60, false);
 
     //! 新幹線が目の前を通りすぎるまで待つ
     sonarSensorController->stoppingPassShinkansen();
@@ -186,6 +192,8 @@ void start_LcourseRun()
 
     }
 
+    move_arm(0, 60, false);
+
     //! 相撲が終わったら新幹線が目の前を通りすぎるまで待つ
     sonarSensorController->stoppingPassShinkansen();
 
@@ -212,11 +220,17 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(toGRAYBeforeKENSHO[index]);
     }
 
+    if(driveController->foundColor){
+        driveController->foundColor=false;
+        driveController->setNewPositionY(1216);//ここでY座標をリセット
+    }
+
     for (int index = 0; index < (int)(sizeof(KENSHO) / sizeof(KENSHO[0])); index++) {
         driveController->manageMoveCoordinate(KENSHO[index]);
     }
 
     //! 【TODO】懸賞をとる作業
+    move_arm_horizon();
 
     //! 懸賞からゴールまで
     for (int index = 0; index < (int)(sizeof(fromKensho_toGoal) / sizeof(fromKensho_toGoal[0])); index++) {

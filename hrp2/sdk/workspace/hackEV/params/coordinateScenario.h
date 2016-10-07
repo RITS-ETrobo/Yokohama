@@ -4,6 +4,15 @@
  */
 #pragma once
 
+#include "scenarioRunning.h"
+
+#include "MotorWheel.h"
+#include "SpeedCalculator.h"
+#include "coordinateScenario.h"
+#include "orientationPattern.h"
+#include "EV3Position.h"
+
+
 /**
  * @struct scenario_coordinate
  * 走行シナリオ

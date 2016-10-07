@@ -1549,6 +1549,17 @@ void DriveController::setNewPositionX(float newX){
 }
 
 /**
+ * @brief   y座標を設定 [pixcel値]
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewPositionY(float newY){
+    EV3_POSITION position;
+    position.y = newY;
+    speedCalculator100ms->setPosition(&position , 0.0F, EV3Position::CORRECT_POSITION_MAP_Y);
+}
+
+/**
  * @brief   新しい向きを設定
  * @param   [in]    exinf   未使用
  * @return  なし
