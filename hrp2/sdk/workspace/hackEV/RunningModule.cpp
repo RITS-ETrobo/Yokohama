@@ -179,6 +179,9 @@ void start_LcourseRun()
 
     }
 
+    //! 相撲が終わったら新幹線が目の前を通りすぎるまで待つ
+    sonarSensorController->stoppingPassShinkansen();
+
     //! 相撲ゾーン終わった位置から懸賞前の直線
     for (int index = 0; index < (int)(sizeof(fromSumo_toKenshoStraight) / sizeof(fromSumo_toKenshoStraight[0])); index++) {
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
