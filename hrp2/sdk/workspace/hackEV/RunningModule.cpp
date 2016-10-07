@@ -128,7 +128,8 @@ void start_LcourseRun()
     }
 
     //! 一度この直線でラインを掴む
-    orientationPattern catchPattern = driveController->catchLineAndCorrectDirection(30, 40, 20);
+    //orientationPattern catchPattern = driveController->catchLineAndCorrectDirection(30, 40, 20);
+    orientationPattern catchPattern = driveController->catchLine(30, 40, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている
@@ -155,7 +156,9 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(toHoshitori[index]);
     }
 
-    //! 【TODO】もし色をさがせてなければ色を探す
+    //! 星とり付近で色を探す
+    driveController->searchHOSHITORI(20, 30);
+    uint8_t hoshitoriColor = driveController->colorHOSHITORI;
 
     //! 新幹線線前まで
     for (int index = 0; index < (int)(sizeof(beforeSUMO) / sizeof(beforeSUMO[0])); index++) {
@@ -167,13 +170,12 @@ void start_LcourseRun()
     //! 新幹線が目の前を通りすぎるまで待つ
     sonarSensorController->stoppingPassShinkansen();
 
+
     //! 相撲台の上に移動
     for (int index = 0; index < (int)(sizeof(onStageSumo) / sizeof(onStageSumo[0])); index++) {
         driveController->manageMoveCoordinate(onStageSumo[index]);
     }
 
-    //! 星取りカラー【TODO】取得した色を取得するようにする
-    int hoshitoriColor = 0;
 
     //! 相撲ゾーン攻略
     if(hoshitoriColor == 0){
@@ -211,7 +213,7 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
     }
 
-    catchPattern = driveController->catchLineAndCorrectDirection(30, 35, 20);
+    catchPattern = driveController->catchLine(30, 35, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている

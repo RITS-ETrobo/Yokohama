@@ -35,6 +35,7 @@ public:
     virtual void setNewPositionX(float x);
     virtual void setPosition(EV3_POSITION *position, float direction_, uint8_t updateType = 0);
     virtual void setNewPositionY(float newY);
+    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
 
 
     //! 前回の色
@@ -42,6 +43,11 @@ public:
 
     //! 指定したカラーをみつけたかどうか
     bool foundColor;
+    virtual bool searchHOSHITORI(int power, float searchWidth);
+
+        
+    //! 星とりで取得したカラー
+    uint8_t colorHOSHITORI;
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -82,13 +88,14 @@ protected:
 
     virtual float shortestMoveDirection(float targetDirection, float startDirection);
     virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
-    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
+    
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
     virtual bool judgeStopColor(uint8_t targetColor);
     virtual bool stopByColor(scenario_running scenario);
     virtual float convertMapToREAL(float map);
+    virtual bool isAnyHOSHITORIcolor();
 
 private:
     void pinWheel(int power, float degree);
@@ -152,14 +159,9 @@ private:
     //! 利用可能かどうか
     bool    enabled;
 
-    // //! 前回の色
-    // uint8_t lastColor;
-
-    // //! 指定したカラーをみつけたかどうか
-    // bool foundColor;
-
     //! カラーセンサータスクの有効フラグ（輝度取得時には切っておかないとちゃんと取得できない）
     bool validColorTask;
+
 };
 
 //! 加速はじめのパワー

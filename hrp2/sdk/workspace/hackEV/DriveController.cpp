@@ -39,6 +39,7 @@ DriveController::DriveController()
     , lastColor(COLOR_NONE)
     , foundColor(false)
     , validColorTask(true)
+    , colorHOSHITORI(COLOR_RED)
 {
 }
 
@@ -1592,4 +1593,66 @@ void DriveController::setPosition(EV3_POSITION *position, float direction_, uint
     }
 
     speedCalculator100ms->setPosition(position, direction_, updateType);
+}
+
+/**
+ *  @param  星とり探し
+ *  @return 星とりを探しあてればtrue,探せなければfalse
+*/
+bool DriveController::searchHOSHITORI(int power, float searchWidth){
+
+    int moveCount =0;
+    for(;;){
+
+        float firstDirection = directionTotal;
+
+        //! 片側ずつ探してしらみつぶしで見つける
+        motorWheelRight->run(power);
+        motorWheelLeft->stop(true);
+
+        moveCount++;
+        for(;;){     
+            if(isAnyHOSHITORIcolor()){
+                stop();
+                return true;
+            }
+
+            if(fabsf(directionTotal) > fabsf(searchWidth)){
+                break;
+            }
+        }
+
+        //! 右のみ動かす
+        motorWheelLeft->run(power);
+        motorWheelRight->stop(true);
+
+        for(;;){     
+            if(isAnyHOSHITORIcolor()){
+                stop();
+                return true;
+            }
+
+            if(fabsf(directionTotal) < fabsf(searchWidth)){
+                break;
+            }
+        }
+
+        //! 5回移動しても見つからなかった場合
+        if(moveCount > 5){
+            return false;
+        }
+    }
+}
+
+/**
+ *  @param  星とりのどれかの色が真下にある
+ *  @return あればtrue,なければfalse
+*/
+bool DriveController::isAnyHOSHITORIcolor(){
+    if(lastColor == COLOR_RED || lastColor == COLOR_YELLOW || lastColor == COLOR_GREEN || lastColor == COLOR_BLUE){
+        
+        //! 星とりの色としてセット
+        colorHOSHITORI = lastColor;
+        return true;
+    }
 }
