@@ -211,7 +211,7 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
     }
 
-    catchPattern = driveController->catchLineAndCorrectDirection(30, 40, 20);
+    catchPattern = driveController->catchLineAndCorrectDirection(30, 35, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている
