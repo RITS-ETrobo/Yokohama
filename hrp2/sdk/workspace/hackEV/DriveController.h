@@ -13,6 +13,7 @@
 #include "MotorWheel.h"
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
+#include "orientationPattern.h"
 
 
 //! Class for driving
@@ -28,6 +29,7 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
+    virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -42,7 +44,8 @@ protected:
     virtual int addAdjustValue(int targetValue, int addvalue);
     virtual void getPowerForCurvatureRadius(enum runPattern pattern, float curvatureRadius, int power, int *powerLeft, int *powerRight);
     virtual void curveRun(enum runPattern pattern, int power, float curvatureRadius);
-    virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY);
+    virtual bool correctDirectionByLine(int power, orientationPattern findLineOrientation);
+    virtual void jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY, uint8_t stopColorID=COLOR_NONE);
     virtual float distanceFromCoordinateForJitteryMovement(float startX, float startY, float endX, float endY);
     virtual float directionFromCoordinateForJitteryMovement(float startX, float startY, float startDirection, float endX, float endY);
 
@@ -62,9 +65,14 @@ protected:
     virtual void smoothMovementFromCoordinate(scenario_coordinate _coordinateScenario);
     virtual float OnceDifferentialOfCubicFunction(float a1, float a2, float a3, float x);
     virtual float SecondDifferentialOfCubicFunction(float a2, float a3, float x);
+    virtual float shortestMoveDirection(float targetDirection, float startDirection);
+    virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
+    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
+    virtual bool judgeStopColor(uint8_t targetColor);
+    virtual bool stopByColor(scenario_running scenario);
 
 private:
     void pinWheel(int power, float degree);
@@ -130,6 +138,12 @@ private:
 
     //! 前回の色
     uint8_t lastColor;
+
+    //! 指定したカラーをみつけたかどうか
+    bool foundColor;
+
+    //! カラーセンサータスクの有効フラグ（輝度取得時には切っておかないとちゃんと取得できない）
+    bool validColorTask;
 };
 
 //! 加速はじめのパワー

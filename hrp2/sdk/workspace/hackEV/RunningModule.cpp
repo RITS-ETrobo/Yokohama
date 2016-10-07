@@ -81,9 +81,12 @@ void start_run_test()
     driveController->setEnabled();
 
     //! 個別のシナリオ検証用
-    for (int index = 0; index < (int)(sizeof(run_scenario_test_position) / sizeof(run_scenario_test_position[0])); index++) {
-        driveController->run(run_scenario_test_position[index]);
-    }
+    // for (int index = 0; index < (int)(sizeof(correct_direction_line) / sizeof(correct_direction_line[0])); index++) {
+    //     driveController->run(correct_direction_line[index]);
+    // }
+
+    //! ラインを探して向きを揃える
+    driveController->catchLineAndCorrectDirection(30, 30, 30);
 
     ev3_speaker_play_tone(NOTE_F4, 300);
     if (logger) {
@@ -121,8 +124,10 @@ void start_LcourseRun()
     }
 
     //! 【TODO】一度この直線でラインを掴む
+    driveController->catchLineAndCorrectDirection(30, 30, 20);
 
     //! 【TODO】ここでXと向きをリセット
+    
 
     for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
         driveController->manageMoveCoordinate(toHoshitori[index]);
@@ -135,7 +140,8 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(beforeSUMO[index]);
     }
 
-    //! 【TODO】新幹線処理
+    //! 新幹線が目の前を通りすぎるまで待つ
+    sonarSensorController->stoppingPassShinkansen();
 
     //! 相撲台の上に移動
     for (int index = 0; index < (int)(sizeof(onStageSumo) / sizeof(onStageSumo[0])); index++) {

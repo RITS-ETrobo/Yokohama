@@ -15,6 +15,7 @@
 #include "DriveController.h"
 #include "user_function.h"
 
+
 //! class for driving
 DriveController::DriveController()
     : motorWheelLeft(NULL)
@@ -35,6 +36,8 @@ DriveController::DriveController()
     , initialized(false)
     , enabled(false)
     , lastColor(COLOR_NONE)
+    , foundColor(false)
+    , validColorTask(true)
 {
 }
 
@@ -108,18 +111,17 @@ void DriveController::run(scenario_running scenario)
 
     //! ストップ監視しつつ、走行
     for (;;) {
+        bool    needReturn = stopByDistance(scenario) | stopByDirection(scenario) | stopByColor(scenario);
+        if (needReturn) {
+            return;
+        }
+
         //! 走行
         if (runAsPattern(scenario)) {
             return;
         }
-
         //! ログを書き出しつつ、異常終了させない為に、適度な待ち時間が必要
         tslp_tsk(2);
-
-        bool    needReturn = stopByDistance(scenario) | stopByDirection(scenario);
-        if (needReturn) {
-            return;
-        }
     }
 }
 
@@ -264,6 +266,13 @@ bool DriveController::runAsPattern(scenario_running scenario)
     case NOTRACE_CURVE_LEFT:
         curveRun(scenario.pattern, scenario.power, scenario.curvatureRadius);
         break;
+    
+    case CORRECT_DIRECTION_BY_LINE:
+    {
+
+        //! 【TODO】向きをリセット。場所によってxかyどちらかをリセット
+    }
+        return true;
 
     default:
         {
@@ -492,6 +501,22 @@ bool DriveController::stopByDirection(scenario_running scenario)
     }
 
     return  isGreaterValue;
+}
+
+/**
+ * @brief   指定した色だった場合、走行体を停止させる(0度であれば判定しない)
+ * @param   scenario    走行シナリオ
+ * @return  true : 停止可能
+ * @return  false : 停止不可能
+ */
+bool DriveController::stopByColor(scenario_running scenario){
+    
+    //! ストップカラーが設定されていない場合は判定しない
+    if(scenario.stopColorID == COLOR_NONE){
+        return false;
+    }
+
+    return judgeStopColor(scenario.stopColorID);
 }
 
 /**
@@ -752,6 +777,17 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
         targetDirection = -270 - deg;
     }
 
+    //! 回転量が最小となる回転角度を返す
+    return shortestMoveDirection(targetDirection, startDirection);
+}
+
+/**
+ * @brief   2つの角度で最小となる回転量を算出
+ * @param   targetDirection  ターゲット角度
+ * @param   startDirection 初期角度
+ * @return  
+ */
+float DriveController::shortestMoveDirection(float targetDirection, float startDirection){
     //! ターゲットまでの角度を今のままか、360度反転させたときの移動量を比較（近い方を選択）
     if (fabsf((targetDirection - 360) - startDirection) < fabsf(targetDirection - startDirection))
     {
@@ -792,14 +828,14 @@ float DriveController::directionFromCoordinateForJitteryMovement(float startX, f
  * @param   endDirection 終点での角度
  * @return  
  */
-void DriveController::jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY){
+void DriveController::jitteryMovementFromCoordinate(int power, float startX, float startY, float startDirection, float endX, float endY, uint8_t stopColorID /*= COLOR_NONE*/){
 
     
     //! 最初にその場で動く角度
     float moveDirection = directionFromCoordinateForJitteryMovement(startX, startY, startDirection, endX, endY);
     
     //! 目標の座標の向きまでその場回転
-    scenario_running pinWheelScenario={power/2, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    scenario_running pinWheelScenario={power/2, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP, stopColorID};
     
     run(pinWheelScenario);
 
@@ -807,7 +843,7 @@ void DriveController::jitteryMovementFromCoordinate(int power, float startX, flo
     float moveDistance = distanceFromCoordinateForJitteryMovement(startX, startY, endX, endY);
     
     //! 目標の座標まで直進
-    scenario_running straghtScenario={power, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP};
+    scenario_running straghtScenario={power, moveDistance, 0.0F, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP, stopColorID};
     run(straghtScenario);
 }
 
@@ -1157,7 +1193,7 @@ void DriveController::updatePosition()
     record.directionDelta = directionDelta;
     speedCalculator100ms->add(record);
 
-    if (colorSensorController) {
+    if (colorSensorController && validColorTask) {
         uint8_t currentColor = colorSensorController->getColorID();
         if (lastColor != currentColor) {
             lastColor = currentColor;
@@ -1177,6 +1213,95 @@ void DriveController::updatePosition()
         logger->addLogFloat(LOG_TYPE_DIRECTION_SCENARIO, directionScenario);
         logger->addLogFloat(LOG_TYPE_DIRECTION_TOTAL, directionTotal);
     }
+}
+
+/**
+ * @brief   ラインを使って向きをリセットする
+ * ホイールオドメトリで蓄積される誤差をラインを使ってリセットする
+ * @param   
+ * @param   
+ * @return  成功、失敗
+ */
+bool DriveController::correctDirectionByLine(int power, orientationPattern findLineOrientation){
+
+    //! 明度を使うので、通常のカラー取得は一度オフにする
+    validColorTask = false;
+    
+    int moveCount = 10;
+
+    //! ラインのどちら側にいるのか検討をつけて動かすほうのモーターを決める
+    if(findLineOrientation == LEFT_PATTERN){
+        //! ラインが走行体の左方向に位置する場合
+        for(;;){
+            //! 左のみ動かす
+            motorWheelRight->run(power);
+            motorWheelLeft->stop(true);
+
+            moveCount++;
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue < (black + 5 +moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 右のみ動かす
+            motorWheelLeft->run(power);
+            motorWheelRight->stop(true);
+
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue > (white - 5 -moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+            if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
+                break;
+            }
+        }
+    }
+    else{
+        //! ラインが走行体の右方向に位置する場合
+        for(;;){
+            //! 右のみ動かす
+            motorWheelLeft->run(power);
+            motorWheelRight->stop(true);
+
+            moveCount++;
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue < (black + 5 +moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 左のみ動かす
+            motorWheelRight->run(power);
+            motorWheelLeft->stop(true);
+
+            for(;;){
+                int colorValue = ev3_color_sensor_get_reflect(EV3_SENSOR_COLOR);       
+                if(colorValue > (white - 5 -moveCount)){
+                    stop();
+                    break;
+                }
+            }
+
+            //! 動かす距離が角ホイールごとにどちらも同じそして、動かす距離が十分に小さくなったらループを抜ける
+            if(abs(white - 5 -moveCount) - abs(black + 5 +moveCount) <= 0){
+                break;
+            }
+        }
+    }
+
+    //! 再び通常のカラーセンサーを有効
+    validColorTask = true;
+    return true;
 }
 
 /**
@@ -1299,4 +1424,104 @@ void DriveController::setEnabled(bool _enabled /*= true*/)
 bool DriveController::isEnabled()
 {
     return  enabled;
+}
+
+/**
+ *  @param ラインを掴んで、向きを揃える一連の動作をまとめる
+ *  @return なし
+*/
+bool DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
+    enum orientationPattern findLineOrientation = catchLine(power, searchWidth, searchHeight);
+    
+    if(findLineOrientation == NONE_PATTERN){
+        return false;
+    }
+
+    return correctDirectionByLine(power, findLineOrientation);
+}
+
+/**
+ *  @param ラインを掴む
+ *  @return なし
+*/
+orientationPattern DriveController::catchLine(int power, float serchWidth, float searchHeight){
+
+    enum orientationPattern findLineOrientation = LEFT_PATTERN;
+
+    //! ラインを探す前の向きを覚えておく
+    float beforeDirection = directionTotal;
+
+
+    //! 左方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , 0, serchWidth/2, searchHeight, COLOR_BLACK);
+
+    //! 左方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return LEFT_PATTERN;
+    }
+
+    //! 左方向を探し終えるまでに向いた向き
+    float leftMovedDirection =shortestMoveDirection(directionTotal, beforeDirection);
+
+
+    //! 右方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , leftMovedDirection, -serchWidth, searchHeight, COLOR_BLACK);
+
+    //! 右方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return RIGHT_PATTERN;
+    }
+
+    
+
+    //! 途中で黒線がある通知が来ればストップさせる
+
+
+
+    //! 一番最初の向き(beforeDirection)に直す
+    rotateAbsolutelyDirection(power/2, beforeDirection);
+
+    //! 見つけた方向を返す
+    return NONE_PATTERN;
+}
+
+/**
+ *  @param 向きを絶対指定する（相対指定ではなく）
+ * @param   [in]    power   回転パワー
+ * @param   [in]    AbsolutelyTargetDirection   あわせたい向きの指定（絶対指定）
+ *  @return なし
+*/
+void DriveController::rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection){
+    
+    //! ターゲット角度までの回転量
+    float moveDirection = shortestMoveDirection(AbsolutelyTargetDirection, directionTotal);
+    
+    //! 目標の座標の向きまでその場回転
+    scenario_running pinWheelScenario={power, 0.0F, moveDirection, PINWHEEL, true,0,DIRECTION_STOP};
+    
+    run(pinWheelScenario);
+}
+
+/**
+ * @brief   走行をストップさせるカラー判定
+ * @param   [in]    exinf   未使用
+ * @return  ストップカラーだった場合はtrue、そうでなかった場合にはfalse
+ */
+bool DriveController::judgeStopColor(uint8_t stopColor){
+
+    //! 停止色と同じだった場合は停止する
+    if(lastColor == stopColor){
+        foundColor = true;
+        return true;
+    }
+
+    return false;
 }
