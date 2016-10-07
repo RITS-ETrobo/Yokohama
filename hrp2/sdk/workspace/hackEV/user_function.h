@@ -17,8 +17,8 @@ double user_fmod(double x, double y);
 float adjustValue(float value, float minValue, float maxValue);
 float radian2degree(float radian);
 float degree2radian(float degree);
-uint8_t getMinimumValue(uint8_t value1, uint8_t value2, uint8_t value3);
-uint8_t getMaximumValue(uint8_t value1, uint8_t value2, uint8_t value3);
+double getMinimumValue(double value1, double value2, double value3);
+double getMaximumValue(double value1, double value2, double value3);
 
 #ifdef __cplusplus
 }
