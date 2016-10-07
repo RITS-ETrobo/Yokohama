@@ -38,7 +38,8 @@ const scenario_coordinate start_straightBeforeHoshitori[6] = {
 };
 
 //! 灰色にかかるところ（グレー検知でも止まるように）
-const scenario_coordinate toGRAYBeforeHOSHI[1] ={
+const scenario_coordinate toGRAYBeforeHOSHI[2] ={
+     {20, -857, 1157},
     {20, -857, 1190, COLOR_GRAY}
 };
 
@@ -56,7 +57,7 @@ const scenario_coordinate beforeSUMO[2] = {
 
 //! 相撲台の上まで移動
 const scenario_coordinate onStageSumo[1]={
-    {50, -535, 874}
+    {50, -535, 885}
 };
 
 //! 相撲が終わってから懸賞前の直線まで

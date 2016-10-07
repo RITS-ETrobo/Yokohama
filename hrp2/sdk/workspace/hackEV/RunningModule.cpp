@@ -202,8 +202,8 @@ void start_LcourseRun()
             driveController->run(L_Sumo_scenario_hoshi_yellow[index]);
         }
     }
-
-    move_arm(0, 60, false);
+    move_arm(0, 60, true);
+    
 
     //! 相撲が終わったら新幹線が目の前を通りすぎるまで待つ
     sonarSensorController->stoppingPassShinkansen();
@@ -241,7 +241,7 @@ void start_LcourseRun()
     }
 
     //! 【TODO】懸賞をとる作業
-    move_arm_horizon();
+    //move_arm(80, 100, true);
 
     //! 懸賞からゴールまで
     for (int index = 0; index < (int)(sizeof(fromKensho_toGoal) / sizeof(fromKensho_toGoal[0])); index++) {

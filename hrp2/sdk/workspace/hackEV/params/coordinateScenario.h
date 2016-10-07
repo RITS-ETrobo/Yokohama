@@ -38,7 +38,7 @@ extern const scenario_coordinate test_coordinate[14];
 extern const scenario_coordinate start_straightBeforeHoshitori[6];
 
 //! 星取り前の灰色（カラーでもとめる）
-extern const scenario_coordinate toGRAYBeforeHOSHI[1];
+extern const scenario_coordinate toGRAYBeforeHOSHI[2];
 
 //! 星取りまで
 extern const scenario_coordinate toHoshitori [1];
