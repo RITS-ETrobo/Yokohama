@@ -207,6 +207,7 @@ bool EV3Position::getPosition(EV3_POSITION *positionREAL, EV3_POSITION *position
  *  @brief  走行体の現在位置を設定する
  *  @param  position    座標
  *  @param  direction_  向き[単位 : 度]
+ *  @param  updateType  更新する項目を指定する
 */
 void EV3Position::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
 {

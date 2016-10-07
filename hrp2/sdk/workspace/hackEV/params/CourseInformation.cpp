@@ -1,6 +1,6 @@
 /**
  * @file    CourseInformation.cpp
-  * @brief   This file has course informations.
+ * @brief   This file has course informations.
  */
 #include "CourseInformation.h"
 #include <string.h>
@@ -8,9 +8,12 @@
 /**
  *  @brief  コンストラクタ
 */
-CourseInformation::CourseInformation()
+CourseInformation::CourseInformation(float xStart, float yStart, float directionStart_)
     : initialized(false)
+    , directionStart(directionStart_)
 {
+    positionStart.x = xStart;
+    positionStart.y = yStart;
 }
 
 /**
@@ -29,6 +32,16 @@ void CourseInformation::initialize(bool isForce /*= false*/)
 
     std::vector<OBJECT_INFORMATION>().swap(partsInformation);
     std::vector<OBJECT_INFORMATION>().swap(zonesInformation);
+}
+
+/**
+ *  @brief  スタート地点の情報を返す
+ *  @return なし
+*/
+void CourseInformation::getStartPosition(EV3_POSITION *position, float *direction)
+{
+    memcpy((void*)position, (const void*)&positionStart, sizeof(EV3_POSITION));
+    *direction = directionStart;
 }
 
 /**

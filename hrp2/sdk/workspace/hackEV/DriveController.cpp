@@ -874,6 +874,7 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, targetREAL_X, targetREAL_Y);
 }
 
+#if FALSE
 /**
  * @brief   滑らか座標移動
  * @param   目標座標が書かれたシナリオ
@@ -925,6 +926,7 @@ void DriveController::smoothMovementFromCoordinate(scenario_coordinate _coordina
         tslp_tsk(2);
     }
 }
+#endif  // FALSE
 
 #if FALSE //モデル図記載の式から算出しようと思ったもの。うまくいかないので保留
 /**
@@ -1093,6 +1095,7 @@ float DriveController::degForTrigonometric(float direction){
 }
 #endif  // FALSE(モデル図記載の式から算出しようと思ったもの)
 
+#if FALSE // 実装の時間が足りない為
 /**
 * @brief   曲率半径を計算する（モデル図のものではなく独自ver）
 * 公式の参考サイト http://mathtrain.jp/curvature
@@ -1170,7 +1173,7 @@ float DriveController::SecondDifferentialOfCubicFunction(float a2, float a3, flo
 	float dy2 = 6*a3*x + 2*a2;
 	return dy2;
 }
-
+#endif  // FALSE // 実装の時間が足りない為
 
 /**
  * @brief   走行体の位置を更新するタスク
@@ -1563,4 +1566,19 @@ void DriveController::setNewDirection(float newDirection){
  */
 float DriveController::convertMapToREAL(float map){
     return map * 2 / (float)7;
+}
+
+/**
+ *  @brief  走行体の現在位置を設定する
+ *  @param  position    座標
+ *  @param  direction_  向き[単位 : 度]
+ *  @param  updateType  更新する項目を指定する
+*/
+void DriveController::setPosition(EV3_POSITION *position, float direction_, uint8_t updateType /*= 0*/)
+{
+    if (speedCalculator100ms == NULL) {
+        return;
+    }
+
+    speedCalculator100ms->setPosition(position, direction_, updateType);
 }

@@ -17,6 +17,8 @@
 #include "ColorSensorController.h"
 #include "GyroSensorController.h"
 #include "SonarSensorController.h"
+#include "CourseInformationLeft.h"
+#include "CourseInformationRight.h"
 
 //! デストラクタでの問題回避
 //! 詳細は、 https://github.com/ETrobocon/etroboEV3/wiki/problem_and_coping を参照する事
@@ -39,6 +41,9 @@ SonarSensorController   *sonarSensorController = NULL;
 
 //! ColorSensorControllerクラスのインスタンス
 ColorSensorController   *colorSensorController = NULL;
+
+//! CourseInformationクラスのインスタンス
+CourseInformation   *courseInformation = NULL;
 
 //! \addtogroup 周期タスク実行中フラグ
 //@{
@@ -117,32 +122,58 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case LEFT_BUTTON:
-        
-        //シナリオ走行モードの初期化処理
-        initialize_run();
+        {
+            //  Lコースのコース情報を持つインスタンスを生成する
+            if (courseInformation) {
+                delete courseInformation;
+                courseInformation = NULL;
+            }
 
-        //! 準備ができたら音が3回鳴る
-        ev3_speaker_play_tone(NOTE_E6, 300);
-        tslp_tsk(300);
+            courseInformation = new CourseInformationLeft();
+            EV3_POSITION    position;
+            float   direction = 0.0F;
+            courseInformation->getStartPosition(&position, &direction);
+            driveController->setPosition(&position, direction, EV3Position::CORRECT_POSITION_MAP | EV3Position::CORRECT_DIRECTION);
 
-        //! テスト走行開始
-        start_LcourseRun();
+            //シナリオ走行モードの初期化処理
+            initialize_run();
 
+            //! 準備ができたら音が3回鳴る
+            ev3_speaker_play_tone(NOTE_E6, 300);
+            tslp_tsk(300);
+
+            //! テスト走行開始
+            start_LcourseRun();
+        }
         break;
 
     case RIGHT_BUTTON:
-        //! 本体の右ボタンで超音波モード
-        writeStringLCD("RIGHT button click");
-        syslog(LOG_NOTICE, "RIGHT button clicked.");
+        {
+            //  Rコースのコース情報を持つインスタンスを生成する
+            if (courseInformation) {
+                delete courseInformation;
+                courseInformation = NULL;
+            }
 
-        //! 超音波センサー有効化
-        sonarSensorController->setEnabled();
+            courseInformation = new CourseInformationRight();
+            EV3_POSITION    position;
+            float   direction = 0.0F;
+            courseInformation->getStartPosition(&position, &direction);
+            driveController->setPosition(&position, direction, EV3Position::CORRECT_POSITION_MAP | EV3Position::CORRECT_DIRECTION);
 
-        //! 超音波制御
-        control_sonarsensor();        
+            //! 本体の右ボタンで超音波モード
+            writeStringLCD("RIGHT button click");
+            syslog(LOG_NOTICE, "RIGHT button clicked.");
 
-        //! 超音波センサー無効化
-        sonarSensorController->setEnabled(false);
+            //! 超音波センサー有効化
+            sonarSensorController->setEnabled();
+
+            //! 超音波制御
+            control_sonarsensor();
+
+            //! 超音波センサー無効化
+            sonarSensorController->setEnabled(false);
+        }
         break;
 
     case UP_BUTTON:
