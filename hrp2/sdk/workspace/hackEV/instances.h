@@ -30,3 +30,6 @@ extern SonarSensorController    *sonarSensorController;
 
 //! ColorSensorControllerクラスのインスタンス
 extern ColorSensorController    *colorSensorController;
+
+//! CourseInformationクラスのインスタンス
+extern CourseInformation    *courseInformation;

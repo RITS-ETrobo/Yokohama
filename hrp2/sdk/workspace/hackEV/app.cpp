@@ -40,6 +40,9 @@ SonarSensorController   *sonarSensorController = NULL;
 //! ColorSensorControllerクラスのインスタンス
 ColorSensorController   *colorSensorController = NULL;
 
+//! CourseInformationクラスのインスタンス
+CourseInformation   *courseInformation = NULL;
+
 //! \addtogroup 周期タスク実行中フラグ
 //@{
 //! ログ書き出しタスク
@@ -117,7 +120,9 @@ static void button_clicked_handler(intptr_t button) {
         break;
 
     case LEFT_BUTTON:
-        
+        //  Lコースのコース情報を持つインスタンスを生成する
+        courseInformation = CourseInformationLeft();
+
         //シナリオ走行モードの初期化処理
         initialize_run();
 
