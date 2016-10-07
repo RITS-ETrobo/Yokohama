@@ -148,8 +148,8 @@ ER DriveController::stop(bool_t brake /*= true*/)
         return  resultRight;
     }
 
-    writeFloatLCD(distanceTotal);
-    writeFloatLCD(directionTotal);
+    // writeFloatLCD(distanceTotal);
+    // writeFloatLCD(directionTotal);
 
     return  resultLeft;
 }
@@ -436,7 +436,7 @@ void DriveController::change_LineSide(scenario_running scenario)
         
         if(colorValue > (white - 5) && onBlack){
             ev3_motor_stop(firstMoveWheel,true);
-            writeFloatLCD((float)colorValue);
+            // writeFloatLCD((float)colorValue);
             break;
         }
     }
@@ -1201,7 +1201,7 @@ void DriveController::updatePosition()
     speedCalculator100ms->add(record);
 
     if (colorSensorController && validColorTask) {
-        uint8_t currentColor = colorSensorController->getColorID();
+        uint8_t currentColor = colorSensorController->getColorID(COLOR_MODE_COLOR);
         if (lastColor != currentColor) {
             lastColor = currentColor;
             if (logger) {
@@ -1332,10 +1332,10 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 
 	if(stopValue - accelerationRange<0){
 		//! 万が一、加速範囲よりも停止値が小さい場合は、加速範囲を停止距離の一定の割合で再定義
-		accelerationRange = stopValue*rangeRate;
-	}
-
-    softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
+		// accelerationRange = stopValue*rangeRate;
+	}else{
+        softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
+    }
 
 
 	if(stopValue - decelerationRange<0){
@@ -1394,9 +1394,9 @@ int DriveController::getDecelerationPower(int finishPower,  int runPower, float 
 int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration){
 	
     //! 加速処理を行うフラグがなければ加速パワー調整を行わない
-    if(softAcceleration == false){
-        return runPower;
-    }
+    // if(softAcceleration == false){
+    //     return runPower;
+    // }
 
 	//! 現在の距離が加速距離を進んだあとであればもう加速しない
 	if(currentValue > accelerationRange){

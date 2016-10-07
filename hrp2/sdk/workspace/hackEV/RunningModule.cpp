@@ -127,7 +127,7 @@ void start_LcourseRun()
     }
 
     //! 一度この直線でラインを掴む
-    orientationPattern catchPattern = driveController->catchLineAndCorrectDirection(30, 30, 20);
+    orientationPattern catchPattern = driveController->catchLineAndCorrectDirection(30, 40, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている
@@ -192,7 +192,7 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
     }
 
-    catchPattern = driveController->catchLineAndCorrectDirection(30, 30, 20);
+    catchPattern = driveController->catchLineAndCorrectDirection(30, 40, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている

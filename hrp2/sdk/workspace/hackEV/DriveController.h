@@ -163,7 +163,7 @@ static const int  decelerationFinishPower = 5;
 //! 加速と減速範囲を再定義するときの停止値に対する割合
 static const float rangeRate = 0.6F;
 
-static const float accelRangeForStraight = 20.0F;
+static const float accelRangeForStraight = 5.0F;
 
 static const float decelerationRangeForStraight = 20.0F;
 
