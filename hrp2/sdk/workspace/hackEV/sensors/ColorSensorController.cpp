@@ -17,6 +17,7 @@ ColorSensorController::ColorSensorController(sensor_port_t _port)
     , BORDER_GREEN_BLUE(0.50000F)
     , BORDER_BLUE_RED(0.83333F)
     , BORDER_GREEN_BLUE_AS_BLUE(70 / (double)255)
+    , BORDER_GREEN_GRAY_AS_RED(50 / (double)255)
 {
 }
 
@@ -121,6 +122,10 @@ uint8_t ColorSensorController::getColorID(rgb_raw_t *colorRGB, COLOR_MODE modeCo
     }
 
     if (hue < BORDER_GREEN_BLUE) {
+        if (red > BORDER_GREEN_GRAY_AS_RED) {
+           return  (uint8_t)COLOR_GRAY;
+        }
+
         if (blue > BORDER_GREEN_BLUE_AS_BLUE) {
            // BLUEはGREENと判定される事がある。その為、RGBのblueを比較する
            return  (uint8_t)COLOR_BLUE;
