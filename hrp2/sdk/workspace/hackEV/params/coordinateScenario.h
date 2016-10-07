@@ -17,6 +17,9 @@ typedef struct {
 
     //! 目標点Y座標
     float targetY;
+
+    //! 停止条件カラー(COLOR_NONEが設定されている場合は停止判定しない)
+    uint8_t stopColorID;
 } scenario_coordinate;
 
 //! 検証用

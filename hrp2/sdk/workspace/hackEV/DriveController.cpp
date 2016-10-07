@@ -871,7 +871,7 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     float targetREAL_Y = convertMapToREAL(_coordinateScenario.targetY);
 
     //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
-    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, targetREAL_X, targetREAL_Y);
+    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, targetREAL_X, targetREAL_Y, _coordinateScenario.stopColorID);
 }
 
 #if FALSE

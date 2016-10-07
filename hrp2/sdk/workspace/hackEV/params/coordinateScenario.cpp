@@ -37,12 +37,12 @@ const scenario_coordinate start_straightBeforeHoshitori[6] = {
 
 //! 灰色にかかるところ（グレー検知でも止まるように）
 const scenario_coordinate toGRAYBeforeHOSHI[1] ={
-    {50, -857, 1190}
+    {20, -857, 1190,COLOR_GRAY}
 };
 
 //! 星取り
 const scenario_coordinate toHoshitori [1] ={
-    {50, -857, 1226}
+    {20, -857, 1226}
 };
 
 //! 相撲前の線路前まで

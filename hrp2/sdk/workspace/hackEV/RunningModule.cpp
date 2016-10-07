@@ -143,6 +143,8 @@ void start_LcourseRun()
     for (int index = 0; index < (int)(sizeof(toGRAYBeforeHOSHI) / sizeof(toGRAYBeforeHOSHI[0])); index++) {
         driveController->manageMoveCoordinate(toGRAYBeforeHOSHI[index]);
     }
+
+    driveController->
     
     //! 星取り【色を検知しても止まること】
     for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
