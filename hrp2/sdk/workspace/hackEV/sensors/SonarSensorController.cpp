@@ -110,3 +110,34 @@ bool SonarSensorController::isGrabbableDistance()
     }
     return false;
 }
+
+/**
+ * @brief   新幹線が目の前を横切るまでストップする
+ *
+ * @return  横切ったら数秒待ってtrue
+ */
+void SonarSensorController::stoppingPassShinkansen(){
+
+    setEnabled(true);
+    for(;;){
+        int16_t current = executeSonar();
+
+        //! 目の前にくるまでストップ。
+        if(current < SHINKANSEN_INFRONT){
+            break;
+        }
+    }
+    
+    for(;;){
+        int16_t current = executeSonar();
+
+        //! 通り過ぎたらループをぬける
+        if(current > SHINKANSEN_INFRONT){
+            break;
+        }
+    }
+    setEnabled(false);
+
+    //! 念のため1秒まってスタートする（試走会の状況から、新幹線が通りすぎて1秒で回ってくることはありえない）
+    tslp_tsk(1000);
+}

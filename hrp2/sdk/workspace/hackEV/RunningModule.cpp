@@ -120,7 +120,8 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(start_beforeSumo[index]);
     }
 
-    //! 【TODO】新幹線処理
+    //! 新幹線が目の前を通りすぎるまで待つ
+    sonarSensorController->stoppingPassShinkansen();
 
     //! 相撲台の上に移動
     for (int index = 0; index < (int)(sizeof(onStageSumo) / sizeof(onStageSumo[0])); index++) {
