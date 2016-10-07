@@ -23,7 +23,10 @@ typedef struct {
 extern const scenario_coordinate test_coordinate[14];
 
 //! スタートしてから相撲まで
-extern const scenario_coordinate start_beforeSumo[9];
+extern const scenario_coordinate start_straightBeforeHoshitori[7];
+
+//! 星取りまで
+extern const scenario_coordinate toHoshitori [1];
 
 //! 相撲台の上まで移動
 extern const scenario_coordinate onStageSumo[1];

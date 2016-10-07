@@ -115,10 +115,20 @@ void start_LcourseRun()
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();
 
-    //! 相撲前まで座標移動
-    for (int index = 0; index < (int)(sizeof(start_beforeSumo) / sizeof(start_beforeSumo[0])); index++) {
-        driveController->manageMoveCoordinate(start_beforeSumo[index]);
+    //! 星取り前の直線まで移動
+    for (int index = 0; index < (int)(sizeof(start_straightBeforeHoshitori) / sizeof(start_straightBeforeHoshitori[0])); index++) {
+        driveController->manageMoveCoordinate(start_straightBeforeHoshitori[index]);
     }
+
+    //! 【TODO】一度この直線でラインを掴む
+
+    //! 【TODO】ここでXと向きをリセット
+
+    for (int index = 0; index < (int)(sizeof(toHoshitori) / sizeof(toHoshitori[0])); index++) {
+        driveController->manageMoveCoordinate(toHoshitori[index]);
+    }
+
+    //! 星取り付近で色を探す
 
     //! 【TODO】新幹線処理
 
