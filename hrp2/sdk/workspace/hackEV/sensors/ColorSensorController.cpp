@@ -120,6 +120,11 @@ uint8_t ColorSensorController::getColorID(rgb_raw_t *colorRGB, COLOR_MODE modeCo
     }
 
     if (hue < BORDER_GREEN_BLUE) {
+        if (blue > 70 / (double)255) {
+           // BLUEはGREENと判定される事がある。その為、RGBのblueを比較する
+           return  (uint8_t)COLOR_BLUE;
+        }
+
         return  (uint8_t)COLOR_GREEN;
     }
 
