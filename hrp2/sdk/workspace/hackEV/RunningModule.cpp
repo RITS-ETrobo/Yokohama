@@ -136,7 +136,7 @@ void start_LcourseRun()
     }
 
     //! カーブで80度回転 30パワーで80度回転、曲率半径19cmで左回転
-    driveController->curveOfscenario(30, 80, 35.28, NOTRACE_CURVE_LEFT);
+    driveController->curveOfscenario(30, 90, 35.28, NOTRACE_CURVE_LEFT);
 
 
     //! カーブしてから星取りまで
@@ -307,7 +307,7 @@ void start_RcourseRun()
     }
 
     //! カーブで90度回転 30パワーで80度回転、曲率半径19cmで左回転
-    driveController->curveOfscenario(30, 92, 13.14, NOTRACE_CURVE_LEFT);
+    driveController->curveOfscenario(30, 90, 13.14, NOTRACE_CURVE_LEFT);
 
     //! 青攻略
     BuleRootTry();
@@ -349,7 +349,7 @@ void start_RcourseRunShortCut(){
     }
 
     //! カーブで90度回転 30パワーで80度回転、曲率半径19cmで左回転
-    driveController->curveOfscenario(30, 92, 13.14, NOTRACE_CURVE_LEFT);
+    driveController->curveOfscenario(30, 90, 13.14, NOTRACE_CURVE_LEFT);
 
     //! 青攻略
     BuleRootTry();

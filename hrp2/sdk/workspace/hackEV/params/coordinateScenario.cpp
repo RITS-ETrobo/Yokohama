@@ -40,7 +40,7 @@ const scenario_coordinate straightFromCurve[1]={
 
 // //! 最初のカーブを曲がってから星取り前まで
 const scenario_coordinate toHoshitoriStraght[3]={
-    {45, -778, 566},
+    {45, -857, 566},
     {45, -857, 659},
     {45, -857, 920}
 };
@@ -118,7 +118,7 @@ const scenario_coordinate YesShortcutRoot[7] ={
     {45, 255, 867},
     {45, 214, 943},
     {45, 72, 959},
-    {45, 72, 1189},
+    {45, 72, 1270},
     {45, 72, 80}
 };
 
