@@ -135,7 +135,7 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(straightFromCurve[index]);
     }
 
-        //! カーブで80度回転 30パワーで80度回転、曲率半径19cmで左回転
+    //! カーブで80度回転 30パワーで80度回転、曲率半径19cmで左回転
     driveController->curveOfscenario(30, 80, 35.28, NOTRACE_CURVE_LEFT);
 
 
@@ -299,11 +299,16 @@ void start_RcourseRun()
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();
 
+
+
     //! 格子前まで移動
     for (int index = 0; index < (int)(sizeof(toBeforeKOUSHI) / sizeof(toBeforeKOUSHI[0])); index++) {
         driveController->manageMoveCoordinate(toBeforeKOUSHI[index]);
     }
 
+    //! カーブで90度回転 30パワーで80度回転、曲率半径19cmで左回転
+    driveController->curveOfscenario(30, 92, 13.14, NOTRACE_CURVE_LEFT);
+    
     //! 青攻略
     BuleRootTry();
 

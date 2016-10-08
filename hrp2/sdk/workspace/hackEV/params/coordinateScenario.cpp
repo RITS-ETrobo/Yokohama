@@ -97,7 +97,7 @@ const scenario_coordinate fromKensho_toGoal[2]={
 ////////////////////////////////////////////ここからRコース
 //! スタートから格子手前まで
 const scenario_coordinate toBeforeKOUSHI[1] ={
-    {45, 71, 538}
+    {45, 71, 428}
 };
 
 //! 青を運ぶ
