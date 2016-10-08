@@ -30,7 +30,7 @@ const scenario_coordinate test_coordinate[14] = {
 //! スタートしてから星取り前の直線まで
 const scenario_coordinate start_straightBeforeHoshitori[2] = {
     {45, -72, 1163},
-    {45, -213, 1163}
+    {45, -213, 1163, COLOR_BLACK}
 };
 
 //! 最初のカーブを曲がってから星取り前まで

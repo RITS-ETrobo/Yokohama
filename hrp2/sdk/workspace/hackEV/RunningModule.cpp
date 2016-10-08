@@ -127,6 +127,14 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(start_straightBeforeHoshitori[index]);
     }
 
+    //! 黒線を検知して止まった場合
+    if(driveController->foundColor){
+        driveController->foundColor=false;
+        //driveController->setNewPositionX(1216);//ここでY座標をリセット
+
+        
+    }
+
     //! カーブから星取りまで移動
     for (int index = 0; index < (int)(sizeof(fromfirstCurve) / sizeof(fromfirstCurve[0])); index++) {
         driveController->manageMoveCoordinate(fromfirstCurve[index]);
