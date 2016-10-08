@@ -127,13 +127,8 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(start_straightBeforeHoshitori[index]);
     }
 
-    //! 黒線を検知して止まった場合
-    if(driveController->foundColor){
-        driveController->foundColor=false;
-        //driveController->setNewPositionX(1216);//ここでY座標をリセット
-
-        
-    }
+    //! カーブで180度回転 30パワーで180度回転、曲率半径19cmで右回転
+    driveController->curveOfscenario(30, 180, 19.0, NOTRACE_CURVE_RIGHT);
 
     //! カーブから星取りまで移動
     for (int index = 0; index < (int)(sizeof(fromfirstCurve) / sizeof(fromfirstCurve[0])); index++) {

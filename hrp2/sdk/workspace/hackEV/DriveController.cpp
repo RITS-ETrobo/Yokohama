@@ -1712,3 +1712,10 @@ orientationPattern DriveController::catchLineRIGHT(int power, float serchWidth, 
     //! 見つけた方向を返す
     return NONE_PATTERN;
 }
+
+//! カーブのシナリオを作成して走行させる
+void DriveController::curveOfscenario(int power, float moveDirection, float curveRadius, runPattern curveOrientation){
+    scenario_running curveScenario={power, 0.0F, moveDirection, curveOrientation, true, curveRadius , DIRECTION_STOP};
+    
+    run(curveScenario);
+}

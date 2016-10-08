@@ -27,10 +27,9 @@ const scenario_coordinate test_coordinate[14] = {
 
 
 ////////////////////////////////////////// Lコース用座標
-//! スタートしてから星取り前の直線まで
-const scenario_coordinate start_straightBeforeHoshitori[2] = {
-    {45, -72, 1163},
-    {45, -213, 1163, COLOR_BLACK}
+//! スタートしてからカーブ直前まで
+const scenario_coordinate start_straightBeforeHoshitori[1] = {
+    {45, -72, 1163}
 };
 
 //! 最初のカーブを曲がってから星取り前まで
@@ -40,6 +39,15 @@ const scenario_coordinate fromfirstCurve[4]={
     {45, -857, 659},
     {45, -857, 920}
 };
+
+// //! 最初のカーブを曲がってから星取り前まで
+// const scenario_coordinate fromfirstCurve[4]={
+//     {45, -213, 566},
+//     {45, -778, 566},
+//     {45, -857, 659},
+//     {45, -857, 920}
+// };
+
 
 //! 灰色にかかるところ（グレー検知でも止まるように）
 const scenario_coordinate toGRAYBeforeHOSHI[2] ={

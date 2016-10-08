@@ -37,6 +37,8 @@ public:
     virtual void setNewPositionY(float newY);
     virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
     orientationPattern catchLineRIGHT(int power, float serchWidth, float searchHeight);
+    //! カーブのシナリオを作成して走行させる
+    virtual void curveOfscenario(int power, float moveDirection, float curveRadius, runPattern curveOrientation);
 
 
     //! 前回の色

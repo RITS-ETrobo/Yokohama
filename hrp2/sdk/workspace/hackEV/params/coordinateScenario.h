@@ -35,7 +35,7 @@ typedef struct {
 extern const scenario_coordinate test_coordinate[14];
 
 //! スタートしてから相撲まで
-extern const scenario_coordinate start_straightBeforeHoshitori[2];
+extern const scenario_coordinate start_straightBeforeHoshitori[1];
 
 //! 最初のカーブを曲がってから
 extern const scenario_coordinate fromfirstCurve[4];
