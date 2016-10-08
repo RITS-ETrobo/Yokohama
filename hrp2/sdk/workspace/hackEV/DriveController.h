@@ -163,6 +163,9 @@ private:
     //! カラーセンサータスクの有効フラグ（輝度取得時には切っておかないとちゃんと取得できない）
     bool validColorTask;
 
+    //! X座標補正係数
+    float Xcorrectfactor = 1.0F;
+
 };
 
 //! 加速はじめのパワー

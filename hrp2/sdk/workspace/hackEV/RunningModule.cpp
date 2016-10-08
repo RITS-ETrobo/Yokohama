@@ -122,9 +122,14 @@ void start_LcourseRun()
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();
 
-    //! 星取り前の直線まで移動
+    //! カーブまで移動
     for (int index = 0; index < (int)(sizeof(start_straightBeforeHoshitori) / sizeof(start_straightBeforeHoshitori[0])); index++) {
         driveController->manageMoveCoordinate(start_straightBeforeHoshitori[index]);
+    }
+
+    //! カーブから星取りまで移動
+    for (int index = 0; index < (int)(sizeof(fromfirstCurve) / sizeof(fromfirstCurve[0])); index++) {
+        driveController->manageMoveCoordinate(fromfirstCurve[index]);
     }
 
     //! 一度この直線でラインを掴む
@@ -287,21 +292,8 @@ void start_RcourseRun()
         driveController->manageMoveCoordinate(toBeforeKOUSHI[index]);
     }
 
-    //! 【TODO】格子の中を攻略
-    for (int index = 0; index < (int)(sizeof(BlueRoot) / sizeof(BlueRoot[0])); index++) {
-        driveController->manageMoveCoordinate(BlueRoot[index]);
-    }
-
-    //! 後ろに戻る
-    for (int index = 0; index < (int)(sizeof(back) / sizeof(back[0])); index++) {
-        driveController->run(back[index]);
-    }
-
-        //! 【TODO】格子の中を攻略
-    for (int index = 0; index < (int)(sizeof(nigeru) / sizeof(nigeru[0])); index++) {
-        driveController->manageMoveCoordinate(nigeru[index]);
-    }
-
+    //! 青攻略
+    BuleRootTry();
 
     //! ショートカットしないルート
     for (int index = 0; index < (int)(sizeof(NoShortcutRoot) / sizeof(NoShortcutRoot[0])); index++) {
@@ -339,7 +331,8 @@ void start_RcourseRunShortCut(){
         driveController->manageMoveCoordinate(toBeforeKOUSHI[index]);
     }
 
-    //! 【TODO】格子の中を攻略
+    //! 青攻略
+    BuleRootTry();
 
     //! ショートカットするルート
     for (int index = 0; index < (int)(sizeof(YesShortcutRoot) / sizeof(YesShortcutRoot[0])); index++) {
@@ -353,4 +346,22 @@ void start_RcourseRunShortCut(){
 
     gyroSensorController->setEnabledGyroSensor(false);
     driveController->setEnabled(false);
+}
+
+//! 青攻略
+void BuleRootTry(){
+    //! 【TODO】格子の中を攻略
+    for (int index = 0; index < (int)(sizeof(BlueRoot) / sizeof(BlueRoot[0])); index++) {
+        driveController->manageMoveCoordinate(BlueRoot[index]);
+    }
+
+    //! 後ろに戻る
+    for (int index = 0; index < (int)(sizeof(back) / sizeof(back[0])); index++) {
+        driveController->run(back[index]);
+    }
+
+        //! 格子を抜ける
+    for (int index = 0; index < (int)(sizeof(nigeru) / sizeof(nigeru[0])); index++) {
+        driveController->manageMoveCoordinate(nigeru[index]);
+    }
 }
