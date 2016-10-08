@@ -178,19 +178,19 @@ void start_LcourseRun()
 
 
     //! 相撲ゾーン攻略
-    if(hoshitoriColor == 0){
+    if(hoshitoriColor == (uint8_t)COLOR_RED){
         //! 星取りの色は赤だった場合のシナリオ
         for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_red) / sizeof(L_Sumo_scenario_hoshi_red[0])); index++) {
             driveController->run(L_Sumo_scenario_hoshi_red[index]);
         }
     }
-    else if(hoshitoriColor == 1){
+    else if(hoshitoriColor == (uint8_t)COLOR_BLUE){
         //! 星取りの色は青だった場合のシナリオ
         for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_blue) / sizeof(L_Sumo_scenario_hoshi_blue[0])); index++) {
             driveController->run(L_Sumo_scenario_hoshi_blue[index]);
         }
     }
-    else if(hoshitoriColor == 2){
+    else if(hoshitoriColor == (uint8_t)COLOR_GREEN){
         //! 星取りの色は緑だった場合のシナリオ
         for (int index = 0; index < (int)(sizeof(L_Sumo_scenario_hoshi_green) / sizeof(L_Sumo_scenario_hoshi_green[0])); index++) {
             driveController->run(L_Sumo_scenario_hoshi_green[index]);
@@ -213,7 +213,7 @@ void start_LcourseRun()
         driveController->manageMoveCoordinate(fromSumo_toKenshoStraight[index]);
     }
 
-    catchPattern = driveController->catchLine(30, 35, 20);
+    catchPattern = driveController->catchLineRIGHT(30, 35, 20);
     //! ラインつかみに成功したらリセット
     if(catchPattern == RIGHT_PATTERN){
         //! ライン左縁を捉えている
@@ -236,9 +236,9 @@ void start_LcourseRun()
         driveController->setNewPositionY(1216);//ここでY座標をリセット
     }
 
-    for (int index = 0; index < (int)(sizeof(KENSHO) / sizeof(KENSHO[0])); index++) {
-        driveController->manageMoveCoordinate(KENSHO[index]);
-    }
+    // for (int index = 0; index < (int)(sizeof(KENSHO) / sizeof(KENSHO[0])); index++) {
+    //     driveController->manageMoveCoordinate(KENSHO[index]);
+    // }
 
     //! 【TODO】懸賞をとる作業
     //move_arm(80, 100, true);

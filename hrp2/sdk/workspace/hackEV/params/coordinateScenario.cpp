@@ -68,8 +68,9 @@ const scenario_coordinate fromSumo_toKenshoStraight[3]={
 };
 
 //! 懸賞前の灰色(カラーでも止まる)
-const scenario_coordinate toGRAYBeforeKENSHO[1] ={
-    {50, -214, 1217, COLOR_GRAY}
+const scenario_coordinate toGRAYBeforeKENSHO[2] ={
+    {30, -214,  1203},
+    {30, -214, 1217, COLOR_GRAY}
 };
 
 //! 懸賞

@@ -1656,3 +1656,59 @@ bool DriveController::isAnyHOSHITORIcolor(){
         return true;
     }
 }
+
+/**
+ *  @param ラインを掴む
+ *  @return なし
+*/
+orientationPattern DriveController::catchLineRIGHT(int power, float serchWidth, float searchHeight){
+
+    enum orientationPattern findLineOrientation = LEFT_PATTERN;
+
+    //! ラインを探す前の向きを覚えておく
+    float beforeDirection = directionTotal;
+
+    //! 右方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , 0, -serchWidth/2, searchHeight, COLOR_BLACK);
+
+    //! 右方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return RIGHT_PATTERN;
+    }
+
+    //! 左方向を探し終えるまでに向いた向き
+    float leftMovedDirection =shortestMoveDirection(directionTotal, beforeDirection);
+
+    //! 左方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , leftMovedDirection, serchWidth, searchHeight, COLOR_BLACK);
+
+    //! 左方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return LEFT_PATTERN;
+    }
+
+    
+
+
+    
+
+    
+
+    //! 途中で黒線がある通知が来ればストップさせる
+
+
+
+    //! 一番最初の向き(beforeDirection)に直す
+    rotateAbsolutelyDirection(power/2, beforeDirection);
+
+    //! 見つけた方向を返す
+    return NONE_PATTERN;
+}

@@ -53,7 +53,7 @@ extern const scenario_coordinate onStageSumo[1];
 extern const scenario_coordinate fromSumo_toKenshoStraight[3];
 
 //! 検証前のグレーゾーン
-extern const scenario_coordinate toGRAYBeforeKENSHO[1];
+extern const scenario_coordinate toGRAYBeforeKENSHO[2];
 
 //! 懸賞まで
 extern const scenario_coordinate KENSHO[1];

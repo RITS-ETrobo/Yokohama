@@ -36,6 +36,7 @@ public:
     virtual void setPosition(EV3_POSITION *position, float direction_, uint8_t updateType = 0);
     virtual void setNewPositionY(float newY);
     virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
+    orientationPattern catchLineRIGHT(int power, float serchWidth, float searchHeight);
 
 
     //! 前回の色
