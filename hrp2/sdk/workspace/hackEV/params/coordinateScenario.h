@@ -38,7 +38,10 @@ extern const scenario_coordinate test_coordinate[14];
 extern const scenario_coordinate start_straightBeforeHoshitori[1];
 
 //! 最初のカーブを曲がってから
-extern const scenario_coordinate fromfirstCurve[4];
+extern const scenario_coordinate straightFromCurve[1];
+
+// //! 最初のカーブを曲がってから星取り前まで
+extern const scenario_coordinate toHoshitoriStraght[3];
 
 //! 星取り前の灰色（カラーでもとめる）
 extern const scenario_coordinate toGRAYBeforeHOSHI[2];

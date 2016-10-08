@@ -33,20 +33,17 @@ const scenario_coordinate start_straightBeforeHoshitori[1] = {
 };
 
 //! 最初のカーブを曲がってから星取り前まで
-const scenario_coordinate fromfirstCurve[4]={
-    {45, -213, 566},
+const scenario_coordinate straightFromCurve[1]={
+    {45, -213, 664},
+
+};
+
+// //! 最初のカーブを曲がってから星取り前まで
+const scenario_coordinate toHoshitoriStraght[3]={
     {45, -778, 566},
     {45, -857, 659},
     {45, -857, 920}
 };
-
-// //! 最初のカーブを曲がってから星取り前まで
-// const scenario_coordinate fromfirstCurve[4]={
-//     {45, -213, 566},
-//     {45, -778, 566},
-//     {45, -857, 659},
-//     {45, -857, 920}
-// };
 
 
 //! 灰色にかかるところ（グレー検知でも止まるように）

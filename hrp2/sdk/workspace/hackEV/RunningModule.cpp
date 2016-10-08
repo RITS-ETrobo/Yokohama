@@ -130,9 +130,18 @@ void start_LcourseRun()
     //! カーブで180度回転 30パワーで180度回転、曲率半径19cmで右回転
     driveController->curveOfscenario(30, 180, 19.0, NOTRACE_CURVE_RIGHT);
 
-    //! カーブから星取りまで移動
-    for (int index = 0; index < (int)(sizeof(fromfirstCurve) / sizeof(fromfirstCurve[0])); index++) {
-        driveController->manageMoveCoordinate(fromfirstCurve[index]);
+    //! カーブ後のストレート
+    for (int index = 0; index < (int)(sizeof(straightFromCurve) / sizeof(straightFromCurve[0])); index++) {
+        driveController->manageMoveCoordinate(straightFromCurve[index]);
+    }
+
+        //! カーブで80度回転 30パワーで80度回転、曲率半径19cmで左回転
+    driveController->curveOfscenario(30, 80, 35.28, NOTRACE_CURVE_LEFT);
+
+
+    //! カーブしてから星取りまで
+    for (int index = 0; index < (int)(sizeof(toHoshitoriStraght) / sizeof(toHoshitoriStraght[0])); index++) {
+        driveController->manageMoveCoordinate(toHoshitoriStraght[index]);
     }
 
     //! 一度この直線でラインを掴む
