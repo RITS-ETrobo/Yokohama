@@ -60,3 +60,13 @@ extern const scenario_coordinate KENSHO[1];
 
 //! 懸賞からゴール
 extern const scenario_coordinate fromKensho_toGoal[2];
+
+
+////Rコース
+extern const scenario_coordinate toBeforeKOUSHI[1];
+
+//!格子でてからショートカットするルート
+extern const scenario_coordinate YesShortcutRoot[7];
+
+//! 格子でてからショートカットしないルート
+extern const scenario_coordinate NoShortcutRoot[8];
