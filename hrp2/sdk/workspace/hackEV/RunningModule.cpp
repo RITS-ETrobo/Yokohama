@@ -302,3 +302,41 @@ void start_RcourseRun()
     gyroSensorController->setEnabledGyroSensor(false);
     driveController->setEnabled(false);
 }
+
+void start_RcourseRunShortCut(){
+    calibrateBW();
+
+    //! 【TODO】初期位置設定
+
+    ev3_speaker_play_tone(NOTE_E6, 100);
+
+    //! PIDの準備を終えたらタッチセンサーが押されるまで待機
+    for (;;) {
+        if (ev3_touch_sensor_is_pressed(EV3_SENSOR_TOUCH)) {
+            break;
+        }
+    }
+
+    gyroSensorController->setEnabledGyroSensor(true);
+    driveController->setEnabled();
+
+    //! 格子前まで移動
+    for (int index = 0; index < (int)(sizeof(toBeforeKOUSHI) / sizeof(toBeforeKOUSHI[0])); index++) {
+        driveController->manageMoveCoordinate(toBeforeKOUSHI[index]);
+    }
+
+    //! 【TODO】格子の中を攻略
+
+    //! ショートカットするルート
+    for (int index = 0; index < (int)(sizeof(YesShortcutRoot) / sizeof(YesShortcutRoot[0])); index++) {
+        driveController->manageMoveCoordinate(YesShortcutRoot[index]);
+    }
+
+    ev3_speaker_play_tone(NOTE_F4, 300);
+    if (logger) {
+        logger->addLog(LOG_TYPE_SCENARIO, "END");
+    }
+
+    gyroSensorController->setEnabledGyroSensor(false);
+    driveController->setEnabled(false);
+}
