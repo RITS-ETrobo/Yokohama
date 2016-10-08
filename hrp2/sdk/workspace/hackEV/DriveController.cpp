@@ -875,7 +875,7 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     //smoothMovementFromCoordinate(_coordinateScenario);
 
     //! マップ座標から現実座標へ変換
-    float targetREAL_X = convertMapToREAL(_coordinateScenario.targetX);
+    float targetREAL_X = convertMapToREAL(_coordinateScenario.targetX)*0.9F;//補正値
     float targetREAL_Y = convertMapToREAL(_coordinateScenario.targetY);
 
     //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
