@@ -292,7 +292,11 @@ bool DriveController::runAsPattern(scenario_running scenario)
             }
 
             //! 急発進急加速しないためのパワーを取得
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, accelRangeForStraight, decelerationRangeForStraight, softAcceleration, softDeceleration);
+            int softAccelPower = scenario.power;
+            if(scenario.power>0){
+                softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, accelRangeForStraight, decelerationRangeForStraight, softAcceleration, softDeceleration);
+            }
+            
             
             //! ライントレースせずに、直進走行する
             straightRun(softAccelPower);
@@ -352,7 +356,10 @@ void DriveController::straightRun(int power)
         powerRight = lastPowerRight;
     } else {
         //! 補正したパワー値を取得
-        getCorrectedPower(power, &powerLeft, &powerRight);
+        if(power>0){
+            getCorrectedPower(power, &powerLeft, &powerRight);
+        }
+        
 
         //! 最後の値の更新
         lastTime = currentTime;
@@ -1341,10 +1348,12 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 
 	if(stopValue - decelerationRange<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の一定の割合で再定義
-		decelerationRange = stopValue*rangeRate;
-	}
+		//decelerationRange = stopValue*rangeRate;
+	}else{
+        softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+    }
 
-    softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+    
 
 	return softAccelPower;
 }

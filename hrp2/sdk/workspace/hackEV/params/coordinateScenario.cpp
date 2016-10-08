@@ -107,7 +107,7 @@ const scenario_coordinate BlueRoot[2]={
 };
 
 //! 青の横
-const scenario_coordinate nigeru[2]={
+const scenario_coordinate nigeru[1]={
     {45, 573, 386}
 };
 

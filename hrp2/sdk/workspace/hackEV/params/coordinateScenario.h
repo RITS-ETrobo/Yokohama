@@ -80,4 +80,4 @@ extern const scenario_coordinate NoShortcutRoot[8];
 extern const scenario_coordinate BlueRoot[2];
 
 //! 青の横
-extern const scenario_coordinate nigeru[2];
+extern const scenario_coordinate nigeru[1];
