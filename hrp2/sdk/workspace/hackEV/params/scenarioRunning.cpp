@@ -390,3 +390,8 @@ const scenario_running run_scenario_test_position[5] = {
     {50, 0.0F, 90, PINWHEEL, true,0, DIRECTION_STOP},
     {10, 0.0F, 50, PINWHEEL, true,0, DIRECTION_STOP}
 };
+
+//! 検証用(ラインを使って向きを整える)
+const scenario_running back[1] = {
+    {-50, 30.0F, -1, NOTRACE_STRAIGHT, true, 0,DISTANCE_STOP}
+};

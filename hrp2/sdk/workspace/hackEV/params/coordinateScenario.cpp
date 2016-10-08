@@ -91,6 +91,17 @@ const scenario_coordinate toBeforeKOUSHI[1] ={
     {50, 71, 538}
 };
 
+//! 青を運ぶ
+const scenario_coordinate BlueRoot[2]={
+    {50, 261, 466},
+    {50, 573, 466}
+};
+
+//! 青の横
+const scenario_coordinate nigeru[2]={
+    {50, 573, 386}
+};
+
 //! 格子でてからからショートカットをするルート
 const scenario_coordinate YesShortcutRoot[7] ={
     {50, 858, 552},

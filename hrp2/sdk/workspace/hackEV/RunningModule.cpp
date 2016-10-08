@@ -288,6 +288,20 @@ void start_RcourseRun()
     }
 
     //! 【TODO】格子の中を攻略
+    for (int index = 0; index < (int)(sizeof(BlueRoot) / sizeof(BlueRoot[0])); index++) {
+        driveController->manageMoveCoordinate(BlueRoot[index]);
+    }
+
+    //! 後ろに戻る
+    for (int index = 0; index < (int)(sizeof(back) / sizeof(back[0])); index++) {
+        driveController->run(back[index]);
+    }
+
+        //! 【TODO】格子の中を攻略
+    for (int index = 0; index < (int)(sizeof(nigeru) / sizeof(nigeru[0])); index++) {
+        driveController->manageMoveCoordinate(nigeru[index]);
+    }
+
 
     //! ショートカットしないルート
     for (int index = 0; index < (int)(sizeof(NoShortcutRoot) / sizeof(NoShortcutRoot[0])); index++) {

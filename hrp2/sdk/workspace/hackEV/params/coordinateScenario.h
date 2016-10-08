@@ -70,3 +70,8 @@ extern const scenario_coordinate YesShortcutRoot[7];
 
 //! 格子でてからショートカットしないルート
 extern const scenario_coordinate NoShortcutRoot[8];
+
+extern const scenario_coordinate BlueRoot[2];
+
+//! 青の横
+extern const scenario_coordinate nigeru[2];
