@@ -308,7 +308,7 @@ void start_RcourseRun()
 
     //! カーブで90度回転 30パワーで80度回転、曲率半径19cmで左回転
     driveController->curveOfscenario(30, 92, 13.14, NOTRACE_CURVE_LEFT);
-    
+
     //! 青攻略
     BuleRootTry();
 
@@ -347,6 +347,9 @@ void start_RcourseRunShortCut(){
     for (int index = 0; index < (int)(sizeof(toBeforeKOUSHI) / sizeof(toBeforeKOUSHI[0])); index++) {
         driveController->manageMoveCoordinate(toBeforeKOUSHI[index]);
     }
+
+    //! カーブで90度回転 30パワーで80度回転、曲率半径19cmで左回転
+    driveController->curveOfscenario(30, 92, 13.14, NOTRACE_CURVE_LEFT);
 
     //! 青攻略
     BuleRootTry();

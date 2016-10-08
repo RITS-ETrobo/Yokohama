@@ -390,7 +390,7 @@ const scenario_running run_scenario_test_position[5] = {
 
 //! 検証用(ラインを使って向きを整える)
 const scenario_running back[1] = {
-    {-50, 30.0F, -1, NOTRACE_STRAIGHT, true, 0,DISTANCE_STOP}
+    {-20, 30.0F, -1, NOTRACE_STRAIGHT, true, 0,DISTANCE_STOP}
 };
 
 
