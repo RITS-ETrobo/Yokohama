@@ -14,6 +14,7 @@
 
 #include "DriveController.h"
 #include "user_function.h"
+#include "EV3Position.h"
 
 
 //! class for driving
@@ -38,6 +39,7 @@ DriveController::DriveController()
     , lastColor(COLOR_NONE)
     , foundColor(false)
     , validColorTask(true)
+    , colorHOSHITORI(COLOR_RED)
 {
 }
 
@@ -147,8 +149,8 @@ ER DriveController::stop(bool_t brake /*= true*/)
         return  resultRight;
     }
 
-    writeFloatLCD(distanceTotal);
-    writeFloatLCD(directionTotal);
+    // writeFloatLCD(distanceTotal);
+    // writeFloatLCD(directionTotal);
 
     return  resultLeft;
 }
@@ -236,7 +238,7 @@ bool DriveController::runAsPattern(scenario_running scenario)
             }
 
             //! 急発進、急停止しないためのパワー処理(角度はマイナスが入ることもあるので、絶対値の目標をとる)
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), 30, 60, softAcceleration, softDeceleration);
+            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, fabsf(scenario.direction), fabsf(directionScenario), accelRangeForPinWheel, decelerationRangeForPinWheel, softAcceleration, softDeceleration);
 
             //! その場回転
             pinWheel(softAccelPower, scenario.direction);
@@ -290,7 +292,11 @@ bool DriveController::runAsPattern(scenario_running scenario)
             }
 
             //! 急発進急加速しないためのパワーを取得
-            int softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, 10, 20, softAcceleration, softDeceleration);
+            int softAccelPower = scenario.power;
+            if(scenario.power>0){
+                softAccelPower = getSoftAccelAndDecelerationPower(scenario.power, scenario.distance, distanceScenario, accelRangeForStraight, decelerationRangeForStraight, softAcceleration, softDeceleration);
+            }
+            
             
             //! ライントレースせずに、直進走行する
             straightRun(softAccelPower);
@@ -350,7 +356,10 @@ void DriveController::straightRun(int power)
         powerRight = lastPowerRight;
     } else {
         //! 補正したパワー値を取得
-        getCorrectedPower(power, &powerLeft, &powerRight);
+        if(power>0){
+            getCorrectedPower(power, &powerLeft, &powerRight);
+        }
+        
 
         //! 最後の値の更新
         lastTime = currentTime;
@@ -435,7 +444,7 @@ void DriveController::change_LineSide(scenario_running scenario)
         
         if(colorValue > (white - 5) && onBlack){
             ev3_motor_stop(firstMoveWheel,true);
-            writeFloatLCD((float)colorValue);
+            // writeFloatLCD((float)colorValue);
             break;
         }
     }
@@ -865,9 +874,12 @@ void DriveController::manageMoveCoordinate(scenario_coordinate _coordinateScenar
     //! 滑らか走行
     //smoothMovementFromCoordinate(_coordinateScenario);
 
+    //! マップ座標から現実座標へ変換
+    float targetREAL_X = convertMapToREAL(_coordinateScenario.targetX);
+    float targetREAL_Y = convertMapToREAL(_coordinateScenario.targetY);
+
     //! かくかく移動：スタート地点の座標と角度を「仮指定」（本来は現在の座標と向きを入れること）
-    //! 【TODO】positionTargetXLastとpositionTargetYLastは仮！！！！
-    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, _coordinateScenario.targetX, _coordinateScenario.targetY);
+    jitteryMovementFromCoordinate(_coordinateScenario.power, currentPositionREAL.x, currentPositionREAL.y, directionTotal, targetREAL_X, targetREAL_Y, _coordinateScenario.stopColorID);
 }
 
 #if FALSE
@@ -1197,7 +1209,7 @@ void DriveController::updatePosition()
     speedCalculator100ms->add(record);
 
     if (colorSensorController && validColorTask) {
-        uint8_t currentColor = colorSensorController->getColorID();
+        uint8_t currentColor = colorSensorController->getColorID(COLOR_MODE_COLOR);
         if (lastColor != currentColor) {
             lastColor = currentColor;
             if (logger) {
@@ -1328,18 +1340,20 @@ int DriveController::getSoftAccelAndDecelerationPower(int power, float stopValue
 
 	if(stopValue - accelerationRange<0){
 		//! 万が一、加速範囲よりも停止値が小さい場合は、加速範囲を停止距離の一定の割合で再定義
-		accelerationRange = stopValue*rangeRate;
-	}
-
-    softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
+		// accelerationRange = stopValue*rangeRate;
+	}else{
+        softAccelPower = getAccelerationPower(accelStartPower, power, accelerationRange, currentValue, softAcceleration);
+    }
 
 
 	if(stopValue - decelerationRange<0){
 		//! 万が一、減速範囲が停止距離を上回っていた場合は、減速範囲を停止距離の一定の割合で再定義
-		decelerationRange = stopValue*rangeRate;
-	}
+		//decelerationRange = stopValue*rangeRate;
+	}else{
+        softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+    }
 
-    softAccelPower = getDecelerationPower(decelerationFinishPower, softAccelPower, stopValue, decelerationRange, currentValue, softDeceleration);
+    
 
 	return softAccelPower;
 }
@@ -1390,9 +1404,9 @@ int DriveController::getDecelerationPower(int finishPower,  int runPower, float 
 int DriveController::getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration){
 	
     //! 加速処理を行うフラグがなければ加速パワー調整を行わない
-    if(softAcceleration == false){
-        return runPower;
-    }
+    // if(softAcceleration == false){
+    //     return runPower;
+    // }
 
 	//! 現在の距離が加速距離を進んだあとであればもう加速しない
 	if(currentValue > accelerationRange){
@@ -1433,14 +1447,18 @@ bool DriveController::isEnabled()
  *  @param ラインを掴んで、向きを揃える一連の動作をまとめる
  *  @return なし
 */
-bool DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
+orientationPattern DriveController::catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight){
     enum orientationPattern findLineOrientation = catchLine(power, searchWidth, searchHeight);
     
     if(findLineOrientation == NONE_PATTERN){
-        return false;
+        return NONE_PATTERN;
     }
 
-    return correctDirectionByLine(power, findLineOrientation);
+    if(correctDirectionByLine(power, findLineOrientation)){
+        return findLineOrientation;
+    }
+
+    return NONE_PATTERN;
 }
 
 /**
@@ -1530,6 +1548,48 @@ bool DriveController::judgeStopColor(uint8_t stopColor){
 }
 
 /**
+ * @brief   x座標を設定 [pixcel値]
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewPositionX(float newX){
+    EV3_POSITION position;
+    position.x = newX;
+    speedCalculator100ms->setPosition(&position , 0.0F, EV3Position::CORRECT_POSITION_MAP_X);
+}
+
+/**
+ * @brief   y座標を設定 [pixcel値]
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewPositionY(float newY){
+    EV3_POSITION position;
+    position.y = newY;
+    speedCalculator100ms->setPosition(&position , 0.0F, EV3Position::CORRECT_POSITION_MAP_Y);
+}
+
+/**
+ * @brief   新しい向きを設定
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+void DriveController::setNewDirection(float newDirection){
+    directionTotal = newDirection;
+    EV3_POSITION position;
+    speedCalculator100ms->setPosition(&position, newDirection, EV3Position::CORRECT_DIRECTION);
+}
+
+/**
+ * @brief   マップ座標を現実座標に変換
+ * @param   [in]    exinf   未使用
+ * @return  なし
+ */
+float DriveController::convertMapToREAL(float map){
+    return map * 2 / (float)7;
+}
+
+/**
  *  @brief  走行体の現在位置を設定する
  *  @param  position    座標
  *  @param  direction_  向き[単位 : 度]
@@ -1542,4 +1602,129 @@ void DriveController::setPosition(EV3_POSITION *position, float direction_, uint
     }
 
     speedCalculator100ms->setPosition(position, direction_, updateType);
+}
+
+/**
+ *  @param  星とり探し
+ *  @return 星とりを探しあてればtrue,探せなければfalse
+*/
+bool DriveController::searchHOSHITORI(int power, float searchWidth){
+
+    int moveCount =0;
+    for(;;){
+
+        float firstDirection = directionTotal;
+
+        //! 片側ずつ探してしらみつぶしで見つける
+        motorWheelRight->run(power);
+        motorWheelLeft->stop(true);
+
+        moveCount++;
+        for(;;){     
+            if(isAnyHOSHITORIcolor()){
+                stop();
+                return true;
+            }
+
+            if(fabsf(directionTotal) > fabsf(searchWidth)){
+                break;
+            }
+        }
+
+        //! 右のみ動かす
+        motorWheelLeft->run(power);
+        motorWheelRight->stop(true);
+
+        for(;;){     
+            if(isAnyHOSHITORIcolor()){
+                stop();
+                return true;
+            }
+
+            if(fabsf(directionTotal) < fabsf(searchWidth)){
+                break;
+            }
+        }
+
+        //! 5回移動しても見つからなかった場合
+        if(moveCount > 5){
+            return false;
+        }
+    }
+}
+
+/**
+ *  @param  星とりのどれかの色が真下にある
+ *  @return あればtrue,なければfalse
+*/
+bool DriveController::isAnyHOSHITORIcolor(){
+    if(lastColor == COLOR_RED || lastColor == COLOR_YELLOW || lastColor == COLOR_GREEN || lastColor == COLOR_BLUE){
+        
+        //! 星とりの色としてセット
+        colorHOSHITORI = lastColor;
+        return true;
+    }
+}
+
+/**
+ *  @param ラインを掴む
+ *  @return なし
+*/
+orientationPattern DriveController::catchLineRIGHT(int power, float serchWidth, float searchHeight){
+
+    enum orientationPattern findLineOrientation = LEFT_PATTERN;
+
+    //! ラインを探す前の向きを覚えておく
+    float beforeDirection = directionTotal;
+
+    //! 右方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , 0, -serchWidth/2, searchHeight, COLOR_BLACK);
+
+    //! 右方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return RIGHT_PATTERN;
+    }
+
+    //! 左方向を探し終えるまでに向いた向き
+    float leftMovedDirection =shortestMoveDirection(directionTotal, beforeDirection);
+
+    //! 左方向を探す
+    jitteryMovementFromCoordinate(power, 0 , 0 , leftMovedDirection, serchWidth, searchHeight, COLOR_BLACK);
+
+    //! 左方向探索で指定したカラー値を見つけていた
+    if(foundColor){
+        //! 一番最初の向き(beforeDirection)に直す
+        rotateAbsolutelyDirection(power/2, beforeDirection);
+
+        foundColor =false;//フラグを元に戻す
+        return LEFT_PATTERN;
+    }
+
+    
+
+
+    
+
+    
+
+    //! 途中で黒線がある通知が来ればストップさせる
+
+
+
+    //! 一番最初の向き(beforeDirection)に直す
+    rotateAbsolutelyDirection(power/2, beforeDirection);
+
+    //! 見つけた方向を返す
+    return NONE_PATTERN;
+}
+
+//! カーブのシナリオを作成して走行させる
+void DriveController::curveOfscenario(int power, float moveDirection, float curveRadius, runPattern curveOrientation){
+    scenario_running curveScenario={power, 0.0F, moveDirection, curveOrientation, true, curveRadius , DIRECTION_STOP};
+    
+    run(curveScenario);
 }

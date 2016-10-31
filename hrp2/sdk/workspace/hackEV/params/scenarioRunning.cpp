@@ -264,10 +264,7 @@ const scenario_running run_scenario_test_pinWheel_left[1] = {
     {30, 0.0F, 360, PINWHEEL, true,0,DISTANCE_STOP}
 };
 
-//! 検証用シナリオ(その場360度回転・右回転)
-const scenario_running run_scenario_test_pinWheel_right[1] = {
-    {-30, 0.0F, 360, PINWHEEL, true,0,DISTANCE_STOP}
-};
+
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
 const scenario_running run_scenario_test_straght[1] = {
@@ -389,4 +386,15 @@ const scenario_running run_scenario_test_position[5] = {
     {50, 5.0F, -1, NOTRACE_STRAIGHT, true,0,DISTANCE_STOP},
     {50, 0.0F, 90, PINWHEEL, true,0, DIRECTION_STOP},
     {10, 0.0F, 50, PINWHEEL, true,0, DIRECTION_STOP}
+};
+
+//! 検証用(ラインを使って向きを整える)
+const scenario_running back[1] = {
+    {-20, 30.0F, -1, NOTRACE_STRAIGHT, true, 0,DISTANCE_STOP}
+};
+
+
+//! 検証用シナリオ(その場360度回転・右回転)
+const scenario_running run_scenario_test_pinWheel_right[1] = {
+    {30, 0.0F, -360, PINWHEEL, true,0,DIRECTION_STOP}
 };

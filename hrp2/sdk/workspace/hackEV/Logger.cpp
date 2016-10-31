@@ -57,6 +57,7 @@ bool Logger::isEnabled()
 */
 void Logger::addLog(uint_t logType, const char* message, bool isForce /*= false*/)
 {
+    return;
     SYSTIM  currentTime = 0;
     if (clock) {
         currentTime = clock->now();

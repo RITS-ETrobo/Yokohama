@@ -104,8 +104,7 @@ extern const scenario_running run_scenario_test_right[];
 //! 検証用シナリオ(その場360度回転・左回転)
 extern const scenario_running run_scenario_test_pinWheel_left[1];
 
-//! 検証用シナリオ(その場360度回転・右回転)
-extern const scenario_running run_scenario_test_pinWheel_right[1];
+
 
 //! 検証用シナリオ(1m直進トレース・誤差検証用)
 extern const scenario_running run_scenario_test_straght[1];
@@ -140,3 +139,8 @@ extern const scenario_running run_scenario_LCource_Try[8];
 extern const scenario_running correct_direction_line[3];
 //! 自己位置推定Positionの検証用
 extern const scenario_running run_scenario_test_position[5];
+
+extern const scenario_running back[1];
+
+//! 検証用シナリオ(その場360度回転・右回転)
+extern const scenario_running run_scenario_test_pinWheel_right[1];

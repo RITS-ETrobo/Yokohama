@@ -24,6 +24,9 @@ typedef enum {
 } COLOR_MODE;
 //@}
 
+
+const uint8_t COLOR_GRAY = (uint8_t)TNUM_COLOR + 1;
+
 class ColorSensorController
 {
 public:
@@ -81,6 +84,4 @@ private:
         //! 緑と灰(RGBの赤で判別する)
     double BORDER_GREEN_GRAY_AS_RED;
     //@}
-
-    uint8_t COLOR_GRAY = (uint8_t)TNUM_COLOR + 1;
 };

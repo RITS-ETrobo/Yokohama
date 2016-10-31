@@ -14,6 +14,7 @@
 #include "SpeedCalculator.h"
 #include "coordinateScenario.h"
 #include "orientationPattern.h"
+#include "EV3Position.h"
 
 
 //! Class for driving
@@ -29,8 +30,27 @@ public:
     virtual void updatePosition();
     virtual void setEnabled(bool _enabled = true);
     virtual bool isEnabled();
-    virtual bool catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual orientationPattern catchLineAndCorrectDirection(int power, float searchWidth, float searchHeight);
+    virtual void setNewDirection(float newDirection);
+    virtual void setNewPositionX(float x);
     virtual void setPosition(EV3_POSITION *position, float direction_, uint8_t updateType = 0);
+    virtual void setNewPositionY(float newY);
+    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
+    orientationPattern catchLineRIGHT(int power, float serchWidth, float searchHeight);
+    //! カーブのシナリオを作成して走行させる
+    virtual void curveOfscenario(int power, float moveDirection, float curveRadius, runPattern curveOrientation);
+
+
+    //! 前回の色
+    uint8_t lastColor;
+
+    //! 指定したカラーをみつけたかどうか
+    bool foundColor;
+    virtual bool searchHOSHITORI(int power, float searchWidth);
+
+        
+    //! 星とりで取得したカラー
+    uint8_t colorHOSHITORI;
 
 protected:
     virtual bool stopByDistance(scenario_running scenario);
@@ -71,12 +91,14 @@ protected:
 
     virtual float shortestMoveDirection(float targetDirection, float startDirection);
     virtual void rotateAbsolutelyDirection(int power, float AbsolutelyTargetDirection);
-    virtual orientationPattern catchLine(int power, float serchWidth, float searchHeight);
+    
     virtual int getDecelerationPower(int finishPower,  int runPower, float stopValue, float DecelerationRangeFromStopValue, float currentValue, bool softDeceleration);
     virtual int getAccelerationPower(int startPower, int runPower, float accelerationRange, float currentValue,bool softAcceleration);
     virtual int getSoftAccelAndDecelerationPower(int power, float stopValue, float currentValue, float accelerationRange,float decelerationRange, bool softAcceleration, bool softDeceleration);
     virtual bool judgeStopColor(uint8_t targetColor);
     virtual bool stopByColor(scenario_running scenario);
+    virtual float convertMapToREAL(float map);
+    virtual bool isAnyHOSHITORIcolor();
 
 private:
     void pinWheel(int power, float degree);
@@ -140,14 +162,12 @@ private:
     //! 利用可能かどうか
     bool    enabled;
 
-    //! 前回の色
-    uint8_t lastColor;
-
-    //! 指定したカラーをみつけたかどうか
-    bool foundColor;
-
     //! カラーセンサータスクの有効フラグ（輝度取得時には切っておかないとちゃんと取得できない）
     bool validColorTask;
+
+    //! X座標補正係数
+    float Xcorrectfactor = 1.0F;
+
 };
 
 //! 加速はじめのパワー
@@ -158,3 +178,13 @@ static const int  decelerationFinishPower = 5;
 
 //! 加速と減速範囲を再定義するときの停止値に対する割合
 static const float rangeRate = 0.6F;
+
+static const float accelRangeForStraight = 5.0F;
+
+static const float decelerationRangeForStraight = 20.0F;
+
+static const float accelRangeForPinWheel = 30.0F;
+
+static const float decelerationRangeForPinWheel = 60.0F;
+
+

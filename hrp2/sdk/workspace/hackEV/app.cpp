@@ -162,17 +162,18 @@ static void button_clicked_handler(intptr_t button) {
             driveController->setPosition(&position, direction, EV3Position::CORRECT_POSITION_MAP | EV3Position::CORRECT_DIRECTION);
 
             //! 本体の右ボタンで超音波モード
-            writeStringLCD("RIGHT button click");
+            writeStringLCD("RCource");
             syslog(LOG_NOTICE, "RIGHT button clicked.");
 
-            //! 超音波センサー有効化
-            sonarSensorController->setEnabled();
+            //シナリオ走行モードの初期化処理
+            initialize_run();
 
-            //! 超音波制御
-            control_sonarsensor();
+            //! 準備ができたら音が3回鳴る
+            ev3_speaker_play_tone(NOTE_E6, 300);
+            tslp_tsk(300);
 
-            //! 超音波センサー無効化
-            sonarSensorController->setEnabled(false);
+            //! Rコース開始
+            start_RcourseRun();
         }
         break;
 
@@ -209,8 +210,32 @@ static void button_clicked_handler(intptr_t button) {
         break;
         
     case DOWN_BUTTON:
-        //! カラー名とRGBの表示
-        viewColor();
+        {
+            //  Rコースのコース情報を持つインスタンスを生成する
+            if (courseInformation) {
+                delete courseInformation;
+                courseInformation = NULL;
+            }
+
+            courseInformation = new CourseInformationRight();
+            EV3_POSITION    position;
+            float   direction = 0.0F;
+            courseInformation->getStartPosition(&position, &direction);
+            driveController->setPosition(&position, direction, EV3Position::CORRECT_POSITION_MAP | EV3Position::CORRECT_DIRECTION);
+
+            //! 本体の右ボタンで超音波モード
+            writeStringLCD("RCouSSS");
+
+            //シナリオ走行モードの初期化処理
+            initialize_run();
+
+            //! 準備ができたら音が3回鳴る
+            ev3_speaker_play_tone(NOTE_E6, 300);
+            tslp_tsk(300);
+
+            //! Rコース開始
+            start_RcourseRunShortCut();
+        }
         break;
 
     default:
