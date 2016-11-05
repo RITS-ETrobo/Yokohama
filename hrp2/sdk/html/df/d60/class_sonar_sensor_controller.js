@@ -6,5 +6,6 @@ var class_sonar_sensor_controller =
     [ "initialize", "df/d60/class_sonar_sensor_controller.html#aa359db717ffeb1a82bf822e33f2ad1f0", null ],
     [ "isEnabled", "df/d60/class_sonar_sensor_controller.html#a95d04c59450d483650cfb7f609936d28", null ],
     [ "isGrabbableDistance", "df/d60/class_sonar_sensor_controller.html#a0f1c2440b27d14d751b8e1e642afd459", null ],
-    [ "setEnabled", "df/d60/class_sonar_sensor_controller.html#a8ef6afeb59b4fcccd4fa8905e63dd1e9", null ]
+    [ "setEnabled", "df/d60/class_sonar_sensor_controller.html#a8ef6afeb59b4fcccd4fa8905e63dd1e9", null ],
+    [ "stoppingPassShinkansen", "df/d60/class_sonar_sensor_controller.html#a05bb564383e4a4cbdacf038601688951", null ]
 ];

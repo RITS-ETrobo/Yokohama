@@ -9,11 +9,11 @@ var indexSectionsWithContent =
 {
   0: "_abcdefghijklmnoprstuvwxyãåæçèéマ位速",
   1: "cdeglmopsuマ位速",
-  2: "acdegilmprsuw",
+  2: "acdegilmoprsuw",
   3: "abcdegijlmoprstuvw",
   4: "_abcdefgiklnoprstwxy",
-  5: "lrst",
-  6: "dlnopst",
+  5: "clorst",
+  6: "cdlnoprstu",
   7: "_bdls",
   8: "clpãåæçèé"
 };

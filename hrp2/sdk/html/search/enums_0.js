@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logtype',['LOGTYPE',['../d0/db7/group___xE3_x83_xAD_xE3_x82_xB0_xE3_x81_xAE_xE7_xA8_xAE_xE9_xA1_x9E.html#ga9ca6006a59fa53a5cd728fa1efcd4b61',1,'logSettings.h']]]
+  ['color_5fmode',['COLOR_MODE',['../d4/d95/group___xE8_x89_xB2_xE8_xAD_x98_xE5_x88_xA5_xE3_x83_xA2_xE3_x83_xBC_xE3_x83_x89.html#ga21d9b4ebf97f17eaa4f59303e81e79b2',1,'ColorSensorController.h']]]
 ];

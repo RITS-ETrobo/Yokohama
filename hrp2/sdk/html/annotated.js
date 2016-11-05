@@ -1,6 +1,9 @@
 var annotated =
 [
+    [ "ColorSensorController", "df/d6b/class_color_sensor_controller.html", "df/d6b/class_color_sensor_controller" ],
     [ "CourseInformation", "db/d81/class_course_information.html", "db/d81/class_course_information" ],
+    [ "CourseInformationLeft", "da/d20/class_course_information_left.html", "da/d20/class_course_information_left" ],
+    [ "CourseInformationRight", "da/d88/class_course_information_right.html", "da/d88/class_course_information_right" ],
     [ "DISTANCE_RECORD", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d" ],
     [ "DriveController", "d8/dcc/class_drive_controller.html", "d8/dcc/class_drive_controller" ],
     [ "EV3_POSITION", "db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html", "db/d5d/struct_e_v3___p_o_s_i_t_i_o_n" ],

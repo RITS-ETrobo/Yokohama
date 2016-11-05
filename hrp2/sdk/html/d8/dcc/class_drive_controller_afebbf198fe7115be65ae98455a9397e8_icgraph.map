@@ -1,4 +1,6 @@
 <map id="DriveController::setEnabled" name="DriveController::setEnabled">
-<area shape="rect" id="node2" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="249,5,351,32"/>
-<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="237,56,363,83"/>
+<area shape="rect" id="node2" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="277,5,379,32"/>
+<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="265,56,391,83"/>
+<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#aaceb41f34426e23fbbcb55c79702db20" title="Rコース走行 " alt="" coords="264,107,392,133"/>
+<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a9a1851d54b054ec5a1ab1099317a1274" title="start_RcourseRunShortCut" alt="" coords="238,157,418,184"/>
 </map>

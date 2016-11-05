@@ -1,0 +1,11 @@
+<map id="SonarSensorController::stoppingPassShinkansen" name="SonarSensorController::stoppingPassShinkansen">
+<area shape="rect" id="node2" href="$df/d60/class_sonar_sensor_controller.html#a8ef6afeb59b4fcccd4fa8905e63dd1e9" title="超音波センサの有効/無効を切り替える " alt="" coords="233,5,386,46"/>
+<area shape="rect" id="node3" href="$df/d60/class_sonar_sensor_controller.html#a8d2e11956724270d5d36889b3a4e8fe6" title="超音波の測定 " alt="" coords="233,70,386,111"/>
+<area shape="rect" id="node4" href="$df/d60/class_sonar_sensor_controller.html#a95d04c59450d483650cfb7f609936d28" title="SonarSensorController\l::isEnabled" alt="" coords="435,41,589,82"/>
+<area shape="rect" id="node5" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="449,107,575,133"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="638,107,749,133"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="798,81,957,108"/>
+<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="820,132,935,159"/>
+<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="1005,56,1120,83"/>
+<area shape="rect" id="node9" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="1011,107,1115,133"/>
+</map>

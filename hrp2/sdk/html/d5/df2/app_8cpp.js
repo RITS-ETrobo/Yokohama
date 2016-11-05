@@ -8,6 +8,8 @@ var app_8cpp =
     [ "stop_emergency", "d5/df2/app_8cpp.html#a27869433979701bc6bd15b516e098e68", null ],
     [ "__dso_handle", "d5/df2/app_8cpp.html#a19df960d2907e9c08a720ae7683e632c", null ],
     [ "clock", "d5/df2/app_8cpp.html#a0dd222dfa33d8eb027b52db6f9cd6c88", null ],
+    [ "colorSensorController", "d5/df2/app_8cpp.html#aa3503624bae68ee4bc38ac2b4c44d63b", null ],
+    [ "courseInformation", "d5/df2/app_8cpp.html#a3e2e0e9969a5ef214f370e0c8e4f6442", null ],
     [ "driveController", "d5/df2/app_8cpp.html#ac908bdcf4039528fd5694d7b44b0dde9", null ],
     [ "gyroSensorController", "d5/df2/app_8cpp.html#a791d56f34e65e71befb63d0de1682758", null ],
     [ "inProress_Gyro", "d5/df2/app_8cpp.html#gac0eee66c8d2e84ce5dac7cbabca0a668", null ],

@@ -1,6 +1,10 @@
 var hierarchy =
 [
-    [ "CourseInformation", "db/d81/class_course_information.html", null ],
+    [ "ColorSensorController", "df/d6b/class_color_sensor_controller.html", null ],
+    [ "CourseInformation", "db/d81/class_course_information.html", [
+      [ "CourseInformationLeft", "da/d20/class_course_information_left.html", null ],
+      [ "CourseInformationRight", "da/d88/class_course_information_right.html", null ]
+    ] ],
     [ "DISTANCE_RECORD", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html", null ],
     [ "DriveController", "d8/dcc/class_drive_controller.html", null ],
     [ "EV3_POSITION", "db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html", null ],

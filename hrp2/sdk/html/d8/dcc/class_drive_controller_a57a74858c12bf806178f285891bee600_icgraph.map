@@ -1,3 +1,6 @@
 <map id="DriveController::manageMoveCoordinate" name="DriveController::manageMoveCoordinate">
-<area shape="rect" id="node2" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="248,12,373,39"/>
+<area shape="rect" id="node2" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="248,5,373,32"/>
+<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#aaceb41f34426e23fbbcb55c79702db20" title="Rコース走行 " alt="" coords="448,81,576,108"/>
+<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#a9a1851d54b054ec5a1ab1099317a1274" title="start_RcourseRunShortCut" alt="" coords="422,144,602,171"/>
+<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#a18f2abefb44b1c5263ee6bd32b4ed226" title="青攻略 " alt="" coords="263,107,358,133"/>
 </map>

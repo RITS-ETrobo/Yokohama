@@ -1,44 +1,51 @@
 <map id="start_LcourseRun" name="start_LcourseRun">
-<area shape="rect" id="node2" href="$de/da5/utilities_8cpp.html#a10d80c3380e49b3bad0801938d1865cd" title="白黒のキャリブレートをおこなう " alt="" coords="1467,104,1560,131"/>
-<area shape="rect" id="node8" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="2897,318,3007,344"/>
-<area shape="rect" id="node13" href="$d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496" title="ジャイロセンサーの有効・無効をセットする " alt="" coords="194,97,358,138"/>
-<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#afebbf198fe7115be65ae98455a9397e8" title="DriveController::setEnabled" alt="" coords="185,163,367,190"/>
-<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="179,214,373,256"/>
-<area shape="rect" id="node21" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="694,344,829,371"/>
-<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="1679,155,1790,182"/>
-<area shape="rect" id="node6" href="$de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="1655,104,1814,131"/>
-<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="1671,267,1798,294"/>
-<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1881,180,1980,207"/>
-<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1881,130,1980,156"/>
-<area shape="rect" id="node9" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="3057,292,3215,319"/>
-<area shape="rect" id="node12" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="3079,343,3193,370"/>
-<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="3264,267,3379,294"/>
-<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="3269,318,3373,344"/>
-<area shape="rect" id="node16" href="$d1/d48/class_e_v3_position.html#abe1162b6f8b7e3dc49fd552c8b5c93ab" title="走行体の現在位置を取得する " alt="" coords="426,96,593,123"/>
-<area shape="rect" id="node17" href="$de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="1460,155,1567,182"/>
-<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="421,222,597,264"/>
-<area shape="rect" id="node19" href="$d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c" title="座標点間を直線移動するための最初にその場で回転する角度を算出 " alt="" coords="646,177,877,218"/>
-<area shape="rect" id="node43" href="$d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b" title="座標点間の直線距離を算出 " alt="" coords="646,242,877,284"/>
-<area shape="rect" id="node20" href="$d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="979,176,1082,203"/>
-<area shape="rect" id="node22" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="949,496,1113,523"/>
-<area shape="rect" id="node32" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="2707,419,2847,446"/>
-<area shape="rect" id="node33" href="$d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="949,228,1113,269"/>
-<area shape="rect" id="node34" href="$d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="1185,446,1378,472"/>
-<area shape="rect" id="node39" href="$d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="925,344,1136,371"/>
-<area shape="rect" id="node42" href="$d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="925,395,1136,422"/>
-<area shape="rect" id="node23" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1208,547,1355,574"/>
-<area shape="rect" id="node24" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="1427,536,1600,563"/>
-<area shape="rect" id="node25" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="1660,536,1809,563"/>
-<area shape="rect" id="node26" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="1869,532,1992,559"/>
-<area shape="rect" id="node30" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="2270,467,2437,494"/>
-<area shape="rect" id="node27" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="2040,519,2221,546"/>
-<area shape="rect" id="node28" href="$d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="2302,568,2405,595"/>
-<area shape="rect" id="node29" href="$d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="2312,518,2395,544"/>
-<area shape="rect" id="node31" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="2486,470,2658,512"/>
-<area shape="rect" id="node35" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="1675,486,1794,512"/>
-<area shape="rect" id="node36" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="1451,379,1576,406"/>
-<area shape="rect" id="node37" href="$d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370" title="曲線走行 ※注意：曲率半径7cm～351cmの範囲内であること。この範囲外を指定したときは一番近い範囲内の値に変更する。 " alt="" coords="1427,430,1600,456"/>
-<area shape="rect" id="node38" href="$d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6" title="曲率半径から左右のパワーを算出 【参考】 http://www.ftech&#45;net.co.jp/robot/howto/motion01.html " alt="" coords="1649,420,1821,461"/>
-<area shape="rect" id="node40" href="$de/da5/utilities_8cpp.html#a2990cce4fad202c2e21397987f711322" title="比較対象の絶対値よりも大きい値かどうか " alt="" coords="1202,344,1361,371"/>
-<area shape="rect" id="node41" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="1210,395,1353,422"/>
+<area shape="rect" id="node2" href="$de/da5/utilities_8cpp.html#a10d80c3380e49b3bad0801938d1865cd" title="白黒のキャリブレートをおこなう " alt="" coords="505,121,599,148"/>
+<area shape="rect" id="node8" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1979,299,2090,325"/>
+<area shape="rect" id="node11" href="$d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496" title="ジャイロセンサーの有効・無効をセットする " alt="" coords="206,733,370,774"/>
+<area shape="rect" id="node12" href="$d8/dcc/class_drive_controller.html#afebbf198fe7115be65ae98455a9397e8" title="DriveController::setEnabled" alt="" coords="197,799,379,825"/>
+<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="191,375,385,417"/>
+<area shape="rect" id="node19" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="755,424,890,451"/>
+<area shape="rect" id="node34" href="$d8/dcc/class_drive_controller.html#a1cdd0a9b5859251ed0ca7bb621a427c7" title="カーブのシナリオを作成して走行させる " alt="" coords="446,441,658,468"/>
+<area shape="rect" id="node35" href="$d8/dcc/class_drive_controller.html#a736a16c5694bfe27f73730f18f0e7b44" title="DriveController::catchLine" alt="" coords="201,551,375,577"/>
+<area shape="rect" id="node37" href="$d8/dcc/class_drive_controller.html#a39bb3b0df185e42ffbf5cc596e7fe6b9" title="x座標を設定 [pixcel値] " alt="" coords="179,223,397,249"/>
+<area shape="rect" id="node40" href="$d8/dcc/class_drive_controller.html#ad59c79d61af0740a1c3e185275153201" title="y座標を設定 [pixcel値] " alt="" coords="179,273,397,300"/>
+<area shape="rect" id="node41" href="$d8/dcc/class_drive_controller.html#a5d4d8bfa4e144f6660ad96fef729b879" title="DriveController::searchHOSHITORI" alt="" coords="987,273,1218,300"/>
+<area shape="rect" id="node43" href="$d3/d68/_arm_module_8cpp.html#a3cb1e4476eeba3e77c70d6d9f1b53d32" title="アームを動かす degreesが0～60の範囲なら安全に動作する " alt="" coords="247,71,329,97"/>
+<area shape="rect" id="node45" href="$df/d60/class_sonar_sensor_controller.html#a05bb564383e4a4cbdacf038601688951" title="新幹線が目の前を横切るまでストップする " alt="" coords="199,667,377,709"/>
+<area shape="rect" id="node49" href="$d8/dcc/class_drive_controller.html#af9ff26d85e6dcadc2d93923bb2180f92" title="DriveController::catchLine\lRIGHT" alt="" coords="201,602,375,643"/>
+<area shape="rect" id="node50" href="$d8/dcc/class_drive_controller.html#a28ac6e4753b88ec71a9b956f4f1d7f0a" title="新しい向きを設定 " alt="" coords="181,172,395,199"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="767,71,878,97"/>
+<area shape="rect" id="node6" href="$de/da5/utilities_8cpp.html#af899f4857f178d44a9080ec66506e1a7" title="光強度の為の測定をおこなう " alt="" coords="743,121,902,148"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="1039,696,1166,723"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="1053,71,1152,97"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="1053,121,1152,148"/>
+<area shape="rect" id="node9" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2139,273,2298,300"/>
+<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2161,324,2276,351"/>
+<area shape="rect" id="node14" href="$d1/d48/class_e_v3_position.html#abe1162b6f8b7e3dc49fd552c8b5c93ab" title="走行体の現在位置を取得する " alt="" coords="469,391,635,417"/>
+<area shape="rect" id="node15" href="$d8/dcc/class_drive_controller.html#aa39f0bdadca7065165f7a0c990aeb483" title="マップ座標を現実座標に変換 " alt="" coords="472,325,632,366"/>
+<area shape="rect" id="node16" href="$d8/dcc/class_drive_controller.html#ada66abd8bc5d1aeeadc257a2c9e1f65b" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="464,543,640,585"/>
+<area shape="rect" id="node17" href="$d8/dcc/class_drive_controller.html#a7b85466240c40d0b6537f4b65293133c" title="座標点間を直線移動するための最初にその場で回転する角度を算出 " alt="" coords="707,591,938,633"/>
+<area shape="rect" id="node33" href="$d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b" title="座標点間の直線距離を算出 " alt="" coords="707,526,938,567"/>
+<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#a06c48cc22dccf7d72ef6ef3cf9cbca13" title="2つの角度で最小となる回転量を算出 " alt="" coords="1021,750,1185,791"/>
+<area shape="rect" id="node20" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1021,644,1185,671"/>
+<area shape="rect" id="node24" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1790,299,1930,325"/>
+<area shape="rect" id="node25" href="$d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645" title="走行シナリオに従って、メンバ変数を初期化する " alt="" coords="1021,578,1185,619"/>
+<area shape="rect" id="node26" href="$d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="997,476,1208,503"/>
+<area shape="rect" id="node29" href="$d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="997,375,1208,401"/>
+<area shape="rect" id="node30" href="$d8/dcc/class_drive_controller.html#abfc24d0aed7c1243c62940d2818d1731" title="指定した色だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="1008,425,1197,452"/>
+<area shape="rect" id="node31" href="$d8/dcc/class_drive_controller.html#a6745050dd8d6335bf4067b969ab28a0a" title="走行シナリオに従って走行する " alt="" coords="1006,324,1199,351"/>
+<area shape="rect" id="node21" href="$df/d6b/class_color_sensor_controller.html#a109f29a8aa37c015bff52ebff4c6271b" title="カラーセンサーで検知した色のIDを取得 " alt="" coords="1318,578,1469,619"/>
+<area shape="rect" id="node22" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1320,644,1467,671"/>
+<area shape="rect" id="node23" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="1568,669,1741,696"/>
+<area shape="rect" id="node27" href="$d8/dcc/class_drive_controller.html#a0e6738ba41caab5431d7cd1c565649ee" title="モータを停止する " alt="" coords="1322,476,1465,503"/>
+<area shape="rect" id="node28" href="$db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f" title="モータを停止する " alt="" coords="1592,375,1717,401"/>
+<area shape="rect" id="node32" href="$db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855" title="モータにパワーを設定する " alt="" coords="1334,375,1453,401"/>
+<area shape="rect" id="node36" href="$d8/dcc/class_drive_controller.html#a7fe1c52df51c17b96c62e49793d465a3" title="DriveController::rotateAbsolutely\lDirection" alt="" coords="447,709,657,750"/>
+<area shape="rect" id="node38" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="469,223,635,249"/>
+<area shape="rect" id="node39" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1569,157,1741,198"/>
+<area shape="rect" id="node42" href="$d8/dcc/class_drive_controller.html#a04ecb7e15fbd63f144ae9c0e124a7f0d" title="DriveController::isAnyHOSHITORIcolor" alt="" coords="1267,273,1520,300"/>
+<area shape="rect" id="node44" href="$de/da5/utilities_8cpp.html#a62d20c80c50659ca4a6c00bc37abf359" title="LCDに数値を表示させる " alt="" coords="499,71,605,97"/>
+<area shape="rect" id="node46" href="$df/d60/class_sonar_sensor_controller.html#a8ef6afeb59b4fcccd4fa8905e63dd1e9" title="超音波センサの有効/無効を切り替える " alt="" coords="475,926,629,967"/>
+<area shape="rect" id="node47" href="$df/d60/class_sonar_sensor_controller.html#a8d2e11956724270d5d36889b3a4e8fe6" title="超音波の測定 " alt="" coords="475,861,629,902"/>
+<area shape="rect" id="node48" href="$df/d60/class_sonar_sensor_controller.html#a95d04c59450d483650cfb7f609936d28" title="SonarSensorController\l::isEnabled" alt="" coords="746,861,899,902"/>
 </map>

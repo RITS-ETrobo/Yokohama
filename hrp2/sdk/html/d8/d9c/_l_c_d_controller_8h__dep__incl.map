@@ -1,12 +1,11 @@
 <map id="hrp2/sdk/workspace/hackEV/LCDController.h" name="hrp2/sdk/workspace/hackEV/LCDController.h">
-<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="820,97,959,138"/>
+<area shape="rect" id="node2" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="653,97,792,138"/>
 <area shape="rect" id="node5" href="$d3/d68/_arm_module_8cpp.html" title="This file has ArmModule. " alt="" coords="5,194,215,235"/>
 <area shape="rect" id="node7" href="$da/d2f/_running_module_8cpp.html" title="This file has RunningModule. " alt="" coords="1241,194,1431,235"/>
-<area shape="rect" id="node8" href="$d6/da1/_color_sensor_controller_8cpp.html" title="カラーセンサーを制御する " alt="" coords="1455,187,1653,243"/>
-<area shape="rect" id="node11" href="$df/d88/_l_c_d_controller_8cpp.html" title="This file has LCDController. " alt="" coords="1253,97,1437,138"/>
-<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="407,194,545,235"/>
-<area shape="rect" id="node4" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="570,194,757,235"/>
-<area shape="rect" id="node6" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="782,194,996,235"/>
-<area shape="rect" id="node9" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="1021,187,1216,243"/>
-<area shape="rect" id="node10" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="239,194,381,235"/>
+<area shape="rect" id="node10" href="$df/d88/_l_c_d_controller_8cpp.html" title="This file has LCDController. " alt="" coords="867,97,1051,138"/>
+<area shape="rect" id="node3" href="$d5/df2/app_8cpp.html" title="This file has the main task. This program will be optimized for HackEV. EV means Educator Vehicle..." alt="" coords="240,194,379,235"/>
+<area shape="rect" id="node4" href="$d9/dc1/_drive_controller_8cpp.html" title="走行を制御する " alt="" coords="403,194,591,235"/>
+<area shape="rect" id="node6" href="$db/dd1/_motor_wheel_8cpp.html" title="タイヤについているモーターを制御する " alt="" coords="615,194,829,235"/>
+<area shape="rect" id="node8" href="$d1/d48/_gyro_sensor_controller_8cpp.html" title="ジャイロセンサーを制御する " alt="" coords="855,187,1049,243"/>
+<area shape="rect" id="node9" href="$de/da5/utilities_8cpp.html" title="This file has the utilitiy functions. " alt="" coords="1074,194,1216,235"/>
 </map>

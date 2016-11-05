@@ -6,9 +6,7 @@ var dir_7502d0546512cf6b46f51cc6d3292bba =
     [ "app.cpp", "d5/df2/app_8cpp.html", "d5/df2/app_8cpp" ],
     [ "app.h", "d2/d39/app_8h.html", "d2/d39/app_8h" ],
     [ "DriveController.cpp", "d9/dc1/_drive_controller_8cpp.html", null ],
-    [ "DriveController.h", "d5/d5b/_drive_controller_8h.html", [
-      [ "DriveController", "d8/dcc/class_drive_controller.html", "d8/dcc/class_drive_controller" ]
-    ] ],
+    [ "DriveController.h", "d5/d5b/_drive_controller_8h.html", "d5/d5b/_drive_controller_8h" ],
     [ "EV3Position.cpp", "da/dc4/_e_v3_position_8cpp.html", null ],
     [ "EV3Position.h", "d6/db9/_e_v3_position_8h.html", [
       [ "DISTANCE_RECORD", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html", "d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d" ],

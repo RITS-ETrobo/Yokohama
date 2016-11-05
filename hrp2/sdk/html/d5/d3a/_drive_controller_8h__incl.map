@@ -1,11 +1,12 @@
 <map id="hrp2/sdk/workspace/hackEV/DriveController.h" name="hrp2/sdk/workspace/hackEV/DriveController.h">
-<area shape="rect" id="node2" href="$dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="348,320,423,347"/>
-<area shape="rect" id="node9" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="141,96,270,123"/>
-<area shape="rect" id="node12" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="296,96,398,123"/>
-<area shape="rect" id="node14" href="$d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="408,171,537,197"/>
-<area shape="rect" id="node17" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="474,96,618,123"/>
-<area shape="rect" id="node10" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="31,171,125,197"/>
-<area shape="rect" id="node11" href="$df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="149,171,262,197"/>
-<area shape="rect" id="node13" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="335,245,437,272"/>
-<area shape="rect" id="node15" href="$d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="513,245,618,272"/>
+<area shape="rect" id="node2" href="$dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="344,395,420,421"/>
+<area shape="rect" id="node9" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="134,171,264,197"/>
+<area shape="rect" id="node12" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="294,171,396,197"/>
+<area shape="rect" id="node14" href="$d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="383,245,512,272"/>
+<area shape="rect" id="node15" href="$d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="478,320,582,347"/>
+<area shape="rect" id="node17" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="472,96,616,123"/>
+<area shape="rect" id="node18" href="$d0/d60/orientation_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="582,171,716,197"/>
+<area shape="rect" id="node10" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="25,245,118,272"/>
+<area shape="rect" id="node11" href="$df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="143,245,256,272"/>
+<area shape="rect" id="node13" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="204,320,306,347"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="DriveController::directionFromCoordinateForJitteryMovement" name="DriveController::directionFromCoordinateForJitteryMovement">
-<area shape="rect" id="node2" href="$d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="286,12,389,39"/>
+<area shape="rect" id="node2" href="$d4/dcf/user__function_8cpp.html#a189f5960c0422a247311abd4b0bf90c2" title="radian2degree" alt="" coords="317,5,419,32"/>
+<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a06c48cc22dccf7d72ef6ef3cf9cbca13" title="2つの角度で最小となる回転量を算出 " alt="" coords="286,57,450,98"/>
 </map>

@@ -1,11 +1,20 @@
 <map id="DriveController::stop" name="DriveController::stop">
-<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="203,72,413,99"/>
-<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="203,123,413,149"/>
-<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="197,174,419,215"/>
-<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="467,97,602,124"/>
-<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="651,6,827,47"/>
-<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1117,43,1243,69"/>
-<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="702,123,775,149"/>
-<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="687,173,790,200"/>
-<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="875,6,1069,47"/>
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e" title="指定した距離を走行していた場合、走行体を停止させる " alt="" coords="197,253,408,280"/>
+<area shape="rect" id="node17" href="$d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383" title="指定した角度だった場合、走行体を停止させる(0度であれば判定しない) " alt="" coords="197,203,408,229"/>
+<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#a4f10d2dd56424159dbaeda3bf49a5c1b" title="ラインを使って向きをリセットする ホイールオドメトリで蓄積される誤差をラインを使ってリセットする " alt="" coords="493,401,651,442"/>
+<area shape="rect" id="node19" href="$d8/dcc/class_drive_controller.html#a5d4d8bfa4e144f6660ad96fef729b879" title="DriveController::searchHOSHITORI" alt="" coords="457,75,687,101"/>
+<area shape="rect" id="node3" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="505,224,639,251"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#ada66abd8bc5d1aeeadc257a2c9e1f65b" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="753,158,929,199"/>
+<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="1280,117,1405,144"/>
+<area shape="rect" id="node9" href="$d6/d2f/_running_module_8h.html#a18f2abefb44b1c5263ee6bd32b4ed226" title="青攻略 " alt="" coords="1295,229,1390,256"/>
+<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#a7fe1c52df51c17b96c62e49793d465a3" title="DriveController::rotateAbsolutely\lDirection" alt="" coords="736,326,947,367"/>
+<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#a1cdd0a9b5859251ed0ca7bb621a427c7" title="カーブのシナリオを作成して走行させる " alt="" coords="995,5,1207,32"/>
+<area shape="rect" id="node15" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="805,224,878,251"/>
+<area shape="rect" id="node16" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="790,275,893,301"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="1004,223,1199,265"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#a736a16c5694bfe27f73730f18f0e7b44" title="DriveController::catchLine" alt="" coords="1015,312,1188,339"/>
+<area shape="rect" id="node12" href="$d8/dcc/class_drive_controller.html#af9ff26d85e6dcadc2d93923bb2180f92" title="DriveController::catchLine\lRIGHT" alt="" coords="1015,158,1188,199"/>
+<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#aaceb41f34426e23fbbcb55c79702db20" title="Rコース走行 " alt="" coords="1504,179,1632,205"/>
+<area shape="rect" id="node8" href="$d6/d2f/_running_module_8h.html#a9a1851d54b054ec5a1ab1099317a1274" title="start_RcourseRunShortCut" alt="" coords="1478,229,1658,256"/>
+<area shape="rect" id="node11" href="$d8/dcc/class_drive_controller.html#ab6736f6e9490348cd5bd75bc16d265a0" title="DriveController::catchLine\lAndCorrectDirection" alt="" coords="1256,385,1429,426"/>
 </map>

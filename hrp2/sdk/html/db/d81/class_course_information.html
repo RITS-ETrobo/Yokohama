@@ -113,19 +113,32 @@ $(document).ready(function(){initNavTree('db/d81/class_course_information.html',
 </div><!--header-->
 <div class="contents">
 
+<p>Class for course.  
+ <a href="../../db/d81/class_course_information.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d9/d77/_course_information_8h_source.html">CourseInformation.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for CourseInformation:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/dc4/class_course_information__inherit__graph.png" border="0" usemap="#_course_information_inherit__map" alt="Inheritance graph"/></div>
+<map name="_course_information_inherit__map" id="_course_information_inherit__map">
+<area shape="rect" id="node2" href="../../da/d20/class_course_information_left.html" title="Class for left course. " alt="" coords="5,80,155,107"/><area shape="rect" id="node3" href="../../da/d88/class_course_information_right.html" title="Class for left course. " alt="" coords="180,80,339,107"/></map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9a6e592a9e1e92263b34cfb504e680f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#a9a6e592a9e1e92263b34cfb504e680f9">CourseInformation</a> ()</td></tr>
-<tr class="memdesc:a9a6e592a9e1e92263b34cfb504e680f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a9a6e592a9e1e92263b34cfb504e680f9">More...</a><br/></td></tr>
-<tr class="separator:a9a6e592a9e1e92263b34cfb504e680f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a211c5b99f6898a654bedde032f705781"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#a211c5b99f6898a654bedde032f705781">CourseInformation</a> (float xStart, float yStart, float directionStart_)</td></tr>
+<tr class="memdesc:a211c5b99f6898a654bedde032f705781"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a211c5b99f6898a654bedde032f705781">More...</a><br/></td></tr>
+<tr class="separator:a211c5b99f6898a654bedde032f705781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a585808cda5132459993c8f5a9cf9d966"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#a585808cda5132459993c8f5a9cf9d966">initialize</a> (bool isForce=false)</td></tr>
 <tr class="memdesc:a585808cda5132459993c8f5a9cf9d966"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化  <a href="#a585808cda5132459993c8f5a9cf9d966">More...</a><br/></td></tr>
 <tr class="separator:a585808cda5132459993c8f5a9cf9d966"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f9171be485e65424be6c5a6e0639c0"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#a30f9171be485e65424be6c5a6e0639c0">getEV3onZone</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *position, <a class="el" href="../../df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html">OBJECT_INFORMATION</a> *zone, bool isREAL=true)</td></tr>
 <tr class="memdesc:a30f9171be485e65424be6c5a6e0639c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行体のいるゾーンを返す  <a href="#a30f9171be485e65424be6c5a6e0639c0">More...</a><br/></td></tr>
 <tr class="separator:a30f9171be485e65424be6c5a6e0639c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cbf71a4809c95292719715bb5cdecb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#a34cbf71a4809c95292719715bb5cdecb">getStartPosition</a> (<a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *position, float *direction)</td></tr>
+<tr class="memdesc:a34cbf71a4809c95292719715bb5cdecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">スタート地点の情報を返す  <a href="#a34cbf71a4809c95292719715bb5cdecb">More...</a><br/></td></tr>
+<tr class="separator:a34cbf71a4809c95292719715bb5cdecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -144,8 +157,10 @@ Static Protected Attributes</h2></td></tr>
 <tr class="memitem:aa756518221cece5f4fcca6f45e620e8d"><td class="memItemLeft" align="right" valign="top">static const int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d81/class_course_information.html#aa756518221cece5f4fcca6f45e620e8d">NOT_FOUND</a> = -1</td></tr>
 <tr class="separator:aa756518221cece5f4fcca6f45e620e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a9a6e592a9e1e92263b34cfb504e680f9"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for course. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a211c5b99f6898a654bedde032f705781"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -155,8 +170,25 @@ Static Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">CourseInformation::CourseInformation </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>xStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>yStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>directionStart_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -415,6 +447,43 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a34cbf71a4809c95292719715bb5cdecb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CourseInformation::getStartPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d5d/struct_e_v3___p_o_s_i_t_i_o_n.html">EV3_POSITION</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>スタート地点の情報を返す </p>
+<dl class="section return"><dt>Returns</dt><dd>なし </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a585808cda5132459993c8f5a9cf9d966"></a>
 <div class="memitem">
 <div class="memproto">
@@ -473,7 +542,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../db/d81/class_course_information.html">CourseInformation</a></li>
-    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Nov 6 2016 00:34:09 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

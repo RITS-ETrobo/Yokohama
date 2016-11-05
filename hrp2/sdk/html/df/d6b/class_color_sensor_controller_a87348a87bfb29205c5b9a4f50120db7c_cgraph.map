@@ -1,0 +1,5 @@
+<map id="ColorSensorController::getColorName" name="ColorSensorController::getColorName">
+<area shape="rect" id="node2" href="$df/d6b/class_color_sensor_controller.html#a109f29a8aa37c015bff52ebff4c6271b" title="カラーセンサーで検知した色のIDを取得 " alt="" coords="206,5,357,46"/>
+<area shape="rect" id="node4" href="$df/d6b/class_color_sensor_controller.html#aade8fd6eaee04eace495fb5c0f3f9de6" title="カラーセンサーで検知した色の名前を取得する " alt="" coords="206,70,357,111"/>
+<area shape="rect" id="node3" href="$df/d6b/class_color_sensor_controller.html#a01053964c866f6bfe00564a460fafde2" title="カラーセンサーRGB値を取得 " alt="" coords="406,5,557,46"/>
+</map>

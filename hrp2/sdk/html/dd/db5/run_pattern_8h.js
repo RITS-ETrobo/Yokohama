@@ -16,6 +16,7 @@ var run_pattern_8h =
       [ "NOTRACE_CURVE_RIGHT", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2a93404b91b02a273a0f93eba7dcb8ffe6", null ],
       [ "NOTRACE_CURVE_LEFT", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2acfefe5f89cb5f871acfcea8e713f3184", null ],
       [ "SWITCH_SIDE_RIGHT", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2aad4716ad9ef295c7330838a731f39558", null ],
-      [ "SWITCH_SIDE_LEFT", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2aeb7d36a8622fde25475da63f1cf37422", null ]
+      [ "SWITCH_SIDE_LEFT", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2aeb7d36a8622fde25475da63f1cf37422", null ],
+      [ "CORRECT_DIRECTION_BY_LINE", "dd/db5/run_pattern_8h.html#a37b4634eac030ffb8287731c88374ab2a1fe38d84e20f5ad8bbbea60b5a9857d0", null ]
     ] ]
 ];

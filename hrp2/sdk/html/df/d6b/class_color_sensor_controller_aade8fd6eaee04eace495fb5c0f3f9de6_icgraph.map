@@ -1,0 +1,4 @@
+<map id="ColorSensorController::getColorNameByID" name="ColorSensorController::getColorNameByID">
+<area shape="rect" id="node2" href="$df/d6b/class_color_sensor_controller.html#a87348a87bfb29205c5b9a4f50120db7c" title="カラーセンサーで検知した色の名前を取得する " alt="" coords="206,5,357,46"/>
+<area shape="rect" id="node3" href="$de/df0/utilities_8h.html#adc331d453215c393ae42328b2e7cde9f" title="色情報をLCDに表示する " alt="" coords="405,12,485,39"/>
+</map>

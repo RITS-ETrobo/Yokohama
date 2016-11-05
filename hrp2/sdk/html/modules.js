@@ -12,6 +12,8 @@ var modules =
     [ "ログ出力の設定", "d5/db3/group___xE3_x83_xAD_xE3_x82_xB0_xE5_x87_xBA_xE5_x8A_x9B_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A.html", "d5/db3/group___xE3_x83_xAD_xE3_x82_xB0_xE5_x87_xBA_xE5_x8A_x9B_xE3_x81_xAE_xE8_xA8_xAD_xE5_xAE_x9A" ],
     [ "LCDに関連した定義", "d4/d0a/group___l_c_d_xE3_x81_xAB_xE9_x96_xA2_xE9_x80_xA3_xE3_x81_x97_xE3_x81_x9F_xE5_xAE_x9A_xE7_xBE_xA9.html", "d4/d0a/group___l_c_d_xE3_x81_xAB_xE9_x96_xA2_xE9_x80_xA3_xE3_x81_x97_xE3_x81_x9F_xE5_xAE_x9A_xE7_xBE_xA9" ],
     [ "距離計算要素", "d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0.html", "d7/dc7/group___xE8_xB7_x9D_xE9_x9B_xA2_xE8_xA8_x88_xE7_xAE_x97_xE8_xA6_x81_xE7_xB4_xA0" ],
+    [ "色識別モード", "d4/d95/group___xE8_x89_xB2_xE8_xAD_x98_xE5_x88_xA5_xE3_x83_xA2_xE3_x83_xBC_xE3_x83_x89.html", "d4/d95/group___xE8_x89_xB2_xE8_xAD_x98_xE5_x88_xA5_xE3_x83_xA2_xE3_x83_xBC_xE3_x83_x89" ],
+    [ "色の閾値", "da/db4/group___xE8_x89_xB2_xE3_x81_xAE_xE9_x96_xBE_xE5_x80_xA4.html", null ],
     [ "PID制御で用いる変数", "d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html", "d3/dc6/group___p_i_d_xE5_x88_xB6_xE5_xBE_xA1_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0" ],
     [ "白黒判定で用いる変数", "dc/de8/group___xE7_x99_xBD_xE9_xBB_x92_xE5_x88_xA4_xE5_xAE_x9A_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0.html", "dc/de8/group___xE7_x99_xBD_xE9_xBB_x92_xE5_x88_xA4_xE5_xAE_x9A_xE3_x81_xA7_xE7_x94_xA8_xE3_x81_x84_xE3_x82_x8B_xE5_xA4_x89_xE6_x95_xB0" ]
 ];

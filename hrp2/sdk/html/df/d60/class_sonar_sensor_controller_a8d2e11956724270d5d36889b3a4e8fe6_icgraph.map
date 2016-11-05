@@ -1,4 +1,6 @@
 <map id="SonarSensorController::executeSonar" name="SonarSensorController::executeSonar">
-<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html " alt="" coords="216,5,355,32"/>
-<area shape="rect" id="node3" href="$df/d60/class_sonar_sensor_controller.html#a0f1c2440b27d14d751b8e1e642afd459" title="懸賞を安全につかめる距離か検証する " alt="" coords="209,57,362,98"/>
+<area shape="rect" id="node2" href="$d5/df2/app_8cpp.html#a5bdfa45dc696390cc933ecb726d52a83" title="超音波センサの制御 超音波センサの参考資料 ： http://www.toppers.jp/ev3pf/EV3RT_C_API_Reference/group__ev3sensor.html " alt="" coords="228,5,367,32"/>
+<area shape="rect" id="node3" href="$df/d60/class_sonar_sensor_controller.html#a0f1c2440b27d14d751b8e1e642afd459" title="懸賞を安全につかめる距離か検証する " alt="" coords="221,57,374,98"/>
+<area shape="rect" id="node4" href="$df/d60/class_sonar_sensor_controller.html#a05bb564383e4a4cbdacf038601688951" title="新幹線が目の前を横切るまでストップする " alt="" coords="209,122,386,163"/>
+<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="435,129,560,156"/>
 </map>

@@ -1,6 +1,8 @@
 <map id="calibrate_light_intensity" name="calibrate_light_intensity">
-<area shape="rect" id="node2" href="$de/df0/utilities_8h.html#a10d80c3380e49b3bad0801938d1865cd" title="白黒のキャリブレートをおこなう " alt="" coords="213,56,307,83"/>
-<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="381,5,454,32"/>
-<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="366,56,469,83"/>
-<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="355,107,480,133"/>
+<area shape="rect" id="node2" href="$de/df0/utilities_8h.html#a10d80c3380e49b3bad0801938d1865cd" title="白黒のキャリブレートをおこなう " alt="" coords="213,107,307,133"/>
+<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="409,5,482,32"/>
+<area shape="rect" id="node4" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="394,56,497,83"/>
+<area shape="rect" id="node5" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="383,107,508,133"/>
+<area shape="rect" id="node6" href="$d6/d2f/_running_module_8h.html#aaceb41f34426e23fbbcb55c79702db20" title="Rコース走行 " alt="" coords="381,157,509,184"/>
+<area shape="rect" id="node7" href="$d6/d2f/_running_module_8h.html#a9a1851d54b054ec5a1ab1099317a1274" title="start_RcourseRunShortCut" alt="" coords="355,208,535,235"/>
 </map>

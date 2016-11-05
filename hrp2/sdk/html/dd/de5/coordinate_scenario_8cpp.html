@@ -109,12 +109,13 @@ $(document).ready(function(){initNavTree('dd/de5/coordinate_scenario_8cpp.html',
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/de2/parameter_p_i_d_8h_source.html">parameterPID.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d4/d05/coordinate_scenario_8h_source.html">coordinateScenario.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/de5/_color_sensor_controller_8h_source.html">ColorSensorController.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for coordinateScenario.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d98/coordinate_scenario_8cpp__incl.png" border="0" usemap="#hrp2_2sdk_2workspace_2hack_e_v_2params_2coordinate_scenario_8cpp" alt=""/></div>
 <map name="hrp2_2sdk_2workspace_2hack_e_v_2params_2coordinate_scenario_8cpp" id="hrp2_2sdk_2workspace_2hack_e_v_2params_2coordinate_scenario_8cpp">
-<area shape="rect" id="node2" href="../../d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="5,96,120,123"/><area shape="rect" id="node3" href="../../d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="144,96,288,123"/></map>
+<area shape="rect" id="node2" href="../../d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="121,96,236,123"/><area shape="rect" id="node3" href="../../d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="260,96,404,123"/><area shape="rect" id="node19" href="../../d2/de5/_color_sensor_controller_8h.html" title="カラーセンサーを制御する " alt="" coords="710,96,871,123"/><area shape="rect" id="node4" href="../../d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="509,171,639,197"/><area shape="rect" id="node13" href="../../d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="329,171,431,197"/><area shape="rect" id="node15" href="../../d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="215,245,344,272"/><area shape="rect" id="node16" href="../../d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="189,320,293,347"/><area shape="rect" id="node18" href="../../d0/d60/orientation_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="5,171,139,197"/><area shape="rect" id="node5" href="../../dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="660,245,753,272"/><area shape="rect" id="node6" href="../../df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="471,245,584,272"/><area shape="rect" id="node7" href="../../dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="389,395,464,421"/><area shape="rect" id="node14" href="../../d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="421,320,523,347"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -122,20 +123,90 @@ Variables</h2></td></tr>
 <tr class="memitem:a4d891a491d4a294b5de566584f6133f6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a4d891a491d4a294b5de566584f6133f6">test_coordinate</a> [14]</td></tr>
 <tr class="memdesc:a4d891a491d4a294b5de566584f6133f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">検証用  <a href="#a4d891a491d4a294b5de566584f6133f6">More...</a><br/></td></tr>
 <tr class="separator:a4d891a491d4a294b5de566584f6133f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0493d4df9f8bda35261fb753615ea03a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a0493d4df9f8bda35261fb753615ea03a">start_beforeSumo</a> [9]</td></tr>
-<tr class="memdesc:a0493d4df9f8bda35261fb753615ea03a"><td class="mdescLeft">&#160;</td><td class="mdescRight">スタートしてから相撲まで  <a href="#a0493d4df9f8bda35261fb753615ea03a">More...</a><br/></td></tr>
-<tr class="separator:a0493d4df9f8bda35261fb753615ea03a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3662d1b9f6622dc53190311fec07b36b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a3662d1b9f6622dc53190311fec07b36b">start_straightBeforeHoshitori</a> [1]</td></tr>
+<tr class="memdesc:a3662d1b9f6622dc53190311fec07b36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">スタートしてから相撲まで  <a href="#a3662d1b9f6622dc53190311fec07b36b">More...</a><br/></td></tr>
+<tr class="separator:a3662d1b9f6622dc53190311fec07b36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78958efd6a0e5eecbf5dec296d651af"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#ab78958efd6a0e5eecbf5dec296d651af">straightFromCurve</a> [1]</td></tr>
+<tr class="memdesc:ab78958efd6a0e5eecbf5dec296d651af"><td class="mdescLeft">&#160;</td><td class="mdescRight">最初のカーブを曲がってから星取り前まで  <a href="#ab78958efd6a0e5eecbf5dec296d651af">More...</a><br/></td></tr>
+<tr class="separator:ab78958efd6a0e5eecbf5dec296d651af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187a1298d3d08e1218d524c75ad55e58"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a187a1298d3d08e1218d524c75ad55e58">toHoshitoriStraght</a> [3]</td></tr>
+<tr class="separator:a187a1298d3d08e1218d524c75ad55e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6e4c9a9d3d4e61fce18dcfd2aa81c6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a3f6e4c9a9d3d4e61fce18dcfd2aa81c6">toGRAYBeforeHOSHI</a> [2]</td></tr>
+<tr class="memdesc:a3f6e4c9a9d3d4e61fce18dcfd2aa81c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">灰色にかかるところ（グレー検知でも止まるように）  <a href="#a3f6e4c9a9d3d4e61fce18dcfd2aa81c6">More...</a><br/></td></tr>
+<tr class="separator:a3f6e4c9a9d3d4e61fce18dcfd2aa81c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16771ff42e97d329fd0995a60e5bc3c9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a16771ff42e97d329fd0995a60e5bc3c9">toHoshitori</a> [1]</td></tr>
+<tr class="memdesc:a16771ff42e97d329fd0995a60e5bc3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">星取り  <a href="#a16771ff42e97d329fd0995a60e5bc3c9">More...</a><br/></td></tr>
+<tr class="separator:a16771ff42e97d329fd0995a60e5bc3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53cbc85276d0fc1ccb5d93d0a776a83e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a53cbc85276d0fc1ccb5d93d0a776a83e">beforeSUMO</a> [2]</td></tr>
+<tr class="memdesc:a53cbc85276d0fc1ccb5d93d0a776a83e"><td class="mdescLeft">&#160;</td><td class="mdescRight">相撲前の線路前まで  <a href="#a53cbc85276d0fc1ccb5d93d0a776a83e">More...</a><br/></td></tr>
+<tr class="separator:a53cbc85276d0fc1ccb5d93d0a776a83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa58ad9390100805187cbd4a9f3f982e8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#aa58ad9390100805187cbd4a9f3f982e8">onStageSumo</a> [1]</td></tr>
 <tr class="memdesc:aa58ad9390100805187cbd4a9f3f982e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">相撲台の上まで移動  <a href="#aa58ad9390100805187cbd4a9f3f982e8">More...</a><br/></td></tr>
 <tr class="separator:aa58ad9390100805187cbd4a9f3f982e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef1018eeee42bf59dbc934bc02031163"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#aef1018eeee42bf59dbc934bc02031163">fromSumo_toKensho</a> [4]</td></tr>
-<tr class="memdesc:aef1018eeee42bf59dbc934bc02031163"><td class="mdescLeft">&#160;</td><td class="mdescRight">相撲が終わってから懸賞まで  <a href="#aef1018eeee42bf59dbc934bc02031163">More...</a><br/></td></tr>
-<tr class="separator:aef1018eeee42bf59dbc934bc02031163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b77794bd8700219ed10b1f76f0f3b2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#af7b77794bd8700219ed10b1f76f0f3b2">fromSumo_toKenshoStraight</a> [3]</td></tr>
+<tr class="memdesc:af7b77794bd8700219ed10b1f76f0f3b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">相撲が終わってから懸賞前の直線まで  <a href="#af7b77794bd8700219ed10b1f76f0f3b2">More...</a><br/></td></tr>
+<tr class="separator:af7b77794bd8700219ed10b1f76f0f3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1590375dd217aab707965d57d48e17cd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a1590375dd217aab707965d57d48e17cd">toGRAYBeforeKENSHO</a> [2]</td></tr>
+<tr class="memdesc:a1590375dd217aab707965d57d48e17cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">懸賞前の灰色(カラーでも止まる)  <a href="#a1590375dd217aab707965d57d48e17cd">More...</a><br/></td></tr>
+<tr class="separator:a1590375dd217aab707965d57d48e17cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc34ed97e49d2b5d6dac93327c5e796c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#abc34ed97e49d2b5d6dac93327c5e796c">KENSHO</a> [1]</td></tr>
+<tr class="memdesc:abc34ed97e49d2b5d6dac93327c5e796c"><td class="mdescLeft">&#160;</td><td class="mdescRight">懸賞  <a href="#abc34ed97e49d2b5d6dac93327c5e796c">More...</a><br/></td></tr>
+<tr class="separator:abc34ed97e49d2b5d6dac93327c5e796c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a489fa65a194829938b71ee9064392183"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a489fa65a194829938b71ee9064392183">fromKensho_toGoal</a> [2]</td></tr>
 <tr class="memdesc:a489fa65a194829938b71ee9064392183"><td class="mdescLeft">&#160;</td><td class="mdescRight">懸賞からゴール  <a href="#a489fa65a194829938b71ee9064392183">More...</a><br/></td></tr>
 <tr class="separator:a489fa65a194829938b71ee9064392183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeed1daec63e4c19622e0930c57ab461"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#abeed1daec63e4c19622e0930c57ab461">toBeforeKOUSHI</a> [1]</td></tr>
+<tr class="separator:abeed1daec63e4c19622e0930c57ab461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afff739f7e217ca86fd7768727bd79aa8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#afff739f7e217ca86fd7768727bd79aa8">BlueRoot</a> [2]</td></tr>
+<tr class="memdesc:afff739f7e217ca86fd7768727bd79aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">青を運ぶ  <a href="#afff739f7e217ca86fd7768727bd79aa8">More...</a><br/></td></tr>
+<tr class="separator:afff739f7e217ca86fd7768727bd79aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7af90e8ccbbb0cdd01ac6919c99a21"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a9f7af90e8ccbbb0cdd01ac6919c99a21">nigeru</a> [1]</td></tr>
+<tr class="memdesc:a9f7af90e8ccbbb0cdd01ac6919c99a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">青の横  <a href="#a9f7af90e8ccbbb0cdd01ac6919c99a21">More...</a><br/></td></tr>
+<tr class="separator:a9f7af90e8ccbbb0cdd01ac6919c99a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92481c2cb960d48baa4768efbad62e3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#ac92481c2cb960d48baa4768efbad62e3">YesShortcutRoot</a> [7]</td></tr>
+<tr class="memdesc:ac92481c2cb960d48baa4768efbad62e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">格子でてからからショートカットをするルート  <a href="#ac92481c2cb960d48baa4768efbad62e3">More...</a><br/></td></tr>
+<tr class="separator:ac92481c2cb960d48baa4768efbad62e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ca17780fa1f88551f84662e61168eb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html#a71ca17780fa1f88551f84662e61168eb">NoShortcutRoot</a> [8]</td></tr>
+<tr class="memdesc:a71ca17780fa1f88551f84662e61168eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">格子でてからショートカットしないルート  <a href="#a71ca17780fa1f88551f84662e61168eb">More...</a><br/></td></tr>
+<tr class="separator:a71ca17780fa1f88551f84662e61168eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a53cbc85276d0fc1ccb5d93d0a776a83e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> beforeSUMO[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {45, -535, 1162},</div>
+<div class="line">    {45, -535, 1020}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>相撲前の線路前まで </p>
+
+</div>
+</div>
+<a class="anchor" id="afff739f7e217ca86fd7768727bd79aa8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> BlueRoot[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, 261, 466},</div>
+<div class="line">    {45, 573, 466}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>青を運ぶ </p>
+
+</div>
+</div>
 <a class="anchor" id="a489fa65a194829938b71ee9064392183"></a>
 <div class="memitem">
 <div class="memproto">
@@ -146,31 +217,90 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">={</div>
-<div class="line">    {30, 0, 252.5714286},</div>
-<div class="line">    {30, 0, -29.14285714}</div>
+<div class="line">    {45, -72, 1150},</div>
+<div class="line">    {45, -72, 76}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 <p>懸賞からゴール </p>
 
 </div>
 </div>
-<a class="anchor" id="aef1018eeee42bf59dbc934bc02031163"></a>
+<a class="anchor" id="af7b77794bd8700219ed10b1f76f0f3b2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> fromSumo_toKensho[4]</td>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> fromSumo_toKenshoStraight[3]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">={</div>
-<div class="line">    {30, -132.5714286, 116},</div>
-<div class="line">    {30, -84, 80},</div>
-<div class="line">    {30, -41.14285714, 119.4285714},</div>
-<div class="line">    {30, -41.14285714, 283.4285714}</div>
+<div class="line">    {45, -535, 566},</div>
+<div class="line">    {45, -214, 566},</div>
+<div class="line">    {45, -214, 815}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p>相撲が終わってから懸賞まで </p>
+<p>相撲が終わってから懸賞前の直線まで </p>
+<p>相撲が終わってから懸賞までの直線 </p>
+
+</div>
+</div>
+<a class="anchor" id="abc34ed97e49d2b5d6dac93327c5e796c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> KENSHO[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, -214, 1259}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>懸賞 </p>
+<p>懸賞まで </p>
+
+</div>
+</div>
+<a class="anchor" id="a9f7af90e8ccbbb0cdd01ac6919c99a21"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> nigeru[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, 573, 386}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>青の横 </p>
+
+</div>
+</div>
+<a class="anchor" id="a71ca17780fa1f88551f84662e61168eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> NoShortcutRoot[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, 858, 552},</div>
+<div class="line">    {45, 858, 837},</div>
+<div class="line">    {45, 255, 867},</div>
+<div class="line">    {45, 255, 1043},</div>
+<div class="line">    {45, 831, 1043},</div>
+<div class="line">    {45, 831, 1210},</div>
+<div class="line">    {45, 72, 1210},</div>
+<div class="line">    {45, 72, 95}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>格子でてからショートカットしないルート </p>
 
 </div>
 </div>
@@ -184,36 +314,47 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">={</div>
-<div class="line">    {50, -132.5714286, 182.5714286}</div>
+<div class="line">    {45, -535, 885}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 <p>相撲台の上まで移動 </p>
 
 </div>
 </div>
-<a class="anchor" id="a0493d4df9f8bda35261fb753615ea03a"></a>
+<a class="anchor" id="a3662d1b9f6622dc53190311fec07b36b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> start_beforeSumo[9]</td>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> start_straightBeforeHoshitori[1]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {30, 0, 253.7143},</div>
-<div class="line">    {30, -41.71428571, 253.1428571},</div>
-<div class="line">    {30, -41.71428571, 120.5714286},</div>
-<div class="line">    {30, -80, 80},</div>
-<div class="line">    {30, -168.5714286, 80},</div>
-<div class="line">    {30, -225.1428571, 120.5714286},</div>
-<div class="line">    {30, -225.1428571, 268.5714286},</div>
-<div class="line">    {30, -132.5714286, 259.4285714},</div>
-<div class="line">    {30, -132.5714286, 222.2857143}</div>
+<div class="line">    {45, -72, 1163}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 <p>スタートしてから相撲まで </p>
-<p>Lコース用座標 スタートしてから相撲の新幹線前まで </p>
+<p>Lコース用座標 スタートしてからカーブ直前まで </p>
+
+</div>
+</div>
+<a class="anchor" id="ab78958efd6a0e5eecbf5dec296d651af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> straightFromCurve[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, -213, 664},</div>
+<div class="line"></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>最初のカーブを曲がってから星取り前まで </p>
+<p>最初のカーブを曲がってから </p>
 
 </div>
 </div>
@@ -247,13 +388,128 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abeed1daec63e4c19622e0930c57ab461"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> toBeforeKOUSHI[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, 71, 428}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>ここからRコース スタートから格子手前まで </p>
+
+</div>
+</div>
+<a class="anchor" id="a3f6e4c9a9d3d4e61fce18dcfd2aa81c6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> toGRAYBeforeHOSHI[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {15, -857, 1157},</div>
+<div class="line">    {15, -857, 1190, <a class="code" href="../../d2/de5/_color_sensor_controller_8h.html#a71344bb1d9921fd35065457c1ad16774">COLOR_GRAY</a>}</div>
+<div class="line">}</div>
+<div class="ttc" id="_color_sensor_controller_8h_html_a71344bb1d9921fd35065457c1ad16774"><div class="ttname"><a href="../../d2/de5/_color_sensor_controller_8h.html#a71344bb1d9921fd35065457c1ad16774">COLOR_GRAY</a></div><div class="ttdeci">const uint8_t COLOR_GRAY</div><div class="ttdef"><b>Definition:</b> ColorSensorController.h:28</div></div>
+</div><!-- fragment -->
+<p>灰色にかかるところ（グレー検知でも止まるように） </p>
+<p>星取り前の灰色（カラーでもとめる） </p>
+
+</div>
+</div>
+<a class="anchor" id="a1590375dd217aab707965d57d48e17cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> toGRAYBeforeKENSHO[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {25, -214,  1203},</div>
+<div class="line">    {25, -214, 1217, <a class="code" href="../../d2/de5/_color_sensor_controller_8h.html#a71344bb1d9921fd35065457c1ad16774">COLOR_GRAY</a>}</div>
+<div class="line">}</div>
+<div class="ttc" id="_color_sensor_controller_8h_html_a71344bb1d9921fd35065457c1ad16774"><div class="ttname"><a href="../../d2/de5/_color_sensor_controller_8h.html#a71344bb1d9921fd35065457c1ad16774">COLOR_GRAY</a></div><div class="ttdeci">const uint8_t COLOR_GRAY</div><div class="ttdef"><b>Definition:</b> ColorSensorController.h:28</div></div>
+</div><!-- fragment -->
+<p>懸賞前の灰色(カラーでも止まる) </p>
+<p>検証前のグレーゾーン </p>
+
+</div>
+</div>
+<a class="anchor" id="a16771ff42e97d329fd0995a60e5bc3c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> toHoshitori[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {15, -857, 1226}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>星取り </p>
+<p>星取りまで </p>
+
+</div>
+</div>
+<a class="anchor" id="a187a1298d3d08e1218d524c75ad55e58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> toHoshitoriStraght[3]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, -857, 566},</div>
+<div class="line">    {45, -857, 659},</div>
+<div class="line">    {45, -857, 920}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac92481c2cb960d48baa4768efbad62e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dd/da7/structscenario__coordinate.html">scenario_coordinate</a> YesShortcutRoot[7]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">={</div>
+<div class="line">    {45, 858, 552},</div>
+<div class="line">    {45, 858, 837},</div>
+<div class="line">    {45, 255, 867},</div>
+<div class="line">    {45, 214, 943},</div>
+<div class="line">    {45, 72, 959},</div>
+<div class="line">    {45, 72, 1270},</div>
+<div class="line">    {45, 72, 80}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>格子でてからからショートカットをするルート </p>
+<p>格子でてからショートカットするルート </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_67427f5d5c0c09c5bc8cfb468e2efa21.html">hrp2</a></li><li class="navelem"><a class="el" href="../../dir_189fe6763b77c3f6f3b87be523b118d9.html">sdk</a></li><li class="navelem"><a class="el" href="../../dir_22fbfebec164d60c1e84dc3a6d0c6923.html">workspace</a></li><li class="navelem"><a class="el" href="../../dir_7502d0546512cf6b46f51cc6d3292bba.html">hackEV</a></li><li class="navelem"><a class="el" href="../../dir_a30c9b156551356655b88680e6e1c4fb.html">params</a></li><li class="navelem"><a class="el" href="../../dd/de5/coordinate_scenario_8cpp.html">coordinateScenario.cpp</a></li>
-    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Nov 6 2016 00:34:09 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

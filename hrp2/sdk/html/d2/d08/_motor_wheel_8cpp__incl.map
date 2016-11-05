@@ -1,23 +1,28 @@
 <map id="hrp2/sdk/workspace/hackEV/motors/MotorWheel.cpp" name="hrp2/sdk/workspace/hackEV/motors/MotorWheel.cpp">
-<area shape="rect" id="node2" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="1023,245,1125,272"/>
-<area shape="rect" id="node13" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="126,245,241,272"/>
-<area shape="rect" id="node15" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="539,171,613,197"/>
-<area shape="rect" id="node20" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="603,320,675,347"/>
-<area shape="rect" id="node27" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="1313,96,1402,123"/>
-<area shape="rect" id="node3" href="$dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="1061,469,1137,496"/>
-<area shape="rect" id="node9" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="1252,320,1354,347"/>
-<area shape="rect" id="node10" href="$d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="1099,320,1227,347"/>
-<area shape="rect" id="node11" href="$d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="867,395,971,421"/>
-<area shape="rect" id="node14" href="$d1/da0/user__function_8h.html" title="user_function.h" alt="" coords="35,320,145,347"/>
-<area shape="rect" id="node18" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="719,320,813,347"/>
-<area shape="rect" id="node19" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="467,245,582,272"/>
-<area shape="rect" id="node25" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="221,395,337,421"/>
-<area shape="rect" id="node23" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="743,395,842,421"/>
-<area shape="rect" id="node26" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="89,469,187,496"/>
-<area shape="rect" id="node28" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="1103,171,1223,197"/>
-<area shape="rect" id="node32" href="$d0/d48/_gyro_sensor_controller_8h.html" title="ジャイロセンサーを制御する " alt="" coords="1659,245,1817,272"/>
-<area shape="rect" id="node33" href="$de/db5/_sonar_sensor_controller_8h.html" title="This file has SonarSensorController. " alt="" coords="1471,245,1634,272"/>
-<area shape="rect" id="node29" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="867,245,997,272"/>
-<area shape="rect" id="node31" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="1251,245,1395,272"/>
-<area shape="rect" id="node30" href="$df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="876,320,989,347"/>
+<area shape="rect" id="node2" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="985,320,1087,347"/>
+<area shape="rect" id="node13" href="$d6/d35/wheel_settings_8h.html" title="This file has the settings related to wheel of EV3. " alt="" coords="5,395,120,421"/>
+<area shape="rect" id="node15" href="$de/df0/utilities_8h.html" title="This file has the declarations of utilitiy functions and defines. " alt="" coords="413,245,487,272"/>
+<area shape="rect" id="node20" href="$d6/dec/_logger_8h.html" title="This file has Logger. " alt="" coords="632,395,704,421"/>
+<area shape="rect" id="node27" href="$dd/d3f/instances_8h.html" title="This file has the declarations of instances. " alt="" coords="1285,96,1373,123"/>
+<area shape="rect" id="node3" href="$dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="986,544,1061,571"/>
+<area shape="rect" id="node9" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="922,395,1024,421"/>
+<area shape="rect" id="node10" href="$d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="1402,395,1531,421"/>
+<area shape="rect" id="node11" href="$d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="1517,469,1621,496"/>
+<area shape="rect" id="node14" href="$d1/da0/user__function_8h.html" title="user_function.h" alt="" coords="482,469,592,496"/>
+<area shape="rect" id="node18" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="804,395,897,421"/>
+<area shape="rect" id="node19" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="347,320,461,347"/>
+<area shape="rect" id="node25" href="$d5/d3c/_l_c_d_controller_8h.html" title="This file has LCDController. " alt="" coords="262,469,377,496"/>
+<area shape="rect" id="node23" href="$da/d9c/log_settings_8h.html" title="This file has the settings for logging. " alt="" coords="617,469,716,496"/>
+<area shape="rect" id="node26" href="$df/de6/lcd_settings_8h.html" title="lcdSettings.h" alt="" coords="271,544,369,571"/>
+<area shape="rect" id="node28" href="$d5/d5b/_drive_controller_8h.html" title="走行を制御する " alt="" coords="1269,171,1389,197"/>
+<area shape="rect" id="node33" href="$d0/d48/_gyro_sensor_controller_8h.html" title="ジャイロセンサーを制御する " alt="" coords="1731,320,1889,347"/>
+<area shape="rect" id="node34" href="$de/db5/_sonar_sensor_controller_8h.html" title="This file has SonarSensorController. " alt="" coords="797,320,960,347"/>
+<area shape="rect" id="node35" href="$d2/de5/_color_sensor_controller_8h.html" title="カラーセンサーを制御する " alt="" coords="875,245,1036,272"/>
+<area shape="rect" id="node36" href="$d5/d7f/_course_information_left_8h.html" title="This file has left course informations. " alt="" coords="1955,171,2117,197"/>
+<area shape="rect" id="node38" href="$de/dd2/_course_information_right_8h.html" title="This file has right course informations. " alt="" coords="2141,171,2312,197"/>
+<area shape="rect" id="node29" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="1213,320,1343,347"/>
+<area shape="rect" id="node31" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="1312,245,1456,272"/>
+<area shape="rect" id="node32" href="$d0/d60/orientation_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="1470,320,1604,347"/>
+<area shape="rect" id="node30" href="$df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="1265,395,1377,421"/>
+<area shape="rect" id="node37" href="$d9/d77/_course_information_8h.html" title="This file has course informations. " alt="" coords="1966,395,2105,421"/>
 </map>

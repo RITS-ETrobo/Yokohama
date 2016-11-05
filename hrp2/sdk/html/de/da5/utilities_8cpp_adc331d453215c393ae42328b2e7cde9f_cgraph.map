@@ -1,0 +1,18 @@
+<map id="viewColor" name="viewColor">
+<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="354,5,465,32"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#aa3449ab345699ba9b8b9274723d11a31" title="LCDの表示を消す " alt="" coords="171,56,248,83"/>
+<area shape="rect" id="node6" href="$de/da5/utilities_8cpp.html#a588129e867793fa5cfcb5e58e6c44e4d" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="156,107,263,133"/>
+<area shape="rect" id="node13" href="$df/d6b/class_color_sensor_controller.html#a01053964c866f6bfe00564a460fafde2" title="カラーセンサーRGB値を取得 " alt="" coords="534,183,685,225"/>
+<area shape="rect" id="node14" href="$df/d6b/class_color_sensor_controller.html#a87348a87bfb29205c5b9a4f50120db7c" title="カラーセンサーで検知した色の名前を取得する " alt="" coords="134,209,285,250"/>
+<area shape="rect" id="node17" href="$df/d6b/class_color_sensor_controller.html#ad5cf84c72adb38a700e378bbe77d3a01" title="輝度を取得 http://www.dinop.com/vc/image_gray_scale.html " alt="" coords="134,274,285,315"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="560,5,659,32"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="560,56,659,83"/>
+<area shape="rect" id="node7" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="346,107,473,133"/>
+<area shape="rect" id="node8" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="554,107,665,133"/>
+<area shape="rect" id="node9" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="734,81,893,108"/>
+<area shape="rect" id="node12" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="756,132,871,159"/>
+<area shape="rect" id="node10" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="941,56,1056,83"/>
+<area shape="rect" id="node11" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="947,107,1051,133"/>
+<area shape="rect" id="node15" href="$df/d6b/class_color_sensor_controller.html#a109f29a8aa37c015bff52ebff4c6271b" title="カラーセンサーで検知した色のIDを取得 " alt="" coords="334,209,485,250"/>
+<area shape="rect" id="node16" href="$df/d6b/class_color_sensor_controller.html#aade8fd6eaee04eace495fb5c0f3f9de6" title="カラーセンサーで検知した色の名前を取得する " alt="" coords="334,274,485,315"/>
+</map>

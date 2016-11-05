@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_j"><span>j</span></a></li>
@@ -169,8 +170,14 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
-<li>CalculationCurvatureRadius()
-: <a class="el" href="d8/dcc/class_drive_controller.html#a18943bf937b7352302b88792af568465">DriveController</a>
+<li>catchLine()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a736a16c5694bfe27f73730f18f0e7b44">DriveController</a>
+</li>
+<li>catchLineAndCorrectDirection()
+: <a class="el" href="d8/dcc/class_drive_controller.html#ab6736f6e9490348cd5bd75bc16d265a0">DriveController</a>
+</li>
+<li>catchLineRIGHT()
+: <a class="el" href="d8/dcc/class_drive_controller.html#af9ff26d85e6dcadc2d93923bb2180f92">DriveController</a>
 </li>
 <li>closeLog()
 : <a class="el" href="d3/d42/class_logger.html#aee38897c7bb4cd9fe325fa7c07678d15">Logger</a>
@@ -178,8 +185,17 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>color_id
 : <a class="el" href="df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html#aac64189b593f01410b8d5a04f8c91435">OBJECT_INFORMATION</a>
 </li>
+<li>colorHOSHITORI
+: <a class="el" href="d8/dcc/class_drive_controller.html#a87c01c1a17790344c29e24dd2377f1e9">DriveController</a>
+</li>
+<li>ColorSensorController()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#af1eb9605f18f30e118a935bb3c1b5197">ColorSensorController</a>
+</li>
 <li>confirm()
 : <a class="el" href="df/d60/class_sonar_sensor_controller.html#a9cc4fafd359ba12d45eb7b3ea9cc6c94">SonarSensorController</a>
+</li>
+<li>convertMapToREAL()
+: <a class="el" href="d8/dcc/class_drive_controller.html#aa39f0bdadca7065165f7a0c990aeb483">DriveController</a>
 </li>
 <li>CORRECT_DIRECTION
 : <a class="el" href="d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga49a22d42c4bf9e5bd3f146776e16f0c7">EV3Position</a>
@@ -202,14 +218,29 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>CORRECT_POSITION_REAL_Y
 : <a class="el" href="d3/d20/group__correct_position_xE9_x96_xA2_xE6_x95_xB0_xE3_x81_xA8move_position_xE9_x96_xA2_xE6_x95_xB0eaef3dae1ac6fdb5e2d59501d422fff6.html#ga3a26692ab4b33e3d775c319e163eeb3e">EV3Position</a>
 </li>
+<li>correctColor()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#ad2bb0c7193788707febdd3f24164cd6d">ColorSensorController</a>
+</li>
+<li>correctDirectionByLine()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a4f10d2dd56424159dbaeda3bf49a5c1b">DriveController</a>
+</li>
 <li>CourseInformation()
-: <a class="el" href="db/d81/class_course_information.html#a9a6e592a9e1e92263b34cfb504e680f9">CourseInformation</a>
+: <a class="el" href="db/d81/class_course_information.html#a211c5b99f6898a654bedde032f705781">CourseInformation</a>
+</li>
+<li>CourseInformationLeft()
+: <a class="el" href="da/d20/class_course_information_left.html#a84539ca296e0c93a8eeb32a408e300a6">CourseInformationLeft</a>
+</li>
+<li>CourseInformationRight()
+: <a class="el" href="da/d88/class_course_information_right.html#a58d8982d41d830061553c1359711f975">CourseInformationRight</a>
 </li>
 <li>currentTime
 : <a class="el" href="d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#aaafab40ae671eb62786374a4e65cb94f">DISTANCE_RECORD</a>
 </li>
 <li>curvatureRadius
 : <a class="el" href="d4/d30/structscenario__running.html#a7f1d1b73e1994dd2f33e0553556f4d89">scenario_running</a>
+</li>
+<li>curveOfscenario()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a1cdd0a9b5859251ed0ca7bb621a427c7">DriveController</a>
 </li>
 <li>curveRun()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a3facd0995801cdbd67ab819bc49c6370">DriveController</a>
@@ -254,7 +285,32 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </ul>
 
 
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>foundColor
+: <a class="el" href="d8/dcc/class_drive_controller.html#a857b036824d5bb31d9d9a0edbfbbefc4">DriveController</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getAccelerationPower()
+: <a class="el" href="d8/dcc/class_drive_controller.html#ad2cc796064557d16a86f953be442bf7a">DriveController</a>
+</li>
+<li>getBrightness()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#ad5cf84c72adb38a700e378bbe77d3a01">ColorSensorController</a>
+</li>
+<li>getColorID()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#a109f29a8aa37c015bff52ebff4c6271b">ColorSensorController</a>
+</li>
+<li>getColorName()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#a87348a87bfb29205c5b9a4f50120db7c">ColorSensorController</a>
+</li>
+<li>getColorNameByID()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#aade8fd6eaee04eace495fb5c0f3f9de6">ColorSensorController</a>
+</li>
+<li>getColorRGBraw()
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#a01053964c866f6bfe00564a460fafde2">ColorSensorController</a>
+</li>
 <li>getCorrectedAddPower()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a3f6dda754ac47c99ee798bd95ffe37fd">DriveController</a>
 </li>
@@ -263,6 +319,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>getCurrentPower()
 : <a class="el" href="db/d2f/class_motor_wheel.html#af2cf2ae282c440032ca0f7d57398486c">MotorWheel</a>
+</li>
+<li>getDecelerationPower()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a6468e80fbc74d93b28ddf58d9c599d43">DriveController</a>
 </li>
 <li>getDelta()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa">DriveController</a>
@@ -293,9 +352,15 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>getPowerForCurvatureRadius()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a423999da092c2c28ea49e4701510c3d6">DriveController</a>
 </li>
+<li>getSoftAccelAndDecelerationPower()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a32ed408a37216343730de539f8135107">DriveController</a>
+</li>
 <li>getSpeed()
 : <a class="el" href="d1/d48/class_e_v3_position.html#ae55111760dffee12d15ea36c9d5fda0b">EV3Position</a>
 , <a class="el" href="da/dcf/class_speed_calculator.html#a43f08e3194f490ac92766068dc4d1fad">SpeedCalculator</a>
+</li>
+<li>getStartPosition()
+: <a class="el" href="db/d81/class_course_information.html#a34cbf71a4809c95292719715bb5cdecb">CourseInformation</a>
 </li>
 <li>GyroSensorController()
 : <a class="el" href="d3/d77/class_gyro_sensor_controller.html#a1f3d4a24df2c1a8ce5b9b6070cb3d8c9">GyroSensorController</a>
@@ -308,7 +373,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html#a6fa86288969ac32b3645fe57ca813c48">OBJECT_INFORMATION</a>
 </li>
 <li>initialize()
-: <a class="el" href="db/d81/class_course_information.html#a585808cda5132459993c8f5a9cf9d966">CourseInformation</a>
+: <a class="el" href="df/d6b/class_color_sensor_controller.html#af4f4a57e24dd3c55508e04a6414bdcb6">ColorSensorController</a>
+, <a class="el" href="db/d81/class_course_information.html#a585808cda5132459993c8f5a9cf9d966">CourseInformation</a>
 , <a class="el" href="d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82">DriveController</a>
 , <a class="el" href="d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31">EV3Position</a>
 , <a class="el" href="d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816">GyroSensorController</a>
@@ -319,6 +385,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>initializeAsPattern()
 : <a class="el" href="d8/dcc/class_drive_controller.html#acd7e947d3b853256c6c8c5f60b51e645">DriveController</a>
+</li>
+<li>isAnyHOSHITORIcolor()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a04ecb7e15fbd63f144ae9c0e124a7f0d">DriveController</a>
 </li>
 <li>isEnabled()
 : <a class="el" href="d8/dcc/class_drive_controller.html#ad27b0b934c421fa402dea374fd901883">DriveController</a>
@@ -339,7 +408,10 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a class="anchor" id="index_j"></a>- j -</h3><ul>
 <li>jitteryMovementFromCoordinate()
-: <a class="el" href="d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a">DriveController</a>
+: <a class="el" href="d8/dcc/class_drive_controller.html#ada66abd8bc5d1aeeadc257a2c9e1f65b">DriveController</a>
+</li>
+<li>judgeStopColor()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a7bc2d3145760d0b8df59ccb11d84554e">DriveController</a>
 </li>
 </ul>
 
@@ -358,6 +430,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>lastColor
+: <a class="el" href="d8/dcc/class_drive_controller.html#afe877bfdc1f5755a020c7ec92487e167">DriveController</a>
+</li>
 <li>length
 : <a class="el" href="df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html#ad3062c0f9507301f19268d2fbc8b32d2">OBJECT_INFORMATION</a>
 </li>
@@ -397,12 +472,6 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
-<li>OnceDifferentialOfCubicFunction()
-: <a class="el" href="d8/dcc/class_drive_controller.html#ace9ac94d3adf558a1f453b7bc7dbcd00">DriveController</a>
-</li>
-<li>OnceDifferentialOfQuadraticFunction()
-: <a class="el" href="d8/dcc/class_drive_controller.html#aca5b987a47692e84b01a8d6bef918355">DriveController</a>
-</li>
 <li>openLog()
 : <a class="el" href="d3/d42/class_logger.html#a0c1044d954578a578ead45d10a28e521">Logger</a>
 </li>
@@ -429,6 +498,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="d3/d77/class_gyro_sensor_controller.html#ad96e9a82d821f4d00c1edd8b5264f1e4">GyroSensorController</a>
 , <a class="el" href="da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360">SpeedCalculator</a>
 </li>
+<li>rotateAbsolutelyDirection()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a7fe1c52df51c17b96c62e49793d465a3">DriveController</a>
+</li>
 <li>run()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896">DriveController</a>
 , <a class="el" href="db/d2f/class_motor_wheel.html#a58943fa0109be861c3385caae10b2855">MotorWheel</a>
@@ -440,11 +512,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
-<li>SecondDifferentialOfCubicFunction()
-: <a class="el" href="d8/dcc/class_drive_controller.html#a1cbcc372eebec08b82820dd6c04b2d69">DriveController</a>
-</li>
-<li>SecondDifferentialOfQuadraticFunction()
-: <a class="el" href="d8/dcc/class_drive_controller.html#a01bd088559fc05e062f08b7502a39843">DriveController</a>
+<li>searchHOSHITORI()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a5d4d8bfa4e144f6660ad96fef729b879">DriveController</a>
 </li>
 <li>setEnabled()
 : <a class="el" href="d8/dcc/class_drive_controller.html#afebbf198fe7115be65ae98455a9397e8">DriveController</a>
@@ -454,14 +523,24 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>setEnabledGyroSensor()
 : <a class="el" href="d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496">GyroSensorController</a>
 </li>
+<li>setNewDirection()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a28ac6e4753b88ec71a9b956f4f1d7f0a">DriveController</a>
+</li>
+<li>setNewPositionX()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a39bb3b0df185e42ffbf5cc596e7fe6b9">DriveController</a>
+</li>
+<li>setNewPositionY()
+: <a class="el" href="d8/dcc/class_drive_controller.html#ad59c79d61af0740a1c3e185275153201">DriveController</a>
+</li>
 <li>setPosition()
-: <a class="el" href="d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9">EV3Position</a>
+: <a class="el" href="d8/dcc/class_drive_controller.html#ac182404a8703a8360e72b42b6866c27f">DriveController</a>
+, <a class="el" href="d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9">EV3Position</a>
 </li>
 <li>shape
 : <a class="el" href="df/dce/struct_o_b_j_e_c_t___i_n_f_o_r_m_a_t_i_o_n.html#a52c1ba5818042a228fcb4fa1a7553a68">OBJECT_INFORMATION</a>
 </li>
-<li>smoothMovementFromCoordinate()
-: <a class="el" href="d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77">DriveController</a>
+<li>shortestMoveDirection()
+: <a class="el" href="d8/dcc/class_drive_controller.html#a06c48cc22dccf7d72ef6ef3cf9cbca13">DriveController</a>
 </li>
 <li>SonarSensorController()
 : <a class="el" href="df/d60/class_sonar_sensor_controller.html#a12f400e7a85bb3d5be96d911496b9282">SonarSensorController</a>
@@ -474,14 +553,24 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="db/d2f/class_motor_wheel.html#aaff8197bc4aa6c19e3752e4d75b80a4f">MotorWheel</a>
 , <a class="el" href="d4/d30/structscenario__running.html#aa7bf5cf11b50cdf8f6c2174a95325b60">scenario_running</a>
 </li>
+<li>stopByColor()
+: <a class="el" href="d8/dcc/class_drive_controller.html#abfc24d0aed7c1243c62940d2818d1731">DriveController</a>
+</li>
 <li>stopByDirection()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a08c8d62cd6045def096ef134daaf7383">DriveController</a>
 </li>
 <li>stopByDistance()
 : <a class="el" href="d8/dcc/class_drive_controller.html#a0e0be5ed4343365bd6357ee84cd8863e">DriveController</a>
 </li>
+<li>stopColorID
+: <a class="el" href="dd/da7/structscenario__coordinate.html#af75a2c4a4a6f425800bc59da0df473d5">scenario_coordinate</a>
+, <a class="el" href="d4/d30/structscenario__running.html#a51a25c6ada9980e73b2d97fbd186f255">scenario_running</a>
+</li>
 <li>stopConditionPattern
 : <a class="el" href="d4/d30/structscenario__running.html#a4cea929980c1a38e4b7c536622151131">scenario_running</a>
+</li>
+<li>stoppingPassShinkansen()
+: <a class="el" href="df/d60/class_sonar_sensor_controller.html#a05bb564383e4a4cbdacf038601688951">SonarSensorController</a>
 </li>
 <li>synchronizePosition()
 : <a class="el" href="d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf">EV3Position</a>
@@ -545,7 +634,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Oct 4 2016 00:35:34 for ev3RT Workspace by
+    <li class="footer">Generated on Sun Nov 6 2016 00:34:09 for ev3RT Workspace by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

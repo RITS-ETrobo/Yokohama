@@ -1,4 +1,14 @@
 <map id="hrp2/sdk/workspace/hackEV/params/coordinateScenario.cpp" name="hrp2/sdk/workspace/hackEV/params/coordinateScenario.cpp">
-<area shape="rect" id="node2" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="5,96,120,123"/>
-<area shape="rect" id="node3" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="144,96,288,123"/>
+<area shape="rect" id="node2" href="$d0/de2/parameter_p_i_d_8h.html" title="This file has the declarations of parameter for PID. " alt="" coords="121,96,236,123"/>
+<area shape="rect" id="node3" href="$d4/d05/coordinate_scenario_8h.html" title="coordinateScenario.h" alt="" coords="260,96,404,123"/>
+<area shape="rect" id="node19" href="$d2/de5/_color_sensor_controller_8h.html" title="カラーセンサーを制御する " alt="" coords="710,96,871,123"/>
+<area shape="rect" id="node4" href="$d4/d0a/scenario_running_8h.html" title="scenarioRunning.h" alt="" coords="509,171,639,197"/>
+<area shape="rect" id="node13" href="$d5/d3f/_motor_wheel_8h.html" title="タイヤについているモーターを制御する " alt="" coords="329,171,431,197"/>
+<area shape="rect" id="node15" href="$d8/d72/_speed_calculator_8h.html" title="平均速度を求める " alt="" coords="215,245,344,272"/>
+<area shape="rect" id="node16" href="$d6/db9/_e_v3_position_8h.html" title="移動距離と向きから位置を算出する " alt="" coords="189,320,293,347"/>
+<area shape="rect" id="node18" href="$d0/d60/orientation_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="5,171,139,197"/>
+<area shape="rect" id="node5" href="$dd/db5/run_pattern_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="660,245,753,272"/>
+<area shape="rect" id="node6" href="$df/d8b/stop_condition_8h.html" title="This file has the declarations of patterns for running. " alt="" coords="471,245,584,272"/>
+<area shape="rect" id="node7" href="$dc/daa/product_8h.html" title="This file has the includes depend on environment. " alt="" coords="389,395,464,421"/>
+<area shape="rect" id="node14" href="$d4/d9e/port_settings_8h.html" title="This file has the settings for each port related to EV3. " alt="" coords="421,320,523,347"/>
 </map>

@@ -1,22 +1,33 @@
 <map id="EV3Position::setPosition" name="EV3Position::setPosition">
-<area shape="rect" id="node2" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="648,123,797,149"/>
-<area shape="rect" id="node16" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="221,173,403,200"/>
-<area shape="rect" id="node3" href="$d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="893,72,1024,99"/>
-<area shape="rect" id="node4" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="872,123,1045,149"/>
-<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1345,97,1509,124"/>
-<area shape="rect" id="node14" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1121,123,1268,149"/>
-<area shape="rect" id="node15" href="$da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="1117,173,1272,200"/>
-<area shape="rect" id="node6" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1627,47,1709,73"/>
-<area shape="rect" id="node7" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1601,97,1735,124"/>
-<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#a7bb0d1e363484c16c293fef5a1339b77" title="滑らか座標移動 " alt="" coords="1557,149,1779,190"/>
-<area shape="rect" id="node8" href="$d8/dcc/class_drive_controller.html#ad954e02eb1a3665d8955805eddc0e55a" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1827,6,2003,47"/>
-<area shape="rect" id="node10" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="2293,43,2419,69"/>
-<area shape="rect" id="node11" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1878,123,1951,149"/>
-<area shape="rect" id="node12" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1863,173,1966,200"/>
-<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="2051,6,2245,47"/>
-<area shape="rect" id="node17" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="451,173,573,200"/>
-<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="1093,224,1296,251"/>
-<area shape="rect" id="node20" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="622,224,823,251"/>
-<area shape="rect" id="node19" href="$d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="1354,224,1499,251"/>
-<area shape="rect" id="node21" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="875,224,1042,251"/>
+<area shape="rect" id="node2" href="$d8/dcc/class_drive_controller.html#a39bb3b0df185e42ffbf5cc596e7fe6b9" title="x座標を設定 [pixcel値] " alt="" coords="453,56,672,83"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_drive_controller.html#ad59c79d61af0740a1c3e185275153201" title="y座標を設定 [pixcel値] " alt="" coords="453,107,672,133"/>
+<area shape="rect" id="node5" href="$d8/dcc/class_drive_controller.html#a28ac6e4753b88ec71a9b956f4f1d7f0a" title="新しい向きを設定 " alt="" coords="721,157,935,184"/>
+<area shape="rect" id="node6" href="$d8/dcc/class_drive_controller.html#ac182404a8703a8360e72b42b6866c27f" title="走行体の現在位置を設定する " alt="" coords="222,208,405,235"/>
+<area shape="rect" id="node7" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="753,263,903,289"/>
+<area shape="rect" id="node27" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="223,313,404,340"/>
+<area shape="rect" id="node3" href="$d6/d2f/_running_module_8h.html#ae4b194ce44ae5c696f5253706ce15efb" title="Lコース走行 " alt="" coords="2397,196,2523,223"/>
+<area shape="rect" id="node8" href="$d1/d48/class_e_v3_position.html#a1585f69281d9247ae2bbeb4feea3ef34" title="初期化(強制的に実施) " alt="" coords="1005,264,1136,291"/>
+<area shape="rect" id="node9" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="984,213,1157,240"/>
+<area shape="rect" id="node10" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="1457,265,1621,292"/>
+<area shape="rect" id="node25" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="1233,213,1380,240"/>
+<area shape="rect" id="node26" href="$da/dcf/class_speed_calculator.html#af2e8396ddef3c90ca45ca031e3a3f360" title="初期化(強制的に実施) " alt="" coords="1229,315,1384,341"/>
+<area shape="rect" id="node11" href="$d2/d39/app_8h.html#ab874c34d9d66b14d189a9a3f2d065991" title="メインタスク " alt="" coords="1696,317,1779,344"/>
+<area shape="rect" id="node12" href="$d8/dcc/class_drive_controller.html#a68550a28c09263c7cd7fe68ac5e83896" title="シナリオに従って走る " alt="" coords="1670,267,1805,293"/>
+<area shape="rect" id="node13" href="$d8/dcc/class_drive_controller.html#ada66abd8bc5d1aeeadc257a2c9e1f65b" title="座標指定移動(その場回転→直進で移動)（通称：かくかく移動版） " alt="" coords="1871,427,2047,469"/>
+<area shape="rect" id="node17" href="$d6/d2f/_running_module_8h.html#a18f2abefb44b1c5263ee6bd32b4ed226" title="青攻略 " alt="" coords="2413,460,2507,487"/>
+<area shape="rect" id="node21" href="$d8/dcc/class_drive_controller.html#a7fe1c52df51c17b96c62e49793d465a3" title="DriveController::rotateAbsolutely\lDirection" alt="" coords="1853,259,2064,301"/>
+<area shape="rect" id="node22" href="$d8/dcc/class_drive_controller.html#a1cdd0a9b5859251ed0ca7bb621a427c7" title="カーブのシナリオを作成して走行させる " alt="" coords="2113,5,2325,32"/>
+<area shape="rect" id="node23" href="$d6/d2f/_running_module_8h.html#a4fed49bdf464977f8c337f0aa89b5dbc" title="走る処理 " alt="" coords="1922,325,1995,352"/>
+<area shape="rect" id="node24" href="$d6/d2f/_running_module_8h.html#a06efab33f16fb6a1d6e5948027c1bfe9" title="検証用の走行 " alt="" coords="1907,376,2010,403"/>
+<area shape="rect" id="node14" href="$d8/dcc/class_drive_controller.html#a57a74858c12bf806178f285891bee600" title="座標指定移動のための変数を用意して実行させる " alt="" coords="2121,402,2316,443"/>
+<area shape="rect" id="node18" href="$d8/dcc/class_drive_controller.html#a736a16c5694bfe27f73730f18f0e7b44" title="DriveController::catchLine" alt="" coords="2132,325,2305,352"/>
+<area shape="rect" id="node20" href="$d8/dcc/class_drive_controller.html#af9ff26d85e6dcadc2d93923bb2180f92" title="DriveController::catchLine\lRIGHT" alt="" coords="2132,259,2305,301"/>
+<area shape="rect" id="node15" href="$d6/d2f/_running_module_8h.html#aaceb41f34426e23fbbcb55c79702db20" title="Rコース走行 " alt="" coords="2621,359,2749,385"/>
+<area shape="rect" id="node16" href="$d6/d2f/_running_module_8h.html#a9a1851d54b054ec5a1ab1099317a1274" title="start_RcourseRunShortCut" alt="" coords="2595,409,2775,436"/>
+<area shape="rect" id="node19" href="$d8/dcc/class_drive_controller.html#ab6736f6e9490348cd5bd75bc16d265a0" title="DriveController::catchLine\lAndCorrectDirection" alt="" coords="2373,293,2547,334"/>
+<area shape="rect" id="node28" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="501,313,624,340"/>
+<area shape="rect" id="node29" href="$d8/dcc/class_drive_controller.html#a54e5f2cc43e437b972df118d566f8e5b" title="走行体の位置を更新するタスク " alt="" coords="1205,365,1408,392"/>
+<area shape="rect" id="node31" href="$db/d2f/class_motor_wheel.html#abbe70f91e681c587fa19b4c105fe1a64" title="MotorWheel::getDistanceDelta" alt="" coords="727,313,929,340"/>
+<area shape="rect" id="node30" href="$d2/d39/app_8h.html#a90d061b7462e4844854388efb395cdba" title="走行体の位置を更新するタスク " alt="" coords="1466,365,1611,392"/>
+<area shape="rect" id="node32" href="$d8/dcc/class_drive_controller.html#a05bd44913c1bbbaffe443cef0f6791aa" title="瞬間の走行体の向きと走行体中心の移動距離を取得する 「瞬間の走行体の向き」とは、前回測定した位置から今回の移動までに変化した向きである " alt="" coords="987,315,1154,341"/>
 </map>

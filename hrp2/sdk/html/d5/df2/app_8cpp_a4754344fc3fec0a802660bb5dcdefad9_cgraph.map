@@ -1,33 +1,36 @@
 <map id="main_task" name="main_task">
-<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#a2ec87919bf3de2d33ed3c5a711aec8da" title="フォントサイズを設定する " alt="" coords="173,12,265,39"/>
-<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="367,396,478,423"/>
-<area shape="rect" id="node6" href="$d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53" title="初期化する " alt="" coords="161,63,277,89"/>
-<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="137,113,301,140"/>
-<area shape="rect" id="node20" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1990,223,2101,249"/>
-<area shape="rect" id="node25" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="145,215,292,257"/>
-<area shape="rect" id="node28" href="$df/d60/class_sonar_sensor_controller.html#aa359db717ffeb1a82bf822e33f2ad1f0" title="超音波センサの初期化処理 " alt="" coords="142,333,295,374"/>
-<area shape="rect" id="node29" href="$de/da5/utilities_8cpp.html#ab06cba26c220e9f1cb65ead703acf341" title="モーターの設定を行う " alt="" coords="157,399,280,425"/>
-<area shape="rect" id="node30" href="$de/da5/utilities_8cpp.html#afed76cc72a0fba47a1627936acd10c2d" title="センサーの設定を行う " alt="" coords="155,449,283,476"/>
-<area shape="rect" id="node31" href="$de/da5/utilities_8cpp.html#a588129e867793fa5cfcb5e58e6c44e4d" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="165,500,272,527"/>
-<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="581,359,680,385"/>
-<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="581,409,680,436"/>
-<area shape="rect" id="node7" href="$d5/d0b/log_settings_8cpp.html#a1e4ebb461ee4d55e160fe1d7a06f9c5d" title="logSettingsの初期化をおこなう " alt="" coords="355,12,490,39"/>
-<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#a79e32a78d849416fbc2adffe9599f029" title="ログ用のmapの初期化をおこなう " alt="" coords="547,12,714,39"/>
-<area shape="rect" id="node10" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="349,63,496,89"/>
-<area shape="rect" id="node11" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="544,63,717,89"/>
-<area shape="rect" id="node12" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="765,63,915,89"/>
-<area shape="rect" id="node13" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="963,63,1085,89"/>
-<area shape="rect" id="node17" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1363,12,1530,39"/>
-<area shape="rect" id="node14" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1133,63,1315,89"/>
-<area shape="rect" id="node15" href="$d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1395,113,1498,140"/>
-<area shape="rect" id="node16" href="$d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1405,63,1488,89"/>
-<area shape="rect" id="node18" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1579,5,1751,46"/>
-<area shape="rect" id="node19" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1801,71,1941,97"/>
-<area shape="rect" id="node21" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2150,197,2309,224"/>
-<area shape="rect" id="node24" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2172,248,2287,275"/>
-<area shape="rect" id="node22" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2357,172,2472,199"/>
-<area shape="rect" id="node23" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2363,223,2467,249"/>
-<area shape="rect" id="node26" href="$d3/d77/class_gyro_sensor_controller.html#ad96e9a82d821f4d00c1edd8b5264f1e4" title="値のリセット " alt="" coords="349,215,496,257"/>
-<area shape="rect" id="node27" href="$d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496" title="ジャイロセンサーの有効・無効をセットする " alt="" coords="549,215,713,257"/>
-<area shape="rect" id="node32" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="777,436,903,463"/>
+<area shape="rect" id="node2" href="$df/d88/_l_c_d_controller_8cpp.html#a2ec87919bf3de2d33ed3c5a711aec8da" title="フォントサイズを設定する " alt="" coords="173,72,265,99"/>
+<area shape="rect" id="node3" href="$df/d88/_l_c_d_controller_8cpp.html#aab512c362fead1145453583d9701dac5" title="LCDに文字を書く " alt="" coords="370,489,481,516"/>
+<area shape="rect" id="node6" href="$d3/d42/class_logger.html#ae784283f1de7827b7e7049641eaf0a53" title="初期化する " alt="" coords="161,123,277,149"/>
+<area shape="rect" id="node9" href="$d8/dcc/class_drive_controller.html#aec9576638e3a7684ab1eaa419c868b82" title="初期化処理 " alt="" coords="137,173,301,200"/>
+<area shape="rect" id="node22" href="$d3/d42/class_logger.html#ae026316d51384723d4690f0d3250c209" title="ログを追加する " alt="" coords="1995,283,2106,309"/>
+<area shape="rect" id="node27" href="$d3/d77/class_gyro_sensor_controller.html#a37be08a2fcbfca0a129b304d38452816" title="初期化処理 " alt="" coords="145,275,292,317"/>
+<area shape="rect" id="node30" href="$df/d60/class_sonar_sensor_controller.html#aa359db717ffeb1a82bf822e33f2ad1f0" title="超音波センサの初期化処理 " alt="" coords="142,393,295,434"/>
+<area shape="rect" id="node31" href="$df/d6b/class_color_sensor_controller.html#af4f4a57e24dd3c55508e04a6414bdcb6" title="初期化処理 " alt="" coords="143,458,294,499"/>
+<area shape="rect" id="node32" href="$de/da5/utilities_8cpp.html#ab06cba26c220e9f1cb65ead703acf341" title="モーターの設定を行う " alt="" coords="157,524,280,551"/>
+<area shape="rect" id="node33" href="$de/da5/utilities_8cpp.html#afed76cc72a0fba47a1627936acd10c2d" title="センサーの設定を行う " alt="" coords="155,575,283,601"/>
+<area shape="rect" id="node34" href="$de/da5/utilities_8cpp.html#a588129e867793fa5cfcb5e58e6c44e4d" title="バッテリーの残電圧と残電流をLCDに出力する " alt="" coords="165,625,272,652"/>
+<area shape="rect" id="node4" href="$df/d88/_l_c_d_controller_8cpp.html#abe3c29415ed4f9f7d5462cc271f47d03" title="1行の高さを取得する " alt="" coords="587,503,685,529"/>
+<area shape="rect" id="node5" href="$df/d88/_l_c_d_controller_8cpp.html#a43f7ef6fa4bbcafdf280055df5d1cd76" title="LCDの色を取得する " alt="" coords="587,452,685,479"/>
+<area shape="rect" id="node7" href="$d5/d0b/log_settings_8cpp.html#a1e4ebb461ee4d55e160fe1d7a06f9c5d" title="logSettingsの初期化をおこなう " alt="" coords="358,5,493,32"/>
+<area shape="rect" id="node8" href="$d5/d0b/log_settings_8cpp.html#a79e32a78d849416fbc2adffe9599f029" title="ログ用のmapの初期化をおこなう " alt="" coords="553,5,719,32"/>
+<area shape="rect" id="node10" href="$df/d6b/class_color_sensor_controller.html#a109f29a8aa37c015bff52ebff4c6271b" title="カラーセンサーで検知した色のIDを取得 " alt="" coords="350,57,501,98"/>
+<area shape="rect" id="node12" href="$db/d2f/class_motor_wheel.html#a5ee0461d7062254d78d7b9f2aa06bdd5" title="MotorWheel::initialize" alt="" coords="352,123,499,149"/>
+<area shape="rect" id="node13" href="$da/dcf/class_speed_calculator.html#a937cdcacf91d512ddb5aed2347c5705a" title="初期化 " alt="" coords="549,123,723,149"/>
+<area shape="rect" id="node11" href="$df/d6b/class_color_sensor_controller.html#a01053964c866f6bfe00564a460fafde2" title="カラーセンサーRGB値を取得 " alt="" coords="561,57,711,98"/>
+<area shape="rect" id="node14" href="$d1/d48/class_e_v3_position.html#a2d82e5c3ccb110dfacec8fa051270f31" title="初期化 " alt="" coords="771,123,920,149"/>
+<area shape="rect" id="node15" href="$d1/d48/class_e_v3_position.html#a9721e105a15e1140bab8c7a497db10cd" title="要素をvectorに追加する " alt="" coords="968,123,1091,149"/>
+<area shape="rect" id="node19" href="$d1/d48/class_e_v3_position.html#a696c713dc4d764901d3eeac52e833cd9" title="走行体の現在位置を設定する " alt="" coords="1369,72,1535,99"/>
+<area shape="rect" id="node16" href="$d1/d48/class_e_v3_position.html#a08b525f04003dfb990de2ddd7a7d1855" title="走行体の座標を指定した位置に移動させる " alt="" coords="1139,123,1320,149"/>
+<area shape="rect" id="node17" href="$d4/dcf/user__function_8cpp.html#a672166152dd598c54e3c42e8e2e16394" title="degree2radian" alt="" coords="1401,173,1503,200"/>
+<area shape="rect" id="node18" href="$d4/dcf/user__function_8cpp.html#ade5da139c650667b7bf034ca4186f08e" title="imgビルドでfmodがエラーになる為、自作した " alt="" coords="1411,123,1493,149"/>
+<area shape="rect" id="node20" href="$d1/d48/class_e_v3_position.html#aaef4b495f06db35ca6b2b992c5b56cbf" title="走行体の現在位置を同期する " alt="" coords="1585,123,1757,165"/>
+<area shape="rect" id="node21" href="$d3/d42/class_logger.html#a17b11d047ac5936db5505d387e5952a1" title="ログを追加する floor関数で切り捨て処理をした値を表示している。マイナスとプラスの違いを考慮すること(資料参照) 参考資料： http://simd.jugem.jp/?eid=32 " alt="" coords="1806,131,1946,157"/>
+<area shape="rect" id="node23" href="$d3/d42/class_logger.html#aad23c9fb4e099b179dbb7f014716982c" title="ログを追加するか判定する（前回から指定時間異常経過していたら出力） " alt="" coords="2155,257,2314,284"/>
+<area shape="rect" id="node26" href="$d5/d0b/log_settings_8cpp.html#a49fb52fcee6150a70e6c64485c1631cf" title="ログの種類のLastTimeをセットする " alt="" coords="2177,308,2292,335"/>
+<area shape="rect" id="node24" href="$d5/d0b/log_settings_8cpp.html#ae6ad467888af292822a94b950eed2ea7" title="最後にログをストックしたシステム時刻を取得する " alt="" coords="2363,232,2477,259"/>
+<area shape="rect" id="node25" href="$d5/d0b/log_settings_8cpp.html#a63c496db6c2b471a9ec9206363b01f52" title="ログをストックするインターバルを取得する " alt="" coords="2368,283,2472,309"/>
+<area shape="rect" id="node28" href="$d3/d77/class_gyro_sensor_controller.html#ad96e9a82d821f4d00c1edd8b5264f1e4" title="値のリセット " alt="" coords="352,275,499,317"/>
+<area shape="rect" id="node29" href="$d3/d77/class_gyro_sensor_controller.html#a17523808459f395b027363b1303d2496" title="ジャイロセンサーの有効・無効をセットする " alt="" coords="554,275,718,317"/>
+<area shape="rect" id="node35" href="$d3/d42/class_logger.html#a6c591a744d2ff8628c0cc918d50c6d0e" title="ログを追加する " alt="" coords="782,479,909,505"/>
 </map>

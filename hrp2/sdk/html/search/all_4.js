@@ -11,6 +11,7 @@ var searchData=
   ['distance_5fstop',['DISTANCE_STOP',['../df/d8b/stop_condition_8h.html#ab7d2a843ba010a12d0b6059eb93b0260ae6c9a81822deb2231912c4b6af2b453e',1,'stopCondition.h']]],
   ['distancedelta',['distanceDelta',['../d9/dbe/struct_d_i_s_t_a_n_c_e___r_e_c_o_r_d.html#a2abb4f2d1c5369fbb701452684ef820f',1,'DISTANCE_RECORD']]],
   ['distancefromcoordinateforjitterymovement',['distanceFromCoordinateForJitteryMovement',['../d8/dcc/class_drive_controller.html#a511072007dc08f7cad1a33bbb1732a7b',1,'DriveController']]],
+  ['down_5fpattern',['DOWN_PATTERN',['../d0/d60/orientation_pattern_8h.html#aa00a93889993d8766199f27e32bf91d9aab40871f2fe251378886abfc905190bb',1,'orientationPattern.h']]],
   ['drivecontroller',['DriveController',['../d8/dcc/class_drive_controller.html',1,'DriveController'],['../d8/dcc/class_drive_controller.html#ae9fb429c8fe74cd5bf3e65e6c0a2823e',1,'DriveController::DriveController()'],['../d5/df2/app_8cpp.html#ac908bdcf4039528fd5694d7b44b0dde9',1,'driveController():&#160;app.cpp'],['../dd/d3f/instances_8h.html#ac908bdcf4039528fd5694d7b44b0dde9',1,'driveController():&#160;app.cpp']]],
   ['drivecontroller_2ecpp',['DriveController.cpp',['../d9/dc1/_drive_controller_8cpp.html',1,'']]],
   ['drivecontroller_2eh',['DriveController.h',['../d5/d5b/_drive_controller_8h.html',1,'']]]
