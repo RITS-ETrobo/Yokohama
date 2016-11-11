@@ -7,16 +7,12 @@
 #include "ev3api.h"
 #include "utilities.h"
 #include "instances.h"
-#include "app.h"
 #include "scenarioRunning.h"
-#include "RunningModule.h"
-#include "LCDController.h"
 #include "Logger.h"
 #include <stdlib.h>
 #include "ArmModule.h"
-#include "coordinateScenario.h"
-#include "EV3Position.h"
-#include "ArmModule.h"
+
+#include "RunningModule.h"
 
 /**
  * @brief   初期化処理
