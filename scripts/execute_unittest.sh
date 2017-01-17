@@ -7,7 +7,31 @@ clear
 mkdir -p test/build
 cd test/
 
-g++ -o unittestEV3 -DEV3_UNITTEST -I./test/ -I./test/hackEV/ -I./test/hackEV/sensors/ -I./gtest/googletest/include/ -I../hrp2/sdk/workspace/hackEV/ -I../hrp2/sdk/workspace/hackEV/params/ -I../hrp2/sdk/workspace/hackEV/motors/ -I../hrp2/sdk/workspace/hackEV/sensors main.cpp test/hackEV/Test*.cpp test/hackEV/sensors/Test*.cpp ../hrp2/sdk/workspace/hackEV/user_function.cpp ../hrp2/sdk/workspace/hackEV/EV3Position.cpp ../hrp2/sdk/workspace/hackEV/SpeedCalculator.cpp ../hrp2/sdk/workspace/hackEV/sensors/ColorSensorController.cpp -L./gtest/googletest/lib -lgtest -lpthread 1>build/build.log 2>&1
+SOURCE_FILES="\
+main.cpp test/hackEV/Test*.cpp test/hackEV/sensors/Test*.cpp \
+../hrp2/sdk/workspace/common/user_function.cpp \
+../hrp2/sdk/workspace/hackEV/EV3Position.cpp \
+../hrp2/sdk/workspace/hackEV/SpeedCalculator.cpp \
+../hrp2/sdk/workspace/hackEV/sensors/ColorSensorController.cpp"
+
+INCLUDE_DIRECTORIES="\
+-I./test \
+-I./test/hackEV \
+-I./test/hackEV/sensors \
+-I./gtest/googletest/include \
+-I../hrp2/sdk/workspace/common \
+-I../hrp2/sdk/workspace/common/params \
+-I../hrp2/sdk/workspace/hackEV \
+-I../hrp2/sdk/workspace/hackEV/params \
+-I../hrp2/sdk/workspace/hackEV/motors \
+-I../hrp2/sdk/workspace/hackEV/sensors"
+
+LIBRARIES="\
+-L./gtest/googletest/lib \
+-lgtest \
+-lpthread"
+
+g++ -o unittestEV3 -DEV3_UNITTEST ${INCLUDE_DIRECTORIES} ${SOURCE_FILES} ${LIBRARIES} 1>build/build.log 2>&1
 RETURN_CODE=$?
 
 if [ ${RETURN_CODE} = 0 ]; then

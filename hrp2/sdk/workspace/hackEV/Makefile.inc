@@ -6,6 +6,9 @@ APPL_COBJS +=
 # Add objects that are generated from *.cpp
 # オブジェクトは、以下の順に追加する
 # - 定義
+# 1. common
+# 2. 機種
+# それぞれ、以下の順に追加する
 # - Utilities
 # - Sensors
 # - Motors
@@ -45,12 +48,16 @@ include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
 endif
 
 APPL_DIR += \
+    $(mkfile_path)../common \
+    $(mkfile_path)../common/params \
     $(mkfile_path)sensors \
     $(mkfile_path)motors \
     $(mkfile_path)params \
     $(mkfile_path)params/machine
 
 INCLUDES += \
+    -I$(mkfile_path)../common \
+    -I$(mkfile_path)../common/params \
     -I$(mkfile_path)sensors \
     -I$(mkfile_path)motors \
     -I$(mkfile_path)params \
