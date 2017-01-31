@@ -1,3 +1,10 @@
+2016-11-07 Version Beta 6-3
+* Sample programs
+  - Added sample program 'periodic-task'
+  - Fix task priorities in HelloEV3
+* Miscellaneous
+  - Support sub directories in each project directory
+
 2016-03-16 Version Beta 6-2
 * Sensors
   - Configuring analog sensor with ev3_sensor_config() will wait 2ms to ensure that sensor value is updated
