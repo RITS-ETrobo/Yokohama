@@ -63,7 +63,7 @@ void start_run()
 
 /**
  * @brief   検証用の走行
- *
+ * 座標読み込み移動を行う
  * @return  なし
 */
 void start_run_test()
@@ -82,22 +82,94 @@ void start_run_test()
     gyroSensorController->setEnabledGyroSensor(true);
     driveController->setEnabled();
 
-    //! 個別のシナリオ検証用
-    for (int index = 0; index < (int)(sizeof(run_scenario_test_pinWheel_right) / sizeof(run_scenario_test_pinWheel_right[0])); index++) {
-        driveController->run(run_scenario_test_pinWheel_right[index]);
+    //! 座標をテキストファイルから読み込み配列を作る
+    // scenario_coordinate* coordinateFromFile = (scenario_coordinate)malloc(sizeof(scenario_coordinate) * 40);
+    //scenario_coordinate* coordinateFromFile = (scenario_coordinate*)malloc(sizeof(scenario_coordinate)*40);
+    scenario_coordinate coordinateFromFile[40];
+    int size = readCoordinateFile(coordinateFromFile);
+
+    ev3_speaker_play_tone(NOTE_D6, 100);
+
+    char mes[256];
+    sprintf(mes, "%d",
+        coordinateFromFile[0].power);
+    writeStringLCD(mes);
+    sprintf(mes, "%f",
+        coordinateFromFile[0].targetX);
+    writeStringLCD(mes);
+    sprintf(mes, "%f",
+        coordinateFromFile[0].targetY);
+    writeStringLCD(mes);
+
+    //! 読み込んだ座標をセットして走る。
+    //! 40個なのに、2個しかないから最後落ちる
+    //for (int index = 0; index < (int)(sizeof(coordinateFromFile) / sizeof(coordinateFromFile[0])); index++) {
+    for (int index = 0; index<size; index++) {
+        writeStringLCD("run");
+        driveController->manageMoveCoordinate(coordinateFromFile[index]);
     }
 
-    //! ラインを探して向きを揃える
-    //driveController->catchLineAndCorrectDirection(30, 30, 30);
+    // //! ラインを探して向きを揃える
+    // //driveController->catchLineAndCorrectDirection(30, 30, 30);
 
-    ev3_speaker_play_tone(NOTE_F4, 300);
-    if (logger) {
-        logger->addLog(LOG_TYPE_SCENARIO, "END");
-    }
+    // ev3_speaker_play_tone(NOTE_F4, 300);
+    // if (logger) {
+    //     logger->addLog(LOG_TYPE_SCENARIO, "END");
+    // }
 
     gyroSensorController->setEnabledGyroSensor(false);
     driveController->setEnabled(false);
 }
+
+//! 座標ファイルから読み込みを行う
+int readCoordinateFile(scenario_coordinate coordinateDatas[40])
+{
+    //scenario_coordinate ret[]={{45, 100, 664},{30,20,0}};
+    
+    // #include <stdio.h> が必要。
+    
+    FILE* inFile = NULL;
+    if((inFile = fopen("CoordinateData.txt", "rt")) == NULL)
+    {
+        writeStringLCD("fopen error.");
+        return -1;
+    }
+    
+    int power = 30;
+    int numDatas;
+    for(numDatas=0; numDatas<40; numDatas++)
+    {
+        int scanFileResult;
+        scanFileResult = fscanf(inFile, "%d,%d", &(coordinateDatas[numDatas].targetX), &(coordinateDatas[numDatas].targetY));
+        // "%d,%d" ではなくて、 "%d,%d\n" かも？
+        if(scanFileResult == EOF)
+        {
+            break;
+        }
+        coordinateDatas[numDatas].power = power;
+    }
+    
+    fclose(inFile);
+    
+    /*
+    for(int i=0;i<2;i++)
+    {
+        writeStringLCD("setup");
+        arg[i] = ret[i];
+    }
+    */
+    return numDatas;
+
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * @brief   Lコース走行

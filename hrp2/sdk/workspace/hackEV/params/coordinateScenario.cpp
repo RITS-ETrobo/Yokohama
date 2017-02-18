@@ -6,7 +6,7 @@
 #include "coordinateScenario.h"
 
 #include "ColorSensorController.h"
-
+//座標指定移動のシナリオ。
 //! 検証用
 const scenario_coordinate test_coordinate[14] = {
     {30, 0, 253.7143},
