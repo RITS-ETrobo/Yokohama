@@ -83,10 +83,11 @@ void start_run_test()
     driveController->setEnabled();
 
     //! 座標をテキストファイルから読み込み配列を作る
-    // scenario_coordinate* coordinateFromFile = (scenario_coordinate)malloc(sizeof(scenario_coordinate) * 40);
-    //scenario_coordinate* coordinateFromFile = (scenario_coordinate*)malloc(sizeof(scenario_coordinate)*40);
     scenario_coordinate coordinateFromFile[40];
     int size = readCoordinateFile(coordinateFromFile);
+
+
+    //! TODO座標をただしいものに変換するDriveControllerのConvertMAPToREAL
 
     ev3_speaker_play_tone(NOTE_D6, 100);
 
