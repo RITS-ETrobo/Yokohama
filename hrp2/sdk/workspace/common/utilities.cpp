@@ -184,7 +184,7 @@ void viewColor()
 
     //! 取得したカラー名をLCDに表示させる
     memset(message, '\0', sizeof(message));
-    sprintf(message, "%s", colorSensorController->getColorName(&colorRGB, modeColor).c_str());
+    sprintf(message, "%s", colorSensorController->getColorName(&colorRGB, modeColor));
     writeStringLCD(message);
 
     //! RGB値を取得

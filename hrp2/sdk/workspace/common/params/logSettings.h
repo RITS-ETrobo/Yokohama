@@ -5,7 +5,6 @@
 #pragma once
 
 #include "product.h"
-#include <string>
 
 //! \addtogroup ログ出力の設定
 //@{
@@ -188,8 +187,8 @@ typedef enum
 //@}
 
 extern void initialize_logSetting();
-extern std::string getLogName(uint_t logType);
-void initialize_logSetting_map(uint_t logType, std::string logName, SYSTIM interval = 0, SYSTIM lastOutput = 0);
+extern char* getLogName(uint_t logType);
+void initialize_logSetting_map(uint_t logType, char* logName, SYSTIM interval = 0, SYSTIM lastOutput = 0);
 extern SYSTIM getLogLastTime(uint_t logType);
 extern SYSTIM getLogInterval(uint_t logType);
 extern void setLogLastTime(uint_t logType, SYSTIM lastTime);
