@@ -51,6 +51,9 @@ Release_RechargeableBattery
 *.pdb
 *.mdb
 sdcard/ev3rt/apps/*
+hrp2/cfg/toppers/itronx/libitronx.a
+hrp2/cfg/toppers/libtoppers.a
+hrp2/cfg/toppers/oil/liboil.a
 
 # for Xamarin Studio
 *.userprefs
