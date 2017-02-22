@@ -30,6 +30,21 @@ std::map<uint_t, SYSTIM> LOG_TYPE_INTERVAL_MAP;
 //@}
 
 /**
+ *  @brief  ログ用のmapの初期化をおこなう
+ *  @param  logType ログの種類
+ *  @param  logName ログの種類の名前
+ *  @param  interval ログをストックするインターバル[単位 : ms]
+ *  @param  lastOutput  最後にログをストックしたシステム時刻[単位 : ms]
+ *  @return なし
+*/
+void initialize_logSetting_map(uint_t logType, char* logName, SYSTIM interval = 0, SYSTIM lastOutput = 0)
+{
+    LOG_TYPE_MAP[logType] = logName;
+    LOG_TYPE_INTERVAL_MAP[logType] = interval;
+    LOG_TYPE_LASTTIME_MAP[logType] = lastOutput;
+}
+
+/**
     @brief  logSettingsの初期化をおこなう
     @return なし
 */
@@ -98,21 +113,6 @@ void initialize_logSetting()
     initialize_logSetting_map(LOG_TYPE_TEST6, (char*)"Test6", 100);
     initialize_logSetting_map(LOG_TYPE_TEST7, (char*)"Test7", 100);
     initialize_logSetting_map(LOG_TYPE_TEST8, (char*)"Test8", 100);
-}
-
-/**
- *  @brief  ログ用のmapの初期化をおこなう
- *  @param  logType ログの種類
- *  @param  logName ログの種類の名前
- *  @param  interval ログをストックするインターバル[単位 : ms]
- *  @param  lastOutput  最後にログをストックしたシステム時刻[単位 : ms]
- *  @return なし
-*/
-void initialize_logSetting_map(uint_t logType, char* logName, SYSTIM interval /*= 0*/, SYSTIM lastOutput /*= 0*/)
-{
-    LOG_TYPE_MAP[logType] = logName;
-    LOG_TYPE_INTERVAL_MAP[logType] = interval;
-    LOG_TYPE_LASTTIME_MAP[logType] = lastOutput;
 }
 
 /**
