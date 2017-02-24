@@ -8,7 +8,10 @@ mkdir -p test/build
 cd test/
 
 SOURCE_FILES="\
-main.cpp test/hackEV/Test*.cpp test/hackEV/sensors/Test*.cpp \
+main.cpp \
+test/common/Test*.cpp \
+test/hackEV/Test*.cpp \
+test/hackEV/sensors/Test*.cpp \
 ../hrp2/sdk/workspace/common/user_function.cpp \
 ../hrp2/sdk/workspace/hackEV/EV3Position.cpp \
 ../hrp2/sdk/workspace/hackEV/SpeedCalculator.cpp \
@@ -16,6 +19,7 @@ main.cpp test/hackEV/Test*.cpp test/hackEV/sensors/Test*.cpp \
 
 INCLUDE_DIRECTORIES="\
 -I./test \
+-I./test/common \
 -I./test/hackEV \
 -I./test/hackEV/sensors \
 -I./gtest/googletest/include \
