@@ -21,6 +21,7 @@ APPL_CXXOBJS += \
     wheelSettings.o \
     lcdSettings.o \
     utilities.o \
+    ValueArray.o \
     Logger.o \
     SonarSensorController.o \
     ColorSensorController.o \

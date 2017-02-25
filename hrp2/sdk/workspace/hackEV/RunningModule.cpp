@@ -13,17 +13,30 @@
 #include "ArmModule.h"
 
 #include "RunningModule.h"
+#include "ValueArray.h"
+
+//! PID係数
+ValueArray  *pidValue = NULL;
 
 /**
  * @brief   初期化処理
  * 
  * @return  なし
 */
-void initialize_run() {
+void initialize_run()
+{
+    if (pidValue) {
+        delete [] pidValue;
+        pidValue = NULL;
+    }
+
+#if FALSE
+//  2017/02時点で以下の処理は利用していない為、無効化した
     //! 走行パターンとPID係数のマッピング
     for (int i = TRACE_RUN_PATTARN_START; i <= TRACE_RUN_PATTARN_END; i++) {
-        PID_MAP[(runPattern)i] = pidParameterList[i];
+        pidValue->setNumberValue((runPattern)i, pidParameterList[i]);
     }
+#endif // FALSE
 }
 
 /**

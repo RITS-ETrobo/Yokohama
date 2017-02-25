@@ -14,6 +14,7 @@ test/common/params/Test*.cpp \
 test/hackEV/Test*.cpp \
 test/hackEV/sensors/Test*.cpp \
 ../hrp2/sdk/workspace/common/user_function.cpp \
+../hrp2/sdk/workspace/common/ValueArray.cpp \
 ../hrp2/sdk/workspace/common/params/logSettings.cpp \
 ../hrp2/sdk/workspace/hackEV/EV3Position.cpp \
 ../hrp2/sdk/workspace/hackEV/SpeedCalculator.cpp \

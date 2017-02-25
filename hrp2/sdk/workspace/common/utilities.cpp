@@ -7,8 +7,6 @@
 #include "utilities.h"
 #include "instances.h"
 
-std::map<runPattern, PID_PARAMETER> PID_MAP;
-
 //! \addtogroup PID制御で用いる変数
 //@{
 //! 白の光量値

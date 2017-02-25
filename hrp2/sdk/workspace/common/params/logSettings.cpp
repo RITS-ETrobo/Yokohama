@@ -3,7 +3,7 @@
  * @brief   This file has the settings for logging.
  */
 #include "logSettings.h"
-#include <map>
+#include "ValueArray.h"
 
 //! \addtogroup ポートの設定
 //@{
@@ -20,13 +20,13 @@ const uint8_t OUTPUT_TYPE_LCD = (1 << 1);
 //! \addtogroup ログ出力用のmap
 //@{
 //! ログに出力する文字列
-std::map<uint_t, char*> LOG_TYPE_MAP;
-
-//! 前回ログをストックしたシステム時刻[単位 : ms]
-std::map<uint_t, SYSTIM> LOG_TYPE_LASTTIME_MAP;
+ValueArray* valueArrayType = NULL;
 
 //! ログ出力間隔[単位 : ms] 0の場合は、常に出力する
-std::map<uint_t, SYSTIM> LOG_TYPE_INTERVAL_MAP;
+ValueArray* valueArrayInterval = NULL;
+
+//! 前回ログをストックしたシステム時刻[単位 : ms]
+ValueArray* valueArrayLastTime = NULL;
 //@}
 
 /**
@@ -39,9 +39,9 @@ std::map<uint_t, SYSTIM> LOG_TYPE_INTERVAL_MAP;
 */
 void initialize_logSetting_map(uint_t logType, char* logName, SYSTIM interval = 0, SYSTIM lastOutput = 0)
 {
-    LOG_TYPE_MAP[logType] = logName;
-    LOG_TYPE_INTERVAL_MAP[logType] = interval;
-    LOG_TYPE_LASTTIME_MAP[logType] = lastOutput;
+    valueArrayType->setStringValue(logType, logName);
+    valueArrayInterval->setNumberValue(logType, interval);
+    valueArrayLastTime->setNumberValue(logType, lastOutput);
 }
 
 /**
@@ -50,6 +50,18 @@ void initialize_logSetting_map(uint_t logType, char* logName, SYSTIM interval = 
 */
 void initialize_logSetting()
 {
+    if (valueArrayType == NULL) {
+        valueArrayType = new ValueArray();
+    }
+
+    if (valueArrayInterval == NULL) {
+        valueArrayInterval = new ValueArray();
+    }
+
+    if (valueArrayLastTime == NULL) {
+        valueArrayLastTime = new ValueArray();
+    }
+
     initialize_logSetting_map(LOG_EMERG, (char*)"Shutdown");
     initialize_logSetting_map(LOG_ALERT, (char*)"Alert");
     initialize_logSetting_map(LOG_CRIT, (char*)"CRITICAL");
@@ -122,7 +134,7 @@ void initialize_logSetting()
 */
 char* getLogName(uint_t logType)
 {
-    return LOG_TYPE_MAP[logType];
+    return  valueArrayType->getStringValue(logType);
 }
 
 /**
@@ -132,7 +144,7 @@ char* getLogName(uint_t logType)
 */
 SYSTIM getLogLastTime(uint_t logType)
 {
-    return LOG_TYPE_LASTTIME_MAP[logType];
+    return  valueArrayLastTime->getNumberValue(logType);
 }
 
 /**
@@ -142,17 +154,16 @@ SYSTIM getLogLastTime(uint_t logType)
 */
 SYSTIM getLogInterval(uint_t logType)
 {
-    return LOG_TYPE_INTERVAL_MAP[logType];
+    return  valueArrayInterval->getNumberValue(logType);
 }
 
 /**
     @brief  ログの種類のLastTimeをセットする
     @param ログの種類
     @param 最後の時間
-
     @return なし
 */
 void setLogLastTime(uint_t logType, SYSTIM lastTime)
 {
-    LOG_TYPE_LASTTIME_MAP[logType] = lastTime;
+    valueArrayLastTime->setNumberValue(logType, lastTime);
 }

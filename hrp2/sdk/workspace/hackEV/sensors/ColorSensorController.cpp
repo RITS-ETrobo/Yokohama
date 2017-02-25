@@ -18,6 +18,7 @@ ColorSensorController::ColorSensorController(sensor_port_t _port)
     , BORDER_BLUE_RED(0.83333F)
     , BORDER_GREEN_BLUE_AS_BLUE(70 / (double)255)
     , BORDER_GREEN_GRAY_AS_RED(50 / (double)255)
+    , colorName(NULL)
 {
 }
 
@@ -28,7 +29,7 @@ ColorSensorController::ColorSensorController(sensor_port_t _port)
 */
 void ColorSensorController::addColorMap(uint8_t color_id, char* color_name)
 {
-    COLOR_NAME_MAP[color_id] = color_name;
+    colorName->setStringValue(color_id, color_name);
 }
 
 /**
@@ -36,7 +37,15 @@ void ColorSensorController::addColorMap(uint8_t color_id, char* color_name)
  * 
  * @return  なし
 */
-void ColorSensorController::initialize() {
+void ColorSensorController::initialize()
+{
+    if (colorName) {
+        delete [] colorName;
+        colorName = NULL;
+    }
+
+    colorName = new ValueArray();
+
     //! カラー名のマッピング
     addColorMap(COLOR_NONE, (char*)"NONE");
     addColorMap(COLOR_BLACK, (char*)"BLACK");
@@ -202,7 +211,7 @@ char* ColorSensorController::getColorName(COLOR_MODE modeColor /*= COLOR_MODE_BL
 */
 char* ColorSensorController::getColorNameByID(uint8_t color_id)
 {
-    return  COLOR_NAME_MAP[color_id];
+    return  colorName->getStringValue(color_id);
 }
 
 /**

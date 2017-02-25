@@ -5,7 +5,7 @@
 #pragma once
 
 #include "product.h"
-#include <map>
+#include "ValueArray.h"
 
 //! \addtogroup 色識別モード
 //@{
@@ -47,7 +47,7 @@ private:
     double getHue(double red, double green, double blue);
 
     //! 色情報
-    std::map<uint8_t, char*>  COLOR_NAME_MAP;
+    ValueArray* colorName;
 
     //! カラーセンサーのポート
     sensor_port_t   port;
