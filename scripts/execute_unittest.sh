@@ -35,10 +35,12 @@ LIBRARIES="\
 -lgtest \
 -lpthread"
 
-g++ -o unittestEV3 -DEV3_UNITTEST ${INCLUDE_DIRECTORIES} ${SOURCE_FILES} ${LIBRARIES} 1>build/build.log 2>&1
+# Add "-g" for debuging information
+#   If "Segmentation falut" occurs, you use the gdb following commmand for analysis.
+g++ -g -o unittestEV3 -DEV3_UNITTEST ${INCLUDE_DIRECTORIES} ${SOURCE_FILES} ${LIBRARIES} 1>build/build.log 2>&1
 RETURN_CODE=$?
 
-if [ ${RETURN_CODE} = 0 ]; then
+if [ ${RETURN_CODE} -eq 0 ]; then
     mv unittestEV3 build/
     ./build/unittestEV3 1>build/test.log 2>&1
     cat build/test.log
