@@ -26,7 +26,7 @@ ColorSensorController::ColorSensorController(sensor_port_t _port)
  * 
  * @return  なし
 */
-void ColorSensorController::addColorMap(uint8_t color_id, std::string color_name)
+void ColorSensorController::addColorMap(uint8_t color_id, char* color_name)
 {
     COLOR_NAME_MAP[color_id] = color_name;
 }
@@ -38,15 +38,15 @@ void ColorSensorController::addColorMap(uint8_t color_id, std::string color_name
 */
 void ColorSensorController::initialize() {
     //! カラー名のマッピング
-    addColorMap(COLOR_NONE, "NONE");
-    addColorMap(COLOR_BLACK, "BLACK");
-    addColorMap(COLOR_BLUE, "BLUE");
-    addColorMap(COLOR_GREEN, "GREEN");
-    addColorMap(COLOR_YELLOW, "YELLOW");
-    addColorMap(COLOR_RED, "RED");
-    addColorMap(COLOR_WHITE, "WHITE");
-    addColorMap(COLOR_BROWN, "BROWN");
-    addColorMap(COLOR_GRAY, "GRAY");
+    addColorMap(COLOR_NONE, (char*)"NONE");
+    addColorMap(COLOR_BLACK, (char*)"BLACK");
+    addColorMap(COLOR_BLUE, (char*)"BLUE");
+    addColorMap(COLOR_GREEN, (char*)"GREEN");
+    addColorMap(COLOR_YELLOW, (char*)"YELLOW");
+    addColorMap(COLOR_RED, (char*)"RED");
+    addColorMap(COLOR_WHITE, (char*)"WHITE");
+    addColorMap(COLOR_BROWN, (char*)"BROWN");
+    addColorMap(COLOR_GRAY, (char*)"GRAY");
 }
 
 /**
@@ -178,7 +178,7 @@ double ColorSensorController::getHue(double red, double green, double blue)
  * @param   modeColor   色識別モード
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
+char* ColorSensorController::getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
     uint8_t color = getColorID(colorRGB, modeColor);
     return  getColorNameByID(color);
@@ -189,7 +189,7 @@ std::string ColorSensorController::getColorName(rgb_raw_t *colorRGB, COLOR_MODE 
  * @param   modeColor   色識別モード
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorName(COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
+char* ColorSensorController::getColorName(COLOR_MODE modeColor /*= COLOR_MODE_BLACK_WHITE*/)
 {
     uint8_t color = getColorID(modeColor);
     return  getColorNameByID(color);
@@ -200,7 +200,7 @@ std::string ColorSensorController::getColorName(COLOR_MODE modeColor /*= COLOR_M
  * @param   color_id    色のID
  * @return  取得した色の名前
 */
-std::string ColorSensorController::getColorNameByID(uint8_t color_id)
+char* ColorSensorController::getColorNameByID(uint8_t color_id)
 {
     return  COLOR_NAME_MAP[color_id];
 }

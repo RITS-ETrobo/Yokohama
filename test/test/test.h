@@ -250,6 +250,16 @@ typedef	struct acvct {				/* アクセス許可ベクタ */
 #define TMAX_RELTIM		((RELTIM) LONG_MAX)
 #endif /* UINT_MAX < LONG_MAX */
 
+//  ./hrp2/include/t_syslog.h からコピー
+#define LOG_EMERG			UINT_C(0)		/* シャットダウンに値するエラー */
+#define LOG_ALERT			UINT_C(1)
+#define LOG_CRIT			UINT_C(2)
+#define LOG_ERROR			UINT_C(3)		/* システムエラー */
+#define LOG_WARNING			UINT_C(4)		/* 警告メッセージ */
+#define LOG_NOTICE			UINT_C(5)
+#define LOG_INFO			UINT_C(6)
+#define LOG_DEBUG			UINT_C(7)		/* デバッグ用メッセージ */
+
 //  ./hrp2/sdk/common/ev3api/src/ev3api_sensor.h からコピー
 
 /**

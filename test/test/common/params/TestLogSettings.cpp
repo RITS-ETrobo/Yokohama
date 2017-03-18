@@ -1,0 +1,230 @@
+/**
+ * @file    TestLogSettings.cpp
+ * @brief   This file is test file for logging functions.
+ */
+#include "TestLogSettings.h"
+
+/**
+ *  @test   LOG_TYPE_MAPに格納されている初期値が正しい事を確認する。テストに失敗した場合も、残りのテストを継続する
+ *  @return なし
+*/
+TEST_F(TestLogSettings, logName)
+{
+    EXPECT_STREQ(getLogName(LOG_EMERG), "Shutdown");
+    EXPECT_STREQ(getLogName(LOG_ALERT), "Alert");
+    EXPECT_STREQ(getLogName(LOG_CRIT), "CRITICAL");
+    EXPECT_STREQ(getLogName(LOG_ERROR), "Error");
+    EXPECT_STREQ(getLogName(LOG_WARNING), "Warning");
+    EXPECT_STREQ(getLogName(LOG_NOTICE), "Notice");
+    EXPECT_STREQ(getLogName(LOG_INFO), "Info");
+    EXPECT_STREQ(getLogName(LOG_DEBUG), "Debug");
+    EXPECT_STREQ(getLogName(LOG_TYPE_GYRO), "Gyro");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SONAR), "Sonar");
+    EXPECT_STREQ(getLogName(LOG_TYPE_PID), "PID");
+    EXPECT_STREQ(getLogName(LOG_TYPE_COLOR), "Color");
+    EXPECT_STREQ(getLogName(LOG_TYPE_COLOR_BLACK), "Color(Black)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_COLOR_WHITE), "Color(White)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE), "Distance");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_SCENARIO), "Distance(Scenario)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_TOTAL), "Distance(Total)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DIRECTION), "Direction");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DIRECTION_SCENARIO), "Direction(Scenario)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DIRECTION_TOTAL), "Direction(Total)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_GYRO), "Gyro");
+    EXPECT_STREQ(getLogName(LOG_TYPE_WRITE_PROCESSING), "Writing Log");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_RIGHT), "Distance(Right)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_RIGHT_TOTAL), "Distance(Right/Total)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_LEFT), "Distance(Left)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_DISTANCE_LEFT_TOTAL), "Distance(Left/Total)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO), "Scenario");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO_DISTANCE), "Scenario(distance)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO_DIRECTION), "Scenario(direction)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO_POWER), "Scenario(power)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO_PATTERN), "Scenario(pattern)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_SCENARIO_STOP), "Scenario(stop)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_BATTERY_mA), "mA");
+    EXPECT_STREQ(getLogName(LOG_TYPE_BATTERY_mV), "mV");
+    EXPECT_STREQ(getLogName(LOG_TYPE_INITIALIZE), "Initialize");
+    EXPECT_STREQ(getLogName(LOG_TYPE_CORRECTED_RATIO_LEFT), "CorrectedRatioLeft");
+    EXPECT_STREQ(getLogName(LOG_TYPE_CORRECTED_RATIO_RIGHT), "CorrectedRatioRight");
+    EXPECT_STREQ(getLogName(LOG_TYPE_CORRECTED_POWER_LEFT), "CorrectedPowLeft");
+    EXPECT_STREQ(getLogName(LOG_TYPE_CORRECTED_POWER_RIGHT), "CorrectedPowRight");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_SPEED), "Average(Speed)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_DISTANCE), "Average(Distance)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_TIME), "Average(Time)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_SPEED_LEFT), "Average(LSpeed)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_DISTANCE_LEFT), "Average(LDistance)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_TIME_LEFT), "Average(LTime)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_SPEED_RIGHT), "Average(RSpeed)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_DISTANCE_RIGHT), "Average(RDistance)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_AVERAGE_TIME_RIGHT), "Average(RTime)");
+    EXPECT_STREQ(getLogName(LOG_TYPE_POWER_FOR_CURVE_LEFT), "PowLeftForCurve");
+    EXPECT_STREQ(getLogName(LOG_TYPE_POWER_FOR_CURVE_RIGHT), "PowRightForCurve");
+    EXPECT_STREQ(getLogName(LOG_TYPE_EV3_POSITION_REAL_X), "Position.x");
+    EXPECT_STREQ(getLogName(LOG_TYPE_EV3_POSITION_REAL_Y), "Position.y");
+    EXPECT_STREQ(getLogName(LOG_TYPE_EV3_POSITION_MAP_X), "MAP.x");
+    EXPECT_STREQ(getLogName(LOG_TYPE_EV3_POSITION_MAP_Y), "MAP.y");
+    EXPECT_STREQ(getLogName(LOG_TYPE_EV3_DIRECTION), "Direction.ev3");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST1), "Test1");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST2), "Test2");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST3), "Test3");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST4), "Test4");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST5), "Test5");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST6), "Test6");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST7), "Test7");
+    EXPECT_STREQ(getLogName(LOG_TYPE_TEST8), "Test8");
+}
+
+/**
+ *  @test   LOG_TYPE_MAPに格納されている初期値が正しい事を確認する。テストに失敗した場合も、残りのテストを継続する
+ *  @return なし
+*/
+TEST_F(TestLogSettings, logLastTime_defaultValue)
+{
+    EXPECT_EQ(getLogLastTime(LOG_EMERG), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_ALERT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_CRIT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_ERROR), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_WARNING), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_NOTICE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_INFO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_DEBUG), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_GYRO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SONAR), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_PID), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_COLOR), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_COLOR_BLACK), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_COLOR_WHITE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_SCENARIO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_TOTAL), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DIRECTION), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DIRECTION_SCENARIO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DIRECTION_TOTAL), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_GYRO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_WRITE_PROCESSING), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_RIGHT_TOTAL), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DISTANCE_LEFT_TOTAL), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO_DISTANCE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO_DIRECTION), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO_POWER), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO_PATTERN), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_SCENARIO_STOP), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_BATTERY_mA), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_BATTERY_mV), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_INITIALIZE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_CORRECTED_RATIO_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_CORRECTED_RATIO_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_CORRECTED_POWER_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_CORRECTED_POWER_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_CORRECTED_POWER_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_SPEED), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_DISTANCE), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_TIME), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_SPEED_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_DISTANCE_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_TIME_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_SPEED_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_DISTANCE_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_AVERAGE_TIME_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_POWER_FOR_CURVE_LEFT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_POWER_FOR_CURVE_RIGHT), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_EV3_POSITION_REAL_X), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_EV3_POSITION_REAL_Y), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_EV3_POSITION_MAP_X), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_EV3_POSITION_MAP_Y), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_EV3_DIRECTION), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST1), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST2), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST3), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST4), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST5), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST6), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST7), (SYSTIM)0);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_TEST8), (SYSTIM)0);
+}
+
+/**
+ *  @test   LOG_TYPE_INTERVAL_MAPに格納されている初期値が正しい事を確認する。テストに失敗した場合も、残りのテストを継続する
+  *  @return なし
+*/
+TEST_F(TestLogSettings, logInterval)
+{
+    EXPECT_EQ(getLogInterval(LOG_EMERG), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_ALERT), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_CRIT), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_ERROR), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_WARNING), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_NOTICE), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_INFO), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_DEBUG), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_GYRO), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SONAR), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_PID), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_COLOR), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_COLOR_BLACK), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_COLOR_WHITE), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_SCENARIO), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_TOTAL), (SYSTIM)500);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DIRECTION), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DIRECTION_SCENARIO), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DIRECTION_TOTAL), (SYSTIM)500);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_GYRO), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_WRITE_PROCESSING), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_RIGHT_TOTAL), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_DISTANCE_LEFT_TOTAL), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO_DISTANCE), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO_DIRECTION), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO_POWER), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO_PATTERN), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_SCENARIO_STOP), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_BATTERY_mA), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_BATTERY_mV), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_INITIALIZE), (SYSTIM)0);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_CORRECTED_RATIO_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_CORRECTED_RATIO_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_CORRECTED_POWER_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_CORRECTED_POWER_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_CORRECTED_POWER_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_SPEED), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_DISTANCE), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_TIME), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_SPEED_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_DISTANCE_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_TIME_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_SPEED_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_DISTANCE_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_AVERAGE_TIME_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_POWER_FOR_CURVE_LEFT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_POWER_FOR_CURVE_RIGHT), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_EV3_POSITION_REAL_X), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_EV3_POSITION_REAL_Y), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_EV3_POSITION_MAP_X), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_EV3_POSITION_MAP_Y), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_EV3_DIRECTION), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST1), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST2), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST3), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST4), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST5), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST6), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST7), (SYSTIM)100);
+    EXPECT_EQ(getLogInterval(LOG_TYPE_TEST8), (SYSTIM)100);
+}
+
+/**
+ *  @test   LOG_TYPE_LASTTIME_MAPに設定した値が変更されずに取得できる事を確認する。テストに失敗した場合も、残りのテストを継続する
+ *  @return なし
+*/
+TEST_F(TestLogSettings, logLastTime)
+{
+    setLogLastTime(LOG_TYPE_DIRECTION, (SYSTIM)101);
+    EXPECT_EQ(getLogLastTime(LOG_TYPE_DIRECTION), (SYSTIM)101);
+}

@@ -34,20 +34,20 @@ public:
     virtual void initialize();
     virtual uint8_t getColorID(COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
     virtual uint8_t getColorID(rgb_raw_t *colorRGB, COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
-    virtual std::string getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
-    virtual std::string getColorName(COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
-    virtual std::string getColorNameByID(uint8_t color_id);
+    virtual char* getColorName(rgb_raw_t *colorRGB, COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
+    virtual char* getColorName(COLOR_MODE modeColor = COLOR_MODE_BLACK_WHITE);
+    virtual char* getColorNameByID(uint8_t color_id);
     virtual rgb_raw_t getColorRGBraw();
     virtual void correctColor(rgb_raw_t *colorRGB, double *redCorrected, double *greenCorrected, double *blueCorrected);
     virtual double getBrightness(double red, double green, double blue);
     virtual double getBrightness(rgb_raw_t *colorRGB);
 
 private:
-    void addColorMap(uint8_t color_id, std::string color_name);
+    void addColorMap(uint8_t color_id, char* color_name);
     double getHue(double red, double green, double blue);
 
     //! 色情報
-    std::map<uint8_t, std::string>  COLOR_NAME_MAP;
+    std::map<uint8_t, char*>  COLOR_NAME_MAP;
 
     //! カラーセンサーのポート
     sensor_port_t   port;

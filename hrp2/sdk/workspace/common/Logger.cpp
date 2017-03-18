@@ -241,7 +241,7 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
 
             char    logLine[64];
             memset(logLine, '\0', sizeof(logLine));
-            sprintf(logLine, "%lu, %s, %s\r\n", it->logTime, getLogName(it->logType).c_str(), it->log);
+            sprintf(logLine, "%lu, %s, %s\r\n", it->logTime, getLogName(it->logType), it->log);
             if (fputs(logLine, fpLog) == EOF) {
                 break;
             }
@@ -251,7 +251,7 @@ void Logger::outputLog(bool doClosingLog /*= false*/)
             SYSTIM  end = clock->now();
             char    logLine[64];
             memset(logLine, '\0', sizeof(logLine));
-            sprintf(logLine, "%lu, %s, %lu\r\n", end, getLogName(LOG_TYPE_WRITE_PROCESSING).c_str(), end - start);
+            sprintf(logLine, "%lu, %s, %lu\r\n", end, getLogName(LOG_TYPE_WRITE_PROCESSING), end - start);
             fputs(logLine, fpLog);
         }
 
